@@ -1,0 +1,169 @@
+@layout("/common/_container.html"){
+
+<div class="">
+	<div class="">
+		<div class="ibox-title">
+			<div style="border-bottom: 1px solid #cccccc94;height: 45px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 20px;">请款申请</span></div>
+		</div>
+		<div class="tab-content">
+			<input type="hidden" value="${applyId}" id="applyId"> <input
+				type="hidden" value="${interfaceAddress}" id="interfaceAddress">
+			<input type="hidden" value="${transSource}" id="ts">
+			<div class="tab-pane fade in active">
+				<div class="menu-item" id="menu-item5">
+					<div class="form-horizontal" id="qksq_form" style="background-color:#FFF;padding: 1px;box-shadow: 3px 5px 3px 3px #c2c2c2;">
+					<h5></h5>
+						<div class="row">
+							<div class="col-sm-3">
+								<#input id="custName" name="姓名" underline="false" value="${name}"
+									readonly="readonly" />
+							</div>
+							<div class="col-sm-3">
+								<#input id="sex" name="性別" underline="false" value="${sex}"
+									readonly="readonly" />
+							</div>
+							<div class="col-sm-3">
+								<#input id="custIdNo" name="身份证号码" underline="false" value="${idno}"
+									readonly="readonly" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<#input id="contractNo" name="合同编号" underline="false" value="${contractNo}"
+									readonly="readonly" />
+							</div>
+							<div class="col-sm-3">
+								<#input id="totalAmount" name="借款总额(元)" underline="false" value="${totalAmount}"
+									readonly="readonly" />
+							</div>
+							<div class="col-sm-3">
+								<#input id="periodNum" name="借款期数(月)" underline="false" value="${periodNum}"
+									readonly="readonly" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<!--<#input id="bankCardNo" name="银行卡号" underline="false" value="${bankCardNo}"/>-->
+								<div class="form-group">
+									<div class="col-sm-3 control-label">
+										<span style="color: red">*</span>
+										<label>银行卡号</label>
+									</div>
+									<div class="col-sm-9" >
+										<input class="form-control"id="bankCardNo" name="bankCardNo" underline="false" value="${bankCardNo}">
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<#input id="bankName" name="开户银行" underline="false" value="北京银行" readonly="readonly" />
+							</div>
+							<div class="col-sm-3">
+								<#select id="isReplaceCost" name="是否代收" underline="false">
+									@if(isReplaceCost==0){
+										<option value="1">是</option>
+										<option value="0" selected="selected">否</option>
+									@}else if(isReplaceCost==1){
+										<option value="1" selected="selected">是</option>
+										<option value="0">否</option>
+									@}else{
+										<option value="1">是</option>
+										<option value="0">否</option>
+								     @}
+								</#select>
+							</div>
+						</div>
+					<div class="row">
+						<div class="col-sm-3">
+							<#select id="serviceItem" name="服务费方式" underline="false">
+							<option value="0">按百分比</option>
+							<option value="1">按金额</option>
+						</#select>
+					</div>
+					<div class="col-sm-3">
+						<!--<#input id="percent" name="百分比(%)" underline="false"/>-->
+						<div class="form-group">
+							<div class="col-sm-3 control-label">
+								<span style="color: red">*</span>
+								<label>百分比(%)</label>
+							</div>
+							<div class="col-sm-9" >
+								<input class="form-control"id="percent" name="percent" underline="false" type="text">
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<#input id="moneyAmount" name="金额" underline="false"/>
+					</div>
+					<div class="col-sm-3">
+						<#input id="receptionAmount" name="前台服务费(元)" underline="false" disabled="disabled" value="${receptionAmount}"/>
+					</div>
+				</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<!--<#input id="custMobile" name="手机号" underline="false" value="${custMobile}"/>-->
+								<div class="form-group">
+									<div class="col-sm-3 control-label">
+										<span style="color: red">*</span>
+										<label>手机号</label>
+									</div>
+									<div class="col-sm-9" >
+										<input class="form-control"id="custMobile" name="custMobile" underline="false" type="text">
+									</div>
+								</div>
+							</div>
+							<!-- <div class="col-sm-3">
+								<#input id="receptionAmount" name="手续费" underline="false"/>
+							</div> -->
+							<div class="col-sm-3">
+								<#select id="transSource" name="业务来源" underline="false" value="${transSource}"/>
+							</div>
+							<div class="col-sm-3">
+								<#select id="isPerCharge" name="手续费分期" underline="false">
+									<option value="0">分期</option>
+									<option value="1">全部</option>
+								</#select>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<#input id="receptionDepart" name="前台部门" underline="false" value="${receptionDepart}"/>
+							</div>
+							<div class="col-sm-3">
+								<#input id="receptionManager" name="前台经理" underline="false" value="${receptionManager}"/>
+							</div>
+							<!-- <div class="col-sm-3">
+								<#select id="transSource" name="业务来源" underline="false" value="${transSource}"/>
+							</div> -->
+						</div>
+						<!-- 
+						<div class="row">
+							<div class="col-sm-6">
+								<#select id="checkResult" name="审核结果" underline="false">
+								<option value="">---请选择---</option>
+								<option value="0">通过</option>
+								<option value="1">拒绝</option>
+								<option value="2">驳回</option>
+								</#select>
+								<#input id="checkResultDesc" name="审核结果描述" underline="false" />
+							</div>
+						</div>
+						 -->
+						
+						<div style="width: 265px; margin: 80px auto;text-align: center">
+							<#button name="返回" icon="fa fa-chevron-left" clickFun="backToDoWork();" />
+							<#button name="提交申请" icon="fa fa-check" clickFun="todoSubmit();" />
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+
+		</div>
+	</div>
+</div>
+<script>
+	$("#transSource").attr("disabled","disabled");
+</script>
+<script src="${ctxPath}/static/modular/cust/payApply.js"></script>
+@}

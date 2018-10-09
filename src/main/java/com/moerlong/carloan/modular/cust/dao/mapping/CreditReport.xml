@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.CreditReportDao">
+
+	<sql id="searchColumns">
+		creditReport.id id,creditReport.cust_id custId,creditReport.apply_id applyId,creditReport.type type,creditReport.collection_date collectionDate,creditReport.house_loan_num houseLoanNum,creditReport.house_buss_loan_num houseBussLoanNum,creditReport.other_loan_num otherLoanNum,creditReport.first_loan_start_date firstLoanStartDate,creditReport.credit_card_num creditCardNum,creditReport.first_credit_card_start_date firstCreditCardStartDate,creditReport.semi_credit_card_num semiCreditCardNum,creditReport.first_semi_credit_card_start_date firstSemiCreditCardStartDate,creditReport.self_declare_num selfDeclareNum,creditReport.objection_num objectionNum,creditReport.loan_overdue_num loanOverdueNum,creditReport.loan_overdue_month_num loanOverdueMonthNum,creditReport.loan_max_amount loanMaxAmount,creditReport.loan_max_month_num loanMaxMonthNum,creditReport.card_overdue_num cardOverdueNum,creditReport.card_month_num cardMonthNum,creditReport.card_overdue_max_amount cardOverdueMaxAmount,creditReport.card_max_month_num cardMaxMonthNum,creditReport.semi_card_overdue_num semiCardOverdueNum,creditReport.semi_card_month_num semiCardMonthNum,creditReport.semi_card_max_amount semiCardMaxAmount,creditReport.semi_card_max_month_num semiCardMaxMonthNum,creditReport.loan_legal_org_num loanLegalOrgNum,creditReport.loan_org_num loanOrgNum,creditReport.loan_num loanNum,creditReport.loan_total_amount loanTotalAmount,creditReport.loan_left_amount loanLeftAmount,creditReport.loan_total_month_amount loanTotalMonthAmount,creditReport.card_legal_org_num cardLegalOrgNum,creditReport.card_org_num cardOrgNum,creditReport.card_account_num cardAccountNum,creditReport.card_total_amount cardTotalAmount,creditReport.card_max_amount cardMaxAmount,creditReport.card_min_amount cardMinAmount,creditReport.card_used_amount cardUsedAmount,creditReport.card_avg_amount cardAvgAmount,creditReport.history_query_num historyQueryNum,creditReport.card_month_amount cardMonthAmount,creditReport.credit_loan_month_amount creditLoanMonthAmount,creditReport.report_attach_url reportAttachUrl,creditReport.create_time createTime,creditReport.update_time updateTime,creditReport.is_deleted isDeleted,creditReport.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.CreditReport">
+		insert into
+		c_credit_report(card_overdue_max_amount,loan_total_amount,objection_num,card_account_num,report_attach_url,first_credit_card_start_date,type,semi_card_max_amount,apply_id,card_month_amount,card_max_month_num,semi_card_month_num,card_total_amount,credit_card_num,semi_card_max_month_num,card_min_amount,id,credit_loan_month_amount,loan_overdue_num,loan_total_month_amount,loan_left_amount,first_loan_start_date,semi_card_overdue_num,semi_credit_card_num,card_legal_org_num,house_buss_loan_num,history_query_num,loan_overdue_month_num,card_month_num,loan_max_amount,self_declare_num,loan_org_num,card_overdue_num,card_used_amount,remark,first_semi_credit_card_start_date,is_deleted,other_loan_num,cust_id,card_max_amount,loan_legal_org_num,loan_num,loan_max_month_num,update_time,collection_date,house_loan_num,card_avg_amount,create_time,card_org_num)
+		values (#{cardOverdueMaxAmount},#{loanTotalAmount},#{objectionNum},#{cardAccountNum},#{reportAttachUrl},#{firstCreditCardStartDate},#{type},#{semiCardMaxAmount},#{applyId},#{cardMonthAmount},#{cardMaxMonthNum},#{semiCardMonthNum},#{cardTotalAmount},#{creditCardNum},#{semiCardMaxMonthNum},#{cardMinAmount},#{id},#{creditLoanMonthAmount},#{loanOverdueNum},#{loanTotalMonthAmount},#{loanLeftAmount},#{firstLoanStartDate},#{semiCardOverdueNum},#{semiCreditCardNum},#{cardLegalOrgNum},#{houseBussLoanNum},#{historyQueryNum},#{loanOverdueMonthNum},#{cardMonthNum},#{loanMaxAmount},#{selfDeclareNum},#{loanOrgNum},#{cardOverdueNum},#{cardUsedAmount},#{remark},#{firstSemiCreditCardStartDate},#{isDeleted},#{otherLoanNum},#{custId},#{cardMaxAmount},#{loanLegalOrgNum},#{loanNum},#{loanMaxMonthNum},#{updateTime},#{collectionDate},#{houseLoanNum},#{cardAvgAmount},#{createTime},#{cardOrgNum})
+	</insert>
+
+	<delete id="delete">
+		delete from c_credit_report
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_credit_report set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.CreditReport">
+		update c_credit_report set
+		card_overdue_max_amount=#{cardOverdueMaxAmount},loan_total_amount=#{loanTotalAmount},objection_num=#{objectionNum},card_account_num=#{cardAccountNum},report_attach_url=#{reportAttachUrl},first_credit_card_start_date=#{firstCreditCardStartDate},type=#{type},semi_card_max_amount=#{semiCardMaxAmount},apply_id=#{applyId},card_month_amount=#{cardMonthAmount},card_max_month_num=#{cardMaxMonthNum},semi_card_month_num=#{semiCardMonthNum},card_total_amount=#{cardTotalAmount},credit_card_num=#{creditCardNum},semi_card_max_month_num=#{semiCardMaxMonthNum},card_min_amount=#{cardMinAmount},id=#{id},credit_loan_month_amount=#{creditLoanMonthAmount},loan_overdue_num=#{loanOverdueNum},loan_total_month_amount=#{loanTotalMonthAmount},loan_left_amount=#{loanLeftAmount},first_loan_start_date=#{firstLoanStartDate},semi_card_overdue_num=#{semiCardOverdueNum},semi_credit_card_num=#{semiCreditCardNum},card_legal_org_num=#{cardLegalOrgNum},house_buss_loan_num=#{houseBussLoanNum},history_query_num=#{historyQueryNum},loan_overdue_month_num=#{loanOverdueMonthNum},card_month_num=#{cardMonthNum},loan_max_amount=#{loanMaxAmount},self_declare_num=#{selfDeclareNum},loan_org_num=#{loanOrgNum},card_overdue_num=#{cardOverdueNum},card_used_amount=#{cardUsedAmount},remark=#{remark},first_semi_credit_card_start_date=#{firstSemiCreditCardStartDate},is_deleted=#{isDeleted},other_loan_num=#{otherLoanNum},cust_id=#{custId},card_max_amount=#{cardMaxAmount},loan_legal_org_num=#{loanLegalOrgNum},loan_num=#{loanNum},loan_max_month_num=#{loanMaxMonthNum},update_time=#{updateTime},collection_date=#{collectionDate},house_loan_num=#{houseLoanNum},card_avg_amount=#{cardAvgAmount},create_time=#{createTime},card_org_num=#{cardOrgNum} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.CreditReport">
+		update c_credit_report
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="type != null"> type=#{type},</if>
+            <if test="collectionDate != null"> collection_date=#{collectionDate},</if>
+            <if test="houseLoanNum != null"> house_loan_num=#{houseLoanNum},</if>
+            <if test="houseBussLoanNum != null"> house_buss_loan_num=#{houseBussLoanNum},</if>
+            <if test="otherLoanNum != null"> other_loan_num=#{otherLoanNum},</if>
+            <if test="firstLoanStartDate != null"> first_loan_start_date=#{firstLoanStartDate},</if>
+            <if test="creditCardNum != null"> credit_card_num=#{creditCardNum},</if>
+            <if test="firstCreditCardStartDate != null"> first_credit_card_start_date=#{firstCreditCardStartDate},</if>
+            <if test="semiCreditCardNum != null"> semi_credit_card_num=#{semiCreditCardNum},</if>
+            <if test="firstSemiCreditCardStartDate != null"> first_semi_credit_card_start_date=#{firstSemiCreditCardStartDate},</if>
+            <if test="selfDeclareNum != null"> self_declare_num=#{selfDeclareNum},</if>
+            <if test="objectionNum != null"> objection_num=#{objectionNum},</if>
+            <if test="loanOverdueNum != null"> loan_overdue_num=#{loanOverdueNum},</if>
+            <if test="loanOverdueMonthNum != null"> loan_overdue_month_num=#{loanOverdueMonthNum},</if>
+            <if test="loanMaxAmount != null"> loan_max_amount=#{loanMaxAmount},</if>
+            <if test="loanMaxMonthNum != null"> loan_max_month_num=#{loanMaxMonthNum},</if>
+            <if test="cardOverdueNum != null"> card_overdue_num=#{cardOverdueNum},</if>
+            <if test="cardMonthNum != null"> card_month_num=#{cardMonthNum},</if>
+            <if test="cardOverdueMaxAmount != null"> card_overdue_max_amount=#{cardOverdueMaxAmount},</if>
+            <if test="cardMaxMonthNum != null"> card_max_month_num=#{cardMaxMonthNum},</if>
+            <if test="semiCardOverdueNum != null"> semi_card_overdue_num=#{semiCardOverdueNum},</if>
+            <if test="semiCardMonthNum != null"> semi_card_month_num=#{semiCardMonthNum},</if>
+            <if test="semiCardMaxAmount != null"> semi_card_max_amount=#{semiCardMaxAmount},</if>
+            <if test="semiCardMaxMonthNum != null"> semi_card_max_month_num=#{semiCardMaxMonthNum},</if>
+            <if test="loanLegalOrgNum != null"> loan_legal_org_num=#{loanLegalOrgNum},</if>
+            <if test="loanOrgNum != null"> loan_org_num=#{loanOrgNum},</if>
+            <if test="loanNum != null"> loan_num=#{loanNum},</if>
+            <if test="loanTotalAmount != null"> loan_total_amount=#{loanTotalAmount},</if>
+            <if test="loanLeftAmount != null"> loan_left_amount=#{loanLeftAmount},</if>
+            <if test="loanTotalMonthAmount != null"> loan_total_month_amount=#{loanTotalMonthAmount},</if>
+            <if test="cardLegalOrgNum != null"> card_legal_org_num=#{cardLegalOrgNum},</if>
+            <if test="cardOrgNum != null"> card_org_num=#{cardOrgNum},</if>
+            <if test="cardAccountNum != null"> card_account_num=#{cardAccountNum},</if>
+            <if test="cardTotalAmount != null"> card_total_amount=#{cardTotalAmount},</if>
+            <if test="cardMaxAmount != null"> card_max_amount=#{cardMaxAmount},</if>
+            <if test="cardMinAmount != null"> card_min_amount=#{cardMinAmount},</if>
+            <if test="cardUsedAmount != null"> card_used_amount=#{cardUsedAmount},</if>
+            <if test="cardAvgAmount != null"> card_avg_amount=#{cardAvgAmount},</if>
+            <if test="historyQueryNum != null"> history_query_num=#{historyQueryNum},</if>
+            <if test="cardMonthAmount != null"> card_month_amount=#{cardMonthAmount},</if>
+            <if test="creditLoanMonthAmount != null"> credit_loan_month_amount=#{creditLoanMonthAmount},</if>
+            <if test="reportAttachUrl != null and reportAttachUrl != ''"> report_attach_url=#{reportAttachUrl},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.CreditReport">
+		select
+		<include refid="searchColumns" />
+		from c_credit_report creditReport
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.CreditReport">
+		select
+		<include refid="searchColumns" />
+		from c_credit_report creditReport
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CreditReport">
+		select
+		<include refid="searchColumns" />
+		from c_credit_report creditReport
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+    <!--根据applyId和type查询-->
+    <select id="selByApplyIdAndType" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CreditReport">
+        select
+        <include refid="searchColumns"/>
+        from c_credit_report creditReport
+        where creditReport.apply_id=#{applyId} and creditReport.type=#{type}
+
+    </select>
+
+    <!--根据applyId查询主借人和共借人月还款总额纸盒-->
+    <select id="selAllCreditLoanMonthAmount" parameterType="java.util.Map" resultType="java.math.BigDecimal">
+        select
+        sum(credit_loan_month_amount)
+        from c_credit_report creditReport
+        where creditReport.apply_id=#{applyId}
+
+    </select>
+</mapper>
+

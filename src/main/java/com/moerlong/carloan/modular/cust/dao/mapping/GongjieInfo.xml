@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.GongjieInfoDao">
+
+	<sql id="searchColumns">
+		gongjieInfo.id id,gongjieInfo.cust_id custId,gongjieInfo.name name,gongjieInfo.mobile mobile,gongjieInfo.sex sex,gongjieInfo.cert_id certId,gongjieInfo.id_front_photo_url idFrontPhotoUrl,gongjieInfo.id_back_photo_url idBackPhotoUrl,gongjieInfo.marry_status marryStatus,gongjieInfo.relation relation,gongjieInfo.live_address liveAddress,gongjieInfo.occupation_type occupationType,gongjieInfo.company_name companyName,gongjieInfo.company_type companyType,gongjieInfo.company_address companyAddress,gongjieInfo.company_tel companyTel,gongjieInfo.department department,gongjieInfo.job job,gongjieInfo.month_income monthIncome,gongjieInfo.company_attach_url companyAttachUrl,gongjieInfo.create_time createTime,gongjieInfo.update_time updateTime,gongjieInfo.remark remark,gongjieInfo.is_deleted isDeleted
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.GongjieInfo">
+		insert into
+		c_gongjie_info(live_address,company_type,sex,company_name,company_tel,mobile,update_time,remark,cert_id,marry_status,relation,company_attach_url,occupation_type,is_deleted,create_time,company_address,month_income,cust_id,name,id_front_photo_url,id,department,job,id_back_photo_url)
+		values (#{liveAddress},#{companyType},#{sex},#{companyName},#{companyTel},#{mobile},#{updateTime},#{remark},#{certId},#{marryStatus},#{relation},#{companyAttachUrl},#{occupationType},#{isDeleted},#{createTime},#{companyAddress},#{monthIncome},#{custId},#{name},#{idFrontPhotoUrl},#{id},#{department},#{job},#{idBackPhotoUrl})
+	</insert>
+
+	<delete id="delete">
+		delete from c_gongjie_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_gongjie_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.GongjieInfo">
+		update c_gongjie_info set
+		live_address=#{liveAddress},company_type=#{companyType},sex=#{sex},company_name=#{companyName},company_tel=#{companyTel},mobile=#{mobile},update_time=#{updateTime},remark=#{remark},cert_id=#{certId},marry_status=#{marryStatus},relation=#{relation},company_attach_url=#{companyAttachUrl},occupation_type=#{occupationType},is_deleted=#{isDeleted},create_time=#{createTime},company_address=#{companyAddress},month_income=#{monthIncome},cust_id=#{custId},name=#{name},id_front_photo_url=#{idFrontPhotoUrl},id=#{id},department=#{department},job=#{job},id_back_photo_url=#{idBackPhotoUrl} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.GongjieInfo">
+		update c_gongjie_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="name != null"> name=#{name},</if>
+            <if test="mobile != null"> mobile=#{mobile},</if>
+            <if test="sex != null"> sex=#{sex},</if>
+            <if test="certId != null"> cert_id=#{certId},</if>
+            <if test="idFrontPhotoUrl != null and idFrontPhotoUrl !=''"> id_front_photo_url=#{idFrontPhotoUrl},</if>
+            <if test="idBackPhotoUrl != null and idBackPhotoUrl !=''"> id_back_photo_url=#{idBackPhotoUrl},</if>
+            <if test="marryStatus != null"> marry_status=#{marryStatus},</if>
+            <if test="relation != null"> relation=#{relation},</if>
+            <if test="liveAddress != null"> live_address=#{liveAddress},</if>
+            <if test="occupationType != null"> occupation_type=#{occupationType},</if>
+            <if test="companyName != null"> company_name=#{companyName},</if>
+            <if test="companyType != null"> company_type=#{companyType},</if>
+            <if test="companyAddress != null"> company_address=#{companyAddress},</if>
+            <if test="companyTel != null"> company_tel=#{companyTel},</if>
+            <if test="department != null"> department=#{department},</if>
+            <if test="job != null"> job=#{job},</if>
+            <if test="monthIncome != null"> month_income=#{monthIncome},</if>
+            <if test="companyAttachUrl != null and companyAttachUrl !=''"> company_attach_url=#{companyAttachUrl},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.GongjieInfo">
+		select
+		<include refid="searchColumns" />
+		from c_gongjie_info gongjieInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.GongjieInfo">
+		select
+		<include refid="searchColumns" />
+		from c_gongjie_info gongjieInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.GongjieInfo">
+		select
+		<include refid="searchColumns" />
+		from c_gongjie_info gongjieInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<select id="selectByCustId" resultType="com.moerlong.carloan.modular.cust.entity.GongjieInfo">
+		select
+		<include refid="searchColumns" />
+		from c_gongjie_info gongjieInfo
+		where cust_id = #{custId}
+	</select>
+</mapper>
+

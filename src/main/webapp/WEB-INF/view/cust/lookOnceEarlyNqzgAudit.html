@@ -1,0 +1,85 @@
+@layout("/common/_container.html"){
+
+<div class="">
+  <div class="">
+	  <div class="ibox-title">
+		  <div style="border-bottom: 1px solid #cccccc94;height: 45px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 20px;">提前还款内勤主管审核</span></div>
+	  </div>
+   	<div class="tab-content">
+		<input type="hidden" value="${applyId}" id="applyId">
+		<!--身份认证-->
+   		<div class="tab-pane fade in active"  id="div_sfrz">
+			<div class="menu-item" id="menu-item5">
+				<div class="form-horizontal" style="background-color:#FFF;padding:1px 1px 1px 25px;box-shadow: 3px 5px 3px 3px #c2c2c2;">
+					<h5></h5>
+					<div class="row">
+						<div class="col-sm-3">
+							<#input id="custName" name="姓名" underline="false" value="${name}"
+								readonly="readonly" />
+						</div>
+						<div class="col-sm-3">
+							<#input id="sex" name="性別" underline="false" value="${sex}"
+								readonly="readonly" />
+						</div>
+						<div class="col-sm-3">
+							<#input id="custIdNo" name="身份证号码" underline="false" value="${idno}"
+								readonly="readonly" />
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-3">
+							<#input id="onceRepaymentRapital" name="一次性提前还款剩余本金" underline="false" value="${onceRepaymentRapital}"
+								readonly="readonly" />
+						</div>
+						<div class="col-sm-3">
+							<#input id="onceRepaymentCharge" name="一次性提前还款剩余手续费" underline="false" value="${onceRepaymentCharge}"
+								readonly="readonly" />
+						</div>
+						<div class="col-sm-3">
+							<#input id="onceRepaymentBreach" name="一次性提前还款罚金" underline="false" value="${onceRepaymentBreach}"
+								readonly="readonly" />
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-3">
+							<#input id="curPeriodNum" name="当期期数" underline="false" value="${curPeriodNum}"
+								readonly="readonly" />
+						</div>
+						<div class="col-sm-3">
+							<#input id="curPeriodAmount" name="当期还款金额" underline="false" value="${curPeriodAmount}"
+								readonly="readonly" />
+						</div>
+						<div class="col-sm-3">
+							<#input id="onceRepaymentTotal" name="一次性提前还款总额" underline="false" value="${onceRepaymentTotal}"
+								readonly="readonly" />
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-3">
+							<#input id="appointDate" name="约定提前还款时间" underline="false" value="${appointDate}"
+								readonly="readonly" />
+						</div>
+					</div>
+					
+					<div class="row">
+					<div style="width: 420px; margin:60px 1px 60px 100px;">
+						<#button name="返回" icon="fa fa-chevron-left" clickFun="backCommons();"/>
+					</div>
+
+					</div>
+				</div>
+			</div>
+
+   		</div>
+
+
+   	</div>
+  </div>
+</div>
+
+<script src="${ctxPath}/static/modular/cust/submitCommon.js"></script>
+<script src="${ctxPath}/static/modular/loan/mywork/approveRecord.js?v=1.0"></script>
+@}

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.loan.dao.ProcessNodeDao">
+
+	<sql id="searchColumns">
+		pn.id id,
+		pn.role_id roleId,
+		pn.process_name processName,
+		pn.process_status processStatus,
+		pn.process_status_desc processStatusDesc,
+		pn.is_back isBack,
+		pn.is_sync isSync,
+		pn.sync_field_name syncFieldName,
+		pn.create_time createTime,
+		pn.update_time updateTime,
+		pn.is_deleted isDeleted,
+		pn.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.loan.entity.BankcardInfo">
+		insert into
+		c_process_node(role_id,process_name,process_status,process_status_desc,is_back,is_sync,sync_field_name,create_time,update_time,remark,is_deleted)
+		values (#{roleId},#{processName},#{processStatus},#{processStatusDesc},#{isBack},#{isSync},#{syncFieldName},#{createTime},#{updateTime},#{remark},#{isDeleted})
+	</insert>
+
+	<delete id="delete">
+		delete from c_process_node
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_process_node set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.loan.entity.ProcessNode">
+		update c_process_node set
+		role_id=#{roleId},
+		process_name=#{processName},
+		process_status=#{processStatus},
+		process_status_desc=#{processStatusDesc},
+		is_back=#{isBack},
+		is_sync=#{isSync},
+		sync_field_name=#{syncFieldName},
+		create_time=#{createTime},
+		update_time=#{updateTime},
+		is_deleted=#{isDeleted},
+		remark=#{remark}
+		where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.loan.entity.ProcessNode">
+		update c_process_node
+		<set>
+            <if test="roleId != null"> role_id=#{roleId},</if>
+            <if test="processName != null"> process_name=#{processName},</if>
+            <if test="processStatus != null"> process_status=#{processStatus},</if>
+            <if test="processStatusDesc != null"> process_status_desc=#{processStatusDesc},</if>
+            <if test="isBack != null"> is_back=#{isBack},</if>
+            <if test="isSync != null"> is_sync=#{isSync},</if>
+            <if test="syncFieldName != null"> sync_field_name=#{syncFieldName},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.loan.entity.ProcessNode">
+		select
+		<include refid="searchColumns" />
+		from c_process_node pn
+		where id = #{id}
+	</select>
+
+	<select id="selectByStatus" resultType="com.moerlong.carloan.modular.loan.entity.ProcessNode">
+		select
+		<include refid="searchColumns" />
+		from c_process_node pn
+		where process_status = #{status}
+	</select>
+
+	<select id="selectByName" resultType="com.moerlong.carloan.modular.loan.entity.ProcessNode">
+		select
+		<include refid="searchColumns" />
+		from c_process_node pn
+		where process_name = #{name}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.loan.entity.ProcessNode">
+		select
+		<include refid="searchColumns" />
+		from c_process_node pn
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.loan.entity.ProcessNode">
+		select
+		<include refid="searchColumns" />
+		from c_process_node pn
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<select id="selectNextNode" resultType="com.moerlong.carloan.modular.loan.entity.ProcessNode">
+		select
+		<include refid="searchColumns" />
+		from c_process_node pn where id =(
+		select
+		e.next_node_id
+		from c_process_node p,c_process_engine e
+		where p.process_status=#{status} and p.id=e.cur_node_id
+		and e.type=#{type})
+
+	</select>
+
+	<select id="selectNodeByType" resultType="com.moerlong.carloan.modular.loan.entity.ProcessNode">
+		select
+		<include refid="searchColumns" />
+		from c_process_node pn,c_process_engine pe, c_process_node pn2
+		where 1=1
+		and pn2.process_status=#{status} and pn2.id=pe.cur_node_id and pe.next_node_id = pn.id
+		and pe.type=#{type}
+
+	</select>
+
+	<select id="selectAllField" resultType="map">
+		SELECT
+		sync_field_name syncFieldName
+		from c_process_node
+		where is_sync=1 group by sync_field_name;
+	</select>
+
+	<select id="selectSyncNextNode" resultType="com.moerlong.carloan.modular.loan.entity.ProcessNode">
+		select
+		<include refid="searchColumns" />
+		from c_process_node pn,c_apply_info a,c_process_engine pe, c_process_node pn2
+		where a.id=#{applyId} and a.${syncFieldName}=pn2.process_status and pn2.sync_field_name=#{syncFieldName}
+		and pn2.id=pe.cur_node_id and pe.type=#{type} and pn.id=pe.next_node_id
+	</select>
+	<select id="machineRiskControlv" resultType="map">
+		SELECT DISTINCT
+			IFNULL(applyInfo.id, '') id,IFNULL(applyInfo.cust_id, '') cust_id,IFNULL(applyInfo.channel_id, '') channel_id,IFNULL(applyInfo.apply_amount, '') apply_amount,IFNULL(applyInfo.apply_period, '') apply_period,
+			IFNULL(applyInfo.repayment_type,'') repayment_type,IFNULL(applyInfo.loan_usage, '') loan_usage,IFNULL(applyInfo.loan_usage_other,'') loan_usage_other,IFNULL(applyInfo.partner_know, '') partner_know,
+			IFNULL(applyInfo.dept_id, '') dept_id,
+
+			IFNULL(bankcardInfo.card_no, '') card_no,IFNULL(bankcardInfo.bank_name, '') bank_name,IFNULL(bankcardInfo.province_city,'') province_city,IFNULL(bankcardInfo.bank_subbranch,'') bank_subbranch,IFNULL(bankcardInfo.card_status,'') card_status,
+			IFNULL(bankcardInfo.binding_time,'') binding_time,IFNULL(bankcardInfo.binding_desc,'') binding_desc,IFNULL(bankcardInfo.binding_mobile,'') binding_mobile,
+
+			IFNULL(carInfo.id, '') car_id,IFNULL(carInfo.cust_id, '') cust_id,IFNULL(carInfo.car_num, '') car_num,IFNULL(carInfo.car_config_name, '') car_config_name,IFNULL(carInfo.car_type, '') car_type,IFNULL(carInfo.car_brand, '') car_brand,IFNULL(carInfo.car_model, '') car_model,
+			IFNULL(carInfo.vin, '') vin,IFNULL(carInfo.engine_no, '') engine_no,IFNULL(carInfo.car_color, '') car_color,IFNULL(carInfo.car_import_type, '') car_import_type,IFNULL(carInfo.fuel_type, '') fuel_type,IFNULL(carInfo.displacement, '') displacement,
+			IFNULL(carInfo.manufacturer, '') manufacturer,IFNULL(carInfo.car_usage, '') car_usage,IFNULL(carInfo.get_type, '') get_type,IFNULL(carInfo.product_date, '') product_date,IFNULL(carInfo.first_lic_date, '') first_lic_date,IFNULL(carInfo.current_lic_date,'') current_lic_date,
+			IFNULL(carInfo.register_photo_url1,'') register_photo_url1,IFNULL(carInfo.register_photo_url2,'') register_photo_url2,IFNULL(carInfo.register_photo_url3,'') register_photo_url3,
+			IFNULL(carInfo.register_photo_url4,'') register_photo_url4,
+
+			IFNULL(carPriceInfo.cust_Id,'') cust_Id,IFNULL(carPriceInfo.apply_id,'') apply_id,IFNULL(carPriceInfo.che300_price,'') che300_price,IFNULL(carPriceInfo.che300_attach_url,'') che300_attach_url,
+		    IFNULL(carPriceInfo.jingzhengu_price,'') jingzhengu_price,IFNULL(carPriceInfo.jingzhengu_attach_url,'') jingzhengu_attach_url,IFNULL(carPriceInfo.nake_price,'') nake_price,IFNULL(carPriceInfo.depreciation_base,'') depreciation_base,
+			IFNULL(carPriceInfo.depreciation_ratio,'') depreciation_ratio,IFNULL(carPriceInfo.credit_ratio,'') credit_ratio,IFNULL(carPriceInfo.tsingnuo_price,'') tsingnuo_price,
+
+			IFNULL(channelInfo.channel_name,'') channel_name,IFNULL(channelInfo.city,'') city,IFNULL(channelInfo.address,'') address,IFNULL(channelInfo.fanyong_rate,'') fanyong_rate,IFNULL(channelInfo.account_name,'') account_name,
+			IFNULL(channelInfo.account_bank,'') account_bank,IFNULL(channelInfo.account_cardno,'') account_cardno,IFNULL(channelInfo.join_person,'') join_person,IFNULL(channelInfo.join_mobile,'') join_mobile,IFNULL(channelInfo.create_user_id,'') create_user_id,
+			IFNULL(channelInfo.create_user_name,'') create_user_name,IFNULL(channelInfo.buss_name,'') buss_name,
+
+			IFNULL(crediTauthInfo.type,'') type,IFNULL(crediTauthInfo.td_score,'') td_score,IFNULL(crediTauthInfo.td_score_attach_url,'') td_score_attach_url,IFNULL(crediTauthInfo.td_risk_attach_url,'') td_risk_attach_url,IFNULL(crediTauthInfo.br_rule_score,'') br_rule_score,
+			IFNULL(crediTauthInfo.br_credit_score,'') br_credit_score,IFNULL(crediTauthInfo.br_attach_url,'') br_attach_url,IFNULL(crediTauthInfo.has_judgement,'') has_judgement,IFNULL(crediTauthInfo.judgement_attach_url,'') judgement_attach_url,
+
+			IFNULL(creditReport.type,'') type5,IFNULL(creditReport.collection_date,'') collection_date,IFNULL(creditReport.house_loan_num,'') house_loan_num,IFNULL(creditReport.house_buss_loan_num,'') house_buss_loan_num,
+			IFNULL(creditReport.other_loan_num,'') other_loan_num,IFNULL(creditReport.first_loan_start_date,'') first_loan_start_date,IFNULL(creditReport.credit_card_num,'') credit_card_num,IFNULL(creditReport.first_credit_card_start_date,'') first_credit_card_start_date,
+			IFNULL(creditReport.semi_credit_card_num,'') semi_credit_card_num,IFNULL(creditReport.first_semi_credit_card_start_date,'') first_semi_credit_card_start_date,IFNULL(creditReport.self_declare_num,'') self_declare_num,
+			IFNULL(creditReport.objection_num,'') objection_num,IFNULL(creditReport.loan_overdue_num,'') loan_overdue_num,IFNULL(creditReport.loan_overdue_month_num,'') loan_overdue_month_num,IFNULL(creditReport.loan_max_amount,'') loan_max_amount,
+			IFNULL(creditReport.loan_max_month_num,'') loan_max_month_num,IFNULL(creditReport.card_overdue_num,'') card_overdue_num,IFNULL(creditReport.card_month_num,'') card_month_num,IFNULL(creditReport.card_overdue_max_amount,'') card_overdue_max_amount,
+			IFNULL(creditReport.card_max_month_num,'') card_max_month_num,IFNULL(creditReport.semi_card_overdue_num,'') semi_card_overdue_num,IFNULL(creditReport.semi_card_month_num,'') semi_card_month_num,IFNULL(creditReport.semi_card_max_amount,'') semi_card_max_amount,
+			IFNULL(creditReport.semi_card_max_month_num,'') semi_card_max_month_num,IFNULL(creditReport.loan_legal_org_num,'') loan_legal_org_num,IFNULL(creditReport.loan_org_num,'') loan_org_num,IFNULL(creditReport.loan_num,'') loan_num,IFNULL(creditReport.loan_total_amount,'') loan_total_amount,
+			IFNULL(creditReport.loan_left_amount,'') loan_left_amount,IFNULL(creditReport.loan_total_month_amount,'') loan_total_month_amount,IFNULL(creditReport.card_legal_org_num,'') card_legal_org_num,IFNULL(creditReport.card_org_num,'') card_org_num,
+			IFNULL(creditReport.card_account_num,'') card_account_num,IFNULL(creditReport.card_total_amount,'') card_total_amount,IFNULL(creditReport.card_max_amount,'') card_max_amount,IFNULL(creditReport.card_min_amount,'') card_min_amount,
+			IFNULL(creditReport.card_used_amount,'') card_used_amount,IFNULL(creditReport.card_avg_amount,'') card_avg_amount,IFNULL(creditReport.history_query_num,'') history_query_num,IFNULL(creditReport.card_month_amount,'') card_month_amount,
+			IFNULL(creditReport.credit_loan_month_amount,'') credit_loan_month_amount,
+
+			IFNULL(marryInfo.marry_date,'') marry_date,IFNULL(marryInfo.spouse_name,'') spouse_name,IFNULL(marryInfo.spouse_sex,'') spouse_sex,IFNULL(marryInfo.spouse_cert_id,'') spouse_cert_id,
+			IFNULL(marryInfo.validate_begin,'') validate_begin,IFNULL(marryInfo.validate_end,'') validate_end,IFNULL(marryInfo.sign_org,'') sign_org,IFNULL(marryInfo.id_front_photo_url,'') id_front_photo_url,
+			IFNULL(marryInfo.id_back_photo_url,'') id_back_photo_url,IFNULL(marryInfo.marry_status,'') marry_status,IFNULL(marryInfo.marry_photo_url,'') marry_photo_url,IFNULL(marryInfo.divorce_date,'') divorce_date,
+			IFNULL(marryInfo.divorce_name,'') divorce_name,IFNULL(marryInfo.divorce_sex,'') divorce_sex,IFNULL(marryInfo.divorce_cert_id,'') divorce_cert_id,IFNULL(marryInfo.divorce_photo_url,'') divorce_photo_url,
+			IFNULL(marryInfo.death_cert_photo_url,'') death_cert_photo_url,
+
+			IFNULL(judicialAuthInfo.type,'') type6,IFNULL(judicialAuthInfo.court_personal,'') court_personal,IFNULL(judicialAuthInfo.zhixing_personal,'') zhixing_personal,IFNULL(judicialAuthInfo.risk_personal,'') risk_personal,IFNULL(judicialAuthInfo.warn_personal,'') warn_personal,
+
+			IFNULL(idAuthInfo.type,'') type7,IFNULL(idAuthInfo.gongan_photol_id,'') gongan_photol_id,IFNULL(idAuthInfo.is_id_auth,'') is_id_auth,IFNULL(idAuthInfo.id_front_photo_url,'') id_front_photo_url1,IFNULL(idAuthInfo.id_back_photo_url,'') id_back_photo_url1,
+			IFNULL(idAuthInfo.hold_identify_photo,'') hold_identify_photo,IFNULL(idAuthInfo.auth_time,'') auth_time,IFNULL(idAuthInfo.user_name,'') user_name,IFNULL(idAuthInfo.id_number,'') id_number,IFNULL(idAuthInfo.nation,'') nation,
+			IFNULL(idAuthInfo.address,'') address1,IFNULL(idAuthInfo.sign_orgaization,'') sign_orgaization,IFNULL(idAuthInfo.validity_period,'') validity_period,
+
+			IFNULL(gongjieInfo.name,'') name,IFNULL(gongjieInfo.mobile,'') mobile,IFNULL(gongjieInfo.sex,'') sex,IFNULL(gongjieInfo.cert_id,'') cert_id,
+			IFNULL(gongjieInfo.id_front_photo_url,'') id_front_photo_url2,IFNULL(gongjieInfo.id_back_photo_url,'') id_back_photo_url2,IFNULL(gongjieInfo.marry_status,'') marry_status1,IFNULL(gongjieInfo.relation,'') relation,
+			IFNULL(gongjieInfo.live_address,'') live_address,IFNULL(gongjieInfo.occupation_type,'') occupation_type,IFNULL(gongjieInfo.company_name,'') company_name,IFNULL(gongjieInfo.company_type,'') company_type,
+			IFNULL(gongjieInfo.company_address,'') company_address,IFNULL(gongjieInfo.company_tel,'') company_tel,IFNULL(gongjieInfo.department,'') department,IFNULL(gongjieInfo.job,'') job,
+			IFNULL(gongjieInfo.month_income,'') month_income,IFNULL(gongjieInfo.company_attach_url,'') company_attach_url,
+
+			IFNULL(familyBookInfo.id,'') familyBookInfoId,IFNULL(familyBookInfo.relationship,'') relationship,IFNULL(familyBookInfo.master_name,'') master_name,IFNULL(familyBookInfo.id,'') familyBookInfoId,IFNULL(familyBookInfo.master_sex,'') master_sex,
+			IFNULL(familyBookInfo.cert_id,'') cert_id1,IFNULL(familyBookInfo.first_page_photo_url,'') first_page_photo_url,
+
+			IFNULL(custInfo.name,'') name1,IFNULL(custInfo.mobile,'') mobile1,IFNULL(custInfo.sex,'') sex1,IFNULL(custInfo.nation,'') nation1,
+			IFNULL(custInfo.birthday,'') birthday,IFNULL(custInfo.cert_id,'') cert_id2,IFNULL(custInfo.validate_begin,'') validate_begin1,IFNULL(custInfo.validate_end,'') validate_end1,
+			IFNULL(custInfo.sign_org,'') sign_org1,IFNULL(custInfo.education,'') education,IFNULL(custInfo.child_num,'') child_num,IFNULL(custInfo.child_adult,'') child_adult,
+			IFNULL(custInfo.live_address,'') live_address,IFNULL(custInfo.live_type,'') live_type,IFNULL(custInfo.together_live,'') together_live,IFNULL(custInfo.spouse_name,'') spouse_name1,
+			IFNULL(custInfo.spouse_phone,'') spouse_phone,IFNULL(custInfo.contract_name1,'') contract_name1,IFNULL(custInfo.contract_phone1,'') contract_phone1,
+			IFNULL(custInfo.contract_relation1,'') contract_relation1,IFNULL(custInfo.contract_name2,'') contract_name2,IFNULL(custInfo.contract_phone2,'') contract_phone2,IFNULL(custInfo.contract_relation2,'') contract_relation2,
+			IFNULL(custInfo.contract_name3,'') contract_name3,IFNULL(custInfo.contract_phone3,'') contract_phone3,IFNULL(custInfo.contract_relation3,'') contract_relation3,
+
+			IFNULL(custIncomeInfo.income_type,'') income_type,IFNULL(custIncomeInfo.income_amount,'') income_amount,IFNULL(custIncomeInfo.income_confirm_amount,'') income_confirm_amount,
+			IFNULL(custIncomeInfo.loan_amount,'') loan_amount,IFNULL(custIncomeInfo.dti,'') dti,
+
+			IFNULL(custCompanyInfo.type,'') type8,IFNULL(custCompanyInfo.company_name,'') company_name1,IFNULL(custCompanyInfo.industry,'') industry,IFNULL(custCompanyInfo.found_time,'') found_time,
+			IFNULL(custCompanyInfo.court_enterprise,'') court_enterprise,IFNULL(custCompanyInfo.zhixing_enterprise,'') zhixing_enterprise,IFNULL(custCompanyInfo.risk_enterprise,'') risk_enterprise,IFNULL(custCompanyInfo.warn_enterprise,'') warn_enterprise,
+			IFNULL(custCompanyInfo.enterprise_status,'') enterprise_status
+		FROM c_apply_info applyInfo
+		LEFT JOIN c_bankcard_info bankcardInfo ON applyInfo.cust_id = bankcardInfo.cust_id
+		LEFT JOIN c_car_info carInfo ON carInfo.cust_id = applyInfo.cust_id
+		LEFT JOIN c_car_price_info carPriceInfo ON applyInfo.cust_id = carPriceInfo.cust_id and applyInfo.id=carPriceInfo.apply_id
+		LEFT JOIN c_channel_info channelInfo ON channelInfo.id = applyInfo.channel_id
+		LEFT JOIN c_credit_auth_info crediTauthInfo ON crediTauthInfo.apply_id = applyInfo.id and crediTauthInfo.cust_id = applyInfo.cust_id
+		LEFT JOIN c_credit_report creditReport ON creditReport.apply_id = applyInfo.id and creditReport.cust_id = applyInfo.cust_id
+		LEFT JOIN c_marry_info marryInfo ON marryInfo.cust_id = applyInfo.cust_id
+		LEFT JOIN c_judicial_auth_info judicialAuthInfo ON judicialAuthInfo.apply_id = applyInfo.id and judicialAuthInfo.cust_id = applyInfo.cust_id
+		LEFT JOIN c_id_auth_info idAuthInfo ON idAuthInfo.apply_id = applyInfo.id and idAuthInfo.cust_id = applyInfo.cust_id
+		LEFT JOIN c_gongjie_info gongjieInfo ON gongjieInfo.cust_id = applyInfo.cust_id
+		LEFT JOIN c_family_book_info familyBookInfo ON familyBookInfo.cust_id = applyInfo.cust_id
+		LEFT JOIN c_cust_info custInfo ON custInfo.id = applyInfo.cust_id
+		LEFT JOIN c_cust_income_info custIncomeInfo ON custIncomeInfo.cust_id = applyInfo.cust_id and custIncomeInfo.apply_id = applyInfo.id
+		LEFT JOIN c_cust_company_info custCompanyInfo ON custCompanyInfo.cust_id = applyInfo.cust_id and custCompanyInfo.apply_id = applyInfo.id
+		WHERE applyInfo.cust_id = #{custId} AND applyInfo.id = #{applyId}
+	</select>
+
+	<select id="machineRiskControlvx" resultType="com.moerlong.carloan.modular.cust.entity.FamilyBookSubInfo">
+		SELECT DISTINCT
+		IFNULL(book_id,'')book_id,IFNULL(relationship,'') relationship,IFNULL(name,'') name,IFNULL(sex,'') sex,IFNULL(cert_id,'') cert_id,IFNULL(book_photo_url,'') book_photo_url
+		from c_family_book_sub_info
+		where book_id=#{familyBookInfoId}
+	</select>
+
+	<select id="machineRiskControlCustFinanceInfo" resultType="com.moerlong.carloan.modular.cust.entity.CustFinanceInfo">
+		SELECT DISTINCT
+		IFNULL(type,'') type,IFNULL(fin_type,'') fin_type,IFNULL(property,'') property,IFNULL(status,'') status,IFNULL(num,'') num
+		from c_cust_finance_info
+		where cust_id = #{custId} and apply_id = #{applyId}
+	</select>
+	<select id="machineRiskControlCreditPersonalQueryRecord" resultType="com.moerlong.carloan.modular.cust.entity.CreditPersonalQueryRecord">
+		SELECT DISTINCT
+		IFNULL(creditPersonalQueryRecord.type,'') type,IFNULL(creditPersonalQueryRecord.query_date,'') query_date,IFNULL(creditPersonalQueryRecord.query_org,'') query_org
+		from c_credit_personal_query_record creditPersonalQueryRecord
+		where cust_id = #{custId} and apply_id = #{applyId}
+	</select>
+
+	<select id="machineRiskControlCreditLoanDetail" resultType="com.moerlong.carloan.modular.cust.entity.CreditLoanDetail">
+		SELECT DISTINCT
+		IFNULL(creditLoanDetail.type,'') type,IFNULL(creditLoanDetail.loan_org,'') loan_org,IFNULL(creditLoanDetail.loan_amount,'') loan_amount,IFNULL(creditLoanDetail.loan_type,'') loan_type,
+			IFNULL(creditLoanDetail.loan_period,'') loan_period,IFNULL(creditLoanDetail.loan_begin_time,'') loan_begin_time,IFNULL(creditLoanDetail.loan_end_time,'') loan_end_time,IFNULL(creditLoanDetail.account_status,'') account_status,
+			IFNULL(creditLoanDetail.five_class_status,'') five_class_status,IFNULL(creditLoanDetail.capital_amount,'') capital_amount,IFNULL(creditLoanDetail.left_period,'') left_period,IFNULL(creditLoanDetail.cur_month_predict_amount,'') cur_month_predict_amount,
+			IFNULL(creditLoanDetail.cur_month_date,'') cur_month_date,IFNULL(creditLoanDetail.cur_month_actural_amount,'') cur_month_actural_amount,IFNULL(creditLoanDetail.last_repayment_datge,'') last_repayment_datge,IFNULL(creditLoanDetail.cur_overdue_num,'') cur_overdue_num,
+			IFNULL(creditLoanDetail.cur_overdue_amount,'') cur_overdue_amount,IFNULL(creditLoanDetail.overdue_m2_capital,'') overdue_m2_capital,IFNULL(creditLoanDetail.overdue_m3_capital,'') overdue_m3_capital,IFNULL(creditLoanDetail.overdue_m45_capital,'') overdue_m45_capital,
+			IFNULL(creditLoanDetail.overdue_m6_capital,'') overdue_m6_capital,IFNULL(creditLoanDetail.repayment_info,'') repayment_info
+		from c_credit_loan_detail creditLoanDetail
+		where cust_id = #{custId} and apply_id = #{applyId}
+	</select>
+	<select id="machineRiskControlCreditCardDetail" resultType="com.moerlong.carloan.modular.cust.entity.CreditCardDetail">
+		SELECT DISTINCT
+		IFNULL(creditCardDetail.type,'') type,IFNULL(creditCardDetail.card_org,'') card_org,IFNULL(creditCardDetail.card_amount,'') card_amount,IFNULL(creditCardDetail.card_share_amount,'') card_share_amount,IFNULL(creditCardDetail.card_type,'') card_type,
+			IFNULL(creditCardDetail.account_status,'') account_status,IFNULL(creditCardDetail.used_amount,'') used_amount,IFNULL(creditCardDetail.avg_used_amount,'') avg_used_amount,IFNULL(creditCardDetail.max_used_amount,'') max_used_amount,
+			IFNULL(creditCardDetail.cur_overdue_num,'') cur_overdue_num,IFNULL(creditCardDetail.cur_overdue_amount,'') cur_overdue_amount
+		from c_credit_card_detail creditCardDetail
+		where cust_id = #{custId} and apply_id = #{applyId}
+	</select>
+	<select id="machineRiskControlCreditBussQueryRecord" resultType="com.moerlong.carloan.modular.cust.entity.CreditBussQueryRecord">
+		SELECT DISTINCT
+		IFNULL(type,'') type,IFNULL(query_date,'') query_date,IFNULL(query_org,'') query_org
+		from c_credit_buss_query_record
+		where cust_id = #{custId} and apply_id = #{applyId}
+	</select>
+	<select id="machineRiskControlCar" resultType="map">
+		SELECT DISTINCT
+			IFNULL(carVerify.car_cond,'') car_cond,IFNULL(carVerify.suggestion,'') suggestion,IFNULL(carVerify.config_table_photo,'') config_table_photo,IFNULL(carVerify.maintain_photo,'') maintain_photo,
+			IFNULL(carVerify.car_assessment_price,'') car_assessment_price,
+
+			IFNULL(carTrafficInsureInfo.inst_full_name,'') inst_full_name,IFNULL(carTrafficInsureInfo.bussiness_source,'') bussiness_source,IFNULL(carTrafficInsureInfo.proxy_name,'') proxy_name,IFNULL(carTrafficInsureInfo.insure_number,'') insure_number,
+			IFNULL(carTrafficInsureInfo.insure_person,'') insure_person,IFNULL(carTrafficInsureInfo.insure_begin_time,'') insure_begin_time,IFNULL(carTrafficInsureInfo.insure_end_time,'') insure_end_time,IFNULL(carTrafficInsureInfo.float_prop,'') float_prop,
+			IFNULL(carTrafficInsureInfo.total_amount,'') total_amount,IFNULL(carTrafficInsureInfo.vehicle_tax,'') vehicle_tax,IFNULL(carTrafficInsureInfo.sign_date,'') sign_date,
+			IFNULL(carTrafficInsureInfo.special_agreement,'') special_agreement,
+
+			IFNULL(c_car_peccancy_info.total_num,'') total_num,IFNULL(c_car_peccancy_info.total_money,'') total_money,IFNULL(c_car_peccancy_info.total_value,'') total_value,IFNULL(c_car_peccancy_info.total_full_num,'') total_full_num,
+
+			IFNULL(carDriverInfo.user_id,'') user_id,IFNULL(carDriverInfo.vehicle_valid_date,'') vehicle_valid_date,IFNULL(carDriverInfo.vehicle_front_photo,'') vehicle_front_photo,IFNULL(carDriverInfo.driver_no,'') driver_no,
+			IFNULL(carDriverInfo.vehicle_back_photo,'') vehicle_back_photo,IFNULL(carDriverInfo.is_driver_lic,'') is_driver_lic,IFNULL(carDriverInfo.first_driver_date,'') first_driver_date,IFNULL(carDriverInfo.permit_type,'') permit_type,
+			IFNULL(carDriverInfo.driver_begin_date,'') driver_begin_date,IFNULL(carDriverInfo.driver_end_date,'') driver_end_date,IFNULL(carDriverInfo.is_self,'') is_self,IFNULL(carDriverInfo.driver_relation,'') driver_relation,
+			IFNULL(carDriverInfo.driver_remark,'') driver_remark,
+
+			IFNULL(carBussInsureInfo.id,'') carBussInsureInfoId,IFNULL(carBussInsureInfo.inst_full_name,'') inst_full_name1,IFNULL(carBussInsureInfo.bussiness_source,'') bussiness_source1,IFNULL(carBussInsureInfo.proxy_name,'') proxy_name1,IFNULL(carBussInsureInfo.insure_number,'') insure_number1,
+			IFNULL(carBussInsureInfo.insure_person,'') insure_person1,IFNULL(carBussInsureInfo.insure_begin_time,'') insure_begin_time1,IFNULL(carBussInsureInfo.insure_end_time,'') insure_end_time1,IFNULL(carBussInsureInfo.float_prop,'') float_prop1,
+			IFNULL(carBussInsureInfo.total_amount,'') total_amount1,IFNULL(carBussInsureInfo.sign_date,'') sign_date1,IFNULL(carBussInsureInfo.special_agreement,'') special_agreement1
+		FROM c_car_info carInfo
+		LEFT JOIN c_car_verify_info carVerify ON carVerify.car_id=carInfo.id
+		LEFT JOIN c_car_traffic_insure_info carTrafficInsureInfo ON carTrafficInsureInfo.car_id=carInfo.id
+		LEFT JOIN c_car_peccancy_info c_car_peccancy_info ON c_car_peccancy_info.car_id=carInfo.id
+		LEFT JOIN c_car_driver_info carDriverInfo ON carDriverInfo.car_id=carInfo.id
+		LEFT JOIN c_car_buss_insure_info carBussInsureInfo ON carBussInsureInfo.car_id=carInfo.id
+		WHERE carInfo.id = #{carId}
+	</select>
+	<select id="machineRiskControlCarTramsferImfo" resultType="com.moerlong.carloan.modular.car.entity.CarTransferInfo">
+		SELECT DISTINCT
+		IFNULL(name,'') name,IFNULL(cert_id,'') cert_id,IFNULL(get_type,'') get_type,IFNULL(reg_date,'') reg_date
+		from c_car_transfer_info
+		where car_id=#{carId}
+	</select>
+	<select id="machineRiskControlCarMortgageInfo" resultType="com.moerlong.carloan.modular.car.entity.CarMortgageInfo">
+		SELECT DISTINCT
+		IFNULL(name,'') name,IFNULL(cert_id,'') cert_id,IFNULL(reg_date,'') reg_date
+		from c_car_mortgage_info
+		where car_id=#{carId}
+	</select>
+	<select id="machineRiskControlCarInsureDetailInfo" resultType="com.moerlong.carloan.modular.car.entity.CarInsureDetailInfo">
+		SELECT DISTINCT
+		IFNULL(type,'') type,IFNULL(is_no_deduct,'') is_no_deduct,IFNULL(max_pay_amount,'') max_pay_amount,IFNULL(amount,'') amount
+		from c_car_insure_detail_info
+		where insure_id=#{insureId}
+	</select>
+</mapper>
+

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.system.dao.DeptDao">
+
+	<select id="tree" resultType="com.moerlong.carloan.common.node.ZTreeNode">
+		select id,pid as pId,simplename as name,
+		(
+		CASE
+		WHEN (pId = 0 OR pId IS NULL) THEN
+			'true'
+		ELSE
+			'false'
+		END
+		) as isOpen from dept
+	</select>
+
+	<select id="list" resultType="map">
+		select * from dept
+		<if test="condition != null and condition != ''">
+			where simplename like CONCAT('%',#{condition},'%') or fullname like CONCAT('%',#{condition},'%')
+		</if>
+		order by num ASC
+	</select>
+
+
+	<select id="deptTreeListByDeptId" resultType="com.moerlong.carloan.common.node.ZTreeNode">
+		SELECT
+		d.id "id",
+		d.pId "pId",
+		d.fullname AS "name",
+		(
+		CASE
+		WHEN (pId = 0 OR pId IS NULL) THEN
+		'true'
+		ELSE
+		'false'
+		END
+		) "open",
+		(
+		CASE
+		WHEN (d1.ID = 0 OR d1.ID IS NULL) THEN
+		'false'
+		ELSE
+		'true'
+		END
+		) "checked"
+		FROM
+		dept d
+		LEFT JOIN (
+		SELECT
+		ID
+		FROM
+		dept
+		WHERE
+		ID IN
+
+		<foreach collection="array" index="index" item="i" open="(" separator="," close=")">
+			#{i}
+		</foreach>
+
+		) d1 ON d.ID = d1.ID
+		ORDER BY
+		pId,
+		num ASC
+	</select>
+
+	<select id="selectAllSubDept" resultType="com.moerlong.carloan.common.persistence.model.Dept">
+		select * from dept where FIND_IN_SET(CONCAT('[',#{deptId},']'), pids)
+	</select>
+
+</mapper>

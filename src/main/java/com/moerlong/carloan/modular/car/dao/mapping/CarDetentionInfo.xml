@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarDetentionInfoDao">
+
+	<sql id="searchColumns">
+		carDetentionInfo.id id,carDetentionInfo.cust_id custId,carDetentionInfo.apply_id applyId,carDetentionInfo.car_id carId,carDetentionInfo.cust_name custName,carDetentionInfo.cust_sex custSex,carDetentionInfo.cust_id_no custIdNo,carDetentionInfo.is_settle isSettle,carDetentionInfo.settle_attach_url settleAttachUrl,carDetentionInfo.settle_date settleDate,carDetentionInfo.settle_confirem settleConfirem,carDetentionInfo.proxy_book_url proxyBookUrl,carDetentionInfo.cert_photo_url certPhotoUrl,carDetentionInfo.recv_confirm recvConfirm,carDetentionInfo.recv_confirm_date recvConfirmDate,carDetentionInfo.refuse_reason refuseReason,carDetentionInfo.accept_confirm acceptConfirm,carDetentionInfo.accept_confirm_date acceptConfirmDate,carDetentionInfo.bill_attach_url billAttachUrl,carDetentionInfo.complete_confirm completeConfirm,carDetentionInfo.create_time createTime,carDetentionInfo.update_time updateTime,carDetentionInfo.is_deleted isDeleted,carDetentionInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarDetentionInfo">
+		insert into
+		c_car_detention_info(bill_attach_url,is_settle,proxy_book_url,recv_confirm_date,recv_confirm,cust_sex,settle_date,update_time,remark,cert_photo_url,cust_name,car_id,apply_id,settle_confirem,is_deleted,create_time,settle_attach_url,cust_id,complete_confirm,id,accept_confirm,accept_confirm_date,refuse_reason,cust_id_no)
+		values (#{billAttachUrl},#{isSettle},#{proxyBookUrl},#{recvConfirmDate},#{recvConfirm},#{custSex},#{settleDate},#{updateTime},#{remark},#{certPhotoUrl},#{custName},#{carId},#{applyId},#{settleConfirem},#{isDeleted},#{createTime},#{settleAttachUrl},#{custId},#{completeConfirm},#{id},#{acceptConfirm},#{acceptConfirmDate},#{refuseReason},#{custIdNo})
+	</insert>
+
+	<delete id="delete">
+		delete from c_car_detention_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_car_detention_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarDetentionInfo">
+		update c_car_detention_info set
+		bill_attach_url=#{billAttachUrl},is_settle=#{isSettle},proxy_book_url=#{proxyBookUrl},recv_confirm_date=#{recvConfirmDate},recv_confirm=#{recvConfirm},cust_sex=#{custSex},settle_date=#{settleDate},update_time=#{updateTime},remark=#{remark},cert_photo_url=#{certPhotoUrl},cust_name=#{custName},car_id=#{carId},apply_id=#{applyId},settle_confirem=#{settleConfirem},is_deleted=#{isDeleted},create_time=#{createTime},settle_attach_url=#{settleAttachUrl},cust_id=#{custId},complete_confirm=#{completeConfirm},id=#{id},accept_confirm=#{acceptConfirm},accept_confirm_date=#{acceptConfirmDate},refuse_reason=#{refuseReason},cust_id_no=#{custIdNo} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarDetentionInfo">
+		update c_car_detention_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="carId != null"> car_id=#{carId},</if>
+            <if test="custName != null"> cust_name=#{custName},</if>
+            <if test="custSex != null"> cust_sex=#{custSex},</if>
+            <if test="custIdNo != null"> cust_id_no=#{custIdNo},</if>
+            <if test="isSettle != null"> is_settle=#{isSettle},</if>
+            <if test="settleAttachUrl != null and settleAttachUrl!=''"> settle_attach_url=#{settleAttachUrl},</if>
+            <if test="settleDate != null"> settle_date=#{settleDate},</if>
+            <if test="settleConfirem != null"> settle_confirem=#{settleConfirem},</if>
+            <if test="proxyBookUrl != null and proxyBookUrl!=''"> proxy_book_url=#{proxyBookUrl},</if>
+            <if test="certPhotoUrl != null and certPhotoUrl!=''"> cert_photo_url=#{certPhotoUrl},</if>
+            <if test="recvConfirm != null"> recv_confirm=#{recvConfirm},</if>
+            <if test="recvConfirmDate != null"> recv_confirm_date=#{recvConfirmDate},</if>
+            <if test="refuseReason != null"> refuse_reason=#{refuseReason},</if>
+            <if test="acceptConfirm != null"> accept_confirm=#{acceptConfirm},</if>
+            <if test="acceptConfirmDate != null"> accept_confirm_date=#{acceptConfirmDate},</if>
+            <if test="billAttachUrl != null and billAttachUrl != ''"> bill_attach_url=#{billAttachUrl},</if>
+            <if test="completeConfirm != null"> complete_confirm=#{completeConfirm},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarDetentionInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_detention_info carDetentionInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarDetentionInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_detention_info carDetentionInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.car.entity.CarDetentionInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_detention_info carDetentionInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<!-- 查询（根据主键applyId查询） -->
+	<select id="selectByApplyId" resultType="com.moerlong.carloan.modular.car.entity.CarDetentionInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_detention_info carDetentionInfo
+		where apply_id = #{applyId}
+	</select>
+</mapper>
+

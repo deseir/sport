@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.paybackMgr.dao.CostOrderApplyDao">
+
+	<sql id="searchColumns">
+		id id,user_uuid userUuid,user_name userName,dept_id deptId,batch_no batchNo,acc_no accNo,acc_name accName,amount amount,mobile mobile,id_no idNo,state state,bank_name bankName,cny cny,remark remark,puser_uuid puserUuid,puser_name puserName,create_time createTime,update_time updateTime
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.CostOrderApply">
+		insert into
+		cost_order_apply(batch_no,amount,acc_no,acc_name,mobile,bank_name,remark,update_time,id_no,cny,create_time,user_uuid,user_name,dept_id,puser_uuid,puser_name,id,state)
+		values (#{batchNo},#{amount},#{accNo},#{accName},#{mobile},#{bankName},#{remark},#{updateTime},#{idNo},#{cny},#{createTime},#{userUuid},#{userName},#{deptId},#{puserUuid},#{puserName},#{id},#{state})
+	</insert>
+
+	<delete id="delete">
+		delete from cost_order_apply
+		where id = #{id}
+	</delete>
+
+	<update id="update" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.CostOrderApply">
+		update cost_order_apply set
+		batch_no=#{batchNo},amount=#{amount},acc_no=#{accNo},acc_name=#{accName},mobile=#{mobile},bank_name=#{bankName},remark=#{remark},update_time=#{updateTime},id_no=#{idNo},cny=#{cny},create_time=#{createTime},user_uuid=#{userUuid},user_name=#{userName},dept_id=#{deptId},puser_uuid=#{puserUuid},puser_name=#{puserName},id=#{id},state=#{state} where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.paybackMgr.entity.CostOrderApply">
+		select
+		<include refid="searchColumns" />
+		from cost_order_apply
+		where id = #{id}
+	</select>
+
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" resultType="com.moerlong.carloan.modular.paybackMgr.entity.CostOrderApply">
+		select
+		<include refid="searchColumns" />
+		from cost_order_apply
+		where 1=1
+		
+		<if test="orderCondition != null"> order by #{orderCondition} </if>
+	</select>
+
+	<!-- 根据条件查询 -->
+	<select id="listByCondition" resultType="com.moerlong.carloan.modular.paybackMgr.entity.CostOrderApply">
+		select
+		<include refid="searchColumns" />
+		from cost_order_apply
+		where 1=1
+
+		<if test="batchNo != null and batchNo != ''">
+			and batch_no = #{batchNo}
+		</if>
+
+		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+			and (create_time between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+		</if>
+		<if test="status != null and status != ''">
+			and state = #{status}
+		</if>
+		order by create_time DESC
+	</select>
+</mapper>
+

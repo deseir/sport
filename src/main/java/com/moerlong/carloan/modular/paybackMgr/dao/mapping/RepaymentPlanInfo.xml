@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.paybackMgr.dao.RepaymentPlanInfoDao">
+
+	<sql id="searchColumns">
+		id id,
+		cust_id custId,
+		apply_id applyId,
+		repayment_id repaymentId,
+		period_num periodNum,
+		period_status periodStatus,
+		period_begin_time periodBeginTime,
+		period_end_time periodEndTime,
+		interest_days interestDays,
+		begin_amount beginAmount,
+		end_amount endAmount,
+		pay_amount payAmount,
+		begin_amount_lease beginAmountLease,
+		end_amount_lease endAmountLease,
+		capital_lease capitalLease,
+		interest_lease interestLease,
+		lease_total leaseTotal,
+		service_total serviceTotal,
+		predict_amount predictAmount,
+		predict_interest predictInterest,
+		predict_capital predictCapital,
+		predict_service_charge predictServiceCharge,
+		predict_charge predictCharge,
+		predict_penalty predictPenalty,
+		actual_amount actualAmount,
+		actual_capital actualCapital,
+		actual_interest actualInterest,
+		actual_service_charge actualServiceCharge,
+		actual_charge actualCharge,
+		actual_penalty actualPenalty,
+		is_overdue isOverdue,
+		is_lock isLock,
+		overdue_days overdueDays,
+		overdue_penalty overduePenalty,
+		is_deleted isDeleted,
+		create_time createTime,
+		update_time updateTime,
+		remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPlanInfo">
+		insert into
+		c_repayment_plan_info(
+			dept_id,
+			period_num,
+			predict_capital,
+			predict_penalty,
+			repayment_id,
+			remark,
+			predict_interest,
+			predict_service_charge,
+			actual_service_charge,
+			predict_charge,
+			actual_charge,
+			apply_id,
+			pay_amount,
+			begin_amount_lease,
+			end_amount_lease,
+			capital_lease,
+			interest_lease,
+			lease_total,
+			service_total,
+			is_deleted,
+			begin_amount,
+			cust_id,
+			overdue_days,
+			id,
+			period_begin_time,
+			overdue_penalty,
+			end_amount,
+			actual_interest,
+			predict_amount,
+			actual_capital,
+			interest_days,
+			actual_penalty,
+			actual_amount,
+			period_end_time,
+			update_time,
+			period_status,
+			is_overdue,
+			is_lock,
+			create_time)
+		values (
+		    #{deptId},
+			#{periodNum},
+			#{predictCapital},
+			#{predictPenalty},
+			#{repaymentId},
+			#{remark},
+			#{predictInterest},
+			#{predictServiceCharge},
+			#{actualServiceCharge},
+			#{predictCharge},
+			#{actualCharge},
+			#{applyId},
+			#{payAmount},
+			#{beginAmountLease},
+			#{endAmountLease},
+			#{capitalLease},
+			#{interestLease},
+			#{leaseTotal},
+			#{serviceTotal},
+			#{isDeleted},
+			#{beginAmount},
+			#{custId},
+			#{overdueDays},
+			#{id},
+			#{periodBeginTime},
+			#{overduePenalty},
+			#{endAmount},
+			#{actualInterest},
+			#{predictAmount},
+			#{actualCapital},
+			#{interestDays},
+			#{actualPenalty},
+			#{actualAmount},
+			#{periodEndTime},
+			#{updateTime},
+			#{periodStatus},
+			#{isOverdue},
+			#{isLock},
+			#{createTime})
+	</insert>
+
+	<delete id="delete">
+		delete from c_repayment_plan_info
+		where id = #{id}
+	</delete>
+
+	<update id="update" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPlanInfo">
+		update c_repayment_plan_info <set>
+		<if test="periodNum != null"> period_num=#{periodNum},</if>
+		<if test="predictCapital != null"> predict_capital=#{predictCapital},</if>
+		<if test="predictPenalty != null"> predict_penalty=#{predictPenalty},</if>
+		<if test="repaymentId != null"> repayment_id=#{repaymentId},</if>
+		<if test="remark != null and remark != ''"> remark=#{remark},</if>
+		<if test="predictInterest != null"> predict_interest=#{predictInterest},</if>
+		<if test="predictServiceCharge != null"> predict_service_charge=#{predictServiceCharge},</if>
+		<if test="actualServiceCharge != null"> actual_service_charge=#{actualServiceCharge},</if>
+		<if test="predictCharge != null"> predict_charge=#{predictCharge},</if>
+		<if test="actualCharge != null"> actual_charge=#{actualCharge},</if>
+		<if test="applyId != null"> apply_id=#{applyId},</if>
+		<if test="deptId != null"> dept_id=#{deptId},</if>
+		<if test="payAmount != null">pay_amount=#{payAmount},</if>
+		<if test="beginAmountLease != null">begin_amount_lease=#{beginAmountLease},</if>
+		<if test="endAmountLease != null">end_amount_lease=#{endAmountLease},</if>
+		<if test="capitalLease != null">capital_lease=#{capitalLease},</if>
+		<if test="interestLease != null">interest_lease=#{interestLease},</if>
+		<if test="leaseTotal != null">lease_total=#{leaseTotal},</if>
+		<if test="serviceTotal != null">service_total=#{serviceTotal},</if>
+		<if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+		<if test="beginAmount != null"> begin_amount=#{beginAmount},</if>
+		<if test="custId != null"> cust_id=#{custId},</if>
+		<if test="overdueDays != null"> overdue_days=#{overdueDays},</if>
+		<if test="periodBeginTime != null"> period_begin_time=#{periodBeginTime},</if>
+		<if test="overduePenalty != null"> overdue_penalty=#{overduePenalty},</if>
+		<if test="endAmount != null"> end_amount=#{endAmount},</if>
+		<if test="actualInterest != null"> actual_interest=#{actualInterest},</if>
+		<if test="predictAmount != null"> predict_amount=#{predictAmount},</if>
+		<if test="actualCapital != null"> actual_capital=#{actualCapital},</if>
+		<if test="interestDays != null"> interest_days=#{interestDays},</if>
+		<if test="actualPenalty != null"> actual_penalty=#{actualPenalty},</if>
+		<if test="actualAmount != null"> actual_amount=#{actualAmount},</if>
+		<if test="periodEndTime != null"> period_end_time=#{periodEndTime},</if>
+		<if test="updateTime != null"> update_time=#{updateTime},</if>
+		<if test="periodStatus != null"> period_status=#{periodStatus},</if>
+		<if test="isOverdue != null"> is_overdue=#{isOverdue},</if>
+		<if test="isLock != null"> is_lock=#{isLock},</if>
+		<if test="createTime != null"> create_time=#{createTime},</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPlanInfo">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_plan_info
+		where id = #{id}
+	</select>
+
+	<select id="selectByPeriod" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPlanInfo">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_plan_info
+		where repayment_id = #{repaymentId}
+		and period_num = #{period}
+	</select>
+
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPlanInfo">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_plan_info
+		where 1=1
+		
+		<if test="orderCondition != null"> order by #{orderCondition} </if>
+	</select>
+
+	<sql id="searchColumns2">
+		cp.id id,
+        cp.cust_id custId,
+        cp.apply_id applyId,
+        cp.dept_id deptId,
+        cp.repayment_id repaymentId,
+        cp.period_num periodNum,
+        cp.period_status periodStatus,
+        cp.period_begin_time periodBeginTime,
+        cp.period_end_time periodEndTime,
+        cp.interest_days interestDays,
+        cp.begin_amount beginAmount,
+        cp.end_amount endAmount,
+        cp.pay_amount payAmount,
+        cp.begin_amount_lease beginAmountLease,
+		cp.end_amount_lease endAmountLease,
+		cp.capital_lease capitalLease,
+		cp.interest_lease interestLease,
+		cp.lease_total leaseTotal,
+		cp.service_total serviceTotal,
+        cp.predict_amount predictAmount,
+        cp.predict_interest predictInterest,
+        cp.predict_capital predictCapital,
+        cp.predict_service_charge predictServiceCharge,
+        cp.predict_charge predictCharge,
+        cp.predict_penalty predictPenalty,
+        cp.actual_amount actualAmount,
+        cp.actual_capital actualCapital,
+        cp.actual_interest actualInterest,
+        cp.actual_service_charge actualServiceCharge,
+        cp.actual_charge actualCharge,
+        cp.actual_penalty actualPenalty,
+        cp.is_overdue isOverdue,
+        cp.overdue_days overdueDays,
+        cp.overdue_penalty overduePenalty,
+        cp.is_deleted isDeleted,
+        cp.create_time createTime,
+        cp.update_time updateTime,
+        cp.remark remark
+	</sql>
+
+	<!-- 获取逾期的还款计划列表 -->
+	<select id="selectOverduePlan" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPlanInfo">
+		SELECT
+		<include refid="searchColumns2" />
+		FROM
+		c_repayment_plan_info cp, c_pay_info c, c_repayment_info ci
+		WHERE cp.repayment_id=ci.id and ci.pay_id = c.id
+		AND c.pay_status = 90
+		and cp.period_status = 4
+		AND cp.is_deleted = 0 AND cp.is_lock = 0
+		order by cp.period_num asc
+	</select>
+
+	<!-- 获取今天到期的还款计划列表 -->
+	<select id="selectTodayPlan" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPlanInfo">
+		SELECT
+		<include refid="searchColumns2" />
+		FROM
+		c_repayment_plan_info cp, c_pay_info c, c_repayment_info ci
+		WHERE cp.repayment_id=ci.id and ci.pay_id = c.id
+		AND c.pay_status = 90
+		AND DATE_FORMAT(cp.period_end_time,'%Y%m%d') = DATE_FORMAT(NOW(), '%Y%m%d')
+		AND cp.period_status in (1,2,3)
+		AND cp.is_deleted = 0
+		AND cp.is_lock = 0
+	</select>
+
+	<!-- 查询已经开始还款的还款计划列表 -->
+	<select id="selectPlanToRepaymenting" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPlanInfo">
+		SELECT
+		<include refid="searchColumns" />
+		FROM
+		c_repayment_plan_info
+		WHERE period_begin_time &lt;= NOW()
+		AND period_status = 1
+		AND is_deleted = 0
+	</select>
+
+	<!-- 查询已经到逾期的还款计划列表 -->
+	<select id="selectPlanToOverdue" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPlanInfo">
+		SELECT
+		<include refid="searchColumns" />
+		FROM
+		c_repayment_plan_info
+		WHERE DATE_FORMAT(period_end_time,'%Y%m%d') &lt; DATE_FORMAT(NOW(), '%Y%m%d')
+		AND period_status &lt; 4
+		AND is_deleted = 0
+	</select>
+
+	<!-- 根据条件查询 -->
+	<select id="listByRepaymentId" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPlanInfo">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_plan_info
+		where 1=1
+
+		<if test="repaymentId != null and repaymentId != ''">
+			and repayment_id = #{repaymentId}
+		</if>
+
+		order by period_num ASC
+	</select>
+
+	<!-- 统计未还款金额总计 -->
+	<select id="countAllNotRepaymentMoney" resultType="map">
+		SELECT
+		IFNULL(sum(predict_amount),0.00) as amount, IFNULL(sum(predict_capital),0.00) as capital,
+		IFNULL(sum(predict_interest), 0.00) as interest, IFNULL(sum(predict_service_charge), 0.00) as serviceCharge,
+		IFNULL(sum(predict_charge), 0.00) as charge, IFNULL(sum(predict_penalty),0.00) as penalty,IFNULL(dept_id,0) as deptId
+		from c_repayment_plan_info
+		where period_status in (1,2,3,4)
+		AND is_deleted = 0
+		GROUP BY dept_id
+	</select>
+
+	<!-- 根据还款ID统计其已还款金额总计 -->
+	<select id="countRepaymentMoneyByRepaymentId" resultType="map">
+		select
+		IFNULL(sum(actual_amount),0.00) as amount, IFNULL(sum(actual_capital),0.00) as capital,
+		IFNULL(sum(actual_interest), 0.00) as interest, IFNULL(sum(actual_service_charge), 0.00) as serviceCharge,
+		IFNULL(sum(actual_charge), 0.00) as charge, IFNULL(sum(actual_penalty),0.00) as penalty
+		from c_repayment_plan_info
+		where repayment_id = #{repaymentId}
+		AND is_deleted = 0
+	</select>
+
+
+	<!-- 列出当天到期的列表-->
+	<select id="selectCurDayList" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPlanInfo">
+		SELECT
+		<include refid="searchColumns2" />
+		FROM
+		c_repayment_plan_info cp, c_pay_info c, c_repayment_info ci
+		WHERE cp.repayment_id=ci.id and ci.pay_id = c.id
+		AND c.pay_status = 90
+		AND DATE_FORMAT(cp.period_end_time,'%Y%m%d') = #{checkDate}
+		AND cp.is_deleted = 0
+		AND cp.is_lock = 0
+		<if test="type != null">
+			and cp.period_status in (1,2,3,4)
+		</if>
+	</select>
+
+	<!-- 获取当日扣款记录   这里会因为扣款失败出现重复 注意去重-->
+	<select id="selectCurDayPayRecord" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPlanInfo">
+		SELECT
+		<include refid="searchColumns2" />
+		from c_repayment_pay_info c, c_repayment_plan_info cp
+		where c.repayment_plan_id = cp.id
+		AND c.pay_type in (0,1,2)
+		AND DATE_FORMAT(c.update_time,'%Y%m%d') = #{checkDate}
+	</select>
+
+	<sql id="searchColumns3">
+		c1.id id,
+		c1.cust_id custId,
+		c1.dept_id deptId,
+		c2.contract_no contractNo,
+		c2.cust_name custName,
+		c2.cust_mobile custMobile,
+		c2.cust_id_no custIdNo,
+		c2.bank_name bankName,
+		c2.bank_card_no bankNo,
+		c1.apply_id applyId,
+		c1.repayment_id repaymentId,
+		c1.period_num periodNum,
+		c1.period_status periodStatus,
+		c1.period_begin_time periodBeginTime,
+		c1.period_end_time periodEndTime,
+		c1.interest_days interestDays,
+		c1.begin_amount beginAmount,
+		c1.end_amount endAmount,
+		c1.pay_amount payAmount,
+		c1.begin_amount_lease beginAmountLease,
+		c1.end_amount_lease endAmountLease,
+		c1.capital_lease capitalLease,
+		c1.interest_lease interestLease,
+		c1.lease_total leaseTotal,
+		c1.service_total serviceTotal,
+		c1.predict_amount predictAmount,
+		c1.predict_interest predictInterest,
+		c1.predict_capital predictCapital,
+		c1.predict_service_charge predictServiceCharge,
+		c1.predict_charge predictCharge,
+		c1.predict_penalty predictPenalty,
+		c1.actual_amount actualAmount,
+		c1.actual_capital actualCapital,
+		c1.actual_interest actualInterest,
+		c1.actual_service_charge actualServiceCharge,
+		c1.actual_charge actualCharge,
+		c1.actual_penalty actualPenalty,
+		c1.is_overdue isOverdue,
+		c1.overdue_days overdueDays,
+		c1.overdue_penalty overduePenalty,
+		c1.is_deleted isDeleted,
+		c1.create_time createTime,
+		c1.update_time updateTime,
+		c1.remark remark
+	</sql>
+
+	<select id="listByCondition" resultType="com.moerlong.carloan.modular.paybackMgr.entity.vo.RepaymentPlanInfoVO">
+		SELECT
+		<include refid="searchColumns3" />
+		FROM
+		c_repayment_plan_info c1 inner join c_repayment_info c2
+		where 1=1
+		AND c1.repayment_id=c2.id
+
+		<if test="custName != null and custName != ''">
+			and c2.cust_name like CONCAT('%',#{custName},'%')
+		</if>
+		<if test="custMobile != null and custMobile != ''">
+			and c2.cust_mobile like CONCAT('%',#{custMobile},'%')
+		</if>
+
+		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+			and (c1.period_end_time between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+		</if>
+		<if test="curStatus != null and curStatus != ''">
+			and c1.period_status = #{curStatus}
+		</if>
+
+		AND c1.is_deleted = 0
+		order by c1.period_end_time ASC
+
+	</select>
+
+	<!-- 获取某个用户的应还罚息总额-->
+	<select id="sumPenaltyByRepaymentId" resultType="BigDecimal">
+		select IFNULL(sum(predict_penalty), 0.00) as predictPenalty
+		from c_repayment_plan_info
+		where repayment_id=#{repaymentId} and is_deleted = 0
+	</select>
+
+
+</mapper>
+

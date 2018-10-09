@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.payMgr.dao.PayApproveRecordDao">
+
+	<sql id="searchColumns">
+		id id,
+		pay_id payId,
+		operator_id operatorId,
+		operator_name operatorName,
+		operator_time operatorTime,
+		operator_result operatorResult,
+		operator_tip operatorTip,
+		create_time createTime,
+		update_time updateTime,
+		is_deleted isDeleted,
+		remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.payMgr.entity.PayApproveRecord">
+		insert into
+		c_pay_approve_record(
+			is_deleted,
+			operator_time,
+			create_time,
+			operator_tip,
+			update_time,
+			remark,
+			id,
+			pay_id,
+			operator_id,
+			operator_result,
+			operator_name)
+		values (
+			#{isDeleted},
+			#{operatorTime},
+			#{createTime},
+			#{operatorTip},
+			#{updateTime},
+			#{remark},
+			#{id},
+			#{payId},
+			#{operatorId},
+			#{operatorResult},
+			#{operatorName})
+	</insert>
+
+	<delete id="delete">
+		delete from c_pay_approve_record
+		where id = #{id}
+	</delete>
+
+	<update id="update" parameterType="com.moerlong.carloan.modular.payMgr.entity.PayApproveRecord">
+		update c_pay_approve_record
+		<set>
+		<if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+		<if test="operatorTime != null"> operator_time=#{operatorTime},</if>
+		<if test="createTime != null"> create_time=#{createTime},</if>
+		<if test="operatorTip != null"> operator_tip=#{operatorTip},</if>
+		<if test="updateTime != null"> update_time=#{updateTime},</if>
+		<if test="remark != null"> remark=#{remark},</if>
+		<if test="payId != null"> pay_id=#{payId},</if>
+		<if test="operatorId != null"> operator_id=#{operatorId},</if>
+	  	<if test="operatorName != null"> operator_name=#{operatorName},</if>
+		<if test="operatorResult != null"> operator_result=#{operatorResult},</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.payMgr.entity.PayApproveRecord">
+		select
+		<include refid="searchColumns" />
+		from c_pay_approve_record
+		where id = #{id}
+	</select>
+
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" resultType="com.moerlong.carloan.modular.payMgr.entity.PayApproveRecord">
+		select
+		<include refid="searchColumns" />
+		from c_pay_approve_record
+		where 1=1
+		
+		<if test="orderCondition != null"> order by #{orderCondition} </if>
+	</select>
+
+	<!-- 查询（根据PAYID查询） -->
+	<select id="listByPayId" resultType="com.moerlong.carloan.modular.payMgr.entity.PayApproveRecord">
+		select
+		<include refid="searchColumns" />
+		from c_pay_approve_record
+		where pay_id = #{payId}
+	</select>
+</mapper>
+

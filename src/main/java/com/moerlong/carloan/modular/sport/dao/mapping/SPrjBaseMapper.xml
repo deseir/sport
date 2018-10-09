@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moerlong.carloan.modular.sport.dao.SPrjBaseMapper" >
+  <resultMap id="BaseResultMap" type="com.moerlong.carloan.modular.sport.entity.SPrjBase" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="prjtype" property="prjtype" jdbcType="VARCHAR" />
+    <result column="local" property="local" jdbcType="VARCHAR" />
+    <result column="prjname" property="prjname" jdbcType="VARCHAR" />
+    <result column="place" property="place" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="begintime" property="begintime" jdbcType="VARCHAR" />
+    <result column="endtime" property="endtime" jdbcType="VARCHAR" />
+    <result column="provider" property="provider" jdbcType="VARCHAR" />
+    <result column="jsfa" property="jsfa" jdbcType="VARCHAR" />
+    <result column="dljd" property="dljd" jdbcType="VARCHAR" />
+    <result column="dlwd" property="dlwd" jdbcType="VARCHAR" />
+    <result column="qjpic1" property="qjpic1" jdbcType="VARCHAR" />
+    <result column="qjpic2" property="qjpic2" jdbcType="VARCHAR" />
+    <result column="qjpic3" property="qjpic3" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="isdelete" property="isdelete" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, prjtype, local, prjname, place, area, begintime, endtime, provider, jsfa, dljd, 
+    dlwd, qjpic1, qjpic2, qjpic3, createtime, updatetime, isdelete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from s_prj_base
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from s_prj_base
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.moerlong.carloan.modular.sport.entity.SPrjBase" >
+    insert into s_prj_base (id, prjtype, local, 
+      prjname, place, area, 
+      begintime, endtime, provider, 
+      jsfa, dljd, dlwd, qjpic1, 
+      qjpic2, qjpic3, createtime, 
+      updatetime, isdelete)
+    values (#{id,jdbcType=INTEGER}, #{prjtype,jdbcType=VARCHAR}, #{local,jdbcType=VARCHAR}, 
+      #{prjname,jdbcType=VARCHAR}, #{place,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, 
+      #{begintime,jdbcType=VARCHAR}, #{endtime,jdbcType=VARCHAR}, #{provider,jdbcType=VARCHAR}, 
+      #{jsfa,jdbcType=VARCHAR}, #{dljd,jdbcType=VARCHAR}, #{dlwd,jdbcType=VARCHAR}, #{qjpic1,jdbcType=VARCHAR}, 
+      #{qjpic2,jdbcType=VARCHAR}, #{qjpic3,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{isdelete,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.moerlong.carloan.modular.sport.entity.SPrjBase" >
+    insert into s_prj_base
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="prjtype != null" >
+        prjtype,
+      </if>
+      <if test="local != null" >
+        local,
+      </if>
+      <if test="prjname != null" >
+        prjname,
+      </if>
+      <if test="place != null" >
+        place,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="begintime != null" >
+        begintime,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+      <if test="provider != null" >
+        provider,
+      </if>
+      <if test="jsfa != null" >
+        jsfa,
+      </if>
+      <if test="dljd != null" >
+        dljd,
+      </if>
+      <if test="dlwd != null" >
+        dlwd,
+      </if>
+      <if test="qjpic1 != null" >
+        qjpic1,
+      </if>
+      <if test="qjpic2 != null" >
+        qjpic2,
+      </if>
+      <if test="qjpic3 != null" >
+        qjpic3,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="prjtype != null" >
+        #{prjtype,jdbcType=VARCHAR},
+      </if>
+      <if test="local != null" >
+        #{local,jdbcType=VARCHAR},
+      </if>
+      <if test="prjname != null" >
+        #{prjname,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="begintime != null" >
+        #{begintime,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=VARCHAR},
+      </if>
+      <if test="provider != null" >
+        #{provider,jdbcType=VARCHAR},
+      </if>
+      <if test="jsfa != null" >
+        #{jsfa,jdbcType=VARCHAR},
+      </if>
+      <if test="dljd != null" >
+        #{dljd,jdbcType=VARCHAR},
+      </if>
+      <if test="dlwd != null" >
+        #{dlwd,jdbcType=VARCHAR},
+      </if>
+      <if test="qjpic1 != null" >
+        #{qjpic1,jdbcType=VARCHAR},
+      </if>
+      <if test="qjpic2 != null" >
+        #{qjpic2,jdbcType=VARCHAR},
+      </if>
+      <if test="qjpic3 != null" >
+        #{qjpic3,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.moerlong.carloan.modular.sport.entity.SPrjBase" >
+    update s_prj_base
+    <set >
+      <if test="prjtype != null" >
+        prjtype = #{prjtype,jdbcType=VARCHAR},
+      </if>
+      <if test="local != null" >
+        local = #{local,jdbcType=VARCHAR},
+      </if>
+      <if test="prjname != null" >
+        prjname = #{prjname,jdbcType=VARCHAR},
+      </if>
+      <if test="place != null" >
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="begintime != null" >
+        begintime = #{begintime,jdbcType=VARCHAR},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=VARCHAR},
+      </if>
+      <if test="provider != null" >
+        provider = #{provider,jdbcType=VARCHAR},
+      </if>
+      <if test="jsfa != null" >
+        jsfa = #{jsfa,jdbcType=VARCHAR},
+      </if>
+      <if test="dljd != null" >
+        dljd = #{dljd,jdbcType=VARCHAR},
+      </if>
+      <if test="dlwd != null" >
+        dlwd = #{dlwd,jdbcType=VARCHAR},
+      </if>
+      <if test="qjpic1 != null" >
+        qjpic1 = #{qjpic1,jdbcType=VARCHAR},
+      </if>
+      <if test="qjpic2 != null" >
+        qjpic2 = #{qjpic2,jdbcType=VARCHAR},
+      </if>
+      <if test="qjpic3 != null" >
+        qjpic3 = #{qjpic3,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.moerlong.carloan.modular.sport.entity.SPrjBase" >
+    update s_prj_base
+    set prjtype = #{prjtype,jdbcType=VARCHAR},
+      local = #{local,jdbcType=VARCHAR},
+      prjname = #{prjname,jdbcType=VARCHAR},
+      place = #{place,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      begintime = #{begintime,jdbcType=VARCHAR},
+      endtime = #{endtime,jdbcType=VARCHAR},
+      provider = #{provider,jdbcType=VARCHAR},
+      jsfa = #{jsfa,jdbcType=VARCHAR},
+      dljd = #{dljd,jdbcType=VARCHAR},
+      dlwd = #{dlwd,jdbcType=VARCHAR},
+      qjpic1 = #{qjpic1,jdbcType=VARCHAR},
+      qjpic2 = #{qjpic2,jdbcType=VARCHAR},
+      qjpic3 = #{qjpic3,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      isdelete = #{isdelete,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!-- 查询所有 -->
+  <select id="listAll" resultType="com.moerlong.carloan.modular.sport.entity.SPrjBase">
+    select
+    <include refid="Base_Column_List" />
+    from s_prj_base prjbase
+  </select>
+  <!-- 查询（分页查询） -->
+  <select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.sport.entity.SPrjBase">
+    select
+    <include refid="Base_Column_List" />
+    from s_prj_base prjbase
+    where 1=1
+  </select>
+
+</mapper>

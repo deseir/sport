@@ -1,0 +1,126 @@
+@layout("/common/_container.html"){
+
+<div class="">
+  <div class="" style="background-color:#FFF;padding: 25px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;">
+	  <div class="row">
+		  <ul class="nav nav-pills nav-justified" style="background-color: #ffffff">
+			  <li class="active" onclick="skipHtml(1)" id="nqEnter"><a href="javascript:;" data-toggle="tab" data-target="#lookTab">内勤资料录入</a>
+			  </li>
+			  <li onclick="skipHtml(2)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab1">验车</a></li>
+			  <li onclick="skipHtml(3)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab2">面审</a></li>
+			  <li onclick="skipHtml(4)" id="yanche"><a href="javascript:;" data-toggle="tab" data-target="#lookTab3">签订合同</a></li>
+			  <li onclick="skipHtml(5)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab4">抵押申请</a></li>
+			  <li onclick="skipHtml(6)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab5">抵押办理成功</a></li>
+			  <li onclick="skipHtml(7)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab6">GPS安装</a></li>
+			  <li onclick="skipHtml(8)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab7">资料存留</a></li>
+			  <li onclick="skipHtml(9)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab8">请款申请</a></li>
+			  <li onclick="skipHtml(10)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab9">请款内勤主管审核</a></li>
+			  <li onclick="skipHtml(11)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab10">请款业务经理审核</a></li>
+			  <li onclick="skipHtml(12)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab11">请款业务经理审核</a></li>
+			  <li onclick="skipHtml(13)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab12">请款财务首次审核</a></li>
+			  <li onclick="skipHtml(14)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab13">请款财务经理首次审核</a></li>
+			  <li onclick="skipHtml(15)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab14">请款财务二次审核成功</a></li>
+			  <li onclick="skipHtml(16)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab14">拆卸GPS</a></li>
+		  </ul>
+	  </div>
+	  <div class="ibox-title">
+		  <h3>签订合同</h3>
+	  </div>
+   	<div class="tab-content">
+		<input type="hidden" value="${applyId}" id="applyId">
+		<input type="hidden" value="${idPicUrls}" id="idPicUrls">
+		<input type="hidden" value="${flag}" id="flag">
+   		<div class="tab-pane fade in active"  id="div_sfrz">
+			<div class="menu-item" id="menu-item5">
+				<div class="form-horizontal">
+					<h5>合同签订信息</h5>
+					<div class="row">
+						<div class="col-sm-6">
+							<label class="col-sm-3 control-label">上传现场照片</label>
+				            <div  class="container">
+				           		<div class="form-grop"  enctype="multipart/form-data">
+				           			<div style="width:7%;float:left">
+				           				<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+				           					<span class="fileinput-new">选择文件</span>
+				           					<input type="file" id="contractSceneUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+				           					<input type="hidden" id="contractSceneUrl">
+				           				</span> -->
+				           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:42%">
+				           					<img id="contractSceneUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+				           				</div>
+				           			</div>
+				           		</div>
+				           </div>  
+							<div class="form-group" style="margin-top:80px">
+								<label class="col-sm-3 control-label">线下合同签订时间</label>
+								<div class="col-sm-9">
+									<input class="form-control" id="contractSignDate" name="contractSignDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<h5>合同管理</h5>
+					<div class="row">
+						<div class="col-sm-6">
+							<#select id="contractTemplete" name="选择合同模板" underline="false">
+								<!--<option value="">-&#45;&#45;请选择-&#45;&#45;</option>
+								<option value="1">融资管理服务协议</option>
+								<option value="2">委托扣款授权书和授权人资料表</option>
+								<option value="3">汽车抵押合同</option>
+								<option value="4">抵押人特别声明</option>
+								<option value="5">委托书</option>
+                                <option value="6">汽车融资租赁合同(主要条款)</option>-->
+							</#select>
+						</div>
+						<div class="col-sm-6" style="width: 420px; margin:120px auto ;">
+							<#button name="下载" id="settleAttachUrl" icon="fa-download" clickFun="downLoadSupplementaryMaterials();"/>
+							<#button name="返回" icon="fa fa-chevron-left" clickFun="backCommons();"/>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+   		</div>
+   	</div>
+  </div>
+</div>
+<style>
+	.nav > li > a {color: #a0a0a0; padding: 13px 18px 14px 25px;}
+	.nav > nav-pill > li.active > a {border-radius:4px;}
+	.nav > nav-pill > li > a {border-radius:4px;}
+	/*.nav > li.active {border-left: none;}*/
+	/*.nav > li.active {background-color: #ccc;}*/
+	/*.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {background-color: #ccc;border-radius:4px;}*/
+	.nav > li.active {border-left: none;}
+	.nav > li.active {background-color: #fff;}
+	.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover{
+		border-radius: 0px;
+		border-bottom:2px solid #30af90; !important;
+		color: #30af90;
+	}
+</style>
+<script>
+    $("input").attr("readonly","readonly");
+    $("input[type=file]").attr("disabled","disabled");
+    $("#yanche").css({
+        "background-color" : "#ccc",
+        "border-radius": "4px"
+    })
+    $("#yanche a").css({
+        "color" : "#fff"
+    })
+
+    $("#nqEnter").css({
+        "background-color" : "#fff",
+        "color": "#30af90"
+    })
+    $("#nqEnter a").css({
+        "background-color" : "#fff",
+        "color": "#30af90"
+    })
+</script>
+<script src="${ctxPath}/static/modular/loan/mywork/approveRecord.js?v=1.0"></script>
+<script src="${ctxPath}/static/modular/loan/mywork/lookAll.js?v=1.0"></script>
+@}

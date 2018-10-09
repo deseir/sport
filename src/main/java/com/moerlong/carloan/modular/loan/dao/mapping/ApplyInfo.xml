@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.loan.dao.ApplyInfoDao">
+
+	<sql id="searchColumns">
+		applyInfo.id id,
+		applyInfo.cust_id custId,
+		applyInfo.channel_id channelId,
+		applyInfo.product_type productType,
+		applyInfo.apply_amount applyAmount,
+		applyInfo.left_amount leftAmount,
+		applyInfo.apply_period applyPeriod,
+		applyInfo.repayment_type repaymentType,
+		applyInfo.loan_usage loanUsage,
+		applyInfo.loan_usage_other loanUsageOther,
+		applyInfo.partner_know partnerKnow,
+		applyInfo.dept_id deptId,
+		applyInfo.status status,
+		applyInfo.status_desc statusDesc,
+		applyInfo.sfrz_status sfrzStatus,
+		applyInfo.nqlr_status nqlrStatus,
+		applyInfo.yc_status ycStatus,
+		applyInfo.gps_install_status gpsInstallStatus,
+		applyInfo.gps_uninstall_status gpsUninstallStatus,
+		applyInfo.create_time createTime,
+		applyInfo.update_time updateTime,
+		applyInfo.remark remark,
+		applyInfo.isCollection isCollection,
+		applyInfo.serviceItem serviceItem,
+		applyInfo.percent percent,
+		applyInfo.moneyAmount moneyAmount,
+		applyInfo.serviceCharge serviceCharge,
+		applyInfo.feeInstallment feeInstallment,
+		applyInfo.is_deleted isDeleted
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.loan.entity.ApplyInfo">
+		insert into
+		c_apply_info(
+
+			loan_usage,
+			remark,
+			loan_usage_other,
+			apply_amount,
+			left_amount,
+			repayment_type,
+			is_deleted,
+			cust_id,
+			id,
+			apply_period,
+			channel_id,
+			product_type,
+			sfrz_status,
+			nqlr_status,
+			status_desc,
+			gps_install_status,
+			partner_know,
+			dept_id,
+			update_time,
+			gps_uninstall_status,
+			yc_status,
+			create_time,
+			status,
+		   isCollection,
+		 serviceItem,
+		percent,
+		 moneyAmount,
+		 serviceCharge,
+		 feeInstallment)
+		values (
+			#{loanUsage},
+			#{remark},
+			#{loanUsageOther},
+			#{applyAmount},
+			#{leftAmount},
+			#{repaymentType},
+			#{isDeleted},
+			#{custId},
+			#{id},
+			#{applyPeriod},
+			#{channelId},
+			#{productType},
+			#{sfrzStatus},
+			#{nqlrStatus},
+			#{statusDesc},
+			#{gpsInstallStatus},
+			#{partnerKnow},
+			#{deptId},
+			#{updateTime},
+			#{gpsUninstallStatus},
+			#{ycStatus},
+			#{createTime},
+			#{status},
+			  #{isCollection},
+			  #{serviceItem},
+			  #{percent},
+			  #{moneyAmount},
+			  #{serviceCharge},
+			  #{feeInstallment}
+		 )
+	</insert>
+
+	<delete id="delete">
+		delete from c_apply_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_apply_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.loan.entity.ApplyInfo">
+		update c_apply_info set
+		loan_usage=#{loanUsage},
+		dept_id=#{deptId},
+		remark=#{remark},
+		loan_usage_other=#{loanUsageOther},
+		apply_amount=#{applyAmount},
+		left_amount=#{leftAmount},
+
+		isCollection= #{isCollection},
+		serviceItem #{serviceItem},
+		percent= #{percent},
+		moneyAmount= #{moneyAmount},
+		serviceCharge= #{serviceCharge},
+		feeInstallment= #{feeInstallment},
+
+		repayment_type=#{repaymentType},
+		is_deleted=#{isDeleted},
+		cust_id=#{custId},
+		id=#{id},
+		apply_period=#{applyPeriod},
+		channel_id=#{channelId},
+		product_type=#{productType},
+		sfrz_status=#{sfrzStatus},
+		nqlr_status=#{nqlrStatus},
+		status_desc=#{statusDesc},
+		gps_install_status=#{gpsInstallStatus},
+		partner_know=#{partnerKnow},
+		update_time=#{updateTime},
+		gps_uninstall_status=#{gpsUninstallStatus},
+		yc_status=#{ycStatus},
+		create_time=#{createTime},
+		status=#{status}
+		where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.loan.entity.ApplyInfo">
+		update c_apply_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="channelId != null"> channel_id=#{channelId},</if>
+            <if test="productType != null"> product_type=#{productType},</if>
+            <if test="applyAmount != null"> apply_amount=#{applyAmount},</if>
+			<if test="leftAmount != null"> left_amount=#{leftAmount},</if>
+
+			<if test="isCollection != null"> isCollection=#{isCollection},</if>
+			<if test="serviceItem != null"> serviceItem=#{serviceItem},</if>
+			<if test="percent != null"> percent=#{percent},</if>
+			<if test="moneyAmount != null"> moneyAmount=#{moneyAmount},</if>
+			<if test="serviceCharge != null"> serviceCharge=#{serviceCharge},</if>
+			<if test="feeInstallment != null"> feeInstallment=#{feeInstallment},</if>
+
+            <if test="applyPeriod != null"> apply_period=#{applyPeriod},</if>
+            <if test="repaymentType != null"> repayment_type=#{repaymentType},</if>
+            <if test="loanUsage != null"> loan_usage=#{loanUsage},</if>
+            <if test="loanUsageOther != null"> loan_usage_other=#{loanUsageOther},</if>
+            <if test="partnerKnow != null"> partner_know=#{partnerKnow},</if>
+			<if test="deptId != null"> dept_id=#{deptId},</if>
+            <if test="status != null"> status=#{status},</if>
+            <if test="statusDesc != null"> status_desc=#{statusDesc},</if>
+            <if test="sfrzStatus != null"> sfrz_status=#{sfrzStatus},</if>
+            <if test="nqlrStatus != null"> nqlr_status=#{nqlrStatus},</if>
+            <if test="ycStatus != null"> yc_status=#{ycStatus},</if>
+            <if test="gpsInstallStatus != null"> gps_install_status=#{gpsInstallStatus},</if>
+            <if test="gpsUninstallStatus != null"> gps_uninstall_status=#{gpsUninstallStatus},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.loan.entity.ApplyInfo">
+		select
+		<include refid="searchColumns" />
+		from c_apply_info applyInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.loan.entity.ApplyInfo">
+		select
+		<include refid="searchColumns" />
+		from c_apply_info applyInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.loan.entity.ApplyInfo">
+		select
+		<include refid="searchColumns" />
+		from c_apply_info applyInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+
+
+	<sql id="searchColumns_list">
+		a.id applyId,
+		a.apply_amount totalAmount,
+		a.apply_period periodNum,
+		c.name custName,
+		c.cert_id custIdNo,
+		a.status_desc statusDesc,
+		a.create_time createTime,
+		a.sfrz_status sfrzStatus,
+		a.nqlr_status nqlrStatus,
+		a.yc_status ycStatus,
+		a.gps_install_status gpsInstallStatus,
+		a.gps_uninstall_status gpsUninstallStatus
+	</sql>
+	<select id="listByCondition" resultType="com.moerlong.carloan.modular.loan.entity.vo.LoanApplyInfoVo">
+		select
+			<include refid="searchColumns_list"/>
+		from c_apply_info a, c_cust_info c
+		where 1=1 and a.cust_id = c.id
+		<if test="custName != null and custName != ''">
+			and c.name = #{custName}
+		</if>
+		<if test="custIdNo != null and custIdNo != ''">
+			and c.cert_id = #{custIdNo}
+		</if>
+		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+			and (a.create_time between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+		</if>
+		order by a.update_time desc
+
+	</select>
+
+
+	<sql id="searchColumns2">
+		a.id applyId,
+		a.dept_id deptId,
+		a.apply_amount totalAmount,
+		a.apply_period periodNum,
+		a.status status,
+		c.name custName,
+		c.cert_id custIdNo,
+		a.status_desc statusDesc,
+		a.sfrz_status sfrzStatus,
+		a.nqlr_status nqlrStatus,
+		a.yc_status ycStatus,
+		a.gps_install_status gpsInstallStatus,
+		a.gps_uninstall_status gpsUninstallStatus,
+		a.create_time createTime,
+		a.update_time updateTime,
+		pn.interface_address interfaceAddress,
+		pn.show_address showAddress,
+		pe.next_node_id nextNodeId,
+(select nn.process_status_desc from c_process_node nn where nn.id=pe.cur_node_id) nextNodeName,
+(select nn.role_id from c_process_node nn where nn.id=pe.cur_node_id) nextNodeRole
+	</sql>
+	<!-- app回退件 -->	
+	<select id="selectSyncToAppDoApplyList" resultType="com.moerlong.carloan.modular.loan.entity.vo.LoanAppAppinfoVO">
+		select DISTINCT
+		<include refid="searchColumns2"/>
+		from c_apply_info a,
+		c_cust_info c,
+		c_process_node pn,
+		c_process_engine pe,
+		c_process_node pn2,
+		user u
+		where 1=1 and a.cust_id = c.id and a.${syncFieldName} > 0
+		and pn.sync_field_name=#{syncFieldName}
+		and pn.id = pe.cur_node_id and pe.next_node_id = pn2.id
+		and a.${syncFieldName} &gt;= pn.process_status and a.${syncFieldName} &lt; pn2.process_status
+		and FIND_IN_SET(pn2.role_id,u.roleid) and FIND_IN_SET(a.dept_id,#{deptIdList}) and u.id=#{userId}
+		and a.status_desc like '%驳回%'
+		group by a.id
+		order by a.update_time desc
+	</select>
+	
+	<!-- 获取待办工作列表 -->
+	<select id="selectTodoApplyList" resultType="com.moerlong.carloan.modular.loan.entity.vo.LoanApplyInfoVo">
+		select DISTINCT
+		<include refid="searchColumns2"/>
+
+        FROM
+        c_apply_info a,
+        c_cust_info c,
+        c_process_node pn,
+        c_process_engine pe,
+        USER u
+        WHERE 1=1
+        AND a.cust_id = c.id
+        AND a.STATUS = pn.process_status
+        AND pn.id = pe.cur_node_id
+        AND pe.type = 0
+        AND FIND_IN_SET(pn.role_id, u.roleid)
+        and FIND_IN_SET(a.dept_id,#{deptIdList})
+        and u.id=#{userId}
+        and a.is_deleted=0
+
+		<if test="custName != null and custName != ''">
+			and c.name = #{custName}
+		</if>
+		<if test="custIdNo != null and custIdNo != ''">
+			and c.cert_id = #{custIdNo}
+		</if>
+		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+			and (a.create_time between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+		</if>
+		group by a.id
+		order by a.update_time desc
+	</select>
+	<!-- App获取待办工作列表 -->
+	<select id="selectToAppdoApplyList" resultType="com.moerlong.carloan.modular.loan.entity.vo.LoanAppAppinfoVO">
+		select DISTINCT
+		<include refid="searchColumns2"/>
+		from c_apply_info a,
+			 c_cust_info c,
+			 c_process_node pn,
+			 c_process_engine pe,
+			 c_process_node pn2,
+			 user u
+		where 1=1 and a.cust_id = c.id and a.status = pn.process_status and pn.id=pe.cur_node_id
+		and pe.type=0 and pn2.id=pe.next_node_id
+		and FIND_IN_SET(pn2.role_id,u.roleid) and FIND_IN_SET(a.dept_id,#{deptIdList}) and u.id=#{userId} and a.is_deleted='0'
+		group by a.id
+		order by a.update_time desc
+	</select>
+	<select id="selectSyncTodoApplyList" resultType="com.moerlong.carloan.modular.loan.entity.vo.LoanApplyInfoVo">
+		select DISTINCT
+		<include refid="searchColumns2"/>
+		from c_apply_info a,
+		c_cust_info c,
+		c_process_node pn,
+		c_process_engine pe,
+		c_process_node pn2,
+		user u
+		where 1=1 and a.cust_id = c.id and a.${syncFieldName} > 0
+		and pn.sync_field_name=#{syncFieldName}
+		and pn.id = pe.cur_node_id and pe.next_node_id = pn2.id
+		and a.${syncFieldName} &gt;= pn.process_status and a.${syncFieldName} &lt; pn2.process_status
+		and FIND_IN_SET(pn2.role_id,u.roleid) and FIND_IN_SET(a.dept_id,#{deptIdList}) and u.id=#{userId}
+		<if test="custName != null and custName != ''">
+			and c.name = #{custName}
+		</if>
+		<if test="custIdNo != null and custIdNo != ''">
+			and c.cert_id = #{custIdNo}
+		</if>
+		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+			and (a.create_time between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+		</if>
+		group by a.id
+		order by a.update_time desc
+	</select>
+	
+	<!-- 获取所有抵押申请到请款申请的状态之间未提交gps申请的节点 -->
+	<select id="selectUnApplyGps" resultType="com.moerlong.carloan.modular.loan.entity.vo.LoanApplyInfoVo">
+		select DISTINCT
+		<include refid="searchColumns2"/>
+		from c_apply_info a,
+			 c_cust_info c,
+			 c_process_node pn,
+			 c_process_engine pe,
+			 c_process_node pn2
+		where 1=1 and a.cust_id = c.id and a.status = pn.process_status and pn.id=pe.cur_node_id
+		and pn2.id=pe.next_node_id
+		and FIND_IN_SET(a.dept_id,#{deptIdList})
+		and a.status>'7100' and a.gps_install_status ='1'
+		group by a.id
+		order by a.update_time desc
+	</select>
+
+	<!-- App获取所有抵押申请到请款申请的状态之间未提交gps申请的节点 -->
+	<select id="selectUnAppApplyGps" resultType="com.moerlong.carloan.modular.loan.entity.vo.LoanAppAppinfoVO">
+		select DISTINCT
+		<include refid="searchColumns2"/>
+		from c_apply_info a,
+			 c_cust_info c,
+			 c_process_node pn,
+			 c_process_engine pe,
+			 c_process_node pn2
+		where 1=1 and a.cust_id = c.id and a.status = pn.process_status and pn.id=pe.cur_node_id
+		and pn2.id=pe.next_node_id
+		and FIND_IN_SET(a.dept_id,#{deptIdList})
+		and a.status>'7100' and a.gps_install_status ='1'
+		group by a.id
+		order by a.update_time desc
+	</select>
+	<select id="isComplateSyncTask" resultType="int">
+		select count(0) from c_apply_info where id=#{applyId} and ${syncFieldName} &gt;= #{processStatus}
+	</select>
+
+	<!-- 获取驳回工作列表 -->
+	<select id="selectBackApplyList" resultType="com.moerlong.carloan.modular.loan.entity.vo.LoanApplyInfoVo">
+		select DISTINCT
+		<include refid="searchColumns2"/>
+		from c_apply_info a,
+		c_cust_info c,
+		c_process_node pn,
+		c_apply_operator ao
+		where 1=1 and a.cust_id = c.id and a.status = pn.process_status and pn.is_back!=0 and
+		a.id = ao.apply_id and pn.is_back = ao.role_id and ao.user_id=#{userId}
+
+		<if test="custName != null and custName != ''">
+			and c.name = #{custName}
+		</if>
+		<if test="custIdNo != null and custIdNo != ''">
+			and c.cert_id = #{custIdNo}
+		</if>
+		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+			and (a.create_time between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+		</if>
+		order by a.update_time desc
+	</select>
+
+	<!-- 更新同步节点状态 -->
+	<update id="setSyncStatus" parameterType="java.util.Map">
+		update c_apply_info
+		set ${syncFieldName}=#{processStatus}
+		where id=#{applyId}
+	</update>
+
+
+	<sql id="searchColumns3">
+		a.id applyId,
+		a.apply_amount totalAmount,
+		a.apply_period periodNum,
+		c.name custName,
+		c.cert_id custIdNo,
+		a.status_desc statusDesc,
+		a.sfrz_status sfrzStatus,
+		a.nqlr_status nqlrStatus,
+		a.yc_status ycStatus,
+		a.gps_install_status gpsInstallStatus,
+		a.gps_uninstall_status gpsUninstallStatus,
+		a.create_time createTime
+	</sql>
+
+	<!-- 获取经办工作列表 -->
+	<select id="selectHandledApplyList" resultType="com.moerlong.carloan.modular.loan.entity.vo.LoanApplyInfoVo">
+		select DISTINCT
+		<include refid="searchColumns3"/>
+		from c_apply_info a,
+		c_cust_info c,
+		c_apply_operator ao
+		where 1=1 and a.cust_id = c.id and
+		a.id = ao.apply_id and ao.user_id=#{userId}
+
+		<if test="custName != null and custName != ''">
+			and c.name = #{custName}
+		</if>
+		<if test="custIdNo != null and custIdNo != ''">
+			and c.cert_id = #{custIdNo}
+		</if>
+		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+			and (a.create_time between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+		</if>
+		order by a.update_time desc
+	</select>
+
+	<!-- 查询（根据主键custid查询） -->
+	<select id="selectByCustId" resultType="com.moerlong.carloan.modular.loan.entity.ApplyInfo">
+		select
+		<include refid="searchColumns" />
+		from c_apply_info applyInfo
+		where cust_id = #{custId}
+	</select>
+	<!-- 获取App订单（经办列表） -->
+	
+	<select id="selectAppHandledApplyList" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.loan.entity.vo.LoanAppAppinfoVO">
+		select DISTINCT a.id applyId, a.apply_amount totalAmount, a.apply_period periodNum, c.name custName,
+	 c.cert_id custIdNo,a.`status` status, a.status_desc statusDesc, a.sfrz_status sfrzStatus, a.nqlr_status nqlrStatus,
+	 a.yc_status ycStatus, a.gps_install_status gpsInstallStatus, a.gps_uninstall_status gpsUninstallStatus, a.create_time createTime 
+	from c_apply_info a, c_cust_info c, c_apply_operator ao 
+	where 1=1 and a.cust_id = c.id and a.id = ao.apply_id  
+	<if test="userId !=null and userId  !=''">
+		and ao.user_id=#{userId}
+	</if>
+	<choose>
+		<when test="sfrzStatus !=null and sfrzStatus !=''">
+			and a.sfrz_status is NOT NULL
+		</when>
+		<otherwise>
+			and a.sfrz_status is NULL
+		</otherwise>
+	</choose>
+	<if test="applyId !=null and applyId !=''">
+		and a.id=#{applyId}
+	</if>
+	<if test="custName !=null and custName !=''">
+		and c.name=#{custName}
+	</if>
+	<if test="ycStatus !=null and ycStatus !=''">
+		and a.yc_status=#{ycStatus}
+	</if>
+	<if test="status !=null and status !=''">
+		and a.status=#{status}
+	</if>
+	<if test="gpsInstallStatus !=null and gpsInstallStatus !=''">
+		and a.gps_install_status=#{gpsInstallStatus}
+	</if>
+	<if test="gpsUninstallStatus !=null and gpsUninstallStatus !=''">
+		and a.gps_uninstall_status=#{gpsUninstallStatus}
+	</if>
+	<if test="StotalAmount !=null and StotalAmount !='' and EtotalAmount !=null and EtotalAmount !=''">
+	 and	a.apply_amount BETWEEN ${StotalAmount} and ${EtotalAmount}
+	</if>
+	<if test="ScreateTime != null and ScreateTime != '' and EcreateTime != null and EcreateTime != ''">
+			and (a.create_time between CONCAT(#{ScreateTime},' 00:00:00') and CONCAT(#{EcreateTime},' 23:59:59'))
+	</if>
+	<if test="orderTime !=null and orderTime !=''">
+		order by a.create_time ${orderTime}
+	</if>
+	<if test="orderAmount !=null and orderAmount !=''">
+		order by a.apply_amount ${orderAmount}
+	</if>
+	limit #{index},#{size}
+	</select>
+	
+	<select id="countAppHandledApply" parameterType="java.util.Map" resultType="java.lang.Integer">
+	select count(*) from (
+	select DISTINCT a.id applyId, a.apply_amount totalAmount, a.apply_period periodNum, c.name custName,
+	 c.cert_id custIdNo,a.`status` status, a.status_desc statusDesc, a.sfrz_status sfrzStatus, a.nqlr_status nqlrStatus,
+	 a.yc_status ycStatus, a.gps_install_status gpsInstallStatus, a.gps_uninstall_status gpsUninstallStatus, a.create_time createTime 
+	from c_apply_info a, c_cust_info c, c_apply_operator ao 
+	where 1=1 and a.cust_id = c.id and a.id = ao.apply_id 
+		<if test="userId !=null and userId  !=''">
+		and ao.user_id=#{userId}
+	</if>
+	<choose>
+		<when test="sfrzStatus !=null and sfrzStatus !=''">
+			and a.sfrz_status is NOT NULL
+		</when>
+		<otherwise>
+			and a.sfrz_status is NULL
+		</otherwise>
+	</choose>
+	<if test="applyId !=null and applyId !=''">
+		and a.id=#{applyId}
+	</if>
+	<if test="custName !=null and custName !=''">
+		and c.name=#{custName}
+	</if>
+	<if test="ycStatus !=null and ycStatus !=''">
+		and a.yc_status=#{ycStatus}
+	</if>
+	<if test="status !=null and status !=''">
+		and a.status=#{status}
+	</if>
+	<if test="gpsInstallStatus !=null and gpsInstallStatus !=''">
+		and a.gps_install_status=#{gpsInstallStatus}
+	</if>
+	<if test="gpsUninstallStatus !=null and gpsUninstallStatus !=''">
+		and a.gps_uninstall_status=#{gpsUninstallStatus}
+	</if>
+	<if test="StotalAmount !=null and StotalAmount !='' and EtotalAmount !=null and EtotalAmount !=''">
+	and	a.apply_amount BETWEEN ${StotalAmount} and ${EtotalAmount}
+	</if>
+	<if test="ScreateTime != null and ScreateTime != '' and EcreateTime != null and EcreateTime != ''">
+			and (a.create_time between CONCAT(#{ScreateTime},' 00:00:00') and CONCAT(#{EcreateTime},' 23:59:59'))
+	</if>
+		) table_count
+	</select>
+	<!-- 贷款详情信息 -->
+	<select id="selectAppAppinforById" resultType="com.moerlong.carloan.modular.loan.entity.vo.AppInforVO">
+	select a.id applyId,a.apply_amount applyAmount,a.product_type productType,a.apply_period applyPeriod,c.`name` custName,c.sex ,c.cert_id custIdNo,cr.car_num carNum
+	from c_apply_info a,c_cust_info c ,c_car_info cr
+	where a.cust_id=c.id and cr.cust_id=c.id and a.id=#{id}
+	</select>
+</mapper>
+

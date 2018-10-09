@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.JudicialAuthInfoDao">
+
+	<sql id="searchColumns">
+		judicialAuthInfo.id id,judicialAuthInfo.cust_id custId,judicialAuthInfo.apply_id applyId,judicialAuthInfo.type type,judicialAuthInfo.court_personal courtPersonal,judicialAuthInfo.court_personal_photo courtPersonalPhoto,judicialAuthInfo.zhixing_personal zhixingPersonal,judicialAuthInfo.zhixing_personal_photo zhixingPersonalPhoto,judicialAuthInfo.risk_personal riskPersonal,judicialAuthInfo.risk_personal_photo riskPersonalPhoto,judicialAuthInfo.warn_personal warnPersonal,judicialAuthInfo.warn_personal_photo warnPersonalPhoto,judicialAuthInfo.personal_remark personalRemark,judicialAuthInfo.create_time createTime,judicialAuthInfo.update_time updateTime,judicialAuthInfo.remark remark,judicialAuthInfo.is_deleted isDeleted
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.JudicialAuthInfo">
+		insert into
+		c_judicial_auth_info(warn_personal_photo,risk_personal,update_time,remark,risk_personal_photo,type,apply_id,zhixing_personal,personal_remark,is_deleted,create_time,cust_id,court_personal,warn_personal,id,court_personal_photo,zhixing_personal_photo)
+		values (#{warnPersonalPhoto},#{riskPersonal},#{updateTime},#{remark},#{riskPersonalPhoto},#{type},#{applyId},#{zhixingPersonal},#{personalRemark},#{isDeleted},#{createTime},#{custId},#{courtPersonal},#{warnPersonal},#{id},#{courtPersonalPhoto},#{zhixingPersonalPhoto})
+	</insert>
+
+	<delete id="delete">
+		delete from c_judicial_auth_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_judicial_auth_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.JudicialAuthInfo">
+		update c_judicial_auth_info set
+		warn_personal_photo=#{warnPersonalPhoto},risk_personal=#{riskPersonal},update_time=#{updateTime},remark=#{remark},risk_personal_photo=#{riskPersonalPhoto},type=#{type},apply_id=#{applyId},zhixing_personal=#{zhixingPersonal},personal_remark=#{personalRemark},is_deleted=#{isDeleted},create_time=#{createTime},cust_id=#{custId},court_personal=#{courtPersonal},warn_personal=#{warnPersonal},id=#{id},court_personal_photo=#{courtPersonalPhoto},zhixing_personal_photo=#{zhixingPersonalPhoto} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.JudicialAuthInfo">
+		update c_judicial_auth_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="type != null"> type=#{type},</if>
+            <if test="courtPersonal != null"> court_personal=#{courtPersonal},</if>
+            <if test="courtPersonalPhoto != null and courtPersonalPhoto !=''"> court_personal_photo=#{courtPersonalPhoto},</if>
+            <if test="zhixingPersonal != null"> zhixing_personal=#{zhixingPersonal},</if>
+            <if test="zhixingPersonalPhoto != null and zhixingPersonalPhoto !=''"> zhixing_personal_photo=#{zhixingPersonalPhoto},</if>
+            <if test="riskPersonal != null"> risk_personal=#{riskPersonal},</if>
+            <if test="riskPersonalPhoto != null and riskPersonalPhoto !=''"> risk_personal_photo=#{riskPersonalPhoto},</if>
+            <if test="warnPersonal != null"> warn_personal=#{warnPersonal},</if>
+            <if test="warnPersonalPhoto != null and warnPersonalPhoto !=''"> warn_personal_photo=#{warnPersonalPhoto},</if>
+            <if test="personalRemark != null"> personal_remark=#{personalRemark},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.JudicialAuthInfo">
+		select
+		<include refid="searchColumns" />
+		from c_judicial_auth_info judicialAuthInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.JudicialAuthInfo">
+		select
+		<include refid="searchColumns" />
+		from c_judicial_auth_info judicialAuthInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.JudicialAuthInfo">
+		select
+		<include refid="searchColumns" />
+		from c_judicial_auth_info judicialAuthInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<!--根据applyId和type查询-->
+	<select id="selByApplyIdAndType" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.JudicialAuthInfo">
+		select
+		<include refid="searchColumns"/>
+		from c_judicial_auth_info judicialAuthInfo
+		where judicialAuthInfo.apply_id=#{applyId} and judicialAuthInfo.type=#{type}
+
+	</select>
+</mapper>
+

@@ -1,0 +1,40 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+
+			<div class="row">
+					<input type="hidden" value="${applyId}" id="applyId">
+					<input type="hidden" id="idPicUrls" value="${idPicUrls}">
+					<input type="hidden" id="carId" value="${carId}">
+					<#input id="photoName" name="图片名称" underline="false" />
+					<label class="col-sm-3 control-label">上传图片</label>
+                   	<div  class="container">
+                   		<div class="form-grop"  enctype="multipart/form-data">
+                   			<div style="width:7%;float:left">
+                   				<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+                   					<span class="fileinput-new">选择文件</span>
+                   					<input type="file" id="photoUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+                   					<input type="hidden" id="photoUrl">
+                   				</span>
+                   				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:40%">
+                   					<img id="photoUrlImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+                   				</div>
+                   				
+                   			</div>
+                   		</div>
+                   </div>  
+                   <div style="margin-top:60px">
+						<#input id="photoRemark" name="备注" underline="false" />
+					</div>
+			<div class="">
+				<div style="width: 200px; margin: 115px auto;">
+					<button class="btn btn-primary" onclick="saveOrUpdate();" style="margin-left:35%"><i class="fa fa-save"></i>&nbsp;保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<script src="${ctxPath}/static/modular/cust/gpsuninstall.js"></script>
+@}

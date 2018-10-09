@@ -1,0 +1,1646 @@
+@layout("/common/_container.html"){
+
+<div class="">
+	<div class="">
+		<div class="ibox-title">
+			<h3>共借人面审信息</h3>
+		</div>
+		<ul class="nav nav-pills nav-justified" style="background-color: #ffffff">
+			<!--<li class="active" onclick="searchIdAuth()"><a href="javascript:;" data-toggle="tab" data-target="#div_sfrz">身份认证</a></li>-->
+			<li class="active" onclick="searchJudicial()"><a href="javascript:;" data-toggle="tab" data-target="#div_judicial_personal">司法认证(个人)</a></li>
+			<li onclick="searchJudicialCompany()"><a href="javascript:;" data-toggle="tab" data-target="#div_judicial_company">司法认证(企业)</a></li>
+			<!--<li onclick="searchTeleComAuth()"><a href="javascript:;" data-toggle="tab" data-target="#div_telecomAuth">运营商认证</a></li>-->
+			<li onclick="searchCreditAuth()"><a href="javascript:;" data-toggle="tab" data-target="#div_creditAuth">信贷认证</a></li>
+            <li onclick="searchCreditReport()"><a href="javascript:;" data-toggle="tab" data-target="#div_creditReport">央行征信(信息概要)</a></li>
+            <li onclick="searchLoanDetail()"><a href="javascript:;" data-toggle="tab" data-target="#div_creditLoanDetail">央行征信(信贷交易明细)</a></li>
+            <li onclick="searchBussQuery()"><a href="javascript:;" data-toggle="tab" data-target="#div_queryRecord">央行征信(查询记录)</a></li>
+			<!--<li onclick="searchCarPrice()"><a href="javascript:;" data-toggle="tab" data-target="#div_price">预估可贷金额测算</a></li>
+			<li onclick="searchIncome()"><a href="javascript:;" data-toggle="tab" data-target="#div_income">收入方式认证</a></li>-->
+			<li onclick="searchFinace()"><a href="javascript:;" data-toggle="tab" data-target="#div_finance">财力证明</a></li>
+
+		</ul>
+		<div class="tab-content">
+			<input type="hidden" value="${applyId}" id="applyId">
+			<input type="hidden" value="1" id="pamType">
+			<input type="hidden" value="${interfaceAddress}" id="interfaceAddress">
+			<input type="hidden" value="${flag}" id="flag">
+			<input type="hidden" value="${idPicUrls}" id="idPicUrls">
+
+			<!--身份认证-->
+			<div class="tab-pane fade in "  id="div_sfrz">
+				<div class="menu-item" id="menu-item20">
+					<div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;">
+						<h4>身份证认证信息</h4>
+						<input type="hidden" id="sfId">
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="fixed-table-header" style="margin-right: 0px;">
+									<table class="table table-hover table-striped" style="width: 100%;">
+										<thead>
+										<tr>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">是否通过认证</div>
+												<div class="fht-cell"></div>
+											</th>
+											<!--<th style="text-align: center; vertical-align: middle; " data-field="">
+                                                <div class="th-inner ">公安部预留用户图片id</div>
+                                                <div class="fht-cell"></div>
+                                            </th>-->
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">身份证正面图片地址</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">身份证背面图片地址</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">手持身份证照片地址</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">认证时间</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">姓名</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">身份证号码</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">民族</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">住址</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">发证机关</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">有效期</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">备注</div>
+												<div class="fht-cell"></div>
+											</th>
+										</tr>
+										</thead>
+										<tbody id="sfzList">
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<h4>活体认证信息</h4>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="fixed-table-header" style="margin-right: 0px;">
+									<table class="table table-hover table-striped" style="width: 100%;">
+										<thead>
+										<tr>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">是否认证</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">认证时间</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">活体眨眼图片地址</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">活体上下点头图片地址</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">活体张嘴图片地址</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">活体左右摇头图片地址</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">备注</div>
+												<div class="fht-cell"></div>
+											</th>
+										</tr>
+										</thead>
+										<tbody id="livenessList">
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div style="width: 265px; margin: 80px auto;">
+								<#button name="返回" icon="fa fa-chevron-left" clickFun="backCommon();"/>
+								<#button name="查看主借人信息" icon="fa fa-eye" clickFun="showZjrDetail();"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!--司法认证-->
+		<div class="tab-pane fade in  active"  id="div_judicial_personal">
+			<input type="hidden" id="judicialId">
+			<div class="menu-item" id="menu-item4">
+				<div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;">
+					<!--<h5>司法认证(个人)</h5>-->
+					<div class="row">
+						<div class="col-sm-6">
+							<#select id="courtPersonal" name="全国法院被执行人信息查询(个人)" underline="false">
+							<option value="0">正常</option>
+							<option value="1">异常</option>
+						</#select>
+						<label class="col-sm-3 control-label">全国法院被执行人信息查询(个人)附件</label>
+						<div  class="container">
+							<div class="form-grop"  enctype="multipart/form-data">
+								<div style="width:7%;float:left">
+									<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+                                        <span class="fileinput-new">选择文件</span>
+                                        <input type="file" id="courtPersonalPhoto1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+                                        <input type="hidden" id="courtPersonalPhoto">
+                                    </span> -->
+									<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+										<img id="courtPersonalPhotoUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<#select id="zhixingPersonal" name="中国执行信息公开网查询(个人)" underline="false">
+						<option value="0">正常</option>
+						<option value="1">异常</option>
+					</#select>
+					<label class="col-sm-3 control-label">中国执行信息公开网查询(个人)附件</label>
+					<div  class="container">
+						<div class="form-grop"  enctype="multipart/form-data">
+							<div style="width:7%;float:left">
+								<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+                                    <span class="fileinput-new">选择文件</span>
+                                    <input type="file" id="zhixingPersonalPhoto1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+                                    <input type="hidden" id="zhixingPersonalPhoto">
+                                </span> -->
+								<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+									<img id="zhixingPersonalPhotoUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6" style="margin-top:60px">
+					<#select id="riskPersonal" name="风险信息网查询(个人)">
+					<option value="0">正常</option>
+					<option value="1">异常</option>
+				</#select>
+				<label class="col-sm-3 control-label">风险信息网查询(个人)附件</label>
+				<div  class="container">
+					<div class="form-grop"  enctype="multipart/form-data">
+						<div style="width:7%;float:left">
+							<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+                                <span class="fileinput-new">选择文件</span>
+                                <input type="file" id="riskPersonalPhoto1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+                                <input type="hidden" id="riskPersonalPhoto">
+                            </span> -->
+							<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+								<img id="riskPersonalPhotoUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6" style="margin-top:60px">
+				<#select id="warnPersonal" name="风险预警网查询(个人)">
+					<option value="0">正常</option>
+					<option value="1">异常</option>
+				</#select>
+				<label class="col-sm-3 control-label">风险预警网查询(个人)附件</label>
+				<div  class="container">
+					<div class="form-grop"  enctype="multipart/form-data">
+						<div style="width:7%;float:left">
+							<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+								<span class="fileinput-new">选择文件</span>
+								<input type="file" id="warnPersonalPhoto1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+								<input type="hidden" id="warnPersonalPhoto">
+							</span> -->
+							<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+								<img id="warnPersonalPhotoUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div style="width: 265px; margin: 175px auto;">
+				<#button name="返回" icon="fa fa-chevron-left" clickFun="backCommon();"/>
+				<#button name="查看主借人信息" icon="fa fa-eye" clickFun="showZjrDetail();"/>
+			</div>
+		</div>
+
+</div>
+</div>
+
+</div>
+<!--司法认证(企业)-->
+<div class="tab-pane fade in "  id="div_judicial_company">
+	<input type="hidden" id="judicialCompanyId">
+	<div class="menu-item" id="menu-item9">
+		<div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;">
+			<!--<h5>司法认证(企业)</h5>-->
+			
+			<div class="row">
+			
+				<div class="col-sm-6">
+					<#input id="judicialCompanyName" name="企业名称" underline="false" />
+					</div>
+					<div class="col-sm-6">
+						<#input id="industry" name="所属行业" underline="false" />
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">企业成立时间</label>
+							<div class="col-sm-9">
+								<input class="form-control" id="foundTime" name="divorceDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6">
+						<#select id="courtEnterprise" name="全国法院被执行人信息查询(企业)" underline="false">
+							<option value="">---请选择---</option>
+							<option value="0">正常</option>
+							<option value="1">异常</option>
+						</#select>
+					</div>
+					
+					<div class="col-sm-6">
+						<#select id="zhixingEnterprise" name="中国执行信息公开网查询(企业)" underline="false">
+							<option value="">---请选择---</option>
+							<option value="0">正常</option>
+							<option value="1">异常</option>
+						</#select>
+					</div>
+					
+					<div class="col-sm-6">
+						<#select id="riskEnterprise" name="风险信息网查询(企业)">
+							<option value="">---请选择---</option>
+							<option value="0">正常</option>
+							<option value="1">异常</option>
+						</#select>
+					</div>
+					
+					<div class="col-sm-6">
+						<#select id="warnEnterprise" name="风险预警网查询(企业)">
+							<option value="">---请选择---</option>
+							<option value="0">正常</option>
+							<option value="1">异常</option>
+						</#select>
+					</div>
+					
+					<div class="col-sm-6">
+						<#select id="enterpriseStatus" name="工商注册企业状态">
+							<option value="">---请选择---</option>
+							<option value="0">存续</option>
+							<option value="1">吊销</option>
+							<option value="2">注销</option>
+							<option value="3">无法核实</option>
+						</#select>
+					</div>
+					
+					<div class="col-sm-6">
+						<#input id="enterpriseRemark" name="企业备注" underline="false" />
+					</div>
+					<div class="col-sm-6">
+						<#input id="companyRemark" name="备注" underline="false" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<label class="col-sm-3 control-label">全国法院被执行人信息查询(企业)附件</label>
+			            <div  class="container">
+			           		<div class="form-grop"  enctype="multipart/form-data">
+			           			<div style="width:7%;float:left">
+			           				<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+			           					<span class="fileinput-new">选择文件</span>
+			           					<input type="file" id="courtEnterprisePhoto1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+			           					<input type="hidden" id="courtEnterprisePhoto">
+			           				</span> -->
+			           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+			           					<img id="courtEnterprisePhotomImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+			           				</div>
+			           			</div>
+			           		</div>
+			           </div>  
+					</div>
+		
+					<div class="col-sm-6">
+						<label class="col-sm-3 control-label">中国执行信息公开网查询(企业)附件</label>
+			            <div  class="container">
+			           		<div class="form-grop"  enctype="multipart/form-data">
+			           			<div style="width:7%;float:left">
+			           				<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+			           					<span class="fileinput-new">选择文件</span>
+			           					<input type="file" id="zhixingEnterprisePhoto1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+			           					<input type="hidden" id="zhixingEnterprisePhoto">
+			           				</span> -->
+			           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+			           					<img id="zhixingEnterprisePhotomImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+			           				</div>
+			           			</div>
+			           		</div>
+			           </div>  
+					</div>
+					<div class="col-sm-6" style="margin-top: 60px;">
+						<label class="col-sm-3 control-label">风险信息网查询(企业)附件</label>
+			            <div  class="container">
+			           		<div class="form-grop"  enctype="multipart/form-data">
+			           			<div style="width:7%;float:left">
+			           				<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+			           					<span class="fileinput-new">选择文件</span>
+			           					<input type="file" id="riskEnterprisePhoto1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+			           					<input type="hidden" id="riskEnterprisePhoto">
+			           				</span> -->
+			           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+			           					<img id="riskEnterprisePhotomImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+			           				</div>
+			           			</div>
+			           		</div>
+			           </div>  
+					</div>
+					<div class="col-sm-6" style="margin-top: 60px;">
+						<label class="col-sm-3 control-label">风险预警网查询(企业)附件</label>
+			            <div  class="container">
+			           		<div class="form-grop"  enctype="multipart/form-data">
+			           			<div style="width:7%;float:left">
+			           				<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+			           					<span class="fileinput-new">选择文件</span>
+			           					<input type="file" id="warnEnterprisePhoto1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+			           					<input type="hidden" id="warnEnterprisePhoto">
+			           				</span> -->
+			           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+			           					<img id="warnEnterprisePhotomImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+			           				</div>
+			           			</div>
+			           		</div>
+			           </div>  
+					</div>
+				</div>
+							
+				
+			<div style="width: 265px; margin:80px auto;">
+				<#button name="返回" icon="fa fa-chevron-left" clickFun="backCommon();"/>
+				<#button name="查看主借人信息" icon="fa fa-eye" clickFun="showZjrDetail();"/>
+			</div>
+
+
+</div>
+</div>
+</div>
+
+<!--运营商认证-->
+<div class="tab-pane fade in"  id="div_telecomAuth">
+	<input type="hidden" id="telecomId">
+	<div class="menu-item" id="menu-item10">
+		<div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;">
+			<!--<h5>运营商认证</h5>
+			<div class="row">
+				<div class="col-sm-6">
+					<#input id="userName" name="姓名" underline="false" />
+				</div>
+				<div class="col-sm-6">
+					<#input id="idNum" name="身份证号" underline="false" />
+				</div>
+				<div class="col-sm-6">
+					<#input id="mobile" name="手机号" underline="false" />
+				</div>
+				<div class="col-sm-6">
+					<#button name="获取数据" icon="fa-search" clickFun="getTelecomData();"/>
+				</div>
+			</div>-->
+
+			<h5>运营商认证附件</h5>
+			<div class="row">
+				<div class="col-sm-6">
+					<label class="col-sm-3 control-label">魔蝎账单详情附件</label>
+		            <div  class="container">
+		           		<div class="form-grop"  enctype="multipart/form-data">
+		           			<div style="width:7%;float:left">
+		           				<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+		           					<span class="fileinput-new">选择文件</span>
+		           					<input type="file" id="billDetailUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+		           					<input type="hidden" id="billDetailUrl">
+		           				</span> -->
+		           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+		           					<img id="billDetailUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+		           				</div>
+		           			</div>
+		           		</div>
+		           </div>  
+				</div>
+
+
+				<div class="col-sm-6">
+					<label class="col-sm-3 control-label">魔蝎报告附件</label>
+		            <div  class="container">
+		           		<div class="form-grop"  enctype="multipart/form-data">
+		           			<div style="width:7%;float:left">
+		           				<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+		           					<span class="fileinput-new">选择文件</span>
+		           					<input type="file" id="reportUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+		           					<input type="hidden" id="reportUrl">
+		           				</span> -->
+		           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+		           					<img id="reportUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+		           				</div>
+		           			</div>
+		           		</div>
+		           </div>  
+				</div>
+				<div class="col-sm-6" style="margin-top: 95px;">
+					<label class="col-sm-3 control-label">兼容报告附件</label>
+		            <div  class="container">
+		           		<div class="form-grop"  enctype="multipart/form-data">
+		           			<div style="width:7%;float:left">
+		           				<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+		           					<span class="fileinput-new">选择文件</span>
+		           					<input type="file" id="compatibleReportUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+		           					<input type="hidden" id="compatibleReportUrl">
+		           				</span> -->
+		           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+		           					<img id="compatibleReportUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+		           				</div>
+		           			</div>
+		           		</div>
+		           </div>  
+				</div>
+			</div>
+
+			<h5 style="margin-top:90px">运营商信息</h5>
+			<div class="row">
+				<table class="table table-hover table-striped" style="width: 100%;">
+					<thead>
+					<tr>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">手机号</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">认证状态</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">认证时间</div>
+							<div class="fht-cell"></div>
+						</th>
+					</tr>
+					</thead>
+					<tbody id="telecomBaseInfo">
+
+					</tbody>
+				</table>
+			</div>
+
+			<h5>运营商认证信息</h5>
+			<div class="row">
+				<table class="table table-hover table-striped" style="width: 100%;">
+					<thead>
+					<tr>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">是否实名认证</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">手机归属地</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">入网时长</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近三个月通话活跃天数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近六个月通话活跃天数</div>
+							<div class="fht-cell"></div>
+						</th>
+					</tr>
+					</thead>
+					<tbody id="telecomAuthInfo">
+
+					</tbody>
+				</table>
+			</div>
+
+			<h5>运营商风险分析</h5>
+			<div class="row">
+				<table class="table table-hover table-striped" style="width: 100%;">
+					<thead>
+					<tr>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">风险项</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">风险项描述</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近一月通话次数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近三月通话次数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近六月通话次数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近三月平均通话次数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近六月平均通话次数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近一月通话时长(秒)</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近三月通话时长(秒)</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近六月通话时长(秒)</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近三月平均通话时长(秒)</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近六月平均通话时长(秒)</div>
+							<div class="fht-cell"></div>
+						</th>
+					</tr>
+					</thead>
+					<tbody id="telecomCallRisk">
+
+					</tbody>
+				</table>
+			</div>
+
+			<h5>运营商通讯录朋友圈TOP项</h5>
+			<div class="row">
+				<table class="table table-hover table-striped" style="width: 100%;">
+					<thead>
+					<tr>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">对方号码</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">联系人号码归属地</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">号码类型</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">号码标识</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">通话次数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">通话时长</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">主叫次数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">被叫次数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">主叫时长(秒)</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">被叫时长(秒)</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">6月top3或者3月top3</div>
+							<div class="fht-cell"></div>
+						</th>
+					</tr>
+					</thead>
+					<tbody id="telecomFriendCircle">
+
+					</tbody>
+				</table>
+			</div>
+
+			<h5>运营商漫游信息</h5>
+			<div class="row">
+				<table class="table table-hover table-striped" style="width: 100%;">
+					<thead>
+					<tr>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">序号</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">漫游地址</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近三月漫游天数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近六月漫游天数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近3月最大连续漫游天数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近6月最大连续漫游天数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近3月连续漫游1天以上的次数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近6月连续漫游1天以上的次数</div>
+							<div class="fht-cell"></div>
+						</th>
+					</tr>
+					</thead>
+					<tbody id="telecomRoamInfo">
+
+					</tbody>
+				</table>
+				<div align="right">
+					共<span id="total"></span>条记录，共<span id="pages"></span>页，当前第<span id="pageNum"></span>页，<a style='color: #30af90;' href="javascript:searchRoamInfo(0)">首页</a>&nbsp;&nbsp;&nbsp;<a style='color: #30af90;' href="javascript:searchRoamInfo(-1)">前一页</a>&nbsp;&nbsp;&nbsp;<a style='color: #30af90;' href="javascript:searchRoamInfo(1)">后一页</a>&nbsp;&nbsp;&nbsp;<a style='color: #30af90;' href="javascript:searchRoamInfo(2)">尾页</a>
+					<input type="hidden" id="prePage"><input type="hidden"  id="nextPage">
+				</div>
+			</div>
+
+			<h5>通话记录详细信息</h5>
+			<div class="row">
+				<table class="table table-hover table-striped" style="width: 100%;">
+					<thead>
+					<tr>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">序号</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">联系人号码归属地</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">联系人号码</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">是否是紧急联系人</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">与联系人关系</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">号码类型</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">号码标识</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近一周通话次数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近一月通话次数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近三月通话次数</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近六月通话次数</div>
+							<div class="fht-cell"></div>
+						</th><th style="text-align: center; vertical-align: middle; " data-field="">
+						<div class="th-inner ">近三月通话时长(秒)</div>
+						<div class="fht-cell"></div>
+					</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">近六月通话时长(秒)</div>
+							<div class="fht-cell"></div>
+						</th>
+						<th style="text-align: center; vertical-align: middle; " data-field="">
+							<div class="th-inner ">操作</div>
+							<div class="fht-cell"></div>
+						</th>
+
+					</tr>
+					</thead>
+					<tbody id="telecomCallDetail">
+
+					</tbody>
+				</table>
+				<div align="right">
+					共<span id="callTotal"></span>条记录，共<span id="callPages"></span>页，当前第<span id="callPageNum"></span>页，<a style='color: #30af90;' href="javascript:searchCallDetail(0)">首页</a>&nbsp;&nbsp;&nbsp;<a style='color: #30af90;' href="javascript:searchCallDetail(-1)">前一页</a>&nbsp;&nbsp;&nbsp;<a style='color: #30af90;' href="javascript:searchCallDetail(1)">后一页</a>&nbsp;&nbsp;&nbsp;<a style='color: #30af90;' href="javascript:searchCallDetail(2)">尾页</a>
+					<input type="hidden" id="callPrePage"><input type="hidden"  id="callNextPage">
+				</div>
+				<div align="center">
+					<#button name="返回" icon="fa fa-chevron-left" clickFun="backCommon();"/>
+					<#button name="查看主借人信息" icon="fa fa-eye" clickFun="showZjrDetail();"/>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+<!--信贷认证-->
+<div class="tab-pane fade in "  id="div_creditAuth">
+	<input type="hidden" id="creditAuthId">
+	
+	<div class="menu-item" id="menu-item3">
+		<div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;">
+			<!--<h5>信贷认证</h5>-->
+			<div class="row">
+				<div class="col-sm-6">
+					<#input id="tdScore" name="同盾贷前审核，评分" underline="false" />
+				</div>
+				<div class="col-sm-6">
+					<#input id="brRuleScore" name="百融贷前审核，规则集分" underline="false" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<#input id="brCreditScore" name="信用评分" underline="false" />
+				</div>
+				<div class="col-sm-6">
+					<#select id="hasJudgement" name="裁判文书网">
+					<option value="">---请选择---</option>
+						<option value="0">无</option>
+						<option value="1">有</option>
+					</#select>
+				</div>
+			</div>
+				
+			<div class="row">
+				<div class="col-sm-6" >
+					<label class="col-sm-3 control-label">同盾贷前审核，附件</label>
+		            <div  class="container">
+		           		<div class="form-grop"  enctype="multipart/form-data">
+		           			<div style="width:7%;float:left">
+		           				<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+		           					<span class="fileinput-new">选择文件</span>
+		           					<input input type="file" id="tdScoreAttachUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+		           					<input type="hidden" id="tdScoreAttachUrl">
+		           				</span> -->
+		           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+		           					<img id="tdScoreAttachUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+		           				</div>
+		           			</div>
+		           		</div>
+		           </div>  
+				</div>
+				<div class="col-sm-6" >
+					<label class="col-sm-3 control-label">同盾贷前审核，贷前风险情况附件</label>
+		            <div  class="container">
+		           		<div class="form-grop"  enctype="multipart/form-data">
+		           			<div style="width:7%;float:left">
+		           				<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+		           					<span class="fileinput-new">选择文件</span>
+		           					<input type="file" id="tdRiskAttachUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+		           					<input type="hidden" id="tdRiskAttachUrl">
+		           				</span> -->
+		           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+		           					<img id="tdRiskAttachUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+		           				</div>
+		           			</div>
+		           		</div>
+		           </div>  
+				</div>
+			</div>
+				
+
+			<div class="row" style="margin-top:60px">
+				<div class="col-sm-6" >
+					<label class="col-sm-3 control-label">百融贷前审核，报告附件</label>
+		            <div  class="container">
+		           		<div class="form-grop"  enctype="multipart/form-data">
+		           			<div style="width:7%;float:left">
+		           				<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+		           					<span class="fileinput-new">选择文件</span>
+		           					<input type="file" id="brAttachUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+		           					<input type="hidden" id="brAttachUrl">
+		           				</span> -->
+		           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+		           					<img id="brAttachUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+		           				</div>
+		           			</div>
+		           		</div>
+		           </div>  
+				</div>
+				<div class="col-sm-6" >
+					<label class="col-sm-3 control-label">裁判文书网附件</label>
+		            <div  class="container">
+		           		<div class="form-grop"  enctype="multipart/form-data">
+		           			<div style="width:7%;float:left">
+		           				<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+		           					<span class="fileinput-new">选择文件</span>
+		           					<input type="file" id="judgementAttachUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+		           					<input type="hidden" id="judgementAttachUrl">
+		           				</span> -->
+		           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+		           					<img id="judgementAttachUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+		           				</div>
+		           			</div>
+		           		</div>
+		           </div>  
+				</div>
+			</div>
+			<div style="width: 265px; margin: 80px auto;">
+				<#button name="返回" icon="fa fa-chevron-left" clickFun="backCommon();"/>
+				<#button name="查看主借人信息" icon="fa fa-eye" clickFun="showZjrDetail();"/>
+			</div>
+		</div>
+	</div>
+</div>
+<!--央行征信(信息概要)-->
+<div class="tab-pane fade in "  id="div_creditReport">
+    <input type="hidden" id="creditReportId">
+    <div class="menu-item" id="menu-item11">
+        <div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;">
+            <h4>信用提示</h4>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">征信报告采集时间</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="collectionDate" name="collectionDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <#input id="houseLoanNum" name="个人住房贷款笔数" underline="false" />
+                </div>
+
+                <div class="col-sm-6">
+                    <#input id="houseBussLoanNum" name="个人商用房贷款笔数" underline="false" />
+                </div>
+
+                <div class="col-sm-6">
+                    <#input id="otherLoanNum" name="其他贷款笔数" underline="false" />
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">首笔贷款发放月份</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="firstLoanStartDate" name="firstLoanStartDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <#input id="creditCardNum" name="贷记卡账户数" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">首张借记卡发卡月份</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="firstCreditCardStartDate" name="firstCreditCardStartDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <#input id="semiCreditCardNum" name="准贷记卡账户数" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">首张准贷记卡发卡月份</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="firstSemiCreditCardStartDate" name="firstSemiCreditCardStartDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <#input id="selfDeclareNum" name="本人声明数量" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="objectionNum" name="异议标注数量" underline="false" />
+                </div>
+            </div>
+            <h4>逾期违约</h4>
+            <div class="row">
+                <div class="col-sm-6">
+                    <#input id="loanOverdueNum" name="贷款逾期笔数" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="loanOverdueMonthNum" name="贷款逾期月份数" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="loanMaxAmount" name="贷款逾期单月最高逾期总额(元)" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="loanMaxMonthNum" name="最长逾期月数" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="cardOverdueNum" name="贷记卡逾期账户数" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="cardMonthNum" name="贷记卡逾期月份数" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="cardOverdueMaxAmount" name="贷记卡单月最高逾期总额(元)" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="cardMaxMonthNum" name="贷记卡最长逾期月份数" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="semiCardOverdueNum" name="准贷记卡60天以上透支账户数" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="semiCardMonthNum" name="准贷记卡60天以上透支月份数" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="margin-left: -45px;">准贷记卡60天以上透支单月最高透支金额(元)</label>
+                        <div class="col-sm-9" style="margin-left: -29px;">
+                            <input class="form-control" id="semiCardMaxAmount" name="semiCardMaxAmount" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="margin-left: -74px;">准贷记卡60天以上透支最长透支月数</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="semiCardMaxMonthNum" name="semiCardMaxMonthNum" type="text">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h4>授信概要</h4>
+            <div class="row">
+                <div class="col-sm-6">
+                    <#input id="loanLegalOrgNum" name="贷款法人机构数" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="loanOrgNum" name="贷款机构数" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="loanNum" name="贷款笔数" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="loanTotalAmount" name="合同总金额(元)" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="loanLeftAmount" name="贷款余额(元)" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="loanTotalMonthAmount" name="总月还款" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="cardLegalOrgNum" name="发卡法人机构数" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="cardOrgNum" name="发卡机构数" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="cardAccountNum" name="账户数" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="cardTotalAmount" name="授信总额(元)" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="cardMaxAmount" name="单家行最高授信额(元)" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="cardMinAmount" name="单家行最低授信额(元)" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="cardUsedAmount" name="已用额度(元)" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                    <#input id="cardAvgAmount" name="近6个月平均使用额度(元)" underline="false" />
+                </div>
+                <div class="col-sm-6">
+                   <label class="col-sm-3 control-label">征信报告附件</label>
+		            <div  class="container">
+		           		<div class="form-grop"  enctype="multipart/form-data">
+		           			<div style="width:7%;float:left">
+		           				<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+		           					<span class="fileinput-new">选择文件</span>
+		           					<input type="file" id="reportAttachUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+		           					<input type="hidden" id="reportAttachUrl">
+		           				</span> -->
+		           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+		           					<img id="reportAttachUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+		           				</div>
+		           			</div>
+		           		</div>
+		           </div>  
+
+                </div>
+
+            </div>
+            <div style="width: 265px; margin: 80px auto;">
+                <#button name="返回" icon="fa fa-chevron-left" clickFun="backCommon();"/>
+                <#button name="查看主借人信息" icon="fa fa-eye" clickFun="showZjrDetail();"/>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--央行征信(信贷交易明细)-->
+<div class="tab-pane fade in "  id="div_creditLoanDetail">
+    <input type="hidden" id="loanDetailId">
+    <div class="menu-item" id="menu-item12">
+        <div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;">
+            <h4>贷款</h4>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="fixed-table-header" style="margin-right: 0px;">
+                        <table class="table table-hover table-striped" style="width: 100%;">
+                            <thead>
+                            <tr>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner "></div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">贷款机构</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">贷款金额(元)</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">贷款类型 </div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">贷款期数 </div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">贷款开始时间 </div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">贷款到期时间 </div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">账户状态</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">五级分类</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">本金金额(元)</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">剩余期数</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">本月应还款金额(元)</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">本次应还款日</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">本月实还款金额(元)</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">最近一次还款日期</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">当前逾期期数</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">当前逾期金额(元)</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">逾期31-60天未还本金</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">逾期61-90天未还本金</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">逾期91-180天未还本金</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">逾期180天以上未还本金 </div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">两年前还款记录情况</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">备注</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody id="creditLoanDetailList">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--<div style="width: 755px; margin-left: 255px;">
+                    <#button name="返回" icon="fa fa-chevron-left" clickFun="back();"/>
+                    <#button name="添加信贷交易记录" icon="fa fa-plus" clickFun="showAddCreditLoanDetail('add')"/>
+                    <#button name="删除信贷交易记录" icon="fa fa-trash-o" clickFun="delLoanDetail();"/>
+                    <#button name="修改信贷交易记录" icon="fa fa-edit" clickFun="updateLoanDetail();"/>
+                    <#button name="返回主借人信息" icon="fa fa-chevron-left" clickFun="showZjr();"/>
+                </div>-->
+            </div>
+
+            <h4>贷记卡</h4>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="fixed-table-header" style="margin-right: 0px;">
+                        <table class="table table-hover table-striped" style="width: 100%;">
+                            <thead>
+                            <tr>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner "></div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">信用卡发卡机构</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">授信额度(元)</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">共享授信额度(元)</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">类型 </div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">账户状态</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">已用额度(元)</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">近6个月平均使用额度(元)</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">最大使用额度(元)</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">当前逾期期数</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">当前逾期金额(元)</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">备注</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody id="creditCardDetailList">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div style="width: 265px; margin: 80px auto;">
+                    <#button name="返回" icon="fa fa-chevron-left" clickFun="backCommon();"/>
+                    <#button name="查看主借人信息" icon="fa fa-eye" clickFun="showZjrDetail();"/>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+<!--央行征信（查询记录）-->
+<div class="tab-pane fade in "  id="div_queryRecord">
+    <div class="menu-item" id="menu-item13">
+        <div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;">
+            <h4>机构查询记录</h4>
+            <input type="hidden" id="bussId">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="fixed-table-header" style="margin-right: 0px;">
+                        <table class="table table-hover table-striped" style="width: 100%;">
+                            <thead>
+                            <tr>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner "></div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">查询时间</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">查询机构</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">查询原因 </div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">备注</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody id="bussQueryList">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--<div style="width: 755px; margin-left: 255px;">
+                    <#button name="返回" icon="fa fa-chevron-left" clickFun="back();"/>
+                    <#button name="添加机构查询记录" icon="fa fa-plus" clickFun="showAddBussQuery('add')"/>
+                    <#button name="删除机构查询记录" icon="fa fa-trash-oh" clickFun="delBussQuery();"/>
+                    <#button name="修改机构查询记录" icon="fa fa-edit" clickFun="updateBussQuery();"/>
+                    <#button name="返回主借人信息" icon="fa fa-chevron-left" clickFun="showZjr();"/>
+                </div>-->
+            </div>
+
+            <h4>个人查询记录</h4>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="fixed-table-header" style="margin-right: 0px;">
+                        <table class="table table-hover table-striped" style="width: 100%;">
+                            <thead>
+                            <tr>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner "></div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">查询时间</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">查询机构</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle; " data-field="">
+                                    <div class="th-inner ">备注</div>
+                                    <div class="fht-cell"></div>
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody id="personalQueryList">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div style="width: 265px; margin: 80px auto;">
+                    <#button name="返回" icon="fa fa-chevron-left" clickFun="backCommon();"/>
+                    <#button name="查看主借人信息" icon="fa fa-eye" clickFun="showZjrDetail();"/>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+<!--预估可贷金额测算-->
+<div class="tab-pane fade in  "  id="div_price">
+	<input type="hidden" id="priceId">
+	<div class="menu-item" id="menu-item2">
+		<div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;">
+			<h5>预估可贷金额测算</h5>
+			<div class="row">
+				<div class="col-sm-6">
+					<#input id="che300Price" name="车300评估价为(元)" underline="false" />
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">氢诺拟估价规则：裸车价(元)</label>
+						<div class="col-sm-9">
+							<input class="form-control" id="nakePrice" name="nakePrice" type="text" onchange="calcTingnuoPrice()">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<#input id="jingzhenguPrice" name="精真估评估价为(元)" underline="false" />
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">按</label>
+						<div class="col-sm-5" style="padding-right:5px;">
+							<select class="form-control" id="yearOrMonth" name="yearOrMonth" onchange="setYearOrMonth()" disabled="disabled">
+								<option value="1">年</option>
+								<option value="2" selected="selected">月</option>
+							</select>
+						</div>
+						<label class="col-sm-4 control-label" style="text-align: left; padding-left: 0;">折旧</label>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">折旧基数为</label>
+						<div class="col-sm-5" style="padding-right:5px;">
+							<input class="form-control" id="depreciationBase" name="depreciationBase" type="text" onchange="calcTingnuoPrice()">
+						</div>
+						<label id="showYearOrMonth" class="col-sm-4 control-label" style="text-align: left; padding-left: 0;">月</label>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">折旧系数为</label>
+						<div class="col-sm-9">
+							<select class="form-control" id="depreciationRatio" name="depreciationRatio" onchange="calcTingnuoPrice()">
+								<option value="">---请选择---</option>
+								<option value="0.1">10%</option>
+								<option value="0.006">6‰</option>
+								<option value="0.008">8‰</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">授信成数为</label>
+						<div class="col-sm-5" style="padding-right:5px;">
+							<input class="form-control" id="creditRatio" name="creditRatio" type="text" onchange="calcTingnuoPrice()">
+						</div>
+						<label class="col-sm-4 control-label" style="text-align: left; padding-left: 0;">成</label>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<#input id="tsingnuoPrice" name="氢诺拟可贷金额为(元)" underline="false" readonly="true"/>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6">
+					<label class="col-sm-3 control-label">车300评估附件上传</label>
+					<div  class="container">
+						<div class="form-grop"  enctype="multipart/form-data">
+							<div style="width:7%;float:left">
+				           			<!-- 	<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+				           					<span class="fileinput-new">选择文件</span>
+				           					<input type="file" id="che300AttachUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+				           					<input type="hidden" id="che300AttachUrl">
+				           				</span> -->
+								<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+									<img id="che300AttachUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<label class="col-sm-3 control-label">精真估评估附件上传</label>
+					<div  class="container">
+						<div class="form-grop"  enctype="multipart/form-data">
+							<div style="width:7%;float:left">
+				           				<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+				           					<span class="fileinput-new">选择文件</span>
+				           					<input type="file" id="jingzhenguAttachUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+				           					<input type="hidden" id="jingzhenguAttachUrl">
+				           				</span> -->
+								<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+									<img id="jingzhenguAttachUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<div style="width: 265px; margin: 80px auto;">
+					<#button name="返回" icon="fa fa-chevron-left" clickFun="backCommon();"/>
+					<#button name="查看主借人信息" icon="fa fa-eye" clickFun="showZjrDetail();"/>
+				</div>
+
+			</div>
+		</div>
+	</div>
+<!--收入方式认证-->
+<div class="tab-pane fade in"  id="div_income">
+	<input type="hidden" id="incomeId">
+	<div class="menu-item" id="menu-item1">
+		<div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;">
+			<h5>收入方式认证</h5>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">认收方案类别</label>
+						<div class="col-sm-9">
+							<select class="form-control" id="incomeType" name="incomeType" onchange="setShowRsBase()">
+								<option value="0">按揭房贷方案</option>
+								<option value="1">抵押房贷方案</option>
+								<option value="2">全款房方案</option>
+								<option value="3">寿险保单方案</option>
+								<option value="4">他行车贷方案</option>
+								<option value="5">流水结息方案</option>
+								<option value="6">公积金方案</option>
+								<option value="7">打卡工资方案</option>
+							</select>
+						</div>
+					</div>
+					<#input id="loanAmount" name="拟可贷金额为(元)" underline="false" onchange="setDti()"/>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label" id="showRsBase">认收方案基数为:月供金额(元)</label>
+						<div class="col-sm-9" style="padding-right:5px;">
+							<input class="form-control" id="incomeAmount" name="creditRatio" type="text" onchange="setIncomeConfirmAmount()">
+						</div>
+
+					</div>
+					<#input id="incomeConfirmAmount" name="认收金额为(元)" underline="false" readonly="true"/>
+				</div>
+				<div class="col-sm-6">
+					<#input id="dti" name="DTI为(%)" underline="false" />
+					<#input id="incomeRemark" name="备注说明" underline="false" />
+				</div>
+				<div class="col-sm-6">
+					<label class="col-sm-3 control-label">附件上传</label>
+		            <div  class="container">
+		           		<div class="form-grop"  enctype="multipart/form-data">
+		           			<div style="width:7%;float:left">
+		           				<!-- <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+		           					<span class="fileinput-new">选择文件</span>
+		           					<input type="file" id="attachUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+		           					<input type="hidden" id="attachUrl">
+		           				</span> -->
+		           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+		           					<img id="attachUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+		           				</div>
+		           			</div>
+		           		</div>
+		           </div>  
+				</div>
+				<div style="width: 265px; margin: 245px auto;">
+					<#button name="返回" icon="fa fa-chevron-left" clickFun="backCommon();"/>
+					<#button name="查看主借人信息" icon="fa fa-eye" clickFun="showZjrDetail();"/>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!--财力证明-->
+<div class="tab-pane fade in"  id="div_finance">
+	<input type="hidden" id="finaceId">
+	<div class="menu-item" id="menu-item7">
+		<div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;">
+			<!--<h5>财力证明</h5>-->
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="fixed-table-header" style="margin-right: 0px;">
+						<table class="table table-hover table-striped" style="width: 100%;">
+							<thead>
+							<tr>
+								<th style="text-align: center; vertical-align: middle; " data-field="">
+									<div class="th-inner "></div>
+									<div class="fht-cell"></div>
+								</th>
+								<th style="text-align: center; vertical-align: middle; " data-field="">
+									<div class="th-inner ">财力证明类型</div>
+									<div class="fht-cell"></div>
+								</th>
+								<th style="text-align: center; vertical-align: middle; " data-field="">
+									<div class="th-inner ">性质</div>
+									<div class="fht-cell"></div>
+								</th>
+								<th style="text-align: center; vertical-align: middle; " data-field="">
+									<div class="th-inner ">状态</div>
+									<div class="fht-cell"></div>
+								</th>
+								<th style="text-align: center; vertical-align: middle; " data-field="">
+									<div class="th-inner ">数量</div>
+									<div class="fht-cell"></div>
+								</th>
+								<th style="text-align: center; vertical-align: middle; " data-field="">
+									<div class="th-inner ">备注</div>
+									<div class="fht-cell"></div>
+								</th>
+							</tr>
+							</thead>
+							<tbody id="finaceList">
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div style="width: 265px; margin: 80px auto;">
+					<#button name="返回" icon="fa fa-chevron-left" clickFun="backCommon();"/>
+					<#button name="查看主借人信息" icon="fa fa-eye" clickFun="showZjrDetail();"/>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+</div>
+</div>
+</div>
+<style>
+	.nav > li > a {color: #30af90; padding: 13px 18px 14px 25px;}
+	.nav > nav-pill > li.active > a {border-radius:4px;}
+	.nav > nav-pill > li > a {border-radius:4px;}
+	/*.nav > li.active {border-left: none;}*/
+	/*.nav > li.active {background-color: #ccc;}*/
+	/*.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {background-color: #ccc;border-radius:4px;}*/
+	.nav > li.active {border-left: none;}
+	.nav > li.active {background-color: #fff;}
+	.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover{
+		border-radius: 0px;
+		border-bottom:2px solid #30af90; !important;
+		color: #30af90;
+	}
+</style>
+<script>
+    $("select").attr("disabled","disabled");
+    $("input").attr("readonly","readonly");
+    $("input[type=file]").attr("disabled","disabled");
+</script>
+<script src="${ctxPath}/static/modular/cust/gjrmianshen.js"></script>
+@}

@@ -1,0 +1,44 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>还款总计</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="custName" name="客户名称" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="custMobile" name="客户手机号" />
+                            </div>
+                        <!--</div>-->
+                        <!--<div class="row">-->
+                            <div class="col-sm-3">
+                                <#TimeCon id="beginTime" name="开始时间" isTime="false" pattern="YYYY-MM-DD"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <#TimeCon id="endTime" name="结束时间" isTime="false" pattern="YYYY-MM-DD" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div style="width: 200px; margin: 10px auto;">
+                                    <#button name="搜索" icon="fa-search" clickFun="CompleteRepayment.search()"/>
+                                    <#button name="重置" icon="fa-undo" clickFun="CompleteRepayment.resetSearch()" space="true"/>
+                                </div>
+                            </div>
+                        </div>
+                        <#table id="CompleteRepaymentTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="${ctxPath}/static/modular/paybackMgr/repaymentInfo/completerepayment.js"></script>
+@}

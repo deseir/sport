@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.TelecomCallRiskAnalysisDao">
+
+	<sql id="searchColumns">
+		telecomCallRiskAnalysis.id id,telecomCallRiskAnalysis.apply_id applyId,telecomCallRiskAnalysis.cust_id custId,telecomCallRiskAnalysis.type type,telecomCallRiskAnalysis.analysis_item analysisItem,telecomCallRiskAnalysis.analysis_desc analysisDesc,telecomCallRiskAnalysis.call_cnt_1m callCnt1m,telecomCallRiskAnalysis.call_cnt_3m callCnt3m,telecomCallRiskAnalysis.call_cnt_6m callCnt6m,telecomCallRiskAnalysis.avg_call_cnt_3m avgCallCnt3m,telecomCallRiskAnalysis.avg_call_cnt_6m avgCallCnt6m,telecomCallRiskAnalysis.call_time_1m callTime1m,telecomCallRiskAnalysis.call_time_3m callTime3m,telecomCallRiskAnalysis.call_time_6m callTime6m,telecomCallRiskAnalysis.avg_call_time_3m avgCallTime3m,telecomCallRiskAnalysis.avg_call_time_6m avgCallTime6m,telecomCallRiskAnalysis.create_time createTime,telecomCallRiskAnalysis.update_time updateTime,telecomCallRiskAnalysis.is_deleted isDeleted,telecomCallRiskAnalysis.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.TelecomCallRiskAnalysis">
+		insert into
+		c_telecom_call_risk_analysis(avg_call_cnt_6m,call_time_1m,avg_call_cnt_3m,call_time_3m,call_time_6m,analysis_item,update_time,remark,type,analysis_desc,apply_id,avg_call_time_3m,is_deleted,create_time,avg_call_time_6m,cust_id,id,call_cnt_6m,call_cnt_3m,call_cnt_1m)
+		values (#{avgCallCnt6m},#{callTime1m},#{avgCallCnt3m},#{callTime3m},#{callTime6m},#{analysisItem},#{updateTime},#{remark},#{type},#{analysisDesc},#{applyId},#{avgCallTime3m},#{isDeleted},#{createTime},#{avgCallTime6m},#{custId},#{id},#{callCnt6m},#{callCnt3m},#{callCnt1m})
+	</insert>
+
+	<delete id="delete">
+		delete from c_telecom_call_risk_analysis
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_telecom_call_risk_analysis set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.TelecomCallRiskAnalysis">
+		update c_telecom_call_risk_analysis set
+		avg_call_cnt_6m=#{avgCallCnt6m},call_time_1m=#{callTime1m},avg_call_cnt_3m=#{avgCallCnt3m},call_time_3m=#{callTime3m},call_time_6m=#{callTime6m},analysis_item=#{analysisItem},update_time=#{updateTime},remark=#{remark},type=#{type},analysis_desc=#{analysisDesc},apply_id=#{applyId},avg_call_time_3m=#{avgCallTime3m},is_deleted=#{isDeleted},create_time=#{createTime},avg_call_time_6m=#{avgCallTime6m},cust_id=#{custId},id=#{id},call_cnt_6m=#{callCnt6m},call_cnt_3m=#{callCnt3m},call_cnt_1m=#{callCnt1m} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.TelecomCallRiskAnalysis">
+		update c_telecom_call_risk_analysis
+		<set>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="type != null"> type=#{type},</if>
+            <if test="analysisItem != null"> analysis_item=#{analysisItem},</if>
+            <if test="analysisDesc != null"> analysis_desc=#{analysisDesc},</if>
+            <if test="callCnt1m != null"> call_cnt_1m=#{callCnt1m},</if>
+            <if test="callCnt3m != null"> call_cnt_3m=#{callCnt3m},</if>
+            <if test="callCnt6m != null"> call_cnt_6m=#{callCnt6m},</if>
+            <if test="avgCallCnt3m != null"> avg_call_cnt_3m=#{avgCallCnt3m},</if>
+            <if test="avgCallCnt6m != null"> avg_call_cnt_6m=#{avgCallCnt6m},</if>
+            <if test="callTime1m != null"> call_time_1m=#{callTime1m},</if>
+            <if test="callTime3m != null"> call_time_3m=#{callTime3m},</if>
+            <if test="callTime6m != null"> call_time_6m=#{callTime6m},</if>
+            <if test="avgCallTime3m != null"> avg_call_time_3m=#{avgCallTime3m},</if>
+            <if test="avgCallTime6m != null"> avg_call_time_6m=#{avgCallTime6m},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.TelecomCallRiskAnalysis">
+		select
+		<include refid="searchColumns" />
+		from c_telecom_call_risk_analysis telecomCallRiskAnalysis
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.TelecomCallRiskAnalysis">
+		select
+		<include refid="searchColumns" />
+		from c_telecom_call_risk_analysis telecomCallRiskAnalysis
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.TelecomCallRiskAnalysis">
+		select
+		<include refid="searchColumns" />
+		from c_telecom_call_risk_analysis telecomCallRiskAnalysis
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<!-- 查询（根据applyId 和Type 查询） -->
+	<select id="selectByApplyIdAndType" resultType="com.moerlong.carloan.modular.cust.entity.TelecomCallRiskAnalysis">
+		select
+		<include refid="searchColumns" />
+		from c_telecom_call_risk_analysis telecomCallRiskAnalysis
+		where apply_id = #{applyId} and type=#{type}
+	</select>
+
+
+</mapper>
+

@@ -1,0 +1,4 @@
+#menu{width: 150px;height: auto; position: fixed;top: 23%;right: 60px;z-index:100}
+#menu ul{display: block;list-style: none}
+#menu ul li a{width: 150px; height: 54px; line-height: 54px; text-align: center;background-color: #fff;color: #10a2e9;display: block}
+#menu ul li a:hover,#menu ul li a.cur{background-color: #10a2e9;color: #fff;}

@@ -1,0 +1,64 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal" id="addFinance">
+			<div class="row">
+				<input type="hidden" value="${applyId}" id="applyId">
+				<input type="hidden" value="${type}" id="paramType">
+				<input type="hidden" id="financeId" value="${financeId}">
+				<div class="col-sm-7">
+					<div class="form-group">
+						<div class="col-sm-3 control-label">
+							<label>财力证明类型</label>
+						</div>
+						<div class="col-sm-9">
+							<select class="form-control"  id="finType" name="finType" onchange="setProperty()">
+								<option value="">---请选择---</option>
+								<option value="0">房产</option>
+								<option value="1">车辆</option>
+							</select>
+						</div>
+					</div>
+					<!--<#select id="finType" name="财力证明类型" underline="false">-->
+						<!--<option value="">-&#45;&#45;请选择-&#45;&#45;</option>-->
+						<!--<option value="0">房产</option>-->
+						<!--<option value="1">车辆</option>-->
+					<!--</#select>-->
+					<div id="showProperty">
+						<#select id="property" name="性质" underline="false">
+							<option value="">---请选择---</option>
+							<option value="0">安置房</option>
+							<option value="1">商品房</option>
+							<option value="2">自建房福利房</option>
+							<option value="3">写字楼</option>
+							<option value="4">商铺</option>
+						</#select>
+					</div>
+
+		</div>
+		<div class="col-sm-7">
+			<#select id="status" name="状态" underline="false">
+			<option value="">---请选择---</option>
+			<option value="0">全款</option>
+			<option value="1">抵押</option>
+			<option value="2">按揭</option>
+		</#select>
+		<#input id="num" name="数量" underline="false"/>
+	</div>
+	<div class="col-sm-7">
+		<#input id="finaceRemark" name="备注" underline="false"/>
+	</div>
+
+
+</div>
+<div class="row">
+	<div style="width: 420px;margin:15px ">
+		<#button name="保存" icon="fa fa-save" clickFun="saveOrUpdate('finace');"/>
+	</div>
+</div>
+
+</div>
+</div>
+</div>
+<script src="${ctxPath}/static/modular/cust/addFinance.js"></script>
+@}

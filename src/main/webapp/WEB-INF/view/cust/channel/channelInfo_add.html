@@ -1,0 +1,38 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="channelInfoForm">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <input type="hidden" style="display: none" id="uuid" >
+                    <input type="hidden" style="display: none" id="id" >
+                    <#input id="channelName" name="渠道名称" underline="false" />
+                    <#input id="city" name="所在城市区域" underline="false" />
+                    <#input id="fanyongRate" name="返佣比例" underline="false"/>
+                    <#input id="accountCardno" name="返佣账户卡号" underline="false"/>
+                    <#input id="joinMobile" name="对接人手机号" underline="false"/>
+
+                </div>
+                <div class="col-sm-6 b-r">
+                    <#input id="address" name="渠道联系地址" underline="false" />
+                    <#input id="accountName" name="返佣账户" underline="false"/>
+                    <#input id="accountBank" name="返佣开户行" underline="false"/>
+                    <#input id="joinPerson" name="对接人名称" underline="false"/>
+                    <#input id="bussName" name="与渠道对接业务人员姓名" underline="false"/>
+                </div>
+
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="ChannelInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="ChannelInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/cust/channel/channelInfo_info.js"></script>
+@}

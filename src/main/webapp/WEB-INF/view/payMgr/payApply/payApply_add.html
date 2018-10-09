@@ -1,0 +1,65 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="payApplyForm">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <input type="hidden" style="display: none" id="uuid" >
+                    <#input id="custName" name="客户姓名" underline="false" />
+                    <#input id="custIdNo" name="身份证号" underline="false" />
+                    <#input id="bankCardNo" name="银行卡号" underline="false" onblur="PayApplyDlg.onBlur();"/>
+                    <#input id="bankName" name="开户银行" underline="false" disabled="disabled"/>
+                    <#input id="custMobile" name="手机号" underline="true" />
+                    <#input id="receptionDepart" name="前台部门" underline="false" />
+                    <#input id="receptionManager" name="前台经理" underline="false" />
+                    <#select id="transSource" name="业务来源" underline="false">
+                        <option value="">请选择</option>
+                        <option value="成都易贷网">成都易贷网</option>
+                        <option value="成都炎鼎商务">成都炎鼎商务</option>
+                        <option value="直客">直客</option>
+                        <option value="其他">其他</option>
+                    </#select>
+                </div>
+                <div class="col-sm-6 b-r">
+                    <#input id="contractNo" name="合同编号" underline="false" />
+                    <#input id="totalAmount" name="借款总额" underline="false" onblur="PayApplyDlg.onFeeBlur();"/>
+                    <#select id="periodNum" name="借款期数" underline="false">
+                        <option value="12">12</option>
+                        <option value="24">24</option>
+                        <option value="36">36</option>
+                    </#select>
+                    <#select id="isReplaceCost" name="是否代收" underline="false" onchange="PayApplyDlg.onChangedCost();">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </#select>
+                    <#select id="serviceFeeType" name="服务费方式" underline="false" onchange="PayApplyDlg.onChanged();">
+                        <option value="11">按百分比</option>
+                        <option value="12">按金额</option>
+                    </#select>
+                    <#input id="serviceFee" name="百分比(%)" underline="false" onblur="PayApplyDlg.onFeeBlur();"/>
+                    <#input id="finalServiceFee" name="服务费" underline="true" disabled="disabled" value="0.00"/>
+
+                    <#SelectCon id="isPerCharge" name="手续费分期">
+                        <option value="0">分期</option>
+                        <option value="1">全部</option>
+                    </#SelectCon>
+                </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="PayApplyDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="PayApplyDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/payMgr/payApply/payApply_info.js"></script>
+@}

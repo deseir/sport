@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarBussMortgageInfoDao">
+
+	<sql id="searchColumns">
+		carMortgageInfo.id id,carMortgageInfo.cust_id custId,carMortgageInfo.apply_id applyId,carMortgageInfo.car_id carId,carMortgageInfo.cust_name custName,carMortgageInfo.cust_sex custSex,carMortgageInfo.cust_id_no custIdNo,carMortgageInfo.register_photo_url1 registerPhotoUrl1,carMortgageInfo.register_photo_url2 registerPhotoUrl2,carMortgageInfo.register_photo_url3 registerPhotoUrl3,carMortgageInfo.register_photo_url4 registerPhotoUrl4,carMortgageInfo.proxy_book_url proxyBookUrl,carMortgageInfo.mortgage_contract_url mortgageContractUrl,carMortgageInfo.cert_photo_url certPhotoUrl,carMortgageInfo.recv_confirm recvConfirm,carMortgageInfo.recv_confirm_date recvConfirmDate,carMortgageInfo.refuse_reason refuseReason,carMortgageInfo.accept_confirm acceptConfirm,carMortgageInfo.accept_confirm_date acceptConfirmDate,carMortgageInfo.bill_attach_url billAttachUrl,carMortgageInfo.complete_confirm completeConfirm,carMortgageInfo.register_photo_url5 registerPhotoUrl5,carMortgageInfo.register_photo_url6 registerPhotoUrl6,carMortgageInfo.register_photo_url7 registerPhotoUrl7,carMortgageInfo.register_photo_url8 registerPhotoUrl8,carMortgageInfo.complete_confirm_date completeConfirmDate,carMortgageInfo.create_time createTime,carMortgageInfo.update_time updateTime,carMortgageInfo.is_deleted isDeleted,carMortgageInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarBussMortgageInfo">
+		insert into
+		c_car_buss_mortgage_info(mortgage_contract_url,bill_attach_url,proxy_book_url,recv_confirm,remark,apply_id,is_deleted,cust_id,id,recv_confirm_date,cust_sex,update_time,cert_photo_url,cust_name,complete_confirm_date,car_id,register_photo_url1,register_photo_url3,register_photo_url2,register_photo_url5,register_photo_url4,create_time,register_photo_url7,register_photo_url6,complete_confirm,register_photo_url8,accept_confirm,accept_confirm_date,refuse_reason,cust_id_no)
+		values (#{mortgageContractUrl},#{billAttachUrl},#{proxyBookUrl},#{recvConfirm},#{remark},#{applyId},#{isDeleted},#{custId},#{id},#{recvConfirmDate},#{custSex},#{updateTime},#{certPhotoUrl},#{custName},#{completeConfirmDate},#{carId},#{registerPhotoUrl1},#{registerPhotoUrl3},#{registerPhotoUrl2},#{registerPhotoUrl5},#{registerPhotoUrl4},#{createTime},#{registerPhotoUrl7},#{registerPhotoUrl6},#{completeConfirm},#{registerPhotoUrl8},#{acceptConfirm},#{acceptConfirmDate},#{refuseReason},#{custIdNo})
+	</insert>
+
+	<delete id="delete">
+		delete from c_car_buss_mortgage_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_car_buss_mortgage_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarBussMortgageInfo">
+		update c_car_buss_mortgage_info set
+		mortgage_contract_url=#{mortgageContractUrl},bill_attach_url=#{billAttachUrl},proxy_book_url=#{proxyBookUrl},recv_confirm=#{recvConfirm},remark=#{remark},apply_id=#{applyId},is_deleted=#{isDeleted},cust_id=#{custId},id=#{id},recv_confirm_date=#{recvConfirmDate},cust_sex=#{custSex},update_time=#{updateTime},cert_photo_url=#{certPhotoUrl},cust_name=#{custName},complete_confirm_date=#{completeConfirmDate},car_id=#{carId},register_photo_url1=#{registerPhotoUrl1},register_photo_url3=#{registerPhotoUrl3},register_photo_url2=#{registerPhotoUrl2},register_photo_url5=#{registerPhotoUrl5},register_photo_url4=#{registerPhotoUrl4},create_time=#{createTime},register_photo_url7=#{registerPhotoUrl7},register_photo_url6=#{registerPhotoUrl6},complete_confirm=#{completeConfirm},register_photo_url8=#{registerPhotoUrl8},accept_confirm=#{acceptConfirm},accept_confirm_date=#{acceptConfirmDate},refuse_reason=#{refuseReason},cust_id_no=#{custIdNo} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarBussMortgageInfo">
+		update c_car_buss_mortgage_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="carId != null"> car_id=#{carId},</if>
+            <if test="custName != null"> cust_name=#{custName},</if>
+            <if test="custSex != null"> cust_sex=#{custSex},</if>
+            <if test="custIdNo != null"> cust_id_no=#{custIdNo},</if>
+            <if test="registerPhotoUrl1 != null and registerPhotoUrl1 !=''"> register_photo_url1=#{registerPhotoUrl1},</if>
+            <if test="registerPhotoUrl2 != null and registerPhotoUrl2 !=''"> register_photo_url2=#{registerPhotoUrl2},</if>
+            <if test="registerPhotoUrl3 != null and registerPhotoUrl3 !=''"> register_photo_url3=#{registerPhotoUrl3},</if>
+            <if test="registerPhotoUrl4 != null and registerPhotoUrl4 !=''"> register_photo_url4=#{registerPhotoUrl4},</if>
+            <if test="proxyBookUrl != null and proxyBookUrl !=''" > proxy_book_url=#{proxyBookUrl},</if>
+            <if test="mortgageContractUrl != null and mortgageContractUrl !=''"> mortgage_contract_url=#{mortgageContractUrl},</if>
+            <if test="certPhotoUrl != null and certPhotoUrl !=''"> cert_photo_url=#{certPhotoUrl},</if>
+            <if test="recvConfirm != null"> recv_confirm=#{recvConfirm},</if>
+            <if test="recvConfirmDate != null"> recv_confirm_date=#{recvConfirmDate},</if>
+            <if test="refuseReason != null"> refuse_reason=#{refuseReason},</if>
+            <if test="acceptConfirm != null"> accept_confirm=#{acceptConfirm},</if>
+            <if test="acceptConfirmDate != null"> accept_confirm_date=#{acceptConfirmDate},</if>
+            <if test="billAttachUrl != null and proxyBookUrl !=''"> bill_attach_url=#{billAttachUrl},</if>
+            <if test="completeConfirm != null"> complete_confirm=#{completeConfirm},</if>
+            <if test="registerPhotoUrl5 != null and registerPhotoUrl5 !=''"> register_photo_url5=#{registerPhotoUrl5},</if>
+            <if test="registerPhotoUrl6 != null and registerPhotoUrl6 !=''"> register_photo_url6=#{registerPhotoUrl6},</if>
+            <if test="registerPhotoUrl7 != null and registerPhotoUrl7 !=''"> register_photo_url7=#{registerPhotoUrl7},</if>
+            <if test="registerPhotoUrl8 != null and registerPhotoUrl8 !=''"> register_photo_url8=#{registerPhotoUrl8},</if>
+            <if test="completeConfirmDate != null"> complete_confirm_date=#{completeConfirmDate},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarBussMortgageInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_buss_mortgage_info carMortgageInfo
+		where id = #{id}
+	</select>
+	
+		<select id="selectByApplyId" resultType="com.moerlong.carloan.modular.car.entity.CarBussMortgageInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_buss_mortgage_info carMortgageInfo
+		where apply_id = #{applyid}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarBussMortgageInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_buss_mortgage_info carMortgageInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.car.entity.CarBussMortgageInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_buss_mortgage_info carMortgageInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+</mapper>
+

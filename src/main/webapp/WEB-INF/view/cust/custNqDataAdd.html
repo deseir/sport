@@ -1,0 +1,431 @@
+@layout("/common/_container.html"){
+<script type="text/javascript">
+</script>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>内勤资料录入</h5><#button name="返回" icon="fa fa-chevron-left" clickFun="custNqData.tt();"/>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+
+                        <div class="menu-item" id="menu-item1">
+                            <div class="form-horizontal">
+                                <h5>借款基本信息</h5>
+                            <div class="row">
+
+                                <div class="col-sm-6">
+                                    <input type="hidden" style="display: none" id="uuid" >
+                                    <input type="hidden" style="display: none" id="applyId" value="10002">
+                                    <#select id="channelId" name="客户来源" underline="false" />
+
+                                    <#select id="productType" name="产品类型" underline="false">
+                                        <option value="0">抵押</option>
+                                        <option value="1">质押</option>
+                                    </#select>
+                                    <#select id="repaymentType" name="还款方式" underline="false">
+                                        <option value="0">等额本息</option>
+                                        <option value="1">先息后本</option>
+                                    </#select>
+                                    <#select id="partnerKnow" name="配偶是否知晓贷款" underline="false">
+                                        <option value="0">未婚</option>
+                                        <option value="1">离异</option>
+                                        <option value="2">丧偶</option>
+                                        <option value="3">已婚不知晓</option>
+                                        <option value="4">已婚知晓不能签字</option>
+                                        <option value="5">已婚知晓可签字</option>
+                                    </#select>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <#input id="applyAmount" name="申请额度" underline="false" />
+                                    <#select id="applyPeriod" name="申请期限" underline="false">
+                                        <option value="36">36</option>
+                                        <option value="24">24</option>
+                                        <option value="12">12</option>
+                                    </#select>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">贷款用途 </label>
+                                        <label class="radio-inline">
+                                            <input id="loanUsage1" name="loanUsage" value="1" type="checkbox" />教育支出
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input id="loanUsage2" name="loanUsage" value="2" type="checkbox"/>医疗
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input id="loanUsage3" name="loanUsage" value="4" type="checkbox"/>生意周转
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input id="loanUsage4" name="loanUsage" value="8" type="checkbox"/>装修
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input id="loanUsage5" name="loanUsage" value="16" type="checkbox"/>其他
+                                            <input  id="loanUsage6" style="display:none"/>
+                                        </label>
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-3">
+                                    <div style="width: 200px; margin: 10px auto;">
+                                        <#button name="保存" icon="fa fa-save" clickFun="custNqData.addSubmit(1);"/>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="menu-item" id="menu-item2">
+                            <div class="form-horizontal">
+                                <h5>客户基本信息</h5>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <#input id="name" name="姓名" underline="false" />
+                                    <#input id="mobile" name="手机号" underline="false" />
+                                    <#select id="sex" name="性别" underline="false">
+                                        <option value="0">男</option>
+                                        <option value="1">女</option>
+                                    </#select>
+                                    <#input id="signOrg" name="签发机关" underline="false" />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">身份证有效期结束时间</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" id="validateEnd" name="validateEnd" type="date"  onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+
+                                    </div>
+                                </div>
+                                <!--  <#NameCon id="idFrontPhotoUrl" name="身份证正面照片" />-->
+                                    <div>
+                                        <span>身份证正面照片</span>
+                                        <input id="idFrontPhotoUrl1" type="file" name="file" onchange="UploadImageicc(this);">
+                                        <input id="idFrontPhotoUrl" type="hidden" >
+                                    </div>
+                                    <div>
+                                        <img id="idFrontPhotoUrlmImg" src="">
+                                    </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <#input id="nation" name="民族" underline="false" />
+                            <#input id="certId" name="身份证号" underline="false" />
+                            <#select id="education" name="教育程度" underline="false">
+                                <option value="0">文盲</option>
+                                <option value="1">小学</option>
+                                <option value="2">初中</option>
+                                <option value="3">高中</option>
+                                <option value="4">专科</option>
+                                <option value="5">本科</option>
+                                <option value="5">硕士</option>
+                                <option value="5">博士</option>
+                            </#select>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">出生年月日</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="birthday" name="birthday" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">身份证有效期起始时间</label>
+                                <div class="col-sm-9">
+                                    <input class="form-control" id="validateBegin" value="2016-12-08" name="validateBegin" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+
+                                </div>
+                            </div>
+                            </div>
+                                <!-- <#NameCon id="idBackPhotoUrl" name="身份证反面照片" />-->
+                            <div>
+                                <span>身份证反面照片</span>
+                                <input id="idBackPhotoUrl1" type="file" name="file" onchange="UploadImageicc(this);">
+                                <input id="idBackPhotoUrl" type="hidden" >
+                            </div>
+                            <div>
+                                <img id="idBackPhotoUrlmImg" src="">
+                            </div>
+                        </div>
+                            <div class="col-sm-3">
+                                <div style="width: 200px; margin: 10px auto;">
+                                    <#button name="保存" icon="fa fa-save" clickFun="custNqData.addSubmit(2);"/>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <hr>
+                       <!-- 添加menu-item3户口本信息-->
+                        <hr>
+
+                        <div class="menu-item" id="menu-item4">
+                            <div class="form-horizontal">
+                                <h5>婚姻信息</h5>
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <input type="hidden" style="display: none" id="marryInfoId">
+                                        <#select id="marryStatus" name="婚姻状况" underline="false">
+                                            <option value="0">已婚</option>
+                                            <option value="1">未婚</option>
+                                            <option value="2">再婚</option>
+                                            <option value="3">离异</option>
+                                            <option value="4">丧偶</option>
+                                    　　</#select>
+                                        <div class="form-group" >
+                                            <label class="col-sm-3 control-label">婚姻登记日期</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" id="marryDate" name="marryDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+
+                                            </div>
+                                        </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">离婚登记日期</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="divorceDate" name="divorceDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+
+                                        </div>
+                                    </div>
+                                        <#input id="spouseName" name="配偶姓名" underline="false" />
+                                    <#input id="divorceName" name="原配偶姓名" underline="false" />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">配偶身份证有效期结束日期</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" id="spousevalidateEnd" name="spousevalidateEnd" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                                    </div>
+                                </div>
+                                <!-- <#NameCon id="idBackPhotoUrl" name="照片" />-->
+                                <div>
+                                    <span>照片</span>
+                                    <input id="spouseidFrontPhotoUrl1" type="file" name="file" onchange="UploadImageicc(this);">
+                                    <input id="spouseidFrontPhotoUrl" type="hidden" >
+                                </div>
+                                 <div>
+                                     <img id="spouseidFrontPhotoUrlmImg" src="">
+                                  </div>
+                                <div>
+                                    <span>结婚证照片</span>
+                                    <input id="marryPhotoUrl1" type="file" name="file" onchange="UploadImageicc(this);">
+                                    <input id="marryPhotoUrl" type="hidden" >
+                                </div>
+                                 <div>
+                                     <img id="marryPhotoUrlmImg" src="">
+                                  </div>
+                                 <div>
+                                     <span>离婚证照片</span>
+                                     <input id="divorcePhotoUrl1" type="file" name="file" onchange="UploadImageicc(this);">
+                                     <input id="divorcePhotoUrl" type="hidden" >
+                                 </div>
+                                    <div>
+                                        <img id="divorcePhotoUrlmImg" src="">
+                                    </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <#select id="spouseSex" name="配偶性别" underline="false">
+                                <option value="0">男</option>
+                                <option value="1">女</option>
+                            </#select>
+                              <#select id="divorceSex" name="原配偶性别" underline="false">
+                                <option value="0">男</option>
+                                <option value="1">女</option>
+                            </#select>
+                             <div class="form-group">
+                                    <label class="col-sm-3 control-label">配偶身份证有效期起始日期</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" id="spousevalidateBegin" name="spousevalidateBegin" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                                    </div>
+                             </div>
+                              <#input id="spouseCertId" name="配偶身份证号码" underline="false" />
+                            <#input id="divorceCertId" name="原配偶身份证号码" underline="false"/>
+                               <#input id="spouseSignOrg" name="配偶身份证签发机关" underline="false" />
+                                <!-- <#NameCon id="idBackPhotoUrl" name="配偶身份证背面照片" />-->
+                                <div>
+                                    <span>配偶身份证背面照片</span>
+                                    <input id="spouseidBackPhotoUrl1" type="file" name="file" onchange="UploadImageicc(this);">
+                                    <input id="spouseidBackPhotoUrl" type="hidden" >
+                                </div>
+                                <div>
+                                    <img id="spouseidBackPhotoUrlmImg" src="">
+                                </div>
+                            <div>
+                                <span>死亡证明照片</span>
+                                <input id="deathCertPhotoUrl1" type="file" name="file" onchange="UploadImageicc(this);">
+                                <input id="deathCertPhotoUrl" type="hidden" >
+                            </div>
+                            <div>
+                                <img id="deathCertPhotoUrlmImg" src="">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div style="width: 200px; margin: 10px auto;">
+                                <#button name="保存" icon="fa fa-save" clickFun="custNqData.addSubmit(4);"/>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <hr>
+                            <div class="menu-item" id="menu-item5">
+                                <div class="form-horizontal">
+                                    <h5>申请人工作信息</h5>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input type="hidden" style="display: none" id="custWorkInfoId" value="10001">
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">收入来源</label>
+                                                <label class="radio-inline">
+                                                    <input id="incomeType1" name="incomeType" value="1" type="checkbox" />自雇有执照
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input id="incomeType2" name="incomeType" value="2" type="checkbox"/>自雇无执照
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input id="incomeType3" name="incomeType" value="4" type="checkbox"/>受薪
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input id="incomeType4" name="incomeType" value="8" type="checkbox"/>待业
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input id="incomeType5" name="incomeType" value="16" type="checkbox"/>自由职业者
+                                                </label>
+                                            </div>
+                                            <#input id="companyName" name="单位名称" underline="false" />
+                                            <#select id="companyType" name="单位性质" underline="false">
+                                                    <option value="0">国有企业</option>
+                                                    <option value="1">国有控股企业</option>
+                                                    <option value="2">外资企业</option>
+                                                    <option value="3">合资企业</option>
+                                                    <option value="4">私营业务</option>
+                                                    <option value="5">事业单位/政府</option>
+                                            </#select>
+                                        <#input id="companyAddress" name="单位地址" underline="false" />
+                                        <#input id="companyTel" name="单位电话" underline="false" />
+                                        <#input id="department" name="部门" underline="false" />
+                                        <#input id="job" name="职务" underline="false" />
+                                        <#input id="workAge" name="就职年限" underline="false" />
+                                        <#input id="monthIncome" name="月均收入" underline="false" />
+                                        </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">配偶收入来源</label>
+                                            <label class="radio-inline">
+                                                <input id="spouseIncomeType1" name="spouseIncomeType" value="1" type="checkbox" />自雇有执照
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input id="spouseIncomeType2" name="spouseIncomeType" value="2" type="checkbox"/>自雇无执照
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input id="spouseIncomeType3" name="spouseIncomeType" value="4" type="checkbox"/>受薪
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input id="spouseIncomeType4" name="spouseIncomeType" value="8" type="checkbox"/>待业
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input id="spouseIncomeType5" name="spouseIncomeType" value="16" type="checkbox"/>自由职业者
+                                            </label>
+                                        </div>
+                                        <#input id="spouseCompanyName" name="配偶单位名称" underline="false" />
+                                        <#select id="spouseCompanyType" name="配偶单位性质" underline="false">
+                                        <option value="0">国有企业</option>
+                                        <option value="1">国有控股企业</option>
+                                        <option value="2">外资企业</option>
+                                        <option value="3">合资企业</option>
+                                        <option value="4">私营业务</option>
+                                        <option value="5">事业单位/政府</option>
+                                    </#select>
+                                    <#input id="spouseCompanyAddress" name="配偶单位地址" underline="false" />
+                                    <#input id="spouseCompanyTel" name="配偶单位电话" underline="false" />
+                                    <#input id="spouseDepartment" name="配偶部门" underline="false" />
+                                    <#input id="spouseJob" name="配偶职务" underline="false" />
+                                    <#input id="spouseWorkAge" name="配偶就职年限" underline="false" />
+                                    <#input id="spouseMonthIncome" name="配偶月均收入" underline="false" />
+                                   </div>
+                                <div class="col-sm-3">
+                                    <div style="width: 200px; margin: 10px auto;">
+                                        <#button name="保存" icon="fa fa-save" clickFun="custNqData.addSubmit(5);"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                            </div>
+                            </div>
+                        <hr>
+                            <div class="menu-item" id="menu-item6">
+                                <div class="form-horizontal">
+                                    <h5>车辆信息</h5>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <input type="hidden" style="display: none" id="CarInfoId" value="CarInfoId">
+                                            <#input id="carConfigName" name="车辆通俗配置称呼" underline="false" />
+                                            <#input id="carNum" name="车牌号" underline="false" />
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label">本次上户日期</label>
+                                                <div class="col-sm-9">
+                                                    <input class="form-control" id="currentLicDate" name="currentLicDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                                                </div>
+                                            </div>
+                                            <#input id="carType" name="车辆类型" underline="false" />
+                                            <#input id="carBrand" name="车辆品牌" underline="false" />
+                                            <#input id="carModel" name="车辆型号" underline="false" />
+                                            <#input id="vin" name="VIN码/车架号" underline="false" />
+
+                                            <#input id="engineNo" name="发动机号" underline="false" />
+                                            <#input id="carColor" name="车身颜色" underline="false" />
+                                            <#select id="spouseCompanyType" name="车身颜色" underline="false">
+                                                <option value="0">国产</option>
+                                                <option value="1">进口</option>
+                                            </#select>
+                                        <#select id="fuelType" name="燃料种类" underline="false">
+                                            <option value="0">汽油</option>
+                                            <option value="1">柴油</option>
+                                            <option value="2">油电混合</option>
+                                            <option value="3">纯电动</option>
+                                            <option value="4">其他</option>
+                                        </#select>
+                                        <#input id="displacement" name="排量" underline="false" />
+                                        <#input id="manufacturer" name="制造厂名称" underline="false" />
+                                    <#select id="carUsage" name="使用性质" underline="false">
+                                        <option value="0">非运营</option>
+                                        <option value="1">运营</option>
+                                        <option value="2">营转非</option>
+                                    </#select>
+                                        <#input id="getType" name="车辆获得方式" underline="false" />
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">出厂日期</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="productDate" name="productDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">首次发证日期</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="firstLicDate" name="firstLicDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                                        </div>
+                                    </div>
+                                    <h5>历史过户记录</h5>
+
+                                    </div>
+                                    <div class="col-sm-6">
+
+                                </div>
+                                <div class="col-sm-3">
+                                    <div style="width: 200px; margin: 10px auto;">
+                                        <#button name="保存" icon="fa fa-save" clickFun="custNqData.addSubmit(5);"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                            </div>
+                            </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/cust/custNqDataAdd.js"></script>
+@}

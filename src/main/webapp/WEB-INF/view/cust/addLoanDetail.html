@@ -1,0 +1,332 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal" id="addLoan">
+
+			<div class="row">
+				<div class="col-sm-6">
+					<input type="hidden" value="${applyId}" id="applyId">
+					<input type="hidden" value="${type}" id="paramType">
+					<input type="hidden" id="loanDetailId" value="${loanDetailId}">
+					<!--<#input id="loanOrg" name="贷款机构" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>贷款机构</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="loanOrg" name="loanOrg" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="loanAmount" name="贷款金额(元)" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>贷款金额(元)</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="loanAmount" name="loanAmount" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#select id="loanType" name="贷款类型" underline="false">-->
+						<!--<option value="">-&#45;&#45;请选择-&#45;&#45;</option>-->
+						<!--<option value="0">抵押担保</option>-->
+						<!--<option value="1">信用免担保</option>-->
+						<!--<option value="2">组合认证</option>-->
+					<!--</#select>-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>贷款类型</label>
+						</div>
+						<div class="col-sm-7">
+							<select class="form-control" id="loanType" name="loanType">
+								<option value="">---请选择---</option>
+								<option value="0">抵押担保</option>
+								<option value="1">信用免担保</option>
+								<option value="2">组合认证</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="loanPeriod" name="贷款期数" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>贷款期数</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="loanPeriod" name="loanPeriod" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<div class="form-group">-->
+						<!--<label class="col-sm-3 control-label">贷款开始时间</label>-->
+						<!--<div class="col-sm-9">-->
+							<!--<input class="form-control" id="loanBeginTime" name="loanBeginTime" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">-->
+						<!--</div>-->
+					<!--</div>-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>贷款开始时间</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="loanBeginTime" name="loanBeginTime" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+						</div>
+					</div>
+
+				</div>
+				<div class="col-sm-6">
+					<!--<div class="form-group">-->
+						<!--<label class="col-sm-3 control-label">贷款到期时间</label>-->
+						<!--<div class="col-sm-9">-->
+							<!--<input class="form-control" id="loanEndTime" name="loanEndTime" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">-->
+						<!--</div>-->
+					<!--</div>-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>贷款到期时间</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="loanEndTime" name="loanEndTime" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#select id="accountStatus" name="账户状态" underline="false">-->
+						<!--<option value="">-&#45;&#45;请选择-&#45;&#45;</option>-->
+						<!--<option value="0">正常</option>-->
+						<!--<option value="1">逾期</option>-->
+					<!--</#select>-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>账户状态</label>
+						</div>
+						<div class="col-sm-7">
+							<select class="form-control" id="accountStatus" name="accountStatus">
+								<option value="">---请选择---</option>
+								<option value="0">正常</option>
+								<option value="1">逾期</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#select id="fiveClassStatus" name="五级分类" underline="false">0&#45;&#45;正常 1&#45;&#45;关注 2&#45;&#45;次级  3&#45;&#45;可疑 4&#45;&#45;损失-->
+						<!--<option value="">-&#45;&#45;请选择-&#45;&#45;</option>-->
+						<!--<option value="0">正常</option>-->
+						<!--<option value="1">关注</option>-->
+						<!--<option value="2">次级</option>-->
+						<!--<option value="3">可疑</option>-->
+						<!--<option value="4">损失</option>-->
+					<!--</#select>-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>五级分类</label>
+						</div>
+						<div class="col-sm-7">
+							<select class="form-control" id="fiveClassStatus" name="fiveClassStatus" underline="false">0&#45;&#45;正常 1&#45;&#45;关注 2&#45;&#45;次级  3&#45;&#45;可疑 4&#45;&#45;损失>
+								<option value="">---请选择---</option>
+								<option value="0">正常</option>
+								<option value="1">关注</option>
+								<option value="2">次级</option>
+								<option value="3">可疑</option>
+								<option value="4">损失</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="capitalAmount" name="本金金额(元)" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>本金金额(元)</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="capitalAmount" name="capitalAmount" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="leftPeriod" name="剩余期数" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>剩余期数</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="leftPeriod" name="leftPeriod" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="curMonthPredictAmount" name="本月应还款金额(元)" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>本月应还款金额(元)</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="curMonthPredictAmount" name="curMonthPredictAmount" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<div class="form-group">-->
+						<!--<label class="col-sm-3 control-label">本次应还款日</label>-->
+						<!--<div class="col-sm-9">-->
+							<!--<input class="form-control" id="curMonthDate" name="curMonthDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">-->
+						<!--</div>-->
+					<!--</div>-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>本次应还款日</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control"id="curMonthDate" name="curMonthDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="curMonthActuralAmount" name="本月实还款金额(元)" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>本月实还款金额(元)</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control"id="curMonthActuralAmount" name="curMonthActuralAmount" type="text" underline="false"  >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<div class="form-group">-->
+						<!--<label class="col-sm-3 control-label">最近一次还款日期</label>-->
+						<!--<div class="col-sm-9">-->
+							<!--<input class="form-control" id="lastRepaymentDatge" name="lastRepaymentDatge" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">-->
+
+						<!--</div>-->
+					<!--</div>-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>最近一次还款日期</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control"id="lastRepaymentDatge" name="lastRepaymentDatge" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})" >
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+				<!--<#input id="curOverdueNum" name="当前逾期期数" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>当前逾期期数</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control"id="curOverdueNum" name="curOverdueNum" type="text" underline="false">
+						</div>
+					</div>
+			</div>
+				<div class="col-sm-6">
+					<!--<#input id="curOverdueAmount" name="当前逾期金额(元)" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>当前逾期金额(元)</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control"id="curOverdueAmount" name="curOverdueAmount" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="overdueM2Capital" name="逾期31-60天未还本金(元)" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>逾期31-60天未还本金(元)</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control"id="overdueM2Capital" name="overdueM2Capital" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="overdueM3Capital" name="逾期61-90天未还本金(元)" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>逾期61-90天未还本金(元)</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control"id="overdueM3Capital" name="overdueM3Capital" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="overdueM45Capital" name="逾期91-180天未还本金(元)" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>逾期91-180天未还本金(元)</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control"id="overdueM45Capital" name="overdueM45Capital" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="overdueM6Capital" name="逾期180天以上未还本金(元)" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>逾期180天以上未还本金(元)</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control"id="overdueM6Capital" name="overdueM6Capital" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="repaymentInfo" name="两年前还款记录情况" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>两年前还款记录情况</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control"id="repaymentInfo" name="repaymentInfo" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<#input id="loanRemark" name="备注" underline="false" />
+				</div>
+
+
+
+			<div class="col-sm-3">
+				<div style="width: 200px; margin: 10px auto;">
+					<button class="btn btn-primary" onclick="saveOrUpdate();"><i class="fa fa-save"></i>&nbsp;保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<script src="${ctxPath}/static/modular/cust/addLoanDetail.js"></script>
+@}

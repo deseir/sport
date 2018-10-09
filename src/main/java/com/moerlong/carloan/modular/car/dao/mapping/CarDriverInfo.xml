@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarDriverInfoDao">
+
+	<sql id="searchColumns">
+		carDriverInfo.id id,carDriverInfo.user_id userId,carDriverInfo.car_id carId,carDriverInfo.vehicle_valid_date vehicleValidDate,carDriverInfo.vehicle_front_photo vehicleFrontPhoto,carDriverInfo.vehicle_back_photo vehicleBackPhoto,carDriverInfo.is_driver_lic isDriverLic,carDriverInfo.driver_no driverNo,carDriverInfo.first_driver_date firstDriverDate,carDriverInfo.permit_type permitType,carDriverInfo.driver_begin_date driverBeginDate,carDriverInfo.driver_end_date driverEndDate,carDriverInfo.is_self isSelf,carDriverInfo.driver_relation driverRelation,carDriverInfo.driver_remark driverRemark,carDriverInfo.driver_front_photo driverFrontPhoto,carDriverInfo.driver_back_photo driverBackPhoto,carDriverInfo.create_time createTime,carDriverInfo.update_time updateTime,carDriverInfo.remark remark,carDriverInfo.is_deleted isDeleted
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarDriverInfo">
+		insert into
+		c_car_driver_info(driver_relation,vehicle_front_photo,vehicle_back_photo,first_driver_date,update_time,remark,user_id,car_id,driver_begin_date,driver_front_photo,permit_type,is_deleted,vehicle_valid_date,driver_back_photo,create_time,is_driver_lic,id,driver_remark,driver_end_date,driver_no,is_self)
+		values (#{driverRelation},#{vehicleFrontPhoto},#{vehicleBackPhoto},#{firstDriverDate},#{updateTime},#{remark},#{userId},#{carId},#{driverBeginDate},#{driverFrontPhoto},#{permitType},#{isDeleted},#{vehicleValidDate},#{driverBackPhoto},#{createTime},#{isDriverLic},#{id},#{driverRemark},#{driverEndDate},#{driverNo},#{isSelf})
+	</insert>
+
+	<delete id="delete">
+		delete from c_car_driver_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_car_driver_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarDriverInfo">
+		update c_car_driver_info set
+		driver_relation=#{driverRelation},vehicle_front_photo=#{vehicleFrontPhoto},vehicle_back_photo=#{vehicleBackPhoto},first_driver_date=#{firstDriverDate},update_time=#{updateTime},remark=#{remark},user_id=#{userId},car_id=#{carId},driver_begin_date=#{driverBeginDate},driver_front_photo=#{driverFrontPhoto},permit_type=#{permitType},is_deleted=#{isDeleted},vehicle_valid_date=#{vehicleValidDate},driver_back_photo=#{driverBackPhoto},create_time=#{createTime},is_driver_lic=#{isDriverLic},id=#{id},driver_remark=#{driverRemark},driver_end_date=#{driverEndDate},driver_no=#{driverNo},is_self=#{isSelf} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarDriverInfo">
+		update c_car_driver_info
+		<set>
+            <if test="userId != null"> user_id=#{userId},</if>
+            <if test="carId != null"> car_id=#{carId},</if>
+            <if test="vehicleValidDate != null"> vehicle_valid_date=#{vehicleValidDate},</if>
+            <if test="vehicleFrontPhoto != null"> vehicle_front_photo=#{vehicleFrontPhoto},</if>
+            <if test="vehicleBackPhoto != null"> vehicle_back_photo=#{vehicleBackPhoto},</if>
+            <if test="isDriverLic != null"> is_driver_lic=#{isDriverLic},</if>
+            <if test="driverNo != null"> driver_no=#{driverNo},</if>
+            <if test="firstDriverDate != null"> first_driver_date=#{firstDriverDate},</if>
+            <if test="permitType != null"> permit_type=#{permitType},</if>
+            <if test="driverBeginDate != null"> driver_begin_date=#{driverBeginDate},</if>
+            <if test="driverEndDate != null"> driver_end_date=#{driverEndDate},</if>
+            <if test="isSelf != null"> is_self=#{isSelf},</if>
+            <if test="driverRelation != null"> driver_relation=#{driverRelation},</if>
+            <if test="driverRemark != null"> driver_remark=#{driverRemark},</if>
+            <if test="driverFrontPhoto != null"> driver_front_photo=#{driverFrontPhoto},</if>
+            <if test="driverBackPhoto != null"> driver_back_photo=#{driverBackPhoto},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarDriverInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_driver_info carDriverInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarDriverInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_driver_info carDriverInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.car.entity.CarDriverInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_driver_info carDriverInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+	<select id="findCarDriverInfoByCarId" resultType="com.moerlong.carloan.modular.car.entity.CarDriverInfo">
+		SELECT
+		<include refid="searchColumns" />
+		FROM
+		c_car_driver_info carDriverInfo
+		where car_id=#{carId}
+	</select>
+</mapper>
+

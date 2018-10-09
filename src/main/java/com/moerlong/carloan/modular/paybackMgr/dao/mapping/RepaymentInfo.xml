@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.paybackMgr.dao.RepaymentInfoDao">
+
+	  <resultMap id="BaseResultMap" type="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="cust_id" property="custId" jdbcType="BIGINT" />
+    <result column="apply_id" property="applyId" jdbcType="BIGINT" />
+    <result column="contract_no" property="contractNo" jdbcType="VARCHAR" />
+    <result column="pay_id" property="payId" jdbcType="BIGINT" />
+    <result column="cust_name" property="custName" jdbcType="VARCHAR" />
+    <result column="cust_mobile" property="custMobile" jdbcType="VARCHAR" />
+    <result column="cust_id_no" property="custIdNo" jdbcType="VARCHAR" />
+    <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+    <result column="bank_card_no" property="bankCardNo" jdbcType="VARCHAR" />
+    <result column="loan_amount" property="loanAmount" jdbcType="DECIMAL" />
+    <result column="loan_period" property="loanPeriod" jdbcType="INTEGER" />
+    <result column="year_rate" property="yearRate" jdbcType="DECIMAL" />
+    <result column="month_rate" property="monthRate" jdbcType="DECIMAL" />
+    <result column="pre_service_rate" property="preServiceRate" jdbcType="DECIMAL" />
+    <result column="once_repayment_rate" property="onceRepaymentRate" jdbcType="DECIMAL" />
+    <result column="pre_fee" property="preFee" jdbcType="DECIMAL" />
+    <result column="reception_amount" property="receptionAmount" jdbcType="DECIMAL" />
+    <result column="other_fee" property="otherFee" jdbcType="DECIMAL" />
+    <result column="breach_amount" property="breachAmount" jdbcType="DECIMAL" />
+    <result column="month_lease_total" property="monthLeaseTotal" jdbcType="DECIMAL" />
+    <result column="month_service_total" property="monthServiceTotal" jdbcType="DECIMAL" />
+    <result column="lease_capital_total" property="leaseCapitalTotal" jdbcType="DECIMAL" />
+    <result column="lease_interest_total" property="leaseInterestTotal" jdbcType="DECIMAL" />
+    <result column="interest_begin_time" property="interestBeginTime" jdbcType="TIMESTAMP" />
+    <result column="interest_end_time" property="interestEndTime" jdbcType="TIMESTAMP" />
+    <result column="loan_days_num" property="loanDaysNum" jdbcType="INTEGER" />
+    <result column="predict_amount" property="predictAmount" jdbcType="DECIMAL" />
+    <result column="predict_capital" property="predictCapital" jdbcType="DECIMAL" />
+    <result column="predict_interest" property="predictInterest" jdbcType="DECIMAL" />
+    <result column="predict_service_charge" property="predictServiceCharge" jdbcType="DECIMAL" />
+    <result column="predict_charge" property="predictCharge" jdbcType="DECIMAL" />
+    <result column="predict_penalty" property="predictPenalty" jdbcType="DECIMAL" />
+    <result column="actual_amount" property="actualAmount" jdbcType="DECIMAL" />
+    <result column="actual_capital" property="actualCapital" jdbcType="DECIMAL" />
+    <result column="actual_interest" property="actualInterest" jdbcType="DECIMAL" />
+    <result column="actual_service_charge" property="actualServiceCharge" jdbcType="DECIMAL" />
+    <result column="actual_charge" property="actualCharge" jdbcType="DECIMAL" />
+    <result column="actual_penalty" property="actualPenalty" jdbcType="DECIMAL" />
+    <result column="cur_status" property="curStatus" jdbcType="INTEGER" />
+    <result column="cur_status_desc" property="curStatusDesc" jdbcType="VARCHAR" />
+    <result column="is_once_early_repayment" property="isOnceEarlyRepayment" jdbcType="INTEGER" />
+    <result column="overdue_times" property="overdueTimes" jdbcType="INTEGER" />
+    <result column="current_period_num" property="currentPeriodNum" jdbcType="INTEGER" />
+    <result column="version" property="version" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+	<sql id="searchColumns">
+		id id,
+		cust_id custId,
+		dept_id deptId,
+		apply_id applyId,
+		contract_no contractNo,
+		pay_id payId,
+		cust_name custName,
+		cust_mobile custMobile,
+		cust_id_no custIdNo,
+		bank_name bankName,
+		bank_card_no bankCardNo,
+		loan_amount loanAmount,
+		loan_period loanPeriod,
+		year_rate yearRate,
+		month_rate monthRate,
+		pre_service_rate preServiceRate,
+		once_repayment_rate,
+		pre_fee preFee,
+		other_fee otherFee,
+		month_lease_total monthLeaseTotal,
+		month_service_total monthServiceTotal,
+		lease_capital_total leaseCapitalTotal,
+		lease_interest_total leaseInterestTotal,
+		reception_amount receptionAmount,
+		interest_begin_time interestBeginTime,
+		interest_end_time interestEndTime,
+		loan_days_num loanDaysNum,
+		predict_amount predictAmount,
+		predict_capital predictCapital,
+		predict_interest predictInterest,
+		predict_service_charge predictServiceCharge,
+		predict_charge predictCharge,
+		predict_penalty predictPenalty,
+		actual_amount actualAmount,
+		actual_capital actualCapital,
+		actual_interest actualInterest,
+		actual_service_charge actualServiceCharge,
+		actual_charge actualCharge,
+		actual_penalty actualPenalty,
+		cur_status curStatus,
+		cur_status_desc curStatusDesc,
+		overdue_times overdueTimes,
+		current_period_num currentPeriodNum,
+		is_once_early_repayment isOnceEarlyRepayment,
+		version version,
+		is_deleted isDeleted,
+		create_time createTime,
+		update_time updateTime,
+		remark remark
+	</sql>
+	
+	<sql id="Base_Column_List" >
+    c_repayment_info.id, c_repayment_info.cust_id, c_repayment_info.apply_id, c_repayment_info.contract_no, 
+    c_repayment_info.pay_id, c_repayment_info.cust_name, c_repayment_info.cust_mobile, 
+    c_repayment_info.cust_id_no, c_repayment_info.bank_name, c_repayment_info.bank_card_no, 
+    c_repayment_info.loan_amount, c_repayment_info.loan_period, c_repayment_info.year_rate, 
+    c_repayment_info.month_rate, c_repayment_info.pre_service_rate, c_repayment_info.once_repayment_rate, 
+    c_repayment_info.pre_fee, c_repayment_info.reception_amount, c_repayment_info.other_fee, 
+    c_repayment_info.breach_amount, c_repayment_info.month_lease_total, c_repayment_info.month_service_total, 
+    c_repayment_info.lease_capital_total, c_repayment_info.lease_interest_total, c_repayment_info.interest_begin_time, 
+    c_repayment_info.interest_end_time, c_repayment_info.loan_days_num, c_repayment_info.predict_amount, 
+    c_repayment_info.predict_capital, c_repayment_info.predict_interest, c_repayment_info.predict_service_charge, 
+    c_repayment_info.predict_charge, c_repayment_info.predict_penalty, c_repayment_info.actual_amount, 
+    c_repayment_info.actual_capital, c_repayment_info.actual_interest, c_repayment_info.actual_service_charge, 
+    c_repayment_info.actual_charge, c_repayment_info.actual_penalty, c_repayment_info.cur_status, 
+    c_repayment_info.cur_status_desc, c_repayment_info.is_once_early_repayment, c_repayment_info.overdue_times, 
+    c_repayment_info.current_period_num, c_repayment_info.version, c_repayment_info.create_time, 
+    c_repayment_info.update_time, c_repayment_info.is_deleted, c_repayment_info.remark
+  </sql>
+	
+	  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Example_Where_Clause_Page" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  
+  <select id="countByExample" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentInfoExample" resultType="java.lang.Integer" >
+    select count(*) from c_repayment_info
+    <if test="join != null" >
+      ${join}
+    </if>
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  
+  <select id="selectByExampleWithPage" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <if test="example.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from c_repayment_info
+    <if test="example.join != null" >
+      ${example.join}
+    </if>
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause_Page" />
+    </if>
+    <if test="example.orderByClause != null" >
+      order by ${example.orderByClause}
+    </if>
+    limit ${startPage},${pageSize}
+  </select>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentInfo">
+		insert into
+		c_repayment_info(
+			predict_capital,
+			cust_mobile,
+			predict_penalty,
+			month_rate,
+			bank_name,
+			remark,
+			year_rate,
+			predict_interest,
+			cur_status,
+			cur_status_desc,
+			predict_service_charge,
+			loan_days_num,
+			actual_service_charge,
+			apply_id,
+			dept_id,
+			contract_no,
+			pay_id,
+			is_deleted,
+			cust_id,
+			id,
+			actual_interest,
+			predict_amount,
+			actual_capital,
+			bank_card_no,
+			actual_penalty,
+			actual_amount,
+			current_period_num,
+			update_time,
+			cust_name,
+			version,
+			loan_amount,
+			interest_begin_time,
+			create_time,
+			pre_fee,
+			other_fee,
+			month_lease_total,
+			month_service_total,
+			lease_capital_total,
+			lease_interest_total,
+			reception_amount,
+			overdue_times,
+			pre_service_rate,
+			once_repayment_rate,
+			predict_charge,
+			actual_charge,
+			interest_end_time,
+			loan_period,
+			is_once_early_repayment,
+			cust_id_no)
+		values (
+			#{predictCapital},
+			#{custMobile},
+			#{predictPenalty},
+			#{monthRate},
+			#{bankName},
+			#{remark},
+			#{yearRate},
+			#{predictInterest},
+			#{curStatus},
+			#{curStatusDesc},
+			#{predictServiceCharge},
+			#{loanDaysNum},
+			#{actualServiceCharge},
+			#{applyId},
+			#{deptId},
+			#{contractNo},
+			#{payId},
+			#{isDeleted},
+			#{custId},
+			#{id},
+			#{actualInterest},
+			#{predictAmount},
+			#{actualCapital},
+			#{bankCardNo},
+			#{actualPenalty},
+			#{actualAmount},
+			#{currentPeriodNum},
+			#{updateTime},
+			#{custName},
+			#{version},
+			#{loanAmount},
+			#{interestBeginTime},
+			#{createTime},
+			#{preFee},
+			#{otherFee},
+			#{monthLeaseTotal},
+			#{monthServiceTotal},
+			#{leaseCapitalTotal},
+			#{leaseInterestTotal},
+			#{receptionAmount},
+			#{overdueTimes},
+			#{preServiceRate},
+			#{onceRepaymentRate},
+			#{predictCharge},
+			#{actualCharge},
+			#{interestEndTime},
+			#{loanPeriod},
+			#{isOnceEarlyRepayment},
+			#{custIdNo})
+	</insert>
+
+	<delete id="delete">
+		delete from c_repayment_info
+		where id = #{id}
+	</delete>
+
+	<update id="update" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentInfo">
+		update c_repayment_info <set>
+		<if test="predictCapital != null"> predict_capital=#{predictCapital},</if>
+		<if test="custMobile != null and custMobile != ''"> cust_mobile=#{custMobile},</if>
+		<if test="predictPenalty != null"> predict_penalty=#{predictPenalty},</if>
+		<if test="monthRate != null"> month_rate=#{monthRate},</if>
+		<if test="bankName != null and bankName != ''"> bank_name=#{bankName},</if>
+		<if test="remark != null and remark != ''"> remark=#{remark},</if>
+		<if test="yearRate != null"> year_rate=#{yearRate},</if>
+		<if test="predictInterest != null"> predict_interest=#{predictInterest},</if>
+		<if test="curStatus != null"> cur_status=#{curStatus},</if>
+		<if test="curStatusDesc != null"> cur_status_desc=#{curStatusDesc},</if>
+		<if test="predictServiceCharge != null"> predict_service_charge=#{predictServiceCharge},</if>
+		<if test="loanDaysNum != null"> loan_days_num=#{loanDaysNum},</if>
+		<if test="actualServiceCharge != null"> actual_service_charge=#{actualServiceCharge},</if>
+		<if test="applyId != null"> apply_id=#{applyId},</if>
+		<if test="deptId != null"> dept_id=#{deptId},</if>
+		<if test="contractNo != null"> contract_no=#{contractNo},</if>
+		<if test="payId != null"> pay_id=#{payId},</if>
+		<if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+		<if test="custId != null"> cust_id=#{custId},</if>
+		<if test="actualInterest != null"> actual_interest=#{actualInterest},</if>
+		<if test="predictAmount != null"> predict_amount=#{predictAmount},</if>
+		<if test="actualCapital != null"> actual_capital=#{actualCapital},</if>
+		<if test="bankCardNo != null and bankCardNo != ''"> bank_card_no=#{bankCardNo},</if>
+		<if test="actualPenalty != null"> actual_penalty=#{actualPenalty},</if>
+		<if test="actualAmount != null"> actual_amount=#{actualAmount},</if>
+		<if test="currentPeriodNum != null"> current_period_num=#{currentPeriodNum},</if>
+		<if test="updateTime != null"> update_time=#{updateTime},</if>
+		<if test="custName != null and custName != ''"> cust_name=#{custName},</if>
+		<if test="version != null"> version=#{version},</if>
+		<if test="loanAmount != null"> loan_amount=#{loanAmount},</if>
+		<if test="interestBeginTime != null"> interest_begin_time=#{interestBeginTime},</if>
+		<if test="createTime != null"> create_time=#{createTime},</if>
+		<if test="preFee != null"> pre_fee=#{preFee},</if>
+		<if test="predictCharge != null"> predict_charge=#{predictCharge},</if>
+		<if test="actualCharge != null"> actual_charge=#{actualCharge},</if>
+		<if test="otherFee != null"> other_fee=#{otherFee},</if>
+		<if test="monthLeaseTotal != null"> month_lease_total=#{monthLeaseTotal},</if>
+		<if test="monthServiceTotal != null"> month_service_total=#{monthServiceTotal},</if>
+		<if test="leaseCapitalTotal != null"> lease_capital_total=#{leaseCapitalTotal},</if>
+		<if test="leaseInterestTotal != null"> lease_interest_total=#{leaseInterestTotal},</if>
+		<if test="receptionAmount != null">reception_amount=#{receptionAmount},</if>
+		<if test="overdueTimes != null"> overdue_times=#{overdueTimes},</if>
+		<if test="preServiceRate != null"> pre_service_rate=#{preServiceRate},</if>
+		 <if test="onceRepaymentRate != null"> once_repayment_rate=#{onceRepaymentRate},</if>
+		<if test="interestEndTime != null"> interest_end_time=#{interestEndTime},</if>
+		<if test="loanPeriod != null"> loan_period=#{loanPeriod},</if>
+		<if test="isOnceEarlyRepayment != null"> is_once_early_repayment=#{isOnceEarlyRepayment},</if>
+		<if test="custIdNo != null and custIdNo != ''"> cust_id_no=#{custIdNo},</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentInfo">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_info
+		where id = #{id}
+	</select>
+
+	<select id="selectByIdNumber" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentInfo">
+		select
+		<include refid="searchColumns"/>
+		from c_repayment_info
+		where cust_id_no = #{idNumber}
+	</select>
+
+	<select id="selectByPayId" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentInfo">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_info
+		where pay_id = #{payId}
+	</select>
+	
+	<select id="selectByApplyId" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentInfo">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_info
+		where apply_id = #{applyId}
+	</select>
+
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentInfo">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_info
+		where 1=1
+		
+		<if test="orderCondition != null"> order by #{orderCondition} </if>
+	</select>
+
+	<select id="selectInfoByPrimaryKeyForUpdate" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentInfo">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_info
+		where id = #{id}
+		for UPDATE
+	</select>
+
+	<!-- 根据条件查询 -->
+	<select id="listByCondition" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentInfo">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_info
+		where 1=1
+
+		<if test="custName != null and custName != ''">
+			and cust_name like CONCAT('%',#{custName},'%')
+		</if>
+		<if test="custMobile != null and custMobile != ''">
+			and cust_mobile like CONCAT('%',#{custMobile},'%')
+		</if>
+
+		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+			and (update_time between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+		</if>
+		<if test="curStatus != null and curStatus != ''">
+			and cur_status = #{curStatus}
+		</if>
+		order by id DESC
+	</select>
+
+	<!-- 前4笔订单的手续费总额 version=0 前4笔比较特殊一次性收全手续费 -->
+	<select id="countChargeBefore" resultType = "map">
+		select
+		IFNULL(sum(predict_charge), 0.00) as charge,IFNULL(dept_id,0) as deptId
+		from c_repayment_info
+		where version = 0
+		AND is_deleted = 0
+		GROUP BY dept_id
+	</select>
+
+
+</mapper>
+

@@ -1,0 +1,238 @@
+@layout("/common/_container.html"){
+
+<div class="">
+  <div class="">
+	  <div class="ibox-title">
+		  <div style="border-bottom: 1px solid #cccccc94;height: 45px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 22px;">面审</span></div>
+	  </div>
+   	<div class="tab-content">
+		<input type="hidden" value="${applyId}" id="applyId">
+		<input type="hidden" value="${interfaceAddress}" id="interfaceAddress">
+		<input type="hidden" value="${idPicUrls}" id="idPicUrls">
+		<input type="hidden" value="0" id="pamType">
+		<input type="hidden" id="interviewId">
+		<input type="hidden" id="supplementId">
+		<div class="tab-pane fade in active"  id="div_sfrz">
+			<div class="menu-item" id="menu-item5">
+				<div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;">
+					<!--<h5>查看信息</h5>-->
+					<div><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 16px;">查看信息</span></div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">内勤</label>
+								<div class="col-sm-9">
+									<#button name="查看内勤资料" icon="fa fa-eye" clickFun="showCustNq();"/>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-3 control-label">验车</label>
+								<div class="col-sm-9">
+									<#button name="查看验车资料" icon="fa fa-eye" clickFun="showYc();"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">面审</label>
+								<div class="col-sm-9">
+									<#button name="录入面审信息" icon="fa fa-pencil" clickFun="showMs();"/>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div style="margin-top:30px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 16px;">补充材料</span></div>
+					<div class="row" style="margin-top:15px">
+						<!--<h5>补充材料</h5>-->
+						<div class="col-sm-6">
+							<!--<#input id="supplementDesc" name="补充材料说明" underline="false"/>-->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">补充材料说明</label>
+								<div class="el-form-item__content" style="margin-left: 140px;">
+									<div data-v-94eb3634="" class="el-textarea el-input--small">
+										<textarea id="supplementDesc" rows="5" class="el-textarea__inner" style="outline:none;min-height: 31px;width:88%;border: 1px solid #d2d2d2;margin-left: 14px;background-color: #f9f9f9"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--<div class="col-sm-6">
+							<#input id="remark" name="备注" underline="false"/>
+						</div>-->
+						<div class="col-sm-6">
+                            <label class="col-sm-3 control-label">补充材料附件</label>
+				            <div  class="container">
+				           		<div class="form-grop"  enctype="multipart/form-data">
+				           			<div style="width:7%;float:left">
+				           				<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+				           					<span class="fileinput-new">选择文件</span>
+				           					<input id="supplementAttachUrl1" type="file" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+				           					<input id="supplementAttachUrl" type="hidden">
+				           				</span>
+				           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:40%">
+				           					<img id="supplementAttachUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+				           				</div>
+				           			</div>
+				           		</div>
+				           </div>  
+						</div>
+					</div>
+					<div class="" style="margin-left: 72%;">
+						<#button name="保存资料" icon="fa fa-save" clickFun="supplementSaveOrUpdate();"/>
+					</div>
+
+					<div style="border-top: 1px solid #cccccc94;line-height: 5em;margin-top:35px;"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 16px;">审核信息</span></div>
+					<div class="row">
+					<!--<h5>审核信息</h5>-->
+						<!--<div class="col-sm-6">-->
+							<!--<#select id="interviewResult" name="审核结果" underline="false" onchange="dispalyInterview()">-->
+							<!--<option value="">&#45;&#45;请选择&#45;&#45;</option>-->
+							<!--<option value="0">通过</option>-->
+							<!--<option value="1">驳回到内勤</option>-->
+							<!--<option value="2">驳回到验车师</option>-->
+						<!--</#select>-->
+						<div class="col-sm-6">
+							<div class="form-group">
+								<div class="col-sm-3 control-label">
+									<span style="color: red">*</span>
+									<label>审核结果</label>
+								</div>
+								<div class="col-sm-7">
+									<select class="form-control" id="interviewResult" name="interviewResult" onchange="dispalyInterview()">
+										<option value="">--请选择--</option>
+										<option value="0">通过</option>
+										<option value="1">驳回到内勤</option>
+										<option value="2">驳回到验车师</option>
+									</select>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6" id="interviewAmount">
+							<!--<#input id="interviewLoanAmount" name="通过的金额(元)" underline="false"/>-->
+							<div class="form-group">
+								<div class="col-sm-3 control-label">
+									<span style="color: red">*</span>
+									<label>通过的金额(元)</label>
+								</div>
+								<div class="col-sm-7">
+									<input class="form-control"id="interviewLoanAmount" name="interviewLoanAmount" type="text" underline="false">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<!--<#input id="overview" name="审核结果描述" underline="false"/>-->
+							<div class="form-group">
+								<label class="col-sm-3 control-label">审核结果描述</label>
+								<div class="el-form-item__content" style="margin-left: 140px;">
+									<div data-v-94eb3634="" class="el-textarea el-input--small">
+										<textarea id="overview" rows="5" class="el-textarea__inner" style="outline:none;min-height: 31px;width:88%;border: 1px solid #d2d2d2;margin-left: 14px;background-color: #f9f9f9"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6" id="interviewloanPeriod">
+							<!--<#select id="loanPeriod" name="通过的期数" underline="false">-->
+							<!--<option value="">&#45;&#45;请选择&#45;&#45;</option>-->
+							<!--<option value="12">12</option>-->
+							<!--<option value="24">24</option>-->
+							<!--<option value="36">36</option>-->
+							<!--</#select>-->
+
+							<div class="form-group">
+								<div class="col-sm-3 control-label">
+									<span style="color: red">*</span>
+									<label>通过的期数</label>
+								</div>
+								<div class="col-sm-7">
+									<select class="form-control" id="loanPeriod" name="loanPeriod">
+										<option value="">--请选择--</option>
+										<option value="12">12</option>
+										<option value="24">24</option>
+										<option value="36">36</option>
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+				<!--<div class="col-sm-6" id="rejectReasult">
+						<#input id="rejectionReason" name="拒绝原因" underline="false"/>
+				</div>-->
+
+				<!--<div class="col-sm-6">
+					<#input id="interviewRemark" name="备注" underline="false"/>
+				</div>-->
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<div class="col-sm-3 control-label">
+							<span style="color: red">*</span>
+							<label>现场证据附件一</label>
+						</div>
+						<div  class="container">
+							<div class="form-grop"  enctype="multipart/form-data">
+								<div style="width:7%;float:left">
+		           				<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+		           					<span class="fileinput-new">选择文件</span>
+		           					<input id="sceneEvidenceUrl11" type="file" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+		           					<input id="sceneEvidenceUrl1" type="hidden">
+		           				</span>
+									<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:40%">
+										<img id="sceneEvidenceUrl1mImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<div class="col-sm-3 control-label">
+							<span style="color: red">*</span>
+							<label>现场证据附件二</label>
+						</div>
+						<div  class="container">
+							<div class="form-grop"  enctype="multipart/form-data">
+								<div style="width:7%;float:left">
+	           				<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+	           					<span class="fileinput-new">选择文件</span>
+	           					<input id="sceneEvidenceUrl21" type="file" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+	           					<input id="sceneEvidenceUrl2" type="hidden">
+	           				</span>
+									<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:40%">
+										<img id="sceneEvidenceUrl2mImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="row">
+				<div style="margin:125px auto;width:420px;text-align: center;">
+					<#button name="返回" icon="fa fa-chevron-left" clickFun="backToDoWork();"/>
+					<#button name="保存" icon="fa fa-save" clickFun="saveInterview();"/>
+					<#button name="保存并提交" icon="fa fa-check" clickFun="msSubmit();"/>
+				</div>
+			</div>
+
+
+				</div>
+			</div>
+		</div>
+
+   	</div>
+  </div>
+</div>
+<style>
+  .nav > li > a {color: #337ab7; padding: 13px 18px 14px 25px;}
+  .nav > nav-pill > li.active > a {border-radius:4px;}
+  .nav > nav-pill > li > a {border-radius:4px;}
+  .nav > li.active {border-left: none;}
+  .nav > li.active {background-color: #ccc;}
+  .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {background-color: #ccc;border-radius:4px;}
+</style>
+
+<script src="${ctxPath}/static/modular/cust/showmscommon.js?v=1.0"></script>
+@}

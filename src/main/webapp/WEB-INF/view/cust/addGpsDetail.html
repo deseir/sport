@@ -1,0 +1,52 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal"id="addCard">
+			<input type="hidden" id="gpsDetailId" value="${gpsDetailId}">
+			<input type="hidden" id="carId" value="${carId}">
+			<input type="hidden" id="idPicUrls" value="${idPicUrls}">
+			<div class="row">
+				<div class="col-sm-6">
+					<#select id="isWiredless" name="是否无线" underline="false">
+						<option value="">---请选择---</option>
+						<option value="0">否</option>
+						<option value="1">是</option>
+					</#select>
+				</div>
+				<div class="col-sm-6">
+					<#input id="gpsWiredNo" name="GPS串码" underline="false" />
+				</div>
+				<div class="col-sm-6">
+					<#input id="gpsDetailRemark" name="备注" underline="false" />
+				</div>
+				<div class="col-sm-6">
+					<label class="col-sm-3 control-label">GPS安装位置图片</label>
+                   	<div  class="container">
+                   		<div class="form-grop"  enctype="multipart/form-data">
+                   			<div style="width:7%;float:left">
+                   				<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+                   					<span class="fileinput-new">选择文件</span>
+                   					<input type="file" id="gpsPhotoUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+                   					<input type="hidden" id="gpsPhotoUrl">
+                   				</span>
+                   				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:45%">
+                   					<img id="gpsPhotoUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+                   				</div>
+                   				
+                   			</div>
+                   		</div>
+                   </div>  
+				</div>
+
+			<div class="col-sm-3">
+				<div style="margin: 60px;margin-left:-70px">
+					<button class="btn btn-primary" onclick="saveOrUpdate();"><i class="fa fa-save"></i>&nbsp;&nbsp;&nbsp;&nbsp;保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<script src="${ctxPath}/static/modular/cust/addGpsDetail.js"></script>
+<script src="${ctxPath}/static/modular/cust/fileupload.js"></script>
+@}

@@ -1,0 +1,30 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+
+			<div class="row">
+				<div class="col-sm-6">
+					<input type="hidden" value="${applyId}" id="applyId">
+					<input type="hidden" value="${type}" id="paramType">
+					<input type="hidden" id="cardDetailId" value="${cardDetailId}">
+				</div>
+				<div class="col-sm-6">
+						<#input id="photoName" name="分类名称" underline="false" />
+				</div>
+				<div class="col-sm-6">
+						<#input id="photoRemark" name="备注" underline="false" />
+				</div>
+			</div>
+
+			<div class="col-sm-3">
+				<div style="width: 200px; margin: 10px auto;">
+					<button class="btn btn-primary" onclick="saveOrUpdate();"><i class="fa fa-save"></i>&nbsp;保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<!--<script src="${ctxPath}/static/modular/cust/addCardDetail.js"></script>-->
+@}

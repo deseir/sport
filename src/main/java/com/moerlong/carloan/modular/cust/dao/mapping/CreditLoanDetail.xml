@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.CreditLoanDetailDao">
+
+	<sql id="searchColumns">
+		creditLoanDetail.id id,creditLoanDetail.cust_id custId,creditLoanDetail.apply_id applyId,creditLoanDetail.type type,creditLoanDetail.loan_org loanOrg,creditLoanDetail.loan_amount loanAmount,creditLoanDetail.loan_type loanType,creditLoanDetail.loan_period loanPeriod,creditLoanDetail.loan_begin_time loanBeginTime,creditLoanDetail.loan_end_time loanEndTime,creditLoanDetail.account_status accountStatus,creditLoanDetail.five_class_status fiveClassStatus,creditLoanDetail.capital_amount capitalAmount,creditLoanDetail.left_period leftPeriod,creditLoanDetail.cur_month_predict_amount curMonthPredictAmount,creditLoanDetail.cur_month_date curMonthDate,creditLoanDetail.cur_month_actural_amount curMonthActuralAmount,creditLoanDetail.last_repayment_datge lastRepaymentDatge,creditLoanDetail.cur_overdue_num curOverdueNum,creditLoanDetail.cur_overdue_amount curOverdueAmount,creditLoanDetail.overdue_m2_capital overdueM2Capital,creditLoanDetail.overdue_m3_capital overdueM3Capital,creditLoanDetail.overdue_m45_capital overdueM45Capital,creditLoanDetail.overdue_m6_capital overdueM6Capital,creditLoanDetail.repayment_info repaymentInfo,creditLoanDetail.create_time createTime,creditLoanDetail.update_time updateTime,creditLoanDetail.is_deleted isDeleted,creditLoanDetail.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.CreditLoanDetail">
+		insert into
+		c_credit_loan_detail(loan_org,loan_type,loan_begin_time,remark,last_repayment_datge,overdue_m45_capital,type,account_status,overdue_m2_capital,apply_id,five_class_status,is_deleted,loan_end_time,overdue_m3_capital,cust_id,cur_month_predict_amount,repayment_info,id,capital_amount,left_period,overdue_m6_capital,update_time,cur_overdue_num,loan_amount,cur_month_date,cur_overdue_amount,create_time,cur_month_actural_amount,loan_period)
+		values (#{loanOrg},#{loanType},#{loanBeginTime},#{remark},#{lastRepaymentDatge},#{overdueM45Capital},#{type},#{accountStatus},#{overdueM2Capital},#{applyId},#{fiveClassStatus},#{isDeleted},#{loanEndTime},#{overdueM3Capital},#{custId},#{curMonthPredictAmount},#{repaymentInfo},#{id},#{capitalAmount},#{leftPeriod},#{overdueM6Capital},#{updateTime},#{curOverdueNum},#{loanAmount},#{curMonthDate},#{curOverdueAmount},#{createTime},#{curMonthActuralAmount},#{loanPeriod})
+	</insert>
+
+	<delete id="delete">
+		delete from c_credit_loan_detail
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_credit_loan_detail set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.CreditLoanDetail">
+		update c_credit_loan_detail set
+		loan_org=#{loanOrg},loan_type=#{loanType},loan_begin_time=#{loanBeginTime},remark=#{remark},last_repayment_datge=#{lastRepaymentDatge},overdue_m45_capital=#{overdueM45Capital},type=#{type},account_status=#{accountStatus},overdue_m2_capital=#{overdueM2Capital},apply_id=#{applyId},five_class_status=#{fiveClassStatus},is_deleted=#{isDeleted},loan_end_time=#{loanEndTime},overdue_m3_capital=#{overdueM3Capital},cust_id=#{custId},cur_month_predict_amount=#{curMonthPredictAmount},repayment_info=#{repaymentInfo},id=#{id},capital_amount=#{capitalAmount},left_period=#{leftPeriod},overdue_m6_capital=#{overdueM6Capital},update_time=#{updateTime},cur_overdue_num=#{curOverdueNum},loan_amount=#{loanAmount},cur_month_date=#{curMonthDate},cur_overdue_amount=#{curOverdueAmount},create_time=#{createTime},cur_month_actural_amount=#{curMonthActuralAmount},loan_period=#{loanPeriod} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.CreditLoanDetail">
+		update c_credit_loan_detail
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="type != null"> type=#{type},</if>
+            <if test="loanOrg != null"> loan_org=#{loanOrg},</if>
+            <if test="loanAmount != null"> loan_amount=#{loanAmount},</if>
+            <if test="loanType != null"> loan_type=#{loanType},</if>
+            <if test="loanPeriod != null"> loan_period=#{loanPeriod},</if>
+            <if test="loanBeginTime != null"> loan_begin_time=#{loanBeginTime},</if>
+            <if test="loanEndTime != null"> loan_end_time=#{loanEndTime},</if>
+            <if test="accountStatus != null"> account_status=#{accountStatus},</if>
+            <if test="fiveClassStatus != null"> five_class_status=#{fiveClassStatus},</if>
+            <if test="capitalAmount != null"> capital_amount=#{capitalAmount},</if>
+            <if test="leftPeriod != null"> left_period=#{leftPeriod},</if>
+            <if test="curMonthPredictAmount != null"> cur_month_predict_amount=#{curMonthPredictAmount},</if>
+            <if test="curMonthDate != null"> cur_month_date=#{curMonthDate},</if>
+            <if test="curMonthActuralAmount != null"> cur_month_actural_amount=#{curMonthActuralAmount},</if>
+            <if test="lastRepaymentDatge != null"> last_repayment_datge=#{lastRepaymentDatge},</if>
+            <if test="curOverdueNum != null"> cur_overdue_num=#{curOverdueNum},</if>
+            <if test="curOverdueAmount != null"> cur_overdue_amount=#{curOverdueAmount},</if>
+            <if test="overdueM2Capital != null"> overdue_m2_capital=#{overdueM2Capital},</if>
+            <if test="overdueM3Capital != null"> overdue_m3_capital=#{overdueM3Capital},</if>
+            <if test="overdueM45Capital != null"> overdue_m45_capital=#{overdueM45Capital},</if>
+            <if test="overdueM6Capital != null"> overdue_m6_capital=#{overdueM6Capital},</if>
+            <if test="repaymentInfo != null"> repayment_info=#{repaymentInfo},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.CreditLoanDetail">
+		select
+		<include refid="searchColumns" />
+		from c_credit_loan_detail creditLoanDetail
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.CreditLoanDetail">
+		select
+		<include refid="searchColumns" />
+		from c_credit_loan_detail creditLoanDetail
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CreditLoanDetail">
+		select
+		<include refid="searchColumns" />
+		from c_credit_loan_detail creditLoanDetail
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<!--根据applyId和type查询所有贷款的应还金额-->
+	<select id="selLoanAmount" parameterType="java.util.Map" resultType="java.math.BigDecimal">
+		select sum(a.cur_month_predict_amount) from c_credit_loan_detail a where a.apply_id=#{applyId} and a.type=#{type} and a.loan_type!=0
+	</select>
+
+	<!--根据applyId和type查询最近的一条-->
+	<select id="selByApplyIdAndType" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CreditLoanDetail">
+		select
+		<include refid="searchColumns"/>
+		from c_credit_loan_detail creditLoanDetail
+		where creditLoanDetail.apply_id=#{applyId} and creditLoanDetail.type=#{type} order by creditLoanDetail.create_time desc limit 1
+
+	</select>
+
+	<!--根据applyId和type查询所有的-->
+	<select id="selListByApplyIdAndType" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CreditLoanDetail">
+		select
+		creditLoanDetail.id id,creditLoanDetail.cust_id custId,creditLoanDetail.apply_id applyId,creditLoanDetail.type type,creditLoanDetail.loan_org loanOrg,creditLoanDetail.loan_amount loanAmount,
+		creditLoanDetail.loan_type loanType,
+		CASE creditLoanDetail.loan_type
+		WHEN 0 THEN '抵押担保'
+		WHEN 1 THEN '信用免担保'
+		WHEN 2 THEN '组合认证'
+		ELSE '' END loanTypeName,
+		creditLoanDetail.loan_period loanPeriod,creditLoanDetail.loan_begin_time loanBeginTime,creditLoanDetail.loan_end_time loanEndTime,
+		creditLoanDetail.account_status accountStatus,
+		CASE creditLoanDetail.account_status
+		WHEN 0 THEN '正常'
+		WHEN 1 THEN '逾期'
+		ELSE '' END accountStatusName,
+		creditLoanDetail.five_class_status fiveClassStatus,
+		CASE creditLoanDetail.five_class_status
+		WHEN 0 THEN '正常'
+		WHEN 1 THEN '关注'
+		WHEN 2 THEN '次级'
+		WHEN 3 THEN '可疑'
+		WHEN 4 THEN '损失'
+		ELSE '' END fiveClassStatusName,
+		creditLoanDetail.capital_amount capitalAmount,creditLoanDetail.left_period leftPeriod,creditLoanDetail.cur_month_predict_amount curMonthPredictAmount,creditLoanDetail.cur_month_date curMonthDate,creditLoanDetail.cur_month_actural_amount curMonthActuralAmount,creditLoanDetail.last_repayment_datge lastRepaymentDatge,creditLoanDetail.cur_overdue_num curOverdueNum,creditLoanDetail.cur_overdue_amount curOverdueAmount,creditLoanDetail.overdue_m2_capital overdueM2Capital,creditLoanDetail.overdue_m3_capital overdueM3Capital,creditLoanDetail.overdue_m45_capital overdueM45Capital,creditLoanDetail.overdue_m6_capital overdueM6Capital,creditLoanDetail.repayment_info repaymentInfo,creditLoanDetail.create_time createTime,creditLoanDetail.update_time updateTime,creditLoanDetail.is_deleted isDeleted,creditLoanDetail.remark remark
+		from c_credit_loan_detail creditLoanDetail
+		where creditLoanDetail.apply_id=#{applyId} and creditLoanDetail.type=#{type} order by creditLoanDetail.create_time
+
+	</select>
+
+	<delete id="deleteByIds" parameterType="java.lang.Long">
+		delete from c_credit_loan_detail
+		where id in
+		<foreach collection="list" index="index" open="(" item="id" separator="," close=")">
+			#{id}
+		</foreach>
+
+	</delete>
+
+</mapper>
+

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarPeccancyInfoDao">
+
+	<sql id="searchColumns">
+		carPeccancyInfo.id id,carPeccancyInfo.car_id carId,carPeccancyInfo.total_num totalNum,carPeccancyInfo.total_money totalMoney,carPeccancyInfo.total_value totalValue,carPeccancyInfo.total_full_num totalFullNum,carPeccancyInfo.create_time createTime,carPeccancyInfo.update_time updateTime,carPeccancyInfo.remark remark,carPeccancyInfo.is_deleted isDeleted,carPeccancyInfo.violationAttachmentPhotol violationAttachmentPhotol,carPeccancyInfo.violationAttachmentPhotol2 violationAttachmentPhotol2
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarPeccancyInfo">
+		insert into
+		c_car_peccancy_info(total_value,is_deleted,total_num,create_time,total_money,update_time,remark,id,car_id,total_full_num,violationAttachmentPhotol,violationAttachmentPhotol2)
+		values (#{totalValue},#{isDeleted},#{totalNum},#{createTime},#{totalMoney},#{updateTime},#{remark},#{id},#{carId},#{totalFullNum},#{violationAttachmentPhotol},#{violationAttachmentPhotol2})
+	</insert>
+
+	<delete id="delete">
+		delete from c_car_peccancy_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_car_peccancy_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarPeccancyInfo">
+		update c_car_peccancy_info set
+		total_value=#{totalValue},is_deleted=#{isDeleted},total_num=#{totalNum},create_time=#{createTime},total_money=#{totalMoney},update_time=#{updateTime},remark=#{remark},id=#{id},car_id=#{carId},total_full_num=#{totalFullNum},violationAttachmentPhotol=#{violationAttachmentPhotol},violationAttachmentPhotol2=#{violationAttachmentPhotol2} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarPeccancyInfo">
+		update c_car_peccancy_info
+		<set>
+            <if test="carId != null"> car_id=#{carId},</if>
+            <if test="totalNum != null"> total_num=#{totalNum},</if>
+            <if test="totalMoney != null"> total_money=#{totalMoney},</if>
+            <if test="totalValue != null"> total_value=#{totalValue},</if>
+            <if test="totalFullNum != null"> total_full_num=#{totalFullNum},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+			<if test="violationAttachmentPhotol != null"> violationAttachmentPhotol=#{violationAttachmentPhotol},</if>
+			<if test="violationAttachmentPhotol2 != null"> violationAttachmentPhotol2=#{violationAttachmentPhotol2},</if>
+
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarPeccancyInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_peccancy_info carPeccancyInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarPeccancyInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_peccancy_info carPeccancyInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.car.entity.CarPeccancyInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_peccancy_info carPeccancyInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+	<select id="findCarPeccancyInfoByCarId" resultType="com.moerlong.carloan.modular.car.entity.CarPeccancyInfo">
+		SELECT
+		<include refid="searchColumns" />
+		FROM
+		c_car_peccancy_info carPeccancyInfo
+		where car_id=#{carId}
+	</select>
+</mapper>
+

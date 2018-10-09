@@ -1,0 +1,127 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins"  style="background-color:#FFF;">
+            <div class="ibox-title">
+                <h5>审批流程</h5>
+            </div>
+            <div class="ibox-title">
+                <h5>流程图</h5>
+            </div>
+          <div class="ibox-title" style="height:215px;margin-left:45px;overflow-y: scroll;overflow-x: hidden; ">
+          
+            <ul class="steps" id="flowChartId">
+				
+			</ul>
+		   </div>
+		   
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <input type="hidden" value="${applyId}" id="applyId">
+                        <input type="hidden" value="${currentNode}" id="currentNode">
+                        <input type="hidden" value="${frontFirstNode}" id="frontFirstNode">
+                        <input type="hidden" value="${nextNode}" id="nextNode">
+                        <input type="hidden" value="${currentNodeOperator}" id="currentNodeOperator">
+                        <input type="hidden" value="${frontFirstNodeOperator}" id="frontFirstNodeOperator">
+                        <input type="hidden" value="${nextNodeOperator}" id="nextNodeOperator">
+                        <input type="hidden" value="${currentNodeTime}" id="currentNodeTime">
+                        <input type="hidden" value="${frontFirstNodeTime}" id="frontFirstNodeTime">
+                        <#table id="OrderListTable"/>
+                        <#button name="返回" icon="fa fa-chevron-left" clickFun="back();"/>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+		<style>
+
+.xian{
+    border: 0.1px solid #ccc;
+}
+.steps li >div{
+    position: relative;
+    top:-19px
+} 
+.steps {
+  margin-top:15px;
+  position: relative;
+  margin-bottom: 30px;
+  counter-reset: step;  /*创建步骤数字计数器*/
+}
+/*步骤描述*/
+.steps li {
+  list-style-type: none;
+  font-size: 12px;
+  text-align: center;
+ /* width:15%;*/
+    width:auto;
+  position: relative;
+  float: left;
+  margin:10px 0;
+    min-width: 9%;
+}
+ 
+/*步骤数字*/
+.steps li:before {
+  display: block;
+  content: ""; /*设定计数器内容*/
+  counter-increment: step;  /*计数器值递增*/
+  width: 19px;
+  height: 19px;
+  background-color: #7ad0bf;
+ /*  line-height: 32px; */
+  border-radius: 32px;
+  /* font-size: 16px; */
+  color: #00b28e;
+  text-align: center;
+  font-weight: 700;
+  margin: 0 auto 8px auto;
+}
+ 
+.steps li ~ li:after {
+  content: '';
+  width: 390px;
+  height: 2px;
+  background-color: #7ad0bf;
+  position: absolute;
+  left: -44px;
+  top: 9px;
+  z-index: 0; /*放置在数字后面*/
+}
+ 
+.steps li.active:before,
+.steps li.active:after {
+	background-color: #00b28e;
+    color: #7ad0bf;
+ 
+}
+ 
+.steps li.active ~ li:before,
+.steps li.active ~ li:after {
+   background-color: #EEE;
+   color:#EEE ;
+}
+.steps span{
+    position: relative;
+    top: -52px;
+}
+.steps .dateUnder{
+    position: absolute;
+    top: 39px;
+}
+.steps .name{
+    position: relative;
+    top: -4px;
+    left: -21px;
+}
+
+</style>
+
+
+
+<script src="${ctxPath}/static/modular/loan/mywork/approveRecord.js?v=2.4"></script>
+<script>$("#currentimgs img").removeAttr("style");</script>
+@}

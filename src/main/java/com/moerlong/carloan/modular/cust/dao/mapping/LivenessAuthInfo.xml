@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.LivenessAuthInfoDao">
+
+	<sql id="searchColumns">
+		livenessAuthInfo.id id,livenessAuthInfo.cust_id custId,livenessAuthInfo.apply_id applyId,livenessAuthInfo.type type,livenessAuthInfo.is_liveness_auth isLivenessAuth,livenessAuthInfo.liveness_blink_photo_url livenessBlinkPhotoUrl,livenessAuthInfo.liveness_nod_photo_url livenessNodPhotoUrl,livenessAuthInfo.liveness_mouth_photo_url livenessMouthPhotoUrl,livenessAuthInfo.liveness_yaw_photo_url livenessYawPhotoUrl,livenessAuthInfo.liveness_file_url livenessFileUrl,livenessAuthInfo.liveness_auth_time livenessAuthTime,livenessAuthInfo.create_time createTime,livenessAuthInfo.update_time updateTime,livenessAuthInfo.is_deleted isDeleted,livenessAuthInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.LivenessAuthInfo">
+		insert into
+		c_liveness_auth_info(liveness_auth_time,liveness_blink_photo_url,liveness_yaw_photo_url,is_liveness_auth,update_time,remark,type,liveness_mouth_photo_url,apply_id,liveness_nod_photo_url,is_deleted,create_time,cust_id,liveness_file_url,id)
+		values (#{livenessAuthTime},#{livenessBlinkPhotoUrl},#{livenessYawPhotoUrl},#{isLivenessAuth},#{updateTime},#{remark},#{type},#{livenessMouthPhotoUrl},#{applyId},#{livenessNodPhotoUrl},#{isDeleted},#{createTime},#{custId},#{livenessFileUrl},#{id})
+	</insert>
+
+	<delete id="delete">
+		delete from c_liveness_auth_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_liveness_auth_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.LivenessAuthInfo">
+		update c_liveness_auth_info set
+		liveness_auth_time=#{livenessAuthTime},liveness_blink_photo_url=#{livenessBlinkPhotoUrl},liveness_yaw_photo_url=#{livenessYawPhotoUrl},is_liveness_auth=#{isLivenessAuth},update_time=#{updateTime},remark=#{remark},type=#{type},liveness_mouth_photo_url=#{livenessMouthPhotoUrl},apply_id=#{applyId},liveness_nod_photo_url=#{livenessNodPhotoUrl},is_deleted=#{isDeleted},create_time=#{createTime},cust_id=#{custId},liveness_file_url=#{livenessFileUrl},id=#{id} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.LivenessAuthInfo">
+		update c_liveness_auth_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="type != null"> type=#{type},</if>
+            <if test="isLivenessAuth != null"> is_liveness_auth=#{isLivenessAuth},</if>
+            <if test="livenessBlinkPhotoUrl != null"> liveness_blink_photo_url=#{livenessBlinkPhotoUrl},</if>
+            <if test="livenessNodPhotoUrl != null"> liveness_nod_photo_url=#{livenessNodPhotoUrl},</if>
+            <if test="livenessMouthPhotoUrl != null"> liveness_mouth_photo_url=#{livenessMouthPhotoUrl},</if>
+            <if test="livenessYawPhotoUrl != null"> liveness_yaw_photo_url=#{livenessYawPhotoUrl},</if>
+            <if test="livenessFileUrl != null"> liveness_file_url=#{livenessFileUrl},</if>
+            <if test="livenessAuthTime != null"> liveness_auth_time=#{livenessAuthTime},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.LivenessAuthInfo">
+		select
+		<include refid="searchColumns" />
+		from c_liveness_auth_info livenessAuthInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.LivenessAuthInfo">
+		select
+		<include refid="searchColumns" />
+		from c_liveness_auth_info livenessAuthInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.LivenessAuthInfo">
+		select
+		<include refid="searchColumns" />
+		from c_liveness_auth_info livenessAuthInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<!-- 查询（根据主键applyId 和type 查询） -->
+	<select id="selectByApplyIdAndType" resultType="com.moerlong.carloan.modular.cust.entity.LivenessAuthInfo">
+		select
+		<include refid="searchColumns" />
+		from c_liveness_auth_info livenessAuthInfo
+		where apply_id = #{applyId} and type=#{type}
+	</select>
+</mapper>
+

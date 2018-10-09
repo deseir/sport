@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarVerifyInfoDao">
+
+	<sql id="searchColumns">
+		carVerifyInfo.id id,carVerifyInfo.car_id carId,carVerifyInfo.car_cond carCond,carVerifyInfo.suggestion suggestion,carVerifyInfo.config_table_photo configTablePhoto,carVerifyInfo.maintain_photo maintainPhoto,carVerifyInfo.car_assessment_price carAssessmentPrice,carVerifyInfo.nszk nszk,carVerifyInfo.gkzk gkzk,carVerifyInfo.qmzk qmzk,carVerifyInfo.create_time createTime,carVerifyInfo.update_time updateTime,carVerifyInfo.remark remark,carVerifyInfo.is_deleted isDeleted
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarVerifyInfo">
+		insert into
+		c_car_verify_info(maintain_photo,car_cond,is_deleted,car_assessment_price,qmzk,nszk,gkzk,create_time,suggestion,update_time,remark,id,config_table_photo,car_id)
+		values (#{maintainPhoto},#{carCond},#{isDeleted},#{carAssessmentPrice},#{qmzk},#{nszk},#{gkzk},#{createTime},#{suggestion},#{updateTime},#{remark},#{id},#{configTablePhoto},#{carId})
+	</insert>
+
+	<delete id="delete">
+		delete from c_car_verify_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_car_verify_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarVerifyInfo">
+		update c_car_verify_info set
+		maintain_photo=#{maintainPhoto},car_cond=#{carCond},is_deleted=#{isDeleted},car_assessment_price=#{carAssessmentPrice},qmzk=#{qmzk},nszk=#{nszk},gkzk=#{gkzk},create_time=#{createTime},suggestion=#{suggestion},update_time=#{updateTime},remark=#{remark},id=#{id},config_table_photo=#{configTablePhoto},car_id=#{carId} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarVerifyInfo">
+		update c_car_verify_info
+		<set>
+            <if test="carId != null"> car_id=#{carId},</if>
+            <if test="carCond != null"> car_cond=#{carCond},</if>
+            <if test="suggestion != null"> suggestion=#{suggestion},</if>
+            <if test="configTablePhoto != null and configTablePhoto != ''"> config_table_photo=#{configTablePhoto},</if>
+            <if test="maintainPhoto != null and maintainPhoto != ''"> maintain_photo=#{maintainPhoto},</if>
+            <if test="carAssessmentPrice != null"> car_assessment_price=#{carAssessmentPrice},</if>
+			<if test="qmzk != null"> qmzk=#{qmzk},</if>
+			<if test="nszk != null"> nszk=#{nszk},</if>
+			<if test="gkzk != null"> gkzk=#{gkzk},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarVerifyInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_verify_info carVerifyInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarVerifyInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_verify_info carVerifyInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.car.entity.CarVerifyInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_verify_info carVerifyInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<!-- 查询（根据CarId查询） -->
+	<select id="selectByCarId" resultType="com.moerlong.carloan.modular.car.entity.CarVerifyInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_verify_info carVerifyInfo
+		where car_id = #{carId}
+	</select>
+</mapper>
+

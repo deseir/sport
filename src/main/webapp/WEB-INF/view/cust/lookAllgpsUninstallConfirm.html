@@ -1,0 +1,84 @@
+@layout("/common/_container.html"){
+
+<div class="">
+	<div class="">
+		<ul class="nav nav-pills nav-justified">
+			<li class="active" onclick="skipHtml(1)" id="nqEnter"><a href="javascript:;" data-toggle="tab" data-target="#lookTab">内勤资料录入</a>
+			</li>
+			<li onclick="skipHtml(2)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab1">验车</a></li>
+			<li onclick="skipHtml(3)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab2">面审</a></li>
+			<li onclick="skipHtml(4)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab3">签订合同</a></li>
+			<li onclick="skipHtml(5)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab4">抵押申请</a></li>
+			<li onclick="skipHtml(6)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab5">抵押办理成功</a></li>
+			<li onclick="skipHtml(7)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab6">GPS安装</a></li>
+			<li onclick="skipHtml(8)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab7">资料存留</a></li>
+			<li onclick="skipHtml(9)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab8">请款申请</a></li>
+			<li onclick="skipHtml(10)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab9">请款内勤主管审核</a></li>
+			<li onclick="skipHtml(11)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab10">请款业务经理审核</a></li>
+			<li onclick="skipHtml(12)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab11">请款业务经理审核</a></li>
+			<li onclick="skipHtml(13)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab12">请款财务首次审核</a></li>
+			<li onclick="skipHtml(14)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab13">请款财务经理首次审核</a></li>
+			<li onclick="skipHtml(15)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab14">请款财务二次审核成功</a></li>
+			<li onclick="skipHtml(16)" id="yanche"><a href="javascript:;" data-toggle="tab" data-target="#lookTab15">拆卸GPS</a></li>
+		</ul>
+		<div class="ibox-title">
+			<h3>拆卸GPS确认</h3>
+		</div>
+		<div class="tab-content">
+			<input type="hidden" value="${applyId}" id="applyId">
+			<input type="hidden" value="${idPicUrls}" id="idPicUrls">
+			<!--身份认证-->
+			<div class="tab-pane fade in active"  id="div_sfrz">
+				<div class="menu-item" id="menu-item5">
+					<div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 3px 3px 3px 3px #c2c2c2;">
+						<h5>GPS卸载照片</h5>
+						<div class="row">
+							<div class="col-sm-12" id="showPhotoContent">
+
+							</div>
+						</div>
+
+						<div class="row">
+						<div style="width: 420px; margin-left: 255px;">
+							<#button name="返回" icon="fa fa-chevron-left" clickFun="backCommons();"/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+</div>
+</div>
+<style>
+	.nav > li > a {color: #30af90; padding: 13px 18px 14px 25px;}
+	.nav > nav-pill > li.active > a {border-radius:4px;}
+	.nav > nav-pill > li > a {border-radius:4px;}
+	.nav > li.active {border-left: none;}
+	.nav > li.active {background-color: #ccc;}
+	.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {background-color: #ccc;border-radius:4px;}
+</style>
+<script>
+    $("#yanche").css({
+        "background-color" : "#ccc",
+        "border-radius": "4px"
+    })
+    $("#yanche a").css({
+        "color" : "#fff"
+    })
+
+    $("#nqEnter").css({
+        "background-color" : "#fff",
+        "color": "#30af90"
+    })
+    $("#nqEnter a").css({
+        "background-color" : "#fff",
+        "color": "#30af90"
+    })
+</script>
+<script src="${ctxPath}/static/modular/cust/gpsuninstallconfirm.js?v=1.0"></script>
+<script src="${ctxPath}/static/modular/loan/mywork/approveRecord.js?v=1.2"></script>
+<script src="${ctxPath}/static/modular/loan/mywork/lookAll.js?v=1.2"></script>
+@}

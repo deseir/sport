@@ -1,0 +1,47 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>代扣订单审核</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="batchNo" name="批次号" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#SelectCon id="statusId" name="订单状态">
+                                    <option value="">请选择</option>
+                                    <option value="0000">成功</option>
+                                    <option value="1111">失败</option>
+                                </#SelectCon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#TimeCon id="beginTime" name="开始时间" isTime="false" pattern="YYYY-MM-DD"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <#TimeCon id="endTime" name="结束时间" isTime="false" pattern="YYYY-MM-DD" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div style="width: 200px; margin: 10px auto;">
+                                    <#button name="搜索" icon="fa-search" clickFun="CostOrderApply.search()"/>
+                                    <#button name="重置" icon="fa-undo" clickFun="CostOrderApply.resetSearch()" space="true"/>
+                                </div>
+                            </div>
+                        </div>
+                        <#table id="CostOrderApplyTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/paybackMgr/costOrder/costOrderApply.js"></script>
+@}

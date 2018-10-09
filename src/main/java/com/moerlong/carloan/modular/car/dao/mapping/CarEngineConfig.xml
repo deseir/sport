@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarEngineConfigDao" >
+  <resultMap id="BaseResultMap" type="com.moerlong.carloan.modular.car.entity.CarEngineConfig" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="cust_id" property="custId" jdbcType="BIGINT" />
+    <result column="apply_id" property="applyId" jdbcType="BIGINT" />
+    <result column="car_id" property="carId" jdbcType="BIGINT" />
+    <result column="carengine_config" property="carengineConfig" jdbcType="VARCHAR" />
+    <result column="fdjxh" property="fdjxh" jdbcType="VARCHAR" />
+    <result column="pailiang" property="pailiang" jdbcType="VARCHAR" />
+    <result column="jqxs" property="jqxs" jdbcType="VARCHAR" />
+    <result column="qgplxs" property="qgplxs" jdbcType="VARCHAR" />
+    <result column="qggs" property="qggs" jdbcType="VARCHAR" />
+    <result column="mgqms" property="mgqms" jdbcType="VARCHAR" />
+    <result column="pqjg" property="pqjg" jdbcType="VARCHAR" />
+    <result column="gangjing" property="gangjing" jdbcType="VARCHAR" />
+    <result column="maxml" property="maxml" jdbcType="VARCHAR" />
+    <result column="maxgl" property="maxgl" jdbcType="VARCHAR" />
+    <result column="maxglzs" property="maxglzs" jdbcType="VARCHAR" />
+    <result column="maxnz" property="maxnz" jdbcType="VARCHAR" />
+    <result column="maxnzzs" property="maxnzzs" jdbcType="VARCHAR" />
+    <result column="fdjtyjs" property="fdjtyjs" jdbcType="VARCHAR" />
+    <result column="rlxs" property="rlxs" jdbcType="VARCHAR" />
+    <result column="rybh" property="rybh" jdbcType="VARCHAR" />
+    <result column="gyfs" property="gyfs" jdbcType="VARCHAR" />
+    <result column="ggcl" property="ggcl" jdbcType="VARCHAR" />
+    <result column="gtcl" property="gtcl" jdbcType="VARCHAR" />
+    <result column="hbcl" property="hbcl" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    c_car_engine_config.id, c_car_engine_config.cust_id, c_car_engine_config.apply_id, 
+    c_car_engine_config.car_id, c_car_engine_config.carengine_config, c_car_engine_config.fdjxh, 
+    c_car_engine_config.pailiang, c_car_engine_config.jqxs, c_car_engine_config.qgplxs, 
+    c_car_engine_config.qggs, c_car_engine_config.mgqms, c_car_engine_config.pqjg, c_car_engine_config.gangjing, 
+    c_car_engine_config.maxml, c_car_engine_config.maxgl, c_car_engine_config.maxglzs, 
+    c_car_engine_config.maxnz, c_car_engine_config.maxnzzs, c_car_engine_config.fdjtyjs, 
+    c_car_engine_config.rlxs, c_car_engine_config.rybh, c_car_engine_config.gyfs, c_car_engine_config.ggcl, 
+    c_car_engine_config.gtcl, c_car_engine_config.hbcl, c_car_engine_config.create_time, 
+    c_car_engine_config.update_time, c_car_engine_config.remark, c_car_engine_config.is_deleted
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from c_car_engine_config
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectByApplyId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from c_car_engine_config
+    where apply_id = #{applyId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from c_car_engine_config
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="save" parameterType="com.moerlong.carloan.modular.car.entity.CarEngineConfig" >
+    insert into c_car_engine_config (id, cust_id, apply_id, 
+      car_id, carengine_config, fdjxh, 
+      pailiang, jqxs, qgplxs, 
+      qggs, mgqms, pqjg, 
+      gangjing, maxml, maxgl,
+      maxglzs, maxnz, maxnzzs, 
+      fdjtyjs, rlxs, rybh, 
+      gyfs, ggcl, gtcl, hbcl, 
+      create_time, update_time, remark, 
+      is_deleted)
+    values (#{id,jdbcType=BIGINT}, #{custId,jdbcType=BIGINT}, #{applyId,jdbcType=BIGINT}, 
+      #{carId,jdbcType=BIGINT}, #{carengineConfig,jdbcType=VARCHAR}, #{fdjxh,jdbcType=VARCHAR}, 
+      #{pailiang,jdbcType=VARCHAR}, #{jqxs,jdbcType=VARCHAR}, #{qgplxs,jdbcType=VARCHAR}, 
+      #{qggs,jdbcType=VARCHAR}, #{mgqms,jdbcType=VARCHAR}, #{pqjg,jdbcType=VARCHAR}, 
+      #{gangjing,jdbcType=VARCHAR}, #{maxml,jdbcType=VARCHAR}, #{maxgl,jdbcType=VARCHAR}, 
+      #{maxglzs,jdbcType=VARCHAR}, #{maxnz,jdbcType=VARCHAR}, #{maxnzzs,jdbcType=VARCHAR}, 
+      #{fdjtyjs,jdbcType=VARCHAR}, #{rlxs,jdbcType=VARCHAR}, #{rybh,jdbcType=VARCHAR}, 
+      #{gyfs,jdbcType=VARCHAR}, #{ggcl,jdbcType=VARCHAR}, #{gtcl,jdbcType=VARCHAR}, #{hbcl,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{isDeleted,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.moerlong.carloan.modular.car.entity.CarEngineConfig" >
+    insert into c_car_engine_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="applyId != null" >
+        apply_id,
+      </if>
+      <if test="carId != null" >
+        car_id,
+      </if>
+      <if test="carengineConfig != null" >
+        carengine_config,
+      </if>
+      <if test="fdjxh != null" >
+        fdjxh,
+      </if>
+      <if test="pailiang != null" >
+        pailiang,
+      </if>
+      <if test="jqxs != null" >
+        jqxs,
+      </if>
+      <if test="qgplxs != null" >
+        qgplxs,
+      </if>
+      <if test="qggs != null" >
+        qggs,
+      </if>
+      <if test="mgqms != null" >
+        mgqms,
+      </if>
+      <if test="pqjg != null" >
+        pqjg,
+      </if>
+      <if test="gangjing != null" >
+        gangjing,
+      </if>
+      <if test="maxml != null" >
+        maxml,
+      </if>
+      <if test="maxgl != null" >
+        maxgl,
+      </if>
+      <if test="maxglzs != null" >
+        maxglzs,
+      </if>
+      <if test="maxnz != null" >
+        maxnz,
+      </if>
+      <if test="maxnzzs != null" >
+        maxnzzs,
+      </if>
+      <if test="fdjtyjs != null" >
+        fdjtyjs,
+      </if>
+      <if test="rlxs != null" >
+        rlxs,
+      </if>
+      <if test="rybh != null" >
+        rybh,
+      </if>
+      <if test="gyfs != null" >
+        gyfs,
+      </if>
+      <if test="ggcl != null" >
+        ggcl,
+      </if>
+      <if test="gtcl != null" >
+        gtcl,
+      </if>
+      <if test="hbcl != null" >
+        hbcl,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="carId != null" >
+        #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="carengineConfig != null" >
+        #{carengineConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="fdjxh != null" >
+        #{fdjxh,jdbcType=VARCHAR},
+      </if>
+      <if test="pailiang != null" >
+        #{pailiang,jdbcType=VARCHAR},
+      </if>
+      <if test="jqxs != null" >
+        #{jqxs,jdbcType=VARCHAR},
+      </if>
+      <if test="qgplxs != null" >
+        #{qgplxs,jdbcType=VARCHAR},
+      </if>
+      <if test="qggs != null" >
+        #{qggs,jdbcType=VARCHAR},
+      </if>
+      <if test="mgqms != null" >
+        #{mgqms,jdbcType=VARCHAR},
+      </if>
+      <if test="pqjg != null" >
+        #{pqjg,jdbcType=VARCHAR},
+      </if>
+      <if test="gangjing != null" >
+        #{gangjing,jdbcType=VARCHAR},
+      </if>
+      <if test="maxml != null" >
+        #{maxml,jdbcType=VARCHAR},
+      </if>
+      <if test="maxgl != null" >
+        #{maxgl,jdbcType=VARCHAR},
+      </if>
+      <if test="maxglzs != null" >
+        #{maxglzs,jdbcType=VARCHAR},
+      </if>
+      <if test="maxnz != null" >
+        #{maxnz,jdbcType=VARCHAR},
+      </if>
+      <if test="maxnzzs != null" >
+        #{maxnzzs,jdbcType=VARCHAR},
+      </if>
+      <if test="fdjtyjs != null" >
+        #{fdjtyjs,jdbcType=VARCHAR},
+      </if>
+      <if test="rlxs != null" >
+        #{rlxs,jdbcType=VARCHAR},
+      </if>
+      <if test="rybh != null" >
+        #{rybh,jdbcType=VARCHAR},
+      </if>
+      <if test="gyfs != null" >
+        #{gyfs,jdbcType=VARCHAR},
+      </if>
+      <if test="ggcl != null" >
+        #{ggcl,jdbcType=VARCHAR},
+      </if>
+      <if test="gtcl != null" >
+        #{gtcl,jdbcType=VARCHAR},
+      </if>
+      <if test="hbcl != null" >
+        #{hbcl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateWithoutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarEngineConfig" >
+    update c_car_engine_config
+    <set >
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        apply_id = #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="carId != null" >
+        car_id = #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="carengineConfig != null" >
+        carengine_config = #{carengineConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="fdjxh != null" >
+        fdjxh = #{fdjxh,jdbcType=VARCHAR},
+      </if>
+      <if test="pailiang != null" >
+        pailiang = #{pailiang,jdbcType=VARCHAR},
+      </if>
+      <if test="jqxs != null" >
+        jqxs = #{jqxs,jdbcType=VARCHAR},
+      </if>
+      <if test="qgplxs != null" >
+        qgplxs = #{qgplxs,jdbcType=VARCHAR},
+      </if>
+      <if test="qggs != null" >
+        qggs = #{qggs,jdbcType=VARCHAR},
+      </if>
+      <if test="mgqms != null" >
+        mgqms = #{mgqms,jdbcType=VARCHAR},
+      </if>
+      <if test="pqjg != null" >
+        pqjg = #{pqjg,jdbcType=VARCHAR},
+      </if>
+      <if test="gangjing != null" >
+        gangjing = #{gangjing,jdbcType=VARCHAR},
+      </if>
+      <if test="maxml != null" >
+        maxml = #{maxml,jdbcType=VARCHAR},
+      </if>
+      <if test="maxgl != null" >
+        maxgl = #{maxgl,jdbcType=VARCHAR},
+      </if>
+      <if test="maxglzs != null" >
+        maxglzs = #{maxglzs,jdbcType=VARCHAR},
+      </if>
+      <if test="maxnz != null" >
+        maxnz = #{maxnz,jdbcType=VARCHAR},
+      </if>
+      <if test="maxnzzs != null" >
+        maxnzzs = #{maxnzzs,jdbcType=VARCHAR},
+      </if>
+      <if test="fdjtyjs != null" >
+        fdjtyjs = #{fdjtyjs,jdbcType=VARCHAR},
+      </if>
+      <if test="rlxs != null" >
+        rlxs = #{rlxs,jdbcType=VARCHAR},
+      </if>
+      <if test="rybh != null" >
+        rybh = #{rybh,jdbcType=VARCHAR},
+      </if>
+      <if test="gyfs != null" >
+        gyfs = #{gyfs,jdbcType=VARCHAR},
+      </if>
+      <if test="ggcl != null" >
+        ggcl = #{ggcl,jdbcType=VARCHAR},
+      </if>
+      <if test="gtcl != null" >
+        gtcl = #{gtcl,jdbcType=VARCHAR},
+      </if>
+      <if test="hbcl != null" >
+        hbcl = #{hbcl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarEngineConfig" >
+    update c_car_engine_config
+    set cust_id = #{custId,jdbcType=BIGINT},
+      apply_id = #{applyId,jdbcType=BIGINT},
+      car_id = #{carId,jdbcType=BIGINT},
+      carengine_config = #{carengineConfig,jdbcType=VARCHAR},
+      fdjxh = #{fdjxh,jdbcType=VARCHAR},
+      pailiang = #{pailiang,jdbcType=VARCHAR},
+      jqxs = #{jqxs,jdbcType=VARCHAR},
+      qgplxs = #{qgplxs,jdbcType=VARCHAR},
+      qggs = #{qggs,jdbcType=VARCHAR},
+      mgqms = #{mgqms,jdbcType=VARCHAR},
+      pqjg = #{pqjg,jdbcType=VARCHAR},
+      gangjing = #{gangjing,jdbcType=VARCHAR},
+      maxml = #{maxml,jdbcType=VARCHAR},
+      maxgl = #{maxgl,jdbcType=VARCHAR},
+      maxglzs = #{maxglzs,jdbcType=VARCHAR},
+      maxnz = #{maxnz,jdbcType=VARCHAR},
+      maxnzzs = #{maxnzzs,jdbcType=VARCHAR},
+      fdjtyjs = #{fdjtyjs,jdbcType=VARCHAR},
+      rlxs = #{rlxs,jdbcType=VARCHAR},
+      rybh = #{rybh,jdbcType=VARCHAR},
+      gyfs = #{gyfs,jdbcType=VARCHAR},
+      ggcl = #{ggcl,jdbcType=VARCHAR},
+      gtcl = #{gtcl,jdbcType=VARCHAR},
+      hbcl = #{hbcl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

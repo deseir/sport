@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moerlong.carloan.modular.sport.dao.SCdssQtMapper" >
+  <resultMap id="BaseResultMap" type="com.moerlong.carloan.modular.sport.entity.SCdssQt" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="prjid" property="prjid" jdbcType="INTEGER" />
+    <result column="prjtype" property="prjtype" jdbcType="VARCHAR" />
+    <result column="jsss" property="jsss" jdbcType="VARCHAR" />
+    <result column="num" property="num" jdbcType="VARCHAR" />
+    <result column="area" property="area" jdbcType="VARCHAR" />
+    <result column="wz" property="wz" jdbcType="VARCHAR" />
+    <result column="beizhu" property="beizhu" jdbcType="VARCHAR" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="isdelete" property="isdelete" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, prjid, prjtype, jsss, num, area, wz, beizhu, pic, createtime, updatetime, isdelete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from s_cdss_qt
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from s_cdss_qt
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.moerlong.carloan.modular.sport.entity.SCdssQt" >
+    insert into s_cdss_qt (id, prjid, prjtype, 
+      jsss, num, area, wz, 
+      beizhu, pic, createtime, 
+      updatetime, isdelete)
+    values (#{id,jdbcType=INTEGER}, #{prjid,jdbcType=INTEGER}, #{prjtype,jdbcType=VARCHAR}, 
+      #{jsss,jdbcType=VARCHAR}, #{num,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{wz,jdbcType=VARCHAR}, 
+      #{beizhu,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{isdelete,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.moerlong.carloan.modular.sport.entity.SCdssQt" >
+    insert into s_cdss_qt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="prjid != null" >
+        prjid,
+      </if>
+      <if test="prjtype != null" >
+        prjtype,
+      </if>
+      <if test="jsss != null" >
+        jsss,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="wz != null" >
+        wz,
+      </if>
+      <if test="beizhu != null" >
+        beizhu,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="prjid != null" >
+        #{prjid,jdbcType=INTEGER},
+      </if>
+      <if test="prjtype != null" >
+        #{prjtype,jdbcType=VARCHAR},
+      </if>
+      <if test="jsss != null" >
+        #{jsss,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="wz != null" >
+        #{wz,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu != null" >
+        #{beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.moerlong.carloan.modular.sport.entity.SCdssQt" >
+    update s_cdss_qt
+    <set >
+      <if test="prjid != null" >
+        prjid = #{prjid,jdbcType=INTEGER},
+      </if>
+      <if test="prjtype != null" >
+        prjtype = #{prjtype,jdbcType=VARCHAR},
+      </if>
+      <if test="jsss != null" >
+        jsss = #{jsss,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        num = #{num,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="wz != null" >
+        wz = #{wz,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu != null" >
+        beizhu = #{beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.moerlong.carloan.modular.sport.entity.SCdssQt" >
+    update s_cdss_qt
+    set prjid = #{prjid,jdbcType=INTEGER},
+      prjtype = #{prjtype,jdbcType=VARCHAR},
+      jsss = #{jsss,jdbcType=VARCHAR},
+      num = #{num,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      wz = #{wz,jdbcType=VARCHAR},
+      beizhu = #{beizhu,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      isdelete = #{isdelete,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!-- 查询所有 -->
+  <select id="listAll" resultType="com.moerlong.carloan.modular.sport.entity.SCdssQt">
+    select
+    <include refid="Base_Column_List" />
+    from s_cdss_qt
+  </select>
+  <!-- 查询（分页查询） -->
+  <select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.sport.entity.SCdssQt">
+    select
+    <include refid="Base_Column_List" />
+    from s_cdss_qt
+    where 1=1
+  </select>
+</mapper>

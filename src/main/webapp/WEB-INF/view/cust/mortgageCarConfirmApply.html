@@ -1,0 +1,91 @@
+@layout("/common/_container.html"){
+
+<div class="">
+  <div class="">
+	  <div class="ibox-title">
+		  <div style="border-bottom: 1px solid #cccccc94;height: 45px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 20px;">抵押申请材料确认</span></div>
+	  </div>
+   	<div class="tab-content">
+		<input type="hidden" value="${applyId}" id="applyId">
+		<input type="hidden" value="${interfaceAddress}" id="interfaceAddress">
+		<input type="hidden" value="${idPicUrls}" id="idPicUrls">
+		<!--身份认证-->
+   		<div class="tab-pane fade in active"  id="div_sfrz">
+			<div class="menu-item" id="menu-item5">
+				<div class="form-horizontal" style="background-color:#FFF;padding: 1px 1px 1px 25px;box-shadow: 3px 5px 3px 3px #c2c2c2;" >
+					<h5></h5>
+					<div class="row">
+						<div class="col-sm-5">
+							<input type="hidden" id="mortgageId">
+							<#input id="custName" name="姓名" underline="false" value="${name}" readonly="readonly"/>
+						</div>
+						<div class="col-sm-5">
+							<#input id="sex" name="性别" underline="false" value="${sex}" readonly="readonly"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-5">
+							<#input id="custIdNo" name="身份证号码" underline="false" value="${idno}" readonly="readonly"/>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-9">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">车辆登记证书1-2页照片</label>
+								<#button name="下载" id="registerPhotoUrl1" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">车辆登记证书3-4页照片</label>
+								<#button name="下载" id="registerPhotoUrl2" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">车辆登记证书5-6页照片</label>
+								<#button name="下载" id="registerPhotoUrl3" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">车辆登记证书7-8页照片</label>
+								<#button name="下载" id="registerPhotoUrl4" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">委托书(客户签字授权)照片</label>
+								<#button name="下载" id="proxyBookUrl" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">抵押合同(车管所)照片</label>
+								<#button name="下载" id="mortgageContractUrl" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">身份证复印件(带有客户签名和手机号码)照片</label>
+								<#button name="下载" id="certPhotoUrl" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+						</div>
+						<div class="row" style="display: none;">
+							<div class="col-sm-6">
+								<#select id="checkResult" name="抵押申请材料确认" underline="false">
+									<option value="">---请选择---</option>
+									<option value="0" selected="selected">是</option>
+									<option value="1">否</option>
+									<option value="2">驳回</option>
+								</#select>
+								<div id="resultHide">
+									<#input id="checkResultDesc" name="驳回原因" underline="false"/>
+								</div>
+							    
+						    </div>
+						</div>
+						<div style="width: 265px; margin: 80px auto;text-align: center">
+							<#button name="返回" icon="fa fa-chevron-left" clickFun="backToDoWork();"/>
+							<#button name="抵押申请材料确认提交" icon="fa fa-check" clickFun="todoSubmit();"/>
+						</div>
+					</div>
+				</div>
+			</div>
+   		</div>
+   	</div>
+  </div>
+</div>
+
+<script src="${ctxPath}/static/modular/cust/mortgageCarApply.js"></script>
+<script src="${ctxPath}/static/modular/cust/dysqupload.js"></script>
+
+@}

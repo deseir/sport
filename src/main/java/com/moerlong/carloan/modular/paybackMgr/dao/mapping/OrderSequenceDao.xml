@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.paybackMgr.dao.OrderSequenceDao">
+
+	<resultMap id="OrderSequence" type="com.moerlong.carloan.modular.paybackMgr.entity.OrderSequence" >
+		<result column="seq_id" property="seqId"/>
+		<result column="order_type" property="orderType"/>
+	</resultMap>
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		seq_id,
+		order_type
+	</sql>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="OrderSequence" parameterType="java.lang.Long">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM order_sequence
+		 WHERE seq_id = #{seqId}
+	</select>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		 DELETE FROM order_sequence
+		 WHERE seq_id = #{seqId}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.OrderSequence">
+		 INSERT INTO order_sequence
+ 		(
+			 seq_id,
+			 order_type
+		) 
+		 VALUES 
+ 		(
+			 #{seqId},
+			 #{orderType}
+ 		) 
+		 <selectKey keyProperty="seqId" resultType="Long" order="AFTER">
+			 select LAST_INSERT_ID()
+		 </selectKey>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.OrderSequence">
+		 UPDATE order_sequence
+ 		 <set> 
+			<if test="orderType != null">
+				 order_type = #{orderType},
+			</if>
+
+ 		 </set>
+		 WHERE seq_id = #{seqId}
+	</update>
+
+
+	<!-- count 总数-->
+	<select id="count" resultType="long">
+		 SELECT 
+		 count(1) 
+		 from order_sequence
+ 		 where 1=1  
+		<if test="record.seqId != null">
+			 and seq_id = #{record.seqId} 
+		</if>
+		<if test="record.orderType != null">
+			 and order_type = #{record.orderType} 
+		</if>
+	</select>
+
+</mapper>

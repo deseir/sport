@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarSafetyEquipmentMapper" >
+  
+  <sql id="Base_Column_List" >
+    c_car_safety_equipment.id id, c_car_safety_equipment.apply_id applyId, c_car_safety_equipment.cust_id custId, 
+    c_car_safety_equipment.car_id carId, c_car_safety_equipment.car_safety_equipment carSafetyEquipment, c_car_safety_equipment.car_main_air_bag carMainAirBag, 
+    c_car_safety_equipment.car_fu_air_bag carFuAirBag, c_car_safety_equipment.car_front_air_bag carFrontAirBag, 
+    c_car_safety_equipment.car_rear_air_bag carRearAirBag, c_car_safety_equipment.car_front_head_air_bag carFrontHeadAirBag, 
+    c_car_safety_equipment.car_rear_head_air_bag carRearHeadAirBag, c_car_safety_equipment.car_knee_air_bag carKneeAirBag, 
+    c_car_safety_equipment.pressure_monitoring pressureMonitoring, c_car_safety_equipment.zero_tire_run zeroTireRun, 
+    c_car_safety_equipment.seat_belt_not_prompted seatBeltNotPrompted, c_car_safety_equipment.car_isofix carIsofix, 
+    c_car_safety_equipment.car_abs carAbs, c_car_safety_equipment.car_ebd carEbd, c_car_safety_equipment.car_ebab carEbab, 
+    c_car_safety_equipment.car_asr carAsr, c_car_safety_equipment.car_esc carEsc, c_car_safety_equipment.parallel_auxiliary parallelAuxiliary, 
+    c_car_safety_equipment.create_time createTime, c_car_safety_equipment.update_time updateTime, c_car_safety_equipment.is_delete isDelete, 
+    c_car_safety_equipment.remark remark
+  </sql>
+ 
+  <select id="selectByApplyId" resultType="com.moerlong.carloan.modular.car.entity.CarSafetyEquipment" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from c_car_safety_equipment
+    where apply_id = #{id}
+  </select>
+   <select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarSafetyEquipment" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from c_car_safety_equipment
+    where id = #{id}
+  </select>
+  <delete id="delete" parameterType="java.lang.Long" >
+    delete from c_car_safety_equipment
+    where id = #{id}
+  </delete>
+  
+  <insert id="save"  useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarSafetyEquipment" >
+    insert into c_car_safety_equipment ( apply_id, cust_id,car_id, car_safety_equipment, car_main_air_bag,car_fu_air_bag, car_front_air_bag, car_rear_air_bag, 
+      car_front_head_air_bag, car_rear_head_air_bag,car_knee_air_bag, pressure_monitoring, zero_tire_run,seat_belt_not_prompted, car_isofix, car_abs, 
+      car_ebd, car_ebab, car_asr,car_esc, parallel_auxiliary, create_time,update_time, is_delete, remark)
+    values ( #{applyId}, #{custId},#{carId}, #{carSafetyEquipment}, #{carMainAirBag},#{carFuAirBag}, #{carFrontAirBag}, #{carRearAirBag},#{carFrontHeadAirBag}, #{carRearHeadAirBag},#{carKneeAirBag}, #{pressureMonitoring}, #{zeroTireRun},#{seatBeltNotPrompted}, #{carIsofix}, #{carAbs},#{carEbd}, #{carEbab}, #{carAsr}, #{carEsc}, #{parallelAuxiliary}, #{createTime}, 
+      #{updateTime}, #{isDelete}, #{remark})
+  </insert>
+  
+  
+ 
+  
+  <update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarSafetyEquipment" >
+    update c_car_safety_equipment
+    <set >
+      <if test="applyId != null" >
+        apply_id = #{applyId},
+      </if>
+      <if test="custId != null" >
+        cust_id = #{custId},
+      </if>
+      <if test="carId != null" >
+        car_id = #{carId},
+      </if>
+      <if test="carSafetyEquipment != null" >
+        car_safety_equipment = #{carSafetyEquipment},
+      </if>
+      <if test="carMainAirBag != null" >
+        car_main_air_bag = #{carMainAirBag},
+      </if>
+      <if test="carFuAirBag != null" >
+        car_fu_air_bag = #{carFuAirBag},
+      </if>
+      <if test="carFrontAirBag != null" >
+        car_front_air_bag = #{carFrontAirBag},
+      </if>
+      <if test="carRearAirBag != null" >
+        car_rear_air_bag = #{carRearAirBag},
+      </if>
+      <if test="carFrontHeadAirBag != null" >
+        car_front_head_air_bag = #{carFrontHeadAirBag},
+      </if>
+      <if test="carRearHeadAirBag != null" >
+        car_rear_head_air_bag = #{carRearHeadAirBag},
+      </if>
+      <if test="carKneeAirBag != null" >
+        car_knee_air_bag = #{carKneeAirBag},
+      </if>
+      <if test="pressureMonitoring != null" >
+        pressure_monitoring = #{pressureMonitoring},
+      </if>
+      <if test="zeroTireRun != null" >
+        zero_tire_run = #{zeroTireRun},
+      </if>
+      <if test="seatBeltNotPrompted != null" >
+        seat_belt_not_prompted = #{seatBeltNotPrompted},
+      </if>
+      <if test="carIsofix != null" >
+        car_isofix = #{carIsofix},
+      </if>
+      <if test="carAbs != null" >
+        car_abs = #{carAbs},
+      </if>
+      <if test="carEbd != null" >
+        car_ebd = #{carEbd},
+      </if>
+      <if test="carEbab != null" >
+        car_ebab = #{carEbab},
+      </if>
+      <if test="carAsr != null" >
+        car_asr = #{carAsr},
+      </if>
+      <if test="carEsc != null" >
+        car_esc = #{carEsc},
+      </if>
+      <if test="parallelAuxiliary != null" >
+        parallel_auxiliary = #{parallelAuxiliary},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+ 
+</mapper>

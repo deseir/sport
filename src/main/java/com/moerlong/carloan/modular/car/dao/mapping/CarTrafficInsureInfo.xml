@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarTrafficInsureInfoDao">
+
+	<sql id="searchColumns">
+		carTrafficInsureInfo.id id,carTrafficInsureInfo.car_id carId,carTrafficInsureInfo.inst_full_name instFullName,carTrafficInsureInfo.bussiness_source bussinessSource,carTrafficInsureInfo.proxy_name proxyName,carTrafficInsureInfo.insure_number insureNumber,carTrafficInsureInfo.insure_person insurePerson,carTrafficInsureInfo.insure_begin_time insureBeginTime,carTrafficInsureInfo.insure_end_time insureEndTime,carTrafficInsureInfo.float_prop floatProp,carTrafficInsureInfo.total_amount totalAmount,carTrafficInsureInfo.vehicle_tax vehicleTax,carTrafficInsureInfo.sign_date signDate,carTrafficInsureInfo.special_agreement specialAgreement,carTrafficInsureInfo.photo_url photoUrl,carTrafficInsureInfo.create_time createTime,carTrafficInsureInfo.update_time updateTime,carTrafficInsureInfo.is_deleted isDeleted,carTrafficInsureInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarTrafficInsureInfo">
+		insert into
+		c_car_traffic_insure_info(bussiness_source,proxy_name,insure_person,update_time,remark,vehicle_tax,sign_date,car_id,inst_full_name,total_amount,photo_url,insure_begin_time,is_deleted,insure_end_time,create_time,float_prop,id,insure_number,special_agreement)
+		values (#{bussinessSource},#{proxyName},#{insurePerson},#{updateTime},#{remark},#{vehicleTax},#{signDate},#{carId},#{instFullName},#{totalAmount},#{photoUrl},#{insureBeginTime},#{isDeleted},#{insureEndTime},#{createTime},#{floatProp},#{id},#{insureNumber},#{specialAgreement})
+	</insert>
+
+	<delete id="delete">
+		delete from c_car_traffic_insure_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_car_traffic_insure_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarTrafficInsureInfo">
+		update c_car_traffic_insure_info set
+		bussiness_source=#{bussinessSource},proxy_name=#{proxyName},insure_person=#{insurePerson},update_time=#{updateTime},remark=#{remark},vehicle_tax=#{vehicleTax},sign_date=#{signDate},car_id=#{carId},inst_full_name=#{instFullName},total_amount=#{totalAmount},photo_url=#{photoUrl},insure_begin_time=#{insureBeginTime},is_deleted=#{isDeleted},insure_end_time=#{insureEndTime},create_time=#{createTime},float_prop=#{floatProp},id=#{id},insure_number=#{insureNumber},special_agreement=#{specialAgreement} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarTrafficInsureInfo">
+		update c_car_traffic_insure_info
+		<set>
+            <if test="carId != null"> car_id=#{carId},</if>
+            <if test="instFullName != null"> inst_full_name=#{instFullName},</if>
+            <if test="bussinessSource != null"> bussiness_source=#{bussinessSource},</if>
+            <if test="proxyName != null"> proxy_name=#{proxyName},</if>
+            <if test="insureNumber != null"> insure_number=#{insureNumber},</if>
+            <if test="insurePerson != null"> insure_person=#{insurePerson},</if>
+            <if test="insureBeginTime != null"> insure_begin_time=#{insureBeginTime},</if>
+            <if test="insureEndTime != null"> insure_end_time=#{insureEndTime},</if>
+            <if test="floatProp != null"> float_prop=#{floatProp},</if>
+            <if test="totalAmount != null"> total_amount=#{totalAmount},</if>
+            <if test="vehicleTax != null"> vehicle_tax=#{vehicleTax},</if>
+            <if test="signDate != null"> sign_date=#{signDate},</if>
+            <if test="specialAgreement != null"> special_agreement=#{specialAgreement},</if>
+            <if test="photoUrl != null"> photo_url=#{photoUrl},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarTrafficInsureInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_traffic_insure_info carTrafficInsureInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarTrafficInsureInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_traffic_insure_info carTrafficInsureInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.car.entity.CarTrafficInsureInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_traffic_insure_info carTrafficInsureInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+	<select id="findCarTrafficInsureInfoByCarId" resultType="com.moerlong.carloan.modular.car.entity.CarTrafficInsureInfo">
+		SELECT
+		<include refid="searchColumns" />
+		FROM
+		c_car_traffic_insure_info carTrafficInsureInfo
+		where car_id=#{carId}
+	</select>
+</mapper>
+

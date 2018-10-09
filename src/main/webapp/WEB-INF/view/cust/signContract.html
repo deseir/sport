@@ -1,0 +1,139 @@
+@layout("/common/_container.html"){
+
+<div class="">
+  <div class="">
+	  <div class="ibox-title">
+		  <div style="border-bottom: 1px solid #cccccc94;height: 45px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 20px;">签订合同</span></div>
+	  </div>
+   	<div class="tab-content">
+		<input type="hidden" value="${applyId}" id="applyId">
+		<input type="hidden" value="${interfaceAddress}" id="interfaceAddress">
+		<input type="hidden" value="${idPicUrls}" id="idPicUrls">
+
+   		<div class="tab-pane fade in active"  id="div_sfrz">
+			<div class="menu-item" id="menu-item5">
+				<div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;">
+					<!--<h5>客户银行卡信息</h5>-->
+					<div><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 15px;">客户银行卡信息</span></div>
+					<div class="row" style="margin-top: 20px">
+						<div class="col-sm-6">
+							<#input id="custBankName" name="开户银行" underline="false"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="custAccountName" name="户名" underline="false"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="custBankNum" name="借记卡号" underline="false"/>
+						</div>
+					</div>
+					<!--<h5>授权人信息</h5>-->
+					<div style="margin-top:30px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 15px;">授权人信息</span></div>
+					<div class="row" style="margin-top: 20px">
+						<div class="col-sm-6">
+							<#input id="accountName" name="银行卡户名" underline="false"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="bankNum" name="银行卡账号" underline="false"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="bankName" name="银行卡开户行" underline="false"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="creId" name="身份证号码" underline="false"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="sqAmount" name="授权金额(元)" underline="false" value="0"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="mobile" name="联系电话" underline="false"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="signAddress" name="合同签订地点" underline="false"/>
+						</div>
+
+					</div>
+					<!--<h5>合同签订信息</h5>-->
+					<div style="margin-top:30px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 15px;">合同签订信息</span></div>
+					<div class="row" style="margin-top: 20px">
+						<div class="col-sm-6">
+							<label class="col-sm-3 control-label">上传现场照片</label>
+				            <div  class="container">
+				           		<div class="form-grop"  enctype="multipart/form-data">
+				           			<div style="width:7%;float:left">
+				           				<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+				           					<span class="fileinput-new">选择文件</span>
+				           					<input type="file" id="contractSceneUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+				           					<input type="hidden" id="contractSceneUrl">
+				           				</span>
+				           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:42%">
+				           					<img id="contractSceneUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+				           				</div>
+				           			</div>
+				           		</div>
+				           </div>  
+							<div class="form-group" style="margin-top:80px">
+								<label class="col-sm-3 control-label">线下合同签订时间</label>
+								<div class="col-sm-9">
+									<input class="form-control" id="contractSignDate" name="contractSignDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--<h5>合同管理</h5>-->
+					<div style="margin-top:30px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 15px;">合同管理</span></div>
+					<div class="row" style="margin-top: 20px">
+						<div class="col-sm-6">
+							<#select id="contractTemplete" name="选择合同模板" underline="false">
+								<option value="">---请选择---</option>
+								<option value="1">融资管理服务协议</option>
+								<option value="2">委托扣款授权书和授权人资料表</option>
+								<option value="3">汽车抵押合同</option>
+								<option value="4">抵押人特别声明</option>
+								<option value="5">委托书</option>
+                                <option value="6">汽车融资租赁合同(主要条款)</option>
+							</#select>
+						</div>
+						<div class="col-sm-6">
+							<#button name="下载" icon="fa-download" clickFun="downLoadPdf();"/>
+						</div>
+
+					</div>
+					<div class="col-sm-6">
+						<#select id="checkResult" name="是否已签合同" underline="false">
+							<option value="">---请选择---</option>
+							<option value="0">已签</option>
+							<option value="2">未签</option>
+						</#select>
+					    <!--<#input id="checkResultDesc" name="审核结果描述" underline="false"/>-->
+						<div class="form-group">
+							<label class="col-sm-3 control-label">补充材料说明</label>
+							<div class="el-form-item__content" style="margin-left: 140px;">
+								<div data-v-94eb3634="" class="el-textarea el-input--small">
+									<textarea id="checkResultDesc" rows="5" class="el-textarea__inner"  style="outline:none;min-height: 31px;width:88%;border: 1px solid #d2d2d2;margin-left: 14px;background-color: #cccccc4f"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div style="width: 420px; margin:120px auto ;text-align: center;margin-top:200px">
+							<#button name="返回" icon="fa fa-chevron-left" clickFun="backToDoWork();"/>
+							<#button name="保存签订信息" icon="fa-save" clickFun="saveContractSceneUrl();"/>
+							<#button name="提交" icon="fa fa-check" clickFun="todoSubmit();"/>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+   		</div>
+
+
+   	</div>
+  </div>
+</div>
+
+<script src="${ctxPath}/static/modular/cust/signcontract.js"></script>
+<script src="${ctxPath}/static/modular/cust/fileupload.js?v=2.05"></script>
+@}

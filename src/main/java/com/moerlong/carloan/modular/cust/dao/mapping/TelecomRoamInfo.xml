@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.TelecomRoamInfoDao">
+
+	<sql id="searchColumns">
+		telecomRoamInfo.id id,telecomRoamInfo.apply_id applyId,telecomRoamInfo.cust_id custId,telecomRoamInfo.type type,telecomRoamInfo.location location,telecomRoamInfo.roam_day_cnt_3m roamDayCnt3m,telecomRoamInfo.roam_day_cnt_6m roamDayCnt6m,telecomRoamInfo.continue_roam_cnt_3m continueRoamCnt3m,telecomRoamInfo.continue_roam_cnt_6m continueRoamCnt6m,telecomRoamInfo.max_roam_day_cnt_3m maxRoamDayCnt3m,telecomRoamInfo.max_roam_day_cnt_6m maxRoamDayCnt6m,telecomRoamInfo.create_time createTime,telecomRoamInfo.update_time updateTime,telecomRoamInfo.is_deleted isDeleted,telecomRoamInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.TelecomRoamInfo">
+		insert into
+		c_telecom_roam_info(max_roam_day_cnt_6m,continue_roam_cnt_3m,max_roam_day_cnt_3m,continue_roam_cnt_6m,update_time,remark,roam_day_cnt_6m,type,apply_id,is_deleted,create_time,roam_day_cnt_3m,cust_id,location,id)
+		values (#{maxRoamDayCnt6m},#{continueRoamCnt3m},#{maxRoamDayCnt3m},#{continueRoamCnt6m},#{updateTime},#{remark},#{roamDayCnt6m},#{type},#{applyId},#{isDeleted},#{createTime},#{roamDayCnt3m},#{custId},#{location},#{id})
+	</insert>
+
+	<delete id="delete">
+		delete from c_telecom_roam_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_telecom_roam_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.TelecomRoamInfo">
+		update c_telecom_roam_info set
+		max_roam_day_cnt_6m=#{maxRoamDayCnt6m},continue_roam_cnt_3m=#{continueRoamCnt3m},max_roam_day_cnt_3m=#{maxRoamDayCnt3m},continue_roam_cnt_6m=#{continueRoamCnt6m},update_time=#{updateTime},remark=#{remark},roam_day_cnt_6m=#{roamDayCnt6m},type=#{type},apply_id=#{applyId},is_deleted=#{isDeleted},create_time=#{createTime},roam_day_cnt_3m=#{roamDayCnt3m},cust_id=#{custId},location=#{location},id=#{id} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.TelecomRoamInfo">
+		update c_telecom_roam_info
+		<set>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="type != null"> type=#{type},</if>
+            <if test="location != null"> location=#{location},</if>
+            <if test="roamDayCnt3m != null"> roam_day_cnt_3m=#{roamDayCnt3m},</if>
+            <if test="roamDayCnt6m != null"> roam_day_cnt_6m=#{roamDayCnt6m},</if>
+            <if test="continueRoamCnt3m != null"> continue_roam_cnt_3m=#{continueRoamCnt3m},</if>
+            <if test="continueRoamCnt6m != null"> continue_roam_cnt_6m=#{continueRoamCnt6m},</if>
+            <if test="maxRoamDayCnt3m != null"> max_roam_day_cnt_3m=#{maxRoamDayCnt3m},</if>
+            <if test="maxRoamDayCnt6m != null"> max_roam_day_cnt_6m=#{maxRoamDayCnt6m},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.TelecomRoamInfo">
+		select
+		<include refid="searchColumns" />
+		from c_telecom_roam_info telecomRoamInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.TelecomRoamInfo">
+		select
+		<include refid="searchColumns" />
+		from c_telecom_roam_info telecomRoamInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.TelecomRoamInfo">
+		select
+		<include refid="searchColumns" />
+		from c_telecom_roam_info telecomRoamInfo
+		where 1=1
+		<if test="applyId != null"> and apply_id=#{applyId}</if>
+		<if test="type != null"> and type=#{type}</if>
+
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+</mapper>
+

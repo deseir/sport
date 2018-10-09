@@ -1,0 +1,804 @@
+@layout("/common/_container.html"){
+<div class="">
+    <div class="">
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="myTab4">
+                <input type="hidden" id="carId" value="${carId}">
+                <input type="hidden" id="applyId" value="${applyId}">
+                <input type="hidden" id="idPicUrls" value="${idPicUrls}">
+                <div class="menu-item" id="menu-item6" style="background-color:#FFF;padding: 1px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;margin-top: 3px">
+                    <div class="form-horizontal">
+                        <div class="col-sm-11" style="margin-left:45px;margin-top:20px">
+                            <h5>车辆基本信息</h5>
+                            <hr>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <input type="hidden" style="display: none" id="CarInfoId" >
+                                <#input id="carConfigName" name="车辆通俗配置称呼" underline="false" />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">本次上户日期</label>
+                                    <div class="col-sm-9">
+                                        <input class="form-control" id="currentLicDate" name="currentLicDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                                    </div>
+                                </div>
+                                <#input id="carType" name="车辆类型" underline="false"/>
+                                <#input id="engineNo" name="发动机号" underline="false" />
+                                <#input id="carColor" name="车身颜色" underline="false" />
+                                <#select id="carImportType" name="国产/进口" underline="false">
+                                <option value="0">国产</option>
+                                <option value="1">进口</option>
+                            </#select>
+                            <#input id="displacement" name="排量(ml)" underline="false" />
+                            <#select id="carUsage" name="使用性质" underline="false">
+                                <option value="0">非运营</option>
+                                <option value="1">运营</option>
+                                <option value="2">营转非</option>
+                            </#select>
+                        <#input id="mileage" name="行驶里程数(公里)" underline="false" />
+                        <div>
+                            <label class="col-sm-3 control-label">车辆登记证书1-2页照片</label>
+                            <div  class="container">
+                                <div class="form-grop"  enctype="multipart/form-data">
+                                    <div style="width:7%;float:left">
+                                        <!--<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+                                            <span class="fileinput-new">选择文件</span>
+                                            <input id="registerPhotoUrl11" type="file" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+                                            <input id="registerPhotoUrl1" type="hidden">
+                                        </span>-->
+                                        <div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+                                            <img id="registerPhotoUrl1mImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top:75px">
+                            <label class="col-sm-3 control-label">车辆登记证书3-4页照片</label>
+                            <div  class="container">
+                                <div class="form-grop"  enctype="multipart/form-data">
+                                    <div style="width:7%;float:left">
+                                        <!--<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+                                            <span class="fileinput-new">选择文件</span>
+                                            <input id="registerPhotoUrl21" type="file" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+                                            <input id="registerPhotoUrl2" type="hidden">
+                                        </span>-->
+                                        <div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+                                            <img id="registerPhotoUrl2mImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <#input id="carNum" name="车牌号" underline="false" />
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">出厂日期</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="productDate" name="productDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                            </div>
+                        </div>
+                        <#input id="carBrand" name="车辆品牌" underline="false" />
+                        <#input id="carModel" name="车辆型号" underline="false" />
+                        <#input id="vin" name="VIN码/车架号" underline="false"  />
+                        <#select id="fuelType" name="燃料种类" underline="false">
+                        <option value="0">汽油</option>
+                        <option value="1">柴油</option>
+                        <option value="2">油电混合</option>
+                        <option value="3">纯电动</option>
+                        <option value="4">其他</option>
+                    </#select>
+                    <#input id="manufacturer" name="制造厂名称" underline="false" />
+                    <#select id="getType" name="车辆获得方式" underline="false">
+                    <option value="0">自购</option>
+                    <option value="2">赠与</option>
+                </#select>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">首次发证日期</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" id="firstLicDate" name="firstLicDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                    </div>
+                </div>
+                <!--<#input id="" name="" underline="false" />  -->
+                <div>
+                    <label class="col-sm-3 control-label">车辆登记证书5-6页照片</label>
+                    <div  class="container">
+                        <div class="form-grop"  enctype="multipart/form-data">
+                            <div style="width:7%;float:left">
+                                <!--<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+                                    <span class="fileinput-new">选择文件</span>
+                                    <input id="registerPhotoUrl31" type="file" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+                                    <input id="registerPhotoUrl3" type="hidden">
+                                </span>-->
+                                <div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+                                    <img id="registerPhotoUrl3mImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top:75px">
+                    <label class="col-sm-3 control-label">车辆登记证书7-8页照片</label>
+                    <div  class="container">
+                        <div class="form-grop"  enctype="multipart/form-data">
+                            <div style="width:7%;float:left">
+                                <!--<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+                                    <span class="fileinput-new">选择文件</span>
+                                    <input id="registerPhotoUrl41" type="file" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+                                    <input id="registerPhotoUrl4" type="hidden">
+                                </span>-->
+                                <div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+                                    <img id="registerPhotoUrl4mImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div style="width: 200px; margin: 80px auto;">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="fixed-table-header" style="margin-right: 0px;">
+                    <table class="table table-hover table-striped" style="width: 100%;">
+                        <colgroup>
+                            <col style="width: 10%">
+                            <col style="width: 15%">
+                            <col style="width: 15%">
+                            <col style="width: 10%">
+
+                            <col style="width: 10%">
+                            <col style="width: 10%">
+                            <col style="width: 10%">
+                            <col style="width: 10%">
+                            <col style="width: 10%">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th type="hidden" style="display: none;text-align: center; vertical-align: middle; " data-field="">
+                                <div class="th-inner "></div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; vertical-align: middle; " data-field="">
+                                <div class="th-inner ">转移登记姓名</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; vertical-align: middle; " data-field="">
+                                <div class="th-inner ">身份证号码</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; vertical-align: middle; " data-field="">
+                                <div class="th-inner ">获得方式</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; vertical-align: middle; " data-field="">
+                                <div class="th-inner ">转移登记日期</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody id="newAddCarInfoTr">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div style="width: 200px; margin: 10px auto;">
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="fixed-table-header" style="margin-right: 0px;">
+                    <table class="table table-hover table-striped" style="width: 100%;">
+                        <colgroup>
+                            <col style="width: 10%">
+                            <col style="width: 15%">
+                            <col style="width: 15%">
+                            <col style="width: 10%">
+
+                            <col style="width: 10%">
+                            <col style="width: 10%">
+                            <col style="width: 10%">
+                            <col style="width: 10%">
+                            <col style="width: 10%">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th type="hidden" style="display: none;text-align: center; vertical-align: middle; " data-field="">
+                                <div class="th-inner "></div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; vertical-align: middle; " data-field="">
+                                <div class="th-inner ">抵押登记姓名/名称</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; vertical-align: middle; " data-field="">
+                                <div class="th-inner ">身份证明名称/号码</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                            <th style="text-align: center; vertical-align: middle; " data-field="">
+                                <div class="th-inner ">抵押登记日期</div>
+                                <div class="fht-cell"></div>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody id="newAddCarMortgageInfoTr">
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-11" style="margin-left:45px">
+                    <h5>行驶证驾驶证信息</h5>
+                    <hr>
+                    <input type="hidden" style="display: none" id="carDriverInfoId">
+                </div>
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">行驶证年检有效期</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="vehicleValidDate" name="firstLicDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                        </div>
+                    </div>
+                    <#input id="driverNo" name="驾驶证档案编号" underline="false" />
+                    <#input id="permitType" name="准驾车型" underline="false" />
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">驾驶证有效期开始时间</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="driverBeginDate" name="firstLicDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">驾驶证有效期结束时间</label>
+                        <div class="col-sm-9">
+                            <input class="form-control" id="driverEndDate" name="firstLicDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="col-sm-3 control-label">行驶证正面照片</label>
+                        <div  class="container">
+                            <div class="form-grop"  enctype="multipart/form-data">
+                                <div style="width:7%;float:left">
+                                    <!--<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+                                        <span class="fileinput-new">选择文件</span>
+                                        <input id="vehicleFrontPhoto1" type="file" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+                                        <input id="vehicleFrontPhoto" type="hidden">
+                                    </span>-->
+                                    <div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+                                        <img id="vehicleFrontPhotoImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-top:75px">
+                        <label class="col-sm-3 control-label">行驶证背面照片</label>
+                        <div  class="container">
+                            <div class="form-grop"  enctype="multipart/form-data">
+                                <div style="width:7%;float:left">
+                                    <!--<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+                                        <span class="fileinput-new">选择文件</span>
+                                        <input id="vehicleBackPhoto1" type="file" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+                                        <input id="vehicleBackPhoto" type="hidden">
+                                    </span>-->
+                                    <div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+                                        <img id="vehicleBackPhotoImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <#select id="isDriverLic" name="是否有驾驶证" underline="false">
+                    <option value="0">是</option>
+                    <option value="1">否</option>
+                </#select>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">初次领取驾驶证时间</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" id="firstDriverDate" name="firstLicDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                    </div>
+                </div>
+                <#select id="isSelf" name="是否申请人持有" underline="false">
+                <option value="0">是</option>
+                <option value="1">否</option>
+            </#select>
+            <#input id="driverRelation" name="持有人与申请人关系" underline="false" />
+            <#input id="driverRemark" name="持有人备注" underline="false" />
+            <div>
+                <label class="col-sm-3 control-label">驾驶证正面照片</label>
+                <div  class="container">
+                    <div class="form-grop"  enctype="multipart/form-data">
+                        <div style="width:7%;float:left">
+                            <!--<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+                                <span class="fileinput-new">选择文件</span>
+                                <input id="driverFrontPhoto1" type="file" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+                                <input id="driverFrontPhoto" type="hidden">
+                            </span>-->
+                            <div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+                                <img id="driverFrontPhotoImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:75px">
+                <label class="col-sm-3 control-label">驾驶证背面照片</label>
+                <div  class="container">
+                    <div class="form-grop"  enctype="multipart/form-data">
+                        <div style="width:7%;float:left">
+                            <!--<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+                                <span class="fileinput-new">选择文件</span>
+                                <input id="driverBackPhoto1" type="file" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+                                <input id="driverBackPhoto" type="hidden">
+                            </span>-->
+                            <div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+                                <img id="driverBackPhotoImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" style="margin-top:80px">
+        <div class="col-sm-11" style="margin-left:45px">
+            <h5>车辆违章信息</h5>
+            <hr>
+            <input type="hidden" style="display: none" id="carPeccancyInfoId">
+        </div>
+        <div class="col-sm-5">
+            <#input id="totalNum" name="累计违章次数" underline="false" value="0" />
+            <#input id="totalMoney" name="累计违章罚款" underline="false"  value="0"/>
+        </div>
+        <div class="col-sm-5">
+            <#input id="totalValue" name="累计扣分" underline="false" value="0" />
+            <#input id="totalFullNum" name="累计扣12分次数" underline="false" value="0" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-11" style="margin-left:45px">
+            <h5>车辆交强险信息</h5>
+            <hr>
+            <input type="hidden" style="display: none" id="carTrafficInsureInfoId" >
+        </div>
+        <div class="col-sm-5">
+            <#input id="instFullName" name="购买机构全称" underline="false" />
+            <#input id="bussinessSource" name="业务来源" underline="false" />
+            <div class="form-group">
+                <label class="col-sm-3 control-label">保险起始日期</label>
+                <div class="col-sm-9">
+                    <input class="form-control" id="insureBeginTime" name="firstLicDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                </div>
+            </div>
+            <#input id="insurePerson" name="被保人" underline="false" />
+            <#input id="totalAmount" name="保费合计" underline="false" />
+            <#input id="vehicleTax" name="代收车船税" underline="false" />
+            <div>
+                <label class="col-sm-3 control-label">照片</label>
+                <div  class="container">
+                    <div class="form-grop"  enctype="multipart/form-data">
+                        <div style="width:7%;float:left">
+                            <!--<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+                                <span class="fileinput-new">选择文件</span>
+                                <input id="photoUrl1" type="file" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+                                <input id="photoUrl" type="hidden">
+                            </span>-->
+                            <div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+                                <img id="photoUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <#input id="proxyName" name="代理点名称" underline="false" />
+            <#input id="insureNumber" name="保单号" underline="false" />
+            <div class="form-group">
+                <label class="col-sm-3 control-label">保险到期日期</label>
+                <div class="col-sm-9">
+                    <input class="form-control" id="insureEndTime" name="firstLicDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                </div>
+            </div>
+            <#input id="floatProp" name="浮动比例" underline="false" />
+            <div class="form-group">
+                <label class="col-sm-3 control-label">签约日期</label>
+                <div class="col-sm-9">
+                    <input class="form-control" id="signDate" name="firstLicDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                </div>
+            </div>
+
+            <#input id="specialAgreement" name="特别约定" underline="false" />
+            <div class="form-group">
+                <label class="col-sm-3 control-label">备注</label>
+                <div class="el-form-item__content" style="margin-left: 140px;">
+                    <div data-v-94eb3634="" class="el-textarea el-input--small">
+                        <textarea id="remark" rows="5" class="el-textarea__inner" style="min-height: 31px;width:88%;border: 1px solid #cccccc73;margin-left: 14px;"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- <div data-v-94eb3634="" class="el-form-item el-form-item--small"><label class="el-form-item__label" style="width: 140px;">备注</label><div class="el-form-item__content" style="margin-left: 140px;"><div data-v-94eb3634="" class="el-textarea el-input--small"><textarea id="remark" rows="5" class="el-textarea__inner" style="min-height: 31px;"></textarea></div></div></div> -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-11" style="margin-left:45px">
+            <h5>车辆商业险信息</h5>
+            <hr>
+            <input type="hidden" style="display: none" id="CarBussInsureInfoId">
+        </div>
+        <div class="col-sm-5">
+            <#input id="instFullName1" name="购买机构全称" underline="false" />
+            <#input id="bussinessSource1" name="业务来源" underline="false" />
+            <div class="form-group">
+                <label class="col-sm-3 control-label">保险起始日期</label>
+                <div class="col-sm-9">
+                    <input class="form-control" id="insureBeginTime1" name="firstLicDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                </div>
+            </div>
+            <#input id="insurePerson1" name="被保人" underline="false" />
+            <#input id="totalAmount1" name="保费合计" underline="false" />
+            <div>
+                <label class="col-sm-3 control-label">照片</label>
+                <div  class="container">
+                    <div class="form-grop"  enctype="multipart/form-data">
+                        <div style="width:7%;float:left">
+                            <!--<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+                                <span class="fileinput-new">选择文件</span>
+                                <input input id="photoUrl11" type="file" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+                                <input id="photoUrl111" type="hidden">
+                            </span>-->
+                            <div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+                                <img id="photoUrlmImg1" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <#input id="proxyName1" name="代理点名称" underline="false" />
+            <#input id="insureNumber1" name="保单号" underline="false" />
+            <div class="form-group">
+                <label class="col-sm-3 control-label">保险到期日期</label>
+                <div class="col-sm-9">
+                    <input class="form-control" id="insureEndTime1" name="firstLicDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                </div>
+            </div>
+            <#input id="floatProp1" name="浮动比例" underline="false" />
+            <div class="form-group">
+                <label class="col-sm-3 control-label">签约日期</label>
+                <div class="col-sm-9">
+                    <input class="form-control" id="signDate1" name="firstLicDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+                </div>
+            </div>
+            <#input id="specialAgreement1" name="特别约定" underline="false" />
+        </div>
+        <div class="col-sm-11" id="carInsureDetailInfoCheck" style="margin-top:70px;margin-left:50px">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="col-sm-2">
+                        <input type="hidden" style="display: none" >
+                        <input type="checkbox" value="0" name="CarInsureDetailInfoId"/>车辆损失险
+                    </label>
+                    <label class="col-sm-2">
+                        <span>是否有不计免赔</span>
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio" name="radioId" value="1" disabled="disabled"/>是
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio" name="radioId" value="0" disabled="disabled"/>否
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="保费金额" underline="false" disabled="disabled"/>
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="最高赔付金额" underline="false" disabled="disabled"/>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="col-sm-2">
+                        <input type="hidden" style="display: none"  >
+                        <input type="checkbox" value="1" name="CarInsureDetailInfoId"/>第三者责任险
+                    </label>
+                    <label class="col-sm-2">
+                        <span>是否有不计免赔</span>
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio" name="radioId1" value="1" disabled="disabled"/>是
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio" name="radioId1" value="0" disabled="disabled"/>否
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="保费金额" underline="false" disabled="disabled"/>
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="最高赔付金额" underline="false" disabled="disabled"/>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="col-sm-2">
+                        <input type="hidden" style="display: none"  >
+                        <input type="checkbox" value="2" name="CarInsureDetailInfoId"/>车上人员责任险：司机
+                    </label>
+                    <label class="col-sm-2">
+                        <span>是否有不计免赔</span>
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio"  name="radioId2" value="1" disabled="disabled"/>是
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio"  name="radioId2" value="0" disabled="disabled"/>否
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="保费金额" underline="false" disabled="disabled"/>
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="最高赔付金额" underline="false" disabled="disabled"/>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="col-sm-2">
+                        <input type="hidden" style="display: none" >
+                        <input type="checkbox" value="3"  name="CarInsureDetailInfoId"/>车上人员责任险：乘客
+                    </label>
+                    <label class="col-sm-2">
+                        <span>是否有不计免赔</span>
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio" value="1"  name="radioId3" disabled="disabled"/>是
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio" value="0" name="radioId3" disabled="disabled"/>否
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="保费金额" underline="false" disabled="disabled"/>
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="最高赔付金额" underline="false" disabled="disabled"/>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="col-sm-2">
+                        <input type="hidden" style="display: none"  >
+                        <input type="checkbox" value="4" name="CarInsureDetailInfoId"/>车身划痕险
+                    </label>
+                    <label class="col-sm-2">
+                        <span>是否有不计免赔</span>
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio" value="1" name="radioId4" disabled="disabled"/>是
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio" value="0"  name="radioId4" disabled="disabled"/>否
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="保费金额" underline="false" disabled="disabled"/>
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="最高赔付金额" underline="false" disabled="disabled"/>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="col-sm-2">
+                        <input type="hidden" style="display: none"  >
+                        <input type="checkbox" value="5" name="CarInsureDetailInfoId"/>涉水险
+                    </label>
+                    <label class="col-sm-2">
+                        <span>是否有不计免赔</span>
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio" value="1"  name="radioId5" disabled="disabled"/>是
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio" value="0"  name="radioId5" disabled="disabled"/>否
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="保费金额" underline="false" disabled="disabled"/>
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="最高赔付金额" underline="false" disabled="disabled"/>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="col-sm-2">
+                        <input type="hidden" style="display: none" >
+                        <input type="checkbox" value="6"  name="CarInsureDetailInfoId"/>自燃损失险
+                    </label>
+                    <label class="col-sm-2">
+                        <span>是否有不计免赔</span>
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio" value="1"  name="radioId6" disabled="disabled"/>是
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio" value="0"  name="radioId6" disabled="disabled"/>否
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="保费金额" underline="false" disabled="disabled"/>
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="最高赔付金额" underline="false" disabled="disabled"/>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="col-sm-2">
+                        <input type="hidden" style="display: none" >
+                        <input type="checkbox" value="7" name="CarInsureDetailInfoId"/>玻璃单独破碎险（国产）
+                    </label>
+                    <label class="col-sm-2">
+                        <span>是否有不计免赔</span>
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio" value="1"  name="radioId7" disabled="disabled"/>是
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio" value="0"  name="radioId7" disabled="disabled"/>否
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="保费金额" underline="false" disabled="disabled"/>
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="最高赔付金额" underline="false" disabled="disabled"/>
+                    </label>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <label class="col-sm-2">
+                        <input type="hidden" style="display: none" >
+                        <input type="checkbox" value="8" name="CarInsureDetailInfoId"/>玻璃单独破碎险（进口）
+                    </label>
+                    <label class="col-sm-2">
+                        <span>是否有不计免赔</span>
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio" value="1"  name="radioId8" disabled="disabled"/>是
+                    </label>
+                    <label class="col-sm-2">
+                        <input type="radio" value="0"  name="radioId8" disabled="disabled"/>否
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="保费金额" underline="false" disabled="disabled"/>
+                    </label>
+                    <label class="col-sm-2">
+                        <#input id="" name="最高赔付金额" underline="false" disabled="disabled"/>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <h5>验车信息</h5>
+        <div class="col-sm-6">
+            <#input id="custName" name="车主姓名:" underline="false" disabled="disabled"/>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">性别</label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="sex" name="sex" disabled="disabled">
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!--<div class="col-sm-6">
+            <#input id="carNum" name="车牌号:" underline="false" disabled="disabled"/>
+        </div>
+        <div class="col-sm-6">
+            <#input id="carConfigName" name="车辆通俗配置称呼" underline="false" disabled="disabled"/>
+        </div>-->
+        <div class="col-sm-6">
+            <#select id="carCond" name="车况反馈">
+            <option value="">---请选择---</option>
+            <option value="0">正常</option>
+            <option value="1">事故车</option>
+            <option value="2">泡水车</option>
+            <option value="3">良好</option>
+            <option value="4">其他</option>
+        </#select>
+    </div>
+    <div class="col-sm-6">
+        <#input id="suggestion" name="车况描述" underline="false" />
+    </div>
+    <div class="col-sm-6">
+        <label class="col-sm-3 control-label">配置表附件地址</label>
+        <div  class="container">
+            <div class="form-grop"  enctype="multipart/form-data">
+                <div style="width:7%;float:left">
+                    <div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+                        <img id="configTablePhotoImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+        <label class="col-sm-3 control-label">车况维修保养状况</label>
+        <div  class="container">
+            <div class="form-grop"  enctype="multipart/form-data">
+                <div style="width:7%;float:left">
+                    <div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:27%">
+                        <img id="maintainPhotoImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6" style="margin-top:75px">
+        <#input id="carAssessmentPrice" name="二手车市场价格" underline="false" />
+    </div>
+</div>
+
+<HR style="FILTER: alpha(opacity=100,finishopacity=0,style=1)" width="100%" color=#987cb9 SIZE=3>
+<div class="col-sm-12">
+    <h5>车辆照片信息</h5>
+    <div class="col-sm-12" id="showPhotoContent">
+
+    </div>
+</div>
+<div class="">
+    <div style="width: 200px; margin: 50px auto;">
+        <#button name="返回" icon="fa fa-chevron-left" clickFun="backCar();"/>
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+<script>
+    $("select").attr("disabled","disabled");
+    $("input").attr("readonly","readonly");
+    $("textarea").attr("disabled","disabled");
+    $("input[type=file]").attr("disabled","disabled");
+    $("input[type=radio]").attr("disabled","disabled");
+    $("input[type=checkbox]").attr("disabled","disabled");
+
+    function backCar() {
+       window.location.href="/carInfo/showCarmgr";
+    }
+
+</script>
+
+<script src="${ctxPath}/static/modular/cust/showCar.js?v=2.3.1"></script>
+@}

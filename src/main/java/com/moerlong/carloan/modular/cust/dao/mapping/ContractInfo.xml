@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.ContractInfoDao">
+
+	<sql id="searchColumns">
+		contractInfo.contract_htfj_url heTongFuJianUrl,contractInfo.contract_dyysl_url diYaShouLiUrl,contractInfo.contract_xcqy_url xianChangQianYueUrl,contractInfo.id id,contractInfo.cust_id custId,contractInfo.apply_id applyId,contractInfo.contract_no contractNo,contractInfo.contract_title1 contractTitle1,contractInfo.contract_url1 contractUrl1,contractInfo.contract_title2 contractTitle2,contractInfo.contract_url2 contractUrl2,contractInfo.contract_title3 contractTitle3,contractInfo.contract_url3 contractUrl3,contractInfo.contract_title4 contractTitle4,contractInfo.contract_url4 contractUrl4,contractInfo.contract_title5 contractTitle5,contractInfo.contract_url5 contractUrl5,contractInfo.contract_title6 contractTitle6,contractInfo.contract_url6 contractUrl6,contractInfo.contract_sign_date contractSignDate,contractInfo.contract_scene_url contractSceneUrl,contractInfo.contract_attach_url contractAttachUrl,contractInfo.create_time createTime,contractInfo.update_time updateTime,contractInfo.is_deleted isDeleted,contractInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.ContractInfo">
+		insert into
+		c_contract_info(contract_title1,contract_title3,contract_title2,contract_attach_url,contract_no,contract_title5,contract_title4,update_time,remark,contract_scene_url,apply_id,contract_url5,contract_url6,is_deleted,create_time,cust_id,contract_sign_date,contract_title6,id,contract_url3,contract_url4,contract_url1,contract_url2,contract_xcqy_url,contract_dyysl_url,contract_htfj_url)
+		values (#{contractTitle1},#{contractTitle3},#{contractTitle2},#{contractAttachUrl},#{contractNo},#{contractTitle5},#{contractTitle4},#{updateTime},#{remark},#{contractSceneUrl},#{applyId},#{contractUrl5},#{contractUrl6},#{isDeleted},#{createTime},#{custId},#{contractSignDate},#{contractTitle6},#{id},#{contractUrl3},#{contractUrl4},#{contractUrl1},#{contractUrl2},#{xianChangQianYueUrl},#{diYaShouLiUrl},#{heTongFuJianUrl})
+	</insert>
+
+	<delete id="delete">
+		delete from c_contract_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_contract_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.ContractInfo">
+		update c_contract_info set
+		contract_xcqy_url=#{xianChangQianYueUrl},contract_dyysl_url=#{diYaShouLiUrl},contract_htfj_url=#{heTongFuJianUrl},contract_title1=#{contractTitle1},contract_title3=#{contractTitle3},contract_title2=#{contractTitle2},contract_attach_url=#{contractAttachUrl},contract_no=#{contractNo},contract_title5=#{contractTitle5},contract_title4=#{contractTitle4},update_time=#{updateTime},remark=#{remark},contract_scene_url=#{contractSceneUrl},apply_id=#{applyId},contract_url5=#{contractUrl5},contract_url6=#{contractUrl6},is_deleted=#{isDeleted},create_time=#{createTime},cust_id=#{custId},contract_sign_date=#{contractSignDate},contract_title6=#{contractTitle6},id=#{id},contract_url3=#{contractUrl3},contract_url4=#{contractUrl4},contract_url1=#{contractUrl1},contract_url2=#{contractUrl2} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.ContractInfo">
+		update c_contract_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="contractNo != null"> contract_no=#{contractNo},</if>
+            <if test="contractTitle1 != null"> contract_title1=#{contractTitle1},</if>
+            <if test="contractUrl1 != null"> contract_url1=#{contractUrl1},</if>
+            <if test="contractTitle2 != null"> contract_title2=#{contractTitle2},</if>
+            <if test="contractUrl2 != null"> contract_url2=#{contractUrl2},</if>
+            <if test="contractTitle3 != null"> contract_title3=#{contractTitle3},</if>
+            <if test="contractUrl3 != null"> contract_url3=#{contractUrl3},</if>
+            <if test="contractTitle4 != null"> contract_title4=#{contractTitle4},</if>
+            <if test="contractUrl4 != null"> contract_url4=#{contractUrl4},</if>
+            <if test="contractTitle5 != null"> contract_title5=#{contractTitle5},</if>
+            <if test="contractUrl5 != null"> contract_url5=#{contractUrl5},</if>
+            <if test="contractTitle6 != null"> contract_title6=#{contractTitle6},</if>
+            <if test="contractUrl6 != null"> contract_url6=#{contractUrl6},</if>
+            <if test="contractSignDate != null"> contract_sign_date=#{contractSignDate},</if>
+            <if test="contractSceneUrl != null and contractSceneUrl !=''"> contract_scene_url=#{contractSceneUrl},</if>
+            <if test="contractAttachUrl != null"> contract_attach_url=#{contractAttachUrl},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+			<if test="xianChangQianYueUrl != null and xianChangQianYueUrl !=''"> contract_xcqy_url=#{xianChangQianYueUrl},</if>
+			<if test="diYaShouLiUrl != null and diYaShouLiUrl !=''"> contract_dyysl_url=#{diYaShouLiUrl},</if>
+			<if test="heTongFuJianUrl != null and heTongFuJianUrl !=''"> contract_htfj_url=#{heTongFuJianUrl},</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.ContractInfo">
+		select
+		<include refid="searchColumns" />
+		from c_contract_info contractInfo
+		where id = #{id}
+	</select>
+	
+	<select id="selectByApplyId" resultType="com.moerlong.carloan.modular.cust.entity.ContractInfo">
+		select
+		<include refid="searchColumns" />
+		from c_contract_info contractInfo
+		where apply_id = #{applyid}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.ContractInfo">
+		select
+		<include refid="searchColumns" />
+		from c_contract_info contractInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.ContractInfo">
+		select
+		<include refid="searchColumns" />
+		from c_contract_info contractInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+	<select id="selectContractInfos" resultType="com.moerlong.carloan.modular.cust.entity.vo.ContractInfoVo">
+		select
+		contractInfo.id id,contractInfo.contract_no contractNo,contractInfo.contract_title1 contractTitle1,contractInfo.contract_url1 contractUrl1,contractInfo.contract_title2 contractTitle2,
+		contractInfo.contract_url2 contractUrl2,contractInfo.contract_title3 contractTitle3,contractInfo.contract_url3 contractUrl3,contractInfo.contract_title4 contractTitle4,
+		contractInfo.contract_url4 contractUrl4,contractInfo.contract_title5 contractTitle5,contractInfo.contract_url5 contractUrl5,contractInfo.contract_title6 contractTitle6,contractInfo.contract_url6 contractUrl6,
+		contractInfo.contract_sign_date contractSignDate,contractInfo.contract_scene_url contractSceneUrl,contractInfo.contract_attach_url contractAttachUrl,contractInfo.create_time createTime,contractInfo.update_time updateTime
+		from c_contract_info contractInfo
+		<if test="contractNo != null and contractNo != ''">
+				where 1=1
+			  and  contractInfo.contract_no like CONCAT('%',#{contractNo},'%')
+			or contractInfo.contract_title1 like CONCAT('%',#{contractNo},'%')
+			or contractInfo.contract_title2 like CONCAT('%',#{contractNo},'%')
+			or contractInfo.contract_title3 like CONCAT('%',#{contractNo},'%')
+			or contractInfo.contract_title4 like CONCAT('%',#{contractNo},'%')
+			or contractInfo.contract_title5 like CONCAT('%',#{contractNo},'%')
+			or contractInfo.contract_title6 like CONCAT('%',#{contractNo},'%')
+		</if>
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<!-- 查询最近的一个合同号 -->
+	<select id="selectLastContract" resultType="com.moerlong.carloan.modular.cust.entity.ContractInfo">
+		select
+		<include refid="searchColumns" />
+		from c_contract_info contractInfo order by id desc limit 1
+	</select>
+</mapper>
+

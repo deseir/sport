@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarPriceInfoDao">
+
+	<sql id="searchColumns">
+		carPriceInfo.id id,carPriceInfo.cust_id custId,carPriceInfo.apply_id applyId,carPriceInfo.che300_price che300Price,carPriceInfo.che300_thprice che300ThPrice,carPriceInfo.che300_attach_url che300AttachUrl,carPriceInfo.jingzhengu_price jingzhenguPrice,carPriceInfo.jingzhengu_attach_url jingzhenguAttachUrl,carPriceInfo.nake_price nakePrice,carPriceInfo.depreciation_base depreciationBase,carPriceInfo.depreciation_ratio depreciationRatio,carPriceInfo.credit_ratio creditRatio,carPriceInfo.tsingnuo_price tsingnuoPrice,carPriceInfo.create_time createTime,carPriceInfo.update_time updateTime,carPriceInfo.is_deleted isDeleted,carPriceInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarPriceInfo">
+		insert into
+		c_car_price_info(che300_attach_url,che300_price,che300_thprice,update_time,remark,apply_id,depreciation_base,is_deleted,tsingnuo_price,create_time,nake_price,jingzhengu_attach_url,cust_id,depreciation_ratio,id,jingzhengu_price,credit_ratio)
+		values (#{che300AttachUrl},#{che300Price},#{che300ThPrice},#{updateTime},#{remark},#{applyId},#{depreciationBase},#{isDeleted},#{tsingnuoPrice},#{createTime},#{nakePrice},#{jingzhenguAttachUrl},#{custId},#{depreciationRatio},#{id},#{jingzhenguPrice},#{creditRatio})
+	</insert>
+
+	<delete id="delete">
+		delete from c_car_price_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_car_price_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarPriceInfo">
+		update c_car_price_info set
+		che300_attach_url=#{che300AttachUrl},che300_price=#{che300Price},che300_thprice=#{che300ThPrice},update_time=#{updateTime},remark=#{remark},apply_id=#{applyId},depreciation_base=#{depreciationBase},is_deleted=#{isDeleted},tsingnuo_price=#{tsingnuoPrice},create_time=#{createTime},nake_price=#{nakePrice},jingzhengu_attach_url=#{jingzhenguAttachUrl},cust_id=#{custId},depreciation_ratio=#{depreciationRatio},id=#{id},jingzhengu_price=#{jingzhenguPrice},credit_ratio=#{creditRatio} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarPriceInfo">
+		update c_car_price_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+			<if test="che300Price != null"> che300_price=#{che300Price},</if>
+			<if test="che300ThPrice != null"> che300_thprice=#{che300ThPrice},</if>
+            <if test="che300AttachUrl != null and che300AttachUrl !=''"> che300_attach_url=#{che300AttachUrl},</if>
+            <if test="jingzhenguPrice != null"> jingzhengu_price=#{jingzhenguPrice},</if>
+            <if test="jingzhenguAttachUrl != null and jingzhenguAttachUrl !=''"> jingzhengu_attach_url=#{jingzhenguAttachUrl},</if>
+            <if test="nakePrice != null"> nake_price=#{nakePrice},</if>
+            <if test="depreciationBase != null"> depreciation_base=#{depreciationBase},</if>
+            <if test="depreciationRatio != null"> depreciation_ratio=#{depreciationRatio},</if>
+            <if test="creditRatio != null"> credit_ratio=#{creditRatio},</if>
+            <if test="tsingnuoPrice != null"> tsingnuo_price=#{tsingnuoPrice},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarPriceInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_price_info carPriceInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarPriceInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_price_info carPriceInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.car.entity.CarPriceInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_price_info carPriceInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<!--根据applyId查询-->
+	<select id="selByApplyId" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.car.entity.CarPriceInfo">
+		select
+		<include refid="searchColumns"/>
+		from c_car_price_info carPriceInfo
+		where carPriceInfo.apply_id=#{applyId}
+
+	</select>
+</mapper>
+

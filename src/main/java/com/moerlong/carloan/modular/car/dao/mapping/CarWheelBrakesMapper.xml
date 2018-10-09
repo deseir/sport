@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarWheelBrakesMapper" >
+  
+  <sql id="Base_Column_List" >
+    c_car_wheel_brakes.id id, c_car_wheel_brakes.apply_id applyId, c_car_wheel_brakes.cust_id custId, c_car_wheel_brakes.car_id carId, 
+    c_car_wheel_brakes.whell_brakes whellBrakes, c_car_wheel_brakes.front_brake_type frontBrakeType, c_car_wheel_brakes.rear_brake_type rearBrakeType, 
+    c_car_wheel_brakes.parking_braking parkingBraking, c_car_wheel_brakes.front_tyre_size frontTyreSize, c_car_wheel_brakes.rear_tyre_size rearTyreSize, 
+    c_car_wheel_brakes.spare_tire spareTire, c_car_wheel_brakes.create_time createTime, c_car_wheel_brakes.update_time updateTime, 
+    c_car_wheel_brakes.is_delete isDelete, c_car_wheel_brakes.remark remark
+  </sql>
+  
+  <select id="selectByApplyId" resultType="com.moerlong.carloan.modular.car.entity.CarWheelBrakes" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from c_car_wheel_brakes
+    where apply_id = #{id,jdbcType=BIGINT}
+  </select>
+   <select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarWheelBrakes" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from c_car_wheel_brakes
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  <delete id="delete" parameterType="java.lang.Long" >
+    delete from c_car_wheel_brakes
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+ 
+  <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarWheelBrakes" >
+    insert into c_car_wheel_brakes (apply_id, cust_id, 
+      car_id, whell_brakes, front_brake_type, 
+      rear_brake_type, parking_braking, front_tyre_size, 
+      rear_tyre_size, spare_tire, create_time, 
+      update_time, is_delete, remark
+      )
+    values ( #{applyId,jdbcType=BIGINT}, #{custId,jdbcType=BIGINT}, 
+      #{carId,jdbcType=BIGINT}, #{whellBrakes,jdbcType=INTEGER}, #{frontBrakeType,jdbcType=VARCHAR}, 
+      #{rearBrakeType,jdbcType=VARCHAR}, #{parkingBraking,jdbcType=VARCHAR}, #{frontTyreSize,jdbcType=VARCHAR}, 
+      #{rearTyreSize,jdbcType=VARCHAR}, #{spareTire,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarWheelBrakes" >
+    update c_car_wheel_brakes
+    <set >
+      <if test="applyId != null" >
+        apply_id = #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="carId != null" >
+        car_id = #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="whellBrakes != null" >
+        whell_brakes = #{whellBrakes,jdbcType=INTEGER},
+      </if>
+      <if test="frontBrakeType != null" >
+        front_brake_type = #{frontBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="rearBrakeType != null" >
+        rear_brake_type = #{rearBrakeType,jdbcType=VARCHAR},
+      </if>
+      <if test="parkingBraking != null" >
+        parking_braking = #{parkingBraking,jdbcType=VARCHAR},
+      </if>
+      <if test="frontTyreSize != null" >
+        front_tyre_size = #{frontTyreSize,jdbcType=VARCHAR},
+      </if>
+      <if test="rearTyreSize != null" >
+        rear_tyre_size = #{rearTyreSize,jdbcType=VARCHAR},
+      </if>
+      <if test="spareTire != null" >
+        spare_tire = #{spareTire,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+</mapper>

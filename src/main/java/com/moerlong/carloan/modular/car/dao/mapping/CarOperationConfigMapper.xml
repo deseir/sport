@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarOperationConfigMapper" >
+  
+  <sql id="Base_Column_List" >
+    c_car_operation_configuration.id id, c_car_operation_configuration.apply_id applyId, c_car_operation_configuration.cust_id custId, 
+    c_car_operation_configuration.car_id carId, c_car_operation_configuration.car_operation_configuration carOperationConfiguration, 
+    c_car_operation_configuration.car_front_parking_radar carFrontParkingRadar, c_car_operation_configuration.car_rear_parking_radar carRearParkingRadar, 
+    c_car_operation_configuration.car_reversing_video carReversingVideo, c_car_operation_configuration.car_panoramic_camera carPanoramicCamera, 
+    c_car_operation_configuration.car_cruise_control carCruiseControl, c_car_operation_configuration.car_adaptive_cruise carAdaptiveCruise, 
+    c_car_operation_configuration.car_auto_matic_park carAutoMaticPark, c_car_operation_configuration.car_motor_start_end carMotorStartEnd, 
+    c_car_operation_configuration.car_hill_start_assist carHillStartAssist, c_car_operation_configuration.car_auto_parking carAutoParking, 
+    c_car_operation_configuration.car_hdc carHdc, c_car_operation_configuration.car_variable_supension carVariableSupension, 
+    c_car_operation_configuration.car_air_supension carAirSupension, c_car_operation_configuration.car_variable_steering carVariableSteering, 
+    c_car_operation_configuration.car_active_dynamic carActiveDynamic, c_car_operation_configuration.create_time createTime, 
+    c_car_operation_configuration.update_time updateTime , c_car_operation_configuration.is_delete isDelete, 
+    c_car_operation_configuration.remark remark
+  </sql>
+  
+  <select id="selectByApplyId" resultType="com.moerlong.carloan.modular.car.entity.CarOperationConfig" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from c_car_operation_configuration
+    where apply_id = #{id}
+  </select>
+  <select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarOperationConfig" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from c_car_operation_configuration
+    where id = #{id}
+  </select>
+  <delete id="delete" parameterType="java.lang.Long" >
+    delete from c_car_operation_configuration
+    where id = #{id}
+  </delete>
+  
+  <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarOperationConfig" >
+    insert into c_car_operation_configuration (apply_id, cust_id, 
+      car_id, car_operation_configuration, car_front_parking_radar, 
+      car_rear_parking_radar, car_reversing_video, 
+      car_panoramic_camera, car_cruise_control, car_adaptive_cruise, 
+      car_auto_matic_park, car_motor_start_end, car_hill_start_assist, 
+      car_auto_parking, car_hdc, car_variable_supension, 
+      car_air_supension, car_variable_steering, car_active_dynamic, 
+      create_time, update_time, is_delete, 
+      remark)
+    values (#{applyId}, #{custId}, 
+      #{carId}, #{carOperationConfiguration}, #{carFrontParkingRadar}, 
+      #{carRearParkingRadar}, #{carReversingVideo}, 
+      #{carPanoramicCamera}, #{carCruiseControl}, #{carAdaptiveCruise}, 
+      #{carAutoMaticPark}, #{carMotorStartEnd}, #{carHillStartAssist}, 
+      #{carAutoParking}, #{carHdc}, #{carVariableSupension}, 
+      #{carAirSupension}, #{carVariableSteering}, #{carActiveDynamic}, 
+      #{createTime}, #{updateTime}, #{isDelete}, 
+      #{remark})
+  </insert>
+  
+ 
+  <update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarOperationConfig" >
+    update c_car_operation_configuration
+    <set >
+      <if test="applyId != null" >
+        apply_id = #{applyId},
+      </if>
+      <if test="custId != null" >
+        cust_id = #{custId},
+      </if>
+      <if test="carId != null" >
+        car_id = #{carId},
+      </if>
+      <if test="carOperationConfiguration != null" >
+        car_operation_configuration = #{carOperationConfiguration},
+      </if>
+      <if test="carFrontParkingRadar != null" >
+        car_front_parking_radar = #{carFrontParkingRadar},
+      </if>
+      <if test="carRearParkingRadar != null" >
+        car_rear_parking_radar = #{carRearParkingRadar},
+      </if>
+      <if test="carReversingVideo != null" >
+        car_reversing_video = #{carReversingVideo},
+      </if>
+      <if test="carPanoramicCamera != null" >
+        car_panoramic_camera = #{carPanoramicCamera},
+      </if>
+      <if test="carCruiseControl != null" >
+        car_cruise_control = #{carCruiseControl},
+      </if>
+      <if test="carAdaptiveCruise != null" >
+        car_adaptive_cruise = #{carAdaptiveCruise},
+      </if>
+      <if test="carAutoMaticPark != null" >
+        car_auto_matic_park = #{carAutoMaticPark},
+      </if>
+      <if test="carMotorStartEnd != null" >
+        car_motor_start_end = #{carMotorStartEnd},
+      </if>
+      <if test="carHillStartAssist != null" >
+        car_hill_start_assist = #{carHillStartAssist},
+      </if>
+      <if test="carAutoParking != null" >
+        car_auto_parking = #{carAutoParking},
+      </if>
+      <if test="carHdc != null" >
+        car_hdc = #{carHdc},
+      </if>
+      <if test="carVariableSupension != null" >
+        car_variable_supension = #{carVariableSupension},
+      </if>
+      <if test="carAirSupension != null" >
+        car_air_supension = #{carAirSupension},
+      </if>
+      <if test="carVariableSteering != null" >
+        car_variable_steering = #{carVariableSteering},
+      </if>
+      <if test="carActiveDynamic != null" >
+        car_active_dynamic = #{carActiveDynamic},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  
+</mapper>

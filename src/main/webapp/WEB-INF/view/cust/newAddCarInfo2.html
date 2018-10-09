@@ -1,0 +1,28 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal" id="addCarTransferInfo">
+			<div class="row">
+				<div class="col-sm-12">
+					<input type="hidden" value="${id}" id="carTransferInfoId3">
+					<#input id="carTransferInfoName2" name="转移登记姓名" underline="false" value="${name}"/>
+					<#input id="carTransferInfoCertId2" name="转移登记身份证号" underline="false" value="${certId}"/>
+					<#input id="carTransferInfoGetType2" name="获得方式" underline="false" value="${getType}"/>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">转移登记日期</label>
+						<div class="col-sm-9">
+							<input class="form-control" id="carTransferInfoRegDate2" name="firstLicDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})" value="${regDate}">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3" style="margin-left:43%">
+					<div style="width: 200px; margin: 10px auto;">
+						<button class="btn btn-primary" onclick="AddCarInfos();"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;修改</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="${ctxPath}/static/modular/cust/custNqDataAdd.js"></script>
+@}

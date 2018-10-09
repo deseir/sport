@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarBaseParamsDao" >
+  <resultMap id="BaseResultMap" type="com.moerlong.carloan.modular.car.entity.CarBaseParams" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="cust_id" property="custId" jdbcType="BIGINT" />
+    <result column="apply_id" property="applyId" jdbcType="BIGINT" />
+    <result column="car_id" property="carId" jdbcType="BIGINT" />
+    <result column="base_config" property="baseConfig" jdbcType="VARCHAR" />
+    <result column="productFactory" property="productfactory" jdbcType="VARCHAR" />
+    <result column="jibie" property="jibie" jdbcType="VARCHAR" />
+    <result column="engine" property="engine" jdbcType="VARCHAR" />
+    <result column="bsx" property="bsx" jdbcType="VARCHAR" />
+    <result column="ckg" property="ckg" jdbcType="VARCHAR" />
+    <result column="csxs" property="csxs" jdbcType="VARCHAR" />
+    <result column="highspeed" property="highspeed" jdbcType="VARCHAR" />
+    <result column="rlxs" property="rlxs" jdbcType="VARCHAR" />
+    <result column="gxbzhyh" property="gxbzhyh" jdbcType="VARCHAR" />
+    <result column="outcolor" property="outcolor" jdbcType="VARCHAR" />
+    <result column="innercolor" property="innercolor" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    c_car_base_params.id, c_car_base_params.cust_id, c_car_base_params.apply_id, c_car_base_params.car_id, 
+    c_car_base_params.base_config, c_car_base_params.productFactory, c_car_base_params.jibie, 
+    c_car_base_params.engine, c_car_base_params.bsx, c_car_base_params.ckg, c_car_base_params.csxs, 
+    c_car_base_params.highspeed, c_car_base_params.rlxs, c_car_base_params.gxbzhyh, c_car_base_params.outcolor, 
+    c_car_base_params.innercolor, c_car_base_params.create_time, c_car_base_params.update_time, 
+    c_car_base_params.remark, c_car_base_params.is_deleted
+  </sql>
+
+
+  <insert id="save" parameterType="com.moerlong.carloan.modular.car.entity.CarBaseParams" >
+    insert into c_car_base_params (id, cust_id, apply_id,
+      car_id, base_config, productFactory,
+      jibie, engine, bsx,
+      ckg, csxs, highspeed,
+      rlxs, gxbzhyh, outcolor,
+      innercolor, create_time, update_time,
+      remark, is_deleted)
+    values (#{id,jdbcType=BIGINT}, #{custId,jdbcType=BIGINT}, #{applyId,jdbcType=BIGINT},
+      #{carId,jdbcType=BIGINT}, #{baseConfig,jdbcType=VARCHAR}, #{productfactory,jdbcType=VARCHAR},
+      #{jibie,jdbcType=VARCHAR}, #{engine,jdbcType=VARCHAR}, #{bsx,jdbcType=VARCHAR},
+      #{ckg,jdbcType=VARCHAR}, #{csxs,jdbcType=VARCHAR}, #{highspeed,jdbcType=VARCHAR},
+      #{rlxs,jdbcType=VARCHAR}, #{gxbzhyh,jdbcType=VARCHAR}, #{outcolor,jdbcType=VARCHAR},
+      #{innercolor,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+      #{remark,jdbcType=VARCHAR}, #{isDeleted,jdbcType=INTEGER})
+  </insert>
+
+  <delete id="deleteById" parameterType="java.lang.Long" >
+    delete from c_car_base_params
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+
+  <update id="updateWithoutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarBaseParams" >
+    update c_car_base_params
+    <set >
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        apply_id = #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="carId != null" >
+        car_id = #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="baseConfig != null" >
+        base_config = #{baseConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="productfactory != null" >
+        productFactory = #{productfactory,jdbcType=VARCHAR},
+      </if>
+      <if test="jibie != null" >
+        jibie = #{jibie,jdbcType=VARCHAR},
+      </if>
+      <if test="engine != null" >
+        engine = #{engine,jdbcType=VARCHAR},
+      </if>
+      <if test="bsx != null" >
+        bsx = #{bsx,jdbcType=VARCHAR},
+      </if>
+      <if test="ckg != null" >
+        ckg = #{ckg,jdbcType=VARCHAR},
+      </if>
+      <if test="csxs != null" >
+        csxs = #{csxs,jdbcType=VARCHAR},
+      </if>
+      <if test="highspeed != null" >
+        highspeed = #{highspeed,jdbcType=VARCHAR},
+      </if>
+      <if test="rlxs != null" >
+        rlxs = #{rlxs,jdbcType=VARCHAR},
+      </if>
+      <if test="gxbzhyh != null" >
+        gxbzhyh = #{gxbzhyh,jdbcType=VARCHAR},
+      </if>
+      <if test="outcolor != null" >
+        outcolor = #{outcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="innercolor != null" >
+        innercolor = #{innercolor,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id=#{id}
+  </update>
+
+  <update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarBaseParams" >
+    update c_car_base_params
+    set cust_id = #{custId,jdbcType=BIGINT},
+      apply_id = #{applyId,jdbcType=BIGINT},
+      car_id = #{carId,jdbcType=BIGINT},
+      base_config = #{baseConfig,jdbcType=VARCHAR},
+      productFactory = #{productfactory,jdbcType=VARCHAR},
+      jibie = #{jibie,jdbcType=VARCHAR},
+      engine = #{engine,jdbcType=VARCHAR},
+      bsx = #{bsx,jdbcType=VARCHAR},
+      ckg = #{ckg,jdbcType=VARCHAR},
+      csxs = #{csxs,jdbcType=VARCHAR},
+      highspeed = #{highspeed,jdbcType=VARCHAR},
+      rlxs = #{rlxs,jdbcType=VARCHAR},
+      gxbzhyh = #{gxbzhyh,jdbcType=VARCHAR},
+      outcolor = #{outcolor,jdbcType=VARCHAR},
+      innercolor = #{innercolor,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarBaseParams">
+    select
+    <include refid="Base_Column_List" />
+    from c_car_base_params
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectByApplyId" resultType="com.moerlong.carloan.modular.car.entity.CarBaseParams">
+    select
+    <include refid="Base_Column_List" />
+    from c_car_base_params
+    where apply_id = #{applyId,jdbcType=BIGINT}
+  </select>
+
+
+  <insert id="insertSelective" parameterType="com.moerlong.carloan.modular.car.entity.CarBaseParams" >
+    insert into c_car_base_params
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="applyId != null" >
+        apply_id,
+      </if>
+      <if test="carId != null" >
+        car_id,
+      </if>
+      <if test="baseConfig != null" >
+        base_config,
+      </if>
+      <if test="productfactory != null" >
+        productFactory,
+      </if>
+      <if test="jibie != null" >
+        jibie,
+      </if>
+      <if test="engine != null" >
+        engine,
+      </if>
+      <if test="bsx != null" >
+        bsx,
+      </if>
+      <if test="ckg != null" >
+        ckg,
+      </if>
+      <if test="csxs != null" >
+        csxs,
+      </if>
+      <if test="highspeed != null" >
+        highspeed,
+      </if>
+      <if test="rlxs != null" >
+        rlxs,
+      </if>
+      <if test="gxbzhyh != null" >
+        gxbzhyh,
+      </if>
+      <if test="outcolor != null" >
+        outcolor,
+      </if>
+      <if test="innercolor != null" >
+        innercolor,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="carId != null" >
+        #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="baseConfig != null" >
+        #{baseConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="productfactory != null" >
+        #{productfactory,jdbcType=VARCHAR},
+      </if>
+      <if test="jibie != null" >
+        #{jibie,jdbcType=VARCHAR},
+      </if>
+      <if test="engine != null" >
+        #{engine,jdbcType=VARCHAR},
+      </if>
+      <if test="bsx != null" >
+        #{bsx,jdbcType=VARCHAR},
+      </if>
+      <if test="ckg != null" >
+        #{ckg,jdbcType=VARCHAR},
+      </if>
+      <if test="csxs != null" >
+        #{csxs,jdbcType=VARCHAR},
+      </if>
+      <if test="highspeed != null" >
+        #{highspeed,jdbcType=VARCHAR},
+      </if>
+      <if test="rlxs != null" >
+        #{rlxs,jdbcType=VARCHAR},
+      </if>
+      <if test="gxbzhyh != null" >
+        #{gxbzhyh,jdbcType=VARCHAR},
+      </if>
+      <if test="outcolor != null" >
+        #{outcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="innercolor != null" >
+        #{innercolor,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+
+
+</mapper>

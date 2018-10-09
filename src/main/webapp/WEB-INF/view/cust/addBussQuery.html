@@ -1,0 +1,89 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+
+			<div class="row" id="addBussQuery">
+				<div class="col-sm-6">
+					<input type="hidden" value="${applyId}" id="applyId">
+					<input type="hidden" value="${type}" id="paramType">
+					<input type="hidden" id="bussId" value="${bussId}">
+					<!--<div class="form-group">-->
+						<!--<label class="col-sm-3 control-label">查询时间</label>-->
+						<!--<div class="col-sm-9">-->
+							<!--<input class="form-control" id="queryDate" name="queryDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">-->
+						<!--</div>-->
+					<!--</div>-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>查询时间</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="queryDate" name="queryDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="queryOrg" name="查询机构" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>查询机构</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="queryOrg" name="queryOrg" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#select id="queryReason" name="查询原因" underline="false">-->
+						<!--<option value="">-&#45;&#45;请选择-&#45;&#45;</option>-->
+						<!--<option value="0">贷后管理</option>-->
+						<!--<option value="1">信用卡审批</option>-->
+						<!--<option value="2">保前查询</option>-->
+						<!--<option value="3">贷款审批</option>-->
+						<!--<option value="4">担保资格查询</option>-->
+					<!--</#select>-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>查询原因</label>
+						</div>
+						<div class="col-sm-7">
+							<select class="form-control" id="queryReason" name="queryReason">
+								<option value="">---请选择---</option>
+								<option value="0">贷后管理</option>
+								<option value="1">信用卡审批</option>
+								<option value="2">保前查询</option>
+								<option value="3">贷款审批</option>
+								<option value="4">担保资格查询</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="bussRemark" name="备注" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>备注</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="bussRemark" name="bussRemark" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+		</div>
+			<div class="row">
+				<div class="">
+					<div style="width: 200px;">
+						<button class="btn btn-primary" onclick="saveOrUpdate();" style="margin-left:35%"><i class="fa fa-save"></i>&nbsp;保存</button>
+					</div>
+				</div>
+			</div>
+	</div>
+</div>
+</div>
+<script src="${ctxPath}/static/modular/cust/addBussQuery.js"></script>
+@}

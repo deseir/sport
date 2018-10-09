@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.paybackMgr.dao.RepaymentChangeRecordDao">
+
+	<sql id="searchColumns">
+		id id,
+		repayment_id repaymentId,
+		repayment_plan_id repaymentPlanId,
+		change_type changeType,
+		change_desc changeDesc,
+		old_overdue_days oldOverdueDays,
+		old_overdue_penalty oldOverduePenalty,
+		new_overdue_days newOverdueDays,
+		new_overdue_penalty newOverduePenalty,
+		once_repayment_capital onceRepaymentCapital,
+		once_repayment_charge onceRepaymentCharge,
+		once_repayment_breach onceRepaymentBreach,
+		once_repayment_total onceRepaymentTotal,
+		cur_period_num curPeriodNum,
+		cur_period_amount curPeriodAmount,
+		old_amount oldAmount,
+		old_interest oldInterest,
+		old_service_charge oldServiceCharge,
+		old_month_lease_total oldMonthLeaseTotal,
+		old_month_service_total oldMonthServiceTotal,
+		old_lease_capital_total oldLeaseCapitalTotal,
+		old_lease_interest_total oldLeaseInterestTotal,
+		new_amount newAmount,
+		new_interest newInterest,
+		new_service_charge newServiceCharge,
+		new_month_lease_total newMonthLeaseTotal,
+		new_month_service_total newMonthServiceTotal,
+		new_lease_capital_total newLeaseCapitalTotal,
+		new_lease_interest_total newLeaseInterestTotal,
+		is_deleted isDeleted,
+		create_time createTime,
+		update_time updateTime,
+		remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentChangeRecord">
+		insert into
+		c_repayment_change_record(
+			id,
+			repayment_id,
+			repayment_plan_id,
+			change_type,
+			change_desc,
+			old_overdue_days,
+			old_overdue_penalty,
+			new_overdue_days,
+			new_overdue_penalty,
+			once_repayment_capital,
+			once_repayment_charge,
+			once_repayment_breach,
+			once_repayment_total,
+			cur_period_num,
+			cur_period_amount,
+			old_amount,
+			old_interest,
+			old_service_charge,
+			old_month_lease_total,
+			old_month_service_total,
+			old_lease_capital_total,
+			old_lease_interest_total,
+			new_amount,
+			new_interest,
+			new_service_charge,
+			new_month_lease_total,
+			new_month_service_total,
+			new_lease_capital_total,
+			new_lease_interest_total,
+			is_deleted,
+			create_time,
+			update_time,
+			remark)
+		values (
+			#{id},
+			#{repaymentId},
+			#{repaymentPlanId},
+			#{changeType},
+			#{changeDesc},
+			#{oldOverdueDays},
+			#{oldOverduePenalty},
+			#{newOverdueDays},
+			#{newOverduePenalty},
+			#{onceRepaymentCapital},
+			#{onceRepaymentCharge},
+			#{onceRepaymentBreach},
+			#{onceRepaymentTotal},
+			#{curPeriodNum},
+			#{curPeriodAmount},
+			#{oldAmount},
+			#{oldInterest},
+			#{oldServiceCharge},
+			#{oldMonthLeaseTotal},
+			#{oldMonthServiceTotal},
+			#{oldLeaseCapitalTotal},
+			#{oldLeaseInterestTotal},
+			#{newAmount},
+			#{newInterest},
+			#{newServiceCharge},
+			#{newMonthLeaseTotal},
+			#{newMonthServiceTotal},
+			#{newLeaseCapitalTotal},
+			#{newLeaseInterestTotal},
+			#{isDeleted},
+			#{createTime},
+			#{updateTime},
+			#{remark})
+	</insert>
+
+	<delete id="delete">
+		delete from c_repayment_change_record
+		where id = #{id}
+	</delete>
+
+	<update id="update" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentChangeRecord">
+		update c_repayment_change_record <set>
+		<if test="repaymentId != null"> repayment_id=#{repaymentId},</if>
+		<if test="repaymentPlanId != null"> repayment_plan_id=#{repaymentPlanId},</if>
+		<if test="changeType != null"> change_type=#{changeType},</if>
+		<if test="changeDesc != null"> change_desc=#{changeDesc},</if>
+		<if test="oldOverdueDays != null"> old_overdue_days=#{oldOverdueDays},</if>
+		<if test="oldOverduePenalty != null"> old_overdue_penalty=#{oldOverduePenalty},</if>
+		<if test="newOverdueDays != null"> new_overdue_days=#{newOverdueDays},</if>
+		<if test="newOverduePenalty != null"> new_overdue_penalty=#{newOverduePenalty},</if>
+		<if test="onceRepaymentCapital != null"> once_repayment_capital=#{onceRepaymentCapital},</if>
+		<if test="onceRepaymentCharge != null"> once_repayment_charge=#{onceRepaymentCharge},</if>
+		<if test="onceRepaymentBreach != null"> once_repayment_breach=#{onceRepaymentBreach},</if>
+		<if test="onceRepaymentTotal != null"> once_repayment_total=#{onceRepaymentTotal},</if>
+		<if test="curPeriodNum != null"> cur_period_num=#{curPeriodNum},</if>
+		<if test="curPeriodAmount != null"> cur_period_amount=#{curPeriodAmount},</if>
+		<if test="oldAmount != null"> old_amount=#{oldAmount},</if>
+		<if test="oldInterest != null"> old_interest=#{oldInterest},</if>
+		<if test="oldServiceCharge != null"> old_service_charge=#{oldServiceCharge},</if>
+		<if test="oldMonthLeaseTotal != null"> old_month_lease_total=#{oldMonthLeaseTotal},</if>
+		<if test="oldMonthServiceTotal != null"> old_month_service_total=#{oldMonthServiceTotal},</if>
+		<if test="oldLeaseCapitalTotal != null"> old_lease_capital_total=#{oldLeaseCapitalTotal},</if>
+		<if test="oldLeaseInterestTotal != null"> old_lease_interest_total=#{oldLeaseInterestTotal},</if>
+		<if test="newAmount != null"> new_amount=#{newAmount},</if>
+		<if test="newInterest != null"> new_interest=#{newInterest},</if>
+		<if test="newServiceCharge != null"> new_service_charge=#{newServiceCharge},</if>
+		<if test="newMonthLeaseTotal != null"> new_month_lease_total=#{newMonthLeaseTotal},</if>
+		<if test="newMonthServiceTotal != null"> new_month_service_total=#{newMonthServiceTotal},</if>
+		<if test="newLeaseCapitalTotal != null"> new_lease_capital_total=#{newLeaseCapitalTotal},</if>
+		<if test="newLeaseInterestTotal != null"> new_lease_interest_total=#{newLeaseInterestTotal},</if>
+		<if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+		<if test="updateTime != null"> update_time=#{updateTime},</if>
+		<if test="createTime != null"> create_time=#{createTime},</if>
+		<if test="remark != null and remark != ''"> remark=#{remark},</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentChangeRecord">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_change_record
+		where id = #{id}
+	</select>
+
+	<select id="selectByRepaymentId" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentChangeRecord">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_change_record
+		where repayment_id = #{repaymentId}
+	</select>
+
+	<select id="selectByRepaymentPlanId" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentChangeRecord">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_change_record
+		where repayment_plan_id = #{repaymentPlanId}
+	</select>
+
+	<!-- 根据条件查询 -->
+	<select id="listByCondition" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentChangeRecord">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_change_record
+		where 1=1
+
+		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+			and (update_time between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+		</if>
+		<if test="changeType != null and changeType != ''">
+			and change_type = #{changeType}
+		</if>
+		order by id DESC
+	</select>
+
+
+
+</mapper>
+

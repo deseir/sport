@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.CustFinanceInfoDao">
+
+	<sql id="searchColumns">
+		custFinanceInfo.id id,custFinanceInfo.cust_id custId,custFinanceInfo.apply_id applyId,custFinanceInfo.type type,custFinanceInfo.attachurl attachUrl,custFinanceInfo.fin_type finType,custFinanceInfo.property property,custFinanceInfo.status status,custFinanceInfo.num num,custFinanceInfo.create_time createTime,custFinanceInfo.update_time updateTime,custFinanceInfo.is_deleted isDeleted,custFinanceInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.CustFinanceInfo">
+		insert into
+		c_cust_finance_info(apply_id,is_deleted,create_time,num,cust_id,property,update_time,remark,id,fin_type,type,status,attachurl)
+		values (#{applyId},#{isDeleted},#{createTime},#{num},#{custId},#{property},#{updateTime},#{remark},#{id},#{finType},#{type},#{status},#{attachUrl})
+	</insert>
+
+	<delete id="delete">
+		delete from c_cust_finance_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_cust_finance_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.CustFinanceInfo">
+		update c_cust_finance_info set
+		apply_id=#{applyId},is_deleted=#{isDeleted},create_time=#{createTime},num=#{num},cust_id=#{custId},property=#{property},update_time=#{updateTime},remark=#{remark},id=#{id},fin_type=#{finType},type=#{type},status=#{status},attachurl=#{attachUrl} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.CustFinanceInfo">
+		update c_cust_finance_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="type != null"> type=#{type},</if>
+            <if test="finType != null"> fin_type=#{finType},</if>
+            <if test="property != null"> property=#{property},</if>
+            <if test="status != null"> status=#{status},</if>
+            <if test="num != null"> num=#{num},</if>
+			<if test="attachUrl != null and attachUrl != ''"> attachurl=#{attachUrl},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.CustFinanceInfo">
+		select
+		<include refid="searchColumns" />
+		from c_cust_finance_info custFinanceInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.CustFinanceInfo">
+		select
+		<include refid="searchColumns" />
+		from c_cust_finance_info custFinanceInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CustFinanceInfo">
+		select
+		<include refid="searchColumns" />
+		from c_cust_finance_info custFinanceInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<!--根据applyId和type查询-->
+	<select id="selByApplyIdAndType" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CustFinanceInfo">
+		select
+		custFinanceInfo.id id,custFinanceInfo.cust_id custId,custFinanceInfo.apply_id applyId,custFinanceInfo.type type,custFinanceInfo.fin_type finType,
+
+		CASE custFinanceInfo.fin_type
+		WHEN 0 THEN '房产'
+		WHEN 1 THEN '车辆'
+		ELSE '' END finTypeName,
+		custFinanceInfo.property property,
+		CASE custFinanceInfo.property
+		WHEN 0 THEN '安置房'
+		WHEN 1 THEN '商品房'
+		WHEN 2 THEN '自建房福利房'
+		WHEN 3 THEN '写字楼'
+		WHEN 4 THEN '商铺'
+		ELSE '' END propertyName,
+		custFinanceInfo.status status,
+		CASE custFinanceInfo.status
+		WHEN 0 THEN '全款'
+		WHEN 1 THEN '抵押'
+		WHEN 2 THEN '按揭'
+		ELSE '' END statusName,
+		custFinanceInfo.num num,custFinanceInfo.attachurl attachUrl,custFinanceInfo.create_time createTime,custFinanceInfo.update_time updateTime,custFinanceInfo.is_deleted isDeleted,custFinanceInfo.remark remark
+		from c_cust_finance_info custFinanceInfo
+		where custFinanceInfo.apply_id=#{applyId} and custFinanceInfo.type=#{type}
+
+	</select>
+
+	<delete id="deleteByIds" parameterType="java.lang.Long">
+		delete from c_cust_finance_info
+		where id in
+		<foreach collection="list" index="index" open="(" item="id" separator="," close=")">
+			#{id}
+		</foreach>
+
+	</delete>
+</mapper>
+

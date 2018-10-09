@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.loan.dao.RoleApplyDao">
+
+	<sql id="searchColumns">
+		roleApply.id id,roleApply.role_code roleCode,roleApply.status status,roleApply.read_able readAble,roleApply.edit_able editAble,roleApply.approve_able approveAble,roleApply.supplement_able supplementAble,roleApply.auth_ext1_able authExt1Able,roleApply.auth_ext2_able authExt2Able,roleApply.auth_ext3_able authExt3Able,roleApply.next_status nextStatus
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.loan.entity.RoleApply">
+		insert into
+		c_role_apply(edit_able,read_able,supplement_able,auth_ext3_able,next_status,role_code,auth_ext1_able,approve_able,id,auth_ext2_able,status)
+		values (#{editAble},#{readAble},#{supplementAble},#{authExt3Able},#{nextStatus},#{roleCode},#{authExt1Able},#{approveAble},#{id},#{authExt2Able},#{status})
+	</insert>
+
+	<delete id="delete">
+		delete from c_role_apply
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_role_apply set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.loan.entity.RoleApply">
+		update c_role_apply set
+		edit_able=#{editAble},read_able=#{readAble},supplement_able=#{supplementAble},auth_ext3_able=#{authExt3Able},next_status=#{nextStatus},role_code=#{roleCode},auth_ext1_able=#{authExt1Able},approve_able=#{approveAble},id=#{id},auth_ext2_able=#{authExt2Able},status=#{status} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.loan.entity.RoleApply">
+		update c_role_apply
+		<set>
+            <if test="roleCode != null"> role_code=#{roleCode},</if>
+            <if test="status != null"> status=#{status},</if>
+            <if test="readAble != null"> read_able=#{readAble},</if>
+            <if test="editAble != null"> edit_able=#{editAble},</if>
+            <if test="approveAble != null"> approve_able=#{approveAble},</if>
+            <if test="supplementAble != null"> supplement_able=#{supplementAble},</if>
+            <if test="authExt1Able != null"> auth_ext1_able=#{authExt1Able},</if>
+            <if test="authExt2Able != null"> auth_ext2_able=#{authExt2Able},</if>
+            <if test="authExt3Able != null"> auth_ext3_able=#{authExt3Able},</if>
+            <if test="nextStatus != null"> next_status=#{nextStatus},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.loan.entity.RoleApply">
+		select
+		<include refid="searchColumns" />
+		from c_role_apply roleApply
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.loan.entity.RoleApply">
+		select
+		<include refid="searchColumns" />
+		from c_role_apply roleApply
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.loan.entity.RoleApply">
+		select
+		<include refid="searchColumns" />
+		from c_role_apply roleApply
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+</mapper>
+

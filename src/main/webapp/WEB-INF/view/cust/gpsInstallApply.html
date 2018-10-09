@@ -1,0 +1,46 @@
+@layout("/common/_container.html"){
+
+<div class="">
+  <div class="">
+	  <div class="ibox-title">
+		  <div style="border-bottom: 1px solid #cccccc94;height: 45px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 20px;">安装gps申请</span></div>
+	  </div>
+   	<div class="tab-content">
+		<input type="hidden" value="${applyId}" id="applyId">
+		<input type="hidden" value="${interfaceAddress}" id="interfaceAddress">
+		<!--身份认证-->
+   		<div class="tab-pane fade in active"  id="div_sfrz">
+			<div class="menu-item" id="menu-item5">
+				<div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;">
+					<h5></h5>
+					<!-- 
+					<div class="row">
+						<div class="col-sm-6">
+							<#select id="checkResult" name="审核结果" underline="false">
+								<option value="">---请选择---</option>
+								<option value="0">通过</option>
+								<option value="1">拒绝</option>
+								<option value="2">驳回</option>
+							</#select>
+						    <#input id="checkResultDesc" name="审核结果描述" underline="false"/>
+					    </div>
+					</div>
+					 -->
+					
+					<div style="width: 265px; margin-left:90px;">
+						<#button name="返回" icon="fa fa-chevron-left" clickFun="backToDoWork();"/>
+						<#button name="提交申请" icon="fa fa-check" clickFun="todoSubmit();"/>
+					</div>
+					
+				</div>
+			</div>
+
+   		</div>
+
+
+   	</div>
+  </div>
+</div>
+
+<script src="${ctxPath}/static/modular/cust/gpsInstallApply.js"></script>
+@}

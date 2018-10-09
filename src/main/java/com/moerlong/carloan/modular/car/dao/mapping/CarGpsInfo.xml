@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarGpsInfoDao">
+
+	<sql id="searchColumns">
+		carGpsInfo.id id,carGpsInfo.car_id carId,carGpsInfo.cust_id custId,carGpsInfo.apply_id applyId,carGpsInfo.gps_install_date gpsInstallDate,
+		carGpsInfo.group_photo_url groupPhotoUrl,carGpsInfo.create_time createTime,carGpsInfo.update_time updateTime,carGpsInfo.is_deleted isDeleted,carGpsInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarGpsInfo">
+		insert into
+		c_car_gps_info(apply_id,is_deleted,create_time,cust_id,group_photo_url,update_time,remark,id,gps_install_date,car_id)
+		values (#{applyId},#{isDeleted},#{createTime},#{custId},#{groupPhotoUrl},#{updateTime},#{remark},#{id},#{gpsInstallDate},#{carId})
+	</insert>
+
+	<delete id="delete">
+		delete from c_car_gps_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_car_gps_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarGpsInfo">
+		update c_car_gps_info set
+		apply_id=#{applyId},is_deleted=#{isDeleted},create_time=#{createTime},cust_id=#{custId},group_photo_url=#{groupPhotoUrl},update_time=#{updateTime},remark=#{remark},id=#{id},gps_install_date=#{gpsInstallDate},car_id=#{carId} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarGpsInfo">
+		update c_car_gps_info
+		<set>
+            <if test="carId != null"> car_id=#{carId},</if>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="gpsInstallDate != null"> gps_install_date=#{gpsInstallDate},</if>
+            <if test="groupPhotoUrl != null and groupPhotoUrl !=''"> group_photo_url=#{groupPhotoUrl},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarGpsInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_gps_info carGpsInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarGpsInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_gps_info carGpsInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.car.entity.CarGpsInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_gps_info carGpsInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<!-- 查询（根据主键applyId查询） -->
+	<select id="selectByApplyId" resultType="com.moerlong.carloan.modular.car.entity.CarGpsInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_gps_info carGpsInfo
+		where apply_id = #{applyId}
+	</select>
+</mapper>
+

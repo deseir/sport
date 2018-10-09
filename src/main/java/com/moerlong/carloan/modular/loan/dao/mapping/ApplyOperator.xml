@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.loan.dao.ApplyOperatorDao">
+
+	<sql id="searchColumns">
+		ao.id id,
+		ao.apply_id applyId,
+		ao.role_id roleId,
+		ao.user_id userId,
+		ao.process_node_id processNodeId,
+		ao.create_time createTime,
+		ao.update_time updateTime,
+		ao.is_deleted isDeleted,
+		ao.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.loan.entity.ApplyOperator">
+		insert into
+		c_apply_operator(
+			apply_id,
+			role_id,
+			user_id,
+			process_node_id,
+			create_time,
+			update_time,
+			remark,
+			is_deleted)
+		values (
+			#{applyId},
+			#{roleId},
+			#{userId},
+			#{processNodeId},
+			#{createTime},
+			#{updateTime},
+			#{remark},
+			#{isDeleted})
+	</insert>
+
+	<delete id="delete">
+		delete from c_apply_operator
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_apply_operator set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.loan.entity.ApplyOperator">
+		update c_apply_operator set
+		apply_id=#{applyId},
+		role_id=#{roleId},
+		user_id=#{userId},
+		process_node_id=#{processNodeId},
+		create_time=#{createTime},
+		update_time=#{updateTime},
+		is_deleted=#{isDeleted},
+		remark=#{remark}
+		where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.loan.entity.ApplyOperator">
+		update c_apply_operator
+		<set>
+			<if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="roleId != null"> role_id=#{roleId},</if>
+            <if test="userId != null"> user_id=#{userId},</if>
+            <if test="processNodeId != null"> process_node_id=#{processNodeId},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.loan.entity.ApplyOperator">
+		select
+		<include refid="searchColumns" />
+		from c_apply_operator ao
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.loan.entity.ApplyOperator">
+		select
+		<include refid="searchColumns" />
+		from c_apply_operator ao
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.loan.entity.ApplyOperator">
+		select
+		<include refid="searchColumns" />
+		from c_apply_operator ao
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<select id="selectByApplyId" resultType="com.moerlong.carloan.modular.loan.entity.ApplyOperator">
+		select
+		<include refid="searchColumns" />
+		from c_apply_operator ao
+		where apply_id = #{applyId}
+	</select>
+
+	<select id="selectByApplyIdAndRoleId" resultType="com.moerlong.carloan.modular.loan.entity.ApplyOperator">
+		select
+		<include refid="searchColumns" />
+		from c_apply_operator ao
+		where apply_id = #{applyId} and role_id=#{roleId}
+	</select>
+
+
+</mapper>
+
