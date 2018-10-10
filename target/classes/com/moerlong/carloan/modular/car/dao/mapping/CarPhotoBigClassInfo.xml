@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarPhotoBigClassInfoDao">
+
+	<sql id="searchColumns">
+		carPhotoBigClassInfo.id id,carPhotoBigClassInfo.bigclass_id,carPhotoBigClassInfo.car_id carId,carPhotoBigClassInfo.photo_name photoName,carPhotoBigClassInfo.photo_url photoUrl,carPhotoBigClassInfo.create_time createTime,carPhotoBigClassInfo.update_time updateTime,carPhotoBigClassInfo.remark remark,carPhotoBigClassInfo.is_deleted isDeleted
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarPhotoBigClassInfo">
+		insert into
+		c_car_photo_bigclass_info(photo_url,is_deleted,create_time,update_time,remark,id,photo_name,car_id,bigclass_id)
+		values (#{photoUrl},#{isDeleted},#{createTime},#{updateTime},#{remark},#{id},#{photoName},#{carId},#{bigClassId})
+	</insert>
+
+	<delete id="delete">
+		delete from c_car_photo_bigclass_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_car_photo_bigclass_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarPhotoBigClassInfo">
+		update c_car_photo_bigclass_info set
+		photo_url=#{photoUrl},is_deleted=#{isDeleted},create_time=#{createTime},update_time=#{updateTime},remark=#{remark},id=#{id},photo_name=#{photoName},car_id=#{carId},bigclass_id=#{bigClassId} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarPhotoBigClassInfo">
+		update c_car_photo_bigclass_info
+		<set>
+            <if test="carId != null"> car_id=#{carId},</if>
+			<if test="bigClassId != null"> bigclass_id=#{bigClassId},</if>
+            <if test="photoName != null"> photo_name=#{photoName},</if>
+            <if test="photoUrl != null"> photo_url=#{photoUrl},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarPhotoBigClassInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_photo_bigclass_info carPhotoBigClassInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarPhotoBigClassInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_photo_bigclass_info carPhotoBigClassInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.car.entity.CarPhotoBigClassInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_photo_bigclass_info carPhotoBigClassInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<insert id="saveBigClass" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.vo.CarPhotoBigClassInfoVo">
+		insert into
+		c_car_photo_bigclass_info(is_deleted,create_time,update_time,remark,class_name,car_id)
+		values (#{isDeleted},#{createTime},#{updateTime},#{remark},#{className},#{carId})
+	</insert>
+
+
+	<select id="findByCarId" resultType="com.moerlong.carloan.modular.car.entity.CarPhotoBigClassInfo">
+		SELECT * from c_car_photo_bigclass_info where car_id=#{carId}
+	</select>
+
+</mapper>
+

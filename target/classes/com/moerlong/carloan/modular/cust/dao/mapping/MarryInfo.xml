@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.MarryInfoDao">
+
+	<sql id="searchColumns">
+		marryInfo.id id,marryInfo.cust_id custId,marryInfo.marry_status marryStatus,marryInfo.marry_date marryDate,marryInfo.spouse_name spouseName,marryInfo.spouse_sex spouseSex,marryInfo.spouse_cert_id spouseCertId,marryInfo.validate_begin validateBegin,marryInfo.validate_end validateEnd,marryInfo.sign_org signOrg,marryInfo.id_front_photo_url idFrontPhotoUrl,marryInfo.id_back_photo_url idBackPhotoUrl,marryInfo.marry_photo_url marryPhotoUrl,marryInfo.divorce_date divorceDate,marryInfo.divorce_name divorceName,marryInfo.divorce_sex divorceSex,marryInfo.divorce_cert_id divorceCertId,marryInfo.divorce_photo_url divorcePhotoUrl,marryInfo.death_cert_photo_url deathCertPhotoUrl,marryInfo.create_time createTime,marryInfo.update_time updateTime,marryInfo.remark remark,marryInfo.is_deleted isDeleted,,marryInfo.spouse_phone spousePhone
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.MarryInfo">
+		insert into
+		c_marry_info(spouse_cert_id,marry_photo_url,validate_begin,update_time,remark,divorce_date,divorce_name,spouse_sex,divorce_photo_url,marry_status,death_cert_photo_url,is_deleted,create_time,cust_id,validate_end,id_front_photo_url,divorce_sex,id,spouse_name,id_back_photo_url,marry_date,sign_org,divorce_cert_id,spouse_phone)
+		values (#{spouseCertId},#{marryPhotoUrl},#{validateBegin},#{updateTime},#{remark},#{divorceDate},#{divorceName},#{spouseSex},#{divorcePhotoUrl},#{marryStatus},#{deathCertPhotoUrl},#{isDeleted},#{createTime},#{custId},#{validateEnd},#{idFrontPhotoUrl},#{divorceSex},#{id},#{spouseName},#{idBackPhotoUrl},#{marryDate},#{signOrg},#{divorceCertId},#{spousePhone})
+	</insert>
+
+	<delete id="delete">
+		delete from c_marry_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_marry_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.MarryInfo">
+		update c_marry_info set
+		spouse_cert_id=#{spouseCertId},marry_photo_url=#{marryPhotoUrl},validate_begin=#{validateBegin},update_time=#{updateTime},remark=#{remark},divorce_date=#{divorceDate},divorce_name=#{divorceName},spouse_sex=#{spouseSex},divorce_photo_url=#{divorcePhotoUrl},marry_status=#{marryStatus},death_cert_photo_url=#{deathCertPhotoUrl},is_deleted=#{isDeleted},create_time=#{createTime},cust_id=#{custId},validate_end=#{validateEnd},id_front_photo_url=#{idFrontPhotoUrl},divorce_sex=#{divorceSex},id=#{id},spouse_name=#{spouseName},id_back_photo_url=#{idBackPhotoUrl},marry_date=#{marryDate},sign_org=#{signOrg},divorce_cert_id=#{divorceCertId},spouse_phone=#{spousePhone} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.MarryInfo">
+		update c_marry_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="marryStatus != null"> marry_status=#{marryStatus},</if>
+            <if test="marryDate != null"> marry_date=#{marryDate},</if>
+            <if test="spouseName != null"> spouse_name=#{spouseName},</if>
+            <if test="spouseSex != null"> spouse_sex=#{spouseSex},</if>
+            <if test="spouseCertId != null"> spouse_cert_id=#{spouseCertId},</if>
+            <if test="validateBegin != null"> validate_begin=#{validateBegin},</if>
+            <if test="validateEnd != null"> validate_end=#{validateEnd},</if>
+            <if test="signOrg != null"> sign_org=#{signOrg},</if>
+            <if test="idFrontPhotoUrl != null"> id_front_photo_url=#{idFrontPhotoUrl},</if>
+            <if test="idBackPhotoUrl != null"> id_back_photo_url=#{idBackPhotoUrl},</if>
+            <if test="marryPhotoUrl != null"> marry_photo_url=#{marryPhotoUrl},</if>
+            <if test="divorceDate != null"> divorce_date=#{divorceDate},</if>
+            <if test="divorceName != null"> divorce_name=#{divorceName},</if>
+            <if test="divorceSex != null"> divorce_sex=#{divorceSex},</if>
+            <if test="divorceCertId != null"> divorce_cert_id=#{divorceCertId},</if>
+            <if test="divorcePhotoUrl != null"> divorce_photo_url=#{divorcePhotoUrl},</if>
+            <if test="deathCertPhotoUrl != null"> death_cert_photo_url=#{deathCertPhotoUrl},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+			<if test="spousePhone != null"> spouse_phone=#{spousePhone},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.MarryInfo">
+		select
+		<include refid="searchColumns" />
+		from c_marry_info marryInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.MarryInfo">
+		select
+		<include refid="searchColumns" />
+		from c_marry_info marryInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.MarryInfo">
+		select
+		<include refid="searchColumns" />
+		from c_marry_info marryInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+	<!-- 根据applyID获取内勤资料录入婚姻基本信息 -->
+	<select id="MarryInfoVoByApplyId" resultType="com.moerlong.carloan.modular.cust.entity.MarryInfo">
+		SELECT *
+		FROM
+		c_marry_info a
+		LEFT JOIN c_apply_info b ON  a.cust_id = b.cust_id
+		where b.id=#{id}
+	</select>
+</mapper>
+

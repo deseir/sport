@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarMultimediaConfigDao" >
+  <!-- new -->
+  <update id="deleteLogic">
+		update c_car_validatecar_multimedia_configuration set is_deleted = 1 where id = #{id}
+  </update>
+
+  <select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarMultimediaConfig">
+    select
+    <include refid="Base_Column_List" />
+    from c_car_validatecar_multimedia_configuration
+  </select>
+
+  <select id="selectByApplyId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from c_car_validatecar_multimedia_configuration
+    where apply_id = #{applyId,jdbcType=BIGINT}
+  </select>
+
+  <!-- new over  -->
+
+  <resultMap id="BaseResultMap" type="com.moerlong.carloan.modular.car.entity.CarMultimediaConfig" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="car_id" property="carId" jdbcType="BIGINT" />
+    <result column="apply_id" property="applyId" jdbcType="BIGINT" />
+    <result column="cust_id" property="custId" jdbcType="BIGINT" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="dmtpz" property="dmtpz" jdbcType="INTEGER" />
+    <result column="gps" property="gps" jdbcType="INTEGER" />
+    <result column="dwhdfw" property="dwhdfw" jdbcType="INTEGER" />
+    <result column="zkcsdp" property="zkcsdp" jdbcType="INTEGER" />
+    <result column="lydh" property="lydh" jdbcType="INTEGER" />
+    <result column="wjyyjk" property="wjyyjk" jdbcType="VARCHAR" />
+    <result column="cd_dvd" property="cdDvd" jdbcType="VARCHAR" />
+    <result column="ysqsl" property="ysqsl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Example_Where_Clause_Page" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    c_car_validatecar_multimedia_configuration.id, c_car_validatecar_multimedia_configuration.car_id, 
+    c_car_validatecar_multimedia_configuration.apply_id, c_car_validatecar_multimedia_configuration.cust_id, 
+    c_car_validatecar_multimedia_configuration.is_delete, c_car_validatecar_multimedia_configuration.create_time, 
+    c_car_validatecar_multimedia_configuration.update_time, c_car_validatecar_multimedia_configuration.dmtpz, 
+    c_car_validatecar_multimedia_configuration.gps, c_car_validatecar_multimedia_configuration.dwhdfw, 
+    c_car_validatecar_multimedia_configuration.zkcsdp, c_car_validatecar_multimedia_configuration.lydh, 
+    c_car_validatecar_multimedia_configuration.wjyyjk, c_car_validatecar_multimedia_configuration.cd_dvd, 
+    c_car_validatecar_multimedia_configuration.ysqsl
+  </sql>
+
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from c_car_validatecar_multimedia_configuration
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="delete" parameterType="java.lang.Long" >
+    delete from c_car_validatecar_multimedia_configuration
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+
+  <insert id="save" parameterType="com.moerlong.carloan.modular.car.entity.CarMultimediaConfig" >
+    insert into c_car_validatecar_multimedia_configuration
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="carId != null" >
+        car_id,
+      </if>
+      <if test="applyId != null" >
+        apply_id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="dmtpz != null" >
+        dmtpz,
+      </if>
+      <if test="gps != null" >
+        gps,
+      </if>
+      <if test="dwhdfw != null" >
+        dwhdfw,
+      </if>
+      <if test="zkcsdp != null" >
+        zkcsdp,
+      </if>
+      <if test="lydh != null" >
+        lydh,
+      </if>
+      <if test="wjyyjk != null" >
+        wjyyjk,
+      </if>
+      <if test="cdDvd != null" >
+        cd_dvd,
+      </if>
+      <if test="ysqsl != null" >
+        ysqsl,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="carId != null" >
+        #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dmtpz != null" >
+        #{dmtpz,jdbcType=INTEGER},
+      </if>
+      <if test="gps != null" >
+        #{gps,jdbcType=INTEGER},
+      </if>
+      <if test="dwhdfw != null" >
+        #{dwhdfw,jdbcType=INTEGER},
+      </if>
+      <if test="zkcsdp != null" >
+        #{zkcsdp,jdbcType=INTEGER},
+      </if>
+      <if test="lydh != null" >
+        #{lydh,jdbcType=INTEGER},
+      </if>
+      <if test="wjyyjk != null" >
+        #{wjyyjk,jdbcType=VARCHAR},
+      </if>
+      <if test="cdDvd != null" >
+        #{cdDvd,jdbcType=VARCHAR},
+      </if>
+      <if test="ysqsl != null" >
+        #{ysqsl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarMultimediaConfig" >
+    update c_car_validatecar_multimedia_configuration
+    <set >
+      <if test="carId != null" >
+        car_id = #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        apply_id = #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dmtpz != null" >
+        dmtpz = #{dmtpz,jdbcType=INTEGER},
+      </if>
+      <if test="gps != null" >
+        gps = #{gps,jdbcType=INTEGER},
+      </if>
+      <if test="dwhdfw != null" >
+        dwhdfw = #{dwhdfw,jdbcType=INTEGER},
+      </if>
+      <if test="zkcsdp != null" >
+        zkcsdp = #{zkcsdp,jdbcType=INTEGER},
+      </if>
+      <if test="lydh != null" >
+        lydh = #{lydh,jdbcType=INTEGER},
+      </if>
+      <if test="wjyyjk != null" >
+        wjyyjk = #{wjyyjk,jdbcType=VARCHAR},
+      </if>
+      <if test="cdDvd != null" >
+        cd_dvd = #{cdDvd,jdbcType=VARCHAR},
+      </if>
+      <if test="ysqsl != null" >
+        ysqsl = #{ysqsl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarMultimediaConfig" >
+    update c_car_validatecar_multimedia_configuration
+    set car_id = #{carId,jdbcType=BIGINT},
+      apply_id = #{applyId,jdbcType=BIGINT},
+      cust_id = #{custId,jdbcType=BIGINT},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      dmtpz = #{dmtpz,jdbcType=INTEGER},
+      gps = #{gps,jdbcType=INTEGER},
+      dwhdfw = #{dwhdfw,jdbcType=INTEGER},
+      zkcsdp = #{zkcsdp,jdbcType=INTEGER},
+      lydh = #{lydh,jdbcType=INTEGER},
+      wjyyjk = #{wjyyjk,jdbcType=VARCHAR},
+      cd_dvd = #{cdDvd,jdbcType=VARCHAR},
+      ysqsl = #{ysqsl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

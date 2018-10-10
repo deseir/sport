@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarInsureDetailInfoDao">
+
+	<sql id="searchColumns">
+		carInsureDetailInfo.id id,carInsureDetailInfo.insure_id insureId,carInsureDetailInfo.type type,carInsureDetailInfo.is_no_deduct isNoDeduct,carInsureDetailInfo.max_pay_amount maxPayAmount,carInsureDetailInfo.amount amount,carInsureDetailInfo.create_time createTime,carInsureDetailInfo.update_time updateTime,carInsureDetailInfo.is_deleted isDeleted,carInsureDetailInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarInsureDetailInfo">
+		insert into
+		c_car_insure_detail_info(max_pay_amount,amount,is_deleted,create_time,insure_id,is_no_deduct,update_time,remark,id,type)
+		values (#{maxPayAmount},#{amount},#{isDeleted},#{createTime},#{insureId},#{isNoDeduct},#{updateTime},#{remark},#{id},#{type})
+	</insert>
+
+	<delete id="delete">
+		delete from c_car_insure_detail_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_car_insure_detail_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarInsureDetailInfo">
+		update c_car_insure_detail_info set
+		max_pay_amount=#{maxPayAmount},amount=#{amount},is_deleted=#{isDeleted},create_time=#{createTime},insure_id=#{insureId},is_no_deduct=#{isNoDeduct},update_time=#{updateTime},remark=#{remark},id=#{id},type=#{type} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarInsureDetailInfo">
+		update c_car_insure_detail_info
+		<set>
+            <if test="insureId != null"> insure_id=#{insureId},</if>
+            <if test="type != null"> type=#{type},</if>
+            <if test="isNoDeduct != null"> is_no_deduct=#{isNoDeduct},</if>
+            <if test="maxPayAmount != null"> max_pay_amount=#{maxPayAmount},</if>
+            <if test="amount != null"> amount=#{amount},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarInsureDetailInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_insure_detail_info carInsureDetailInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarInsureDetailInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_insure_detail_info carInsureDetailInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.car.entity.CarInsureDetailInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_insure_detail_info carInsureDetailInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+	<insert id="saveAll" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarInsureDetailInfo">
+		insert into c_car_insure_detail_info
+		(
+		max_pay_amount,amount,is_deleted,create_time,insure_id,is_no_deduct,update_time,remark,id,type
+		)
+		values
+		<foreach collection="list" item="st" separator="," index="idx" open="" close="">
+			(#{st.maxPayAmount},#{st.amount},#{st.isDeleted},#{st.createTime},#{st.insureId},#{st.isNoDeduct},#{st.updateTime},#{st.remark},#{st.id},#{st.type})
+		</foreach>
+	</insert>
+	<update id="updateAll" parameterType="java.util.List">
+		<foreach collection="list" item="st" separator=";" index="idx" open="" close="">
+			update c_family_book_sub_info set
+			<if test="insureId != null"> insure_id=#{st.insureId},</if>
+			<if test="type != null"> type=#{st.type},</if>
+			<if test="isNoDeduct != null"> is_no_deduct=#{st.isNoDeduct},</if>
+			<if test="maxPayAmount != null"> max_pay_amount=#{st.maxPayAmount},</if>
+			<if test="amount != null"> amount=#{st.amount},</if>
+			<if test="createTime != null"> create_time=#{st.createTime},</if>
+			<if test="updateTime != null"> update_time=#{st.updateTime},</if>
+			<if test="isDeleted != null"> is_deleted=#{st.isDeleted},</if>
+			<if test="remark != null"> remark=#{st.remark},</if>
+			where  id =#{st.id}
+		</foreach>
+	</update>
+	<select id="findCarInsureDetailInfoByCarBussInsureInfoId" resultType="com.moerlong.carloan.modular.car.entity.CarInsureDetailInfo">
+		SELECT
+		<include refid="searchColumns" />
+		FROM
+		c_car_insure_detail_info carInsureDetailInfo
+		where insure_id=#{carBussInsureInfoId}
+	</select>
+</mapper>
+

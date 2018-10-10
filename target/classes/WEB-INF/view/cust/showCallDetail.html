@@ -1,0 +1,137 @@
+@layout("/common/_container.html"){
+
+<div class="">
+	<div class="">
+		<div class="tab-pane fade in row"  >
+			<div class="menu-item" id="menu-item4">
+				<div class="form-horizontal">
+					<div class="row">
+						<div class="col-sm-6">
+							<#input id="city" name="联系人号码归属地" underline="false" readonly="true" value="${callDetail.city}"/>
+					    </div>
+						<div class="col-sm-6">
+							<#input id="peerNum" name="联系人号码" underline="false" readonly="true" value="${callDetail.peerNum}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="isEmergency" name="是否是紧急联系人" underline="false" readonly="true" value="${callDetail.isEmergency}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="pRelation" name="与联系人关系" underline="false" readonly="true" value="${callDetail.pRelation}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="groupName" name="号码类型" underline="false" readonly="true" value="${callDetail.groupName}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="companyName" name="号码标识" underline="false" readonly="true" value="${callDetail.companyName}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCnt1w" name="近一周通话次数" underline="false" readonly="true" value="${callDetail.callCnt1w}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCnt1m" name="近一月通话次数" underline="false" readonly="true" value="${callDetail.callCnt1m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCnt3m" name="近三月通话次数" underline="false" readonly="true" value="${callDetail.callCnt3m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCnt6m" name="近六月通话次数" underline="false" readonly="true" value="${callDetail.callCnt6m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callTime3m" name="近三月通话时长(秒)" underline="false" readonly="true" value="${callDetail.callTime3m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callTime6m" name="近六月通话时长(秒)" underline="false" readonly="true" value="${callDetail.callTime6m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="dialCnt3m" name="近三月主叫次数" underline="false" readonly="true" value="${callDetail.dialCnt3m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="dialCnt6m" name="近六月主叫次数" underline="false" readonly="true" value="${callDetail.dialCnt6m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="dialTime3m" name="近三月主叫时长(秒)" underline="false" readonly="true" value="${callDetail.dialTime3m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="dialTime6m" name="近六月主叫时长(秒)" underline="false" readonly="true" value="${callDetail.dialTime6m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="dialedCnt3m" name="近三月被叫次数" underline="false" readonly="true" value="${callDetail.dialedCnt3m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="dialedCnt6m" name="近六月被叫次数" underline="false" readonly="true" value="${callDetail.dialedCnt6m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="dialedTime3m" name="近三月被叫时长(秒)" underline="false" readonly="true" value="${callDetail.dialedTime3m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="dialedTime6m" name="近六月被叫时长(秒)" underline="false" readonly="true" value="${callDetail.dialedTime6m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCntMorning3m" name="近三月早晨通话次数" underline="false" readonly="true" value="${callDetail.callCntMorning3m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCntMorning6m" name="近六月早晨通话次数" underline="false" readonly="true" value="${callDetail.callCntMorning6m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCntNoon3m" name="近三月中午通话次数" underline="false" readonly="true" value="${callDetail.callCntNoon3m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCntNoon6m" name="近六月中午通话次数" underline="false" readonly="true" value="${callDetail.callCntNoon6m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCntAfternoon3m" name="近三月下午通话次数" underline="false" readonly="true" value="${callDetail.callCntAfternoon3m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCntAfternoon6m" name="近六月下午通话次数" underline="false" readonly="true" value="${callDetail.callCntAfternoon6m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCntEvening3m" name="近三月晚上通话次数" underline="false" readonly="true" value="${callDetail.callCntEvening3m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCntEvening6m" name="近六月晚上通话次数" underline="false" readonly="true" value="${callDetail.callCntEvening6m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCntNight3m" name="近三月凌晨通话次数" underline="false" readonly="true" value="${callDetail.callCntNight3m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCntNight6m" name="近六月凌晨通话次数" underline="false" readonly="true" value="${callDetail.callCntNight6m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCntWeekday3m" name="近三月工作日通话次数" underline="false" readonly="true" value="${callDetail.callCntWeekday3m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCntWeekday6m" name="近六月工作日通话次数" underline="false" readonly="true" value="${callDetail.callCntWeekday6m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCntWeekend3m" name="近三月周末通话次数" underline="false" readonly="true" value="${callDetail.callCntWeekend3m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCntWeekend6m" name="近六月周末通话次数" underline="false" readonly="true" value="${callDetail.callCntWeekend6m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCntHoliday3m" name="近三月节假日通话次数" underline="false" readonly="true" value="${callDetail.callCntHoliday3m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callCntHoliday6m" name="近六月节假日通话次数" underline="false" readonly="true" value="${callDetail.callCntHoliday6m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callIfWholeDay3m" name="近三月是否有全天联系" underline="false" readonly="true" value="${callDetail.callIfWholeDay3m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="callIfWholeDay6m" name="近六月是否有全天联系" underline="false" readonly="true" value="${callDetail.callIfWholeDay6m}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="transStart" name="第一次通话时间" underline="false" readonly="true" value="${callDetail.transStart}"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="transEnd" name="最近一次通话时间" underline="false" readonly="true" value="${callDetail.transEnd}"/>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+@}

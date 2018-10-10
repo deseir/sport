@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.paybackMgr.dao.RepaymentPayInfoDao">
+
+	<sql id="searchColumns">
+		id id,
+		cust_id custId,
+		dept_id deptId,
+		repayment_id repaymentId,
+		repayment_plan_id repaymentPlanId,
+		pay_type payType,
+		pay_type_desc payTypeDesc,
+		repayment_period_num repaymentPeriodNum,
+		serial_no serialNo,
+		amount amount,
+		binding_mobile bindingMobile,
+		pay_status payStatus,
+		paying_num payingNum,
+		pay_code payCode,
+		pay_msg payMsg,
+		pay_time payTime,
+		pay_channel payChannel,
+		pay_bank payBank,
+		pay_card payCard,
+		create_time createTime,
+		update_time updateTime,
+		is_deleted isDeleted,
+		remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPayInfo">
+		insert into
+		c_repayment_pay_info(
+			amount,
+			binding_mobile,
+			pay_time,
+			repayment_id,
+			update_time,
+			remark,
+			pay_status,
+			paying_num,
+			pay_bank,
+			serial_no,
+			pay_channel,
+			pay_card,
+			pay_msg,
+			is_deleted,
+			repayment_period_num,
+			create_time,
+			cust_id,
+			repayment_plan_id,
+			pay_type,
+			pay_type_desc,
+			id,
+			dept_id,
+			pay_code)
+		values (#{amount},
+				#{bindingMobile},
+				#{payTime},
+				#{repaymentId},
+				#{updateTime},
+				#{remark},
+				#{payStatus},
+				#{payingNum},
+				#{payBank},
+				#{serialNo},
+				#{payChannel},
+				#{payCard},
+				#{payMsg},
+				#{isDeleted},
+				#{repaymentPeriodNum},
+				#{createTime},
+				#{custId},
+				#{repaymentPlanId},
+				#{payType},
+				#{payTypeDesc},
+				#{id},
+				#{deptId},
+				#{payCode})
+	</insert>
+
+	<delete id="delete">
+		delete from c_repayment_pay_info
+		where id = #{id}
+	</delete>
+
+	<update id="update" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPayInfo">
+		update c_repayment_pay_info <set>
+		<if test="amount != null"> amount=#{amount},</if>
+		<if test="bindingMobile != null"> binding_mobile=#{bindingMobile},</if>
+		<if test="payTime != null"> pay_time=#{payTime},</if>
+		<if test="repaymentId != null"> repayment_id=#{repaymentId},</if>
+		<if test="deptId != null"> dept_id=#{deptId},</if>
+		<if test="updateTime != null"> update_time=#{updateTime},</if>
+		<if test="remark != null"> remark=#{remark},</if>
+		<if test="payStatus != null"> pay_status=#{payStatus},</if>
+		<if test="payingNum != null"> paying_num=#{payingNum},</if>
+		<if test="payBank != null"> pay_bank=#{payBank},</if>
+		<if test="serialNo != null"> serial_no=#{serialNo},</if>
+		<if test="payChannel != null"> pay_channel=#{payChannel},</if>
+		<if test="payCard != null"> pay_card=#{payCard},</if>
+		<if test="payMsg != null"> pay_msg=#{payMsg},</if>
+		<if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+		<if test="repaymentPeriodNum != null"> repayment_period_num=#{repaymentPeriodNum},</if>
+		<if test="createTime != null"> create_time=#{createTime},</if>
+		<if test="custId != null"> cust_id=#{custId},</if>
+		<if test="repaymentPlanId != null"> repayment_plan_id=#{repaymentPlanId},</if>
+		<if test="payType != null"> pay_type=#{payType},</if>
+		<if test="payTypeDesc != null"> pay_type_desc=#{payTypeDesc},</if>
+		<if test="payCode != null"> pay_code=#{payCode},</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPayInfo">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_pay_info
+		where id = #{id}
+	</select>
+
+	<select id="selectInfoByPrimaryKeyForUpdate" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPayInfo">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_pay_info
+		where id = #{id}
+		for UPDATE
+	</select>
+
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPayInfo">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_pay_info
+		where 1=1
+		
+		<if test="orderCondition != null"> order by #{orderCondition} </if>
+	</select>
+
+	<sql id="searchColumns1">
+		c1.id id,
+		c1.dept_id deptId,
+		c2.cust_name custName,
+		c2.loan_amount loanAmount,
+		c3.reception_depart receptionDepart,
+		c3.reception_manager receptionManager,
+		c3.trans_source transSource,
+		c1.cust_id custId,
+		c1.repayment_id repaymentId,
+		c1.repayment_plan_id repaymentPlanId,
+		c1.pay_type payType,
+		c1.pay_type_desc payTypeDesc,
+		c1.repayment_period_num repaymentPeriodNum,
+		c1.serial_no serialNo,
+		c1.amount amount,
+		c1.binding_mobile bindingMobile,
+		c1.pay_status payStatus,
+		c1.paying_num payingNum,
+		c1.pay_code payCode,
+		c1.pay_msg payMsg,
+		c1.pay_time payTime,
+		c1.pay_channel payChannel,
+		c1.pay_bank payBank,
+		c1.pay_card payCard,
+		c1.create_time createTime,
+		c1.update_time updateTime,
+		c1.is_deleted isDeleted,
+		c1.remark remark
+	</sql>
+	<!-- 根据条件查询 -->
+	<select id="listByCondition" resultType="com.moerlong.carloan.modular.paybackMgr.entity.vo.RepaymentPayInfoVO">
+		select
+		<include refid="searchColumns1" />
+		from c_repayment_pay_info c1 left join c_repayment_info c2 on c1.repayment_id = c2.id
+		left join c_pay_info c3 on c2.pay_id=c3.id
+		where 1=1
+
+		<if test="batchNo != null and batchNo != ''">
+			and c1.serial_no = #{batchNo}
+		</if>
+
+		<if test="payCode != null and payCode != ''">
+			and c1.pay_code = #{payCode}
+		</if>
+
+		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+			and (c1.update_time between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+		</if>
+		<if test="status != null and status != ''">
+			and c1.pay_status = #{status}
+		</if>
+		<if test="payType != null">
+			and c1.pay_type = #{payType}
+		</if>
+		order by c1.update_time DESC
+	</select>
+
+	<select id="listByConditionMrl" resultType="com.moerlong.carloan.modular.paybackMgr.entity.vo.RepaymentPayInfoVO">
+		select
+		<include refid="searchColumns1" />
+		from c_repayment_pay_info c1 left join c_repayment_info c2 on c1.repayment_id = c2.id
+		left join c_pay_info c3 on c2.pay_id=c3.id
+		where 1=1
+
+		<if test="batchNo != null and batchNo != ''">
+			and c1.serial_no = #{batchNo}
+		</if>
+
+		<if test="payCode != null and payCode != ''">
+			and c1.pay_code = #{payCode}
+		</if>
+
+		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+			and (c1.update_time between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+		</if>
+		<if test="status != null and status != ''">
+			and c1.pay_status = #{status}
+		</if>
+		<if test="payType != null">
+			and c1.pay_type = #{payType}
+		</if>
+		<if test="payType == null">
+			and c1.pay_type in(5,8,9)
+		</if>
+		order by c1.update_time DESC
+	</select>
+
+	<select id="selectInfoByRepaymentIdBetweenStatus" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPayInfo">
+		SELECT
+		<include refid="searchColumns" />
+		FROM
+		c_repayment_pay_info
+		WHERE repayment_id = #{repaymentId}
+		AND pay_status BETWEEN #{aStatus} AND #{bStatus}
+		AND pay_type = 0
+		AND is_deleted = 0
+	</select>
+
+	<select id="selectPaysByStatus" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPayInfo">
+		SELECT
+		<include refid="searchColumns" />
+		FROM
+		c_repayment_pay_info
+		WHERE pay_status = #{payStatus}
+		AND is_deleted = 0
+	</select>
+
+	<!-- 获取昨天（T-1) 成功收款金额总计 -->
+	<select id="getPaysCountLastDaySuccess" resultType="map">
+		SELECT
+		IFNULL(sum(amount),0.00) as money, DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 DAY),'%Y%m%d') as curDate,IFNULL(dept_id,0) as deptId
+		FROM
+		c_repayment_pay_info
+		WHERE ((pay_status = 9 AND pay_type in (0,1,2)) OR (pay_status = 6 AND pay_type in (10,11,12,13)))
+		AND DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 DAY),'%Y%m%d') = DATE_FORMAT(update_time, '%Y%m%d')
+		AND is_deleted = 0 GROUP BY dept_id
+	</select>
+
+	<!-- 获取昨天（T-1)成功收取前期费用总计 -->
+	<select id="getPreFeePaysCountLastDaySuccess" resultType="map">
+		SELECT
+		IFNULL(sum(amount),0.00) as money, DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 DAY),'%Y%m%d') as curDate,IFNULL(dept_id,0) as deptId
+		FROM
+		c_repayment_pay_info
+		WHERE pay_status = 6
+		AND pay_type in (3,6,7)
+		AND DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 DAY),'%Y%m%d') = DATE_FORMAT(update_time, '%Y%m%d')
+		AND is_deleted = 0 GROUP BY dept_id
+	</select>
+
+	<!-- 统计累计收款总计 -->
+	<select id="countAllRepaymentMoney" resultType="map">
+		SELECT
+		IFNULL(sum(a.amount), 0.00) as amountCheck,
+		IFNULL(sum(b.actual_amount), 0.00) as amount, IFNULL(sum(b.actual_capital), 0.00) as capital,
+		IFNULL(sum(b.actual_interest),0.00) as interest,
+		IFNULL(sum(b.actual_service_charge),0.00) as serviceCharge,
+		IFNULL(sum(b.actual_charge),0.00) as charge,
+		IFNULL(sum(b.actual_penalty), 0.00) as penalty,IFNULL(a.dept_id,0) as deptId
+		from c_repayment_pay_info a left join c_repayment_plan_info b on a.repayment_plan_id=b.id
+		where a.pay_type in (0,1,2)
+		AND a.pay_status = 9
+		AND a.is_deleted=0 and b.is_deleted=0
+		GROUP BY a.dept_id
+	</select>
+
+	<!-- 统计累计收取前期费用总计 -->
+	<select id="countAllRepaymentPreFee" resultType="map">
+		SELECT
+		IFNULL(sum(amount), 0.00) as preFee,IFNULL(dept_id,0) as deptId
+		from c_repayment_pay_info
+		where pay_type in (3,6,7)
+		AND pay_status = 6
+		AND is_deleted = 0
+		GROUP BY dept_id
+	</select>
+
+	<!-- 根据还款ID统计其已还金额总计 -->
+	<select id="countRepaymentMoneyByRepaymentId" resultType="map">
+		SELECT
+		IFNULL(sum(amount),0.00) as money,IFNULL(dept_id,0) as deptId
+		FROM
+		c_repayment_pay_info
+		WHERE repayment_id = #{repaymentId}
+		AND ((pay_status = 9 AND pay_type in (0,1,2))
+		OR (pay_status=6 AND pay_type in (10,11,12,13)))
+		AND is_deleted = 0
+		GROUP BY dept_id
+	</select>
+	
+	<select id="countRepaymentMoneyByRepaymentId2" resultType="BigDecimal">
+		SELECT
+		IFNULL(sum(amount),0.00) as money
+		FROM
+		c_repayment_pay_info
+		WHERE repayment_id = #{repaymentId}
+		AND ((pay_status = 9 AND pay_type in (0,1,2))
+		OR (pay_status=6 AND pay_type in (10,11,12,13)))
+		AND is_deleted = 0
+	</select>
+
+
+
+	<sql id="repayReport">
+		c1.id payId,
+		c1.dept_id deptId,
+		c1.repayment_id repaymentId,
+		c1.repayment_plan_id repaymentPlanId,
+		c1.cust_id custId,
+		c1.pay_type payType,
+		c1.serial_no serialNo,
+		c1.amount amount,
+		c1.pay_time payTime,
+		c1.repayment_period_num periodNum,
+		c1.pay_type payType,
+	    c1.pay_type_desc payTypeDesc,
+		c1.pay_status payStatus,
+		c2.period_begin_time periodBeginTime,
+		c2.period_end_time periodEndTime,
+		c3.cust_name custName,
+		c3.cust_mobile custMobile,
+		c3.cust_id_no custIdNo,
+		c1.pay_bank payBank,
+		c1.pay_card payCard,
+		c2.begin_amount beginAmount,
+		c2.end_amount endAmount,
+		c2.pay_amount payAmount,
+		c2.actual_amount actualAmount,
+		c2.actual_capital actualCapital,
+		c2.actual_interest actualInterest,
+		c2.actual_service_charge actualServiceCharge,
+		c2.actual_charge actualCharge,
+		c2.actual_penalty actualPenalty,
+		c2.begin_amount_lease beginAmountLease,
+		c2.end_amount_lease endAmountLease,
+		c2.capital_lease capitalLease,
+		c2.interest_lease interestLease,
+		c2.lease_total leaseTotal,
+		c2.service_total serviceTotal
+	</sql>
+
+	<select id="listReport" resultType="com.moerlong.carloan.modular.paybackMgr.entity.vo.RepaymentPayReportInfoVO">
+		SELECT
+		<include refid="repayReport"/>
+		from c_repayment_pay_info c1 left join c_repayment_plan_info c2 on c1.repayment_plan_id=c2.id
+		left join c_repayment_info c3 on c1.repayment_id=c3.id
+		where c1.pay_time between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59')
+		order by c1.pay_time asc
+
+	</select>
+
+
+	<select id="countAllOnceEarlyRepayment" resultType="map">
+		SELECT
+		IFNULL(sum(amount), 0.00) as preFee,IFNULL(dept_id,0) as deptId
+		from c_repayment_pay_info
+		where pay_type = #{payType}
+		AND pay_status = 6
+		AND is_deleted = 0
+		GROUP BY dept_id
+	</select>
+
+</mapper>
+

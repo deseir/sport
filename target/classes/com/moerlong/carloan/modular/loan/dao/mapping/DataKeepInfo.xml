@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.loan.dao.DataKeepInfoDao">
+
+	<sql id="searchColumns">
+		dataKeepInfo.id id,dataKeepInfo.cust_id custId,dataKeepInfo.apply_id applyId,dataKeepInfo.car_id carId,dataKeepInfo.paper_data_num paperDataNum,dataKeepInfo.contract_num contractNum,dataKeepInfo.is_car_register isCarRegister,dataKeepInfo.is_car_key isCarKey,dataKeepInfo.keep_date keepDate,dataKeepInfo.unkeep_date unkeepDate,dataKeepInfo.create_time createTime,dataKeepInfo.update_time updateTime,dataKeepInfo.is_deleted isDeleted,dataKeepInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.loan.entity.DataKeepInfo">
+		insert into
+		c_data_keep_info(unkeep_date,is_car_register,keep_date,update_time,remark,car_id,apply_id,is_deleted,paper_data_num,create_time,cust_id,contract_num,id,is_car_key)
+		values (#{unkeepDate},#{isCarRegister},#{keepDate},#{updateTime},#{remark},#{carId},#{applyId},#{isDeleted},#{paperDataNum},#{createTime},#{custId},#{contractNum},#{id},#{isCarKey})
+	</insert>
+
+	<delete id="delete">
+		delete from c_data_keep_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_data_keep_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.loan.entity.DataKeepInfo">
+		update c_data_keep_info set
+		unkeep_date=#{unkeepDate},is_car_register=#{isCarRegister},keep_date=#{keepDate},update_time=#{updateTime},remark=#{remark},car_id=#{carId},apply_id=#{applyId},is_deleted=#{isDeleted},paper_data_num=#{paperDataNum},create_time=#{createTime},cust_id=#{custId},contract_num=#{contractNum},id=#{id},is_car_key=#{isCarKey} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.loan.entity.DataKeepInfo">
+		update c_data_keep_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="carId != null"> car_id=#{carId},</if>
+            <if test="paperDataNum != null"> paper_data_num=#{paperDataNum},</if>
+            <if test="contractNum != null"> contract_num=#{contractNum},</if>
+            <if test="isCarRegister != null"> is_car_register=#{isCarRegister},</if>
+            <if test="isCarKey != null"> is_car_key=#{isCarKey},</if>
+            <if test="keepDate != null"> keep_date=#{keepDate},</if>
+            <if test="unkeepDate != null"> unkeep_date=#{unkeepDate},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.loan.entity.DataKeepInfo">
+		select
+		<include refid="searchColumns" />
+		from c_data_keep_info dataKeepInfo
+		where id = #{id}
+	</select>
+	<!-- 查询（根据主键applyID查询） -->
+	<select id="selectByApplyId" resultType="com.moerlong.carloan.modular.loan.entity.DataKeepInfo">
+		select
+		<include refid="searchColumns" />
+		from c_data_keep_info dataKeepInfo
+		where apply_id = #{id}
+	</select>
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.loan.entity.DataKeepInfo">
+		select
+		<include refid="searchColumns" />
+		from c_data_keep_info dataKeepInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.loan.entity.DataKeepInfo">
+		select
+		<include refid="searchColumns" />
+		from c_data_keep_info dataKeepInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+</mapper>
+

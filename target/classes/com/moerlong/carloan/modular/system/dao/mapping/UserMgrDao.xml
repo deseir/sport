@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.system.dao.UserMgrDao">
+
+	<sql id="Base_Column_List">
+		id, account, name, birthday, sex, email, avatar,
+		phone, roleid,
+		deptid, status,id_code idCode,address,
+		createtime, version
+	</sql>
+
+	<sql id="Base_Column_List_With_Pwd">
+		id, account, name, birthday,password, sex, email, avatar,
+		phone, roleid,salt,
+		deptid, status,id_code  idCode,address,
+		createtime, version
+	</sql>
+
+	<select id="selectUsers" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where status != 3
+		<if test="name != null and name != ''">
+			and (phone like CONCAT('%',#{name},'%')
+			or account like CONCAT('%',#{name},'%')
+			or name like CONCAT('%',#{name},'%'))
+		</if>
+		<if test="deptid != null and deptid != 0">
+			and (deptid = #{deptid} or deptid in ( select id from dept where pids like CONCAT('%[', #{deptid}, ']%') ))
+		</if>
+		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+			and (createTime between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+		</if>
+	</select>
+
+	<select id="selectUserByRoleId" resultType="com.moerlong.carloan.common.persistence.model.User">
+		select
+		<include refid="Base_Column_List_With_Pwd" />
+
+		from user
+		where roleid like CONCAT('%',#{roleid},'%') and status = 1
+	</select>
+
+	<select id="selectByMobile" resultType="com.moerlong.carloan.common.persistence.model.User">
+		select
+		<include refid="Base_Column_List_With_Pwd" />
+
+		from user
+		where phone = #{mobile} and status = 1
+	</select>
+
+	<select id="selectByUserVOMobile" resultType="com.moerlong.carloan.common.persistence.model.UserVO">
+	SELECT u.id, u.account, u.name, u.birthday ,u.password, u.sex, u.email, u.avatar,
+		u.phone, u.roleid,u.salt,u.deptid, u.status,u.id_code  idCode,u.address,
+		u.createtime, u.version,r.name as roleName,d.simplename as deptName from user u ,role r,dept d
+	where u.roleid=r.id and u.deptid=d.id and phone = #{mobile} and status = 1
+	</select>
+
+
+	<update id="setStatus">
+		update user set status = #{status} where id =
+		#{userId}
+	</update>
+
+	<update id="changePwd">
+		update user set password = #{pwd} where id =
+		#{userId}
+	</update>
+
+	<update id="setRoles">
+		update user set roleid = #{roleIds} where id =
+		#{userId}
+	</update>
+
+	<select id="getByAccount" resultType="user">
+		select
+		<include refid="Base_Column_List_With_Pwd" />
+		from user where account = #{account} and status != 3
+	</select>
+
+	<select id="getByDeptIdAndRoleId" resultType="String">
+		select
+		phone
+		from user where deptid = #{deptId} and roleid = #{roleId}
+	</select>
+
+	<select id="selectUsersByDeptIdAndRoleId" resultType="user">
+		select
+		<include refid="Base_Column_List" />
+		from user where deptid = #{deptId} and roleid = #{roleId}
+	</select>
+
+	<select id="selectUserById" resultType="user" useCache="false">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where id = #{id}
+	</select>
+
+	<!--根据角色查询用户名称-->
+	<select id="getByRoleId" resultType="String">
+		select
+		name
+		from user where roleid = #{roleId} and deptid = #{deptId}
+	</select>
+	<!--修改个人信息  -->
+	<update id="updateByUsrVO" >
+		update user 
+		<set>
+			<if test="idCode != null and idCode != ''">
+			id_code=#{idCode},
+			</if>
+			<if test="address != null and address != ''">
+			address=#{address}
+			</if>
+		</set>
+		where id=#{userId}
+	</update>
+	
+	<select id="findByOCR" resultType="com.moerlong.carloan.modular.cust.entity.vo.CustomerInfoVo" parameterType="java.util.Map">
+	SELECT DISTINCT c.cert_id certId,c.`name` name FROM c_cust_info c,c_apply_info 
+		a,c_apply_operator ao where c.id=a.cust_id and a.id=ao.apply_id and ao.user_id=#{id}
+		and c.name=#{name} and c.cert_id=#{certId}
+	</select>
+	
+</mapper>

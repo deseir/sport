@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarChassisSteeringMapper" >
+  <sql id="Base_Column_List" >
+    c_car_chassis_steering.id id, c_car_chassis_steering.apply_id applyId, c_car_chassis_steering.cust_id custId,c_car_chassis_steering.car_id carId, c_car_chassis_steering.car_chassis_steering carChassisSteering, c_car_chassis_steering.driving_model drivingModel, 
+    c_car_chassis_steering.front_suspension frontSuspension, c_car_chassis_steering.rear_suspension rearSuspension,c_car_chassis_steering.power_steering powerSteering, c_car_chassis_steering.car_body_structure carBodyStructure, 
+    c_car_chassis_steering.create_time createTime, c_car_chassis_steering.update_time updateTime, c_car_chassis_steering.is_delete isDelete,c_car_chassis_steering.remark remark
+  </sql>
+  <select id="selectByApplyId" resultType="com.moerlong.carloan.modular.car.entity.CarChassisSteering" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from c_car_chassis_steering
+    where apply_id = #{id}
+  </select>
+   <select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarChassisSteering" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from c_car_chassis_steering
+    where id = #{id}
+  </select>
+  <delete id="delete" parameterType="java.lang.Long" >
+    delete from c_car_chassis_steering
+    where id = #{id}
+  </delete>
+  
+  <insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarChassisSteering" >
+    insert into c_car_chassis_steering (apply_id, cust_id,car_id, car_chassis_steering, driving_model,front_suspension, rear_suspension, power_steering,car_body_structure, create_time, update_time,is_delete, remark)
+    values (#{applyId}, #{custId},#{carId}, #{carChassisSteering}, #{drivingModel},#{frontSuspension}, #{rearSuspension}, #{powerSteering},#{carBodyStructure}, #{createTime}, #{updateTime},#{isDelete}, #{remark})
+  </insert>
+  
+  <update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarChassisSteering" >
+    update c_car_chassis_steering
+    <set >
+      <if test="applyId != null" >
+        apply_id = #{applyId},
+      </if>
+      <if test="custId != null" >
+        cust_id = #{custId},
+      </if>
+      <if test="carId != null" >
+        car_id = #{carId},
+      </if>
+      <if test="carChassisSteering != null" >
+        car_chassis_steering = #{carChassisSteering},
+      </if>
+      <if test="drivingModel != null" >
+        driving_model = #{drivingModel},
+      </if>
+      <if test="frontSuspension != null" >
+        front_suspension = #{frontSuspension},
+      </if>
+      <if test="rearSuspension != null" >
+        rear_suspension = #{rearSuspension},
+      </if>
+      <if test="powerSteering != null" >
+        power_steering = #{powerSteering},
+      </if>
+      <if test="carBodyStructure != null" >
+        car_body_structure = #{carBodyStructure},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+</mapper>

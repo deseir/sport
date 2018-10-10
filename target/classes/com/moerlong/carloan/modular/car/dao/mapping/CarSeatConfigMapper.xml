@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarSeatConfigDao" >
+
+  <!-- new -->
+  <update id="deleteLogic">
+		update c_car_validatecar_seat_configuration set is_deleted = 1 where id = #{id}
+  </update>
+
+  <select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarSeatConfig">
+    select
+    <include refid="Base_Column_List" />
+    from c_car_validatecar_seat_configuration
+  </select>
+
+  <select id="selectByApplyId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from c_car_validatecar_seat_configuration
+    where apply_id = #{applyId,jdbcType=BIGINT}
+  </select>
+
+  <!-- new over  -->
+
+  <resultMap id="BaseResultMap" type="com.moerlong.carloan.modular.car.entity.CarSeatConfig" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="car_id" property="carId" jdbcType="BIGINT" />
+    <result column="apply_id" property="applyId" jdbcType="BIGINT" />
+    <result column="cust_id" property="custId" jdbcType="BIGINT" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="zypz" property="zypz" jdbcType="INTEGER" />
+    <result column="zycz" property="zycz" jdbcType="VARCHAR" />
+    <result column="ydfgzy" property="ydfgzy" jdbcType="INTEGER" />
+    <result column="zygdtj" property="zygdtj" jdbcType="INTEGER" />
+    <result column="ybzctj" property="ybzctj" jdbcType="INTEGER" />
+    <result column="jbzctj" property="jbzctj" jdbcType="INTEGER" />
+    <result column="zjszddtj" property="zjszddtj" jdbcType="INTEGER" />
+    <result column="fjszddtj" property="fjszddtj" jdbcType="INTEGER" />
+    <result column="hpzddtj" property="hpzddtj" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Example_Where_Clause_Page" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    c_car_validatecar_seat_configuration.id, c_car_validatecar_seat_configuration.car_id, 
+    c_car_validatecar_seat_configuration.apply_id, c_car_validatecar_seat_configuration.cust_id, 
+    c_car_validatecar_seat_configuration.is_delete, c_car_validatecar_seat_configuration.create_time, 
+    c_car_validatecar_seat_configuration.update_time, c_car_validatecar_seat_configuration.zypz, 
+    c_car_validatecar_seat_configuration.zycz, c_car_validatecar_seat_configuration.ydfgzy, 
+    c_car_validatecar_seat_configuration.zygdtj, c_car_validatecar_seat_configuration.ybzctj, 
+    c_car_validatecar_seat_configuration.jbzctj, c_car_validatecar_seat_configuration.zjszddtj, 
+    c_car_validatecar_seat_configuration.fjszddtj, c_car_validatecar_seat_configuration.hpzddtj
+  </sql>
+  <select id="selectByExampleWithPage" resultMap="BaseResultMap" parameterType="map" >
+    select * from (select g.*,rownum rn from (select
+    <if test="example.distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from c_car_validatecar_seat_configuration
+    <if test="example.join != null" >
+      ${example.join}
+    </if>
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause_Page" />
+    </if>
+    <if test="example.orderByClause != null" >
+      order by ${example.orderByClause}
+    </if>
+    ) g where rownum &lt;= ${endPage} ) where rn &gt; ${startPage}
+  </select>
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from c_car_validatecar_seat_configuration
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="delete" parameterType="java.lang.Long" >
+    delete from c_car_validatecar_seat_configuration
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+
+  <insert id="save" parameterType="com.moerlong.carloan.modular.car.entity.CarSeatConfig" >
+    insert into c_car_validatecar_seat_configuration
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="carId != null" >
+        car_id,
+      </if>
+      <if test="applyId != null" >
+        apply_id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="zypz != null" >
+        zypz,
+      </if>
+      <if test="zycz != null" >
+        zycz,
+      </if>
+      <if test="ydfgzy != null" >
+        ydfgzy,
+      </if>
+      <if test="zygdtj != null" >
+        zygdtj,
+      </if>
+      <if test="ybzctj != null" >
+        ybzctj,
+      </if>
+      <if test="jbzctj != null" >
+        jbzctj,
+      </if>
+      <if test="zjszddtj != null" >
+        zjszddtj,
+      </if>
+      <if test="fjszddtj != null" >
+        fjszddtj,
+      </if>
+      <if test="hpzddtj != null" >
+        hpzddtj,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="carId != null" >
+        #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zypz != null" >
+        #{zypz,jdbcType=INTEGER},
+      </if>
+      <if test="zycz != null" >
+        #{zycz,jdbcType=VARCHAR},
+      </if>
+      <if test="ydfgzy != null" >
+        #{ydfgzy,jdbcType=INTEGER},
+      </if>
+      <if test="zygdtj != null" >
+        #{zygdtj,jdbcType=INTEGER},
+      </if>
+      <if test="ybzctj != null" >
+        #{ybzctj,jdbcType=INTEGER},
+      </if>
+      <if test="jbzctj != null" >
+        #{jbzctj,jdbcType=INTEGER},
+      </if>
+      <if test="zjszddtj != null" >
+        #{zjszddtj,jdbcType=INTEGER},
+      </if>
+      <if test="fjszddtj != null" >
+        #{fjszddtj,jdbcType=INTEGER},
+      </if>
+      <if test="hpzddtj != null" >
+        #{hpzddtj,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+
+  <update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarSeatConfig" >
+    update c_car_validatecar_seat_configuration
+    <set >
+      <if test="carId != null" >
+        car_id = #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        apply_id = #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zypz != null" >
+        zypz = #{zypz,jdbcType=INTEGER},
+      </if>
+      <if test="zycz != null" >
+        zycz = #{zycz,jdbcType=VARCHAR},
+      </if>
+      <if test="ydfgzy != null" >
+        ydfgzy = #{ydfgzy,jdbcType=INTEGER},
+      </if>
+      <if test="zygdtj != null" >
+        zygdtj = #{zygdtj,jdbcType=INTEGER},
+      </if>
+      <if test="ybzctj != null" >
+        ybzctj = #{ybzctj,jdbcType=INTEGER},
+      </if>
+      <if test="jbzctj != null" >
+        jbzctj = #{jbzctj,jdbcType=INTEGER},
+      </if>
+      <if test="zjszddtj != null" >
+        zjszddtj = #{zjszddtj,jdbcType=INTEGER},
+      </if>
+      <if test="fjszddtj != null" >
+        fjszddtj = #{fjszddtj,jdbcType=INTEGER},
+      </if>
+      <if test="hpzddtj != null" >
+        hpzddtj = #{hpzddtj,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarSeatConfig" >
+    update c_car_validatecar_seat_configuration
+    set car_id = #{carId,jdbcType=BIGINT},
+      apply_id = #{applyId,jdbcType=BIGINT},
+      cust_id = #{custId,jdbcType=BIGINT},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      zypz = #{zypz,jdbcType=INTEGER},
+      zycz = #{zycz,jdbcType=VARCHAR},
+      ydfgzy = #{ydfgzy,jdbcType=INTEGER},
+      zygdtj = #{zygdtj,jdbcType=INTEGER},
+      ybzctj = #{ybzctj,jdbcType=INTEGER},
+      jbzctj = #{jbzctj,jdbcType=INTEGER},
+      zjszddtj = #{zjszddtj,jdbcType=INTEGER},
+      fjszddtj = #{fjszddtj,jdbcType=INTEGER},
+      hpzddtj = #{hpzddtj,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

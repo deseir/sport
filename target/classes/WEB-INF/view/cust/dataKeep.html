@@ -1,0 +1,214 @@
+@layout("/common/_container.html"){
+
+<div class="">
+  <div class="">
+	  <div class="ibox-title">
+		  <div style="border-bottom: 1px solid #cccccc94;height: 45px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 20px;">资料留存</span></div>
+	  </div>
+   	<div class="tab-content">
+		<input type="hidden" value="${applyId}" id="applyId">
+		<input type="hidden" value="${interfaceAddress}" id="interfaceAddress">
+		<!--身份认证-->
+   		<div class="tab-pane fade in active"  id="div_sfrz">
+			<div class="menu-item" id="menu-item5">
+				<div class="form-horizontal" style="background-color:#FFF;padding: 1px;box-shadow: 3px 5px 3px 3px #c2c2c2;" >
+					<h5></h5>
+					<div class="row">
+						<div class="col-sm-6">
+							 <!--<#input id="paperdatanum" name="纸质资料份数" underline="false" value="0"/>-->
+							<div class="form-group">
+								<div class="col-sm-3 control-label">
+									<span style="color: red;">*</span>
+									<label >纸质资料份数</label>
+								</div>
+								<div class="col-sm-9">
+									<input class="form-control" id="paperdatanum" name="paperdatanum" type="text" underline="false">
+								</div>
+							</div>
+							 <!--<#input id="contractnum" name="纸质合同份数" underline="false" value="0"/>-->
+							<div class="form-group">
+								<div class="col-sm-3 control-label">
+									<span style="color: red;">*</span>
+									<label >纸质合同份数</label>
+								</div>
+								<div class="col-sm-9">
+									<input class="form-control" id="contractnum" name="contractnum" type="text" underline="false">
+								</div>
+							</div>
+							 <!--<#select id="iscarregister" name="是否存留抵押登记证书" underline="false">-->
+								<!--<option value="">-&#45;&#45;请选择-&#45;&#45;</option>-->
+								<!--<option value="0">否</option>-->
+								<!--<option value="1">是</option>-->
+							 <!--</#select>-->
+							<div class="form-group">
+								<div class="col-sm-3 control-label">
+									<span style="color: red">*</span>
+									<label>是否存留抵押登记证书</label>
+								</div>
+								<div class="col-sm-9">
+									<select class="form-control"  id="iscarregister" name="iscarregister" >
+										<option value="">---请选择---</option>
+										<option value="0">否</option>
+										<option value="1">是</option>
+									</select>
+								</div>
+							</div>
+							 <!--<#select id="iscarkey" name="是否存有客户备用钥匙" underline="false">-->
+								<!--<option value="">-&#45;&#45;请选择-&#45;&#45;</option>-->
+								<!--<option value="0">否</option>-->
+								<!--<option value="1">是</option>-->
+							 <!--</#select>-->
+							<div class="form-group">
+								<div class="col-sm-3 control-label">
+									<span style="color: red">*</span>
+									<label>是否存有客户备用钥匙</label>
+								</div>
+								<div class="col-sm-9">
+									<select class="form-control"  id="iscarkey" name="iscarkey" >
+										<option value="">---请选择---</option>
+										<option value="0">否</option>
+										<option value="1">是</option>
+									</select>
+								</div>
+							</div>
+							<!--<div class="form-group">-->
+								<!--<label class="col-sm-3 control-label">存档时间</label>-->
+								<!--<div class="col-sm-9">-->
+									<!--<input class="form-control" id="keepdate" name="keepdate" type="" placeholder="存档时间" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">-->
+								<!--</div>-->
+							<!--</div>-->
+							<div class="form-group">
+								<div class="col-sm-3 control-label">
+									<span style="color: red;">*</span>
+									<label >存档时间</label>
+								</div>
+								<div class="col-sm-9">
+									<input class="form-control" id="keepdate" name="keepdate" type="" placeholder="存档时间" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+								</div>
+							</div>
+							<!--<div class="form-group">-->
+								<!--<label class="col-sm-3 control-label">归还时间</label>-->
+								<!--<div class="col-sm-9">-->
+									<!--<input class="form-control" id="unkeepdate" name="unkeepdate" type="" placeholder="归还时间" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">-->
+								<!--</div>-->
+							<!--</div>-->
+							<div class="form-group">
+								<div class="col-sm-3 control-label">
+									<span style="color: red;">*</span>
+									<label >归还时间</label>
+								</div>
+								<div class="col-sm-9">
+									<input class="form-control" id="unkeepdate" name="unkeepdate" type="" placeholder="归还时间" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+								</div>
+							</div>
+				<div >
+							<div class="form-group">
+								<label class="col-sm-6 control-label">车辆登记证书1-2页照片</label>
+								<#button name="下载" id="registerPhotoUrl1" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">车辆登记证书3-4页照片</label>
+								<#button name="下载" id="registerPhotoUrl2" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">车辆登记证书5-6页照片</label>
+								<#button name="下载" id="registerPhotoUrl3" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">车辆登记证书7-8页照片</label>
+								<#button name="下载" id="registerPhotoUrl4" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">委托书(客户签字授权)照片</label>
+								<#button name="下载" id="proxyBookUrl" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">抵押合同(车管所)照片</label>
+								<#button name="下载" id="mortgageContractUrl" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">身份证复印件(带有客户签名和手机号码)照片</label>
+								<#button name="下载" id="certPhotoUrl" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+					</div>
+					<!--<h5>抵押完成后车辆登记证书上传</h5>-->
+					<!--<div style="margin-top: 30px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 15px;">抵押完成后车辆登记证书上传</span></div>-->
+					<div style="margin-top: 30px;">
+							<div class="form-group">
+								<label class="col-sm-6 control-label">抵押完成后车辆登记证书1-2页照片</label>
+								<#button name="下载" id="registerPhotoUrl5" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+
+							<div class="form-group">
+								<label class="col-sm-6 control-label">抵押完成后车辆登记证书3-4页照片</label>
+								<#button name="下载" id="registerPhotoUrl6" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">抵押完成后车辆登记证书5-6页照片</label>
+								<#button name="下载" id="registerPhotoUrl7" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-6 control-label">抵押完成后车辆登记证书7-8页照片</label>
+								<#button name="下载" id="registerPhotoUrl8" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+					</div>
+					<!--<h5>小票信息</h5>-->
+					<!--<div style="margin-top: 30px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 15px;">小票信息</span></div>-->
+					<div style="margin-top: 30px">
+							<div class="form-group">
+								<label class="col-sm-6 control-label">抵押受理小票照片</label>
+								<#button name="下载" id="billAttachUrl" icon="fa-download" clickFun="downLoadSupplementaryMaterial(id);"/>
+							</div>
+					</div>
+							 <!--<#input id="keepdate" type="date" name="存档时间" underline="false"/>-->
+							 <!--<#input id="unkeepdate" type="date" name="归还时间" underline="false"/>-->
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<#select id="checkResult" name="审核结果" underline="false">
+								<option value="">---请选择---</option>
+								<option value="0">通过</option>
+								<option value="1">拒绝</option>
+								<option value="2">驳回</option>
+							</#select>
+							<#input id="checkResultDesc" name="审核结果描述" underline="false"/>
+							<div style="width: 265px; margin: 80px auto;text-align: center">
+								<#button name="返回" icon="fa fa-chevron-left" clickFun="backToDoWork();"/>
+								<#button name="保存" icon="fa-save" clickFun="save();"/>
+								<#button name="提交" icon="fa-search" clickFun="todoSubmit();"/>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<!-- <#select id="checkResult" name="审核结果" underline="false">
+								<option value="">---请选择---</option>
+								<option value="0">通过</option>
+								<option value="1">拒绝</option>
+								<option value="2">驳回</option>
+							</#select>
+						    <#input id="checkResultDesc" name="审核结果描述" underline="false"/> -->
+					    </div>
+					    <!-- 
+						    <div style="width: 420px; margin-left: 255px;">
+							<#button name="返回" icon="fa fa-chevron-left" clickFun="backToDoWork();"/>
+							<#button name="提交" icon="fa-search" clickFun="todoSubmit();"/>
+	
+						</div>
+					     -->
+					
+
+					</div>
+				</div>
+			</div>
+
+   		</div>
+
+
+   	</div>
+  </div>
+</div>
+<script src="${ctxPath}/static/modular/loan/mywork/approveRecord.js?v=1.1"></script>
+<script src="${ctxPath}/static/modular/cust/dataKeep.js"></script>
+@}

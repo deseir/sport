@@ -1,0 +1,277 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>收款总计</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="custName" name="客户名称" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="custMobile" name="客户手机号" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#SelectCon id="statusId" name="还款状态">
+                                    <option value="">请选择</option>
+                                    <option value="1">未开始</option>
+                                    <option value="2">还款中</option>
+                                    <option value="3">部分还款</option>
+                                    <option value="4">已逾期</option>
+                                    <option value="5">已还完</option>
+                                </#SelectCon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#TimeCon id="beginTime" name="开始时间" isTime="false" pattern="YYYY-MM-DD"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <#TimeCon id="endTime" name="结束时间" isTime="false" pattern="YYYY-MM-DD" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div style="width: 200px; margin: 10px auto;">
+                                    <#button name="搜索" icon="fa-search" clickFun="RepaymentInfo.search()"/>
+                                    <#button name="重置" icon="fa-undo" clickFun="RepaymentInfo.resetSearch()" space="true"/>
+                                </div>
+                            </div>
+                        </div>
+                        <#table id="RepaymentInfoTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="newTableList" style="overflow: auto;">
+    <table class="table table-bordered" id="newTable" style="width: 100%"></table>
+</div>
+
+<div id="newTableList2" style="padding: 10px; display: none;overflow: auto;">
+    <div class="row">
+        <div class="form-horizontal">
+            <input type="hidden" class="form-control" readonly id="id2">
+
+            <div class="col-sm-6 b-r">
+                <#input id="custId2" name="客户ID" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="applyId2" name="借款申请ID" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="payId2" name="放款ID" underline="false" />
+            </div>
+
+            <div class="col-sm-6 b-r">
+                <#input id="custName2" name="客户姓名" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="custMobile2" name="客户手机号" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="custIdNo2" name="客户身份证" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="bankName2" name="开户银行" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="bankCardNo2" name="银行账号" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="loanAmount2" name="借款金额" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="loanPeriod2" name="借款期限" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="yearRate2" name="年化利率" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="preServiceRate2" name="手续费率" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="preFee2" name="前期费用" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="receptionAmount" name="前台服务费" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="otherFee2" name="其他费用" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="interestBeginTime2" name="开始时间" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="interestEndTime2" name="结束时间" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="predictAmount2" name="应还总金额" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="actualAmount2" name="实还总金额" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="predictCapital2" name="应还本金" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="actualCapital2" name="实还本金" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="predictInterest2" name="应还利息" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="actualInterest2" name="实还利息" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="predictServiceCharge2" name="应还服务费" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="actualServiceCharge2" name="实还服务费" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="predictCharge2" name="应还手续费" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="actualCharge2" name="实还手续费" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="curStatus2" name="当前状态" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="overdueTimes2" name="逾期次数" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="currentPeriodNum2" name="当前还款期号" underline="false" />
+            </div>
+            <div class="col-sm-6 b-r">
+                <#input id="version2" name="版本" underline="false" />
+            </div>
+
+
+        </div>
+        </div>
+    </div>
+</div>
+
+<div id="newTableList3" style="padding: 10px; display: none;overflow: auto;">
+    <div class="row">
+        <div class="form-horizontal tsForm" id="payApplyForm">
+            <input type="hidden" class="form-control" readonly id="id3">
+            <input type="hidden" class="form-control" readonly id="uuid">
+            <input type="hidden" class="form-control" readonly id="currentPeriodNum4">
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">客户姓名：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="custName3" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">客户手机号：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="custMobile3" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">客户身份证：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="custIdNo3" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">开户银行：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="bankName3" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">银行账号：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="bankCardNo3" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">借款总额：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="loanAmount3" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">借款期限：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="loanPeriod3" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">当前还款期数：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <select id="currentPeriodNum3" class="form-control" name="currentPeriodNum3" onchange="RepaymentInfo.onChanged();">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">当期应还总额：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="predictAmount3" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">当期还款状态：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="periodStatus3" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">当前还款方式：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <select id="payType3" class="form-control" name="payType3">
+                            <option value="">请选择</option>
+                            <option value="1">手动代扣</option>
+                            <option value="2">对公转账</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <div style="width: 200px; margin: 15px auto;">
+                        <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="RepaymentInfo.addSubmit()"/>
+                        <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="RepaymentInfo.close()"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="${ctxPath}/static/modular/paybackMgr/repaymentInfo/repaymentInfo.js"></script>
+@}

@@ -1,0 +1,41 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>合同管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12">
+                                <div class="row">
+                                    <div class="col-lg-10 col-sm-3">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-sm-12">
+                                                <#NameCon id="name" name="合同编号" placeholder="合同编号"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9 col-sm-12">
+                                        <div class="row">
+                                            <div class="col-lg-12 col-sm-12" id="managerTableToolbar">
+                                                <#button name="查询" icon="fa-search" clickFun="MgrUser.search()"/>
+                                                <#button name="配置" icon="fa-trash" clickFun="MgrUser.allocation()" space="true"/>
+                                                <#button name="重置" icon="fa-trash" clickFun="MgrUser.resetSearch()" space="true"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <#table id="managerTable"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/cust/contractInfo.js"></script>
+@}

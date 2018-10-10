@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarInfoDao">
+
+	<sql id="searchColumns">
+		carInfo.registrationCarType registrationCarType,carInfo.mileage mileage,carInfo.id id,carInfo.cust_id custId,carInfo.car_num carNum,carInfo.car_config_name carConfigName,carInfo.car_type carType,carInfo.car_brand carBrand,carInfo.car_model carModel,carInfo.vin vin,carInfo.engine_no engineNo,carInfo.car_color carColor,carInfo.car_import_type carImportType,carInfo.fuel_type fuelType,carInfo.displacement displacement,carInfo.manufacturer manufacturer,carInfo.car_usage carUsage,carInfo.get_type getType,carInfo.product_date productDate,carInfo.first_lic_date firstLicDate,carInfo.current_lic_date currentLicDate,carInfo.register_photo_url1 registerPhotoUrl1,carInfo.register_photo_url2 registerPhotoUrl2,carInfo.register_photo_url3 registerPhotoUrl3,carInfo.register_photo_url4 registerPhotoUrl4,carInfo.create_time createTime,carInfo.carLocationId carLocationId,carInfo.carLocationName carLocationName,carInfo.carCityId carCityId,carInfo.carCityName carCityName,carInfo.carSeriesId carSeriesId,carInfo.carSeriesName carSeriesName,carInfo.carModelId carModelId,carInfo.carModelName carModelName,carInfo.update_time updateTime,carInfo.remark remark,carInfo.is_deleted isDeleted
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarInfo">
+		insert into
+		c_car_info(registrationCarType,current_lic_date,remark,manufacturer,car_config_name,car_usage,car_color,car_type,is_deleted,cust_id,vin,displacement,id,engine_no,car_import_type,car_brand,car_num,update_time,product_date,first_lic_date,register_photo_url1,register_photo_url3,register_photo_url2,fuel_type,get_type,register_photo_url4,carLocationId,carLocationName,carCityId,carCityName,carSeriesId,carSeriesName,carModelId,carModelName,create_time,car_model,mileage)
+		values (#{registrationCarType},#{currentLicDate},#{remark},#{manufacturer},#{carConfigName},#{carUsage},#{carColor},#{carType},#{isDeleted},#{custId},#{vin},#{displacement},#{id},#{engineNo},#{carImportType},#{carBrand},#{carNum},#{updateTime},#{productDate},#{firstLicDate},#{registerPhotoUrl1},#{registerPhotoUrl3},#{registerPhotoUrl2},#{fuelType},#{getType},#{registerPhotoUrl4},#{carLocationId},#{carLocationName},#{carCityId},#{carCityName},#{carSeriesId},#{carSeriesName},#{carModelId},#{carModelName},#{createTime},#{carModel},#{mileage})
+	</insert>
+
+	<delete id="delete">
+		delete from c_car_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_car_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarInfo">
+		update c_car_info set
+		registrationCarType=#{registrationCarType},current_lic_date=#{currentLicDate},remark=#{remark},manufacturer=#{manufacturer},car_config_name=#{carConfigName},car_usage=#{carUsage},car_color=#{carColor},car_type=#{carType},is_deleted=#{isDeleted},cust_id=#{custId},vin=#{vin},displacement=#{displacement},id=#{id},engine_no=#{engineNo},car_import_type=#{carImportType},car_brand=#{carBrand},car_num=#{carNum},update_time=#{updateTime},product_date=#{productDate},first_lic_date=#{firstLicDate},register_photo_url1=#{registerPhotoUrl1},register_photo_url3=#{registerPhotoUrl3},register_photo_url2=#{registerPhotoUrl2},fuel_type=#{fuelType},get_type=#{getType},register_photo_url4=#{registerPhotoUrl4},create_time=#{createTime},car_model=#{carModel} ,mileage=#{mileage} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarInfo">
+		update c_car_info
+		<set>
+			<if test="registrationCarType != null"> registrationCarType=#{registrationCarType},</if>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="carNum != null"> car_num=#{carNum},</if>
+            <if test="carConfigName != null"> car_config_name=#{carConfigName},</if>
+            <if test="carType != null"> car_type=#{carType},</if>
+            <if test="carBrand != null"> car_brand=#{carBrand},</if>
+            <if test="carModel != null"> car_model=#{carModel},</if>
+            <if test="vin != null"> vin=#{vin},</if>
+            <if test="engineNo != null"> engine_no=#{engineNo},</if>
+            <if test="carColor != null"> car_color=#{carColor},</if>
+            <if test="carImportType != null"> car_import_type=#{carImportType},</if>
+            <if test="fuelType != null"> fuel_type=#{fuelType},</if>
+            <if test="displacement != null"> displacement=#{displacement},</if>
+            <if test="manufacturer != null"> manufacturer=#{manufacturer},</if>
+            <if test="carUsage != null"> car_usage=#{carUsage},</if>
+            <if test="getType != null"> get_type=#{getType},</if>
+            <if test="productDate != null"> product_date=#{productDate},</if>
+            <if test="firstLicDate != null"> first_lic_date=#{firstLicDate},</if>
+            <if test="currentLicDate != null"> current_lic_date=#{currentLicDate},</if>
+            <if test="registerPhotoUrl1 != null"> register_photo_url1=#{registerPhotoUrl1},</if>
+            <if test="registerPhotoUrl2 != null"> register_photo_url2=#{registerPhotoUrl2},</if>
+            <if test="registerPhotoUrl3 != null"> register_photo_url3=#{registerPhotoUrl3},</if>
+            <if test="registerPhotoUrl4 != null"> register_photo_url4=#{registerPhotoUrl4},</if>
+			<if test="carLocationId != null"> carLocationId=#{carLocationId},</if>
+			<if test="carLocationName != null"> carLocationName=#{carLocationName},</if>
+			<if test="carCityId != null"> carCityId=#{carCityId},</if>
+			<if test="carCityName != null"> carCityName=#{carCityName},</if>
+			<if test="carSeriesId != null"> carSeriesId=#{carSeriesId},</if>
+			<if test="carSeriesName != null"> carSeriesName=#{carSeriesName},</if>
+			<if test="carModelId != null"> carModelId=#{carModelId},</if>
+			<if test="carModelName != null"> carModelName=#{carModelName},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+			<if test="mileage != null"> mileage=#{mileage},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_info carInfo
+		where id = #{id}
+	</select>
+	
+	<select id="selectByCusId" resultType="com.moerlong.carloan.modular.car.entity.CarInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_info carInfo
+		where cust_id = #{cusid}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_info carInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.car.entity.CarInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_info carInfo
+		where 1=1
+		<if test="carNum != null and carNum != ''">  and car_num like CONCAT('%',#{carNum},'%')</if>
+		<if test="carBrand != null and carBrand != ''"> and car_brand like CONCAT('%',#{carBrand},'%') </if>
+		<if test="carModel != null and carModel != ''"> and car_model like CONCAT('%',#{carModel},'%') </if>
+
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+	<!-- 获取内勤资料录入车辆基本信息根据ApplyId -->
+	<select id="selectCarInfoVoByApplyId" resultType="com.moerlong.carloan.modular.car.entity.CarInfo">
+		SELECT *
+		FROM
+		c_car_info a
+		inner JOIN c_apply_info b ON  b.id=#{id} and a.cust_id = b.cust_id
+	</select>
+
+	<!--根据custid查询车辆信息-->
+	<select id="selInitCarverifyByCustId" resultType="com.moerlong.carloan.modular.car.entity.vo.InitCarVerifyVo">
+		select c.id carId,c.cust_id custId,c2.name custName,c2.sex,c.car_config_name carConfigName,c.car_num carNum
+		from c_car_info c ,c_cust_info c2
+		where c.cust_id=c2.id and c.cust_id=#{custId}
+	</select>
+</mapper>
+

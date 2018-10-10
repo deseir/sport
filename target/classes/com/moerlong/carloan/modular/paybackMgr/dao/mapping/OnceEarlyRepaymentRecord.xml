@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.paybackMgr.dao.OnceEarlyRepaymentRecordDao">
+
+	<sql id="searchColumns">
+		id id,
+		repayment_id repaymentId,
+		once_repayment_capital onceRepaymentCapital,
+		once_repayment_charge onceRepaymentCharge,
+		once_repayment_breach onceRepaymentBreach,
+		once_repayment_total onceRepaymentTotal,
+		cur_period_num curPeriodNum,
+		cur_period_amount curPeriodAmount,
+		appoint_date appointDate,
+		cur_status curStatus,
+		cur_status_desc curStatusDesc,
+		is_deleted isDeleted,
+		create_time createTime,
+		update_time updateTime,
+		remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.OnceEarlyRepaymentRecord">
+		insert into
+		c_once_early_repayment_record(
+			id,
+			repayment_id,
+			once_repayment_capital,
+			once_repayment_charge,
+			once_repayment_breach,
+			once_repayment_total,
+			cur_period_num,
+			cur_period_amount,
+			appoint_date,
+			cur_status,
+			cur_status_desc,
+			is_deleted,
+			create_time,
+			update_time,
+			remark)
+		values (
+			#{id},
+			#{repaymentId},
+			#{onceRepaymentCapital},
+			#{onceRepaymentCharge},
+			#{onceRepaymentBreach},
+			#{onceRepaymentTotal},
+			#{curPeriodNum},
+			#{curPeriodAmount},
+			#{appointDate},
+			#{curStatus},
+			#{curStatusDesc},
+			#{isDeleted},
+			#{createTime},
+			#{updateTime},
+			#{remark})
+	</insert>
+
+	<delete id="delete">
+		delete from c_once_early_repayment_record
+		where id = #{id}
+	</delete>
+
+	<update id="update" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.OnceEarlyRepaymentRecord">
+		update c_once_early_repayment_record <set>
+		<if test="repaymentId != null"> repayment_id=#{repaymentId},</if>
+		<if test="onceRepaymentCapital != null"> once_repayment_capital=#{onceRepaymentCapital},</if>
+		<if test="onceRepaymentCharge != null"> once_repayment_charge=#{onceRepaymentCharge},</if>
+		<if test="onceRepaymentBreach != null"> once_repayment_breach=#{onceRepaymentBreach},</if>
+		<if test="onceRepaymentTotal != null"> once_repayment_total=#{onceRepaymentTotal},</if>
+		<if test="curPeriodNum != null"> cur_period_num=#{curPeriodNum},</if>
+		<if test="curPeriodAmount != null"> cur_period_amount=#{curPeriodAmount},</if>
+		<if test="appointDate != null"> appoint_date=#{appointDate},</if>
+		<if test="curStatus != null"> cur_status=#{curStatus},</if>
+		<if test="curStatusDesc != null"> cur_status_desc=#{curStatusDesc},</if>
+		<if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+		<if test="updateTime != null"> update_time=#{updateTime},</if>
+		<if test="createTime != null"> create_time=#{createTime},</if>
+		<if test="remark != null and remark != ''"> remark=#{remark},</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.paybackMgr.entity.OnceEarlyRepaymentRecord">
+		select
+		<include refid="searchColumns" />
+		from c_once_early_repayment_record
+		where id = #{id}
+	</select>
+
+	<select id="selectByRepaymentId" resultType="com.moerlong.carloan.modular.paybackMgr.entity.OnceEarlyRepaymentRecord">
+		select
+		<include refid="searchColumns" />
+		from c_once_early_repayment_record
+		where repayment_id = #{repaymentId}
+	</select>
+
+
+	<sql id="searchColumns2">
+		o.id id,
+		o.repayment_id repaymentId,
+		o.once_repayment_capital onceRepaymentCapital,
+		o.once_repayment_charge onceRepaymentCharge,
+		o.once_repayment_breach onceRepaymentBreach,
+		o.once_repayment_total onceRepaymentTotal,
+		o.cur_period_num curPeriodNum,
+		o.cur_period_amount curPeriodAmount,
+		o.appoint_date appointDate,
+		o.cur_status curStatus,
+		o.cur_status_desc curStatusDesc,
+		o.is_deleted isDeleted,
+		o.create_time createTime,
+		o.update_time updateTime,
+		o.remark remark,
+		c.contract_no contractNo,
+		c.cust_name custName,
+		c.cust_mobile custMobile,
+		c.cust_id_no custIdNo,
+		c.cur_status curStatus,
+		c.cur_status_desc curStatusDesc
+	</sql>
+	<!-- 根据条件查询 -->
+	<select id="listByCondition" resultType="com.moerlong.carloan.modular.paybackMgr.entity.vo.OnceEarlyRepaymentRecordVO">
+		select
+		<include refid="searchColumns2" />
+		from c_once_early_repayment_record o, c_repayment_info c
+		where 1=1
+		AND o.repayment_id = c.id
+
+		<if test="custName != null and custName != ''">
+			and c.cust_name like CONCAT('%',#{custName},'%')
+		</if>
+		<if test="custMobile != null and custMobile != ''">
+			and c.cust_mobile like CONCAT('%',#{custMobile},'%')
+		</if>
+		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+			and (o.update_time between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+		</if>
+		order by o.id DESC
+	</select>
+
+
+
+</mapper>
+

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.paybackMgr.dao.RepaymentApproveRecordDao">
+
+	<sql id="searchColumns">
+		id id,
+	    repayment_id repaymentId,
+	    operator_id operatorId,
+	    operator_name operatorName,
+	    operator_time  operatorTime,
+	    operator_result operatorResult,
+	    operator_tip operatorTip,
+	    pre_status preStatus,
+	    pre_status_desc preStatusDesc,
+	    after_status afterStatus,
+	    after_status_desc afterStatusDesc,
+		is_deleted isDeleted,
+		create_time createTime,
+		update_time updateTime,
+		remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentApporveRecord">
+		insert into
+		c_repayment_approve_record(
+			id,
+			repayment_id,
+			operator_id,
+			operator_name,
+			operator_time,
+			operator_result,
+			operator_tip,
+			pre_status,
+			pre_status_desc,
+			after_status,
+			after_status_desc,
+			is_deleted,
+			create_time,
+			update_time,
+			remark)
+		values (
+			#{id},
+			#{repaymentId},
+			#{operatorId},
+			#{operatorName},
+			#{operatorTime},
+			#{operatorResult},
+			#{operatorTip},
+			#{preStatus},
+			#{preStatusDesc},
+			#{afterStatus},
+			#{afterStatusDesc},
+			#{isDeleted},
+			#{createTime},
+			#{updateTime},
+			#{remark})
+	</insert>
+
+	<delete id="delete">
+		delete from c_repayment_approve_record
+		where id = #{id}
+	</delete>
+
+	<update id="update" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentApporveRecord">
+		update c_repayment_approve_record <set>
+		<if test="repaymentId != null"> repayment_id=#{repaymentId},</if>
+		<if test="operatorId != null"> operator_id=#{operatorId},</if>
+		<if test="operatorName != null"> operator_name=#{operatorName},</if>
+		<if test="operatorTime != null"> operator_time=#{operatorTime},</if>
+		<if test="operatorResult != null"> operator_result=#{operatorResult},</if>
+		<if test="operatorTip != null"> operator_tip=#{operatorTip},</if>
+		<if test="preStatus != null"> pre_status=#{preStatus},</if>
+		<if test="preStatusDesc != null"> pre_status_desc=#{preStatusDesc},</if>
+		<if test="afterStatus != null"> after_status=#{afterStatus},</if>
+		<if test="afterStatusDesc != null"> after_status_desc=#{afterStatusDesc},</if>
+		<if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+		<if test="updateTime != null"> update_time=#{updateTime},</if>
+		<if test="createTime != null"> create_time=#{createTime},</if>
+		<if test="remark != null and remark != ''"> remark=#{remark},</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentApporveRecord">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_approve_record
+		where id = #{id}
+	</select>
+
+	<select id="selectByRepaymentId" resultType="com.moerlong.carloan.modular.paybackMgr.entity.RepaymentApporveRecord">
+		select
+		<include refid="searchColumns" />
+		from c_repayment_approve_record
+		where repayment_id = #{repaymentId}
+	</select>
+
+</mapper>
+

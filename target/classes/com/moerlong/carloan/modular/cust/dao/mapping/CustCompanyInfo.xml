@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.CustCompanyInfoDao">
+
+	<sql id="searchColumns">
+		custCompanyInfo.gongshang_enterprise_photo gongshangEnterprisePhoto,custCompanyInfo.id id,custCompanyInfo.cust_id custId,custCompanyInfo.apply_id applyId,custCompanyInfo.type type,custCompanyInfo.company_name companyName,custCompanyInfo.industry industry,custCompanyInfo.found_time foundTime,custCompanyInfo.court_enterprise courtEnterprise,custCompanyInfo.court_enterprise_photo courtEnterprisePhoto,custCompanyInfo.zhixing_enterprise zhixingEnterprise,custCompanyInfo.zhixing_enterprise_photo zhixingEnterprisePhoto,custCompanyInfo.risk_enterprise riskEnterprise,custCompanyInfo.risk_enterprise_photo riskEnterprisePhoto,custCompanyInfo.warn_enterprise warnEnterprise,custCompanyInfo.warn_enterprise_photo warnEnterprisePhoto,custCompanyInfo.enterprise_status enterpriseStatus,custCompanyInfo.enterprise_remark enterpriseRemark,custCompanyInfo.create_time createTime,custCompanyInfo.update_time updateTime,custCompanyInfo.is_deleted isDeleted,custCompanyInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.CustCompanyInfo">
+		insert into
+		c_cust_company_info(gongshang_enterprise_photo,enterprise_remark,company_name,industry,update_time,remark,type,risk_enterprise,risk_enterprise_photo,court_enterprise,warn_enterprise,apply_id,found_time,is_deleted,warn_enterprise_photo,create_time,court_enterprise_photo,enterprise_status,cust_id,id,zhixing_enterprise,zhixing_enterprise_photo)
+		values (#{gongshangEnterprisePhoto},#{enterpriseRemark},#{companyName},#{industry},#{updateTime},#{remark},#{type},#{riskEnterprise},#{riskEnterprisePhoto},#{courtEnterprise},#{warnEnterprise},#{applyId},#{foundTime},#{isDeleted},#{warnEnterprisePhoto},#{createTime},#{courtEnterprisePhoto},#{enterpriseStatus},#{custId},#{id},#{zhixingEnterprise},#{zhixingEnterprisePhoto})
+	</insert>
+
+	<delete id="delete">
+		delete from c_cust_company_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_cust_company_info set is_deleted = 1 where id = #{id}
+	</update>
+
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.CustCompanyInfo">
+		update c_cust_company_info set
+		gongshang_enterprise_photo=#{gongshangEnterprisePhoto},enterprise_remark=#{enterpriseRemark},company_name=#{companyName},industry=#{industry},update_time=#{updateTime},remark=#{remark},type=#{type},risk_enterprise=#{riskEnterprise},risk_enterprise_photo=#{riskEnterprisePhoto},court_enterprise=#{courtEnterprise},warn_enterprise=#{warnEnterprise},apply_id=#{applyId},found_time=#{foundTime},is_deleted=#{isDeleted},warn_enterprise_photo=#{warnEnterprisePhoto},create_time=#{createTime},court_enterprise_photo=#{courtEnterprisePhoto},enterprise_status=#{enterpriseStatus},cust_id=#{custId},id=#{id},zhixing_enterprise=#{zhixingEnterprise},zhixing_enterprise_photo=#{zhixingEnterprisePhoto} where id = #{id}
+	</update>
+
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.CustCompanyInfo">
+		update c_cust_company_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="type != null"> type=#{type},</if>
+            <if test="companyName != null"> company_name=#{companyName},</if>
+            <if test="industry != null"> industry=#{industry},</if>
+            <if test="foundTime != null"> found_time=#{foundTime},</if>
+            <if test="courtEnterprise != null"> court_enterprise=#{courtEnterprise},</if>
+            <if test="courtEnterprisePhoto != null and courtEnterprisePhoto !=''"> court_enterprise_photo=#{courtEnterprisePhoto},</if>
+            <if test="zhixingEnterprise != null"> zhixing_enterprise=#{zhixingEnterprise},</if>
+            <if test="zhixingEnterprisePhoto != null and zhixingEnterprisePhoto !=''"> zhixing_enterprise_photo=#{zhixingEnterprisePhoto},</if>
+            <if test="riskEnterprise != null"> risk_enterprise=#{riskEnterprise},</if>
+            <if test="riskEnterprisePhoto != null and riskEnterprisePhoto !=''"> risk_enterprise_photo=#{riskEnterprisePhoto},</if>
+            <if test="warnEnterprise != null"> warn_enterprise=#{warnEnterprise},</if>
+            <if test="warnEnterprisePhoto != null and warnEnterprisePhoto !=''"> warn_enterprise_photo=#{warnEnterprisePhoto},</if>
+            <if test="enterpriseStatus != null"> enterprise_status=#{enterpriseStatus},</if>
+            <if test="enterpriseRemark != null"> enterprise_remark=#{enterpriseRemark},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+            <if test="gongshangEnterprisePhoto != null and gongshangEnterprisePhoto !=''"> gongshang_enterprise_photo=#{gongshangEnterprisePhoto},</if>
+        </set>
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.CustCompanyInfo">
+		select
+		<include refid="searchColumns" />
+		from c_cust_company_info custCompanyInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.CustCompanyInfo">
+		select
+		<include refid="searchColumns" />
+		from c_cust_company_info custCompanyInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CustCompanyInfo">
+		select
+		<include refid="searchColumns" />
+		from c_cust_company_info custCompanyInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<select id="selByApplyIdAndType" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CustCompanyInfo">
+		select
+		<include refid="searchColumns"/>
+		from c_cust_company_info custCompanyInfo
+		where custCompanyInfo.apply_id=#{applyId} and custCompanyInfo.type=#{type}
+
+	</select>
+</mapper>
+

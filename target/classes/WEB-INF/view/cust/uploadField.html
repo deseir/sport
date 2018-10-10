@@ -1,0 +1,24 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+			<div class="row">
+				<div class="col-sm-12">
+					<div>
+						<label class="col-sm-3 control-label">合同模板附件</label>
+						<input id="uploadField1" type="file" name="file" onchange="UploadImageicc(this);">
+						<input id="uploadField" type="hidden">
+					</div>
+					<div>
+						<img id="uploadFieldImg" src="">
+					</div>
+				</div>
+				<div class="col-sm-12">
+					<#button name="上传模板" icon="fa fa-file-code-o" clickFun="MgrUser.uploadField()" space="true"/>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="${ctxPath}/static/modular/cust/contractInfo.js"></script>
+@}

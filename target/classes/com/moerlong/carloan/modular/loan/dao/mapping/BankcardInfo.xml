@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.loan.dao.BankcardInfoDao">
+
+	<sql id="searchColumns">
+		bankcardInfo.id id,bankcardInfo.cust_id custId,bankcardInfo.card_no cardNo,bankcardInfo.bank_name bankName,bankcardInfo.province_city provinceCity,bankcardInfo.bank_subbranch bankSubbranch,bankcardInfo.card_status cardStatus,bankcardInfo.binding_time bindingTime,bankcardInfo.binding_desc bindingDesc,bankcardInfo.sequence_no sequenceNo,bankcardInfo.is_default_card isDefaultCard,bankcardInfo.binding_mobile bindingMobile,bankcardInfo.pay_platform payPlatform,bankcardInfo.result_code resultCode,bankcardInfo.result_msg resultMsg,bankcardInfo.create_time createTime,bankcardInfo.update_time updateTime,bankcardInfo.is_deleted isDeleted,bankcardInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.loan.entity.BankcardInfo">
+		insert into
+		c_bankcard_info(province_city,is_default_card,result_code,pay_platform,bank_name,update_time,remark,card_no,binding_time,binding_desc,result_msg,sequence_no,is_deleted,create_time,cust_id,binding_mobile,id,bank_subbranch,card_status)
+		values (#{provinceCity},#{isDefaultCard},#{resultCode},#{payPlatform},#{bankName},#{updateTime},#{remark},#{cardNo},#{bindingTime},#{bindingDesc},#{resultMsg},#{sequenceNo},#{isDeleted},#{createTime},#{custId},#{bindingMobile},#{id},#{bankSubbranch},#{cardStatus})
+	</insert>
+
+	<delete id="delete">
+		delete from c_bankcard_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_bankcard_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.loan.entity.BankcardInfo">
+		update c_bankcard_info set
+		province_city=#{provinceCity},is_default_card=#{isDefaultCard},result_code=#{resultCode},pay_platform=#{payPlatform},bank_name=#{bankName},update_time=#{updateTime},remark=#{remark},card_no=#{cardNo},binding_time=#{bindingTime},binding_desc=#{bindingDesc},result_msg=#{resultMsg},sequence_no=#{sequenceNo},is_deleted=#{isDeleted},create_time=#{createTime},cust_id=#{custId},binding_mobile=#{bindingMobile},id=#{id},bank_subbranch=#{bankSubbranch},card_status=#{cardStatus} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.loan.entity.BankcardInfo">
+		update c_bankcard_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="cardNo != null"> card_no=#{cardNo},</if>
+            <if test="bankName != null"> bank_name=#{bankName},</if>
+            <if test="provinceCity != null"> province_city=#{provinceCity},</if>
+            <if test="bankSubbranch != null"> bank_subbranch=#{bankSubbranch},</if>
+            <if test="cardStatus != null"> card_status=#{cardStatus},</if>
+            <if test="bindingTime != null"> binding_time=#{bindingTime},</if>
+            <if test="bindingDesc != null"> binding_desc=#{bindingDesc},</if>
+            <if test="sequenceNo != null"> sequence_no=#{sequenceNo},</if>
+            <if test="isDefaultCard != null"> is_default_card=#{isDefaultCard},</if>
+            <if test="bindingMobile != null"> binding_mobile=#{bindingMobile},</if>
+            <if test="payPlatform != null"> pay_platform=#{payPlatform},</if>
+            <if test="resultCode != null"> result_code=#{resultCode},</if>
+            <if test="resultMsg != null"> result_msg=#{resultMsg},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.loan.entity.BankcardInfo">
+		select
+		<include refid="searchColumns" />
+		from c_bankcard_info bankcardInfo
+		where id = #{id}
+	</select>
+	
+	<select id="selectByCusId" resultType="com.moerlong.carloan.modular.loan.entity.BankcardInfo">
+		select
+		<include refid="searchColumns" />
+		from c_bankcard_info bankcardInfo
+		where cust_id = #{cusid}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.loan.entity.BankcardInfo">
+		select
+		<include refid="searchColumns" />
+		from c_bankcard_info bankcardInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.loan.entity.BankcardInfo">
+		select
+		<include refid="searchColumns" />
+		from c_bankcard_info bankcardInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+</mapper>
+

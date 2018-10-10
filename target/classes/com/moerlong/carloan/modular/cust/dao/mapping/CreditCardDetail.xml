@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.CreditCardDetailDao">
+
+	<sql id="searchColumns">
+		creditCardDetail.id id,creditCardDetail.cust_id custId,creditCardDetail.apply_id applyId,creditCardDetail.type type,creditCardDetail.card_org cardOrg,creditCardDetail.card_amount cardAmount,creditCardDetail.card_share_amount cardShareAmount,creditCardDetail.card_type cardType,creditCardDetail.account_status accountStatus,creditCardDetail.used_amount usedAmount,creditCardDetail.avg_used_amount avgUsedAmount,creditCardDetail.max_used_amount maxUsedAmount,creditCardDetail.cur_overdue_num curOverdueNum,creditCardDetail.cur_overdue_amount curOverdueAmount,creditCardDetail.create_time createTime,creditCardDetail.update_time updateTime,creditCardDetail.is_deleted isDeleted,creditCardDetail.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.CreditCardDetail">
+		insert into
+		c_credit_card_detail(card_amount,card_share_amount,used_amount,card_type,update_time,remark,max_used_amount,type,cur_overdue_num,card_org,account_status,apply_id,is_deleted,cur_overdue_amount,create_time,avg_used_amount,cust_id,id)
+		values (#{cardAmount},#{cardShareAmount},#{usedAmount},#{cardType},#{updateTime},#{remark},#{maxUsedAmount},#{type},#{curOverdueNum},#{cardOrg},#{accountStatus},#{applyId},#{isDeleted},#{curOverdueAmount},#{createTime},#{avgUsedAmount},#{custId},#{id})
+	</insert>
+
+	<delete id="delete">
+		delete from c_credit_card_detail
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_credit_card_detail set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.CreditCardDetail">
+		update c_credit_card_detail set
+		card_amount=#{cardAmount},card_share_amount=#{cardShareAmount},used_amount=#{usedAmount},card_type=#{cardType},update_time=#{updateTime},remark=#{remark},max_used_amount=#{maxUsedAmount},type=#{type},cur_overdue_num=#{curOverdueNum},card_org=#{cardOrg},account_status=#{accountStatus},apply_id=#{applyId},is_deleted=#{isDeleted},cur_overdue_amount=#{curOverdueAmount},create_time=#{createTime},avg_used_amount=#{avgUsedAmount},cust_id=#{custId},id=#{id} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.CreditCardDetail">
+		update c_credit_card_detail
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="type != null"> type=#{type},</if>
+            <if test="cardOrg != null"> card_org=#{cardOrg},</if>
+            <if test="cardAmount != null"> card_amount=#{cardAmount},</if>
+            <if test="cardShareAmount != null"> card_share_amount=#{cardShareAmount},</if>
+            <if test="cardType != null"> card_type=#{cardType},</if>
+            <if test="accountStatus != null"> account_status=#{accountStatus},</if>
+            <if test="usedAmount != null"> used_amount=#{usedAmount},</if>
+            <if test="avgUsedAmount != null"> avg_used_amount=#{avgUsedAmount},</if>
+            <if test="maxUsedAmount != null"> max_used_amount=#{maxUsedAmount},</if>
+            <if test="curOverdueNum != null"> cur_overdue_num=#{curOverdueNum},</if>
+            <if test="curOverdueAmount != null"> cur_overdue_amount=#{curOverdueAmount},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.CreditCardDetail">
+		select
+		<include refid="searchColumns" />
+		from c_credit_card_detail creditCardDetail
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.CreditCardDetail">
+		select
+		<include refid="searchColumns" />
+		from c_credit_card_detail creditCardDetail
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CreditCardDetail">
+		select
+		<include refid="searchColumns" />
+		from c_credit_card_detail creditCardDetail
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<!--根据applyId和type查询所有的信用卡已用的额度-->
+	<select id="selAllUsedAmount" parameterType="java.util.Map" resultType="java.math.BigDecimal">
+		select sum(a.used_amount) from c_credit_card_detail a where a.apply_id=#{applyId} and a.type=#{type} and card_type !=0
+	</select>
+
+	<!--根据applyId和type查询最近数据-->
+	<select id="selByApplyIdAndType" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CreditCardDetail">
+		select
+		<include refid="searchColumns"/>
+		from c_credit_card_detail creditCardDetail
+		where creditCardDetail.apply_id=#{applyId} and creditCardDetail.type=#{type} order by  creditCardDetail.create_time desc limit 1
+
+	</select>
+
+	<!--根据applyId和type查询所有的数据-->
+	<select id="selListByApplyIdAndType" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CreditCardDetail">
+		select
+		creditCardDetail.id id,creditCardDetail.cust_id custId,creditCardDetail.apply_id applyId,creditCardDetail.type type,
+		creditCardDetail.card_org cardOrg,creditCardDetail.card_amount cardAmount,creditCardDetail.card_share_amount cardShareAmount,
+		creditCardDetail.card_type cardType,
+		CASE creditCardDetail.card_type
+		WHEN 0 THEN '抵押担保'
+		WHEN 1 THEN '信用免担保'
+		WHEN 2 THEN '组合认证'
+		ELSE '' END cardTypeName,
+		creditCardDetail.account_status accountStatus,
+		CASE creditCardDetail.account_status
+		WHEN 0 THEN '正常'
+		WHEN 1 THEN '冻结'
+		WHEN 2 THEN '止付'
+		WHEN 3 THEN '呆账'
+		ELSE '' END accountStatusName,
+		creditCardDetail.used_amount usedAmount,creditCardDetail.avg_used_amount avgUsedAmount,creditCardDetail.max_used_amount maxUsedAmount,creditCardDetail.cur_overdue_num curOverdueNum,creditCardDetail.cur_overdue_amount curOverdueAmount,creditCardDetail.create_time createTime,creditCardDetail.update_time updateTime,creditCardDetail.is_deleted isDeleted,creditCardDetail.remark remark
+		from c_credit_card_detail creditCardDetail
+		where creditCardDetail.apply_id=#{applyId} and creditCardDetail.type=#{type}
+
+	</select>
+	<!--根据id一次删除多个记录-->
+	<delete id="deleteByIds" parameterType="java.lang.Long">
+		delete from c_credit_card_detail
+		where id in
+		<foreach collection="list" index="index" open="(" item="id" separator="," close=")">
+			#{id}
+		</foreach>
+
+	</delete>
+</mapper>
+

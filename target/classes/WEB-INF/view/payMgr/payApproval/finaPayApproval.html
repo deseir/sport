@@ -1,0 +1,113 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>财务放款审批列表</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="custName" name="客户姓名" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="custMobile" name="客户手机号" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#TimeCon id="beginTime" name="开始时间" isTime="false" pattern="YYYY-MM-DD"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <#TimeCon id="endTime" name="结束时间" isTime="false" pattern="YYYY-MM-DD" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div style="width: 200px; margin: 10px auto;">
+                                    <#button name="搜索" icon="fa-search" clickFun="FinaPayApproval.search()"/>
+                                    <#button name="重置" icon="fa-undo" clickFun="FinaPayApproval.resetSearch()" space="true"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <#table id="FinaPayApprovalTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="newTableList" style="overflow: auto">
+    <table class="table table-bordered" id="newTable" style="width: 100%"></table>
+</div>
+
+<div id="newTableList2" style="padding: 10px; display: none">
+    <div class="form-horizontal row tsForm" id="payApplyForm">
+        <div class="col-sm-12">
+            <div class="form-group">
+                <div style="display: inline-block;width: 49%;">
+                    <input type="hidden" class="form-control" readonly id="payId">
+                    <input type="hidden" class="form-control" readonly id="uuid">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label class="control-label" style="text-align: right;width: 30%">借款金额：</label>
+                <div style="display: inline-block;width: 49%;">
+                    <input type="text" class="form-control" readonly id="totalAmount">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label class="control-label" style="text-align: right;width: 30%">总期数：</label>
+                <div style="display: inline-block;width: 49%;">
+                    <input type="text" class="form-control" readonly id="periodNum">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label class="control-label" style="text-align: right;width: 30%">待放款金额：</label>
+                <div style="display: inline-block;width: 49%;">
+                    <input type="text" class="form-control" readonly id="approveAmount">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label class="control-label" style="text-align: right;width: 30%">审批结果：</label>
+                <div style="display: inline-block;width: 49%;">
+                    <select id="operatorResult" class="form-control" name="operatorResult">
+                        <option value="">请选择</option>
+                        <option value="0">不通过</option>
+                        <option value="1">通过</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-group">
+                <label class="control-label" style="text-align: right;width: 30%">审批意见：</label>
+                <div style="display: inline-block;width: 49%;">
+                    <input type="text" class="form-control" id="operatorTip" name="operatorTip">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div style="width: 200px; margin: 15px auto;">
+                <button type="button" class="btn btn-primary btn-sm" id="appBtnSummit">提交</button>
+                <button type="button" class="btn btn-primary btn-sm" id="appBtnCancel">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="${ctxPath}/static/modular/payMgr/payApproval/finaPayApproval.js"></script>
+@}

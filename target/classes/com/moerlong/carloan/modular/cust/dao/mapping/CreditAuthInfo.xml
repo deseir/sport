@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.CreditAuthInfoDao">
+
+	<sql id="searchColumns">
+		creditAuthInfo.id id,creditAuthInfo.apply_id applyId,creditAuthInfo.cust_id custId,creditAuthInfo.type type,creditAuthInfo.td_score tdScore,creditAuthInfo.td_score_attach_url tdScoreAttachUrl,creditAuthInfo.td_risk_attach_url tdRiskAttachUrl,creditAuthInfo.br_rule_score brRuleScore,creditAuthInfo.br_credit_score brCreditScore,creditAuthInfo.br_attach_url brAttachUrl,creditAuthInfo.has_judgement hasJudgement,creditAuthInfo.judgement_attach_url judgementAttachUrl,creditAuthInfo.create_time createTime,creditAuthInfo.update_time updateTime,creditAuthInfo.is_deleted isDeleted,creditAuthInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.CreditAuthInfo">
+		insert into
+		c_credit_auth_info(br_credit_score,update_time,remark,judgement_attach_url,type,has_judgement,apply_id,is_deleted,td_score,create_time,td_score_attach_url,br_rule_score,cust_id,id,td_risk_attach_url,br_attach_url)
+		values (#{brCreditScore},#{updateTime},#{remark},#{judgementAttachUrl},#{type},#{hasJudgement},#{applyId},#{isDeleted},#{tdScore},#{createTime},#{tdScoreAttachUrl},#{brRuleScore},#{custId},#{id},#{tdRiskAttachUrl},#{brAttachUrl})
+	</insert>
+
+	<delete id="delete">
+		delete from c_credit_auth_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_credit_auth_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.CreditAuthInfo">
+		update c_credit_auth_info set
+		br_credit_score=#{brCreditScore},update_time=#{updateTime},remark=#{remark},judgement_attach_url=#{judgementAttachUrl},type=#{type},has_judgement=#{hasJudgement},apply_id=#{applyId},is_deleted=#{isDeleted},td_score=#{tdScore},create_time=#{createTime},td_score_attach_url=#{tdScoreAttachUrl},br_rule_score=#{brRuleScore},cust_id=#{custId},id=#{id},td_risk_attach_url=#{tdRiskAttachUrl},br_attach_url=#{brAttachUrl} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.CreditAuthInfo">
+		update c_credit_auth_info
+		<set>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="type != null"> type=#{type},</if>
+            <if test="tdScore != null"> td_score=#{tdScore},</if>
+            <if test="tdScoreAttachUrl != null and tdScoreAttachUrl !=''"> td_score_attach_url=#{tdScoreAttachUrl},</if>
+            <if test="tdRiskAttachUrl != null and tdRiskAttachUrl !=''"> td_risk_attach_url=#{tdRiskAttachUrl},</if>
+            <if test="brRuleScore != null"> br_rule_score=#{brRuleScore},</if>
+            <if test="brCreditScore != null"> br_credit_score=#{brCreditScore},</if>
+            <if test="brAttachUrl != null and brAttachUrl !=''"> br_attach_url=#{brAttachUrl},</if>
+            <if test="hasJudgement != null"> has_judgement=#{hasJudgement},</if>
+            <if test="judgementAttachUrl != null and judgementAttachUrl !=''"> judgement_attach_url=#{judgementAttachUrl},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.CreditAuthInfo">
+		select
+		<include refid="searchColumns" />
+		from c_credit_auth_info creditAuthInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.CreditAuthInfo">
+		select
+		<include refid="searchColumns" />
+		from c_credit_auth_info creditAuthInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CreditAuthInfo">
+		select
+		<include refid="searchColumns" />
+		from c_credit_auth_info creditAuthInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<!--根据applyId和type查询-->
+	<select id="selByApplyIdAndType" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CreditAuthInfo">
+		select
+		<include refid="searchColumns"/>
+		from c_credit_auth_info creditAuthInfo
+		where creditAuthInfo.apply_id=#{applyId} and creditAuthInfo.type=#{type}
+
+	</select>
+</mapper>
+

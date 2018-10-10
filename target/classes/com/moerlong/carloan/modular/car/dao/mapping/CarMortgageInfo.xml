@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarMortgageInfoDao">
+
+	<sql id="searchColumns">
+		carMortgageInfo.id id,
+		carMortgageInfo.car_id carId,
+		carMortgageInfo.name name,
+		carMortgageInfo.cert_id certId,
+		carMortgageInfo.reg_date regDate,
+		carMortgageInfo.create_time createTime,
+		carMortgageInfo.update_time updateTime,
+		carMortgageInfo.is_deleted isDeleted,
+		carMortgageInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarMortgageInfo">
+		insert into
+		c_car_mortgage_info(
+		car_id ,
+		name,
+		cert_id ,
+		reg_date,
+		create_time,
+		update_time,
+		is_deleted,
+		remark
+		)
+		values (
+		#{carId},
+		#{name},
+		#{certId},
+		#{regDate},
+		#{createTime},
+		#{updateTime},
+		#{isDeleted},
+		#{remark}
+			)
+	</insert>
+
+	<delete id="delete">
+		delete from c_car_mortgage_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_car_mortgage_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarMortgageInfo">
+		update c_car_mortgage_info set
+		car_id=#{carId},
+		name=#{name},
+		cert_id=#{certId},
+		reg_date=#{regDate},
+		create_time=#{createTime},
+		update_time=#{updateTime},
+		is_deleted=#{isDeleted},
+		remark=#{remark}
+		 where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarMortgageInfo">
+		update c_car_mortgage_info
+		<set>
+            <if test="carId != null"> car_id=#{carId},</if>
+            <if test="name != null"> name=#{name},</if>
+            <if test="certId != null"> cert_id=#{certId},</if>
+            <if test="regDate != null"> reg_date=#{regDate},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarMortgageInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_mortgage_info carMortgageInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarMortgageInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_mortgage_info carMortgageInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.car.entity.CarMortgageInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_mortgage_info carMortgageInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+	<insert id="saveAll" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarMortgageInfo">
+		insert into c_car_mortgage_info
+		(
+		car_id ,
+		name,
+		cert_id ,
+		reg_date,
+		create_time,
+		update_time,
+		is_deleted,
+		remark
+		)
+		values
+		<foreach collection="list" item="st" separator="," index="idx" open="" close="">
+			(#{st.carId},
+			#{st.name},
+			#{st.certId},
+			#{st.regDate},
+			#{st.createTime},
+			#{st.updateTime},
+			#{st.isDeleted},
+			#{st.remark})
+		</foreach>
+	</insert>
+	<update id="updateAll" parameterType="java.util.List">
+		<foreach collection="list" item="st" separator=";" index="idx" open="" close="">
+			update c_family_book_sub_info set
+			<if test="carId != null"> car_id=#{st.carId},</if>
+			<if test="name != null"> name=#{st.name},</if>
+			<if test="certId != null"> cert_id=#{st.certId},</if>
+			<if test="regDate != null"> reg_date=#{st.regDate},</if>
+			<if test="createTime != null"> create_time=#{st.createTime},</if>
+			<if test="updateTime != null"> update_time=#{st.updateTime},</if>
+			<if test="isDeleted != null"> is_deleted=#{st.isDeleted},</if>
+			<if test="remark != null"> remark=#{st.remark},</if>
+			where  id =#{st.id}
+		</foreach>
+	</update>
+	<select id="findCarMortgageInfoByCarId" resultType="com.moerlong.carloan.modular.car.entity.CarMortgageInfo">
+		SELECT DISTINCT
+		<include refid="searchColumns" />
+		FROM
+		c_car_mortgage_info carMortgageInfo
+		where car_id=#{carId}
+	</select>
+</mapper>
+

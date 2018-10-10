@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.paybackMgr.dao.PayStatisInfoDao">
+
+	<sql id="searchColumns">
+		id id,
+		dept_id deptId,
+		statis_date statisDate,
+		pay_total_amount payTotalAmount,
+		repayment_total_amount repaymentTotalAmount,
+		total_capital totalCapital,
+   		total_interest totalInterest,
+   		total_service_charge totalServiceCharge,
+   		total_charge    totalCharge,
+   		total_penalty   totalPenalty,
+   		total_breach	totalBreach,
+   		total_pre_fee   totalPreFee,
+   		not_repay_amount notRepayAmount,
+   		not_repay_capital notRepayCapital,
+   		not_repay_interest notRepayInterest,
+   		not_repay_service_charge notRepayServiceCharge,
+   		not_repay_charge notRepayCharge,
+   		not_repay_penalty notRepayPenalty,
+   		cur_pay curPay,
+   		cur_repayment curRepayment,
+   		cur_pre_fee	curPreFee,
+		create_time createTime,
+		update_time updateTime,
+		is_deleted isDeleted,
+		remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.PayStatisInfo">
+		insert into
+		c_pay_statis_info(
+			dept_id,
+			repayment_total_amount,
+			is_deleted,
+			create_time,
+			pay_total_amount,
+			statis_date,
+			total_capital,
+   			total_interest,
+   			total_service_charge,
+   			total_charge,
+   			total_penalty,
+   			total_breach,
+   			total_pre_fee,
+   			not_repay_amount,
+   			not_repay_capital,
+   			not_repay_interest,
+   			not_repay_service_charge,
+   			not_repay_charge,
+   			not_repay_penalty,
+   			cur_pay,
+   			cur_repayment,
+   			cur_pre_fee,
+			update_time,
+			remark,
+			id)
+		values (
+		    #{deptId},
+			#{repaymentTotalAmount},
+			#{isDeleted},
+			#{createTime},
+			#{payTotalAmount},
+			#{statisDate},
+			#{totalCapital},
+			#{totalInterest},
+			#{totalServiceCharge},
+			#{totalCharge},
+			#{totalPenalty},
+			#{totalBreach},
+			#{totalPreFee},
+			#{notRepayAmount},
+			#{notRepayCapital},
+   			#{notRepayInterest},
+   			#{notRepayServiceCharge},
+   			#{notRepayCharge},
+   			#{notRepayPenalty},
+			#{curPay},
+			#{curRepayment},
+			#{curPreFee},
+			#{updateTime},
+			#{remark},
+			#{id})
+	</insert>
+
+	<delete id="delete">
+		delete from c_pay_statis_info
+		where id = #{id}
+	</delete>
+
+	<update id="update" parameterType="com.moerlong.carloan.modular.paybackMgr.entity.PayStatisInfo">
+		update c_pay_statis_info <set>
+		<if test="deptId != null"> dept_id=#{deptId},</if>
+		<if test="repaymentTotalAmount != null"> repayment_total_amount=#{repaymentTotalAmount},</if>
+		<if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+		<if test="createTime != null"> create_time=#{createTime},</if>
+		<if test="payTotalAmount != null"> pay_total_amount=#{payTotalAmount},</if>
+		<if test="statisDate != null and statisDate != ''"> statis_date=#{statisDate},</if>
+		<if test="totalCapital != null"> total_capital=#{totalCapital},</if>
+		<if test="totalInterest != null"> total_interest=#{totalInterest},</if>
+		<if test="totalServiceCharge != null"> total_service_charge=#{totalServiceCharge},</if>
+		<if test="totalCharge != null"> total_charge=#{totalCharge},</if>
+		<if test="totalPenalty != null"> total_penalty=#{totalPenalty},</if>
+		<if test="totalBreach != null"> total_breach=#{totalBreach},</if>
+		<if test="totalPreFee != null"> total_pre_fee=#{totalPreFee},</if>
+		<if test="notRepayAmount != null"> not_repay_amount=#{notRepayAmount},</if>
+		<if test="notRepayCapital != null"> not_repay_capital=#{notRepayCapital},</if>
+		<if test="notRepayInterest != null"> not_repay_interest=#{notRepayInterest},</if>
+		<if test="notRepayServiceCharge != null"> not_repay_service_charge=#{notRepayServiceCharge},</if>
+		<if test="notRepayCharge != null"> not_repay_charge=#{notRepayCharge},</if>
+		<if test="notRepayPenalty != null"> not_repay_penalty=#{notRepayPenalty},</if>
+		<if test="curPay != null"> cur_pay=#{curPay},</if>
+		<if test="curRepayment != null"> cur_repayment=#{curRepayment},</if>
+		<if test="curPreFee != null"> cur_pre_fee=#{curPreFee},</if>
+		<if test="updateTime != null"> update_time=#{updateTime},</if>
+		<if test="remark != null and remark != ''"> remark=#{remark},</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.paybackMgr.entity.PayStatisInfo">
+		select
+		<include refid="searchColumns" />
+		from c_pay_statis_info
+		where id = #{id}
+	</select>
+
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" resultType="com.moerlong.carloan.modular.paybackMgr.entity.PayStatisInfo">
+		select
+		<include refid="searchColumns" />
+		from c_pay_statis_info
+		where 1=1
+		
+		<if test="orderCondition != null"> order by #{orderCondition} </if>
+	</select>
+
+	<!-- 根据条件查询 -->
+	<select id="listByCondition" resultType="com.moerlong.carloan.modular.paybackMgr.entity.PayStatisInfo">
+		select
+		<include refid="searchColumns" />
+		from c_pay_statis_info
+		
+		where 1=1
+
+		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+			and (statis_date between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+		</if>
+		<if test="deptId==2 or deptId==3 or deptId==4">
+			and dept_id=#{deptId}
+		</if>
+		order by update_time DESC
+	</select>
+
+</mapper>
+

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.payMgr.dao.PayInfoDao">
+
+	<sql id="searchColumns">
+		id id,
+		cust_id custId,
+		apply_id applyId,
+		dept_id deptId,
+		contract_no contractNo,
+		cust_name custName,
+		cust_mobile custMobile,
+		cust_id_no custIdNo,
+		reception_depart receptionDepart,
+		reception_manager receptionManager,
+		trans_source transSource,
+		total_amount totalAmount,
+		period_num periodNum,
+		not_pay_amount notPayAmount,
+		payed_amount payedAmount,
+		pay_status payStatus,
+		pay_status_desc payStatusDesc,
+		reception_amount receptionAmount,
+		is_replace_cost isReplaceCost,
+		is_per_charge isPerCharge,
+		bank_name bankName,
+		bank_card_no bankCardNo,
+		approve_amount approveAmount,
+		first_buss_id firstBussId,
+		second_buss_id secondBussId,
+		buss_manager_id bussManagerId,
+		first_finance_id firstFinanceId,
+		first_finance_manager_id firstFinanceManagerId,
+		second_finance_id secondFinanceId,
+		second_finance_manager_id secondFinanceManagerId,
+		create_time createTime,
+		update_time updateTime,
+		remark remark,
+		is_deleted isDeleted
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.payMgr.entity.PayInfo">
+		insert into
+		c_pay_info(
+			payed_amount,
+			cust_mobile,
+			bank_card_no,
+			not_pay_amount,
+			bank_name,
+			update_time,
+			remark,
+			cust_name,
+			apply_id,
+			dept_id,
+			contract_no,
+			total_amount,
+			period_num,
+			is_deleted,
+			create_time,
+			cust_id,
+			id,
+			pay_status,
+			pay_status_desc,
+			reception_amount,
+			is_replace_cost,
+			is_per_charge,
+			approve_amount,
+			reception_depart,
+			reception_manager,
+			trans_source,
+			first_buss_id,
+			second_buss_id,
+			buss_manager_id,
+			first_finance_id,
+			first_finance_manager_id,
+			second_finance_id,
+			second_finance_manager_id,
+			cust_id_no)
+		values (
+			#{payedAmount},
+			#{custMobile},
+			#{bankCardNo},
+			#{notPayAmount},
+			#{bankName},
+			#{updateTime},
+			#{remark},
+			#{custName},
+			#{applyId},
+			#{deptId},
+			#{contractNo},
+			#{totalAmount},
+			#{periodNum},
+			#{isDeleted},
+			#{createTime},
+			#{custId},
+			#{id},
+			#{payStatus},
+			#{payStatusDesc},
+			#{receptionAmount},
+			#{isReplaceCost},
+			#{isPerCharge},
+			#{approveAmount},
+			#{receptionDepart},
+			#{receptionManager},
+			#{transSource},
+			#{firstBussId},
+			#{secondBussId},
+			#{bussManagerId},
+			#{firstFinanceId},
+			#{firstFinanceManagerId},
+			#{secondFinanceId},
+			#{secondFinanceManagerId},
+			#{custIdNo})
+	</insert>
+
+	<delete id="delete">
+		delete from c_pay_info
+		where id = #{id}
+	</delete>
+
+	<update id="update" parameterType="com.moerlong.carloan.modular.payMgr.entity.PayInfo">
+		update c_pay_info <set>
+		<if test="payedAmount != null"> payed_amount=#{payedAmount},</if>
+		<if test="custMobile != null"> cust_mobile=#{custMobile},</if>
+		<if test="bankCardNo != null"> bank_card_no=#{bankCardNo},</if>
+		<if test="notPayAmount != null"> not_pay_amount=#{notPayAmount},</if>
+		<if test="bankName != null"> bank_name=#{bankName},</if>
+		<if test="updateTime != null"> update_time=#{updateTime},</if>
+		<if test="remark != null"> remark=#{remark},</if>
+		<if test="custName != null"> cust_name=#{custName},</if>
+		<if test="applyId != null"> apply_id=#{applyId},</if>
+		<if test="deptId != null"> dept_id=#{deptId},</if>
+		<if test="contractNo != null"> contract_no=#{contractNo},</if>
+		<if test="totalAmount != null"> total_amount=#{totalAmount},</if>
+		<if test="periodNum != null"> period_num=#{periodNum},</if>
+		<if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+		<if test="createTime != null"> create_time=#{createTime},</if>
+		<if test="custId != null"> cust_id=#{custId},</if>
+		<if test="payStatus != null"> pay_status=#{payStatus},</if>
+		<if test="payStatusDesc != null"> pay_status_desc=#{payStatusDesc},</if>
+		<if test="receptionAmount != null">reception_amount = #{receptionAmount},</if>
+		<if test="isReplaceCost != null">is_replace_cost = #{isReplaceCost},</if>
+		<if test="isPerCharge != null">is_per_charge = #{isPerCharge},</if>
+		<if test="approveAmount != null"> approve_amount=#{approveAmount},</if>
+		<if test="receptionDepart != null"> reception_depart=#{receptionDepart},</if>
+		<if test="receptionManager != null"> reception_manager=#{receptionManager},</if>
+		<if test="transSource != null"> trans_source=#{transSource},</if>
+		<if test="firstBussId != null"> first_buss_id=#{firstBussId},</if>
+		<if test="secondBussId != null"> second_buss_id=#{secondBussId},</if>
+		<if test="bussManagerId != null"> buss_manager_id=#{bussManagerId},</if>
+		<if test="firstFinanceId != null"> first_finance_id=#{firstFinanceId},</if>
+		<if test="firstFinanceManagerId != null"> first_finance_manager_id=#{firstFinanceManagerId},</if>
+		<if test="secondFinanceId != null"> second_finance_id=#{secondFinanceId},</if>
+		<if test="secondFinanceManagerId != null"> second_finance_manager_id=#{secondFinanceManagerId},</if>
+		<if test="custIdNo != null"> cust_id_no=#{custIdNo},</if>
+	</set>
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.payMgr.entity.PayInfo">
+		select
+		<include refid="searchColumns" />
+		from c_pay_info
+		where id = #{id}
+	</select>
+	
+	<select id="selectByApplyId" resultType="com.moerlong.carloan.modular.payMgr.entity.PayInfo">
+		select
+		<include refid="searchColumns" />
+		from c_pay_info
+		where apply_id = #{id}
+	</select>
+
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" resultType="com.moerlong.carloan.modular.payMgr.entity.PayInfo">
+		select
+		<include refid="searchColumns" />
+		from c_pay_info
+		where 1=1
+		
+		<if test="orderCondition != null"> order by #{orderCondition} </if>
+	</select>
+
+	<!-- 根据条件查询 -->
+	<select id="listByCondition" resultType="com.moerlong.carloan.modular.payMgr.entity.PayInfo">
+		select
+		<include refid="searchColumns" />
+		from c_pay_info
+		where 1=1
+
+		<if test="custName != null and custName != ''">
+			and cust_name like CONCAT('%',#{custName},'%')
+		</if>
+		<if test="custMobile != null and custMobile != ''">
+			and cust_mobile like CONCAT('%',#{custMobile},'%')
+		</if>
+
+		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+			and (update_time between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+		</if>
+		<if test="payStatus != null and payStatus != ''">
+			and pay_status = #{payStatus}
+		</if>
+		order by update_time DESC
+	</select>
+
+</mapper>
+

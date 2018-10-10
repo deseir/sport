@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.TelecomBasicInfoDao">
+
+	<sql id="searchColumns">
+		telecomBasicInfo.id id,telecomBasicInfo.cust_id custId,telecomBasicInfo.apply_id applyId,telecomBasicInfo.type type,telecomBasicInfo.mobile mobile,telecomBasicInfo.audit_task_id auditTaskId,telecomBasicInfo.audit_status auditStatus,telecomBasicInfo.audit_time auditTime,telecomBasicInfo.expire_time expireTime,telecomBasicInfo.audit_result auditResult,telecomBasicInfo.create_time createTime,telecomBasicInfo.update_time updateTime,telecomBasicInfo.is_deleted isDeleted,telecomBasicInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.TelecomBasicInfo">
+		insert into
+		c_telecom_basic_info(mobile,update_time,remark,type,audit_result,apply_id,expire_time,is_deleted,audit_time,create_time,cust_id,audit_status,id,audit_task_id)
+		values (#{mobile},#{updateTime},#{remark},#{type},#{auditResult},#{applyId},#{expireTime},#{isDeleted},#{auditTime},#{createTime},#{custId},#{auditStatus},#{id},#{auditTaskId})
+	</insert>
+
+	<delete id="delete">
+		delete from c_telecom_basic_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_telecom_basic_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.TelecomBasicInfo">
+		update c_telecom_basic_info set
+		mobile=#{mobile},update_time=#{updateTime},remark=#{remark},type=#{type},audit_result=#{auditResult},apply_id=#{applyId},expire_time=#{expireTime},is_deleted=#{isDeleted},audit_time=#{auditTime},create_time=#{createTime},cust_id=#{custId},audit_status=#{auditStatus},id=#{id},audit_task_id=#{auditTaskId} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.TelecomBasicInfo">
+		update c_telecom_basic_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="type != null"> type=#{type},</if>
+            <if test="mobile != null"> mobile=#{mobile},</if>
+            <if test="auditTaskId != null"> audit_task_id=#{auditTaskId},</if>
+            <if test="auditStatus != null"> audit_status=#{auditStatus},</if>
+            <if test="auditTime != null"> audit_time=#{auditTime},</if>
+            <if test="expireTime != null"> expire_time=#{expireTime},</if>
+            <if test="auditResult != null"> audit_result=#{auditResult},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.TelecomBasicInfo">
+		select
+		<include refid="searchColumns" />
+		from c_telecom_basic_info telecomBasicInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.TelecomBasicInfo">
+		select
+		<include refid="searchColumns" />
+		from c_telecom_basic_info telecomBasicInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.TelecomBasicInfo">
+		select
+		<include refid="searchColumns" />
+		from c_telecom_basic_info telecomBasicInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<!-- 查询（根据 applyId  和 Type 查询） -->
+	<select id="selectByApplyIdAndType" resultType="com.moerlong.carloan.modular.cust.entity.TelecomBasicInfo">
+		select
+		<include refid="searchColumns" />
+		from c_telecom_basic_info telecomBasicInfo
+		where apply_id=#{applyId} and type=#{type}
+	</select>
+</mapper>
+

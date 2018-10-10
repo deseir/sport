@@ -1,0 +1,186 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal"id="addCard">
+
+			<div class="row">
+				<div class="col-sm-6">
+					<input type="hidden" value="${applyId}" id="applyId">
+					<input type="hidden" value="${type}" id="paramType">
+					<input type="hidden" id="cardDetailId" value="${cardDetailId}">
+					<!--<#input id="cardOrg" name="发卡机构" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>发卡机构</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="cardOrg" name="cardOrg" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="cardAmount" name="授信额度(元)" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>授信额度(元)</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="cardAmount" name="cardAmount" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<!--<#input id="cardShareAmount" name="共享授信额度(元)" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>共享授信额度(元)</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="cardShareAmount" name="cardShareAmount" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#select id="cardType" name="贷款类型" underline="false">-->
+					<!--<option value="">-&#45;&#45;请选择-&#45;&#45;</option>-->
+					<!--<option value="0">抵押担保</option>-->
+					<!--<option value="1">信用免担保</option>-->
+					<!--<option value="2">组合认证</option>-->
+					<!--</#select>-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>贷款类型</label>
+						</div>
+						<div class="col-sm-7">
+							<select class="form-control" id="cardType" name="cardType">
+								<option value="">---请选择---</option>
+								<option value="0">抵押担保</option>
+								<option value="1">信用免担保</option>
+								<option value="2">组合认证</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<!--<#select id="accountStatus" name="账户状态" underline="false">-->
+					<!--<option value="">-&#45;&#45;请选择-&#45;&#45;</option>-->
+					<!--<option value="0">正常</option>-->
+					<!--<option value="1">冻结</option>-->
+					<!--<option value="2">止付</option>-->
+					<!--<option value="3">呆账</option>-->
+					<!--</#select>-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>账户状态</label>
+						</div>
+						<div class="col-sm-7">
+							<select class="form-control" id="accountStatus" name="accountStatus">
+								<option value="">---请选择---</option>
+								<option value="0">正常</option>
+								<option value="1">冻结</option>
+								<option value="2">止付</option>
+								<option value="3">呆账</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="usedAmount" name="已用额度(元)" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>已用额度(元)</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="usedAmount" name="usedAmount" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<!--<#input id="avgUsedAmount" name="近6个月平均使用额度(元)" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>近6个月平均使用额度(元)</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="avgUsedAmount" name="avgUsedAmount" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="maxUsedAmount" name="最大使用额度(元)" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>最大使用额度(元)</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="maxUsedAmount" name="maxUsedAmount" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<!--<#input id="curOverdueNum" name="当前逾期期数" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>当前逾期期数</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="curOverdueNum" name="curOverdueNum" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<!--<#input id="curOverdueAmount" name="当前逾期金额(元)" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>当前逾期金额(元)</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="curOverdueAmount" name="curOverdueAmount" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<!--<#input id="cardRemark" name="备注" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red">*</span>
+							<label>备注</label>
+						</div>
+						<div class="col-sm-7">
+							<input class="form-control" id="cardRemark" name="cardRemark" type="text" underline="false">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div style="width: 200px;margin: 45px;">
+						<button class="btn btn-primary" onclick="saveOrUpdate();"><i class="fa fa-save"></i>&nbsp;保存</button>
+					</div>
+				</div>
+			</div>
+	</div>
+</div>
+</div>
+<script src="${ctxPath}/static/modular/cust/addCardDetail.js"></script>
+@}

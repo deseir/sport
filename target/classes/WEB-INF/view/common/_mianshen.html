@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit"/><!-- 让360浏览器默认选择webkit内核 -->
+
+    <!-- 全局css -->
+    <link rel="shortcut icon" href="${ctxPath}/static/qianduan/qianduan/favicon.ico">
+    <link href="${ctxPath}/static/qianduan/resources/css/jquery-ui-themes.css" rel="stylesheet">
+    <link href="${ctxPath}/static/qianduan/resources/css/axure_rp_page.css" rel="stylesheet">
+    <link href="${ctxPath}/static/qianduan/data/styles.css" rel="stylesheet">
+    <link href="${ctxPath}/static/qianduan/styles.css" rel="stylesheet">
+
+    <!-- 全局js -->
+    <script src="${ctxPath}/static/qianduan/resources/scripts/jquery-1.7.1.min.js"></script>
+    <script src="${ctxPath}/static/qianduan/resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+    <script src="${ctxPath}/static/qianduan/resources/scripts/prototypePre.js"></script>
+    <script src="${ctxPath}/static/qianduan/data/document.js"></script>
+    <script src="${ctxPath}/static/qianduan/resources/scripts/prototypePost.js"></script>
+    <script src="${ctxPath}/static/qianduan/data.js"></script>
+    <script type="text/javascript">
+        $axure.utils.getTransparentGifPath = function() { return '${ctxPath}/static/qianduan/resources/images/transparent.gif'; };
+        $axure.utils.getOtherPath = function() { return '${ctxPath}/static/qianduan/resources/Other.html'; };
+        $axure.utils.getReloadPath = function() { return '${ctxPath}/static/qianduan/resources/reload.html'; };
+    </script>
+
+
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    ${layoutContent}
+</div>
+</body>
+</html>

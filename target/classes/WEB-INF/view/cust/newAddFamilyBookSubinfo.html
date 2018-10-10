@@ -1,0 +1,85 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal" id="addCust">
+			<div class="row" id="newAddFamily">
+				<div class="col-sm-12">
+					<input type="hidden" value="${familyBookInfoId}" id="SubInfoId">
+					<input type="hidden" value="${applyId}" id="applyId2">
+					<!--<#input id="familyBookSubInfoRelationship1" name="申请人与关联人关系" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red;">*</span>
+							<label >申请人与关联人关系</label>
+						</div>
+						<div class="col-sm-6" >
+							<input class="form-control" id="familyBookSubInfoRelationship1" name="familyBookSubInfoRelationship1" type="text" underline="false" >
+						</div>
+					</div>
+					<!--<#input id="familyBookSubInfoName1" name="与户主关联人姓名" underline="false" />-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red;">*</span>
+							<label >与户主关联人姓名</label>
+						</div>
+						<div class="col-sm-6" >
+							<input class="form-control" id="familyBookSubInfoName1" name="familyBookSubInfoName1" type="text" underline="false" >
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<span style="color: red;">*</span>
+							<label >与户主关联人姓名身份证号码</label>
+						</div>
+						<div class="col-sm-6" >
+							<input class="form-control" id="familyBookSubInfoCertId1" name="familyBookSubInfoCertId1" type="text" underline="false" onblur="setSubInfoSex()">
+						</div>
+					</div>
+					<!--<#input id="familyBookSubInfoCertId1" name="与户主关联人姓名身份证号码" underline="false"/>-->
+					<!--<#input id="familyBookSubInfoSex1Name" name="与户主关联人性别" underline="false" disabled="disabled"/>-->
+					<div class="form-group">
+						<div class="col-sm-4 control-label">
+							<label >与户主关联人性别</label>
+						</div>
+						<div class="col-sm-6" >
+							<input class="form-control" id="familyBookSubInfoSex1Name" name="familyBookSubInfoSex1Name" type="text" underline="false" disabled="disabled">
+						</div>
+					</div>
+					<input type="hidden" id="familyBookSubInfoSex1">
+					<!--<#select id="familyBookSubInfoSex1" name="与户主关联人性别" underline="false">
+						<option value="0">男</option>
+						<option value="1">女</option>
+					</#select>-->
+					<div>
+						<label class="col-sm-3 control-label">关联人户口页照片路径</label>
+			            <div  class="container">
+			           		<div class="form-grop"  enctype="multipart/form-data">
+			           			<div style="width:7%;float:left">
+			           				<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+			           					<span class="fileinput-new">选择文件</span>
+			           					<input id="bookPhotoUrl12" type="file" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+			           					<input id="bookPhotoUrl2" type="hidden">
+			           				</span>
+			           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:40%">
+			           					<img id="bookPhotoUrlImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+			           				</div>
+			           				
+			           			</div>
+			           		</div>
+			           </div>
+		           </div>
+				</div>
+			</div>
+			<div class="row" style="margin-top:85px;margin-left:40%">
+				<div class="col-sm-3">
+					<div style="width: 200px; margin: 10px auto;">
+						<button class="btn btn-primary" onclick="AddFamilyBookSubInfo();"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;新增</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="${ctxPath}/static/modular/cust/custNqDataAdd.js"></script>
+@}

@@ -1,0 +1,41 @@
+@layout("/common/_container.html"){
+
+<div class="">
+	<div class="">
+
+		<div class="ibox-title">
+			<div style="border-bottom: 1px solid #cccccc94;height: 45px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 20px;">拆卸GPS确认</span></div>
+		</div>
+		<div class="tab-content">
+			<input type="hidden" value="${applyId}" id="applyId">
+			<input type="hidden" value="${idPicUrls}" id="idPicUrls">
+			<!--身份认证-->
+			<div class="tab-pane fade in active"  id="div_sfrz">
+				<div class="menu-item" id="menu-item5">
+					<div class="form-horizontal" style="background-color:#FFF;padding:1px 1px 1px 25px;box-shadow: 3px 5px 3px 3px #c2c2c2;">
+						<!--<h5>GPS卸载照片</h5>-->
+						<div ><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 15px;">GPS卸载照片</span></div>
+						<div class="row">
+							<div class="col-sm-12" id="showPhotoContent">
+
+							</div>
+						</div>
+
+						<div class="row">
+						<div style="width: 420px;margin:60px 1px 60px 100px;">
+							<#button name="返回" icon="fa fa-chevron-left" clickFun="javascripy:history.back();"/>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+</div>
+</div>
+
+<script src="${ctxPath}/static/modular/cust/gpsuninstallconfirm.js"></script>
+<script src="${ctxPath}/static/modular/loan/mywork/approveRecord.js?v=1.0"></script>
+@}

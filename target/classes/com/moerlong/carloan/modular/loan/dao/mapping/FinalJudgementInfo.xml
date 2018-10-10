@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.loan.dao.FinalJudgementInfoDao">
+
+	<sql id="searchColumns">
+		finalJudgementInfo.id id,finalJudgementInfo.cust_id custId,finalJudgementInfo.apply_id applyId,finalJudgementInfo.judgement_result judgementResult,finalJudgementInfo.rejection_reason rejectionReason,finalJudgementInfo.loan_amount loanAmount,finalJudgementInfo.loan_period loanPeriod,finalJudgementInfo.audit_time auditTime,finalJudgementInfo.create_time createTime,finalJudgementInfo.update_time updateTime,finalJudgementInfo.is_deleted isDeleted,finalJudgementInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.loan.entity.FinalJudgementInfo">
+		insert into
+		c_final_judgement_info(apply_id,is_deleted,audit_time,create_time,judgement_result,cust_id,update_time,remark,id,rejection_reason,loan_amount,loan_period)
+		values (#{applyId},#{isDeleted},#{auditTime},#{createTime},#{judgementResult},#{custId},#{updateTime},#{remark},#{id},#{rejectionReason},#{loanAmount},#{loanPeriod})
+	</insert>
+
+	<delete id="delete">
+		delete from c_final_judgement_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_final_judgement_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.loan.entity.FinalJudgementInfo">
+		update c_final_judgement_info set
+		apply_id=#{applyId},is_deleted=#{isDeleted},audit_time=#{auditTime},create_time=#{createTime},judgement_result=#{judgementResult},cust_id=#{custId},update_time=#{updateTime},remark=#{remark},id=#{id},rejection_reason=#{rejectionReason},loan_amount=#{loanAmount},loan_period=#{loanPeriod} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.loan.entity.FinalJudgementInfo">
+		update c_final_judgement_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="judgementResult != null"> judgement_result=#{judgementResult},</if>
+            <if test="rejectionReason != null"> rejection_reason=#{rejectionReason},</if>
+            <if test="loanAmount != null"> loan_amount=#{loanAmount},</if>
+            <if test="loanPeriod != null"> loan_period=#{loanPeriod},</if>
+            <if test="auditTime != null"> audit_time=#{auditTime},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.loan.entity.FinalJudgementInfo">
+		select
+		<include refid="searchColumns" />
+		from c_final_judgement_info finalJudgementInfo
+		where id = #{id}
+	</select>
+	
+	<select id="selectByApplyId" resultType="com.moerlong.carloan.modular.loan.entity.FinalJudgementInfo">
+		select
+		<include refid="searchColumns" />
+		from c_final_judgement_info finalJudgementInfo
+		where apply_id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.loan.entity.FinalJudgementInfo">
+		select
+		<include refid="searchColumns" />
+		from c_final_judgement_info finalJudgementInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.loan.entity.FinalJudgementInfo">
+		select
+		<include refid="searchColumns" />
+		from c_final_judgement_info finalJudgementInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+</mapper>
+

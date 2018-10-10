@@ -1,0 +1,169 @@
+@layout("/common/_container.html"){
+
+<div class="">
+  <div class="">
+	  <div class="row">
+		  <ul class="nav nav-pills nav-justified" style="background-color: #ffffff">
+			  <li class="active" onclick="skipHtml(1)" id="nqEnter"><a href="javascript:;" data-toggle="tab" data-target="#lookTab">内勤资料录入</a>
+			  </li>
+			  <li onclick="skipHtml(2)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab1">验车</a></li>
+			  <li onclick="skipHtml(3)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab2">面审</a></li>
+			  <li onclick="skipHtml(4)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab3">签订合同</a></li>
+			  <li onclick="skipHtml(5)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab4">抵押申请</a></li>
+			  <li onclick="skipHtml(6)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab5">抵押办理成功</a></li>
+			  <li onclick="skipHtml(7)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab6">GPS安装</a></li>
+			  <li onclick="skipHtml(8)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab7">资料存留</a></li>
+			  <li onclick="skipHtml(9)"  class="yanche"><a href="javascript:;" data-toggle="tab" data-target="#lookTab8">请款申请</a></li>
+			  <li onclick="skipHtml(10)" class="yanche"><a href="javascript:;" data-toggle="tab" data-target="#lookTab9">请款内勤主管审核</a></li>
+			  <li onclick="skipHtml(11)" class="yanche"><a href="javascript:;" data-toggle="tab" data-target="#lookTab10">请款业务经理审核</a></li>
+			  <li onclick="skipHtml(12)" class="yanche"><a href="javascript:;" data-toggle="tab" data-target="#lookTab11">请款业务经理审核</a></li>
+			  <li onclick="skipHtml(13)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab12">请款财务首次审核</a></li>
+			  <li onclick="skipHtml(14)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab13">请款财务经理首次审核</a></li>
+			  <li onclick="skipHtml(15)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab14">请款财务二次审核成功</a></li>
+			  <li onclick="skipHtml(16)"><a href="javascript:;" data-toggle="tab" data-target="#lookTab14">拆卸GPS</a></li>
+		  </ul>
+	  </div>
+	  <div class="ibox-title">
+		  <h3>请款申请</h3>
+	  </div>
+   	<div class="tab-content">
+		<input type="hidden" value="${applyId}" id="applyId">
+		<input type="hidden" value="${transSource}" id="ts">
+		<input type="hidden" value="${idPicUrls}" id="idPicUrls">
+		<!--身份认证-->
+   		<div class="tab-pane fade in active"  id="div_sfrz">
+			<div class="menu-item" id="menu-item5">
+				<div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 3px 3px 3px 3px #c2c2c2;">
+					<h5></h5>
+					<div class="row">
+							<div class="col-sm-3">
+								<#input id="custName" name="姓名" underline="false" value="${name}"
+									readonly="readonly" />
+							</div>
+							<div class="col-sm-3">
+								<#input id="sex" name="性別" underline="false" value="${sex}"
+									readonly="readonly" />
+							</div>
+							<div class="col-sm-3">
+								<#input id="custIdNo" name="身份证号码" underline="false" value="${idno}"
+									readonly="readonly" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<#input id="contractNo" name="合同编号" underline="false" value="${contractNo}"
+									readonly="readonly" />
+							</div>
+							<div class="col-sm-3">
+								<#input id="totalAmount" name="借款总额" underline="false" value="${totalAmount}"
+									readonly="readonly" />
+							</div>
+							<div class="col-sm-3">
+								<#input id="periodNum" name="借款期数" underline="false" value="${periodNum}"
+									readonly="readonly" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<#input id="bankCardNo" name="银行卡号" underline="false" value="${bankCardNo}" readonly="readonly"/>
+							</div>
+							<div class="col-sm-3">
+								<#input id="bankName" name="开户银行" underline="false" value="${bankName}" readonly="readonly"/>
+							</div>
+							<div class="col-sm-3">
+								<#select id="isReplaceCost" name="是否代收" underline="false">
+									@if(isReplaceCost==0){
+									<option value="0" selected="selected">否</option>
+									@}else if(isReplaceCost==1){
+									<option value="1" selected="selected">是</option>
+									@}
+								</#select>
+							</div>
+						</div>
+						<div class="row">
+						
+							<div class="col-sm-3">
+								<#input id="receptionAmount" name="前台服务费(元)" underline="false" value="${receptionAmount}" readonly="readonly"/>
+							</div>
+							
+							<div class="col-sm-3">
+								<#input id="receptionDepart" name="前台部门" underline="false" value="${receptionDepart}" readonly="readonly"/>
+							</div>
+							<div class="col-sm-3">
+								<#input id="receptionManager" name="前台经理" underline="false" value="${receptionManager}" readonly="readonly"/>
+							</div>
+						</div>
+					    
+					    <div class="row">
+							<div class="col-sm-3">
+								<#input id="custMobile" name="手机号" underline="false" value="${custMobile}" readonly="readonly"/>
+							</div>
+							<!-- <div class="col-sm-3">
+								<#input id="receptionAmount" name="手续费" underline="false"/>
+							</div> -->
+							<div class="col-sm-3">
+								<#select id="transSource" name="业务来源" underline="false" value="${transSource}" />
+							</div>
+							<div class="col-sm-3">
+								<#select id="isPerCharge" name="手续费分期" underline="false" value="${isPerCharge}">
+									<option value="0">分期</option>
+									<option value="1">全部</option>
+								</#select>
+							</div>
+						</div>
+					<div class="row">
+
+					<div style="width: 420px; margin-left: 255px;">
+						<#button name="返回" icon="fa fa-chevron-left" clickFun="backCommons();"/>
+					</div>
+
+					</div>
+				</div>
+			</div>
+
+   		</div>
+
+
+   	</div>
+  </div>
+</div>
+<style>
+	.nav > li > a {color: #a0a0a0; padding: 13px 18px 14px 25px;}
+	.nav > nav-pill > li.active > a {border-radius:4px;}
+	.nav > nav-pill > li > a {border-radius:4px;}
+	/*.nav > li.active {border-left: none;}*/
+	/*.nav > li.active {background-color: #ccc;}*/
+	/*.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {background-color: #ccc;border-radius:4px;}*/
+	.nav > li.active {border-left: none;}
+	.nav > li.active {background-color: #fff;}
+	.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover{
+		border-radius: 0px;
+		border-bottom:2px solid #30af90; !important;
+		color: #30af90;
+	}
+</style>
+<script>
+	$("#transSource").attr("disabled","disabled");
+	$("#isPerCharge").attr("disabled","disabled");
+	$("#isReplaceCost").attr("disabled","disabled");
+    $(".yanche").css({
+        "background-color" : "#ccc",
+        "border-radius": "4px"
+    })
+    $(".yanche a").css({
+        "color" : "#fff"
+    })
+
+    $("#nqEnter").css({
+        "background-color" : "#fff",
+        "color": "#30af90"
+    })
+    $("#nqEnter a").css({
+        "background-color" : "#fff",
+        "color": "#30af90"
+    })
+</script>
+<script src="${ctxPath}/static/modular/cust/payNqzgAudit.js?v=1.0"></script>
+<script src="${ctxPath}/static/modular/loan/mywork/lookAll.js?v=1.0"></script>
+<script src="${ctxPath}/static/modular/loan/mywork/approveRecord.js?v=1.0"></script>
+@}

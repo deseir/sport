@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.CustIncomeInfoDao">
+
+	<sql id="searchColumns">
+		custIncomeInfo.id id,custIncomeInfo.cust_id custId,custIncomeInfo.apply_id applyId,custIncomeInfo.income_type incomeType,custIncomeInfo.income_amount incomeAmount,apply_amount applyAmount,apply_period applyPeriod,custIncomeInfo.income_confirm_amount incomeConfirmAmount,custIncomeInfo.loan_amount loanAmount,custIncomeInfo.dti dti,custIncomeInfo.attach_url attachUrl,custIncomeInfo.create_time createTime,custIncomeInfo.update_time updateTime,custIncomeInfo.is_deleted isDeleted,custIncomeInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.CustIncomeInfo">
+		insert into
+		c_cust_income_info(income_type,income_amount,income_confirm_amount,update_time,remark,loan_amount,apply_id,is_deleted,create_time,cust_id,dti,apply_amount,apply_period,attach_url,id)
+		values (#{incomeType},#{incomeAmount},#{incomeConfirmAmount},#{updateTime},#{remark},#{loanAmount},#{applyId},#{isDeleted},#{createTime},#{custId},#{dti},#{applyAmount},#{applyPeriod},#{attachUrl},#{id})
+	</insert>
+
+	<delete id="delete">
+		delete from c_cust_income_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_cust_income_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.CustIncomeInfo">
+		update c_cust_income_info set
+		income_type=#{incomeType},income_amount=#{incomeAmount},income_confirm_amount=#{incomeConfirmAmount},update_time=#{updateTime},remark=#{remark},loan_amount=#{loanAmount},apply_id=#{applyId},is_deleted=#{isDeleted},create_time=#{createTime},cust_id=#{custId},dti=#{dti},attach_url=#{attachUrl},id=#{id} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.CustIncomeInfo">
+		update c_cust_income_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="incomeType != null"> income_type=#{incomeType},</if>
+            <if test="incomeAmount != null"> income_amount=#{incomeAmount},</if>
+            <if test="incomeConfirmAmount != null"> income_confirm_amount=#{incomeConfirmAmount},</if>
+            <if test="loanAmount != null"> loan_amount=#{loanAmount},</if>
+            <if test="dti != null"> dti=#{dti},</if>
+            <if test="applyAmount != null"> apply_amount=#{applyAmount},</if>
+            <if test="applyPeriod != null"> apply_period=#{applyPeriod},</if>
+            <if test="attachUrl != null and attachUrl !=''"> attach_url=#{attachUrl},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.CustIncomeInfo">
+		select
+		<include refid="searchColumns" />
+		from c_cust_income_info custIncomeInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.CustIncomeInfo">
+		select
+		<include refid="searchColumns" />
+		from c_cust_income_info custIncomeInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CustIncomeInfo">
+		select
+		<include refid="searchColumns" />
+		from c_cust_income_info custIncomeInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<!--根据applyId查询-->
+	<select id="selByApplyId" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CustIncomeInfo">
+		select
+		<include refid="searchColumns"/>
+		from c_cust_income_info custIncomeInfo
+		where custIncomeInfo.apply_id=#{applyId}
+
+	</select>
+</mapper>
+

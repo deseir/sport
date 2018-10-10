@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarInteriorCollocationDao" >
+
+  <!-- new  -->
+  <update id="deleteLogic">
+		update c_car_validatecar_interior_collocation set is_deleted = 1 where id = #{id}
+  </update>
+
+  <select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarInteriorCollocation">
+    select
+    <include refid="Base_Column_List" />
+    from c_car_validatecar_interior_collocation
+  </select>
+
+  <select id="selectByApplyId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from c_car_validatecar_interior_collocation
+    where apply_id = #{applyId,jdbcType=BIGINT}
+  </select>
+
+  <!-- new over  -->
+
+  <resultMap id="BaseResultMap" type="com.moerlong.carloan.modular.car.entity.CarInteriorCollocation" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="car_id" property="carId" jdbcType="BIGINT" />
+    <result column="apply_id" property="applyId" jdbcType="BIGINT" />
+    <result column="cust_id" property="custId" jdbcType="BIGINT" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="interior_collocation" property="interiorCollocation" jdbcType="INTEGER" />
+    <result column="leather_steering_wheel" property="leatherSteeringWheel" jdbcType="INTEGER" />
+    <result column="electric_steering_wheel_adjustment" property="electricSteeringWheelAdjustment" jdbcType="INTEGER" />
+    <result column="steering_wheel_shift" property="steeringWheelShift" jdbcType="INTEGER" />
+    <result column="steering_wheel_memory" property="steeringWheelMemory" jdbcType="INTEGER" />
+    <result column="full_lcd_panel" property="fullLcdPanel" jdbcType="INTEGER" />
+    <result column="adjustable_steering_wheel" property="adjustableSteeringWheel" jdbcType="INTEGER" />
+    <result column="mfl" property="mfl" jdbcType="INTEGER" />
+    <result column="heated_steering_wheel" property="heatedSteeringWheel" jdbcType="INTEGER" />
+    <result column="driving_computer_screen" property="drivingComputerScreen" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Example_Where_Clause_Page" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    c_car_validatecar_interior_collocation.id, c_car_validatecar_interior_collocation.car_id, 
+    c_car_validatecar_interior_collocation.apply_id, c_car_validatecar_interior_collocation.cust_id, 
+    c_car_validatecar_interior_collocation.is_delete, c_car_validatecar_interior_collocation.create_time, 
+    c_car_validatecar_interior_collocation.update_time, c_car_validatecar_interior_collocation.interior_collocation, 
+    c_car_validatecar_interior_collocation.leather_steering_wheel, c_car_validatecar_interior_collocation.electric_steering_wheel_adjustment, 
+    c_car_validatecar_interior_collocation.steering_wheel_shift, c_car_validatecar_interior_collocation.steering_wheel_memory, 
+    c_car_validatecar_interior_collocation.full_lcd_panel, c_car_validatecar_interior_collocation.adjustable_steering_wheel, 
+    c_car_validatecar_interior_collocation.mfl, c_car_validatecar_interior_collocation.heated_steering_wheel, 
+    c_car_validatecar_interior_collocation.driving_computer_screen
+  </sql>
+
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from c_car_validatecar_interior_collocation
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="delete" parameterType="java.lang.Long" >
+    delete from c_car_validatecar_interior_collocation
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+
+  <insert id="save" parameterType="com.moerlong.carloan.modular.car.entity.CarInteriorCollocation" >
+    insert into c_car_validatecar_interior_collocation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="carId != null" >
+        car_id,
+      </if>
+      <if test="applyId != null" >
+        apply_id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="interiorCollocation != null" >
+        interior_collocation,
+      </if>
+      <if test="leatherSteeringWheel != null" >
+        leather_steering_wheel,
+      </if>
+      <if test="electricSteeringWheelAdjustment != null" >
+        electric_steering_wheel_adjustment,
+      </if>
+      <if test="steeringWheelShift != null" >
+        steering_wheel_shift,
+      </if>
+      <if test="steeringWheelMemory != null" >
+        steering_wheel_memory,
+      </if>
+      <if test="fullLcdPanel != null" >
+        full_lcd_panel,
+      </if>
+      <if test="adjustableSteeringWheel != null" >
+        adjustable_steering_wheel,
+      </if>
+      <if test="mfl != null" >
+        mfl,
+      </if>
+      <if test="heatedSteeringWheel != null" >
+        heated_steering_wheel,
+      </if>
+      <if test="drivingComputerScreen != null" >
+        driving_computer_screen,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="carId != null" >
+        #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="interiorCollocation != null" >
+        #{interiorCollocation,jdbcType=INTEGER},
+      </if>
+      <if test="leatherSteeringWheel != null" >
+        #{leatherSteeringWheel,jdbcType=INTEGER},
+      </if>
+      <if test="electricSteeringWheelAdjustment != null" >
+        #{electricSteeringWheelAdjustment,jdbcType=INTEGER},
+      </if>
+      <if test="steeringWheelShift != null" >
+        #{steeringWheelShift,jdbcType=INTEGER},
+      </if>
+      <if test="steeringWheelMemory != null" >
+        #{steeringWheelMemory,jdbcType=INTEGER},
+      </if>
+      <if test="fullLcdPanel != null" >
+        #{fullLcdPanel,jdbcType=INTEGER},
+      </if>
+      <if test="adjustableSteeringWheel != null" >
+        #{adjustableSteeringWheel,jdbcType=INTEGER},
+      </if>
+      <if test="mfl != null" >
+        #{mfl,jdbcType=INTEGER},
+      </if>
+      <if test="heatedSteeringWheel != null" >
+        #{heatedSteeringWheel,jdbcType=INTEGER},
+      </if>
+      <if test="drivingComputerScreen != null" >
+        #{drivingComputerScreen,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarInteriorCollocation" >
+    update c_car_validatecar_interior_collocation
+    <set >
+      <if test="carId != null" >
+        car_id = #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        apply_id = #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="interiorCollocation != null" >
+        interior_collocation = #{interiorCollocation,jdbcType=INTEGER},
+      </if>
+      <if test="leatherSteeringWheel != null" >
+        leather_steering_wheel = #{leatherSteeringWheel,jdbcType=INTEGER},
+      </if>
+      <if test="electricSteeringWheelAdjustment != null" >
+        electric_steering_wheel_adjustment = #{electricSteeringWheelAdjustment,jdbcType=INTEGER},
+      </if>
+      <if test="steeringWheelShift != null" >
+        steering_wheel_shift = #{steeringWheelShift,jdbcType=INTEGER},
+      </if>
+      <if test="steeringWheelMemory != null" >
+        steering_wheel_memory = #{steeringWheelMemory,jdbcType=INTEGER},
+      </if>
+      <if test="fullLcdPanel != null" >
+        full_lcd_panel = #{fullLcdPanel,jdbcType=INTEGER},
+      </if>
+      <if test="adjustableSteeringWheel != null" >
+        adjustable_steering_wheel = #{adjustableSteeringWheel,jdbcType=INTEGER},
+      </if>
+      <if test="mfl != null" >
+        mfl = #{mfl,jdbcType=INTEGER},
+      </if>
+      <if test="heatedSteeringWheel != null" >
+        heated_steering_wheel = #{heatedSteeringWheel,jdbcType=INTEGER},
+      </if>
+      <if test="drivingComputerScreen != null" >
+        driving_computer_screen = #{drivingComputerScreen,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarInteriorCollocation" >
+    update c_car_validatecar_interior_collocation
+    set car_id = #{carId,jdbcType=BIGINT},
+      apply_id = #{applyId,jdbcType=BIGINT},
+      cust_id = #{custId,jdbcType=BIGINT},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      interior_collocation = #{interiorCollocation,jdbcType=INTEGER},
+      leather_steering_wheel = #{leatherSteeringWheel,jdbcType=INTEGER},
+      electric_steering_wheel_adjustment = #{electricSteeringWheelAdjustment,jdbcType=INTEGER},
+      steering_wheel_shift = #{steeringWheelShift,jdbcType=INTEGER},
+      steering_wheel_memory = #{steeringWheelMemory,jdbcType=INTEGER},
+      full_lcd_panel = #{fullLcdPanel,jdbcType=INTEGER},
+      adjustable_steering_wheel = #{adjustableSteeringWheel,jdbcType=INTEGER},
+      mfl = #{mfl,jdbcType=INTEGER},
+      heated_steering_wheel = #{heatedSteeringWheel,jdbcType=INTEGER},
+      driving_computer_screen = #{drivingComputerScreen,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

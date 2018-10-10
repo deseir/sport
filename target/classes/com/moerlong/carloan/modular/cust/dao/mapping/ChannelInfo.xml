@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.ChannelInfoDao">
+
+	<sql id="searchColumns">
+		channelInfo.id id,channelInfo.channel_name channelName,channelInfo.city city,channelInfo.address address,channelInfo.fanyong_rate fanyongRate,channelInfo.account_name accountName,channelInfo.account_bank accountBank,channelInfo.account_cardno accountCardno,channelInfo.join_person joinPerson,channelInfo.join_mobile joinMobile,channelInfo.create_user_id createUserId,channelInfo.create_user_name createUserName,channelInfo.buss_name bussName,channelInfo.create_time createTime,channelInfo.update_time updateTime,channelInfo.remark remark,channelInfo.is_deleted isDeleted
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.ChannelInfo">
+		insert into
+		c_channel_info(fanyong_rate,join_mobile,create_user_id,address,account_cardno,city,account_name,create_user_name,update_time,remark,account_bank,is_deleted,create_time,join_person,channel_name,id,buss_name)
+		values (#{fanyongRate},#{joinMobile},#{createUserId},#{address},#{accountCardno},#{city},#{accountName},#{createUserName},#{updateTime},#{remark},#{accountBank},#{isDeleted},#{createTime},#{joinPerson},#{channelName},#{id},#{bussName})
+	</insert>
+
+	<delete id="delete">
+		delete from c_channel_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_channel_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.ChannelInfo">
+		update c_channel_info set
+		fanyong_rate=#{fanyongRate},join_mobile=#{joinMobile},create_user_id=#{createUserId},address=#{address},account_cardno=#{accountCardno},city=#{city},account_name=#{accountName},create_user_name=#{createUserName},update_time=#{updateTime},remark=#{remark},account_bank=#{accountBank},is_deleted=#{isDeleted},create_time=#{createTime},join_person=#{joinPerson},channel_name=#{channelName},id=#{id},buss_name=#{bussName} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.ChannelInfo">
+		update c_channel_info
+		<set>
+            <if test="channelName != null"> channel_name=#{channelName},</if>
+            <if test="city != null"> city=#{city},</if>
+            <if test="address != null"> address=#{address},</if>
+            <if test="fanyongRate != null"> fanyong_rate=#{fanyongRate},</if>
+            <if test="accountName != null"> account_name=#{accountName},</if>
+            <if test="accountBank != null"> account_bank=#{accountBank},</if>
+            <if test="accountCardno != null"> account_cardno=#{accountCardno},</if>
+            <if test="joinPerson != null"> join_person=#{joinPerson},</if>
+            <if test="joinMobile != null"> join_mobile=#{joinMobile},</if>
+            <if test="createUserId != null"> create_user_id=#{createUserId},</if>
+            <if test="createUserName != null"> create_user_name=#{createUserName},</if>
+            <if test="bussName != null"> buss_name=#{bussName},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.ChannelInfo">
+		select
+		<include refid="searchColumns" />
+		from c_channel_info channelInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.ChannelInfo">
+		select
+		<include refid="searchColumns" />
+		from c_channel_info channelInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.ChannelInfo">
+		select
+		<include refid="searchColumns" />
+		from c_channel_info channelInfo
+		where 1=1
+		<if test="channelName != null and channelName != ''">
+			and channel_name like CONCAT('%',#{channelName},'%')
+		</if>
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<select id="selectPage" resultType="com.moerlong.carloan.modular.cust.entity.ChannelInfo">
+		select
+		<include refid="searchColumns" />
+		from c_channel_info channelInfo
+		where 1=1
+
+		<if test="channelName != null and channelName != ''">
+			and channel_name like CONCAT('%',#{channelName},'%')
+		</if>
+		order by update_time desc
+	</select>
+</mapper>
+

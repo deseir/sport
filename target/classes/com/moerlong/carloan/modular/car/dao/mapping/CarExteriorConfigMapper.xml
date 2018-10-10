@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarExteriorConfigDao" >
+
+  <!-- new -->
+  <update id="deleteLogic">
+		update c_car_validatecar_exterior_specification set is_deleted = 1 where id = #{id}
+  </update>
+
+  <select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarExteriorConfig">
+    select
+    <include refid="Base_Column_List" />
+    from c_car_validatecar_exterior_specification
+  </select>
+
+  <select id="selectByApplyId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from c_car_validatecar_exterior_specification
+    where apply_id = #{applyId,jdbcType=BIGINT}
+  </select>
+  <!-- new over -->
+
+  <resultMap id="BaseResultMap" type="com.moerlong.carloan.modular.car.entity.CarExteriorConfig" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="car_id" property="carId" jdbcType="BIGINT" />
+    <result column="apply_id" property="applyId" jdbcType="BIGINT" />
+    <result column="cust_id" property="custId" jdbcType="BIGINT" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="exterior_specification" property="exteriorSpecification" jdbcType="INTEGER" />
+    <result column="power_sunroof" property="powerSunroof" jdbcType="INTEGER" />
+    <result column="sport_appearance_kit" property="sportAppearanceKit" jdbcType="INTEGER" />
+    <result column="electric_operated_closing_door" property="electricOperatedClosingDoor" jdbcType="INTEGER" />
+    <result column="electric_trunk" property="electricTrunk" jdbcType="INTEGER" />
+    <result column="roof_rack" property="roofRack" jdbcType="INTEGER" />
+    <result column="internally_operatedcentral_door_locking" property="internallyOperatedcentralDoorLocking" jdbcType="INTEGER" />
+    <result column="keyless_start_system" property="keylessStartSystem" jdbcType="INTEGER" />
+    <result column="panorama_sunroof" property="panoramaSunroof" jdbcType="INTEGER" />
+    <result column="aluminum_alloy_rim" property="aluminumAlloyRim" jdbcType="INTEGER" />
+    <result column="sideslip" property="sideslip" jdbcType="INTEGER" />
+    <result column="induction_trunk" property="inductionTrunk" jdbcType="INTEGER" />
+    <result column="emmo" property="emmo" jdbcType="INTEGER" />
+    <result column="remote_key" property="remoteKey" jdbcType="INTEGER" />
+    <result column="wysjrxt" property="wysjrxt" jdbcType="INTEGER" />
+
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Example_Where_Clause_Page" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    c_car_validatecar_exterior_specification.id, c_car_validatecar_exterior_specification.car_id, 
+    c_car_validatecar_exterior_specification.apply_id, c_car_validatecar_exterior_specification.cust_id, 
+    c_car_validatecar_exterior_specification.is_delete, c_car_validatecar_exterior_specification.create_time, 
+    c_car_validatecar_exterior_specification.update_time, c_car_validatecar_exterior_specification.exterior_specification, 
+    c_car_validatecar_exterior_specification.power_sunroof, c_car_validatecar_exterior_specification.sport_appearance_kit, 
+    c_car_validatecar_exterior_specification.electric_operated_closing_door, c_car_validatecar_exterior_specification.electric_trunk, 
+    c_car_validatecar_exterior_specification.roof_rack, c_car_validatecar_exterior_specification.internally_operatedcentral_door_locking, 
+    c_car_validatecar_exterior_specification.keyless_start_system, c_car_validatecar_exterior_specification.panorama_sunroof, 
+    c_car_validatecar_exterior_specification.aluminum_alloy_rim, c_car_validatecar_exterior_specification.sideslip, 
+    c_car_validatecar_exterior_specification.induction_trunk, c_car_validatecar_exterior_specification.emmo, 
+    c_car_validatecar_exterior_specification.remote_key, c_car_validatecar_exterior_specification.wysjrxt
+  </sql>
+
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from c_car_validatecar_exterior_specification
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="delete" parameterType="java.lang.Long" >
+    delete from c_car_validatecar_exterior_specification
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+
+  <insert id="save" parameterType="com.moerlong.carloan.modular.car.entity.CarExteriorConfig" >
+    insert into c_car_validatecar_exterior_specification
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="carId != null" >
+        car_id,
+      </if>
+      <if test="applyId != null" >
+        apply_id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="exteriorSpecification != null" >
+        exterior_specification,
+      </if>
+      <if test="powerSunroof != null" >
+        power_sunroof,
+      </if>
+      <if test="sportAppearanceKit != null" >
+        sport_appearance_kit,
+      </if>
+      <if test="electricOperatedClosingDoor != null" >
+        electric_operated_closing_door,
+      </if>
+      <if test="electricTrunk != null" >
+        electric_trunk,
+      </if>
+      <if test="roofRack != null" >
+        roof_rack,
+      </if>
+      <if test="internallyOperatedcentralDoorLocking != null" >
+        internally_operatedcentral_door_locking,
+      </if>
+      <if test="keylessStartSystem != null" >
+        keyless_start_system,
+      </if>
+      <if test="panoramaSunroof != null" >
+        panorama_sunroof,
+      </if>
+      <if test="aluminumAlloyRim != null" >
+        aluminum_alloy_rim,
+      </if>
+      <if test="sideslip != null" >
+        sideslip,
+      </if>
+      <if test="inductionTrunk != null" >
+        induction_trunk,
+      </if>
+      <if test="emmo != null" >
+        emmo,
+      </if>
+      <if test="remoteKey != null" >
+        remote_key,
+      </if>
+      <if test="wysjrxt != null" >
+        wysjrxt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="carId != null" >
+        #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exteriorSpecification != null" >
+        #{exteriorSpecification,jdbcType=INTEGER},
+      </if>
+      <if test="powerSunroof != null" >
+        #{powerSunroof,jdbcType=INTEGER},
+      </if>
+      <if test="sportAppearanceKit != null" >
+        #{sportAppearanceKit,jdbcType=INTEGER},
+      </if>
+      <if test="electricOperatedClosingDoor != null" >
+        #{electricOperatedClosingDoor,jdbcType=INTEGER},
+      </if>
+      <if test="electricTrunk != null" >
+        #{electricTrunk,jdbcType=INTEGER},
+      </if>
+      <if test="roofRack != null" >
+        #{roofRack,jdbcType=INTEGER},
+      </if>
+      <if test="internallyOperatedcentralDoorLocking != null" >
+        #{internallyOperatedcentralDoorLocking,jdbcType=INTEGER},
+      </if>
+      <if test="keylessStartSystem != null" >
+        #{keylessStartSystem,jdbcType=INTEGER},
+      </if>
+      <if test="panoramaSunroof != null" >
+        #{panoramaSunroof,jdbcType=INTEGER},
+      </if>
+      <if test="aluminumAlloyRim != null" >
+        #{aluminumAlloyRim,jdbcType=INTEGER},
+      </if>
+      <if test="sideslip != null" >
+        #{sideslip,jdbcType=INTEGER},
+      </if>
+      <if test="inductionTrunk != null" >
+        #{inductionTrunk,jdbcType=INTEGER},
+      </if>
+      <if test="emmo != null" >
+        #{emmo,jdbcType=INTEGER},
+      </if>
+      <if test="remoteKey != null" >
+        #{remoteKey,jdbcType=INTEGER},
+      </if>
+      <if test="wysjrxt != null" >
+        #{wysjrxt,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarExteriorConfig" >
+    update c_car_validatecar_exterior_specification
+    <set >
+      <if test="carId != null" >
+        car_id = #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        apply_id = #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exteriorSpecification != null" >
+        exterior_specification = #{exteriorSpecification,jdbcType=INTEGER},
+      </if>
+      <if test="powerSunroof != null" >
+        power_sunroof = #{powerSunroof,jdbcType=INTEGER},
+      </if>
+      <if test="sportAppearanceKit != null" >
+        sport_appearance_kit = #{sportAppearanceKit,jdbcType=INTEGER},
+      </if>
+      <if test="electricOperatedClosingDoor != null" >
+        electric_operated_closing_door = #{electricOperatedClosingDoor,jdbcType=INTEGER},
+      </if>
+      <if test="electricTrunk != null" >
+        electric_trunk = #{electricTrunk,jdbcType=INTEGER},
+      </if>
+      <if test="roofRack != null" >
+        roof_rack = #{roofRack,jdbcType=INTEGER},
+      </if>
+      <if test="internallyOperatedcentralDoorLocking != null" >
+        internally_operatedcentral_door_locking = #{internallyOperatedcentralDoorLocking,jdbcType=INTEGER},
+      </if>
+      <if test="keylessStartSystem != null" >
+        keyless_start_system = #{keylessStartSystem,jdbcType=INTEGER},
+      </if>
+      <if test="panoramaSunroof != null" >
+        panorama_sunroof = #{panoramaSunroof,jdbcType=INTEGER},
+      </if>
+      <if test="aluminumAlloyRim != null" >
+        aluminum_alloy_rim = #{aluminumAlloyRim,jdbcType=INTEGER},
+      </if>
+      <if test="sideslip != null" >
+        sideslip = #{sideslip,jdbcType=INTEGER},
+      </if>
+      <if test="inductionTrunk != null" >
+        induction_trunk = #{inductionTrunk,jdbcType=INTEGER},
+      </if>
+      <if test="emmo != null" >
+        emmo = #{emmo,jdbcType=INTEGER},
+      </if>
+      <if test="remoteKey != null" >
+        remote_key = #{remoteKey,jdbcType=INTEGER},
+      </if>
+      <if test="wysjrxt != null" >
+        wysjrxt = #{wysjrxt,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarExteriorConfig" >
+    update c_car_validatecar_exterior_specification
+    set car_id = #{carId,jdbcType=BIGINT},
+      apply_id = #{applyId,jdbcType=BIGINT},
+      cust_id = #{custId,jdbcType=BIGINT},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      exterior_specification = #{exteriorSpecification,jdbcType=INTEGER},
+      power_sunroof = #{powerSunroof,jdbcType=INTEGER},
+      sport_appearance_kit = #{sportAppearanceKit,jdbcType=INTEGER},
+      electric_operated_closing_door = #{electricOperatedClosingDoor,jdbcType=INTEGER},
+      electric_trunk = #{electricTrunk,jdbcType=INTEGER},
+      roof_rack = #{roofRack,jdbcType=INTEGER},
+      internally_operatedcentral_door_locking = #{internallyOperatedcentralDoorLocking,jdbcType=INTEGER},
+      keyless_start_system = #{keylessStartSystem,jdbcType=INTEGER},
+      panorama_sunroof = #{panoramaSunroof,jdbcType=INTEGER},
+      aluminum_alloy_rim = #{aluminumAlloyRim,jdbcType=INTEGER},
+      sideslip = #{sideslip,jdbcType=INTEGER},
+      induction_trunk = #{inductionTrunk,jdbcType=INTEGER},
+      emmo = #{emmo,jdbcType=INTEGER},
+      remote_key = #{remoteKey,jdbcType=INTEGER},
+      wysjrxt = #{wysjrxt,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,47 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>摩尔龙收款记录列表</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="serialNo" name="交易订单号" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#SelectCon id="statusId" name="交易状态">
+                                    <option value="">请选择</option>
+                                    <option value="4">失败</option>
+                                    <option value="6">支付成功</option>
+                                </#SelectCon>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#TimeCon id="beginTime" name="开始时间" isTime="false" pattern="YYYY-MM-DD"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <#TimeCon id="endTime" name="结束时间" isTime="false" pattern="YYYY-MM-DD" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div style="width: 200px; margin: 10px auto;">
+                                    <#button name="搜索" icon="fa-search" clickFun="RepaymentPayInfoMrl.search()"/>
+                                    <#button name="重置" icon="fa-undo" clickFun="RepaymentPayInfoMrl.resetSearch()" space="true"/>
+                                </div>
+                            </div>
+                        </div>
+                        <#table id="RepaymentPayInfoMrlTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/paybackMgr/repaymentPayInfo/repaymentPayInfoMrl.js"></script>
+@}

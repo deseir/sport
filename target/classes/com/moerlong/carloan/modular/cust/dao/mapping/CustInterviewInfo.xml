@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.CustInterviewInfoDao">
+
+	<sql id="searchColumns">
+		custInterviewInfo.id id,custInterviewInfo.cust_id custId,custInterviewInfo.apply_id applyId,custInterviewInfo.overview overview,custInterviewInfo.interview_result interviewResult,custInterviewInfo.rejection_reason rejectionReason,custInterviewInfo.loan_amount loanAmount,custInterviewInfo.loan_period loanPeriod,custInterviewInfo.scene_evidence_url1 sceneEvidenceUrl1,custInterviewInfo.scene_evidence_url2 sceneEvidenceUrl2,custInterviewInfo.create_time createTime,custInterviewInfo.update_time updateTime,custInterviewInfo.is_deleted isDeleted,custInterviewInfo.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.CustInterviewInfo">
+		insert into
+		c_cust_interview_info(overview,update_time,remark,interview_result,loan_amount,apply_id,is_deleted,create_time,cust_id,id,rejection_reason,scene_evidence_url1,loan_period,scene_evidence_url2)
+		values (#{overview},#{updateTime},#{remark},#{interviewResult},#{loanAmount},#{applyId},#{isDeleted},#{createTime},#{custId},#{id},#{rejectionReason},#{sceneEvidenceUrl1},#{loanPeriod},#{sceneEvidenceUrl2})
+	</insert>
+
+	<delete id="delete">
+		delete from c_cust_interview_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_cust_interview_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.CustInterviewInfo">
+		update c_cust_interview_info set
+		overview=#{overview},update_time=#{updateTime},remark=#{remark},interview_result=#{interviewResult},loan_amount=#{loanAmount},apply_id=#{applyId},is_deleted=#{isDeleted},create_time=#{createTime},cust_id=#{custId},id=#{id},rejection_reason=#{rejectionReason},scene_evidence_url1=#{sceneEvidenceUrl1},loan_period=#{loanPeriod},scene_evidence_url2=#{sceneEvidenceUrl2} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.CustInterviewInfo">
+		update c_cust_interview_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="overview != null"> overview=#{overview},</if>
+            <if test="interviewResult != null"> interview_result=#{interviewResult},</if>
+            <if test="rejectionReason != null"> rejection_reason=#{rejectionReason},</if>
+            <if test="loanAmount != null"> loan_amount=#{loanAmount},</if>
+            <if test="loanPeriod != null"> loan_period=#{loanPeriod},</if>
+            <if test="sceneEvidenceUrl1 != null and sceneEvidenceUrl1 !=''"> scene_evidence_url1=#{sceneEvidenceUrl1},</if>
+            <if test="sceneEvidenceUrl2 != null and sceneEvidenceUrl2 != ''"> scene_evidence_url2=#{sceneEvidenceUrl2},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.CustInterviewInfo">
+		select
+		<include refid="searchColumns" />
+		from c_cust_interview_info custInterviewInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.CustInterviewInfo">
+		select
+		<include refid="searchColumns" />
+		from c_cust_interview_info custInterviewInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CustInterviewInfo">
+		select
+		<include refid="searchColumns" />
+		from c_cust_interview_info custInterviewInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<select id="selByApplyId" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CustInterviewInfo">
+		select
+		<include refid="searchColumns"/>
+		from c_cust_interview_info custInterviewInfo
+		where custInterviewInfo.apply_id=#{applyId}
+
+	</select>
+	<update id="updateNqStatus">
+		UPDATE c_apply_info a SET a.nqlr_status=1 where a.id=#{applyId}
+	</update>
+	<update id="updateYcStatus">
+		UPDATE c_apply_info a SET a.yc_status=1 where a.id=#{applyId}
+	</update>
+</mapper>
+

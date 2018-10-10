@@ -1,0 +1,58 @@
+@layout("/common/_container.html"){
+
+<div class="">
+  <div class="">
+	  <div class="ibox-title">
+		  <div style="border-bottom: 1px solid #cccccc94;height: 45px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 20px;">资料留存</span></div>
+	  </div>
+   	<div class="tab-content">
+		<input type="hidden" value="${applyId}" id="applyId">
+		<!--身份认证-->
+   		<div class="tab-pane fade in active"  id="div_sfrz">
+			<div class="menu-item" id="menu-item5">
+				<div class="form-horizontal" style="background-color:#FFF;padding:1px 1px 1px 25px;box-shadow: 3px 5px 3px 3px #c2c2c2;">
+					<h5></h5>
+					<div class="row">
+						<div class="col-sm-6">
+							 <#input id="paperdatanum" name="纸质资料份数" underline="false" value="0"/>
+							 <#input id="contractnum" name="纸质合同份数" underline="false" value="0"/>
+							 <#select id="iscarregister" name="是否存留抵押登记证书" underline="false">
+								<option value="">---请选择---</option>
+								<option value="0">否</option>
+								<option value="1">是</option>
+							 </#select>
+							 <#select id="iscarkey" name="是否存有客户备用钥匙" underline="false">
+								<option value="">---请选择---</option>
+								<option value="0">否</option>
+								<option value="1">是</option>
+							 </#select>
+							 <#input id="keepdate" type="date" name="存档时间" underline="false"/>
+							 <#input id="unkeepdate" type="date" name="归还时间" underline="false"/>
+						</div>
+					</div>
+					<div class="row">
+						<div style="width: 420px;margin:60px 1px 60px 100px;">
+							<#button name="返回" icon="fa fa-chevron-left" clickFun="javascripy:history.back();"/>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+   		</div>
+
+
+   	</div>
+  </div>
+</div>
+<script>
+    $("select").attr("disabled","disabled");
+    $("input").attr("readonly","readonly");
+    $("textarea").attr("disabled","disabled");
+    $("input[type=file]").attr("disabled","disabled");
+    $("input[type=radio]").attr("disabled","disabled");
+    $("input[type=checkbox]").attr("disabled","disabled");
+
+</script>
+<script src="${ctxPath}/static/modular/cust/dataKeep.js?v=1.0"></script>
+@}

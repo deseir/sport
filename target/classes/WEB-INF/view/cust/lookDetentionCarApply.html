@@ -1,0 +1,117 @@
+@layout("/common/_container.html"){
+
+<div class="">
+  <div class="">
+	  <div class="ibox-title">
+		  <div style="border-bottom: 1px solid #cccccc94;height: 45px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 20px;">请款申请</span></div>
+	  </div>
+   	<div class="tab-content">
+		<input type="hidden" value="${applyId}" id="applyId">
+		<input type="hidden" value="${transSource}" id="ts">
+		<input type="hidden" value="${idPicUrls}" id="idPicUrls">
+		<!--身份认证-->
+   		<div class="tab-pane fade in active"  id="div_sfrz">
+			<div class="menu-item" id="menu-item5">
+				<div class="form-horizontal" style="background-color:#FFF;padding:1px 1px 1px 25px;box-shadow: 3px 5px 3px 3px #c2c2c2;">
+					<h5></h5>
+					<div class="row">
+							<div class="col-sm-3">
+								<#input id="custName" name="姓名" underline="false" value="${name}"
+									readonly="readonly" />
+							</div>
+							<div class="col-sm-3">
+								<#input id="sex" name="性別" underline="false" value="${sex}"
+									readonly="readonly" />
+							</div>
+							<div class="col-sm-3">
+								<#input id="custIdNo" name="身份证号码" underline="false" value="${idno}"
+									readonly="readonly" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<#input id="contractNo" name="合同编号" underline="false" value="${contractNo}"
+									readonly="readonly" />
+							</div>
+							<div class="col-sm-3">
+								<#input id="totalAmount" name="借款总额" underline="false" value="${totalAmount}"
+									readonly="readonly" />
+							</div>
+							<div class="col-sm-3">
+								<#input id="periodNum" name="借款期数" underline="false" value="${periodNum}"
+									readonly="readonly" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3">
+								<#input id="bankCardNo" name="银行卡号" underline="false" value="${bankCardNo}" readonly="readonly"/>
+							</div>
+							<div class="col-sm-3">
+								<#input id="bankName" name="开户银行" underline="false" value="${bankName}" readonly="readonly"/>
+							</div>
+							<div class="col-sm-3">
+								<#select id="isReplaceCost" name="是否代收" underline="false">
+									@if(isReplaceCost==0){
+									<option value="0" selected="selected">否</option>
+									@}else if(isReplaceCost==1){
+									<option value="1" selected="selected">是</option>
+									@}
+								</#select>
+							</div>
+						</div>
+						<div class="row">
+						
+							<div class="col-sm-3">
+								<#input id="receptionAmount" name="前台服务费(元)" underline="false" value="${receptionAmount}" readonly="readonly"/>
+							</div>
+							
+							<div class="col-sm-3">
+								<#input id="receptionDepart" name="前台部门" underline="false" value="${receptionDepart}" readonly="readonly"/>
+							</div>
+							<div class="col-sm-3">
+								<#input id="receptionManager" name="前台经理" underline="false" value="${receptionManager}" readonly="readonly"/>
+							</div>
+						</div>
+					    
+					    <div class="row">
+							<div class="col-sm-3">
+								<#input id="custMobile" name="手机号" underline="false" value="${custMobile}" readonly="readonly"/>
+							</div>
+							<!-- <div class="col-sm-3">
+								<#input id="receptionAmount" name="手续费" underline="false"/>
+							</div> -->
+							<div class="col-sm-3">
+								<#select id="transSource" name="业务来源" underline="false" value="${transSource}" />
+							</div>
+							<div class="col-sm-3">
+								<#select id="isPerCharge" name="手续费分期" underline="false" value="${isPerCharge}">
+									<option value="0">分期</option>
+									<option value="1">全部</option>
+								</#select>
+							</div>
+						</div>
+					<div class="row">
+
+					<div style="width: 420px; margin:60px 1px 60px 100px;">
+						<#button name="返回" icon="fa fa-chevron-left" clickFun="javascripy:history.back();"/>
+					</div>
+
+					</div>
+				</div>
+			</div>
+
+   		</div>
+
+
+   	</div>
+  </div>
+</div>
+<script>
+	$("#transSource").attr("disabled","disabled");
+	$("#isPerCharge").attr("disabled","disabled");
+	$("#isReplaceCost").attr("disabled","disabled");
+	/* $("#transSource").attr("disabled","disabled");
+	$("input").attr("disabled","disabled"); */
+</script>
+<script src="${ctxPath}/static/modular/cust/payNqzgAudit.js?v=1.0"></script>
+@}

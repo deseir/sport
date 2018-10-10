@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarTransferInfoDao">
+
+	<sql id="searchColumns">
+		carTransferInfo.id id,carTransferInfo.car_id carId,carTransferInfo.name name,carTransferInfo.cert_id certId,carTransferInfo.get_type getType,carTransferInfo.reg_date regDate,carTransferInfo.create_time createTime,carTransferInfo.update_time updateTime,carTransferInfo.remark remark,carTransferInfo.is_deleted isDeleted
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarTransferInfo">
+		insert into
+		c_car_transfer_info(is_deleted,get_type,create_time,name,reg_date,update_time,remark,id,cert_id,car_id)
+		values (#{isDeleted},#{getType},#{createTime},#{name},#{regDate},#{updateTime},#{remark},#{id},#{certId},#{carId})
+	</insert>
+
+	<delete id="delete">
+		delete from c_car_transfer_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_car_transfer_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarTransferInfo">
+		update c_car_transfer_info set
+		is_deleted=#{isDeleted},get_type=#{getType},create_time=#{createTime},name=#{name},reg_date=#{regDate},update_time=#{updateTime},remark=#{remark},id=#{id},cert_id=#{certId},car_id=#{carId} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarTransferInfo">
+		update c_car_transfer_info
+		<set>
+            <if test="carId != null"> car_id=#{carId},</if>
+            <if test="name != null"> name=#{name},</if>
+            <if test="certId != null"> cert_id=#{certId},</if>
+            <if test="getType != null"> get_type=#{getType},</if>
+            <if test="regDate != null"> reg_date=#{regDate},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.car.entity.CarTransferInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_transfer_info carTransferInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarTransferInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_transfer_info carTransferInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.car.entity.CarTransferInfo">
+		select
+		<include refid="searchColumns" />
+		from c_car_transfer_info carTransferInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+	<insert id="saveAll" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.car.entity.CarTransferInfo">
+		insert into c_car_transfer_info
+		(is_deleted,get_type,create_time,name,reg_date,update_time,remark,id,cert_id,car_id
+		)
+		values
+		<foreach collection="list" item="st" separator="," index="idx" open="" close="">
+			(#{st.isDeleted},#{st.getType},#{st.createTime},#{st.name},#{st.regDate},#{st.updateTime},#{st.remark},#{st.id},#{st.certId},#{st.carId})
+		</foreach>
+	</insert>
+	<update id="updateAll" parameterType="java.util.List">
+		<foreach collection="list" item="st" separator=";" index="idx" open="" close="">
+			update c_family_book_sub_info set
+			<if test="isDeleted != null"> is_deleted=#{st.isDeleted},</if>
+			<if test="getType != null"> get_type=#{st.getType},</if>
+			<if test="createTime != null"> create_time=#{st.createTime},</if>
+			<if test="name != null"> name=#{st.name},</if>
+			<if test="regDate != null"> reg_date=#{st.regDate},</if>
+			<if test="updateTime != null"> update_time=#{st.updateTime},</if>
+			<if test="remark != null"> remark=#{st.remark},</if>
+			<if test="id != null"> id=#{st.id},</if>
+			<if test="certId != null"> cert_id=#{st.certId},</if>
+			<if test="carId != null"> car_id=#{st.carId},</if>
+			where  id =#{st.id}
+		</foreach>
+	</update>
+	<select id="findCarTransferInfoByCarId" resultType="com.moerlong.carloan.modular.car.entity.CarTransferInfo">
+		SELECT
+		<include refid="searchColumns" />
+		FROM
+		c_car_transfer_info carTransferInfo
+		where car_id=#{carId}
+	</select>
+</mapper>
+

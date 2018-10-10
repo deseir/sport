@@ -1,0 +1,147 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>一次性提前还款申请列表</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="custName" name="客户姓名" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="custMobile" name="客户手机号" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#TimeCon id="beginTime" name="开始时间" isTime="false" pattern="YYYY-MM-DD"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <#TimeCon id="endTime" name="结束时间" isTime="false" pattern="YYYY-MM-DD" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div style="width: 200px; margin: 10px auto;">
+                                    <#button name="搜索" icon="fa-search" clickFun="OnceEarlyApply.search()"/>
+                                    <#button name="重置" icon="fa-undo" clickFun="OnceEarlyApply.resetSearch()" space="true"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <#table id="OnceEarlyApplyTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="newTableList3" style="padding: 10px; display: none;overflow: auto;">
+
+    <div class="row">
+        <div class="col-sm-6">
+            <#TimeCon id="appointDate" name="约定提前还款时间" isTime="false" pattern="YYYY-MM-DD"/>
+        </div>
+        <div class="col-sm-6">
+            <#button name="获取" icon="fa-search" clickFun="OnceEarlyApply.getOnceEarlyInfo()"/>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="form-horizontal tsForm" id="payApplyForm">
+            <input type="hidden" class="form-control" readonly id="id3">
+            <input type="hidden" class="form-control" readonly id="uuid">
+
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">客户姓名：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="custName3" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">客户身份证：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="custIdNo3" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">当前还款期数：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="periodNum" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">当期还款日：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="periodEndTime" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">当期月还款：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="predictAmount" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">提前还款违约金：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="onceRepaymentBreach" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">剩余手续费：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="onceRepaymentCharge" class="form-control" readonly />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">剩余本金：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="onceRepaymentCapital" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 b-r">
+                <div class="form-group">
+                    <label class="control-label" style="text-align: right;width: 30%">提前还款总额：</label>
+                    <div style="display: inline-block;width: 49%;">
+                        <input type="text" id="onceRepaymentTotal" class="form-control" readonly/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <div style="width: 200px; margin: 15px auto;">
+                        <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="OnceEarlyApply.addSubmit()"/>
+                        <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="OnceEarlyApply.close()"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="${ctxPath}/static/modular/paybackMgr/onceEarlyRepay/onceEarlyApply.js"></script>
+@}

@@ -1,0 +1,27 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal" id="newAddCarMort">
+			<div class="row">
+				<div class="col-sm-12">
+					<input type="hidden" value="${id}" id="carMortgageInfoId3">
+					<#input id="custName2" name="抵押登记姓名/名称" underline="false" value="${name}"/>
+					<#input id="custIdNo2" name="身份证明名称/号码" underline="false" value="${certId}"/>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">抵押登记日期</label>
+						<div class="col-sm-9">
+							<input class="form-control" id="acceptConfirmDate2" name="firstLicDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})" value="${regDate}">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3" style="margin-left:43%">
+					<div style="width: 200px; margin: 10px auto;">
+						<button class="btn btn-primary" onclick="AddCarMortgageInfos();"><i class="fa fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;修改</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="${ctxPath}/static/modular/cust/custNqDataAdd.js"></script>
+@}

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.CustomerInfoDao">
+
+	<sql id="searchColumns">
+		customerInfo.id id,customerInfo.name name,customerInfo.mobile mobile,customerInfo.sex sex,customerInfo.nation nation,customerInfo.birthday birthday,customerInfo.cert_id certId,customerInfo.validate_begin validateBegin,customerInfo.validate_end validateEnd,customerInfo.sign_org signOrg,customerInfo.education education,customerInfo.id_front_photo_url idFrontPhotoUrl,customerInfo.id_back_photo_url idBackPhotoUrl,customerInfo.proof_Of_Residence proofOfResidence,customerInfo.child_num childNum,customerInfo.child_adult childAdult,customerInfo.live_address liveAddress,customerInfo.live_type liveType,customerInfo.together_live togetherLive,customerInfo.spouse_name spouseName,customerInfo.spouse_phone spousePhone,customerInfo.contract_name1 contractName1,customerInfo.contract_phone1 contractPhone1,customerInfo.contract_relation1 contractRelation1,customerInfo.contract_name2 contractName2,customerInfo.contract_phone2 contractPhone2,customerInfo.contract_relation2 contractRelation2,customerInfo.contract_name3 contractName3,customerInfo.contract_phone3 contractPhone3,customerInfo.contract_relation3 contractRelation3,customerInfo.create_time createTime,customerInfo.update_time updateTime,customerInfo.remark remark,customerInfo.is_deleted isDeleted
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.CustomerInfo">
+		insert into
+		c_cust_info(birthday,education,nation,live_type,spouse_phone,remark,together_live,contract_relation3,contract_relation2,is_deleted,contract_relation1,validate_end,id,id_back_photo_url,sign_org,child_num,live_address,child_adult,sex,mobile,contract_name2,validate_begin,contract_name1,update_time,cert_id,contract_name3,contract_phone1,contract_phone3,contract_phone2,create_time,name,id_front_photo_url,proof_Of_Residence,spouse_name)
+		values (#{birthday},#{education},#{nation},#{liveType},#{spousePhone},#{remark},#{togetherLive},#{contractRelation3},#{contractRelation2},#{isDeleted},#{contractRelation1},#{validateEnd},#{id},#{idBackPhotoUrl},#{signOrg},#{childNum},#{liveAddress},#{childAdult},#{sex},#{mobile},#{contractName2},#{validateBegin},#{contractName1},#{updateTime},#{certId},#{contractName3},#{contractPhone1},#{contractPhone3},#{contractPhone2},#{createTime},#{name},#{idFrontPhotoUrl},#{proofOfResidence},#{spouseName})
+	</insert>
+
+	<delete id="delete">
+		delete from c_cust_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_cust_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.CustomerInfo">
+		update c_cust_info set
+		birthday=#{birthday},education=#{education},nation=#{nation},live_type=#{liveType},spouse_phone=#{spousePhone},remark=#{remark},together_live=#{togetherLive},contract_relation3=#{contractRelation3},contract_relation2=#{contractRelation2},is_deleted=#{isDeleted},contract_relation1=#{contractRelation1},validate_end=#{validateEnd},id=#{id},id_back_photo_url=#{idBackPhotoUrl},sign_org=#{signOrg},child_num=#{childNum},live_address=#{liveAddress},child_adult=#{childAdult},sex=#{sex},mobile=#{mobile},contract_name2=#{contractName2},validate_begin=#{validateBegin},contract_name1=#{contractName1},update_time=#{updateTime},cert_id=#{certId},contract_name3=#{contractName3},contract_phone1=#{contractPhone1},contract_phone3=#{contractPhone3},contract_phone2=#{contractPhone2},create_time=#{createTime},name=#{name},id_front_photo_url=#{idFrontPhotoUrl},proof_Of_Residence=#{proofOfResidence},spouse_name=#{spouseName} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.CustomerInfo">
+		update c_cust_info
+		<set>
+            <if test="name != null"> name=#{name},</if>
+            <if test="mobile != null"> mobile=#{mobile},</if>
+            <if test="sex != null"> sex=#{sex},</if>
+            <if test="nation != null"> nation=#{nation},</if>
+            <if test="birthday != null"> birthday=#{birthday},</if>
+            <if test="certId != null"> cert_id=#{certId},</if>
+            <if test="validateBegin != null"> validate_begin=#{validateBegin},</if>
+            <if test="validateEnd != null"> validate_end=#{validateEnd},</if>
+            <if test="signOrg != null"> sign_org=#{signOrg},</if>
+            <if test="education != null"> education=#{education},</if>
+            <if test="idFrontPhotoUrl != null"> id_front_photo_url=#{idFrontPhotoUrl},</if>
+            <if test="idBackPhotoUrl != null"> id_back_photo_url=#{idBackPhotoUrl},</if>
+			<if test="proofOfResidence != null"> proof_Of_Residence=#{proofOfResidence},</if>
+            <if test="childNum != null"> child_num=#{childNum},</if>
+            <if test="childAdult != null"> child_adult=#{childAdult},</if>
+            <if test="liveAddress != null"> live_address=#{liveAddress},</if>
+            <if test="liveType != null"> live_type=#{liveType},</if>
+            <if test="togetherLive != null"> together_live=#{togetherLive},</if>
+            <if test="spouseName != null"> spouse_name=#{spouseName},</if>
+            <if test="spousePhone != null"> spouse_phone=#{spousePhone},</if>
+            <if test="contractName1 != null"> contract_name1=#{contractName1},</if>
+            <if test="contractPhone1 != null"> contract_phone1=#{contractPhone1},</if>
+            <if test="contractRelation1 != null"> contract_relation1=#{contractRelation1},</if>
+            <if test="contractName2 != null"> contract_name2=#{contractName2},</if>
+            <if test="contractPhone2 != null"> contract_phone2=#{contractPhone2},</if>
+            <if test="contractRelation2 != null"> contract_relation2=#{contractRelation2},</if>
+            <if test="contractName3 != null"> contract_name3=#{contractName3},</if>
+            <if test="contractPhone3 != null"> contract_phone3=#{contractPhone3},</if>
+            <if test="contractRelation3 != null"> contract_relation3=#{contractRelation3},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.CustomerInfo">
+		select
+		<include refid="searchColumns" />
+		from c_cust_info customerInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.CustomerInfo">
+		select
+		<include refid="searchColumns" />
+		from c_cust_info customerInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" resultType="com.moerlong.carloan.modular.cust.entity.CustomerInfo">
+		select
+		<include refid="searchColumns" />
+		from c_cust_info customerInfo
+		where 1=1
+		<if test="name != null and name != ''">  and name like CONCAT('%',#{name},'%')</if>
+		<if test="certId != null and certId != ''">  and cert_id like CONCAT('%',#{certId},'%')</if>
+		<if test="mobile != null and mobile != ''">  and mobile like CONCAT('%',#{mobile},'%')</if>
+		
+	</select>
+
+
+
+	<sql id="searchColumns2">
+		c.id custId,
+		a.id applyId,
+		c.name name,
+		c.cert_id certId,
+		a.create_time loanDate,
+		a.apply_amount loanAmount,
+		a.is_deleted isDeleted,
+		p.period_num loanPreiod,
+		a.status status,
+		a.status_desc loanStatus,
+		r.overdue_times overdueNum,
+		r.predict_capital-r.actual_capital leftCapital
+	</sql>
+	<select id="searchCustHistory" resultType="com.moerlong.carloan.modular.cust.entity.vo.CustAddHistoryInfoVo">
+		select
+		<include refid="searchColumns2" />
+		from c_apply_info a
+			left join c_cust_info c on a.cust_id=c.id
+			left join c_pay_info p on a.id = p.apply_id
+			left join c_repayment_info r on a.id = r.apply_id
+		where 1=1 and c.cert_id = #{certId}
+		order by a.create_time desc
+	</select>
+
+
+
+</mapper>
+

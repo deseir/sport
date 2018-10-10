@@ -1,0 +1,67 @@
+@layout("/common/_container.html"){
+
+<div class="">
+    <div class="">
+        <div class="ibox-title">
+            <div style="border-bottom: 1px solid #cccccc94;height: 45px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 20px;">内勤提交</span></div>
+        </div>
+        <div class="tab-content">
+            <input type="hidden" value="${applyId}" id="applyId">
+            <input type="hidden" value="${interfaceAddress}" id="interfaceAddress">
+            <div class="tab-pane fade in active"  id="div_sfrz">
+                <div class="menu-item" id="menu-item5">
+                    <div class="form-horizontal" style="background-color:#FFF;padding: 1px 1px 1px 25px;box-shadow: 3px 5px 3px 3px #c2c2c2;">
+                        <h5></h5>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">内勤</label>
+                                    <div class="col-sm-9">
+                                        <#button name="录入内勤资料" icon="fa fa-pencil" clickFun="showAddNq();"/>
+                                    </div>
+                                </div>
+
+                                <!--<div class="form-group">
+                                    <label class="col-sm-3 control-label">验车</label>
+                                    <div class="col-sm-9">
+                                        <#button name="录入验车资料" icon="fa fa-pencil" clickFun="showAddYc();"/>
+                                    </div>
+                                </div>
+    -->
+
+                                
+                                	<#select id="checkResult" name="内勤资料是否已录入" underline="false">
+		                                <option value="">---请选择---</option>
+		                                <option value="0">是</option>
+		                                <option value="1">否</option>
+		                            </#select>
+	                            	<!--<#input id="checkResultDesc" name="审核结果描述" underline="false"/>  -->
+                                 
+                        </div>
+                        <div style="width: 420px; margin: 115px 225px 45px">
+                            <#button name="返回" icon="fa fa-chevron-left" clickFun="backToDoWork();"/>
+                            <#button name="提交" icon="fa fa-check" clickFun="nqSubmit();"/>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+</div>
+<style>
+    .nav > li > a {color: #30af90; padding: 13px 18px 14px 25px;}
+    .nav > nav-pill > li.active > a {border-radius:4px;}
+    .nav > nav-pill > li > a {border-radius:4px;}
+    .nav > li.active {border-left: none;}
+    .nav > li.active {background-color: #ccc;}
+    .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {background-color: #ccc;border-radius:4px;}
+</style>
+
+<script src="${ctxPath}/static/modular/cust/shownq.js"></script>
+@}

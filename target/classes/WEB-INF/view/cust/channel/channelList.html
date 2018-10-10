@@ -1,0 +1,40 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins" style="box-shadow: 3px 3px 3px 3px #c2c2c2;">
+            <div class="ibox-title">
+                <h5>渠道列表</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="channelName" name="渠道名称" />
+                            </div>
+                            <div class="col-sm-6">
+                                <#button name="搜索" icon="fa-search" clickFun="ChannelList.search()"/>
+                                <#button name="重置" icon="fa-undo" clickFun="ChannelList.resetSearch()" space="true"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="ChannelListTableToolbar" role="group">
+                            @if(shiro.hasPermission("/cust/channelInfo/add")){
+                            <#button name="添加" icon="fa-plus" clickFun="ChannelList.openAddChannel()"/>
+                            @}
+                            @if(shiro.hasPermission("/cust/channelInfo/edit")){
+                            <#button name="修改" icon="fa-edit" clickFun="ChannelList.openChangeChannel()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/cust/channelInfo/remove")){
+                            <#button name="删除" icon="fa-remove" clickFun="ChannelList.delete()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="ChannelListTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="${ctxPath}/static/modular/cust/channel/channelList.js"></script>
+@}

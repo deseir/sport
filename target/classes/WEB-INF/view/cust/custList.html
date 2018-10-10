@@ -1,0 +1,35 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins" style="box-shadow: 3px 3px 3px 3px #c2c2c2;">
+            <div class="ibox-title">
+                <h5>客户列表</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="custName" name="姓名" placeholder="姓名" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="certId" name="身份证号" placeholder="身份证号"/>
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="mobile" name="手机号" placeholder="手机号" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="CustList.search()"/>
+                                <#button name="重置" icon="fa-undo" clickFun="CustList.resetSearch()" space="true"/>
+                            </div>
+                        </div>
+                        <#table id="CustListTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="${ctxPath}/static/modular/cust/custList.js"></script>
+@}

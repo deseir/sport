@@ -1,0 +1,206 @@
+@layout("/common/_container.html"){
+
+<div class="">
+  <div class="">
+	  <div class="ibox-title">
+		  <div style="border-bottom: 1px solid #cccccc94;height: 45px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 20px;">抵押申请</span></div>
+	  </div>
+   	<div class="tab-content">
+		<input type="hidden" value="${applyId}" id="applyId">
+		<input type="hidden" value="${interfaceAddress}" id="interfaceAddress">
+		<input type="hidden" value="${idPicUrls}" id="idPicUrls">
+		<!--身份认证-->
+   		<div class="tab-pane fade in active"  id="div_sfrz">
+			<div class="menu-item" id="menu-item5">
+				<div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 1px 1px 1px 1px #bbbbbb6b;">
+					<!--<h5>抵押申请信息</h5>-->
+					<div><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 15px;">抵押申请信息</span></div>
+					<div class="row">
+						<div class="col-sm-6">
+							<input type="hidden" id="mortgageId">
+							<#input id="custName" name="姓名" underline="false" value="${name}" readonly="readonly"/>
+						</div>
+						<div class="col-sm-6">
+							<#input id="sex" name="性别" underline="false" value="${sex}" readonly="readonly"/>
+							<input type="hidden" value="${custSex}" id="custSex">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<#input id="custIdNo" name="身份证号码" underline="false" value="${idno}" readonly="readonly"/>
+						</div>
+					</div>
+					<div class="row" style="margin-top:60px">
+						<div class="col-sm-6">
+							<div class="col-sm-3 control-label">
+								<span style="color: red">*</span>
+								<label>车辆登记证书1-2页照片</label>
+							</div>
+							<div  class="container">
+								<div class="form-grop"  enctype="multipart/form-data">
+									<div style="width:7%;float:left">
+				           				<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+				           					<span class="fileinput-new">选择文件</span>
+				           					<input type="file" id="registerPhotoUrl11" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+				           					<input type="hidden" id="registerPhotoUrl1">
+				           				</span>
+										<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:48%">
+											<img id="registerPhotoUrl1mImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<label class="col-sm-4 control-label">车辆登记证书3-4页照片</label>
+				            <div  class="container">
+				           		<div class="form-grop"  enctype="multipart/form-data">
+				           			<div style="width:7%;float:left">
+				           				<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+				           					<span class="fileinput-new">选择文件</span>
+				           					<input type="file" id="registerPhotoUrl21" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+				           					<input type="hidden" id="registerPhotoUrl2">
+				           				</span>
+				           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:48%">
+				           					<img id="registerPhotoUrl2mImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+				           				</div>
+				           			</div>
+				           		</div>
+				           </div>  
+						</div>
+					</div>
+					<div class="row" style="margin-top:60px">
+						<div class="col-sm-6">
+							<label class="col-sm-3 control-label">车辆登记证书5-6页照片</label>
+				            <div  class="container">
+				           		<div class="form-grop"  enctype="multipart/form-data">
+				           			<div style="width:7%;float:left">
+				           				<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+				           					<span class="fileinput-new">选择文件</span>
+				           					<input type="file" id="registerPhotoUrl31" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+				           					<input type="hidden" id="registerPhotoUrl3">
+				           				</span>
+				           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:48%">
+				           					<img id="registerPhotoUrl3mImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+				           				</div>
+				           			</div>
+				           		</div>
+				           </div>  
+				        </div>
+				        <div class="col-sm-6">
+							<label class="col-sm-4 control-label">车辆登记证书7-8页照片</label>
+				            <div  class="container">
+				           		<div class="form-grop"  enctype="multipart/form-data">
+				           			<div style="width:7%;float:left">
+				           				<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+				           					<span class="fileinput-new">选择文件</span>
+				           					<input type="file" id="registerPhotoUrl41" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+				           					<input type="hidden" id="registerPhotoUrl4">
+				           				</span>
+				           				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:48%">
+				           					<img id="registerPhotoUrl4mImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+				           				</div>
+				           			</div>
+				           		</div>
+				           </div>  
+						</div>
+					</div>
+					<div class="row" style="margin-top:60px">
+						<div class="col-sm-6">
+							<div class="col-sm-3 control-label">
+								<span style="color: red">*</span>
+								<label>委托书(客户签字授权)照片</label>
+							</div>
+							<div  class="container">
+								<div class="form-grop"  enctype="multipart/form-data">
+									<div style="width:7%;float:left">
+				           				<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+				           					<span class="fileinput-new">选择文件</span>
+				           					<input type="file" id="proxyBookUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+				           					<input type="hidden" id="proxyBookUrl">
+				           				</span>
+										<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:48%">
+											<img id="proxyBookUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="col-sm-4 control-label">
+								<span style="color: red">*</span>
+								<label>抵押合同(车管所)照片</label>
+							</div>
+							<div  class="container">
+								<div class="form-grop"  enctype="multipart/form-data">
+									<div style="width:7%;float:left">
+				           				<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+				           					<span class="fileinput-new">选择文件</span>
+				           					<input type="file" id="mortgageContractUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+				           					<input type="hidden" id="mortgageContractUrl">
+				           				</span>
+										<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:48%">
+											<img id="mortgageContractUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				    <div class="row" style="margin-top:60px">
+						<div class="col-sm-6">
+							<div class="col-sm-3 control-label">
+								<span style="color: red">*</span>
+								<label>身份证复印件(带有客户签名和手机号码)照片</label>
+							</div>
+							<div  class="container">
+								<div class="form-grop"  enctype="multipart/form-data">
+									<div style="width:7%;float:left">
+				           				<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+				           					<span class="fileinput-new">选择文件</span>
+				           					<input type="file" id="certPhotoUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+				           					<input type="hidden" id="certPhotoUrl">
+				           				</span>
+										<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:48%">
+											<img id="certPhotoUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 
+					<h5>审核信息</h5>
+					<div class="row">
+						<div class="col-sm-6">
+							<#select id="checkResult" name="审核结果" underline="false">
+								<option value="">---请选择---</option>
+								<option value="0">通过</option>
+								<option value="1">拒绝</option>
+								<option value="2">驳回</option>
+							</#select>
+						    <#input id="checkResultDesc" name="审核结果描述" underline="false"/>
+					    </div>
+					
+					</div>
+					 -->
+					<div style="width: 420px; margin: 80px auto;text-align: center;">
+						<#button name="返回" icon="fa fa-chevron-left" clickFun="backToDoWork();"/>
+						<#button name="保存" icon="fa fa-save" clickFun="saveOrUpdate();"/>
+						<#button name="提交申请" icon="fa fa-check" clickFun="todoFinishSubmit();"/>
+
+					</div>
+					
+				</div>
+			</div>
+
+   		</div>
+
+
+   	</div>
+  </div>
+</div>
+
+<script src="${ctxPath}/static/modular/cust/mortgageCarApply.js"></script>
+<script src="${ctxPath}/static/modular/cust/dysqupload.js?v=2.06"></script>
+@}

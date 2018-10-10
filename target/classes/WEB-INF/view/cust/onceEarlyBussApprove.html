@@ -1,0 +1,117 @@
+@layout("/common/_container.html"){
+
+<div class="">
+  <div class="">
+	  <div class="ibox-title">
+		  <div style="border-bottom: 1px solid #cccccc94;height: 45px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 20px;">提前还款业务经理审核</span></div>
+	  </div>
+   	<div class="tab-content">
+		<input type="hidden" value="${applyId}" id="applyId">
+		<input type="hidden" value="${interfaceAddress}" id="interfaceAddress">
+		<!--身份认证-->
+   		<div class="tab-pane fade in active"  id="div_sfrz">
+			<div class="menu-item" id="menu-item5">
+				<div class="form-horizontal" style="background-color:#FFF;padding:1px 1px 1px 25px;box-shadow: 3px 5px 3px 3px #c2c2c2;">
+					<h5></h5>
+					<div class="row">
+						<div class="col-sm-3">
+							<#input id="custName" name="姓名" underline="false" value="${name}"
+								readonly="readonly" />
+						</div>
+						<div class="col-sm-3">
+							<#input id="sex" name="性別" underline="false" value="${sex}"
+								readonly="readonly" />
+						</div>
+						<div class="col-sm-3">
+							<#input id="custIdNo" name="身份证号码" underline="false" value="${idno}"
+								readonly="readonly" />
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-3">
+							<#input id="onceRepaymentRapital" name="一次性提前还款剩余本金(元)" underline="false" value="${onceRepaymentRapital}"
+								readonly="readonly" />
+						</div>
+						<div class="col-sm-3">
+							<#input id="onceRepaymentCharge" name="一次性提前还款剩余手续费(元)" underline="false" value="${onceRepaymentCharge}"
+								readonly="readonly" />
+						</div>
+						<div class="col-sm-3">
+							<#input id="onceRepaymentBreach" name="一次性提前还款罚金(元)" underline="false" value="${onceRepaymentBreach}"
+								readonly="readonly" />
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-3">
+							<#input id="curPeriodNum" name="当期期数(月)" underline="false" value="${curPeriodNum}"
+								readonly="readonly" />
+						</div>
+						<div class="col-sm-3">
+							<#input id="curPeriodAmount" name="当期还款金额(元)" underline="false" value="${curPeriodAmount}"
+								readonly="readonly" />
+						</div>
+						<div class="col-sm-3">
+							<#input id="onceRepaymentTotal" name="一次性提前还款总额(元)" underline="false" value="${onceRepaymentTotal}"
+								readonly="readonly" />
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-3">
+							<#input id="appointDate" name="约定提前还款时间" underline="false" value="${appointDate}"
+								readonly="readonly" />
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-4">
+							<!--<#select id="checkResult" name="审核结果" underline="false">-->
+								<!--<option value="">-&#45;&#45;请选择-&#45;&#45;</option>-->
+								<!--<option value="0">通过</option>-->
+								<!--<option value="1">拒绝</option>-->
+							<!--</#select>-->
+							<div class="form-group">
+								<div class="col-sm-4 control-label">
+									<span style="color: red">*</span>
+									<label>审核结果</label>
+								</div>
+								<div class="col-sm-7">
+									<select class="form-control" id="checkResult" name="checkResult" underline="false">
+										<option value="">---请选择---</option>
+										<option value="0">通过</option>
+										<option value="1">拒绝</option>
+									</select>
+								</div>
+							</div>
+						    <!--<#input id="checkResultDesc" name="审核结果描述" underline="false"/>-->
+							<div class="form-group">
+								<label class="col-sm-3 control-label" style="margin-left: 35px">审核结果描述</label>
+								<div class="el-form-item__content" style="margin-left: 140px;">
+									<div data-v-94eb3634="" class="el-textarea el-input--small">
+										<textarea id="checkResultDesc" rows="5" class="el-textarea__inner" style="outline: none;min-height: 31px;width:88%;border: 1px solid #cccccc73;margin-left: 14px;background-color: #f9f9f9"></textarea>
+									</div>
+								</div>
+							</div>
+					    </div>
+					</div>
+					<div class="row">
+						<div style="width: 180px; margin:75px auto;text-align: center">
+							<#button name="返回" icon="fa fa-chevron-left" clickFun="backToDoWork();"/>
+							<#button name="提交" icon="fa fa-check" clickFun="todoSubmit();"/>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+   		</div>
+
+
+   	</div>
+  </div>
+</div>
+
+<script src="${ctxPath}/static/modular/cust/submitCommon.js"></script>
+@}

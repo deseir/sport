@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarKontiaoConfigDao" >
+
+  <!-- new -->
+  <update id="deleteLogic">
+		update c_car_validatecar_kongtiao_configuration set is_deleted = 1 where id = #{id}
+  </update>
+
+  <select id="listAll" resultType="com.moerlong.carloan.modular.car.entity.CarKontiaoConfig">
+    select
+    <include refid="Base_Column_List" />
+    from c_car_validatecar_kongtiao_configuration
+  </select>
+
+  <select id="selectByApplyId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from c_car_validatecar_kongtiao_configuration
+    where apply_id = #{applyId,jdbcType=BIGINT}
+  </select>
+
+  <!-- new over  -->
+
+  <resultMap id="BaseResultMap" type="com.moerlong.carloan.modular.car.entity.CarKontiaoConfig" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="car_id" property="carId" jdbcType="BIGINT" />
+    <result column="apply_id" property="applyId" jdbcType="BIGINT" />
+    <result column="cust_id" property="custId" jdbcType="BIGINT" />
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="bx_kt" property="bxKt" jdbcType="INTEGER" />
+    <result column="ktkzfs" property="ktkzfs" jdbcType="INTEGER" />
+    <result column="hpdlkt" property="hpdlkt" jdbcType="INTEGER" />
+    <result column="wdfqkz" property="wdfqkz" jdbcType="INTEGER" />
+    <result column="hzcfk" property="hzcfk" jdbcType="INTEGER" />
+    <result column="cnkqtj_hfgl" property="cnkqtjHfgl" jdbcType="INTEGER" />
+    <result column="czbx" property="czbx" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Example_Where_Clause_Page" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    c_car_validatecar_kongtiao_configuration.id, c_car_validatecar_kongtiao_configuration.car_id, 
+    c_car_validatecar_kongtiao_configuration.apply_id, c_car_validatecar_kongtiao_configuration.cust_id, 
+    c_car_validatecar_kongtiao_configuration.is_delete, c_car_validatecar_kongtiao_configuration.create_time, 
+    c_car_validatecar_kongtiao_configuration.update_time, c_car_validatecar_kongtiao_configuration.bx_kt, 
+    c_car_validatecar_kongtiao_configuration.ktkzfs, c_car_validatecar_kongtiao_configuration.hpdlkt, 
+    c_car_validatecar_kongtiao_configuration.wdfqkz, c_car_validatecar_kongtiao_configuration.hzcfk, 
+    c_car_validatecar_kongtiao_configuration.cnkqtj_hfgl, c_car_validatecar_kongtiao_configuration.czbx
+  </sql>
+
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from c_car_validatecar_kongtiao_configuration
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="delete" parameterType="java.lang.Long" >
+    delete from c_car_validatecar_kongtiao_configuration
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+
+  <insert id="insert" parameterType="com.moerlong.carloan.modular.car.entity.CarKontiaoConfig" >
+    insert into c_car_validatecar_kongtiao_configuration (id, car_id, apply_id, 
+      cust_id, is_delete, create_time, 
+      update_time, bx_kt, ktkzfs, 
+      hpdlkt, wdfqkz, hzcfk, 
+      cnkqtj_hfgl, czbx)
+    values (#{id,jdbcType=BIGINT}, #{carId,jdbcType=BIGINT}, #{applyId,jdbcType=BIGINT},
+      #{custId,jdbcType=BIGINT}, #{isDelete,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+      #{updateTime,jdbcType=TIMESTAMP}, #{bxKt,jdbcType=INTEGER}, #{ktkzfs,jdbcType=INTEGER}, 
+      #{hpdlkt,jdbcType=INTEGER}, #{wdfqkz,jdbcType=INTEGER}, #{hzcfk,jdbcType=INTEGER}, 
+      #{cnkqtjHfgl,jdbcType=INTEGER}, #{czbx,jdbcType=INTEGER})
+  </insert>
+  <insert id="save" parameterType="com.moerlong.carloan.modular.car.entity.CarKontiaoConfig" >
+    insert into c_car_validatecar_kongtiao_configuration
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="carId != null" >
+        car_id,
+      </if>
+      <if test="applyId != null" >
+        apply_id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="bxKt != null" >
+        bx_kt,
+      </if>
+      <if test="ktkzfs != null" >
+        ktkzfs,
+      </if>
+      <if test="hpdlkt != null" >
+        hpdlkt,
+      </if>
+      <if test="wdfqkz != null" >
+        wdfqkz,
+      </if>
+      <if test="hzcfk != null" >
+        hzcfk,
+      </if>
+      <if test="cnkqtjHfgl != null" >
+        cnkqtj_hfgl,
+      </if>
+      <if test="czbx != null" >
+        czbx,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="carId != null" >
+        #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bxKt != null" >
+        #{bxKt,jdbcType=INTEGER},
+      </if>
+      <if test="ktkzfs != null" >
+        #{ktkzfs,jdbcType=INTEGER},
+      </if>
+      <if test="hpdlkt != null" >
+        #{hpdlkt,jdbcType=INTEGER},
+      </if>
+      <if test="wdfqkz != null" >
+        #{wdfqkz,jdbcType=INTEGER},
+      </if>
+      <if test="hzcfk != null" >
+        #{hzcfk,jdbcType=INTEGER},
+      </if>
+      <if test="cnkqtjHfgl != null" >
+        #{cnkqtjHfgl,jdbcType=INTEGER},
+      </if>
+      <if test="czbx != null" >
+        #{czbx,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarKontiaoConfig" >
+    update c_car_validatecar_kongtiao_configuration
+    <set >
+      <if test="carId != null" >
+        car_id = #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        apply_id = #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bxKt != null" >
+        bx_kt = #{bxKt,jdbcType=INTEGER},
+      </if>
+      <if test="ktkzfs != null" >
+        ktkzfs = #{ktkzfs,jdbcType=INTEGER},
+      </if>
+      <if test="hpdlkt != null" >
+        hpdlkt = #{hpdlkt,jdbcType=INTEGER},
+      </if>
+      <if test="wdfqkz != null" >
+        wdfqkz = #{wdfqkz,jdbcType=INTEGER},
+      </if>
+      <if test="hzcfk != null" >
+        hzcfk = #{hzcfk,jdbcType=INTEGER},
+      </if>
+      <if test="cnkqtjHfgl != null" >
+        cnkqtj_hfgl = #{cnkqtjHfgl,jdbcType=INTEGER},
+      </if>
+      <if test="czbx != null" >
+        czbx = #{czbx,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="update" parameterType="com.moerlong.carloan.modular.car.entity.CarKontiaoConfig" >
+    update c_car_validatecar_kongtiao_configuration
+    set car_id = #{carId,jdbcType=BIGINT},
+      apply_id = #{applyId,jdbcType=BIGINT},
+      cust_id = #{custId,jdbcType=BIGINT},
+      is_delete = #{isDelete,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      bx_kt = #{bxKt,jdbcType=INTEGER},
+      ktkzfs = #{ktkzfs,jdbcType=INTEGER},
+      hpdlkt = #{hpdlkt,jdbcType=INTEGER},
+      wdfqkz = #{wdfqkz,jdbcType=INTEGER},
+      hzcfk = #{hzcfk,jdbcType=INTEGER},
+      cnkqtj_hfgl = #{cnkqtjHfgl,jdbcType=INTEGER},
+      czbx = #{czbx,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moerlong.carloan.modular.car.dao.CarBodyConfigDao" >
+  <resultMap id="BaseResultMap" type="com.moerlong.carloan.modular.car.entity.CarBodyConfig" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="cust_id" property="custId" jdbcType="BIGINT" />
+    <result column="apply_id" property="applyId" jdbcType="BIGINT" />
+    <result column="car_id" property="carId" jdbcType="BIGINT" />
+    <result column="carbody_config" property="carbodyConfig" jdbcType="VARCHAR" />
+    <result column="zj" property="zj" jdbcType="VARCHAR" />
+    <result column="qlj" property="qlj" jdbcType="VARCHAR" />
+    <result column="hlj" property="hlj" jdbcType="VARCHAR" />
+    <result column="minldjx" property="minldjx" jdbcType="VARCHAR" />
+    <result column="zczl" property="zczl" jdbcType="VARCHAR" />
+    <result column="csjg" property="csjg" jdbcType="VARCHAR" />
+    <result column="yxrl" property="yxrl" jdbcType="VARCHAR" />
+    <result column="xlxrl" property="xlxrl" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    c_car_body_config.id, c_car_body_config.cust_id, c_car_body_config.apply_id, c_car_body_config.car_id,
+    c_car_body_config.carbody_config, c_car_body_config.zj, c_car_body_config.qlj, c_car_body_config.hlj,
+    c_car_body_config.minldjx, c_car_body_config.zczl, c_car_body_config.csjg, c_car_body_config.yxrl,
+    c_car_body_config.xlxrl, c_car_body_config.create_time, c_car_body_config.update_time,
+    c_car_body_config.remark, c_car_body_config.is_deleted
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from c_car_body_config
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectByApplyId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from c_car_body_config
+    where apply_id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from c_car_body_config
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="save" parameterType="com.moerlong.carloan.modular.car.entity.CarBodyConfig" >
+    insert into c_car_body_config (id, cust_id, apply_id,
+      car_id, carbody_config, zj,
+      qlj, hlj, minldjx,
+      zczl, csjg, yxrl, xlxrl,
+      create_time, update_time, remark,
+      is_deleted)
+    values (#{id,jdbcType=BIGINT}, #{custId,jdbcType=BIGINT}, #{applyId,jdbcType=BIGINT},
+      #{carId,jdbcType=BIGINT}, #{carbodyConfig,jdbcType=VARCHAR}, #{zj,jdbcType=VARCHAR},
+      #{qlj,jdbcType=VARCHAR}, #{hlj,jdbcType=VARCHAR}, #{minldjx,jdbcType=VARCHAR},
+      #{zczl,jdbcType=VARCHAR}, #{csjg,jdbcType=VARCHAR}, #{yxrl,jdbcType=VARCHAR}, #{xlxrl,jdbcType=VARCHAR},
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR},
+      #{isDeleted,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.moerlong.carloan.modular.car.entity.CarBodyConfig" >
+    insert into c_car_body_config
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="applyId != null" >
+        apply_id,
+      </if>
+      <if test="carId != null" >
+        car_id,
+      </if>
+      <if test="carbodyConfig != null" >
+        carbody_config,
+      </if>
+      <if test="zj != null" >
+        zj,
+      </if>
+      <if test="qlj != null" >
+        qlj,
+      </if>
+      <if test="hlj != null" >
+        hlj,
+      </if>
+      <if test="minldjx != null" >
+        minldjx,
+      </if>
+      <if test="zczl != null" >
+        zczl,
+      </if>
+      <if test="csjg != null" >
+        csjg,
+      </if>
+      <if test="yxrl != null" >
+        yxrl,
+      </if>
+      <if test="xlxrl != null" >
+        xlxrl,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="carId != null" >
+        #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="carbodyConfig != null" >
+        #{carbodyConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="zj != null" >
+        #{zj,jdbcType=VARCHAR},
+      </if>
+      <if test="qlj != null" >
+        #{qlj,jdbcType=VARCHAR},
+      </if>
+      <if test="hlj != null" >
+        #{hlj,jdbcType=VARCHAR},
+      </if>
+      <if test="minldjx != null" >
+        #{minldjx,jdbcType=VARCHAR},
+      </if>
+      <if test="zczl != null" >
+        #{zczl,jdbcType=VARCHAR},
+      </if>
+      <if test="csjg != null" >
+        #{csjg,jdbcType=VARCHAR},
+      </if>
+      <if test="yxrl != null" >
+        #{yxrl,jdbcType=VARCHAR},
+      </if>
+      <if test="xlxrl != null" >
+        #{xlxrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null" >
+        #{isDeleted,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateWithoutNull" parameterType="com.moerlong.carloan.modular.car.entity.CarBodyConfig" >
+    update c_car_body_config
+    <set >
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=BIGINT},
+      </if>
+      <if test="applyId != null" >
+        apply_id = #{applyId,jdbcType=BIGINT},
+      </if>
+      <if test="carId != null" >
+        car_id = #{carId,jdbcType=BIGINT},
+      </if>
+      <if test="carbodyConfig != null" >
+        carbody_config = #{carbodyConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="zj != null" >
+        zj = #{zj,jdbcType=VARCHAR},
+      </if>
+      <if test="qlj != null" >
+        qlj = #{qlj,jdbcType=VARCHAR},
+      </if>
+      <if test="hlj != null" >
+        hlj = #{hlj,jdbcType=VARCHAR},
+      </if>
+      <if test="minldjx != null" >
+        minldjx = #{minldjx,jdbcType=VARCHAR},
+      </if>
+      <if test="zczl != null" >
+        zczl = #{zczl,jdbcType=VARCHAR},
+      </if>
+      <if test="csjg != null" >
+        csjg = #{csjg,jdbcType=VARCHAR},
+      </if>
+      <if test="yxrl != null" >
+        yxrl = #{yxrl,jdbcType=VARCHAR},
+      </if>
+      <if test="xlxrl != null" >
+        xlxrl = #{xlxrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null" >
+        is_deleted = #{isDeleted,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.moerlong.carloan.modular.car.entity.CarBodyConfig" >
+    update c_car_body_config
+    set cust_id = #{custId,jdbcType=BIGINT},
+      apply_id = #{applyId,jdbcType=BIGINT},
+      car_id = #{carId,jdbcType=BIGINT},
+      carbody_config = #{carbodyConfig,jdbcType=VARCHAR},
+      zj = #{zj,jdbcType=VARCHAR},
+      qlj = #{qlj,jdbcType=VARCHAR},
+      hlj = #{hlj,jdbcType=VARCHAR},
+      minldjx = #{minldjx,jdbcType=VARCHAR},
+      zczl = #{zczl,jdbcType=VARCHAR},
+      csjg = #{csjg,jdbcType=VARCHAR},
+      yxrl = #{yxrl,jdbcType=VARCHAR},
+      xlxrl = #{xlxrl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

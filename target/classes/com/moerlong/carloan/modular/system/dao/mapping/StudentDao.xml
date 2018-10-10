@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.system.dao.StudentDao">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap" type="com.moerlong.carloan.common.persistence.model.Student">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="age" property="age" />
+		<result column="stu_class" property="stuClass" />
+		<result column="crt_time" property="crtTime" />
+		<result column="upd_time" property="updTime" />
+	</resultMap>
+	
+	<sql id="Base_Column_List">
+		id, name, age, stu_class as stuClass, crt_time as crtTime, upd_time as updTime
+	</sql>
+
+	<select id="selectStudentList" resultType="map">
+		select
+		<include refid="Base_Column_List" />
+		from student
+		where 1=1
+<!-- 		<if test="condition != null and condition != ''"> -->
+<!-- 			and (name like CONCAT('%',#{condition},'%') or code like CONCAT('%',#{condition},'%')) -->
+<!-- 		</if> -->
+<!-- 		<if test="level != null and level != ''"> -->
+<!-- 			and levels = #{level} -->
+<!-- 		</if> -->
+	</select>
+	
+	<select id="getStudentByPage" resultType="map" parameterType="com.baomidou.mybatisplus.plugins.Page">
+        select
+		<include refid="Base_Column_List" />
+		from student
+		where 1=1
+<!--         <if test="beginTime != null and beginTime !='' and endTime != null and endTime != ''"> -->
+<!--             and (createTime between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59')) -->
+<!--         </if> -->
+        <if test="name != null and name !=''">
+            and name like CONCAT('%',#{name},'%')
+        </if>
+        <choose>
+            <when test="orderByField != null and orderByField !=''">
+                <choose>
+                    <when test="isAsc == true">
+                        order by ${orderByField} ASC
+                    </when>
+                    <otherwise>
+                        order by ${orderByField} DESC
+                    </otherwise>
+                </choose>
+            </when>
+            <otherwise>
+                order by crt_time DESC
+            </otherwise>
+        </choose>
+    </select>
+	
+</mapper>

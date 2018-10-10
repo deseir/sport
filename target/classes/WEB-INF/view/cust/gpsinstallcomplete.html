@@ -1,0 +1,139 @@
+@layout("/common/_container.html"){
+
+<div class="">
+  <div class="">
+	  <div class="ibox-title">
+		  <div style="border-bottom: 1px solid #cccccc94;height: 45px"><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 20px;">GPS安装</span></div>
+	  </div>
+   	<div class="tab-content">
+		<input type="hidden" value="${applyId}" id="applyId">
+		<input type="hidden" value="${interfaceAddress}" id="interfaceAddress">
+		<input type="hidden" value="${idPicUrls}" id="idPicUrls">
+		<div class="tab-pane fade in active"  id="div_sfrz">
+			<div class="menu-item" id="menu-item5">
+				<div class="form-horizontal" style="background-color:#FFF;padding: 25px;box-shadow: 3px 5px 3px 3px #c2c2c2;">
+					<!--<h5>车辆GPS信息</h5>-->
+					<div><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 15px;">车辆GPS信息</span></div>
+					<div class="row" style="margin-top:15px">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label class="col-sm-3 control-label">GPS安装时间</label>
+								<div class="col-sm-9">
+									<input type="hidden" id="gpsId">
+									<input type="hidden" id="carId">
+									<input class="form-control" id="gpsInstallDate" name="divorceDate" type="date" onclick="laydate({istime: false, format: 'YYYY-MM-DD'})">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<#input id="gpsRemark" type="text" name="备注" underline="false"/>
+						</div>
+						<div class="col-sm-6">
+							<label class="col-sm-3 control-label">人车合影照片</label>
+		                   	<div  class="container">
+		                   		<div class="form-grop"  enctype="multipart/form-data">
+		                   			<div style="width:7%;float:left">
+		                   				<span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+		                   					<span class="fileinput-new">选择文件</span>
+		                   					<input type="file" id="groupPhotoUrl1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+		                   					<input type="hidden" id="groupPhotoUrl">
+		                   				</span>
+		                   				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:40%">
+		                   					<img id="groupPhotoUrlmImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+		                   				</div>
+		                   				
+		                   			</div>
+		                   		</div>
+		                   </div>  
+						</div>
+					</div>
+					<div class="row">
+						<div class="" style="width:200px;margin:60px auto;text-align:center">
+							<#button icon="fa-save" name="保存GPS信息" underline="false" clickFun="saveGps()"/>
+						</div>
+					</div>
+					<div>
+					<!--<h5>车辆GPS详细信息</h5>-->
+						<div><span style="color: #333333;font-family: 'Microsoft YaHei';font-size: 15px;">车辆GPS详细信息</span></div>
+						<div class="row" style="margin-top:15px">
+							<div class="col-sm-12">
+								<div class="fixed-table-header" style="margin-right: 0px;">
+									<table class="table table-hover table-striped" style="width: 100%;">
+										<thead>
+										<tr>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner "></div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">车辆id</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">是否无线</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">GPS串码</div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">GPS安装位置图片 </div>
+												<div class="fht-cell"></div>
+											</th>
+											<th style="text-align: center; vertical-align: middle; " data-field="">
+												<div class="th-inner ">备注</div>
+												<div class="fht-cell"></div>
+											</th>
+										</tr>
+										</thead>
+										<tbody id="gpsDetailList" align="center">
+
+
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div style="width: 655px; margin: 80px auto;text-align: center;">
+								<#button name="返回" icon="fa-chevron-left" clickFun="backToDoWork();"/>
+								<#button name="修改" icon="fa fa-edit" clickFun="updateGpsDetail();"/>
+								<#button name="删除" icon="fa fa-trash-o" clickFun="delGpsDetail();"/>
+								<#button icon="fa-add" name="添加GPS详细信息" underline="false" clickFun="showAddGpsDetail()"/>
+								<#button name="确认GPS已安装" icon="fa fa-check" clickFun="todoSubmit();"/>
+							</div>
+						</div>
+					</div>
+					<br>
+					<!-- 
+					<h5>审核信息</h5>
+					<div class="row">
+						<div class="col-sm-6">
+							<#select id="checkResult" name="审核结果" underline="false">
+								<option value="">---请选择---</option>
+								<option value="0">通过</option>
+								<option value="1">拒绝</option>
+								<option value="2">驳回</option>
+							</#select>
+						    <#input id="checkResultDesc" name="审核结果描述" underline="false"/>
+					    </div>
+					</div>
+					 -->
+					 <!-- 
+					 <div style="width: 420px;margin-top:5%;text-align: center">
+							<#button name="返回" icon="fa-chevron-left" clickFun="backToDoWork();"/>
+							<#button name="确认GPS已安装" icon="fa fa-check" clickFun="todoSubmit();"/>
+	
+						</div>
+					  -->
+					
+					
+				</div>
+			</div>
+   		</div>
+   	</div>
+  </div>
+</div>
+
+<script src="${ctxPath}/static/modular/cust/gpsInstallComplete.js"></script>
+<script src="${ctxPath}/static/modular/cust/fileupload.js"></script>
+@}

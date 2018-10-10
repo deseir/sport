@@ -1,0 +1,219 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins" style="box-shadow: 3px 3px 3px 3px #c2c2c2;">
+            <div class="ibox-title">
+                <h5>新增客户</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="name" name="姓名" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#NameCon id="idcard" name="身份证号" />
+                            </div>
+                            <!--<div class="col-sm-3">
+                                <#select id="channelId" name="客户来源" underline="false" />
+                            </div>-->
+
+                            <div class="col-sm-3">
+                                <#button name="查询" icon="fa-search" clickFun="search()"/>
+                                <#button name="新增" icon="fa-plus" clickFun="add()" space="true"/>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-6 b-r">
+                                <div class="form-group">
+                                    <label class="control-label" style="text-align: right;width: 30%">是否可申请贷款：</label>
+                                    <div style="display: inline-block;width: 49%;">
+                                        <input type="text" id="isEnsure" class="form-control" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 b-r">
+                                <div class="form-group">
+                                    <label class="control-label" style="text-align: right;width: 30%">原因：</label>
+                                    <div style="display: inline-block;width: 49%;">
+                                        <input type="text" id="refuseMsg" class="form-control" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 b-r">
+                                <div class="form-group">
+                                    <label class="control-label" style="text-align: right;width: 30%">有无贷款记录：</label>
+                                    <div style="display: inline-block;width: 49%;">
+                                        <input type="text" id="hasRecord" class="form-control" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 b-r">
+                                <div class="form-group">
+                                    <label class="control-label" style="text-align: right;width: 30%">剩余可贷金额：</label>
+                                    <div style="display: inline-block;width: 49%;">
+                                        <input type="text" id="leftAmount" class="form-control" readonly />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div class="bootstrap-table">
+                            <div class="fixed-table-container" style="height: 552px; padding-bottom: 40px;">
+                                <div class="fixed-table-header" style="margin-right: 0px;">
+                                    <table class="table table-hover table-striped" style="width: 100%;">
+                                        <colgroup>
+                                            <col style="width: 10%">
+                                            <col style="width: 15%">
+                                            <col style="width: 15%">
+                                            <col style="width: 10%">
+
+                                            <col style="width: 10%">
+                                            <col style="width: 10%">
+                                            <col style="width: 10%">
+                                            <col style="width: 10%">
+                                            <col style="width: 10%">
+                                        </colgroup>
+                                        <thead>
+                                        <tr>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="applyId">
+                                                <div class="th-inner ">借款ID</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="custName">
+                                                <div class="th-inner ">客户名称</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="custCertId">
+                                                <div class="th-inner ">客户身份证号</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="relationship">
+                                                <div class="th-inner ">与借款人关系</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="loanDate">
+                                                <div class="th-inner ">借款日期</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="loanAmount">
+                                                <div class="th-inner ">借款金额</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="loanPreiod">
+                                                <div class="th-inner ">借款期限</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="loanStatus">
+                                                <div class="th-inner ">借款状态</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="overdueNum">
+                                                <div class="th-inner ">逾期次数</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="fixed-table-body">
+                                    <div class="fixed-table-loading" style="top: 41px; display: none;">
+                                        正在努力地加载数据中，请稍候……
+                                    </div>
+                                    <table id="custAddTable" data-mobile-responsive="true"
+                                           data-click-to-select="true" class="table table-hover table-striped"
+                                           style="margin-top: -40px;">
+                                        <colgroup>
+                                            <col style="width: 10%">
+                                            <col style="width: 15%">
+                                            <col style="width: 15%">
+                                            <col style="width: 10%">
+
+                                            <col style="width: 10%">
+                                            <col style="width: 10%">
+                                            <col style="width: 10%">
+                                            <col style="width: 10%">
+                                            <col style="width: 10%">
+                                        </colgroup>
+                                        <thead>
+                                        <tr>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="applyId">
+                                                <div class="th-inner ">借款ID</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="custName">
+                                                <div class="th-inner ">客户名称</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="custCertId">
+                                                <div class="th-inner ">客户身份证号</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="relationship">
+                                                <div class="th-inner ">与借款人关系</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="loanDate">
+                                                <div class="th-inner ">借款日期</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="loanAmount">
+                                                <div class="th-inner ">借款金额</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="loanPreiod">
+                                                <div class="th-inner ">借款期限</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="loanStatus">
+                                                <div class="th-inner ">借款状态</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                            <th style="text-align: center; vertical-align: middle; "
+                                                data-field="overdueNum">
+                                                <div class="th-inner ">逾期次数</div>
+                                                <div class="fht-cell"></div>
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/cust/custAdd.js"></script>
+@}

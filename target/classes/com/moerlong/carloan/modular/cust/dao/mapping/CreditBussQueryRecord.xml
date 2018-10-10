@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.CreditBussQueryRecordDao">
+
+	<sql id="searchColumns">
+		creditBussQueryRecord.id id,creditBussQueryRecord.cust_id custId,creditBussQueryRecord.apply_id applyId,creditBussQueryRecord.type type,creditBussQueryRecord.query_date queryDate,creditBussQueryRecord.query_org queryOrg,creditBussQueryRecord.query_reason queryReason,creditBussQueryRecord.create_time createTime,creditBussQueryRecord.update_time updateTime,creditBussQueryRecord.is_deleted isDeleted,creditBussQueryRecord.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.CreditBussQueryRecord">
+		insert into
+		c_credit_buss_query_record(apply_id,query_date,is_deleted,create_time,cust_id,query_reason,query_org,update_time,remark,id,type)
+		values (#{applyId},#{queryDate},#{isDeleted},#{createTime},#{custId},#{queryReason},#{queryOrg},#{updateTime},#{remark},#{id},#{type})
+	</insert>
+
+	<delete id="delete">
+		delete from c_credit_buss_query_record
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_credit_buss_query_record set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.CreditBussQueryRecord">
+		update c_credit_buss_query_record set
+		apply_id=#{applyId},query_date=#{queryDate},is_deleted=#{isDeleted},create_time=#{createTime},cust_id=#{custId},query_reason=#{queryReason},query_org=#{queryOrg},update_time=#{updateTime},remark=#{remark},id=#{id},type=#{type} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.CreditBussQueryRecord">
+		update c_credit_buss_query_record
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="type != null"> type=#{type},</if>
+            <if test="queryDate != null"> query_date=#{queryDate},</if>
+            <if test="queryOrg != null"> query_org=#{queryOrg},</if>
+            <if test="queryReason != null"> query_reason=#{queryReason},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.CreditBussQueryRecord">
+		select
+		<include refid="searchColumns" />
+		from c_credit_buss_query_record creditBussQueryRecord
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.CreditBussQueryRecord">
+		select
+		<include refid="searchColumns" />
+		from c_credit_buss_query_record creditBussQueryRecord
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CreditBussQueryRecord">
+		select
+		<include refid="searchColumns" />
+		from c_credit_buss_query_record creditBussQueryRecord
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+
+	<!--查询最近两个月的机构查询数量-->
+	<select id="selRecent2MonCount" parameterType="java.util.Map" resultType="java.lang.Integer">
+		select count(1) from c_credit_buss_query_record a where a.apply_id=#{applyId} and a.type=#{type} and a.query_date>=DATE_SUB(NOW(), INTERVAL 2 MONTH)
+	</select>
+
+	<!--根据applyId和type查询-->
+	<select id="selByApplyIdAndType" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CreditBussQueryRecord">
+		select
+		<include refid="searchColumns"/>
+		from c_credit_buss_query_record creditBussQueryRecord
+		where creditBussQueryRecord.apply_id=#{applyId} and creditBussQueryRecord.type=#{type} order by creditBussQueryRecord.create_time desc limit 1
+
+	</select>
+
+	<!--根据applyId和type查询所有数据-->
+	<select id="selListByApplyIdAndType" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.CreditBussQueryRecord">
+		select
+		creditBussQueryRecord.id id,creditBussQueryRecord.cust_id custId,creditBussQueryRecord.apply_id applyId,creditBussQueryRecord.type type,
+		creditBussQueryRecord.query_date queryDate,creditBussQueryRecord.query_org queryOrg,creditBussQueryRecord.query_reason queryReason,
+		CASE creditBussQueryRecord.query_reason
+		WHEN 0 THEN '贷后管理'
+		WHEN 1 THEN '信用卡审批'
+		WHEN 2 THEN '保前查询'
+		WHEN 3 THEN '贷款审批'
+		WHEN 4 THEN '担保资格查询'
+		ELSE '' END queryReasonName,
+		creditBussQueryRecord.create_time createTime,creditBussQueryRecord.update_time updateTime,creditBussQueryRecord.is_deleted isDeleted,creditBussQueryRecord.remark remark
+		from c_credit_buss_query_record creditBussQueryRecord
+		where creditBussQueryRecord.apply_id=#{applyId} and creditBussQueryRecord.type=#{type} order by creditBussQueryRecord.create_time desc
+
+	</select>
+
+	<delete id="deleteByIds" parameterType="java.lang.Long">
+		delete from c_credit_buss_query_record
+		where id in
+		<foreach collection="list" index="index" open="(" item="id" separator="," close=")">
+			#{id}
+		</foreach>
+
+	</delete>
+
+</mapper>
+

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.payMgr.dao.PayDetailInfoDao">
+
+	<sql id="searchColumns">
+		id id,
+		pay_id payId,
+		dept_id deptId,
+		pay_num payNum,
+		cust_mobile custMobile,
+		cur_pay_amount curPayAmount,
+		bank_name bankName,
+		bank_card_no bankCardNo,
+		pay_status payStatus,
+		pay_type payType,
+		paying_num payingNum,
+		serial_no serialNo,
+		pay_code payCode,
+		pay_msg payMsg,
+		pay_channel payChannel,
+		operator_id operatorId,
+		operator_date operatorDate,
+		create_time createTime,
+		update_time updateTime,
+		remark remark,
+		is_deleted isDeleted
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.payMgr.entity.PayDetailInfo">
+		insert into
+		c_pay_detail_info(
+			dept_id,
+			remark,
+			cust_mobile,
+			bank_card_no,
+			bank_name,
+			update_time,
+			serial_no,
+			pay_code,
+			pay_msg,
+			pay_channel,
+			operator_date,
+			cur_pay_amount,
+			pay_num,
+			is_deleted,
+			create_time,
+			id,
+			pay_id,
+			pay_status,
+			pay_type,
+			paying_num,
+			operator_id)
+		values (
+		    #{deptId},
+			#{remark},
+			#{custMobile},
+			#{bankCardNo},
+			#{bankName},
+			#{updateTime},
+			#{serialNo},
+			#{payCode},
+			#{payMsg},
+			#{payChannel},
+			#{operatorDate},
+			#{curPayAmount},
+			#{payNum},
+			#{isDeleted},
+			#{createTime},
+			#{id},
+			#{payId},
+			#{payStatus},
+			#{payType},
+			#{payingNum},
+			#{operatorId})
+	</insert>
+
+	<delete id="delete">
+		delete from c_pay_detail_info
+		where id = #{id}
+	</delete>
+
+	<update id="update" parameterType="com.moerlong.carloan.modular.payMgr.entity.PayDetailInfo">
+		update c_pay_detail_info <set>
+		<if test="deptId != null"> dept_id=#{deptId},</if>
+		<if test="remark != null"> remark=#{remark},</if>
+		<if test="custMobile != null"> cust_mobile=#{custMobile},</if>
+		<if test="bankCardNo != null"> bank_card_no=#{bankCardNo},</if>
+		<if test="bankName != null"> bank_name=#{bankName},</if>
+		<if test="updateTime != null"> update_time=#{updateTime},</if>
+		<if test="serialNo != null"> serial_no=#{serialNo},</if>
+		<if test="payCode != null"> pay_code=#{payCode},</if>
+		<if test="payMsg != null"> pay_msg=#{payMsg},</if>
+		<if test="payChannel != null"> pay_channel=#{payChannel},</if>
+		<if test="operatorDate != null"> operator_date=#{operatorDate},</if>
+		<if test="curPayAmount != null"> cur_pay_amount=#{curPayAmount},</if>
+		<if test="payNum != null"> pay_num=#{payNum},</if>
+		<if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+		<if test="createTime != null"> create_time=#{createTime},</if>
+		<if test="payId != null"> pay_id=#{payId},</if>
+		<if test="payStatus != null"> pay_status=#{payStatus},</if>
+		<if test="payType != null"> pay_type=#{payType},</if>
+		<if test="payingNum != null"> paying_num=#{payingNum},</if>
+		<if test="operatorId != null"> operator_id=#{operatorId},</if>
+	</set>
+		 where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.payMgr.entity.PayDetailInfo">
+		select
+		<include refid="searchColumns" />
+		from c_pay_detail_info
+		where id = #{id}
+	</select>
+
+	<select id="selectByPayIdAndStatus" resultType="com.moerlong.carloan.modular.payMgr.entity.PayDetailInfo">
+		select
+		<include refid="searchColumns" />
+		from c_pay_detail_info
+		where pay_id = #{payId}
+		and pay_status = #{status}
+	</select>
+
+	<select id="selectByStatus" resultType="com.moerlong.carloan.modular.payMgr.entity.PayDetailInfo">
+		select
+		<include refid="searchColumns" />
+		from c_pay_detail_info
+		where pay_status = #{status}
+	</select>
+
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" resultType="com.moerlong.carloan.modular.payMgr.entity.PayDetailInfo">
+		select
+		<include refid="searchColumns" />
+		from c_pay_detail_info
+		where 1=1
+		
+		<if test="orderCondition != null"> order by #{orderCondition} </if>
+	</select>
+
+
+	<sql id="searchColumns2">
+		c1.id id,
+		c1.dept_id deptId,
+		c1.pay_id payId,
+		c2.cust_name custName,
+		c1.pay_num payNum,
+		c1.cust_mobile custMobile,
+		c1.cur_pay_amount curPayAmount,
+		c1.bank_name bankName,
+		c1.bank_card_no bankCardNo,
+		c1.pay_status payStatus,
+		c1.pay_type payType,
+		c1.paying_num payingNum,
+		c1.serial_no serialNo,
+		c1.pay_code payCode,
+		c1.pay_msg payMsg,
+		c1.pay_channel payChannel,
+		c1.operator_id operatorId,
+		c1.operator_date operatorDate,
+		c1.create_time createTime,
+		c1.update_time updateTime,
+		c1.remark remark,
+		c1.is_deleted isDeleted
+	</sql>
+
+	<select id="listByCondition" resultType="com.moerlong.carloan.modular.payMgr.entity.vo.PayDetailInfoVO">
+		select
+		<include refid="searchColumns2" />
+		from c_pay_detail_info c1 left join c_pay_info c2 on c1.pay_id = c2.id
+		where 1=1
+		<if test="batchNo != null and batchNo != ''">
+			and c1.serial_no = #{batchNo}
+		</if>
+
+		<if test="payCode != null and payCode != ''">
+			and c1.pay_code = #{payCode}
+		</if>
+
+		<if test="beginTime != null and beginTime != '' and endTime != null and endTime != ''">
+			and (c1.update_time between CONCAT(#{beginTime},' 00:00:00') and CONCAT(#{endTime},' 23:59:59'))
+		</if>
+		<if test="status != null and status != ''">
+			and c1.pay_status = #{status}
+		</if>
+		<if test="payType != null">
+			and c1.pay_type = #{payType}
+		</if>
+		order by c1.update_time DESC
+	</select>
+
+	<!-- 获取昨天（T-1)成功放款金额总计 -->
+	<select id="getPaysCountLastDaySuccess" resultType="map">
+		SELECT
+		IFNULL(sum(cur_pay_amount),0.00) as money, DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 DAY),'%Y%m%d') as curDate,IFNULL(dept_id,0) as deptId
+		FROM
+		c_pay_detail_info
+		WHERE pay_status = 6
+		AND DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 1 DAY),'%Y%m%d') = DATE_FORMAT(update_time, '%Y%m%d')
+		AND pay_type in (0,1)
+		AND is_deleted = 0
+		GROUP BY dept_id
+	</select>
+
+	<!-- 根据条件查询 -->
+	<select id="listByPayId" resultType="com.moerlong.carloan.modular.payMgr.entity.PayDetailInfo">
+		select
+		<include refid="searchColumns" />
+		from c_pay_detail_info
+		where 1=1
+
+		<if test="payId != null and payId != ''">
+			and pay_id = #{payId}
+		</if>
+
+		order by update_time DESC
+	</select>
+
+	<!-- 统计累计放款总金额 -->
+	<select id="countAllPayMoney" resultType="map">
+		SELECT
+		IFNULL(sum(cur_pay_amount), 0.00) as money,IFNULL(dept_id,0) as deptId
+		FROM
+		c_pay_detail_info
+		WHERE pay_status = #{payStatus}
+		AND pay_type in (0,1)
+		AND is_deleted = 0 GROUP BY dept_id
+	</select>
+
+	<!-- 根据payId统计其放款成功总额 -->
+	<select id="countPayMoneyByPayId" resultType="BigDecimal">
+		SELECT
+		IFNULL(sum(cur_pay_amount), 0.00) as money,IFNULL(dept_id,0) as deptId
+		FROM
+		c_pay_detail_info
+		WHERE pay_id = #{payId}
+		AND pay_status = 6
+		AND pay_type in (0,1)
+		AND is_deleted = 0 GROUP BY dept_id
+	</select>
+	
+	<select id="countPayMoneyByPayId2" resultType="BigDecimal">
+		SELECT
+		IFNULL(sum(cur_pay_amount), 0.00) as money
+		FROM
+		c_pay_detail_info
+		WHERE pay_id = #{payId}
+		AND pay_status = 6
+		AND pay_type in (0,1)
+		AND is_deleted = 0
+	</select>
+
+</mapper>
+

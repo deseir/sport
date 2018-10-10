@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.TelecomCallContactDetailDao">
+
+	<sql id="searchColumns">
+		telecomCallContactDetail.id id,telecomCallContactDetail.apply_id applyId,telecomCallContactDetail.cust_id custId,telecomCallContactDetail.type type,telecomCallContactDetail.city city,telecomCallContactDetail.peer_num peerNum,telecomCallContactDetail.is_emergency isEmergency,telecomCallContactDetail.p_relation pRelation,telecomCallContactDetail.group_name groupName,telecomCallContactDetail.company_name companyName,telecomCallContactDetail.call_cnt_1w callCnt1w,telecomCallContactDetail.call_cnt_1m callCnt1m,telecomCallContactDetail.call_cnt_3m callCnt3m,telecomCallContactDetail.call_cnt_6m callCnt6m,telecomCallContactDetail.call_time_3m callTime3m,telecomCallContactDetail.call_time_6m callTime6m,telecomCallContactDetail.dial_cnt_3m dialCnt3m,telecomCallContactDetail.dial_cnt_6m dialCnt6m,telecomCallContactDetail.dial_time_3m dialTime3m,telecomCallContactDetail.dial_time_6m dialTime6m,telecomCallContactDetail.dialed_cnt_3m dialedCnt3m,telecomCallContactDetail.dialed_cnt_6m dialedCnt6m,telecomCallContactDetail.dialed_time_3m dialedTime3m,telecomCallContactDetail.dialed_time_6m dialedTime6m,telecomCallContactDetail.call_cnt_morning_3m callCntMorning3m,telecomCallContactDetail.call_cnt_morning_6m callCntMorning6m,telecomCallContactDetail.call_cnt_noon_3m callCntNoon3m,telecomCallContactDetail.call_cnt_noon_6m callCntNoon6m,telecomCallContactDetail.call_cnt_afternoon_3m callCntAfternoon3m,telecomCallContactDetail.call_cnt_afternoon_6m callCntAfternoon6m,telecomCallContactDetail.call_cnt_evening_3m callCntEvening3m,telecomCallContactDetail.call_cnt_evening_6m callCntEvening6m,telecomCallContactDetail.call_cnt_night_3m callCntNight3m,telecomCallContactDetail.call_cnt_night_6m callCntNight6m,telecomCallContactDetail.call_cnt_weekday_3m callCntWeekday3m,telecomCallContactDetail.call_cnt_weekday_6m callCntWeekday6m,telecomCallContactDetail.call_cnt_weekend_3m callCntWeekend3m,telecomCallContactDetail.call_cnt_weekend_6m callCntWeekend6m,telecomCallContactDetail.call_cnt_holiday_3m callCntHoliday3m,telecomCallContactDetail.call_cnt_holiday_6m callCntHoliday6m,telecomCallContactDetail.call_if_whole_day_3m callIfWholeDay3m,telecomCallContactDetail.call_if_whole_day_6m callIfWholeDay6m,telecomCallContactDetail.trans_start transStart,telecomCallContactDetail.trans_end transEnd,telecomCallContactDetail.create_time createTime,telecomCallContactDetail.update_time updateTime,telecomCallContactDetail.is_deleted isDeleted,telecomCallContactDetail.remark remark
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.TelecomCallContactDetail">
+		insert into
+		c_telecom_call_contact_detail(call_time_6m,city,call_cnt_weekend_6m,company_name,call_cnt_evening_3m,call_cnt_1w,remark,call_cnt_night_6m,call_cnt_holiday_3m,trans_end,type,call_cnt_morning_6m,call_if_whole_day_3m,dialed_time_6m,apply_id,is_emergency,dialed_cnt_6m,dial_cnt_6m,dial_time_6m,peer_num,is_deleted,call_cnt_weekday_6m,cust_id,call_cnt_afternoon_3m,id,call_cnt_3m,call_cnt_noon_3m,call_cnt_1m,trans_start,call_if_whole_day_6m,call_time_3m,call_cnt_weekend_3m,call_cnt_evening_6m,call_cnt_night_3m,call_cnt_holiday_6m,dialed_time_3m,update_time,call_cnt_morning_3m,dial_cnt_3m,dial_time_3m,p_relation,group_name,dialed_cnt_3m,create_time,call_cnt_weekday_3m,call_cnt_afternoon_6m,call_cnt_6m,call_cnt_noon_6m)
+		values (#{callTime6m},#{city},#{callCntWeekend6m},#{companyName},#{callCntEvening3m},#{callCnt1w},#{remark},#{callCntNight6m},#{callCntHoliday3m},#{transEnd},#{type},#{callCntMorning6m},#{callIfWholeDay3m},#{dialedTime6m},#{applyId},#{isEmergency},#{dialedCnt6m},#{dialCnt6m},#{dialTime6m},#{peerNum},#{isDeleted},#{callCntWeekday6m},#{custId},#{callCntAfternoon3m},#{id},#{callCnt3m},#{callCntNoon3m},#{callCnt1m},#{transStart},#{callIfWholeDay6m},#{callTime3m},#{callCntWeekend3m},#{callCntEvening6m},#{callCntNight3m},#{callCntHoliday6m},#{dialedTime3m},#{updateTime},#{callCntMorning3m},#{dialCnt3m},#{dialTime3m},#{pRelation},#{groupName},#{dialedCnt3m},#{createTime},#{callCntWeekday3m},#{callCntAfternoon6m},#{callCnt6m},#{callCntNoon6m})
+	</insert>
+
+	<delete id="delete">
+		delete from c_telecom_call_contact_detail
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_telecom_call_contact_detail set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.TelecomCallContactDetail">
+		update c_telecom_call_contact_detail set
+		call_time_6m=#{callTime6m},city=#{city},call_cnt_weekend_6m=#{callCntWeekend6m},company_name=#{companyName},call_cnt_evening_3m=#{callCntEvening3m},call_cnt_1w=#{callCnt1w},remark=#{remark},call_cnt_night_6m=#{callCntNight6m},call_cnt_holiday_3m=#{callCntHoliday3m},trans_end=#{transEnd},type=#{type},call_cnt_morning_6m=#{callCntMorning6m},call_if_whole_day_3m=#{callIfWholeDay3m},dialed_time_6m=#{dialedTime6m},apply_id=#{applyId},is_emergency=#{isEmergency},dialed_cnt_6m=#{dialedCnt6m},dial_cnt_6m=#{dialCnt6m},dial_time_6m=#{dialTime6m},peer_num=#{peerNum},is_deleted=#{isDeleted},call_cnt_weekday_6m=#{callCntWeekday6m},cust_id=#{custId},call_cnt_afternoon_3m=#{callCntAfternoon3m},id=#{id},call_cnt_3m=#{callCnt3m},call_cnt_noon_3m=#{callCntNoon3m},call_cnt_1m=#{callCnt1m},trans_start=#{transStart},call_if_whole_day_6m=#{callIfWholeDay6m},call_time_3m=#{callTime3m},call_cnt_weekend_3m=#{callCntWeekend3m},call_cnt_evening_6m=#{callCntEvening6m},call_cnt_night_3m=#{callCntNight3m},call_cnt_holiday_6m=#{callCntHoliday6m},dialed_time_3m=#{dialedTime3m},update_time=#{updateTime},call_cnt_morning_3m=#{callCntMorning3m},dial_cnt_3m=#{dialCnt3m},dial_time_3m=#{dialTime3m},p_relation=#{pRelation},group_name=#{groupName},dialed_cnt_3m=#{dialedCnt3m},create_time=#{createTime},call_cnt_weekday_3m=#{callCntWeekday3m},call_cnt_afternoon_6m=#{callCntAfternoon6m},call_cnt_6m=#{callCnt6m},call_cnt_noon_6m=#{callCntNoon6m} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.TelecomCallContactDetail">
+		update c_telecom_call_contact_detail
+		<set>
+            <if test="applyId != null"> apply_id=#{applyId},</if>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="type != null"> type=#{type},</if>
+            <if test="city != null"> city=#{city},</if>
+            <if test="peerNum != null"> peer_num=#{peerNum},</if>
+            <if test="isEmergency != null"> is_emergency=#{isEmergency},</if>
+            <if test="pRelation != null"> p_relation=#{pRelation},</if>
+            <if test="groupName != null"> group_name=#{groupName},</if>
+            <if test="companyName != null"> company_name=#{companyName},</if>
+            <if test="callCnt1w != null"> call_cnt_1w=#{callCnt1w},</if>
+            <if test="callCnt1m != null"> call_cnt_1m=#{callCnt1m},</if>
+            <if test="callCnt3m != null"> call_cnt_3m=#{callCnt3m},</if>
+            <if test="callCnt6m != null"> call_cnt_6m=#{callCnt6m},</if>
+            <if test="callTime3m != null"> call_time_3m=#{callTime3m},</if>
+            <if test="callTime6m != null"> call_time_6m=#{callTime6m},</if>
+            <if test="dialCnt3m != null"> dial_cnt_3m=#{dialCnt3m},</if>
+            <if test="dialCnt6m != null"> dial_cnt_6m=#{dialCnt6m},</if>
+            <if test="dialTime3m != null"> dial_time_3m=#{dialTime3m},</if>
+            <if test="dialTime6m != null"> dial_time_6m=#{dialTime6m},</if>
+            <if test="dialedCnt3m != null"> dialed_cnt_3m=#{dialedCnt3m},</if>
+            <if test="dialedCnt6m != null"> dialed_cnt_6m=#{dialedCnt6m},</if>
+            <if test="dialedTime3m != null"> dialed_time_3m=#{dialedTime3m},</if>
+            <if test="dialedTime6m != null"> dialed_time_6m=#{dialedTime6m},</if>
+            <if test="callCntMorning3m != null"> call_cnt_morning_3m=#{callCntMorning3m},</if>
+            <if test="callCntMorning6m != null"> call_cnt_morning_6m=#{callCntMorning6m},</if>
+            <if test="callCntNoon3m != null"> call_cnt_noon_3m=#{callCntNoon3m},</if>
+            <if test="callCntNoon6m != null"> call_cnt_noon_6m=#{callCntNoon6m},</if>
+            <if test="callCntAfternoon3m != null"> call_cnt_afternoon_3m=#{callCntAfternoon3m},</if>
+            <if test="callCntAfternoon6m != null"> call_cnt_afternoon_6m=#{callCntAfternoon6m},</if>
+            <if test="callCntEvening3m != null"> call_cnt_evening_3m=#{callCntEvening3m},</if>
+            <if test="callCntEvening6m != null"> call_cnt_evening_6m=#{callCntEvening6m},</if>
+            <if test="callCntNight3m != null"> call_cnt_night_3m=#{callCntNight3m},</if>
+            <if test="callCntNight6m != null"> call_cnt_night_6m=#{callCntNight6m},</if>
+            <if test="callCntWeekday3m != null"> call_cnt_weekday_3m=#{callCntWeekday3m},</if>
+            <if test="callCntWeekday6m != null"> call_cnt_weekday_6m=#{callCntWeekday6m},</if>
+            <if test="callCntWeekend3m != null"> call_cnt_weekend_3m=#{callCntWeekend3m},</if>
+            <if test="callCntWeekend6m != null"> call_cnt_weekend_6m=#{callCntWeekend6m},</if>
+            <if test="callCntHoliday3m != null"> call_cnt_holiday_3m=#{callCntHoliday3m},</if>
+            <if test="callCntHoliday6m != null"> call_cnt_holiday_6m=#{callCntHoliday6m},</if>
+            <if test="callIfWholeDay3m != null"> call_if_whole_day_3m=#{callIfWholeDay3m},</if>
+            <if test="callIfWholeDay6m != null"> call_if_whole_day_6m=#{callIfWholeDay6m},</if>
+            <if test="transStart != null"> trans_start=#{transStart},</if>
+            <if test="transEnd != null"> trans_end=#{transEnd},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.TelecomCallContactDetail">
+		select
+		<include refid="searchColumns" />
+		from c_telecom_call_contact_detail telecomCallContactDetail
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.TelecomCallContactDetail">
+		select
+		<include refid="searchColumns" />
+		from c_telecom_call_contact_detail telecomCallContactDetail
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.TelecomCallContactDetail">
+		select
+		<include refid="searchColumns" />
+		from c_telecom_call_contact_detail telecomCallContactDetail
+		where 1=1
+        <if test="applyId != null"> and apply_id=#{applyId}</if>
+        <if test="type != null"> and type=#{type}</if>
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+</mapper>
+

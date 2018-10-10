@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.moerlong.carloan.modular.cust.dao.FamilyBookInfoDao">
+
+	<sql id="searchColumns">
+		familyBookInfo.id id,familyBookInfo.cust_id custId,familyBookInfo.relationship relationship,familyBookInfo.master_name masterName,familyBookInfo.master_sex masterSex,familyBookInfo.cert_id certId,familyBookInfo.first_page_photo_url firstPagePhotoUrl,familyBookInfo.create_time createTime,familyBookInfo.update_time updateTime,familyBookInfo.remark remark,familyBookInfo.is_deleted isDeleted
+	</sql>
+
+	<insert id="save" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.cust.entity.FamilyBookInfo">
+		insert into
+		c_family_book_info(is_deleted,create_time,cust_id,first_page_photo_url,update_time,remark,id,cert_id,relationship,master_sex,master_name)
+		values (#{isDeleted},#{createTime},#{custId},#{firstPagePhotoUrl},#{updateTime},#{remark},#{id},#{certId},#{relationship},#{masterSex},#{masterName})
+	</insert>
+
+	<delete id="delete">
+		delete from c_family_book_info
+		where id = #{id}
+	</delete>
+	
+	<update id="deleteLogic">
+		update c_family_book_info set is_deleted = 1 where id = #{id}
+	</update>
+	
+	<update id="update" parameterType="com.moerlong.carloan.modular.cust.entity.FamilyBookInfo">
+		update c_family_book_info set
+		is_deleted=#{isDeleted},create_time=#{createTime},cust_id=#{custId},first_page_photo_url=#{firstPagePhotoUrl},update_time=#{updateTime},remark=#{remark},id=#{id},cert_id=#{certId},relationship=#{relationship},master_sex=#{masterSex},master_name=#{masterName} where id = #{id}
+	</update>
+	
+	<update id="updateWithOutNull" parameterType="com.moerlong.carloan.modular.cust.entity.FamilyBookInfo">
+		update c_family_book_info
+		<set>
+            <if test="custId != null"> cust_id=#{custId},</if>
+            <if test="relationship != null"> relationship=#{relationship},</if>
+            <if test="masterName != null"> master_name=#{masterName},</if>
+            <if test="masterSex != null"> master_sex=#{masterSex},</if>
+            <if test="certId != null"> cert_id=#{certId},</if>
+            <if test="firstPagePhotoUrl != null"> first_page_photo_url=#{firstPagePhotoUrl},</if>
+            <if test="createTime != null"> create_time=#{createTime},</if>
+            <if test="updateTime != null"> update_time=#{updateTime},</if>
+            <if test="remark != null"> remark=#{remark},</if>
+            <if test="isDeleted != null"> is_deleted=#{isDeleted},</if>
+        </set> 
+		where id = #{id}
+	</update>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectById" resultType="com.moerlong.carloan.modular.cust.entity.FamilyBookInfo">
+		select
+		<include refid="searchColumns" />
+		from c_family_book_info familyBookInfo
+		where id = #{id}
+	</select>
+	
+	<!-- 查询所有 -->
+	<select id="listAll" resultType="com.moerlong.carloan.modular.cust.entity.FamilyBookInfo">
+		select
+		<include refid="searchColumns" />
+		from c_family_book_info familyBookInfo
+	</select>
+	
+	<!-- 查询（分页查询） -->
+	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.cust.entity.FamilyBookInfo">
+		select
+		<include refid="searchColumns" />
+		from c_family_book_info familyBookInfo
+		where 1=1
+		
+		<if test="orderCondition != null"> order by ${orderCondition} </if>
+	</select>
+	<!-- 根据applyID户口本信息获取 -->
+	<select id="familyBookInfoGetByApplyId" resultType="com.moerlong.carloan.modular.cust.entity.FamilyBookInfo">
+		SELECT *
+		FROM
+		c_family_book_info a
+		LEFT JOIN c_apply_info b ON   a.cust_id = b.cust_id
+		where  b.cust_id=#{id}
+	</select>
+</mapper>
+
