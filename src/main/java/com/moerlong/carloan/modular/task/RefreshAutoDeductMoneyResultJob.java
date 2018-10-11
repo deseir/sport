@@ -3,7 +3,6 @@ package com.moerlong.carloan.modular.task;
 import com.moerlong.carloan.modular.paybackMgr.business.RepaymentBusiness;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -26,7 +25,7 @@ public class RefreshAutoDeductMoneyResultJob {
         isRunning = running;
     }
 
-    @Scheduled(cron = "0 0/2 * * * ?")
+//    @Scheduled(cron = "0 0/2 * * * ?")
     public void run(){
         if(isRunning){
             LOG.error("[===>>>---更新自动划扣结果---作业  上次还未执行完毕======]");
