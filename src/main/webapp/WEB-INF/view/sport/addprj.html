@@ -3,9 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>器材巡检</title>
-    <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
-    <link rel="stylesheet" href="./easy-upload.css">
+    <!--<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>-->
+    <!--<link rel="stylesheet" href="./easy-upload.css">-->
     <style>
         fieldset {
             margin:0 auto;
@@ -40,8 +39,8 @@
 <body>
     <fieldset>
         <legend>工程概况</legend>
-        <input type="text" name="prjtype" id="prjtype" value="${prjBase.prjtype}">
-        <input type="text" name="prjId" id="prjId" value="${prjBase.id}">
+        <input type="hidden" name="prjtype" id="prjtype" value="${prjBase.prjtype}">
+        <input type="hidden" name="prjId" id="prjId" value="${prjBase.id}">
         <label for="prjname">工程名称:</label>
         <input type="text" name="prjname" id="prjname" placeholder="" value="${prjBase.prjname}">
         <label for="local">地区:</label>
@@ -70,40 +69,42 @@
         <input type="text" id="qjpic3" name="qjpic3" placeholder="" value="${prjBase.qjpic3}">
         <input type="button" value="保存" style="width: 10%;" onclick="savePrj()">
         <input type="button" value="删除" style="width: 10%;" onclick="logicDelete()">
+        <input type="button" value="返回" style="width: 10%;" onclick="back()">
     </fieldset>
-<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
-<!-- 视实际需要决定是否引入jquery.cookie-1.4.1.min.js-->
-<script src="vendor/jquery.cookie-1.4.1.min.js"></script>
-<script src="easyUpload.js"></script>
-<script>
-    $('#easyContainer').easyUpload({
-        allowFileTypes: '*.jpg;*.doc;*.pdf',//允许上传文件类型，格式';*.doc;*.pdf'
-        allowFileSize: 100000,//允许上传文件大小(KB)
-        selectText: '选择文件',//选择文件按钮文案
-        multi: true,//是否允许多文件上传
-        multiNum: 5,//多文件上传时允许的文件数
-        showNote: true,//是否展示文件上传说明
-        note: '提示：最多上传5个文件，支持格式为doc、pdf、jpg',//文件上传说明
-        showPreview: true,//是否显示文件预览
-        url: '/api/file/upload',//上传文件地址
-        fileName: 'file',//文件filename配置参数
-        formParam: {
-            token: $.cookie('token_cookie')//不需要验证token时可以去掉
-        },//文件filename以外的配置参数，格式：{key1:value1,key2:value2}
-        timeout: 30000,//请求超时时间
-        okCode: 200,//与后端返回数据code值一致时执行成功回调，不配置默认200
-        successFunc: function(res) {
-            console.log('成功回调', res);
-        },//上传成功回调函数
-        errorFunc: function(res) {
-            console.log('失败回调', res);
-        },//上传失败回调函数
-        deleteFunc: function(res) {
-            console.log('删除回调', res);
-        }//删除文件回调函数
-    });
-</script>
+<!--<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>-->
+<!--&lt;!&ndash; 视实际需要决定是否引入jquery.cookie-1.4.1.min.js&ndash;&gt;-->
+<!--<script src="vendor/jquery.cookie-1.4.1.min.js"></script>-->
+<!--<script src="easyUpload.js"></script>-->
+<!--<script>-->
+    <!--$('#easyContainer').easyUpload({-->
+        <!--allowFileTypes: '*.jpg;*.doc;*.pdf',//允许上传文件类型，格式';*.doc;*.pdf'-->
+        <!--allowFileSize: 100000,//允许上传文件大小(KB)-->
+        <!--selectText: '选择文件',//选择文件按钮文案-->
+        <!--multi: true,//是否允许多文件上传-->
+        <!--multiNum: 5,//多文件上传时允许的文件数-->
+        <!--showNote: true,//是否展示文件上传说明-->
+        <!--note: '提示：最多上传5个文件，支持格式为doc、pdf、jpg',//文件上传说明-->
+        <!--showPreview: true,//是否显示文件预览-->
+        <!--url: '/api/file/upload',//上传文件地址-->
+        <!--fileName: 'file',//文件filename配置参数-->
+        <!--formParam: {-->
+            <!--token: $.cookie('token_cookie')//不需要验证token时可以去掉-->
+        <!--},//文件filename以外的配置参数，格式：{key1:value1,key2:value2}-->
+        <!--timeout: 30000,//请求超时时间-->
+        <!--okCode: 200,//与后端返回数据code值一致时执行成功回调，不配置默认200-->
+        <!--successFunc: function(res) {-->
+            <!--console.log('成功回调', res);-->
+        <!--},//上传成功回调函数-->
+        <!--errorFunc: function(res) {-->
+            <!--console.log('失败回调', res);-->
+        <!--},//上传失败回调函数-->
+        <!--deleteFunc: function(res) {-->
+            <!--console.log('删除回调', res);-->
+        <!--}//删除文件回调函数-->
+    <!--});-->
+<!--</script>-->
 
+<script src="${ctxPath}/static/js/jquery.min.js"></script>
 <script src="${ctxPath}/static/modular/sport/prjbase.js"></script>
 
 </body>

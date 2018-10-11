@@ -148,7 +148,7 @@ public class SPrjBaseController {
 		this.log.info("/sprjbase/pageQuery param:{}",queryMap);
 		Map<String, Object> res = new HashMap<>();
 		Integer pageNum = 1; //页数从1开始
-		Integer pageSize = 10; //页面大小
+		Integer pageSize = 8; //页面大小
 
 		try {
 			if(queryMap!=null) {
