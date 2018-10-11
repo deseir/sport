@@ -39,6 +39,9 @@
                 <div class="logo-box">
                     <img src="${ctxPath}/static/img/sport/logo.png" style="height:60px;" alt="健身器材巡检系统">
                 </div>
+                <div style="float: right;">
+                欢迎您：${shiro.getUser().name}
+                </div>
 
                 <!-- <div class="v52fmbx content_add">
                  <dl>
@@ -101,20 +104,23 @@
                 <div class="row">
                     <ol class="breadcrumb m-b-0 subcolumn-crumbs">
                         <li class="breadcrumb-item">
+                            当前位置：农民体育健身工程
+                        </li>
+                        <li class="breadcrumb-item">
                             <a href="/qiantai/showAddPrj?prjType=1" title="" class="">添加</a>
                         </li>
-                        <li class="breadcrumb-item">
-                            <a href="https://show.metinfo.cn/m/mui102/370/product/" title="" class="">编辑</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="https://show.metinfo.cn/m/mui102/370/product/" title="" class="">删除</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="https://show.metinfo.cn/m/mui102/370/product/" title="" class="">添加器材</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="https://show.metinfo.cn/m/mui102/370/product/" title="" class="">删除器材</a>
-                        </li>
+                        <!--<li class="breadcrumb-item">-->
+                            <!--<a href="https://show.metinfo.cn/m/mui102/370/product/" title="" class="">编辑</a>-->
+                        <!--</li>-->
+                        <!--<li class="breadcrumb-item">-->
+                            <!--<a href="https://show.metinfo.cn/m/mui102/370/product/" title="" class="">删除</a>-->
+                        <!--</li>-->
+                        <!--<li class="breadcrumb-item">-->
+                            <!--<a href="https://show.metinfo.cn/m/mui102/370/product/" title="" class="">添加器材</a>-->
+                        <!--</li>-->
+                        <!--<li class="breadcrumb-item">-->
+                            <!--<a href="https://show.metinfo.cn/m/mui102/370/product/" title="" class="">删除器材</a>-->
+                        <!--</li>-->
                     </ol>
                     <ul class=" blocks-xs-2 blocks-md-2 blocks-lg-4 blocks-xxl-4  met-pager-ajax imagesize met-product-list met-grid" id="met-grid" data-scale="300x400" style="position: relative; height: 508.266px;">
                         <!--<li class="shown" style="position: absolute; left: 0px; top: 30px;">
@@ -263,6 +269,7 @@
 
                         <ul class="sidebar-column list-icons">
                             <li>
+                                <input type="hidden" id="prjType">
                                 <a title="旅游发展" class="active " target="_blank">工程信息采集</a>
                             </li>
                             <li>
@@ -272,10 +279,10 @@
                                 <a href="https://show.metinfo.cn/m/mui102/370/product/product.php?class2=20" title="周边小镇" class="">乡镇/街道健身工程</a>
                             </li>
                             <li>
-                                <a href="javascript:setPrjType(1)" title="周末出游" class="">农民体育健身工程</a>
+                                <a href="javascript:showPrjByType(1)" title="周末出游" class="">农民体育健身工程</a>
                             </li>
                             <li>
-                                <a href="https://show.metinfo.cn/m/mui102/370/product/product.php?class2=22" title="城区闲逛" class="">社区体育健身工程</a>
+                                <a href="javascript:showPrjByType(2)" title="城区闲逛" class="">社区体育健身工程</a>
                             </li>
 
                             <li>

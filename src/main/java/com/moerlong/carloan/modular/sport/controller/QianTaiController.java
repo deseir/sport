@@ -46,4 +46,18 @@ public class QianTaiController extends BaseController {
         return PREFIX + "addprj.html";
     }
 
+    /**
+     * 跳转前台首页
+     * @param prjType
+     * @param model
+     * @return
+     */
+    @RequestMapping("/showIndex")
+    public String showIndex(@RequestParam Integer prjType, Model model) {
+        model.addAttribute("prjType",prjType);
+        return "qiantai.html";
+    }
+
+
+
 }

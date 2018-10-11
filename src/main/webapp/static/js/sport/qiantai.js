@@ -73,6 +73,11 @@ function  searchPage(o) {
     });
 }
 
+function showPrjByType(prjType) {
+    $("#prjType").val(prjType);
+    searchPage(0);
+}
+
 
 
 
