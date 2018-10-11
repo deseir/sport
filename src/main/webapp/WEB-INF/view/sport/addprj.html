@@ -40,52 +40,37 @@
 <body>
     <fieldset>
         <legend>工程概况</legend>
-        <input type="text" name="prjtype" id="prjtype" placeholder="" value="1">
-
+        <input type="text" name="prjtype" id="prjtype" value="${prjBase.prjtype}">
+        <input type="text" name="prjId" id="prjId" value="${prjBase.id}">
         <label for="prjname">工程名称:</label>
-        <input type="text" name="prjname" id="prjname" placeholder="" value="">
+        <input type="text" name="prjname" id="prjname" placeholder="" value="${prjBase.prjname}">
         <label for="local">地区:</label>
-        <input type="tel" id="local" name="local" placeholder="" value="">
+        <input type="tel" id="local" name="local" placeholder="" value="${prjBase.local}">
         <label for="place">建设地点:</label>
-        <input type="email" id="place" name="place" placeholder="" value="">
+        <input type="email" id="place" name="place" placeholder="" value="${prjBase.place}">
         <label for="area">占地面积(平方米):</label>
-        <input type="text" id="area" name="area" placeholder="" value="">
+        <input type="text" id="area" name="area" placeholder="" value="${prjBase.area}">
         <label for="begintime">开工时间:</label>
-        <input type="date" id="begintime" name="begintime" value="" >
+        <input type="date" id="begintime" name="begintime" value="${prjBase.begintime}" >
         <label for="endtime">完工时间:</label>
-        <input type="date" id="endtime" name="endtime" value="">
+        <input type="date" id="endtime" name="endtime" value="${prjBase.endtime}">
         <label for="provider">供应商:</label>
-        <input type="text" id="provider" name="provider" placeholder="" value="">
+        <input type="text" id="provider" name="provider" placeholder="" value="${prjBase.provider}">
         <label for="jsfa">建设方案:</label>
-        <input type="text" id="jsfa" name="jsfa" placeholder="" value="">
+        <input type="text" id="jsfa" name="jsfa" placeholder="" value="${prjBase.jsfa}">
         <label for="dljd">地理经度:</label>
-        <input type="text" id="dljd" name="dljd" placeholder="" value="">
+        <input type="text" id="dljd" name="dljd" placeholder="" value="${prjBase.dljd}">
         <label for="dlwd">地理纬度:</label>
-        <input type="text" id="dlwd" name="dlwd" placeholder="" value="">
+        <input type="text" id="dlwd" name="dlwd" placeholder="" value="${prjBase.dlwd}">
         <label for="qjpic1">全景照片1:</label>
-        <input type="text" id="qjpic1" name="qjpic1" placeholder="" value="">
+        <input type="text" id="qjpic1" name="qjpic1" placeholder="" value="${prjBase.qjpic1}">
         <label for="qjpic2">全景照片2:</label>
-        <input type="text" id="qjpic2" name="qjpic2" placeholder="" value="">
+        <input type="text" id="qjpic2" name="qjpic2" placeholder="" value="${prjBase.qjpic2}">
         <label for="qjpic3">全景照片3:</label>
-        <input type="text" id="qjpic3" name="qjpic3" placeholder="" value="">
-
-            <div id="easyContainer">1111</div>
-
-
-            <!--<datalist id="obj">
-                <option value="前端学院"></option>
-                <option value="后端学院"></option>
-                <option value="UI设计"></option>
-            </datalist>
-            <label for="score">入学成绩:</label>
-            <input type="number" max="100" min="0" value="0" id="score">
-            <label for="level">基础水平:</label>
-            <meter id="level" max="100" min="0" low="59" high="90"></meter>-->
-
-
-            <input type="button" value="保存" style="width: 10%;" onclick="savePrj()">
+        <input type="text" id="qjpic3" name="qjpic3" placeholder="" value="${prjBase.qjpic3}">
+        <input type="button" value="保存" style="width: 10%;" onclick="savePrj()">
+        <input type="button" value="删除" style="width: 10%;" onclick="logicDelete()">
     </fieldset>
-
 <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 <!-- 视实际需要决定是否引入jquery.cookie-1.4.1.min.js-->
 <script src="vendor/jquery.cookie-1.4.1.min.js"></script>

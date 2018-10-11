@@ -31,7 +31,12 @@ public class SPrjBaseController {
 	public Object saveOrUpdate(SPrjBase entity) {
 		Map<String, Object> res = new HashMap<>();
 		try {
-			service.saveOrUpdate(entity);
+			if(entity.getId()!=null && service.selectById(entity.getId())!=null) {
+				service.updateWithOutNull(entity);
+			}else {
+				service.save(entity);
+			}
+			res.put("prjId",entity.getId());
 			res.put("status", 0);
 			res.put("errMsg", "操作成功");
 		} catch (Throwable e) {
@@ -41,12 +46,12 @@ public class SPrjBaseController {
 		}
 		return res;
 	}
-	
+
 	@ApiOperation(value = "只更新非空字段")
 	@ApiImplicitParam(paramType = "body", name = "entity", required = true, dataType = "TelecomRoamInfo", value = "明细")
 	@RequestMapping(value = "/sprjbase/updateWithOutNull", method = RequestMethod.POST)
 	@ResponseBody
-	public Object updateWithOutNull(@RequestBody SPrjBase entity) {
+	public Object updateWithOutNull(SPrjBase entity) {
 		Map<String, Object> res = new HashMap<>();
 		try {
 			service.updateWithOutNull(entity);
@@ -65,7 +70,7 @@ public class SPrjBaseController {
 	@RequestMapping(value = "/sprjbase/deleteById", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public Object deleteById(@RequestBody Map<String,Object> param) {
-	
+
 		Map<String, Object> res = new HashMap<>();
 		try {
 			Integer id = Integer.parseInt(param.get("id").toString());
@@ -79,7 +84,7 @@ public class SPrjBaseController {
 		}
 		return res;
 	}
-	
+
 	@ApiOperation(value = "逻辑删除")
 	@ApiImplicitParam(paramType = "body", name = "param", required = false, dataType = "Map", value = "参数")
 	@RequestMapping(value = "/sprjbase/deleteLogicById", method = {RequestMethod.POST,RequestMethod.GET})
@@ -117,7 +122,7 @@ public class SPrjBaseController {
 		}
 		return res;
 	}
-	
+
 	@ApiOperation(value = "显示所有")
 	@RequestMapping(value = "/sprjbase/listAll", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
@@ -135,7 +140,7 @@ public class SPrjBaseController {
 		return res;
 	}
 
-	@ApiOperation(value = "分页查询")
+	@ApiOperation(value = "根据类型进行分页查询")
 	@ApiImplicitParam(paramType = "body", name = "queryMap", required = false, dataType = "Map", value = "查询条件")
 	@RequestMapping(value = "/sprjbase/pageQuery", method = RequestMethod.POST)
 	@ResponseBody
@@ -144,7 +149,7 @@ public class SPrjBaseController {
 		Map<String, Object> res = new HashMap<>();
 		Integer pageNum = 1; //页数从1开始
 		Integer pageSize = 10; //页面大小
-			
+
 		try {
 			if(queryMap!=null) {
 				if(queryMap.get("pageNum")!=null&&!"".equals(queryMap.get("pageNum"))) {
@@ -154,9 +159,9 @@ public class SPrjBaseController {
 					pageSize = Integer.parseInt((String)queryMap.get("pageSize"));
 				}
 			}
-			
+
 			Object pageInfo = this.service.selectPage(pageSize, pageNum, queryMap);
-			
+
 			res.put("data", pageInfo);
 			res.put("status", 0);
 			res.put("errMsg", "操作成功");
@@ -165,7 +170,24 @@ public class SPrjBaseController {
 			res.put("status", 1);
 			res.put("errMsg", e.getMessage());
 		}
-		
+
+		return res;
+	}
+
+	@ApiOperation(value = "根据type 查询所有的工程")
+	@RequestMapping(value = "/sprjbase/getPrjsByType", method = {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public Object getPrjsByType() {
+		Map<String, Object> res = new HashMap<>();
+		try {
+			res.put("data", service.listAll());
+			res.put("status", 0);
+			res.put("errMsg", "操作成功");
+		} catch (Throwable e) {
+			this.log.error(e.getMessage(), e);
+			res.put("status", 1);
+			res.put("errMsg", e.getMessage());
+		}
 		return res;
 	}
 

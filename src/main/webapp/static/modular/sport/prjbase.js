@@ -39,6 +39,7 @@ function savePrj() {
         success: function(data) {
             var status = data.status;
             if(status=='0'){
+                $("#prjId").val(data.prjId);
                 Feng.info("保存数据成功！");
             }else{
                 Feng.info("保存数据失败！"+data.msg);
@@ -50,4 +51,30 @@ function savePrj() {
         }
     });
 
+}
+
+function logicDelete() {
+        var id = $("#prjId").val();
+
+        $.ajax({
+            type: "POST",
+            url: '/sprjbase/updateWithOutNull',
+            dataType: 'json',
+            data: {
+                'id':id,
+                'isdelete':1
+            },
+            success: function(data) {
+                var status = data.status;
+                if(status=='0'){
+                    Feng.info("删除成功！");
+                }else{
+                    Feng.info("删除失败！"+data.msg);
+                }
+            },
+            error: function() {
+                Feng.info("删除异常！");
+
+            }
+        });
 }

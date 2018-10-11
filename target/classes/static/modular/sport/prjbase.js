@@ -39,6 +39,7 @@ function savePrj() {
         success: function(data) {
             var status = data.status;
             if(status=='0'){
+                $("#prjId").val(data.prjId);
                 Feng.info("保存数据成功！");
             }else{
                 Feng.info("保存数据失败！"+data.msg);

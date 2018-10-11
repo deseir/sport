@@ -30,12 +30,13 @@
     <include refid="Base_Column_List" />
     from s_prj_base
     where id = #{id,jdbcType=INTEGER}
+    and isdelete=0
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from s_prj_base
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.moerlong.carloan.modular.sport.entity.SPrjBase" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.sport.entity.SPrjBase" >
     insert into s_prj_base (id, prjtype, local, 
       prjname, place, area, 
       begintime, endtime, provider, 
@@ -49,7 +50,7 @@
       #{qjpic2,jdbcType=VARCHAR}, #{qjpic3,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
       #{updatetime,jdbcType=TIMESTAMP}, #{isdelete,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.moerlong.carloan.modular.sport.entity.SPrjBase" >
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.sport.entity.SPrjBase" >
     insert into s_prj_base
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -248,6 +249,14 @@
     select
     <include refid="Base_Column_List" />
     from s_prj_base prjbase
+    where 1=1
+    and isdelete=0
+  </select>
+  <!-- 根据类型查询所有 -->
+  <select id="getPrjsByType" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.sport.entity.SPrjBase">
+    select
+    <include refid="Base_Column_List" />
+    from s_prj_base prjbase where prjtype=#{prjtype} and isdelete=0
   </select>
   <!-- 查询（分页查询） -->
   <select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.sport.entity.SPrjBase">
@@ -255,6 +264,14 @@
     <include refid="Base_Column_List" />
     from s_prj_base prjbase
     where 1=1
+    <if test="prjtype != null" >
+      and prjtype = #{prjtype,jdbcType=VARCHAR},
+    </if>
+    <if test="local != null" >
+      and local = #{local,jdbcType=VARCHAR},
+    </if>
+    and isdelete=0
+
   </select>
 
 </mapper>
