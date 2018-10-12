@@ -82,3 +82,9 @@ function logicDelete() {
 function back() {
     window.location.href="/";
 }
+
+function showCd() {
+    var prjId = $("#prjId").val();
+    var prjtype = $("#prjtype").val();
+    window.location.href="/sprjbase/showCdList?prjId="+prjId+"&prjType="+prjtype;
+}

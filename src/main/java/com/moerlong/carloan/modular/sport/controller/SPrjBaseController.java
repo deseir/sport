@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -189,6 +190,19 @@ public class SPrjBaseController {
 			res.put("errMsg", e.getMessage());
 		}
 		return res;
+	}
+
+	/**
+	 * 跳转场地列表页面
+	 * @param prjType
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/sprjbase/showCdList")
+	public String showAddCd(@RequestParam Integer prjId, @RequestParam String prjType, Model model) {
+		model.addAttribute("prjId",prjId);
+		model.addAttribute("prjType",prjType);
+		return "/sport/cdlist.html";
 	}
 
 }

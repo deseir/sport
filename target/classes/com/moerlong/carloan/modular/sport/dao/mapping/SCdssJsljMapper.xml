@@ -30,7 +30,7 @@
     delete from s_cdss_jslj
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.moerlong.carloan.modular.sport.entity.SCdssJslj" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.sport.entity.SCdssJslj" >
     insert into s_cdss_jslj (id, prjid, prjtype, 
       mc, chang, kuan, area, 
       dbqk, cllx, pic, createtime, 
@@ -40,7 +40,7 @@
       #{dbqk,jdbcType=VARCHAR}, #{cllx,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
       #{updatetime,jdbcType=TIMESTAMP}, #{isdelete,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.moerlong.carloan.modular.sport.entity.SCdssJslj" >
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.sport.entity.SCdssJslj" >
     insert into s_cdss_jslj
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

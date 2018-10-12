@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -27,10 +28,15 @@ public class ScdssCdController {
 	@ApiImplicitParam(paramType = "body", name = "entity", required = true, dataType = "TelecomRoamInfo", value = "明细")
 	@RequestMapping(value = "/cdsscd/saveOrUpdate", method = RequestMethod.POST)
 	@ResponseBody
-	public Object saveOrUpdate(@RequestBody SCdssCd entity) {
+	public Object saveOrUpdate(SCdssCd entity) {
 		Map<String, Object> res = new HashMap<>();
 		try {
-			service.saveOrUpdate(entity);
+			if(entity.getId()!=null && service.selectById(entity.getId())!=null) {
+				service.updateWithOutNull(entity);
+			}else {
+				service.save(entity);
+			}
+			res.put("cdId",entity.getId());
 			res.put("status", 0);
 			res.put("errMsg", "操作成功");
 		} catch (Throwable e) {
@@ -45,7 +51,7 @@ public class ScdssCdController {
 	@ApiImplicitParam(paramType = "body", name = "entity", required = true, dataType = "TelecomRoamInfo", value = "明细")
 	@RequestMapping(value = "/cdsscd/updateWithOutNull", method = RequestMethod.POST)
 	@ResponseBody
-	public Object updateWithOutNull(@RequestBody SCdssCd entity) {
+	public Object updateWithOutNull(SCdssCd entity) {
 		Map<String, Object> res = new HashMap<>();
 		try {
 			service.updateWithOutNull(entity);
@@ -166,6 +172,21 @@ public class ScdssCdController {
 		}
 		
 		return res;
+	}
+
+	/**
+	 * 跳转添加场地页面
+	 * @param prjType
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/cdsscd/showAddCd")
+	public String showAddCd(@RequestParam Integer prjId, @RequestParam String prjType, Model model) {
+		SCdssCd cdsscd = new SCdssCd();
+		cdsscd.setPrjid(prjId);
+		cdsscd.setPrjtype(prjType);
+		model.addAttribute("cdsscd",cdsscd);
+		return "/sport/addcd.html";
 	}
 
 }

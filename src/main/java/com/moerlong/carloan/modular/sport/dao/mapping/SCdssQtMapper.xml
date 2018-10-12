@@ -28,7 +28,7 @@
     delete from s_cdss_qt
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.moerlong.carloan.modular.sport.entity.SCdssQt" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.sport.entity.SCdssQt" >
     insert into s_cdss_qt (id, prjid, prjtype, 
       jsss, num, area, wz, 
       beizhu, pic, createtime, 
@@ -38,7 +38,7 @@
       #{beizhu,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
       #{updatetime,jdbcType=TIMESTAMP}, #{isdelete,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.moerlong.carloan.modular.sport.entity.SCdssQt" >
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.sport.entity.SCdssQt" >
     insert into s_cdss_qt
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

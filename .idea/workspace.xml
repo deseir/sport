@@ -3,10 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="dbb1f193-10d5-44a3-b0af-d39cfa0537ad" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/QianTaiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/QianTaiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qiantai.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qiantai.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/sport/qiantai.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/sport/qiantai.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/WEB-INF/view/qiantai.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/WEB-INF/view/qiantai.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/SPrjBaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/SPrjBaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/ScdssCdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/ScdssCdController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SCdssCdMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SCdssCdMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SCdssJsljMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SCdssJsljMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SCdssQcMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SCdssQcMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SCdssQtMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SCdssQtMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/sport/addprj.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/sport/addprj.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/modular/sport/prjbase.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/modular/sport/prjbase.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,87 +25,71 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="qiantai.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/sport/qiantai.js">
+      <file leaf-file-name="cdlist.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/modular/sport/cdlist.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="72" column="7" lean-forward="true" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="7" />
+            <state relative-caret-position="251">
+              <caret line="83" column="77" selection-start-line="83" selection-start-column="77" selection-end-line="83" selection-end-column="77" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/system/controller/LoginController.java">
+      <file leaf-file-name="addprj.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/sport/addprj.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="50" column="16" lean-forward="true" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QianTaiController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/QianTaiController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="54" column="31" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="qiantai.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qiantai.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="271" column="51" selection-start-line="271" selection-start-column="51" selection-end-line="271" selection-end-column="51" />
+            <state relative-caret-position="401">
+              <caret line="71" column="74" selection-start-line="71" selection-start-column="71" selection-end-line="71" selection-end-column="77" />
               <folding>
-                <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#16;n#fieldset#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#17;n#fieldset#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#18;n#fieldset#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#19;n#fieldset#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/common/persistence/model/User.java">
+      <file leaf-file-name="prjbase.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/static/modular/sport/prjbase.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+            <state relative-caret-position="525">
+              <caret line="88" column="46" selection-start-line="88" selection-start-column="36" selection-end-line="88" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShiroUser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/core/shiro/ShiroUser.java">
+      <file leaf-file-name="SCdssCd.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/entity/SCdssCd.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="11" column="48" lean-forward="true" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+            <state relative-caret-position="101">
+              <caret line="9" column="26" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShiroFactroy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/core/shiro/factory/ShiroFactroy.java">
+      <file leaf-file-name="ScdssCdController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/ScdssCdController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="156" column="8" lean-forward="true" selection-start-line="156" selection-start-column="8" selection-end-line="156" selection-end-column="8" />
+            <state relative-caret-position="1583">
+              <caret line="189" column="5" lean-forward="true" selection-start-line="189" selection-start-column="5" selection-end-line="189" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="houtai.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/houtai.html">
+      <file leaf-file-name="addcd.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/sport/addcd.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="61">
-              <caret line="18" column="39" lean-forward="true" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="39" />
+            <state relative-caret-position="207">
+              <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_tab.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/common/_tab.html">
+      <file leaf-file-name="cdlist.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/sport/cdlist.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="17" column="94" selection-start-line="17" selection-start-column="63" selection-end-line="17" selection-end-column="94" />
+            <state relative-caret-position="381">
+              <caret line="59" column="52" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -119,10 +107,15 @@
       <find>prjtype</find>
       <find>shiro</find>
       <find>prjType</find>
+      <find>easyUpload</find>
+      <find>prjBase</find>
+      <find>showCd</find>
+      <find>Feng</find>
     </findStrings>
     <replaceStrings>
       <replace />
       <replace>alert</replace>
+      <replace>cdsscd</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -136,7 +129,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/SPrjBaseMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/service/SPrjBaseService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/service/serviceimpl/SPrjBaseServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/SPrjBaseController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SPrjBaseMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/task/AutoDeductMoneyForRepaymentJob.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/task/FinanceStatisJob.java" />
@@ -146,14 +138,26 @@
         <option value="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/task/RemainRepaymentJob.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/css/sport/font-awesome.4.6.0.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/1.11.3/jquery.min.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/modular/sport/prjbase.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/sport/addprj.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/login.html" />
         <option value="$PROJECT_DIR$/sql/sportQc.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/system/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/QianTaiController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/sport/qiantai.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qiantai.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SCdssJsljMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SCdssQcMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SCdssQtMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/sport/zoneDetail.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/modular/sport/addcd.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SCdssCdMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/sport/addprj.html" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/js/sport/cdlist.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/modular/sport/prjbase.js" />
+        <option value="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/SPrjBaseController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/sport/cdlist.html" />
+        <option value="$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/ScdssCdController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/modular/sport/cdlist.js" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/sport/addcd.html" />
       </list>
     </option>
   </component>
@@ -174,12 +178,13 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="19" />
-    <option name="y" value="39" />
-    <option name="width" value="1421" />
-    <option name="height" value="787" />
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="800" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <showMembers ProjectPane="true" />
@@ -187,9 +192,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -273,7 +277,7 @@
               <item name="modular" type="462c0819:PsiDirectoryNode" />
               <item name="sport" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="QianTaiController" type="1a9f42e2:ClassTreeNode" />
+              <item name="ScdssCdController" type="1a9f42e2:ClassTreeNode" />
             </path>
             <path>
               <item name="carinsure-front" type="b2602c69:ProjectViewProjectNode" />
@@ -283,37 +287,33 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="carloan" type="462c0819:PsiDirectoryNode" />
               <item name="modular" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="carinsure-front" type="b2602c69:ProjectViewProjectNode" />
               <item name="sport" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="carloan" type="462c0819:PsiDirectoryNode" />
-              <item name="modular" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="SPrjBaseController" type="1a9f42e2:ClassTreeNode" />
             </path>
             <path>
               <item name="carinsure-front" type="b2602c69:ProjectViewProjectNode" />
               <item name="sport" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="carloan" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="carinsure-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sport" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="carinsure-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sport" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="modular" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="LoginController" type="1a9f42e2:ClassTreeNode" />
-            </path>
-            <path>
-              <item name="carinsure-front" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sport" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="carinsure-front" type="b2602c69:ProjectViewProjectNode" />
@@ -322,24 +322,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="carinsure-front" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sport" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="carinsure-front" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sport" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="modular" type="462c0819:PsiDirectoryNode" />
               <item name="sport" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -350,10 +333,20 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="view" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="carinsure-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sport" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="sport" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -371,7 +364,13 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/static/modular/sport" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/static/js/sport" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/sport" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/static/modular/sport" />
       <recent name="$PROJECT_DIR$/sql" />
       <recent name="$PROJECT_DIR$/src/main/webapp/static/img/sport" />
     </key>
@@ -448,7 +447,8 @@
       <workItem from="1539065171774" duration="3856000" />
       <workItem from="1539220118548" duration="9005000" />
       <workItem from="1539237482275" duration="12746000" />
-      <workItem from="1539258135112" duration="2775000" />
+      <workItem from="1539258135112" duration="2858000" />
+      <workItem from="1539307657198" duration="14037000" />
     </task>
     <task id="LOCAL-00001" summary="测试提交哦">
       <created>1539165993752</created>
@@ -468,10 +468,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28382000" />
+    <option name="totallyTimeSpent" value="42502000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="19" y="39" width="1421" height="787" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="800" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -484,9 +484,9 @@
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.21884058" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.30014226" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.32753623" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.32716927" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="3" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
@@ -494,8 +494,8 @@
       <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Spring" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3289855" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20522118" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.13739377" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20529328" />
       <window_info anchor="right" id="Bean Validation" order="9" />
       <window_info id="Web" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -557,63 +557,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="14" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/sport/qiantai.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="37" selection-start-line="42" selection-start-column="37" selection-end-line="42" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qiantai.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1545">
-          <caret line="103" column="64" selection-start-line="103" selection-start-column="57" selection-end-line="103" selection-end-column="64" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sql/sportQc.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" column="43" lean-forward="true" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/logback-spring.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="11" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doc/readMe.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="9" selection-start-column="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/logback-spring.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="27" selection-start-line="39" selection-start-column="27" selection-end-line="39" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/doc/readMe.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -636,13 +583,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sport/README.md" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/service/serviceimpl/SCdssCdServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -740,42 +680,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SPrjBaseMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1000">
-          <caret line="270" column="43" lean-forward="true" selection-start-line="270" selection-start-column="43" selection-end-line="270" selection-end-column="43" />
-          <folding>
-            <element signature="n#resultMap#0;n#mapper#0;n#!!top" />
-            <element signature="n#sql#0;n#mapper#0;n#!!top" />
-            <element signature="n#select#0;n#mapper#0;n#!!top" />
-            <element signature="n#delete#0;n#mapper#0;n#!!top" />
-            <element signature="n#insert#0;n#mapper#0;n#!!top" />
-            <element signature="n#insert#1;n#mapper#0;n#!!top" />
-            <element signature="n#update#1;n#mapper#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/cust/mianshen.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="821" column="98" lean-forward="true" selection-start-line="821" selection-start-column="28" selection-end-line="821" selection-end-column="98" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#5;n#div#2;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#2;n#div#0;n#div#5;n#div#2;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/sport/font-awesome.4.6.0.css" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/1.11.3/jquery.min.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/SPrjBaseController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-646">
-          <caret line="45" column="9" lean-forward="true" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/static/modular/cust/mianshen.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="109">
@@ -787,24 +700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
           <caret line="29" column="30" lean-forward="true" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/modular/sport/prjbase.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1095">
-          <caret line="73" column="14" lean-forward="true" selection-start-line="73" selection-start-column="14" selection-end-line="73" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/sport/addprj.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
-          <folding>
-            <element signature="n#style#0;n#input#16;n#fieldset#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#17;n#fieldset#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -824,68 +719,204 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/houtai.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="18" column="39" lean-forward="true" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="39" />
+        <state relative-caret-position="270">
+          <caret line="18" column="39" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/common/_tab.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
+        <state relative-caret-position="255">
           <caret line="17" column="94" selection-start-line="17" selection-start-column="63" selection-end-line="17" selection-end-column="94" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/common/persistence/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="102" lean-forward="true" selection-start-line="102" selection-end-line="102" />
+        <state relative-caret-position="1380">
+          <caret line="102" selection-start-line="102" selection-end-line="102" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/core/shiro/ShiroUser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="11" column="48" lean-forward="true" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
+        <state relative-caret-position="150">
+          <caret line="11" column="48" selection-start-line="11" selection-start-column="48" selection-end-line="11" selection-end-column="48" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/core/shiro/factory/ShiroFactroy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="156" column="8" lean-forward="true" selection-start-line="156" selection-start-column="8" selection-end-line="156" selection-end-column="8" />
+        <state relative-caret-position="1980">
+          <caret line="156" column="8" selection-start-line="156" selection-start-column="8" selection-end-line="156" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/system/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="50" column="16" lean-forward="true" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/QianTaiController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="54" column="31" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/sport/qiantai.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="72" column="7" lean-forward="true" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="7" />
+        <state relative-caret-position="405">
+          <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/qiantai.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="271" column="51" selection-start-line="271" selection-start-column="51" selection-end-line="271" selection-end-column="51" />
+        <state relative-caret-position="248">
+          <caret line="298" column="13" lean-forward="true" selection-start-line="298" selection-start-column="13" selection-end-line="298" selection-end-column="13" />
           <folding>
             <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#div#0;n#header#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SPrjBaseMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="86">
+          <caret line="38" column="22" lean-forward="true" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+          <folding>
+            <element signature="n#resultMap#0;n#mapper#0;n#!!top" />
+            <element signature="n#sql#0;n#mapper#0;n#!!top" />
+            <element signature="n#select#0;n#mapper#0;n#!!top" />
+            <element signature="n#delete#0;n#mapper#0;n#!!top" />
+            <element signature="n#insert#0;n#mapper#0;n#!!top" />
+            <element signature="n#insert#1;n#mapper#0;n#!!top" />
+            <element signature="n#update#1;n#mapper#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SCdssJsljMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="42" column="71" selection-start-line="42" selection-start-column="71" selection-end-line="42" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SCdssQcMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="50" column="71" selection-start-line="50" selection-start-column="71" selection-end-line="50" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SCdssQtMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="45" column="11" lean-forward="true" selection-start-line="45" selection-start-column="11" selection-end-line="45" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/QianTaiController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-69">
+          <caret line="35" column="11" lean-forward="true" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/sport/zoneDetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="78" column="23" lean-forward="true" selection-start-line="74" selection-start-column="16" selection-end-line="78" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/modular/sport/addcd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="50" column="25" lean-forward="true" selection-start-line="50" selection-start-column="25" selection-end-line="50" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/dao/mapping/SCdssCdMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="211" column="43" lean-forward="true" selection-start-line="211" selection-start-column="43" selection-end-line="211" selection-end-column="43" />
+          <folding>
+            <element signature="n#insert#0;n#mapper#0;n#!!top" />
+            <element signature="n#insert#1;n#mapper#0;n#!!top" />
+            <element signature="e#5#627#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/sport/qiantai.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" selection-end-line="73" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/service/serviceimpl/SCdssCdServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="47" column="33" selection-start-line="47" selection-start-column="15" selection-end-line="47" selection-end-column="33" />
+          <folding>
+            <element signature="e#1475#1476#0" expanded="true" />
+            <element signature="e#1511#1512#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/entity/SCdssCd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="101">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/sport/addprj.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="71" column="74" selection-start-line="71" selection-start-column="71" selection-end-line="71" selection-end-column="77" />
+          <folding>
+            <element signature="n#style#0;n#input#16;n#fieldset#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#17;n#fieldset#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#18;n#fieldset#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#19;n#fieldset#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/modular/sport/prjbase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="88" column="46" selection-start-line="88" selection-start-column="36" selection-end-line="88" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/SPrjBaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="205" column="5" lean-forward="true" selection-start-line="194" selection-start-column="4" selection-end-line="205" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/sport/cdlist.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="59" column="52" selection-start-line="59" selection-start-column="45" selection-end-line="59" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/modular/sport/cdlist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="83" column="77" selection-start-line="83" selection-start-column="77" selection-end-line="83" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/moerlong/carloan/modular/sport/controller/ScdssCdController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1583">
+          <caret line="189" column="5" lean-forward="true" selection-start-line="189" selection-start-column="5" selection-end-line="189" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/view/sport/addcd.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
         </state>
       </provider>
     </entry>

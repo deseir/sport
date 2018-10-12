@@ -1,45 +1,36 @@
-function savePrj() {
-    var id = $("#prjId").val();
-    var prjname = $("#prjname").val();
+function saveCd() {
+    var id = $("#cdId").val();
+    var prjid =$("#prjId").val();
+    var cdname = $("#cdname").val();
     var prjtype = $("#prjtype").val();
-    var local =$("#local").val();
-    var place = $("#place").val();
+    var chang = $("#chang").val();
+    var kuan =$("#kuan").val();
     var area = $("#area").val();
-    var begintime = $("#begintime").val();
-    var endtime = $("#endtime").val();
-    var provider = $("#provider").val();
-    var jsfa = $("#jsfa").val();
-    var dljd = $("#dljd").val();
-    var dlwd = $("#dlwd").val();
-    var qjpic1 = $("#qjpic1").val();
-    var qjpic2 = $("#qjpic2").val();
-    var qjpic3 = $("#qjpic3").val();
-
+    var dimian = $("#dimian").val();
+    var cddbqk = $("#cddbqk").val();
+    var beizhu = $("#beizhu").val();
+    var pic = $("#pic").val();
     $.ajax({
         type: "POST",
-        url: '/sprjbase/saveOrUpdate',
+        url: '/cdsscd/saveOrUpdate',
         dataType: 'json',
         data: {
             'id':id,
-            'prjname':prjname,
+            'prjid':prjid,
+            'cdname':cdname,
             'prjtype':prjtype,
-            'local':local,
-            'place':place,
+            'chang':chang,
+            'kuan':kuan,
             'area':area,
-            'begintime' :begintime,
-            'endtime' :endtime,
-            'provider' :provider,
-            'jsfa' :jsfa,
-            'dljd' :dljd,
-            'dlwd' :dlwd,
-            'qjpic1' :qjpic1,
-            'qjpic2' :qjpic2,
-            'qjpic3' :qjpic3
+            'dimian' :dimian,
+            'cddbqk' :cddbqk,
+            'beizhu' :beizhu,
+            'pic' :pic
         },
         success: function(data) {
             var status = data.status;
             if(status=='0'){
-                $("#prjId").val(data.prjId);
+                $("#cdId").val(data.cdId);
                 alert("保存数据成功！");
             }else{
                 alert("保存数据失败！"+data.msg);
@@ -54,11 +45,11 @@ function savePrj() {
 }
 
 function logicDelete() {
-        var id = $("#prjId").val();
+        var id = $("#cdId").val();
 
         $.ajax({
             type: "POST",
-            url: '/sprjbase/updateWithOutNull',
+            url: '/cdsscd/updateWithOutNull',
             dataType: 'json',
             data: {
                 'id':id,
@@ -83,8 +74,6 @@ function back() {
     window.location.href="/";
 }
 
-function showCd() {
-    var prjId = $("#prjId").val();
-    var prjtype = $("#prjtype").val();
-    window.location.href="/sprjbase/showCdList?prjId="+prjId+"&prjType="+prjtype;
+function showPrj() {
+    window.location.href="";
 }
