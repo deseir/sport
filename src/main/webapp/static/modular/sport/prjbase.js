@@ -83,8 +83,24 @@ function back() {
     window.location.href="/";
 }
 
+//跳转场地列表页
 function showCd() {
     var prjId = $("#prjId").val();
     var prjtype = $("#prjtype").val();
     window.location.href="/sprjbase/showCdList?prjId="+prjId+"&prjType="+prjtype;
+}
+
+//跳转健身路径列表页
+function showJslj() {
+    var prjId = $("#prjId").val();
+    var prjtype = $("#prjtype").val();
+    window.location.href="/sprjbase/showJsljList?prjId="+prjId+"&prjType="+prjtype;
+}
+
+
+//跳转其他列表页
+function showQt() {
+    var prjId = $("#prjId").val();
+    var prjtype = $("#prjtype").val();
+    window.location.href="/sprjbase/showQtList?prjId="+prjId+"&prjType="+prjtype;
 }

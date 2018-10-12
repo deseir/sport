@@ -27,10 +27,15 @@ public class ScdssJsljController {
 	@ApiImplicitParam(paramType = "body", name = "entity", required = true, dataType = "TelecomRoamInfo", value = "明细")
 	@RequestMapping(value = "/cdssjslj/saveOrUpdate", method = RequestMethod.POST)
 	@ResponseBody
-	public Object saveOrUpdate(@RequestBody SCdssJslj entity) {
+	public Object saveOrUpdate(SCdssJslj entity) {
 		Map<String, Object> res = new HashMap<>();
 		try {
-			service.saveOrUpdate(entity);
+			if(entity.getId()!=null && service.selectById(entity.getId())!=null) {
+				service.updateWithOutNull(entity);
+			}else {
+				service.save(entity);
+			}
+			res.put("jsljId",entity.getId());
 			res.put("status", 0);
 			res.put("errMsg", "操作成功");
 		} catch (Throwable e) {
@@ -45,7 +50,7 @@ public class ScdssJsljController {
 	@ApiImplicitParam(paramType = "body", name = "entity", required = true, dataType = "TelecomRoamInfo", value = "明细")
 	@RequestMapping(value = "/cdssjslj/updateWithOutNull", method = RequestMethod.POST)
 	@ResponseBody
-	public Object updateWithOutNull(@RequestBody SCdssJslj entity) {
+	public Object updateWithOutNull(SCdssJslj entity) {
 		Map<String, Object> res = new HashMap<>();
 		try {
 			service.updateWithOutNull(entity);

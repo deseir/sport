@@ -205,5 +205,30 @@ public class SPrjBaseController {
 		return "/sport/cdlist.html";
 	}
 
+	/**
+	 * 跳转场地列表页面
+	 * @param prjType
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/sprjbase/showJsljList")
+	public String showJsljList(@RequestParam Integer prjId, @RequestParam String prjType, Model model) {
+		model.addAttribute("prjId",prjId);
+		model.addAttribute("prjType",prjType);
+		return "/sport/jsljlist.html";
+	}
+
+	/**
+	 * 跳转其他列表页面
+	 * @param prjType
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/sprjbase/showQtList")
+	public String showQtList(@RequestParam Integer prjId, @RequestParam String prjType, Model model) {
+		model.addAttribute("prjId",prjId);
+		model.addAttribute("prjType",prjType);
+		return "/sport/qtlist.html";
+	}
 }
 
