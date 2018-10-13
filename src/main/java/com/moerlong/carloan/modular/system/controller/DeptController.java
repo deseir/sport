@@ -1,31 +1,30 @@
 package com.moerlong.carloan.modular.system.controller;
 
-import com.moerlong.carloan.common.constant.Dict;
-import com.moerlong.carloan.common.node.ZTreeNode;
-import com.moerlong.carloan.common.persistence.dao.DeptMapper;
-import com.moerlong.carloan.common.persistence.dao.UserMapper;
-import com.moerlong.carloan.common.persistence.model.User;
-import com.moerlong.carloan.core.util.Convert;
-import com.moerlong.carloan.modular.system.service.IDeptService;
-import com.moerlong.carloan.modular.system.warpper.DeptWarpper;
 import com.moerlong.carloan.common.annotion.Permission;
 import com.moerlong.carloan.common.annotion.log.BussinessLog;
+import com.moerlong.carloan.common.constant.Dict;
 import com.moerlong.carloan.common.constant.factory.ConstantFactory;
 import com.moerlong.carloan.common.controller.BaseController;
 import com.moerlong.carloan.common.exception.BizExceptionEnum;
 import com.moerlong.carloan.common.exception.BussinessException;
+import com.moerlong.carloan.common.node.ZTreeNode;
+import com.moerlong.carloan.common.persistence.dao.DeptMapper;
+import com.moerlong.carloan.common.persistence.dao.UserMapper;
 import com.moerlong.carloan.common.persistence.model.Dept;
+import com.moerlong.carloan.common.persistence.model.User;
 import com.moerlong.carloan.core.log.LogObjectHolder;
+import com.moerlong.carloan.core.util.Convert;
 import com.moerlong.carloan.core.util.ToolUtil;
 import com.moerlong.carloan.modular.system.dao.DeptDao;
+import com.moerlong.carloan.modular.system.service.IDeptService;
+import com.moerlong.carloan.modular.system.warpper.DeptWarpper;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -194,5 +193,21 @@ public class DeptController extends BaseController {
             dept.setPid(pid);
             dept.setPids(pids + "[" + pid + "],");
         }
+    }
+
+    @ApiOperation(value = "查询所有的子部门")
+    @RequestMapping(value = "/getAllSubDept", method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public Object getAllSubDept(@RequestParam Integer deptId) {
+        Map<String, Object> res = new HashMap<>();
+        try {
+            res.put("data", deptService.getAllSubDeptByDeptId(deptId));
+            res.put("status", 0);
+            res.put("errMsg", "操作成功");
+        } catch (Throwable e) {
+            res.put("status", 1);
+            res.put("errMsg", e.getMessage());
+        }
+        return res;
     }
 }

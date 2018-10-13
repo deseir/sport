@@ -2,8 +2,6 @@ package com.moerlong.carloan.modular.system.dao;
 
 import com.moerlong.carloan.common.node.ZTreeNode;
 import com.moerlong.carloan.common.persistence.model.Dept;
-import com.moerlong.carloan.common.persistence.model.DeptC;
-
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -36,4 +34,6 @@ public interface DeptDao {
     List<Map<String, Object>> list(@Param("condition") String condition);
 
     List<Dept> selectAllSubDept(@Param("deptId") Integer deptId);
+
+    List<Dept> getAllSubDeptByDeptId (@Param("deptId") Integer deptId);
 }

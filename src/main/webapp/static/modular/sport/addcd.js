@@ -74,6 +74,8 @@ function back() {
     window.location.href="/";
 }
 
-function showPrj() {
-    window.location.href="";
+//查看工程概况
+function showPrjDetail() {
+    var prjId =$("#prjId").val();
+    window.location.href="/qiantai/showPrjDetail?prjId="+prjId;
 }

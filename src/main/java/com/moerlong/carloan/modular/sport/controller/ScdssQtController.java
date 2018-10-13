@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -27,10 +28,15 @@ public class ScdssQtController {
 	@ApiImplicitParam(paramType = "body", name = "entity", required = true, dataType = "TelecomRoamInfo", value = "明细")
 	@RequestMapping(value = "/cdssqt/saveOrUpdate", method = RequestMethod.POST)
 	@ResponseBody
-	public Object saveOrUpdate(@RequestBody SCdssQt entity) {
+	public Object saveOrUpdate(SCdssQt entity) {
 		Map<String, Object> res = new HashMap<>();
 		try {
-			service.saveOrUpdate(entity);
+			if(entity.getId()!=null && service.selectById(entity.getId())!=null) {
+				service.updateWithOutNull(entity);
+			}else {
+				service.save(entity);
+			}
+			res.put("qtId",entity.getId());
 			res.put("status", 0);
 			res.put("errMsg", "操作成功");
 		} catch (Throwable e) {
@@ -45,10 +51,15 @@ public class ScdssQtController {
 	@ApiImplicitParam(paramType = "body", name = "entity", required = true, dataType = "TelecomRoamInfo", value = "明细")
 	@RequestMapping(value = "/cdssqt/updateWithOutNull", method = RequestMethod.POST)
 	@ResponseBody
-	public Object updateWithOutNull(@RequestBody SCdssQt entity) {
+	public Object updateWithOutNull(SCdssQt entity) {
 		Map<String, Object> res = new HashMap<>();
 		try {
-			service.updateWithOutNull(entity);
+			if(entity.getId()!=null && service.selectById(entity.getId())!=null) {
+				service.updateWithOutNull(entity);
+			}else {
+				service.save(entity);
+			}
+			res.put("qtId",entity.getId());
 			res.put("status", 0);
 			res.put("errMsg", "操作成功");
 		} catch (Throwable e) {
@@ -166,6 +177,36 @@ public class ScdssQtController {
 		}
 		
 		return res;
+	}
+
+	/**
+	 * 跳转添加场地页面
+	 * @param prjType
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/cdssqt/showAddQt")
+	public String showAddJslj(@RequestParam Integer prjId, @RequestParam String prjType, Model model) {
+		SCdssQt cdssqt = new SCdssQt();
+		cdssqt.setPrjid(prjId);
+		cdssqt.setPrjtype(prjType);
+		model.addAttribute("cdssqt",cdssqt);
+		return "/sport/addqt.html";
+	}
+
+	/**
+	 * 跳转健身路径修改页面
+	 * @param
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/cdssqt/showQtDetail")
+	public String showJsljDetail(@RequestParam Integer qtId, Model model) {
+		SCdssQt cdssqt = this.service.selectById(qtId);
+		model.addAttribute("cdssqt",cdssqt);
+//		ShiroUser shiroUser = ShiroKit.getUser();
+//		model.addAttribute("deptId",shiroUser.getDeptId());
+		return "/sport/addqt.html";
 	}
 
 }

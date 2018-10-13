@@ -70,84 +70,9 @@ public class ShiroFactroy implements IShiro {
         for (int roleId : deptArray) {
             deptList.add(roleId);
             deptNameList.add(ConstantFactory.me().getSingleDeptName(roleId));
-
-            //内情
-            List<SendMsgVo> nq_tels = userMgrDao.selectUsersByDeptIdAndRoleId(roleId, ParamConstants.ROLE_NQ)
-                    .stream()
-                    .map(SendMsgVo::new)
-                    .collect(Collectors.toList());
-            ParamConstants.userList.put(ParamConstants.ROLE_NQ,nq_tels);
-            
-            //ycs
-            List<SendMsgVo> ycs_tels = userMgrDao.selectUsersByDeptIdAndRoleId(roleId, ParamConstants.ROLE_YCS)
-                    .stream()
-                    .map(SendMsgVo::new)
-                    .collect(Collectors.toList());
-            ParamConstants.userList.put(ParamConstants.ROLE_YCS,ycs_tels);
-            
-            //内勤主管
-            List<SendMsgVo> nqzg_tels =userMgrDao.selectUsersByDeptIdAndRoleId(roleId, ParamConstants.ROLE_NQZG)
-                    .stream()
-                    .map(SendMsgVo::new)
-                    .collect(Collectors.toList());
-            ParamConstants.userList.put(ParamConstants.ROLE_NQZG,nqzg_tels);
-
-            //ms
-            List<SendMsgVo> ms_tels =userMgrDao.selectUsersByDeptIdAndRoleId(roleId, ParamConstants.ROLE_MS)
-                    .stream()
-                    .map(SendMsgVo::new)
-                    .collect(Collectors.toList());
-            ParamConstants.userList.put(ParamConstants.ROLE_MS,ms_tels);
-            
-            //mszg
-            List<SendMsgVo> mszg_tels =userMgrDao.selectUsersByDeptIdAndRoleId(roleId, ParamConstants.ROLE_MSZG)
-                    .stream()
-                    .map(SendMsgVo::new)
-                    .collect(Collectors.toList());
-            ParamConstants.userList.put(ParamConstants.ROLE_MSZG,mszg_tels);
-            
-            //zs
-            List<SendMsgVo> zs_tels =userMgrDao.selectUsersByDeptIdAndRoleId(roleId, ParamConstants.ROLE_ZS)
-                    .stream()
-                    .map(SendMsgVo::new)
-                    .collect(Collectors.toList());
-            ParamConstants.userList.put(ParamConstants.ROLE_ZS,zs_tels);
-            
-            //dyzy
-            List<SendMsgVo> dyzy_tels =userMgrDao.selectUsersByDeptIdAndRoleId(roleId, ParamConstants.ROLE_DYZY)
-                    .stream()
-                    .map(SendMsgVo::new)
-                    .collect(Collectors.toList());
-            ParamConstants.userList.put(ParamConstants.ROLE_DYZY,dyzy_tels);
-            
-            //ywjl
-            List<SendMsgVo> ywjl_tels =userMgrDao.selectUsersByDeptIdAndRoleId(roleId, ParamConstants.ROLE_BUSS_MA)
-                    .stream()
-                    .map(SendMsgVo::new)
-                    .collect(Collectors.toList());
-            ParamConstants.userList.put(ParamConstants.ROLE_BUSS_MA,ywjl_tels);
-            
-            //cw
-            List<SendMsgVo> cw_tels =userMgrDao.selectUsersByDeptIdAndRoleId(roleId, ParamConstants.ROLE_FINA)
-                    .stream()
-                    .map(SendMsgVo::new)
-                    .collect(Collectors.toList());
-            ParamConstants.userList.put(ParamConstants.ROLE_FINA,cw_tels);
-            
-            //cwjl
-            List<SendMsgVo> cwjl_tels =userMgrDao.selectUsersByDeptIdAndRoleId(roleId, ParamConstants.ROLE_FINA_MA)
-                    .stream()
-                    .map(SendMsgVo::new)
-                    .collect(Collectors.toList());
-            ParamConstants.userList.put(ParamConstants.ROLE_FINA_MA,cwjl_tels);
-            
-            //qtcw
-            List<SendMsgVo> qtcw_tels =userMgrDao.selectUsersByDeptIdAndRoleId(roleId, ParamConstants.ROLE_QTCW)
-                    .stream()
-                    .map(SendMsgVo::new)
-                    .collect(Collectors.toList());
-            ParamConstants.userList.put(ParamConstants.ROLE_QTCW,qtcw_tels);
         }
+        shiroUser.setDeptId(Integer.parseInt(user.getDeptid()));
+        shiroUser.setDeptName(ConstantFactory.me().getSingleDeptName(Integer.parseInt(user.getDeptid())));
         shiroUser.setDeptList(deptList);
         shiroUser.setDeptNames(deptNameList);
 

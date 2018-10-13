@@ -68,4 +68,8 @@
 		select * from dept where FIND_IN_SET(CONCAT('[',#{deptId},']'), pids)
 	</select>
 
+	<select id="getAllSubDeptByDeptId" resultType="com.moerlong.carloan.common.persistence.model.Dept">
+		select * from dept where pid=#{deptId}
+	</select>
+
 </mapper>

@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -107,7 +108,7 @@ public class ScdssJsljController {
 	@ApiImplicitParam(paramType = "body", name = "param", required = false, dataType = "Map", value = "参数")
 	@RequestMapping(value = "/cdssjslj/findById", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
-	public Object findById(@RequestBody Map<String,Object> param) {
+	public Object findById(@RequestParam Map<String,Object> param) {
 		Map<String, Object> res = new HashMap<>();
 		try {
 			Integer id = Integer.parseInt(param.get("id").toString());
@@ -171,6 +172,36 @@ public class ScdssJsljController {
 		}
 		
 		return res;
+	}
+
+	/**
+	 * 跳转添加场地页面
+	 * @param prjType
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/cdssjslj/showAddJslj")
+	public String showAddJslj(@RequestParam Integer prjId, @RequestParam String prjType, Model model) {
+		SCdssJslj jslj = new SCdssJslj();
+		jslj.setPrjid(prjId);
+		jslj.setPrjtype(prjType);
+		model.addAttribute("jslj",jslj);
+		return "/sport/addjslj.html";
+	}
+
+	/**
+	 * 跳转健身路径修改页面
+	 * @param
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/cdssjslj/showJsljDetail")
+	public String showJsljDetail(@RequestParam Integer jsljId, Model model) {
+		SCdssJslj jslj = this.service.selectById(jsljId);
+		model.addAttribute("jslj",jslj);
+//		ShiroUser shiroUser = ShiroKit.getUser();
+//		model.addAttribute("deptId",shiroUser.getDeptId());
+		return "/sport/addcd.html";
 	}
 
 }

@@ -1,5 +1,10 @@
 package com.moerlong.carloan.modular.system.service;
 
+import com.moerlong.carloan.common.persistence.model.Dept;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
 /**
  * 部门服务
  *
@@ -18,4 +23,5 @@ public interface IDeptService {
 
     String getAllSubDept(Integer userId);
     String selectAllDept(Integer userId);
+    List<Dept> getAllSubDeptByDeptId (@Param("deptId") Integer deptId);
 }

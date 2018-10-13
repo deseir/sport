@@ -5,8 +5,6 @@ import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.moerlong.carloan.common.persistence.dao.DeptMapper;
 import com.moerlong.carloan.common.persistence.dao.UserMapper;
 import com.moerlong.carloan.common.persistence.model.Dept;
-import com.moerlong.carloan.common.persistence.model.DeptC;
-import com.moerlong.carloan.common.persistence.model.User;
 import com.moerlong.carloan.core.shiro.ShiroKit;
 import com.moerlong.carloan.core.util.Convert;
 import com.moerlong.carloan.modular.system.dao.DeptDao;
@@ -72,4 +70,10 @@ public class DeptServiceImpl implements IDeptService {
          }
 		return sb.toString().substring(0, sb.length()-1);
 	}
+
+    @Override
+    public List<Dept> getAllSubDeptByDeptId(Integer deptId) {
+        return deptDao.getAllSubDeptByDeptId(deptId);
+    }
+
 }

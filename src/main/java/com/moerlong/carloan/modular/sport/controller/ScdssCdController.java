@@ -108,7 +108,7 @@ public class ScdssCdController {
 	@ApiImplicitParam(paramType = "body", name = "param", required = false, dataType = "Map", value = "参数")
 	@RequestMapping(value = "/cdsscd/findById", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
-	public Object findById(@RequestBody Map<String,Object> param) {
+	public Object findById(@RequestParam Map<String,Object> param) {
 		Map<String, Object> res = new HashMap<>();
 		try {
 			Integer id = Integer.parseInt(param.get("id").toString());
@@ -189,5 +189,19 @@ public class ScdssCdController {
 		return "/sport/addcd.html";
 	}
 
+	/**
+	 * 跳转场地修改页面
+	 * @param
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/cdsscd/showCdDetail")
+	public String showCdDetail(@RequestParam Integer cdId, Model model) {
+		SCdssCd cdsscd = this.service.selectById(cdId);
+		model.addAttribute("cdsscd",cdsscd);
+//		ShiroUser shiroUser = ShiroKit.getUser();
+//		model.addAttribute("deptId",shiroUser.getDeptId());
+		return "/sport/addcd.html";
+	}
 }
 

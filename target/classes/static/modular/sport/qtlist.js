@@ -9,6 +9,7 @@ $(document).ready(
 
 function  searchPage(o) {
     var prjType = $("#prjType").val();
+    var prjId = $("#priId").val();
     var pageNum = null;
     if(prjType==null||prjType==""||prjType==undefined){
         prjType=1;
@@ -33,10 +34,11 @@ function  searchPage(o) {
 
     $.ajax({
         type: "POST",
-        url: '/sprjbase/pageQuery',
+        url: '/cdssqt/pageQuery',
         dataType: 'json',
         data: {
             'prjtype':prjType,
+            'prjid':prjId,
             'pageNum':pageNum
         },
         success: function(data) {
@@ -49,10 +51,10 @@ function  searchPage(o) {
                     html +="<li class=\"shown\" >"
                         +"<div class=\"card card-shadow\">"
                         +"<figure class=\"card-header cover\">"
-                        +"<a href='/qiantai/showPrjDetail?prjId="+data.data.list[i].id+"' title='"+data.data.list[i].place+"' target=\"_self\">"
-                        +"<img class=\"cover-image\" src=\"/static/img/sport/1524206976.jpg\" alt='"+data.data.list[i].place+"'>"
+                        +"<a href='/cdssqt/showQtDetail?qtId="+data.data.list[i].id+"' title='"+data.data.list[i].jsss+"' target=\"_self\">"
+                        +"<img class=\"cover-image\" src=\"/static/img/sport/1524206976.jpg\" alt='"+data.data.list[i].jsss+"'>"
                         +"</a></figure><h4 class=\"card-title m-0 p-x-10 font-size-16 text-xs-center\">"
-                        +"<a href='/qiantai/showPrjDetail?prjId="+data.data.list[i].id+"' title='"+data.data.list[i].place+"' class=\"block\" target=\"_self\">"+data.data.list[i].place+"</a>"
+                        +"<a href='/cdssqt/showQtDetail?qtId="+data.data.list[i].id+"' title='"+data.data.list[i].jsss+"' class=\"block\" target=\"_self\">"+data.data.list[i].jsss+"</a>"
                         +"<p class=\"m-b-0 m-t-5 red-600\"></p></h4></div></li>";
 
                 });
@@ -73,15 +75,14 @@ function  searchPage(o) {
     });
 }
 
-function showPrjByType(prjType) {
-    $("#prjType").val(prjType);
-    searchPage(0);
+
+
+//跳转添加其他页面
+function showAddQt() {
+    var prjId = $("#prjId").val();
+    var prjType = $("#prjType").val();
+    window.location.href="/cdssqt/showAddQt?prjId="+prjId+"&prjType="+prjType;
 }
-
-
-
-
-
 
 
 

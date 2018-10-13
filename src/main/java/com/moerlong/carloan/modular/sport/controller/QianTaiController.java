@@ -1,6 +1,8 @@
 package com.moerlong.carloan.modular.sport.controller;
 
 import com.moerlong.carloan.common.controller.BaseController;
+import com.moerlong.carloan.core.shiro.ShiroKit;
+import com.moerlong.carloan.core.shiro.ShiroUser;
 import com.moerlong.carloan.modular.sport.entity.SPrjBase;
 import com.moerlong.carloan.modular.sport.service.SPrjBaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +29,11 @@ public class QianTaiController extends BaseController {
     @RequestMapping("/showAddPrj")
     public String showAddPrj(@RequestParam String prjType, Model model) {
         SPrjBase prjBase = new SPrjBase();
+        ShiroUser shiroUser = ShiroKit.getUser();
+        prjBase.setLocal(shiroUser.getDeptName());
         prjBase.setPrjtype(prjType);
         model.addAttribute("prjBase",prjBase);
+        model.addAttribute("deptId",shiroUser.getDeptId());
         return PREFIX + "addprj.html";
     }
 
@@ -43,6 +48,8 @@ public class QianTaiController extends BaseController {
         model.addAttribute("prjId",prjId);
         SPrjBase prjBase = prjBaseService.selectById(prjId);
         model.addAttribute("prjBase",prjBase);
+        ShiroUser shiroUser = ShiroKit.getUser();
+        model.addAttribute("deptId",shiroUser.getDeptId());
         return PREFIX + "addprj.html";
     }
 

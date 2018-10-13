@@ -34,7 +34,7 @@ function  searchPage(o) {
 
     $.ajax({
         type: "POST",
-        url: '/cdsscd/pageQuery',
+        url: '/cdssqt/pageQuery',
         dataType: 'json',
         data: {
             'prjtype':prjType,
@@ -51,10 +51,10 @@ function  searchPage(o) {
                     html +="<li class=\"shown\" >"
                         +"<div class=\"card card-shadow\">"
                         +"<figure class=\"card-header cover\">"
-                        +"<a href='/qiantai/showPrjDetail?prjId="+data.data.list[i].id+"' title='"+data.data.list[i].cdname+"' target=\"_self\">"
-                        +"<img class=\"cover-image\" src=\"/static/img/sport/1524206976.jpg\" alt='"+data.data.list[i].cdname+"'>"
+                        +"<a href='/cdssqt/showQtDetail?qtId="+data.data.list[i].id+"' title='"+data.data.list[i].jsss+"' target=\"_self\">"
+                        +"<img class=\"cover-image\" src=\"/static/img/sport/1524206976.jpg\" alt='"+data.data.list[i].jsss+"'>"
                         +"</a></figure><h4 class=\"card-title m-0 p-x-10 font-size-16 text-xs-center\">"
-                        +"<a href='/qiantai/showPrjDetail?prjId="+data.data.list[i].id+"' title='"+data.data.list[i].cdname+"' class=\"block\" target=\"_self\">"+data.data.list[i].cdname+"</a>"
+                        +"<a href='/cdssqt/showQtDetail?qtId="+data.data.list[i].id+"' title='"+data.data.list[i].jsss+"' class=\"block\" target=\"_self\">"+data.data.list[i].jsss+"</a>"
                         +"<p class=\"m-b-0 m-t-5 red-600\"></p></h4></div></li>";
 
                 });
@@ -77,11 +77,11 @@ function  searchPage(o) {
 
 
 
-//跳转添加场地页面
-function showAddCd() {
+//跳转添加其他页面
+function showAddQt() {
     var prjId = $("#prjId").val();
     var prjType = $("#prjType").val();
-    window.location.href="/cdsscd/showAddCd?prjId="+prjId+"&prjType="+prjType;
+    window.location.href="/cdssqt/showAddQt?prjId="+prjId+"&prjType="+prjType;
 }
 
 
