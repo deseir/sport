@@ -199,9 +199,21 @@ public class ScdssJsljController {
 	public String showJsljDetail(@RequestParam Integer jsljId, Model model) {
 		SCdssJslj jslj = this.service.selectById(jsljId);
 		model.addAttribute("jslj",jslj);
-//		ShiroUser shiroUser = ShiroKit.getUser();
-//		model.addAttribute("deptId",shiroUser.getDeptId());
-		return "/sport/addcd.html";
+		return "/sport/addjslj.html";
+	}
+
+	/**
+	 * 跳转添加场地器材的页面
+	 * @param prjType
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/cdssjslj/showQcJsljList")
+	public String showQcCdList(@RequestParam Integer prjId, @RequestParam Integer prjType,@RequestParam Integer jsljId, Model model) {
+		model.addAttribute("prjId",prjId);
+		model.addAttribute("prjType",prjType);
+		model.addAttribute("jsljId",jsljId);
+		return "/sport/qcjsljlist.html";
 	}
 
 }

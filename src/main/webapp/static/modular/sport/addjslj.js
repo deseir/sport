@@ -77,3 +77,11 @@ function showPrjDetail() {
     var prjId =$("#prjId").val();
     window.location.href="/qiantai/showPrjDetail?prjId="+prjId;
 }
+
+//跳转到健身路径器材列表页面
+function showQcJslj(){
+    var jsljId = $("#jsljId").val();
+    var prjId =$("#prjId").val();
+    var prjType = $("#prjtype").val();
+    window.location.href="/cdssjslj/showQcJsljList?jsljId="+jsljId+"&prjId="+prjId+"&prjType="+prjType;
+}

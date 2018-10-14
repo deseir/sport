@@ -79,3 +79,11 @@ function showPrjDetail() {
     var prjId =$("#prjId").val();
     window.location.href="/qiantai/showPrjDetail?prjId="+prjId;
 }
+
+//跳转到场地器材列表页面
+function showQcCd(){
+    var cdId = $("#cdId").val();
+    var prjId =$("#prjId").val();
+    var prjType = $("#prjtype").val();
+    window.location.href="/cdsscd/showQcCdList?cdId="+cdId+"&prjId="+prjId+"&prjType="+prjType;
+}

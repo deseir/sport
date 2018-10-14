@@ -35,7 +35,7 @@
     </style>
 </head>
 <body>
-    <br>
+    <fieldset>
         <legend>健身路径</legend>
         <input type="hidden" name="prjtype" id="prjtype" value="${jslj.prjtype}">
         <input type="hidden" name="prjId" id="prjId" value="${jslj.prjid}">
@@ -50,14 +50,14 @@
         <label for="area">面积(平方米):</label>
         <input type="text" id="area" name="area" placeholder="" value="${jslj.area}">
         <label for="dbqk">达标情况:</label>
-        <input id="dbqk" list="dbqklist"/>
+        <input id="dbqk" list="dbqklist" value="${jslj.dbqk}"/>
         <datalist id="dbqklist">
             <option value="是">
             <option value="否">
         </datalist>
 
     <label for="cllx">材料类型:</label>
-    <input id="cllx" list="cllxlist"/>
+    <input id="cllx" list="cllxlist" value="${jslj.cllx}"/>
     <datalist id="cllxlist">
         <option value="合成材料">
         <option value="砾石">
@@ -70,6 +70,7 @@
         <input type="text" id="pic" name="pic" placeholder="" value="${jslj.pic}">
         <input type="button" value="保存" style="width: 10%;" onclick="saveJslj()">
         <input type="button" value="删除" style="width: 10%;" onclick="logicDelete()">
+        <input type="button" value="器材管理" style="width: 10%;" onclick="showQcJslj()">
         <input type="button" value="查看工程概况信息" style="width: 10%;" onclick="showPrjDetail()">
         <input type="button" value="返回首页" style="width: 10%;" onclick="back()">
     </fieldset>

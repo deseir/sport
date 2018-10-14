@@ -1,34 +1,42 @@
-function saveJslj() {
-    var id = $("#jsljId").val();
+function saveQcCd() {
+    var id = $("#qccdId").val();
     var prjid =$("#prjId").val();
     var prjtype = $("#prjtype").val();
-    var mc = $("#mc").val();
-    var chang = $("#chang").val();
-    var kuan =$("#kuan").val();
-    var area = $("#area").val();
-    var dbqk = $("#dbqk").val();
-    var cllx = $("#cllx").val();
+    var cdId = $("#cdId").val();
+    var jssb = $("#jssb").val();
+    var bh =$("#bh").val();
+    var provider = $("#provider").val();
+    var azsj = $("#azsj").val();
+    var qcxz = $("#qcxz").val();
+    var gzms = $("#gzms").val();
+    var hcc = $("#hcc").val();
+    var mfwhqx = $("#mfwhqx").val();
+    var aqsyqx = $("#aqsyqx").val();
     var pic = $("#pic").val();
     $.ajax({
         type: "POST",
-        url: '/cdssjslj/saveOrUpdate',
+        url: '/cdssqccd/saveOrUpdate',
         dataType: 'json',
         data: {
             'id':id,
             'prjid':prjid,
             'prjtype':prjtype,
-            'mc':mc,
-            'chang':chang,
-            'kuan':kuan,
-            'area':area,
-            'dbqk' :dbqk,
-            'cllx' :cllx,
+            'cdid':cdId,
+            'jssb':jssb,
+            'bh':bh,
+            'provider' :provider,
+            'azsj' :azsj,
+            'qcxz' :qcxz,
+            'gzms':gzms,
+            'hcc':hcc,
+            'mfwhqx':mfwhqx,
+            'aqsyqx':aqsyqx,
             'pic' :pic
         },
         success: function(data) {
             var status = data.status;
             if(status=='0'){
-                $("#jsljId").val(data.jsljId);
+                $("#qccdId").val(data.qcCdId);
                 alert("保存数据成功！");
             }else{
                 alert("保存数据失败！"+data.msg);
@@ -43,11 +51,11 @@ function saveJslj() {
 }
 
 function logicDelete() {
-        var id = $("#jsljId").val();
+        var id = $("#qccdId").val();
 
         $.ajax({
             type: "POST",
-            url: '/cdssjslj/updateWithOutNull',
+            url: '/cdssqccd/updateWithOutNull',
             dataType: 'json',
             data: {
                 'id':id,
@@ -76,12 +84,4 @@ function back() {
 function showPrjDetail() {
     var prjId =$("#prjId").val();
     window.location.href="/qiantai/showPrjDetail?prjId="+prjId;
-}
-
-//跳转到健身路径器材列表页面
-function showQcJslj(){
-    var jsljId = $("#jsljId").val();
-    var prjId =$("#prjId").val();
-    var prjType = $("#prjtype").val();
-    window.location.href="/cdssjslj/showQcJsljList?jsljId="+jsljId+"&prjId="+prjId+"&prjType="+prjType;
 }

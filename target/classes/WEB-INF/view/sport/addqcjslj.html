@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>器材巡检</title>
+    <style>
+        fieldset {
+            margin:0 auto;
+            padding:20px;
+        }
+        input {
+            width:100%;
+            height:40px;
+            line-height:40px;
+            border:none;
+            border:1px solid #cccccc;
+            border-radius:4px;
+            padding-left:10px;
+            margin:5px 0;
+        }
+        meter {
+            width:100%;
+            height:40px;
+            line-height:40px;
+            border:none;
+            border:1px solid #cccccc;
+            border-radius:4px;
+            margin:5px 0;
+        }
+
+        html{
+            /* background: #f5f5f5; */
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>健身路径类器材</legend>
+        <input type="hidden" name="prjtype" id="prjtype" value="${cdssqcjslj.prjtype}">
+        <input type="hidden" name="prjId" id="prjId" value="${cdssqcjslj.prjid}">
+        <input type="hidden" name="jsljId" id="jsljId" value="${cdssqcjslj.jsljid}">
+        <input type="hidden" name="qccdId" id="qccdId" value="${cdssqcjslj.id}">
+        <label for="jssb">健身设备:</label>
+        <input id="jssb" list="jssblist" value="${cdssqcjslj.jssb}"/>
+        <datalist id="jssblist">
+            <option value="篮球架">
+            <option value="告示牌">
+            <option value="肋木架">
+            <option value="立式腰背按摩器">
+            <option value="三位压腿器">
+            <option value="双位蹬力器">
+            <option value="双位太空漫步机">
+            <option value="棋牌桌">
+            <option value="双杠">
+            <option value="腹肌板">
+            <option value="腿部按摩器">
+            <option value="单杠">
+            <option value="划船器">
+            <option value="转腰器">
+            <option value="太极推柔器">
+            <option value="云梯">
+            <option value="上肢牵引器">
+            <option value="健骑机">
+            <option value="乒乓球台">
+            <option value="秋千">
+            <option value="上肢综合训练器">
+            <option value="摸高器">
+            <option value="仰卧起坐平台">
+            <option value="伸腰训练器">
+            <option value="俯卧撑架">
+            <option value="臂力训练器">
+            <option value="三位扭腰器">
+            <option value="双人儿童压板">
+            <option value="伸背器 ">
+            <option value="落地漫步机">
+            <option value="平步机">
+            <option value="天梯">
+            <option value="自重式划船机">
+            <option value="椭圆机">
+            <option value="平衡滚筒">
+            <option value="鞍马训练器">
+            <option value="跑步机">
+            <option value="腰肩背按摩器">
+            <option value="弹震压腿器">
+            <option value="伸腰伸背器">
+            <option value="悬空转轮">
+            <option value="下肢训练器">
+            <option value="腰背按摩器">
+            <option value="双人联动漫步机">
+            <option value="双人推位荡椅">
+            <option value="三位仰卧起坐">
+            <option value="休闲荡椅">
+            <option value="综合训练器">
+            <option value="跷跷板">
+            <option value="臂力训练器">
+            <option value="坐立扭腰器">
+            <option value="单人转体">
+            <option value="举重架">
+            <option value="坐姿下拉训练器">
+            <option value="吊桩">
+            <option value="引体向上训练器">
+            <option value="多功能训练器">
+            <option value="三组合训练器">
+            <option value="健身车">
+            <option value="双位康乐轮">
+            <option value="长椅">
+            <option value="双位腿部按摩器">
+            <option value="铁制摇摇马">
+            <option value="四组合训练器">
+            <option value="三人引体向上">
+            <option value="举推训练器">
+            <option value="滑梯">
+            <option value="双人浪板">
+            <option value="腹肌训练器">
+            <option value="呼拉桥">
+            <option value="踏桩">
+            <option value="双位扭腰器">
+            <option value="太空球">
+            <option value="三位漫步机">
+            <option value="台球桌">
+            <option value="过山攀梯">
+            <option value="跷跷杆">
+            <option value="压腿矮肋木">
+            <option value="压腿架">
+            <option value="滑习器">
+            <option value="配重式卧推器">
+            <option value="单位太空漫步机">
+            <option value="转体训练器">
+            <option value="益智算盘">
+            <option value="爬绳">
+            <option value="平衡木">
+            <option value="五位压腿器">
+            <option value="哑铃">
+            <option value="小篮板">
+            <option value="排球架">
+            <option value="角力器">
+            <option value="多功能单杠">
+            <option value="旋转轮">
+            <option value="钟摆器">
+            <option value="麻将桌">
+            <option value="偏瘫康复机">
+            <option value="综合机">
+            <option value="悬空索道">
+            <option value="电推器">
+            <option value="大转轮">
+            <option value="六角爬网机">
+            <option value="跑跳横梁">
+            <option value="摸高横梁">
+            <option value="跳跃高梁">
+            <option value="收腹机">
+            <option value="仰卧板">
+            <option value="脚踏机">
+            <option value="踏步机">
+            <option value="逍遥椅">
+            <option value="三位蹬力器">
+            <option value="儿童组合游戏架">
+            <option value="滚轮">
+            <option value="休闲凳">
+            <option value="高低杠">
+            <option value="儿童游乐器材">
+            <option value="坐推器">
+            <option value="太空漫步机">
+            <option value="引体架">
+            <option value="压腿器">
+            <option value="多人荡板">
+            <option value="骑马机">
+            <option value="扭腰步道">
+            <option value="滚筒">
+            <option value="蹬力器">
+            <option value="双位大转轮">
+            <option value="漫步机">
+            <option value="双联伸展器">
+            <option value="扭腰器">
+            <option value="扭腰圈">
+            <option value="S形走桥">
+            <option value="双人压板">
+            <option value="双位晃板">
+            <option value="五位弹振压腿器">
+            <option value="离心盘">
+            <option value="儿童荡椅">
+            <option value="吊环">
+            <option value="二位骑马机">
+            <option value="背肌锻炼器">
+            <option value="坐式旋转器">
+            <option value="双位肋木架">
+            <option value="高低单杠">
+            <option value="按摩推揉器">
+            <option value="下腰训练器">
+            <option value="平衡训练器">
+            <option value="肩关节训练器">
+            <option value="太极轮">
+            <option value="倒挂架">
+            <option value="坐蹬器">
+            <option value="组合训练器">
+            <option value="双位扭腰旋转器">
+            <option value="健腹板">
+            <option value="荡椅 ">
+            <option value="儿童秋千">
+            <option value="大转盘">
+            <option value="单位肋木">
+            <option value="单立柱臂力训练器">
+            <option value="左右侧摆器">
+            <option value="扭腰踏步器">
+            <option value="双人座蹬">
+            <option value="二位按摩器">
+            <option value="立式翘翘板">
+            <option value="腹肌架">
+            <option value="梅花桩">
+            <option value="手扶云梯">
+            <option value="扭腰摩背器">
+            <option value="羽毛球架">
+            <option value="推手器">
+            <option value="伸展器">
+            <option value="自行车">
+            <option value="罗马椅">
+            <option value="攀岩器">
+            <option value="跳马">
+            <option value="连环跳">
+            <option value="太空球">
+            <option value="座拉训练器">
+            <option value="攀高器">
+            <option value="腕力训练器">
+            <option value="攀高环">
+            <option value="悬挂攀高">
+            <option value="网球架">
+            <option value="步行软梯">
+            <option value="足球门">
+            <option value="扭腰步道">
+            <option value="钟摆扭腰器">
+            <option value="智力运动桌">
+            <option value="轨道棋">
+        </datalist>
+
+        <label for="bh">器材编号:</label>
+        <input type="text" name="bh" id="bh" placeholder="" value="${cdssqcjslj.bh}">
+        <label for="provider">供应商:</label>
+        <input type="text" id="provider" name="provider" placeholder="" value="${cdssqcjslj.provider}">
+        <label for="azsj">安装时间:</label>
+        <input type="date" id="azsj" name="azsj" value="${cdssqcjslj.azsj}" >
+        <label for="qcxz">器材现状:</label>
+        <input id="qcxz" list="qcxzlist" value="${cdssqcjslj.qcxz}"/>
+        <datalist id="qcxzlist">
+            <option value="正常使用">
+            <option value="锈蚀">
+            <option value="非主要部件缺失">
+            <option value="存在一般安全隐患">
+            <option value="无柱铭牌">
+            <option value="主要部件缺失">
+            <option value="运动功能丧失">
+            <option value="存在重大安全隐患">
+        </datalist>
+
+        <label for="gzms">故障描述:</label>
+        <input type="text" id="gzms" name="gzms" placeholder="" value="${cdssqcjslj.gzms}">
+        <label for="hcc">缓冲层:</label>
+        <input id="hcc" list="hcclist" value="${cdssqcjslj.hcc}"/>
+        <datalist id="hcclist">
+            <option value="是">
+            <option value="否">
+        </datalist>
+        <label for="mfwhqx">免费维护期限:</label>
+        <input type="text" id="mfwhqx" name="mfwhqx" placeholder="" value="${cdssqcjslj.mfwhqx}">
+        <label for="aqsyqx">安全使用期限:</label>
+        <input type="text" id="aqsyqx" name="aqsyqx" placeholder="" value="${cdssqcjslj.aqsyqx}">
+        <label for="pic">照片:</label>
+        <input type="text" id="pic" name="pic" placeholder="" value="${cdssqcjslj.aqsyqx}">
+        <input type="button" value="保存" style="width: 10%;" onclick="saveQcJslj()">
+        <input type="button" value="删除" style="width: 10%;" onclick="logicDelete()">
+        <input type="button" value="查看工程概况信息" style="width: 10%;" onclick="showPrjDetail()">
+        <input type="button" value="返回首页" style="width: 10%;" onclick="back()">
+    </fieldset>
+
+<script src="${ctxPath}/static/js/jquery.min.js"></script>
+<script src="${ctxPath}/static/modular/sport/addqcjslj.js"></script>
+
+</body>
+</html>

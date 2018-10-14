@@ -43,19 +43,18 @@
     <div class="container">
         <div class="row clearfix right">
             <div class="col-md-9 met-news-body">
+                当前位置：农民体育健身工程/场地器材
                 <div class="row">
                     <ol class="breadcrumb m-b-0 subcolumn-crumbs">
                         <li class="breadcrumb-item">
-                            当前位置：农民体育健身工程
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="javascript:showAddCd()" title="" class="">添加场地</a>
+                            <a href="javascript:showAddCdQc()" title="" class="">添加器材</a>
                         </li>
                     </ol>
                     <ul class=" blocks-xs-2 blocks-md-2 blocks-lg-4 blocks-xxl-4  met-pager-ajax imagesize met-product-list met-grid" id="met-grid" data-scale="300x400" style="position: relative; height: 508.266px;">
                     </ul>
                     <input type="hidden" id="prjType" value="${prjType}">
                     <input type="hidden" id="prjId" value="${prjId}">
+                    <input type="hidden" id="cdId" value="${cdId}">
                     <ol class="breadcrumb m-b-0 subcolumn-crumbs">
                         <input type="hidden" id="prePage"><input type="hidden"  id="nextPage">
                         <li class="breadcrumb-item">
@@ -92,7 +91,7 @@
 </footer>
 
 <script src="${ctxPath}/static/js/sport/basic.js"></script>
-<script src="${ctxPath}/static/modular/sport/cdlist.js"></script>
+<script src="${ctxPath}/static/modular/sport/qccdlist.js"></script>
 <script>
     var metpagejs="${ctxPath}/static/js/sport/product_cn.js";
     if(typeof jQuery != "undefined"){

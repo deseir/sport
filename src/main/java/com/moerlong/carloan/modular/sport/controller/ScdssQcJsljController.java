@@ -1,7 +1,7 @@
 package com.moerlong.carloan.modular.sport.controller;
 
-import com.moerlong.carloan.modular.sport.entity.SCdssCd;
-import com.moerlong.carloan.modular.sport.service.SCdssCdService;
+import com.moerlong.carloan.modular.sport.entity.SCdssQcJslj;
+import com.moerlong.carloan.modular.sport.service.SCdssQcJsljService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -17,18 +17,18 @@ import java.util.Map;
 
 @Controller
 @Api(tags = { "controller接口类" })
-public class ScdssCdController {
+public class ScdssQcJsljController {
 
-	private final Logger log = LoggerFactory.getLogger(ScdssCdController.class);
+	private final Logger log = LoggerFactory.getLogger(ScdssQcJsljController.class);
 
 	@Autowired
-	SCdssCdService service;
+	SCdssQcJsljService service;
 
 	@ApiOperation(value = "保存或更新")
 	@ApiImplicitParam(paramType = "body", name = "entity", required = true, dataType = "TelecomRoamInfo", value = "明细")
-	@RequestMapping(value = "/cdsscd/saveOrUpdate", method = RequestMethod.POST)
+	@RequestMapping(value = "/cdssqcjslj/saveOrUpdate", method = RequestMethod.POST)
 	@ResponseBody
-	public Object saveOrUpdate(SCdssCd entity) {
+	public Object saveOrUpdate(SCdssQcJslj entity) {
 		Map<String, Object> res = new HashMap<>();
 		try {
 			if(entity.getId()!=null && service.selectById(entity.getId())!=null) {
@@ -36,7 +36,7 @@ public class ScdssCdController {
 			}else {
 				service.save(entity);
 			}
-			res.put("cdId",entity.getId());
+			res.put("qcJsljId",entity.getId());
 			res.put("status", 0);
 			res.put("errMsg", "操作成功");
 		} catch (Throwable e) {
@@ -49,9 +49,9 @@ public class ScdssCdController {
 	
 	@ApiOperation(value = "只更新非空字段")
 	@ApiImplicitParam(paramType = "body", name = "entity", required = true, dataType = "TelecomRoamInfo", value = "明细")
-	@RequestMapping(value = "/cdsscd/updateWithOutNull", method = RequestMethod.POST)
+	@RequestMapping(value = "/cdssqcjslj/updateWithOutNull", method = RequestMethod.POST)
 	@ResponseBody
-	public Object updateWithOutNull(SCdssCd entity) {
+	public Object updateWithOutNull(SCdssQcJslj entity) {
 		Map<String, Object> res = new HashMap<>();
 		try {
 			service.updateWithOutNull(entity);
@@ -67,7 +67,7 @@ public class ScdssCdController {
 
 	@ApiOperation(value = "删除")
 	@ApiImplicitParam(paramType = "body", name = "param", required = false, dataType = "Map", value = "参数")
-	@RequestMapping(value = "/cdsscd/deleteById", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/cdssqcjslj/deleteById", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public Object deleteById(@RequestBody Map<String,Object> param) {
 	
@@ -87,9 +87,9 @@ public class ScdssCdController {
 	
 	@ApiOperation(value = "逻辑删除")
 	@ApiImplicitParam(paramType = "body", name = "param", required = false, dataType = "Map", value = "参数")
-	@RequestMapping(value = "/cdsscd/deleteLogicById", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/cdssqcjslj/deleteLogicById", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
-	public Object deleteLogic(@RequestBody Map<String,Object> param) {
+	public Object deleteLogic(Map<String,Object> param) {
 		Map<String, Object> res = new HashMap<>();
 		try {
 			Integer id = Integer.parseInt(param.get("id").toString());
@@ -106,7 +106,7 @@ public class ScdssCdController {
 
 	@ApiOperation(value = "根据ID查找")
 	@ApiImplicitParam(paramType = "body", name = "param", required = false, dataType = "Map", value = "参数")
-	@RequestMapping(value = "/cdsscd/findById", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/cdssqcjslj/findById", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public Object findById(@RequestParam Map<String,Object> param) {
 		Map<String, Object> res = new HashMap<>();
@@ -124,7 +124,7 @@ public class ScdssCdController {
 	}
 	
 	@ApiOperation(value = "显示所有")
-	@RequestMapping(value = "/cdsscd/listAll", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/cdssqcjslj/listAll", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public Object listAll() {
 		Map<String, Object> res = new HashMap<>();
@@ -142,10 +142,10 @@ public class ScdssCdController {
 
 	@ApiOperation(value = "分页查询")
 	@ApiImplicitParam(paramType = "body", name = "queryMap", required = false, dataType = "Map", value = "查询条件")
-	@RequestMapping(value = "/cdsscd/pageQuery", method = RequestMethod.POST)
+	@RequestMapping(value = "/cdssqcjslj/pageQuery", method = RequestMethod.POST)
 	@ResponseBody
 	public Object pageQuery(@RequestParam Map<String,Object> queryMap) {
-		this.log.info("/cdsscd/pageQuery param:{}",queryMap);
+		this.log.info("/cdssqcjslj/pageQuery param:{}",queryMap);
 		Map<String, Object> res = new HashMap<>();
 		Integer pageNum = 1; //页数从1开始
 		Integer pageSize = 10; //页面大小
@@ -175,48 +175,32 @@ public class ScdssCdController {
 	}
 
 	/**
-	 * 跳转添加场地页面
+	 * 跳转添加健身路径器材页面
 	 * @param prjType
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/cdsscd/showAddCd")
-	public String showAddCd(@RequestParam Integer prjId, @RequestParam String prjType, Model model) {
-		SCdssCd cdsscd = new SCdssCd();
-		cdsscd.setPrjid(prjId);
-		cdsscd.setPrjtype(prjType);
-		model.addAttribute("cdsscd",cdsscd);
-		return "/sport/addcd.html";
+	@RequestMapping("/cdssqcjslj/showAddQcJslj")
+	public String showAddQcJslj(@RequestParam Integer prjId, @RequestParam Integer prjType,@RequestParam Integer jsljId, Model model) {
+		SCdssQcJslj qcJslj = new SCdssQcJslj();
+		qcJslj.setPrjid(prjId);
+		qcJslj.setPrjtype(prjType);
+		qcJslj.setJsljid(jsljId);
+		model.addAttribute("cdssqcjslj",qcJslj);
+		return "/sport/addqcjslj.html";
 	}
 
 	/**
-	 * 跳转场地修改页面
+	 * 跳转健身路径器材修改页面
 	 * @param
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/cdsscd/showCdDetail")
-	public String showCdDetail(@RequestParam Integer cdId, Model model) {
-		SCdssCd cdsscd = this.service.selectById(cdId);
-		model.addAttribute("cdsscd",cdsscd);
-//		ShiroUser shiroUser = ShiroKit.getUser();
-//		model.addAttribute("deptId",shiroUser.getDeptId());
-		return "/sport/addcd.html";
-	}
-
-
-	/**
-	 * 跳转添加场地器材的页面
-	 * @param prjType
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping("/cdsscd/showQcCdList")
-	public String showQcCdList(@RequestParam Integer prjId, @RequestParam Integer prjType,@RequestParam Integer cdId, Model model) {
-		model.addAttribute("prjId",prjId);
-		model.addAttribute("prjType",prjType);
-		model.addAttribute("cdId",cdId);
-		return "/sport/qccdlist.html";
+	@RequestMapping("/cdssqcjslj/showQcJsljDetail")
+	public String showCdDetail(@RequestParam Integer qcJsljId, Model model) {
+		SCdssQcJslj qcJslj = this.service.selectById(qcJsljId);
+		model.addAttribute("cdssqcjslj",qcJslj);
+		return "/sport/addqcjslj.html";
 	}
 }
 

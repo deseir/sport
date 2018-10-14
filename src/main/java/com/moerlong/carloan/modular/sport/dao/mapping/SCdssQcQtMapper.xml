@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.moerlong.carloan.modular.sport.dao.SCdssQcQtMapper" >
+  <resultMap id="BaseResultMap" type="com.moerlong.carloan.modular.sport.entity.SCdssQcQt" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="prjid" property="prjid" jdbcType="INTEGER" />
+    <result column="prjtype" property="prjtype" jdbcType="INTEGER" />
+    <result column="qtid" property="qtid" jdbcType="INTEGER" />
+    <result column="xh" property="xh" jdbcType="VARCHAR" />
+    <result column="jssb" property="jssb" jdbcType="VARCHAR" />
+    <result column="bh" property="bh" jdbcType="VARCHAR" />
+    <result column="provider" property="provider" jdbcType="VARCHAR" />
+    <result column="azsj" property="azsj" jdbcType="VARCHAR" />
+    <result column="qcxz" property="qcxz" jdbcType="VARCHAR" />
+    <result column="sfbf" property="sfbf" jdbcType="VARCHAR" />
+    <result column="gzms" property="gzms" jdbcType="VARCHAR" />
+    <result column="hcc" property="hcc" jdbcType="VARCHAR" />
+    <result column="mfwhqx" property="mfwhqx" jdbcType="VARCHAR" />
+    <result column="aqsyqx" property="aqsyqx" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="isdelete" property="isdelete" jdbcType="INTEGER" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, prjid, prjtype, qtid, xh, jssb, bh, provider, azsj, qcxz, sfbf, gzms, hcc, mfwhqx, 
+    aqsyqx, createtime, isdelete, updatetime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from s_cdss_qc_qt
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from s_cdss_qc_qt
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.sport.entity.SCdssQcQt" >
+    insert into s_cdss_qc_qt (id, prjid, prjtype, 
+      qtid, xh, jssb, bh, 
+      provider, azsj, qcxz, 
+      sfbf, gzms, hcc, mfwhqx, 
+      aqsyqx, createtime, isdelete, 
+      updatetime)
+    values (#{id,jdbcType=INTEGER}, #{prjid,jdbcType=INTEGER}, #{prjtype,jdbcType=INTEGER}, 
+      #{qtid,jdbcType=INTEGER}, #{xh,jdbcType=VARCHAR}, #{jssb,jdbcType=VARCHAR}, #{bh,jdbcType=VARCHAR}, 
+      #{provider,jdbcType=VARCHAR}, #{azsj,jdbcType=VARCHAR}, #{qcxz,jdbcType=VARCHAR}, 
+      #{sfbf,jdbcType=VARCHAR}, #{gzms,jdbcType=VARCHAR}, #{hcc,jdbcType=VARCHAR}, #{mfwhqx,jdbcType=VARCHAR}, 
+      #{aqsyqx,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{isdelete,jdbcType=INTEGER}, 
+      #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.sport.entity.SCdssQcQt" >
+    insert into s_cdss_qc_qt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="prjid != null" >
+        prjid,
+      </if>
+      <if test="prjtype != null" >
+        prjtype,
+      </if>
+      <if test="qtid != null" >
+        qtid,
+      </if>
+      <if test="xh != null" >
+        xh,
+      </if>
+      <if test="jssb != null" >
+        jssb,
+      </if>
+      <if test="bh != null" >
+        bh,
+      </if>
+      <if test="provider != null" >
+        provider,
+      </if>
+      <if test="azsj != null" >
+        azsj,
+      </if>
+      <if test="qcxz != null" >
+        qcxz,
+      </if>
+      <if test="sfbf != null" >
+        sfbf,
+      </if>
+      <if test="gzms != null" >
+        gzms,
+      </if>
+      <if test="hcc != null" >
+        hcc,
+      </if>
+      <if test="mfwhqx != null" >
+        mfwhqx,
+      </if>
+      <if test="aqsyqx != null" >
+        aqsyqx,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="prjid != null" >
+        #{prjid,jdbcType=INTEGER},
+      </if>
+      <if test="prjtype != null" >
+        #{prjtype,jdbcType=INTEGER},
+      </if>
+      <if test="qtid != null" >
+        #{qtid,jdbcType=INTEGER},
+      </if>
+      <if test="xh != null" >
+        #{xh,jdbcType=VARCHAR},
+      </if>
+      <if test="jssb != null" >
+        #{jssb,jdbcType=VARCHAR},
+      </if>
+      <if test="bh != null" >
+        #{bh,jdbcType=VARCHAR},
+      </if>
+      <if test="provider != null" >
+        #{provider,jdbcType=VARCHAR},
+      </if>
+      <if test="azsj != null" >
+        #{azsj,jdbcType=VARCHAR},
+      </if>
+      <if test="qcxz != null" >
+        #{qcxz,jdbcType=VARCHAR},
+      </if>
+      <if test="sfbf != null" >
+        #{sfbf,jdbcType=VARCHAR},
+      </if>
+      <if test="gzms != null" >
+        #{gzms,jdbcType=VARCHAR},
+      </if>
+      <if test="hcc != null" >
+        #{hcc,jdbcType=VARCHAR},
+      </if>
+      <if test="mfwhqx != null" >
+        #{mfwhqx,jdbcType=VARCHAR},
+      </if>
+      <if test="aqsyqx != null" >
+        #{aqsyqx,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.moerlong.carloan.modular.sport.entity.SCdssQcQt" >
+    update s_cdss_qc_qt
+    <set >
+      <if test="prjid != null" >
+        prjid = #{prjid,jdbcType=INTEGER},
+      </if>
+      <if test="prjtype != null" >
+        prjtype = #{prjtype,jdbcType=INTEGER},
+      </if>
+      <if test="qtid != null" >
+        qtid = #{qtid,jdbcType=INTEGER},
+      </if>
+      <if test="xh != null" >
+        xh = #{xh,jdbcType=VARCHAR},
+      </if>
+      <if test="jssb != null" >
+        jssb = #{jssb,jdbcType=VARCHAR},
+      </if>
+      <if test="bh != null" >
+        bh = #{bh,jdbcType=VARCHAR},
+      </if>
+      <if test="provider != null" >
+        provider = #{provider,jdbcType=VARCHAR},
+      </if>
+      <if test="azsj != null" >
+        azsj = #{azsj,jdbcType=VARCHAR},
+      </if>
+      <if test="qcxz != null" >
+        qcxz = #{qcxz,jdbcType=VARCHAR},
+      </if>
+      <if test="sfbf != null" >
+        sfbf = #{sfbf,jdbcType=VARCHAR},
+      </if>
+      <if test="gzms != null" >
+        gzms = #{gzms,jdbcType=VARCHAR},
+      </if>
+      <if test="hcc != null" >
+        hcc = #{hcc,jdbcType=VARCHAR},
+      </if>
+      <if test="mfwhqx != null" >
+        mfwhqx = #{mfwhqx,jdbcType=VARCHAR},
+      </if>
+      <if test="aqsyqx != null" >
+        aqsyqx = #{aqsyqx,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.moerlong.carloan.modular.sport.entity.SCdssQcQt" >
+    update s_cdss_qc_qt
+    set prjid = #{prjid,jdbcType=INTEGER},
+      prjtype = #{prjtype,jdbcType=INTEGER},
+      qtid = #{qtid,jdbcType=INTEGER},
+      xh = #{xh,jdbcType=VARCHAR},
+      jssb = #{jssb,jdbcType=VARCHAR},
+      bh = #{bh,jdbcType=VARCHAR},
+      provider = #{provider,jdbcType=VARCHAR},
+      azsj = #{azsj,jdbcType=VARCHAR},
+      qcxz = #{qcxz,jdbcType=VARCHAR},
+      sfbf = #{sfbf,jdbcType=VARCHAR},
+      gzms = #{gzms,jdbcType=VARCHAR},
+      hcc = #{hcc,jdbcType=VARCHAR},
+      mfwhqx = #{mfwhqx,jdbcType=VARCHAR},
+      aqsyqx = #{aqsyqx,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 查询所有 -->
+  <select id="listAll" resultType="com.moerlong.carloan.modular.sport.entity.SCdssCd">
+    select
+    <include refid="Base_Column_List" />
+    from s_cdss_qc_qt
+  </select>
+  <!-- 查询（分页查询） -->
+  <select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.sport.entity.SCdssCd">
+    select
+    <include refid="Base_Column_List" />
+    from s_cdss_qc_qt
+    where 1=1
+    <if test="prjid != null" >
+      and prjid = #{prjid,jdbcType=INTEGER}
+    </if>
+    <if test="prjtype != null" >
+      and prjtype = #{prjtype,jdbcType=INTEGER}
+    </if>
+    <if test="qtid != null" >
+      and qtid = #{qtid,jdbcType=INTEGER}
+    </if>
+    and isdelete=0
+  </select>
+</mapper>
