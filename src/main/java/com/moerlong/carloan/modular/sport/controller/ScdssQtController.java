@@ -209,5 +209,19 @@ public class ScdssQtController {
 		return "/sport/addqt.html";
 	}
 
+	/**
+	 * 跳转其他类器材列表页
+	 * @param prjType
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/cdssqt/showQcQtList")
+	public String showQcQtList(@RequestParam Integer prjId, @RequestParam Integer prjType,@RequestParam Integer qtId, Model model) {
+		model.addAttribute("prjId",prjId);
+		model.addAttribute("prjType",prjType);
+		model.addAttribute("qtId",qtId);
+		return "/sport/qcqtlist.html";
+	}
+
 }
 

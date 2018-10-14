@@ -203,7 +203,7 @@ public class ScdssJsljController {
 	}
 
 	/**
-	 * 跳转添加场地器材的页面
+	 * 跳转健身路径类器材列表页
 	 * @param prjType
 	 * @param model
 	 * @return

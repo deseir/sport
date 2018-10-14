@@ -3,7 +3,6 @@ package com.moerlong.carloan.modular.sport.service.serviceimpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.moerlong.carloan.modular.sport.dao.SCdssQtMapper;
-import com.moerlong.carloan.modular.sport.entity.SCdssQc;
 import com.moerlong.carloan.modular.sport.entity.SCdssQt;
 import com.moerlong.carloan.modular.sport.service.SCdssQtService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,32 +1,42 @@
-function saveQt() {
-    var id = $("#qtId").val();
+function saveQcJslj() {
+    var id = $("#qccdId").val();
     var prjid =$("#prjId").val();
-    var jsss = $("#jsss").val();
     var prjtype = $("#prjtype").val();
-    var num = $("#num").val();
-    var area = $("#area").val();
-    var wz = $("#wz").val();
-    var beizhu = $("#beizhu").val();
+    var jsljId = $("#jsljId").val();
+    var jssb = $("#jssb").val();
+    var bh =$("#bh").val();
+    var provider = $("#provider").val();
+    var azsj = $("#azsj").val();
+    var qcxz = $("#qcxz").val();
+    var gzms = $("#gzms").val();
+    var hcc = $("#hcc").val();
+    var mfwhqx = $("#mfwhqx").val();
+    var aqsyqx = $("#aqsyqx").val();
     var pic = $("#pic").val();
     $.ajax({
         type: "POST",
-        url: '/cdssqt/saveOrUpdate',
+        url: '/cdssqcjslj/saveOrUpdate',
         dataType: 'json',
         data: {
             'id':id,
             'prjid':prjid,
-            'jsss':jsss,
             'prjtype':prjtype,
-            'num':num,
-            'area':area,
-            'wz' :wz,
-            'beizhu' :beizhu,
+            'jsljid':jsljId,
+            'jssb':jssb,
+            'bh':bh,
+            'provider' :provider,
+            'azsj' :azsj,
+            'qcxz' :qcxz,
+            'gzms':gzms,
+            'hcc':hcc,
+            'mfwhqx':mfwhqx,
+            'aqsyqx':aqsyqx,
             'pic' :pic
         },
         success: function(data) {
             var status = data.status;
             if(status=='0'){
-                $("#qtId").val(data.qtId);
+                $("#qcJsljId").val(data.qcJsljId);
                 alert("保存数据成功！");
             }else{
                 alert("保存数据失败！"+data.msg);
@@ -41,11 +51,11 @@ function saveQt() {
 }
 
 function logicDelete() {
-        var id = $("#qtId").val();
+        var id = $("#qcJsljId").val();
 
         $.ajax({
             type: "POST",
-            url: '/cdssqt/updateWithOutNull',
+            url: '/cdssqcjslj/updateWithOutNull',
             dataType: 'json',
             data: {
                 'id':id,
@@ -74,12 +84,4 @@ function back() {
 function showPrjDetail() {
     var prjId =$("#prjId").val();
     window.location.href="/qiantai/showPrjDetail?prjId="+prjId;
-}
-
-//跳转到其他类器材列表页面
-function showQcQt(){
-    var qtId = $("#qtId").val();
-    var prjId =$("#prjId").val();
-    var prjType = $("#prjtype").val();
-    window.location.href="/cdssqt/showQcQtList?qtId="+qtId+"&prjId="+prjId+"&prjType="+prjType;
 }

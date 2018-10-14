@@ -36,7 +36,7 @@ public class ScdssQcQtController {
 			}else {
 				service.save(entity);
 			}
-			res.put("cdId",entity.getId());
+			res.put("qcQtId",entity.getId());
 			res.put("status", 0);
 			res.put("errMsg", "操作成功");
 		} catch (Throwable e) {
@@ -89,7 +89,7 @@ public class ScdssQcQtController {
 	@ApiImplicitParam(paramType = "body", name = "param", required = false, dataType = "Map", value = "参数")
 	@RequestMapping(value = "/cdssqcqt/deleteLogicById", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
-	public Object deleteLogic(@RequestBody Map<String,Object> param) {
+	public Object deleteLogic(Map<String,Object> param) {
 		Map<String, Object> res = new HashMap<>();
 		try {
 			Integer id = Integer.parseInt(param.get("id").toString());
@@ -175,33 +175,32 @@ public class ScdssQcQtController {
 	}
 
 	/**
-	 * 跳转添加场地页面
+	 * 跳转添加其他-器材页面
 	 * @param prjType
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/cdssqcqt/showAddCd")
-	public String showAddCd(@RequestParam Integer prjId, @RequestParam Integer prjType, Model model) {
+	@RequestMapping("/cdssqcqt/showAddQcQt")
+	public String showAddQcQt(@RequestParam Integer prjId, @RequestParam Integer prjType,@RequestParam Integer qtId, Model model) {
 		SCdssQcQt cdssqcqt = new SCdssQcQt();
 		cdssqcqt.setPrjid(prjId);
 		cdssqcqt.setPrjtype(prjType);
+		cdssqcqt.setPrjtype(qtId);
 		model.addAttribute("cdssqcqt",cdssqcqt);
-		return "/sport/addcd.html";
+		return "/sport/addqcqt.html";
 	}
 
 	/**
-	 * 跳转场地修改页面
+	 * 跳转其他-器材修改页面
 	 * @param
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/cdssqcqt/showCdDetail")
-	public String showCdDetail(@RequestParam Integer cdId, Model model) {
-		SCdssQcQt cdssqcqt = this.service.selectById(cdId);
+	@RequestMapping("/cdssqcqt/showQcQtDetail")
+	public String showQcQtDetail(@RequestParam Integer qcQtId, Model model) {
+		SCdssQcQt cdssqcqt = this.service.selectById(qcQtId);
 		model.addAttribute("cdssqcqt",cdssqcqt);
-//		ShiroUser shiroUser = ShiroKit.getUser();
-//		model.addAttribute("deptId",shiroUser.getDeptId());
-		return "/sport/addcd.html";
+		return "/sport/addqcqt.html";
 	}
 }
 
