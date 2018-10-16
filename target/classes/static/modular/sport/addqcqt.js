@@ -1,8 +1,8 @@
-function saveQcJslj() {
-    var id = $("#qccdId").val();
+function saveQcQt() {
+    var id = $("#qcqtId").val();
     var prjid =$("#prjId").val();
     var prjtype = $("#prjtype").val();
-    var jsljId = $("#jsljId").val();
+    var qtId = $("#qtId").val();
     var jssb = $("#jssb").val();
     var bh =$("#bh").val();
     var provider = $("#provider").val();
@@ -15,13 +15,13 @@ function saveQcJslj() {
     var pic = $("#pic").val();
     $.ajax({
         type: "POST",
-        url: '/cdssqcjslj/saveOrUpdate',
+        url: '/cdssqcqt/saveOrUpdate',
         dataType: 'json',
         data: {
             'id':id,
             'prjid':prjid,
             'prjtype':prjtype,
-            'jsljid':jsljId,
+            'qtid':qtId,
             'jssb':jssb,
             'bh':bh,
             'provider' :provider,
@@ -36,7 +36,7 @@ function saveQcJslj() {
         success: function(data) {
             var status = data.status;
             if(status=='0'){
-                $("#qcJsljId").val(data.qcJsljId);
+                $("#qcqtId").val(data.qcQtId);
                 alert("保存数据成功！");
             }else{
                 alert("保存数据失败！"+data.msg);
@@ -55,7 +55,7 @@ function logicDelete() {
 
         $.ajax({
             type: "POST",
-            url: '/cdssqcjslj/updateWithOutNull',
+            url: '/cdssqcqt/updateWithOutNull',
             dataType: 'json',
             data: {
                 'id':id,

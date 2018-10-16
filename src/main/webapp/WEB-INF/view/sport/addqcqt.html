@@ -37,12 +37,12 @@
 <body>
     <fieldset>
         <legend>其他类器材</legend>
-        <input type="hidden" name="prjtype" id="prjtype" value="${cdssqcjslj.prjtype}">
-        <input type="hidden" name="prjId" id="prjId" value="${cdssqcjslj.prjid}">
-        <input type="hidden" name="qtId" id="qtId" value="${cdssqcjslj.qtid}">
-        <input type="hidden" name="qccdId" id="qccdId" value="${cdssqcjslj.id}">
+        <input type="hidden" name="prjtype" id="prjtype" value="${cdssqcqt.prjtype}">
+        <input type="hidden" name="prjId" id="prjId" value="${cdssqcqt.prjid}">
+        <input type="hidden" name="qtId" id="qtId" value="${cdssqcqt.qtid}">
+        <input type="hidden" name="qcqtId" id="qcqtId" value="${cdssqcqt.id}">
         <label for="jssb">健身设备:</label>
-        <input id="jssb" list="jssblist" value="${cdssqcjslj.jssb}"/>
+        <input id="jssb" list="jssblist" value="${cdssqcqt.jssb}"/>
         <datalist id="jssblist">
             <option value="篮球架">
             <option value="告示牌">
@@ -233,13 +233,13 @@
         </datalist>
 
         <label for="bh">器材编号:</label>
-        <input type="text" name="bh" id="bh" placeholder="" value="${cdssqcjslj.bh}">
+        <input type="text" name="bh" id="bh" placeholder="" value="${cdssqcqt.bh}">
         <label for="provider">供应商:</label>
-        <input type="text" id="provider" name="provider" placeholder="" value="${cdssqcjslj.provider}">
+        <input type="text" id="provider" name="provider" placeholder="" value="${cdssqcqt.provider}">
         <label for="azsj">安装时间:</label>
-        <input type="date" id="azsj" name="azsj" value="${cdssqcjslj.azsj}" >
+        <input type="date" id="azsj" name="azsj" value="${cdssqcqt.azsj}" >
         <label for="qcxz">器材现状:</label>
-        <input id="qcxz" list="qcxzlist" value="${cdssqcjslj.qcxz}"/>
+        <input id="qcxz" list="qcxzlist" value="${cdssqcqt.qcxz}"/>
         <datalist id="qcxzlist">
             <option value="正常使用">
             <option value="锈蚀">
@@ -252,27 +252,27 @@
         </datalist>
 
         <label for="gzms">故障描述:</label>
-        <input type="text" id="gzms" name="gzms" placeholder="" value="${cdssqcjslj.gzms}">
+        <input type="text" id="gzms" name="gzms" placeholder="" value="${cdssqcqt.gzms}">
         <label for="hcc">缓冲层:</label>
-        <input id="hcc" list="hcclist" value="${cdssqcjslj.hcc}"/>
+        <input id="hcc" list="hcclist" value="${cdssqcqt.hcc}"/>
         <datalist id="hcclist">
             <option value="是">
             <option value="否">
         </datalist>
         <label for="mfwhqx">免费维护期限:</label>
-        <input type="text" id="mfwhqx" name="mfwhqx" placeholder="" value="${cdssqcjslj.mfwhqx}">
+        <input type="text" id="mfwhqx" name="mfwhqx" placeholder="" value="${cdssqcqt.mfwhqx}">
         <label for="aqsyqx">安全使用期限:</label>
-        <input type="text" id="aqsyqx" name="aqsyqx" placeholder="" value="${cdssqcjslj.aqsyqx}">
+        <input type="text" id="aqsyqx" name="aqsyqx" placeholder="" value="${cdssqcqt.aqsyqx}">
         <label for="pic">照片:</label>
-        <input type="text" id="pic" name="pic" placeholder="" value="${cdssqcjslj.aqsyqx}">
-        <input type="button" value="保存" style="width: 10%;" onclick="saveQcJslj()">
+        <input type="text" id="pic" name="pic" placeholder="" value="${cdssqcqt.aqsyqx}">
+        <input type="button" value="保存" style="width: 10%;" onclick="saveQcQt()">
         <input type="button" value="删除" style="width: 10%;" onclick="logicDelete()">
         <input type="button" value="查看工程概况信息" style="width: 10%;" onclick="showPrjDetail()">
         <input type="button" value="返回首页" style="width: 10%;" onclick="back()">
     </fieldset>
 
 <script src="${ctxPath}/static/js/jquery.min.js"></script>
-<script src="${ctxPath}/static/modular/sport/addqcjslj.js"></script>
+<script src="${ctxPath}/static/modular/sport/addqcqt.js"></script>
 
 </body>
 </html>
