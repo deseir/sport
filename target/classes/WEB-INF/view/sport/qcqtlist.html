@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style="padding-top: 0px; transition: padding-top 0.5s ease 0s;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0,minimal-ui">
+    <meta name="format-detection" content="telephone=no">
+    <title>健身器材巡检系统</title>
+    <meta name="description" content="健身器材巡检系统">
+    <meta name="keywords" content="健身器材巡检系统">
+    <meta name="generator" content="MetInfo 6.1.1" data-variable="https://show.metinfo.cn/m/mui102/370/|cn|cn|mui102|3|5|0" data-user_name="">
+    <link href="https://show.metinfo.cn/m/mui102/370/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="${ctxPath}/static/css/sport/basic.css">
+    <link rel="stylesheet" type="text/css" href="${ctxPath}/static/css/sport/product_cn.css">
+    <link rel="stylesheet" href="${ctxPath}/static/css/sport/metinfo.css">
+    <style>
+        body{
+            background-color:#ffffff !important;font-family: !important;}
+    </style>
+    <script charset="utf-8" src="${ctxPath}/static/js/sport/b.js"></script><script charset="utf-8" src="${ctxPath}/static/js/sport/v.js"></script><script src="${ctxPath}/static/js/sport/hm.js"></script><script src="${ctxPath}/static/js/sport/met_temdemo.js"></script>
+    <style>.demo-iframe-load{width: 100%;height: 50px;position: fixed;left: 0;top: 0;z-index: 9999998;background:#000;text-align:center;font-size:16px;color:#999;line-height:50px;}
+    .demo-iframe{width: 100%;height: 50px;position: fixed;left: 0;top: 0;z-index: 9999999;display:none;}</style><script src="${ctxPath}/static/js/sport/pc_nb.js" charset="UTF-8"></script><link rel="stylesheet" type="text/css" href="${ctxPath}/static/css/sport/main.css"><script charset="utf-8" data-require-id="embed/webimlight/main" src="${ctxPath}/static/js/sport/main.js" async=""></script><script type="text/javascript" src="https://p.qiao.baidu.com/cps2/site/poll?cb=jsonp_bridge_1535723220690_39096013801513196&amp;l=1&amp;v=153571776703087493&amp;s=8198658&amp;e=10323818&amp;dev=0&amp;auth=%7B%22anonym%22%3A0%2C%22key%22%3A%221248116314117101323okei6858916377%22%2C%22sn%22%3A%22745804582%22%2C%22id%22%3A%22153571776703087493%22%2C%22from%22%3A4%2C%22token%22%3A%22bridge%22%7D&amp;_time=1535723220690" id="id_jsonp_bridge_1535723220690_39096013801513196" charset="utf-8"></script></head>
+<body>
+<header class="head_nav_met_27_1" m-id="1" m-type="head_nav">
+    <div class="container top-box">
+        <div class="row">
+            <div class="top-header">
+                <div class="logo-box">
+                    <img src="${ctxPath}/static/img/sport/logo.png" style="height:60px;" alt="健身器材巡检系统">
+                </div>
+                <div style="float: right;">
+                欢迎您：${shiro.getUser().name} | 退出
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<main class="product_list_page_met_16_3 met-product animsition type-1" m-id="37">
+    <div class="container">
+        <div class="row clearfix right">
+            <div class="col-md-9 met-news-body">
+                当前位置：农民体育健身工程/其他类器材
+                <div class="row">
+                    <ol class="breadcrumb m-b-0 subcolumn-crumbs">
+                        <li class="breadcrumb-item">
+                            <a href="javascript:showAddQtQc()" title="" class="">添加器材</a>
+                        </li>
+                    </ol>
+                    <ul class=" blocks-xs-2 blocks-md-2 blocks-lg-4 blocks-xxl-4  met-pager-ajax imagesize met-product-list met-grid" id="met-grid" data-scale="300x400" style="position: relative; height: 508.266px;">
+                    </ul>
+                    <input type="hidden" id="prjType" value="${prjType}">
+                    <input type="hidden" id="prjId" value="${prjId}">
+                    <input type="hidden" id="qtId" value="${qtId}">
+                    <ol class="breadcrumb m-b-0 subcolumn-crumbs">
+                        <input type="hidden" id="prePage"><input type="hidden"  id="nextPage">
+                        <li class="breadcrumb-item">
+                            第<span id="pageNum"></span>/<span id="pages"></span>页
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:searchPage(0)" title="" class="">首页</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:searchPage(-1)" title="" class="">上一页</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:searchPage(1)" title="" class="">下一页</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:searchPage(2)" title="" class="">尾页</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</main>
+
+
+
+<footer class="foot_info_met_16_1 met-foot p-y-20 border-top1" m-id="4" m-type="foot">
+    <div class="container text-xs-center">
+        <p>版权所有 永康健身器材巡检系统技术研发部 ©2018-2050</p>
+    </div>
+</footer>
+
+<script src="${ctxPath}/static/js/sport/basic.js"></script>
+<script src="${ctxPath}/static/modular/sport/qcqtlist.js"></script>
+<script>
+    var metpagejs="${ctxPath}/static/js/sport/product_cn.js";
+    if(typeof jQuery != "undefined"){
+        metPageJs(metpagejs);
+    }else{
+        var metPageInterval=setInterval(function(){
+            if(typeof jQuery != "undefined"){
+                metPageJs(metpagejs);
+                clearInterval(metPageInterval);
+            }
+        },50)
+    }
+</script><script src="${ctxPath}/static/js/sport/product_cn.js"></script>
+<script src="${ctxPath}/static/js/sport/lang_json_cn.js"></script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "${ctxPath}/static/js/sport/hm.js";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<ins id="newBridge"><!-- target: nodeBoard --><ins class="nb-nodeboard-base nb-nodeboard-position-base nb-nodeboard-left-bottom nb-hide" id="nb_nodeboard"><ins class="nb-nodeboard-contain-base nb-nodeboard-contain"><ins class="nb-nodeboard-top nb-nodeboard-top-0"><ins class="nb-head-title">请您留言</ins><ins class="nb-nodeboard-close" id="nb_nodeboard_close" data-type="min"></ins></ins><form id="nb_nodeboard_form" autocomplete="off" class="nb-board-form" action="https://p.qiao.baidu.com/cps2//bookmanage/saveBook.action?userId=10323818" method="post" accept-charset="utf-8"><ins id="nb_nodeboard_set" class="nb-nodeboard-set"><ins class="nb-nodeboard-content"><textarea id="nb-nodeboard-set-content-js" name="content" data-ph="请在此输入留言内容，我们会尽快与您联系。（必填）" placeholder="请在此输入留言内容，我们会尽快与您联系。（必填）" class="nb-nodeboard-set-content"></textarea></ins><ins class="nb-nodeboard-name" style="z-index:4;"><ins class="nb-nodeboard-icon nodeName"></ins><input id="nb_nodeboard_set_name" data-write="0" name="visitorName" maxlength="30" class="nb-nodeboard-input" type="text" data-ph="姓名" placeholder="姓名"></ins><ins class="nb-nodeboard-name" id="nb_nodeboard_phone" style="z-index:3;"><ins class="nb-nodeboard-icon nodePhone"></ins><input id="nb_nodeboard_set_phone" name="visitorPhone" maxlength="30" class="nb-nodeboard-input" data-write="1" type="text" data-ph="电话（必填）" placeholder="电话（必填）"></ins><ins class="nb-nodeboard-name" id="nb_nodeboard_mail" style="z-index:2;"><ins class="nb-nodeboard-icon nodeMail"></ins><input id="nb_nodeboard_set_email" name="visitorEmail" maxlength="50" class="nb-nodeboard-input" type="text" data-write="0" data-ph="邮箱" placeholder="邮箱"></ins><ins class="nb-nodeboard-name" style="z-index:1;"><ins class="nb-nodeboard-icon nodeAddress"></ins><input id="nb_nodeboard_set_address" name="visitorAddress" class="nb-nodeboard-input" maxlength="50" type="text" data-write="0" data-ph="地址" placeholder="地址"></ins></ins></form><ins class="nb-nodeboard-success" id="nb_nodeboard_success"><ins class="nb-success-box"><ins class="nb-success-icon"></ins><ins class="nb-success-title" id="nb_node_messagetitle">感谢留言</ins><ins class="nb-success-content" id="nb_node_messagecontent">我们会尽快与您联系</ins><ins id="sucess_close" class="nb-sucess-close">关闭</ins></ins></ins><ins class="nb-nodeboard-send" id="nb_node_contain"><ins id="nb_nodeboard_send" class="nb-nodeboard-send-btn nb-nodeboard-send-btn-0">发送</ins></ins></ins></ins><!-- end --><!-- target: invite --><ins class="nb-invite-wrap nb-invite-wrap-base nb-position-base nb-middle  blank-talk-style" id="nb_invite_wrap" style="width:290px;display:none;margin-left: -145px;margin-top: -63px;"><ins class="nb-invite-body nb-invite-skin-0" style="height:125px;;"><ins class="nb-invite-tool nb-invite-tool-base" id="nb_invite_tool" style=""></ins><ins class="nb-invite-text nb-invite-text-base"><ins class="nb-invite-welcome nb-invite-welcome-base nb-hide" id="nb_invite_welcome"><p style="color: #fff">欢迎来到本网站，请问有什么可以帮您？</p></ins></ins></ins></ins><!-- end --></ins></body></html>
