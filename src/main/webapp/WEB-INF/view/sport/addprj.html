@@ -62,12 +62,21 @@
         <input type="text" id="dljd" name="dljd" placeholder="" value="${prjBase.dljd}">
         <label for="dlwd">地理纬度:</label>
         <input type="text" id="dlwd" name="dlwd" placeholder="" value="${prjBase.dlwd}">
-        <label for="qjpic1">全景照片1:</label>
-        <input type="text" id="qjpic1" name="qjpic1" placeholder="" value="${prjBase.qjpic1}">
-        <label for="qjpic2">全景照片2:</label>
-        <input type="text" id="qjpic2" name="qjpic2" placeholder="" value="${prjBase.qjpic2}">
-        <label for="qjpic3">全景照片3:</label>
-        <input type="text" id="qjpic3" name="qjpic3" placeholder="" value="${prjBase.qjpic3}">
+
+        <div class="">
+            <div class="">
+                <img class="camerabox" id="newImage" src="" width="50px" height="40px;"/>
+                <input class="fileInpBtn" id="fileInpBtn" type="file"  onchange="showPicture(this)" accept="image/*"  multiple>
+            </div>
+        </div>
+
+
+        <!--<label for="qjpic1">全景照片1:</label>-->
+        <!--<input type="text" id="qjpic1" name="qjpic1" placeholder="" value="${prjBase.qjpic1}">-->
+        <!--<label for="qjpic2">全景照片2:</label>-->
+        <!--<input type="text" id="qjpic2" name="qjpic2" placeholder="" value="${prjBase.qjpic2}">-->
+        <!--<label for="qjpic3">全景照片3:</label>-->
+        <!--<input type="text" id="qjpic3" name="qjpic3" placeholder="" value="${prjBase.qjpic3}">-->
         <input type="button" value="保存" style="width: 10%;" onclick="savePrj()">
         <input type="button" value="删除" style="width: 10%;" onclick="logicDelete()">
         <input type="button" value="查看场地" style="width: 10%;" onclick="showCd()">

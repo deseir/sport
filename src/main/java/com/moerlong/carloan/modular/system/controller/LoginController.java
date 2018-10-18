@@ -65,12 +65,7 @@ public class LoginController extends BaseController {
         String avatar = user.getAvatar();
         model.addAttribute("avatar", avatar);
 
-        String loginFlag = (String)ShiroKit.getSession().getAttribute("loginFlag");
-        if("qt".equals(loginFlag)){
-            return "/qiantai.html";
-        }else{
-            return "/houtai.html";
-        }
+        return "/qiantai.html";
     }
 
     /**
