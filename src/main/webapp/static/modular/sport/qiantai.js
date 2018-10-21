@@ -49,7 +49,7 @@ function  searchPage(o) {
                     html +="<li class=\"shown\" >"
                         +"<div class=\"card card-shadow\">"
                         +"<figure class=\"card-header cover\">"
-                        +"<a href='/qiantai/showPrjDetail?prjId="+data.data.list[i].id+"' title='"+data.data.list[i].place+"' target=\"_self\">"
+                        +"<a href='showPrjDetail("+data.data.list[i].id+")' title='"+data.data.list[i].place+"' target=\"_self\">"
                         +"<img class=\"cover-image\" src=\"/static/img/sport/1524206976.jpg\" alt='"+data.data.list[i].place+"'>"
                         +"</a></figure><h4 class=\"card-title m-0 p-x-10 font-size-16 text-xs-center\">"
                         +"<a href='/qiantai/showPrjDetail?prjId="+data.data.list[i].id+"' title='"+data.data.list[i].place+"' class=\"block\" target=\"_self\">"+data.data.list[i].place+"</a>"
@@ -75,6 +75,13 @@ function  searchPage(o) {
 
 function showPrjByType(prjType) {
     $("#prjType").val(prjType);
+    if(prjType==1){
+        $("#showPrjName").text("农民体育健身工程");
+    }else if(prjType==2){
+        $("#showPrjName").text("社区体育健身工程");
+    }else{
+        $("#showPrjName").text("农民体育健身工程");
+    }
     searchPage(0);
 }
 //跳转添加项目页面
@@ -84,6 +91,12 @@ function showAddPrj() {
         prjType = 1;
     }
     window.location.href="/qiantai/showAddPrj?prjType="+prjType;
+}
+
+function showPrjDetail(id) {
+    var showPrjName = $("#showPrjName").val();
+    window.location.href="/qiantai/showPrjDetail?prjId="+id+"&showPrjName="+showPrjName;
+
 }
 
 

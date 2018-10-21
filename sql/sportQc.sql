@@ -1,24 +1,24 @@
 /*
- Navicat MySQL Data Transfer
+ Navicat Premium Data Transfer
 
  Source Server         : localhost
  Source Server Type    : MySQL
  Source Server Version : 50719
- Source Host           : localhost:3306
- Source Schema         : sportQc
+ Source Host           : localhost
+ Source Database       : sportQc
 
  Target Server Type    : MySQL
  Target Server Version : 50719
- File Encoding         : 65001
+ File Encoding         : utf-8
 
- Date: 12/10/2018 17:49:02
+ Date: 10/21/2018 22:43:13 PM
 */
 
-SET NAMES utf8mb4;
+SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------
--- Table structure for c_apply_info
+--  Table structure for `c_apply_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_apply_info`;
 CREATE TABLE `c_apply_info` (
@@ -54,10 +54,10 @@ CREATE TABLE `c_apply_info` (
   PRIMARY KEY (`id`),
   KEY `INX_CUST_ID` (`cust_id`),
   KEY `INX_CHANNEL_ID` (`channel_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10171 DEFAULT CHARSET=utf8 COMMENT='订单表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单表';
 
 -- ----------------------------
--- Table structure for c_apply_operator
+--  Table structure for `c_apply_operator`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_apply_operator`;
 CREATE TABLE `c_apply_operator` (
@@ -73,10 +73,10 @@ CREATE TABLE `c_apply_operator` (
   PRIMARY KEY (`id`),
   KEY `INX_APPLY_ID` (`apply_id`),
   KEY `INX_ROLE_ID` (`role_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13459 DEFAULT CHARSET=utf8 COMMENT='订单操作员表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='订单操作员表';
 
 -- ----------------------------
--- Table structure for c_bankcard_info
+--  Table structure for `c_bankcard_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_bankcard_info`;
 CREATE TABLE `c_bankcard_info` (
@@ -105,7 +105,7 @@ CREATE TABLE `c_bankcard_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户银行卡绑定信息';
 
 -- ----------------------------
--- Table structure for c_car_base_params
+--  Table structure for `c_car_base_params`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_base_params`;
 CREATE TABLE `c_car_base_params` (
@@ -131,10 +131,10 @@ CREATE TABLE `c_car_base_params` (
   `is_deleted` int(1) DEFAULT NULL COMMENT '是否删除 0-否 1-是',
   PRIMARY KEY (`id`),
   KEY `INX_CAR_ID` (`car_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10017 DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_基本参数表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_基本参数表';
 
 -- ----------------------------
--- Table structure for c_car_body_config
+--  Table structure for `c_car_body_config`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_body_config`;
 CREATE TABLE `c_car_body_config` (
@@ -157,10 +157,10 @@ CREATE TABLE `c_car_body_config` (
   `is_deleted` int(1) DEFAULT NULL COMMENT '是否删除 0-否 1-是',
   PRIMARY KEY (`id`),
   KEY `INX_CAR_ID` (`car_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10012 DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_车身配置';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_车身配置';
 
 -- ----------------------------
--- Table structure for c_car_buss_insure_info
+--  Table structure for `c_car_buss_insure_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_buss_insure_info`;
 CREATE TABLE `c_car_buss_insure_info` (
@@ -184,10 +184,10 @@ CREATE TABLE `c_car_buss_insure_info` (
   `remark` varchar(300) DEFAULT NULL COMMENT '备注，说明',
   PRIMARY KEY (`id`),
   KEY `INX_UID` (`car_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10120 DEFAULT CHARSET=utf8 COMMENT='车辆商业险信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆商业险信息表';
 
 -- ----------------------------
--- Table structure for c_car_buss_mortgage_info
+--  Table structure for `c_car_buss_mortgage_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_buss_mortgage_info`;
 CREATE TABLE `c_car_buss_mortgage_info` (
@@ -225,10 +225,10 @@ CREATE TABLE `c_car_buss_mortgage_info` (
   KEY `index_car_id` (`car_id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10108 DEFAULT CHARSET=utf8 COMMENT='车辆抵押登记信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆抵押登记信息表';
 
 -- ----------------------------
--- Table structure for c_car_chassis_steering
+--  Table structure for `c_car_chassis_steering`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_chassis_steering`;
 CREATE TABLE `c_car_chassis_steering` (
@@ -247,10 +247,10 @@ CREATE TABLE `c_car_chassis_steering` (
   `is_delete` int(1) DEFAULT NULL COMMENT '是否删除 0--否 1--是',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注说明',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for c_car_detention_info
+--  Table structure for `c_car_detention_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_detention_info`;
 CREATE TABLE `c_car_detention_info` (
@@ -282,10 +282,10 @@ CREATE TABLE `c_car_detention_info` (
   KEY `index_car_id` (`car_id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COMMENT='车辆解押登记信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆解押登记信息表';
 
 -- ----------------------------
--- Table structure for c_car_driver_info
+--  Table structure for `c_car_driver_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_driver_info`;
 CREATE TABLE `c_car_driver_info` (
@@ -313,10 +313,10 @@ CREATE TABLE `c_car_driver_info` (
   PRIMARY KEY (`id`),
   KEY `INX_USER_ID` (`user_id`),
   KEY `INX_CAR_ID` (`car_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10120 DEFAULT CHARSET=utf8 COMMENT='行驶证驾驶证信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='行驶证驾驶证信息表';
 
 -- ----------------------------
--- Table structure for c_car_engine_config
+--  Table structure for `c_car_engine_config`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_engine_config`;
 CREATE TABLE `c_car_engine_config` (
@@ -351,10 +351,10 @@ CREATE TABLE `c_car_engine_config` (
   `is_deleted` int(1) DEFAULT NULL COMMENT '是否删除 0-否 1-是',
   PRIMARY KEY (`id`),
   KEY `INX_CAR_ID` (`car_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10010 DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_车身配置';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_车身配置';
 
 -- ----------------------------
--- Table structure for c_car_gear_box
+--  Table structure for `c_car_gear_box`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_gear_box`;
 CREATE TABLE `c_car_gear_box` (
@@ -371,10 +371,10 @@ CREATE TABLE `c_car_gear_box` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(255) DEFAULT '0' COMMENT '备注说明',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10015 DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_变速箱配置';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_变速箱配置';
 
 -- ----------------------------
--- Table structure for c_car_gps_detail_info
+--  Table structure for `c_car_gps_detail_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_gps_detail_info`;
 CREATE TABLE `c_car_gps_detail_info` (
@@ -389,10 +389,10 @@ CREATE TABLE `c_car_gps_detail_info` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注，说明',
   PRIMARY KEY (`id`),
   KEY `index_car_id` (`car_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10117 DEFAULT CHARSET=utf8 COMMENT='车辆GPS详情信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆GPS详情信息表';
 
 -- ----------------------------
--- Table structure for c_car_gps_info
+--  Table structure for `c_car_gps_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_gps_info`;
 CREATE TABLE `c_car_gps_info` (
@@ -410,10 +410,10 @@ CREATE TABLE `c_car_gps_info` (
   KEY `index_car_id` (`car_id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=utf8 COMMENT='车辆GPS信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆GPS信息表';
 
 -- ----------------------------
--- Table structure for c_car_gps_uninstall_info
+--  Table structure for `c_car_gps_uninstall_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_gps_uninstall_info`;
 CREATE TABLE `c_car_gps_uninstall_info` (
@@ -428,10 +428,10 @@ CREATE TABLE `c_car_gps_uninstall_info` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注，说明',
   PRIMARY KEY (`id`),
   KEY `index_car_id` (`car_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10054 DEFAULT CHARSET=utf8 COMMENT='车辆卸载GPS详情信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆卸载GPS详情信息表';
 
 -- ----------------------------
--- Table structure for c_car_info
+--  Table structure for `c_car_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_info`;
 CREATE TABLE `c_car_info` (
@@ -474,10 +474,10 @@ CREATE TABLE `c_car_info` (
   `is_deleted` int(1) DEFAULT NULL COMMENT '是否删除 0-否 1-是',
   PRIMARY KEY (`id`),
   KEY `INX_CUST_ID` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10135 DEFAULT CHARSET=utf8 COMMENT='车辆基本信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆基本信息表';
 
 -- ----------------------------
--- Table structure for c_car_insure_detail_info
+--  Table structure for `c_car_insure_detail_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_insure_detail_info`;
 CREATE TABLE `c_car_insure_detail_info` (
@@ -493,10 +493,10 @@ CREATE TABLE `c_car_insure_detail_info` (
   `remark` varchar(300) DEFAULT NULL COMMENT '备注，说明',
   PRIMARY KEY (`id`),
   KEY `INX_UID` (`insure_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10034 DEFAULT CHARSET=utf8 COMMENT='车辆保险险种详细信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆保险险种详细信息表';
 
 -- ----------------------------
--- Table structure for c_car_mortgage_info
+--  Table structure for `c_car_mortgage_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_mortgage_info`;
 CREATE TABLE `c_car_mortgage_info` (
@@ -511,10 +511,10 @@ CREATE TABLE `c_car_mortgage_info` (
   `is_deleted` int(1) DEFAULT NULL COMMENT '是否删除 0-否 1-是',
   PRIMARY KEY (`id`),
   KEY `INX_CAR_ID` (`car_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10092 DEFAULT CHARSET=utf8 COMMENT='车辆抵押记录表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆抵押记录表';
 
 -- ----------------------------
--- Table structure for c_car_operation_configuration
+--  Table structure for `c_car_operation_configuration`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_operation_configuration`;
 CREATE TABLE `c_car_operation_configuration` (
@@ -543,10 +543,10 @@ CREATE TABLE `c_car_operation_configuration` (
   `is_delete` int(1) DEFAULT NULL COMMENT '是否删除 0--否 1--是',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注说明',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for c_car_peccancy_info
+--  Table structure for `c_car_peccancy_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_peccancy_info`;
 CREATE TABLE `c_car_peccancy_info` (
@@ -564,10 +564,10 @@ CREATE TABLE `c_car_peccancy_info` (
   `violationAttachmentPhotol2` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `INX_CAR_ID` (`car_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10120 DEFAULT CHARSET=utf8 COMMENT='车辆违章信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆违章信息表';
 
 -- ----------------------------
--- Table structure for c_car_photo_bigclass_info
+--  Table structure for `c_car_photo_bigclass_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_photo_bigclass_info`;
 CREATE TABLE `c_car_photo_bigclass_info` (
@@ -580,10 +580,10 @@ CREATE TABLE `c_car_photo_bigclass_info` (
   `car_id` bigint(21) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `INX_CAR_BIGCLASS_ID` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10064 DEFAULT CHARSET=utf8 COMMENT='车辆照片大类表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆照片大类表';
 
 -- ----------------------------
--- Table structure for c_car_photo_info
+--  Table structure for `c_car_photo_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_photo_info`;
 CREATE TABLE `c_car_photo_info` (
@@ -598,10 +598,10 @@ CREATE TABLE `c_car_photo_info` (
   `is_deleted` int(1) DEFAULT NULL COMMENT '是否删除 0-否 1-是',
   PRIMARY KEY (`id`),
   KEY `INX_CAR_ID` (`car_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10266 DEFAULT CHARSET=utf8 COMMENT='车辆照片表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆照片表';
 
 -- ----------------------------
--- Table structure for c_car_price_info
+--  Table structure for `c_car_price_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_price_info`;
 CREATE TABLE `c_car_price_info` (
@@ -625,10 +625,10 @@ CREATE TABLE `c_car_price_info` (
   PRIMARY KEY (`id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10053 DEFAULT CHARSET=utf8 COMMENT='车辆评估价格表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆评估价格表';
 
 -- ----------------------------
--- Table structure for c_car_safety_equipment
+--  Table structure for `c_car_safety_equipment`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_safety_equipment`;
 CREATE TABLE `c_car_safety_equipment` (
@@ -659,10 +659,10 @@ CREATE TABLE `c_car_safety_equipment` (
   `is_delete` int(1) DEFAULT NULL COMMENT '是否删除 0--否 1--是',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注说明',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for c_car_traffic_insure_info
+--  Table structure for `c_car_traffic_insure_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_traffic_insure_info`;
 CREATE TABLE `c_car_traffic_insure_info` (
@@ -687,10 +687,10 @@ CREATE TABLE `c_car_traffic_insure_info` (
   `remark` varchar(300) DEFAULT NULL COMMENT '备注，说明',
   PRIMARY KEY (`id`),
   KEY `INX_UID` (`car_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10120 DEFAULT CHARSET=utf8 COMMENT='车辆交强险信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆交强险信息表';
 
 -- ----------------------------
--- Table structure for c_car_transfer_info
+--  Table structure for `c_car_transfer_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_transfer_info`;
 CREATE TABLE `c_car_transfer_info` (
@@ -706,10 +706,10 @@ CREATE TABLE `c_car_transfer_info` (
   `is_deleted` int(1) DEFAULT NULL COMMENT '是否删除 0-否 1-是',
   PRIMARY KEY (`id`),
   KEY `INX_CAR_ID` (`car_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10033 DEFAULT CHARSET=utf8 COMMENT='车辆转移登记记录表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆转移登记记录表';
 
 -- ----------------------------
--- Table structure for c_car_validatecar_boli_configuration
+--  Table structure for `c_car_validatecar_boli_configuration`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_validatecar_boli_configuration`;
 CREATE TABLE `c_car_validatecar_boli_configuration` (
@@ -733,10 +733,10 @@ CREATE TABLE `c_car_validatecar_boli_configuration` (
   `hys` int(1) DEFAULT NULL COMMENT '后雨刷0无1有',
   `gyys` int(1) DEFAULT NULL COMMENT '感应雨刷0无1有',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_玻璃/后玻璃';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_玻璃/后玻璃';
 
 -- ----------------------------
--- Table structure for c_car_validatecar_exterior_specification
+--  Table structure for `c_car_validatecar_exterior_specification`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_validatecar_exterior_specification`;
 CREATE TABLE `c_car_validatecar_exterior_specification` (
@@ -763,10 +763,10 @@ CREATE TABLE `c_car_validatecar_exterior_specification` (
   `remote_key` int(1) DEFAULT NULL COMMENT '遥控钥匙 0无1有',
   `wysjrxt` int(1) DEFAULT NULL COMMENT '无钥匙进入系统 0无1有',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_外部配置表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_外部配置表';
 
 -- ----------------------------
--- Table structure for c_car_validatecar_interior_collocation
+--  Table structure for `c_car_validatecar_interior_collocation`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_validatecar_interior_collocation`;
 CREATE TABLE `c_car_validatecar_interior_collocation` (
@@ -788,10 +788,10 @@ CREATE TABLE `c_car_validatecar_interior_collocation` (
   `heated_steering_wheel` int(1) DEFAULT NULL COMMENT '方向盘加热  0无1有',
   `driving_computer_screen` int(1) DEFAULT NULL COMMENT '行车电脑显示屏 0有1无',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_内部配置表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_内部配置表';
 
 -- ----------------------------
--- Table structure for c_car_validatecar_kongtiao_configuration
+--  Table structure for `c_car_validatecar_kongtiao_configuration`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_validatecar_kongtiao_configuration`;
 CREATE TABLE `c_car_validatecar_kongtiao_configuration` (
@@ -810,10 +810,10 @@ CREATE TABLE `c_car_validatecar_kongtiao_configuration` (
   `cnkqtj_hfgl` int(1) DEFAULT NULL COMMENT '车内空气调节/花粉过滤0无1有',
   `czbx` int(1) DEFAULT NULL COMMENT '车载冰箱0无1有',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_冰箱、空调表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_冰箱、空调表';
 
 -- ----------------------------
--- Table structure for c_car_validatecar_light_configuration
+--  Table structure for `c_car_validatecar_light_configuration`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_validatecar_light_configuration`;
 CREATE TABLE `c_car_validatecar_light_configuration` (
@@ -836,10 +836,10 @@ CREATE TABLE `c_car_validatecar_light_configuration` (
   `ddgdkt` int(1) DEFAULT NULL COMMENT '大灯高度可调0无1有',
   `ddqxzz` int(1) DEFAULT NULL COMMENT '大灯清洗装置0无1有',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_灯光配置表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_灯光配置表';
 
 -- ----------------------------
--- Table structure for c_car_validatecar_multimedia_configuration
+--  Table structure for `c_car_validatecar_multimedia_configuration`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_validatecar_multimedia_configuration`;
 CREATE TABLE `c_car_validatecar_multimedia_configuration` (
@@ -859,10 +859,10 @@ CREATE TABLE `c_car_validatecar_multimedia_configuration` (
   `cd_dvd` varchar(255) DEFAULT NULL COMMENT '多媒体系统(cd/dvd',
   `ysqsl` varchar(255) DEFAULT NULL COMMENT '扬声器数量',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_多媒体配置表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_多媒体配置表';
 
 -- ----------------------------
--- Table structure for c_car_validatecar_seat_configuration
+--  Table structure for `c_car_validatecar_seat_configuration`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_validatecar_seat_configuration`;
 CREATE TABLE `c_car_validatecar_seat_configuration` (
@@ -883,10 +883,10 @@ CREATE TABLE `c_car_validatecar_seat_configuration` (
   `fjszddtj` int(1) DEFAULT NULL COMMENT '副驾驶座电动调节 0无1有',
   `hpzddtj` int(1) DEFAULT NULL COMMENT '后排座电动调节 0无1有',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_座椅配置表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='车辆详细配置_座椅配置表';
 
 -- ----------------------------
--- Table structure for c_car_verify_info
+--  Table structure for `c_car_verify_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_verify_info`;
 CREATE TABLE `c_car_verify_info` (
@@ -906,10 +906,10 @@ CREATE TABLE `c_car_verify_info` (
   `is_deleted` int(1) DEFAULT NULL COMMENT '是否删除 0-否 1-是',
   PRIMARY KEY (`id`),
   UNIQUE KEY `INX_CAR_ID` (`car_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=10103 DEFAULT CHARSET=utf8 COMMENT='验车信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='验车信息表';
 
 -- ----------------------------
--- Table structure for c_car_wheel_brakes
+--  Table structure for `c_car_wheel_brakes`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_car_wheel_brakes`;
 CREATE TABLE `c_car_wheel_brakes` (
@@ -929,10 +929,10 @@ CREATE TABLE `c_car_wheel_brakes` (
   `is_delete` int(1) DEFAULT NULL COMMENT '是否删除 0--否 1--是',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注说明',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for c_channel_info
+--  Table structure for `c_channel_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_channel_info`;
 CREATE TABLE `c_channel_info` (
@@ -954,10 +954,10 @@ CREATE TABLE `c_channel_info` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注，说明',
   `is_deleted` int(1) DEFAULT NULL COMMENT '是否删除 0-否 1-是',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10007 DEFAULT CHARSET=utf8 COMMENT='渠道表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='渠道表';
 
 -- ----------------------------
--- Table structure for c_contract_info
+--  Table structure for `c_contract_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_contract_info`;
 CREATE TABLE `c_contract_info` (
@@ -990,10 +990,10 @@ CREATE TABLE `c_contract_info` (
   PRIMARY KEY (`id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10105 DEFAULT CHARSET=utf8 COMMENT='客户合同信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户合同信息表';
 
 -- ----------------------------
--- Table structure for c_credit_auth_info
+--  Table structure for `c_credit_auth_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_credit_auth_info`;
 CREATE TABLE `c_credit_auth_info` (
@@ -1016,10 +1016,10 @@ CREATE TABLE `c_credit_auth_info` (
   PRIMARY KEY (`id`),
   KEY `IND_APPLY_ID` (`apply_id`),
   KEY `IND_CUST_ID` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10087 DEFAULT CHARSET=utf8 COMMENT='信贷认证';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='信贷认证';
 
 -- ----------------------------
--- Table structure for c_credit_buss_query_record
+--  Table structure for `c_credit_buss_query_record`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_credit_buss_query_record`;
 CREATE TABLE `c_credit_buss_query_record` (
@@ -1037,10 +1037,10 @@ CREATE TABLE `c_credit_buss_query_record` (
   PRIMARY KEY (`id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10044 DEFAULT CHARSET=utf8 COMMENT='客户央行征信机构查询记录表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户央行征信机构查询记录表';
 
 -- ----------------------------
--- Table structure for c_credit_card_detail
+--  Table structure for `c_credit_card_detail`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_credit_card_detail`;
 CREATE TABLE `c_credit_card_detail` (
@@ -1065,10 +1065,10 @@ CREATE TABLE `c_credit_card_detail` (
   PRIMARY KEY (`id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10082 DEFAULT CHARSET=utf8 COMMENT='客户央行征信信用卡交易信息明细表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户央行征信信用卡交易信息明细表';
 
 -- ----------------------------
--- Table structure for c_credit_loan_detail
+--  Table structure for `c_credit_loan_detail`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_credit_loan_detail`;
 CREATE TABLE `c_credit_loan_detail` (
@@ -1104,10 +1104,10 @@ CREATE TABLE `c_credit_loan_detail` (
   PRIMARY KEY (`id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10085 DEFAULT CHARSET=utf8 COMMENT='客户央行征信贷款交易信息明细表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户央行征信贷款交易信息明细表';
 
 -- ----------------------------
--- Table structure for c_credit_personal_query_record
+--  Table structure for `c_credit_personal_query_record`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_credit_personal_query_record`;
 CREATE TABLE `c_credit_personal_query_record` (
@@ -1124,10 +1124,10 @@ CREATE TABLE `c_credit_personal_query_record` (
   PRIMARY KEY (`id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10031 DEFAULT CHARSET=utf8 COMMENT='客户央行征信个人查询记录表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户央行征信个人查询记录表';
 
 -- ----------------------------
--- Table structure for c_credit_report
+--  Table structure for `c_credit_report`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_credit_report`;
 CREATE TABLE `c_credit_report` (
@@ -1183,10 +1183,10 @@ CREATE TABLE `c_credit_report` (
   PRIMARY KEY (`id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10074 DEFAULT CHARSET=utf8 COMMENT='客户央行征信信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户央行征信信息表';
 
 -- ----------------------------
--- Table structure for c_cust_company_info
+--  Table structure for `c_cust_company_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_cust_company_info`;
 CREATE TABLE `c_cust_company_info` (
@@ -1215,10 +1215,10 @@ CREATE TABLE `c_cust_company_info` (
   PRIMARY KEY (`id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10077 DEFAULT CHARSET=utf8 COMMENT='客户关联企业信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户关联企业信息表';
 
 -- ----------------------------
--- Table structure for c_cust_finance_info
+--  Table structure for `c_cust_finance_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_cust_finance_info`;
 CREATE TABLE `c_cust_finance_info` (
@@ -1238,10 +1238,10 @@ CREATE TABLE `c_cust_finance_info` (
   PRIMARY KEY (`id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10094 DEFAULT CHARSET=utf8 COMMENT='客户财力证明表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户财力证明表';
 
 -- ----------------------------
--- Table structure for c_cust_income_info
+--  Table structure for `c_cust_income_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_cust_income_info`;
 CREATE TABLE `c_cust_income_info` (
@@ -1263,10 +1263,10 @@ CREATE TABLE `c_cust_income_info` (
   PRIMARY KEY (`id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10054 DEFAULT CHARSET=utf8 COMMENT='客户收入认定方式表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户收入认定方式表';
 
 -- ----------------------------
--- Table structure for c_cust_info
+--  Table structure for `c_cust_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_cust_info`;
 CREATE TABLE `c_cust_info` (
@@ -1305,10 +1305,10 @@ CREATE TABLE `c_cust_info` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注，说明',
   `is_deleted` int(1) DEFAULT NULL COMMENT '是否删除 0-否 1-是',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10165 DEFAULT CHARSET=utf8 COMMENT='客户基本信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户基本信息表';
 
 -- ----------------------------
--- Table structure for c_cust_interview_info
+--  Table structure for `c_cust_interview_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_cust_interview_info`;
 CREATE TABLE `c_cust_interview_info` (
@@ -1329,10 +1329,10 @@ CREATE TABLE `c_cust_interview_info` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_apply_id` (`apply_id`) USING BTREE,
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10156 DEFAULT CHARSET=utf8 COMMENT='面审最终意见表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='面审最终意见表';
 
 -- ----------------------------
--- Table structure for c_cust_work_info
+--  Table structure for `c_cust_work_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_cust_work_info`;
 CREATE TABLE `c_cust_work_info` (
@@ -1362,10 +1362,10 @@ CREATE TABLE `c_cust_work_info` (
   `is_deleted` int(1) DEFAULT NULL COMMENT '是否删除 0-否 1-是',
   PRIMARY KEY (`id`),
   KEY `INX_CUST_ID` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10088 DEFAULT CHARSET=utf8 COMMENT='客户工作信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户工作信息表';
 
 -- ----------------------------
--- Table structure for c_data_keep_info
+--  Table structure for `c_data_keep_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_data_keep_info`;
 CREATE TABLE `c_data_keep_info` (
@@ -1387,10 +1387,10 @@ CREATE TABLE `c_data_keep_info` (
   KEY `index_car_id` (`car_id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10063 DEFAULT CHARSET=utf8 COMMENT='客户资料存留信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户资料存留信息表';
 
 -- ----------------------------
--- Table structure for c_family_book_info
+--  Table structure for `c_family_book_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_family_book_info`;
 CREATE TABLE `c_family_book_info` (
@@ -1407,10 +1407,10 @@ CREATE TABLE `c_family_book_info` (
   `is_deleted` int(1) DEFAULT NULL COMMENT '是否删除 0-否 1-是',
   PRIMARY KEY (`id`),
   KEY `INX_CUST_ID` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10081 DEFAULT CHARSET=utf8 COMMENT='客户户口本信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户户口本信息表';
 
 -- ----------------------------
--- Table structure for c_family_book_sub_info
+--  Table structure for `c_family_book_sub_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_family_book_sub_info`;
 CREATE TABLE `c_family_book_sub_info` (
@@ -1428,10 +1428,10 @@ CREATE TABLE `c_family_book_sub_info` (
   PRIMARY KEY (`id`),
   KEY `INX_book_id` (`book_id`),
   KEY `INX_CERT_ID` (`cert_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10140 DEFAULT CHARSET=utf8 COMMENT='客户户口本关联关系信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户户口本关联关系信息表';
 
 -- ----------------------------
--- Table structure for c_final_judgement_info
+--  Table structure for `c_final_judgement_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_final_judgement_info`;
 CREATE TABLE `c_final_judgement_info` (
@@ -1450,10 +1450,10 @@ CREATE TABLE `c_final_judgement_info` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_apply_id` (`apply_id`) USING BTREE,
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10106 DEFAULT CHARSET=utf8 COMMENT='终审意见表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='终审意见表';
 
 -- ----------------------------
--- Table structure for c_gongjie_info
+--  Table structure for `c_gongjie_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_gongjie_info`;
 CREATE TABLE `c_gongjie_info` (
@@ -1483,10 +1483,10 @@ CREATE TABLE `c_gongjie_info` (
   `is_deleted` int(1) DEFAULT NULL COMMENT '是否删除 0-否 1-是',
   PRIMARY KEY (`id`),
   KEY `INX_CUST_ID` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10037 DEFAULT CHARSET=utf8 COMMENT='共借人信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='共借人信息表';
 
 -- ----------------------------
--- Table structure for c_id_auth_info
+--  Table structure for `c_id_auth_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_id_auth_info`;
 CREATE TABLE `c_id_auth_info` (
@@ -1517,7 +1517,7 @@ CREATE TABLE `c_id_auth_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户身份证信息表';
 
 -- ----------------------------
--- Table structure for c_judicial_auth_info
+--  Table structure for `c_judicial_auth_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_judicial_auth_info`;
 CREATE TABLE `c_judicial_auth_info` (
@@ -1541,10 +1541,10 @@ CREATE TABLE `c_judicial_auth_info` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `INX_APPLY_ID` (`apply_id`,`type`) USING BTREE,
   KEY `INX_CUST_ID` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10136 DEFAULT CHARSET=utf8 COMMENT='司法认证表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='司法认证表';
 
 -- ----------------------------
--- Table structure for c_liveness_auth_info
+--  Table structure for `c_liveness_auth_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_liveness_auth_info`;
 CREATE TABLE `c_liveness_auth_info` (
@@ -1566,10 +1566,10 @@ CREATE TABLE `c_liveness_auth_info` (
   PRIMARY KEY (`id`),
   KEY `INX_UID` (`cust_id`),
   KEY `INX_APPLY_ID` (`apply_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10008 DEFAULT CHARSET=utf8 COMMENT='用户活体数据认证信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户活体数据认证信息表';
 
 -- ----------------------------
--- Table structure for c_main_approve_record
+--  Table structure for `c_main_approve_record`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_main_approve_record`;
 CREATE TABLE `c_main_approve_record` (
@@ -1587,10 +1587,10 @@ CREATE TABLE `c_main_approve_record` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注，说明',
   PRIMARY KEY (`id`),
   KEY `index_apply_id` (`apply_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13452 DEFAULT CHARSET=utf8 COMMENT='主流程审批记录表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='主流程审批记录表';
 
 -- ----------------------------
--- Table structure for c_marry_info
+--  Table structure for `c_marry_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_marry_info`;
 CREATE TABLE `c_marry_info` (
@@ -1620,10 +1620,10 @@ CREATE TABLE `c_marry_info` (
   `spouse_phone` varchar(32) DEFAULT NULL COMMENT '配偶手机号',
   PRIMARY KEY (`id`),
   KEY `INX_CUST_ID` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10112 DEFAULT CHARSET=utf8 COMMENT='客户婚姻信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户婚姻信息表';
 
 -- ----------------------------
--- Table structure for c_once_early_repayment_record
+--  Table structure for `c_once_early_repayment_record`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_once_early_repayment_record`;
 CREATE TABLE `c_once_early_repayment_record` (
@@ -1644,10 +1644,10 @@ CREATE TABLE `c_once_early_repayment_record` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注，说明',
   PRIMARY KEY (`id`),
   KEY `index_repayment_id` (`repayment_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COMMENT='提前还款记录表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='提前还款记录表';
 
 -- ----------------------------
--- Table structure for c_pay_approve_record
+--  Table structure for `c_pay_approve_record`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_pay_approve_record`;
 CREATE TABLE `c_pay_approve_record` (
@@ -1667,7 +1667,7 @@ CREATE TABLE `c_pay_approve_record` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='放款审批记录表';
 
 -- ----------------------------
--- Table structure for c_pay_detail_info
+--  Table structure for `c_pay_detail_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_pay_detail_info`;
 CREATE TABLE `c_pay_detail_info` (
@@ -1694,10 +1694,10 @@ CREATE TABLE `c_pay_detail_info` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注，说明',
   PRIMARY KEY (`id`),
   KEY `index_pay_id` (`pay_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8 COMMENT='放款详情表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='放款详情表';
 
 -- ----------------------------
--- Table structure for c_pay_info
+--  Table structure for `c_pay_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_pay_info`;
 CREATE TABLE `c_pay_info` (
@@ -1738,10 +1738,10 @@ CREATE TABLE `c_pay_info` (
   PRIMARY KEY (`id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10087 DEFAULT CHARSET=utf8 COMMENT='放款总表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='放款总表';
 
 -- ----------------------------
--- Table structure for c_pay_statis_info
+--  Table structure for `c_pay_statis_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_pay_statis_info`;
 CREATE TABLE `c_pay_statis_info` (
@@ -1771,10 +1771,10 @@ CREATE TABLE `c_pay_statis_info` (
   `is_deleted` int(1) DEFAULT '0' COMMENT '是否删除 0--否 1--是',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注，说明',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=319 DEFAULT CHARSET=utf8 COMMENT='财务统计表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='财务统计表';
 
 -- ----------------------------
--- Table structure for c_process_engine
+--  Table structure for `c_process_engine`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_process_engine`;
 CREATE TABLE `c_process_engine` (
@@ -1787,10 +1787,10 @@ CREATE TABLE `c_process_engine` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注，说明',
   `is_deleted` int(1) DEFAULT NULL COMMENT '是否删除 0-否 1-是',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10081 DEFAULT CHARSET=utf8 COMMENT='流程引擎表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='流程引擎表';
 
 -- ----------------------------
--- Table structure for c_process_node
+--  Table structure for `c_process_node`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_process_node`;
 CREATE TABLE `c_process_node` (
@@ -1809,10 +1809,10 @@ CREATE TABLE `c_process_node` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注，说明',
   `is_deleted` int(1) DEFAULT NULL COMMENT '是否删除 0-否 1-是',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10075 DEFAULT CHARSET=utf8 COMMENT='流程节点表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='流程节点表';
 
 -- ----------------------------
--- Table structure for c_repayment_approve_record
+--  Table structure for `c_repayment_approve_record`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_repayment_approve_record`;
 CREATE TABLE `c_repayment_approve_record` (
@@ -1833,10 +1833,10 @@ CREATE TABLE `c_repayment_approve_record` (
   `remark` varchar(255) DEFAULT NULL COMMENT '备注，说明',
   PRIMARY KEY (`id`),
   KEY `index_repayment_id` (`repayment_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COMMENT='提前还款审批记录表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='提前还款审批记录表';
 
 -- ----------------------------
--- Table structure for c_repayment_change_record
+--  Table structure for `c_repayment_change_record`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_repayment_change_record`;
 CREATE TABLE `c_repayment_change_record` (
@@ -1875,10 +1875,10 @@ CREATE TABLE `c_repayment_change_record` (
   `remark` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT '备注，说明',
   PRIMARY KEY (`id`),
   KEY `index_repayment_id` (`repayment_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='还款变更记录表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='还款变更记录表';
 
 -- ----------------------------
--- Table structure for c_repayment_info
+--  Table structure for `c_repayment_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_repayment_info`;
 CREATE TABLE `c_repayment_info` (
@@ -1935,10 +1935,10 @@ CREATE TABLE `c_repayment_info` (
   PRIMARY KEY (`id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COMMENT='还款总表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='还款总表';
 
 -- ----------------------------
--- Table structure for c_repayment_pay_info
+--  Table structure for `c_repayment_pay_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_repayment_pay_info`;
 CREATE TABLE `c_repayment_pay_info` (
@@ -1969,10 +1969,10 @@ CREATE TABLE `c_repayment_pay_info` (
   KEY `index_repayment_id` (`repayment_id`),
   KEY `index_repayment_plan_id` (`repayment_plan_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=447 DEFAULT CHARSET=utf8 COMMENT='还款支付表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='还款支付表';
 
 -- ----------------------------
--- Table structure for c_repayment_plan_info
+--  Table structure for `c_repayment_plan_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_repayment_plan_info`;
 CREATE TABLE `c_repayment_plan_info` (
@@ -2020,10 +2020,10 @@ CREATE TABLE `c_repayment_plan_info` (
   KEY `index_apply_id` (`apply_id`),
   KEY `index_repayment_id` (`repayment_id`),
   KEY `index_cust_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1238 DEFAULT CHARSET=utf8 COMMENT='还款计划表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='还款计划表';
 
 -- ----------------------------
--- Table structure for c_supplement_info
+--  Table structure for `c_supplement_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_supplement_info`;
 CREATE TABLE `c_supplement_info` (
@@ -2041,10 +2041,10 @@ CREATE TABLE `c_supplement_info` (
   PRIMARY KEY (`id`),
   KEY `index_apply_id` (`apply_id`),
   KEY `index_user_id` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10048 DEFAULT CHARSET=utf8 COMMENT='补充材料表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='补充材料表';
 
 -- ----------------------------
--- Table structure for c_telecom_auth_info
+--  Table structure for `c_telecom_auth_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_telecom_auth_info`;
 CREATE TABLE `c_telecom_auth_info` (
@@ -2067,10 +2067,10 @@ CREATE TABLE `c_telecom_auth_info` (
   PRIMARY KEY (`id`),
   KEY `IND_APPLY_ID` (`apply_id`),
   KEY `IND_USER_ID` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COMMENT='客户运营商认证表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户运营商认证表';
 
 -- ----------------------------
--- Table structure for c_telecom_basic_info
+--  Table structure for `c_telecom_basic_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_telecom_basic_info`;
 CREATE TABLE `c_telecom_basic_info` (
@@ -2091,10 +2091,10 @@ CREATE TABLE `c_telecom_basic_info` (
   PRIMARY KEY (`id`),
   KEY `IND_APPLY_ID` (`apply_id`),
   KEY `IND_USER_ID` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10022 DEFAULT CHARSET=utf8 COMMENT='客户运营商信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户运营商信息表';
 
 -- ----------------------------
--- Table structure for c_telecom_call_contact_detail
+--  Table structure for `c_telecom_call_contact_detail`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_telecom_call_contact_detail`;
 CREATE TABLE `c_telecom_call_contact_detail` (
@@ -2149,10 +2149,10 @@ CREATE TABLE `c_telecom_call_contact_detail` (
   PRIMARY KEY (`id`),
   KEY `IND_APPLY_ID` (`apply_id`),
   KEY `IND_CUST_ID` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8836 DEFAULT CHARSET=utf8 COMMENT='运营商详细通话记录';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='运营商详细通话记录';
 
 -- ----------------------------
--- Table structure for c_telecom_call_risk_analysis
+--  Table structure for `c_telecom_call_risk_analysis`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_telecom_call_risk_analysis`;
 CREATE TABLE `c_telecom_call_risk_analysis` (
@@ -2179,10 +2179,10 @@ CREATE TABLE `c_telecom_call_risk_analysis` (
   PRIMARY KEY (`id`),
   KEY `IND_APPLY_ID` (`apply_id`),
   KEY `IND_CUST_ID` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10243 DEFAULT CHARSET=utf8 COMMENT='运营商风险分析表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='运营商风险分析表';
 
 -- ----------------------------
--- Table structure for c_telecom_friend_circle
+--  Table structure for `c_telecom_friend_circle`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_telecom_friend_circle`;
 CREATE TABLE `c_telecom_friend_circle` (
@@ -2208,10 +2208,10 @@ CREATE TABLE `c_telecom_friend_circle` (
   PRIMARY KEY (`id`),
   KEY `IND_APPLY_ID` (`apply_id`),
   KEY `IND_CUST_ID` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10139 DEFAULT CHARSET=utf8 COMMENT='运营商通讯录朋友圈top项';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='运营商通讯录朋友圈top项';
 
 -- ----------------------------
--- Table structure for c_telecom_roam_info
+--  Table structure for `c_telecom_roam_info`
 -- ----------------------------
 DROP TABLE IF EXISTS `c_telecom_roam_info`;
 CREATE TABLE `c_telecom_roam_info` (
@@ -2233,10 +2233,10 @@ CREATE TABLE `c_telecom_roam_info` (
   PRIMARY KEY (`id`),
   KEY `IND_APPLY_ID` (`apply_id`),
   KEY `IND_CUST_ID` (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10438 DEFAULT CHARSET=utf8 COMMENT='客户运营商漫游信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='客户运营商漫游信息表';
 
 -- ----------------------------
--- Table structure for dept
+--  Table structure for `dept`
 -- ----------------------------
 DROP TABLE IF EXISTS `dept`;
 CREATE TABLE `dept` (
@@ -2252,21 +2252,14 @@ CREATE TABLE `dept` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='部门表';
 
 -- ----------------------------
--- Records of dept
+--  Records of `dept`
 -- ----------------------------
 BEGIN;
-INSERT INTO `dept` VALUES (1, 1, 1, '[0],[1],', '山东省', '山东省', '', NULL);
-INSERT INTO `dept` VALUES (9, 1, 1, '[0],[1],[1],', '济南市', '济南市', '', NULL);
-INSERT INTO `dept` VALUES (10, 1, 9, '[0],[1],[1],[9],', '平阴县', '平阴县', '', NULL);
-INSERT INTO `dept` VALUES (11, 1, 10, '[0],[1],[1],[9],[10],', '锦水街道乡镇', '锦水街道乡镇', '', NULL);
-INSERT INTO `dept` VALUES (12, 1, 11, '[0],[1],[1],[9],[10],[11],', '前寨村委会', '前寨村委会', '', NULL);
-INSERT INTO `dept` VALUES (13, 2, 11, '[0],[1],[1],[9],[10],[11],', '山头村委会', '山头村委会', '', NULL);
-INSERT INTO `dept` VALUES (14, 3, 11, '[0],[1],[1],[9],[10],[11],', '凌庄村委会', '凌庄村委会', '', NULL);
-INSERT INTO `dept` VALUES (15, 4, 11, '[0],[1],[1],[9],[10],[11],', '西子顺村委会', '西子顺村委会', '', NULL);
+INSERT INTO `dept` VALUES ('1', '1', '1', '[0],[1],[1],', '山东省', '山东省', '111', null), ('9', '1', '1', '[0],[1],[1],', '济南市', '济南市', '', null), ('10', '1', '9', '[0],[1],[1],[9],', '平阴县', '平阴县', '', null), ('11', '1', '10', '[0],[1],[1],[9],[10],', '锦水街道乡镇', '锦水街道乡镇', '', null), ('12', '1', '11', '[0],[1],[1],[9],[10],[11],', '前寨村委会', '前寨村委会', '', null), ('13', '2', '11', '[0],[1],[1],[9],[10],[11],', '山头村委会', '山头村委会', '', null), ('14', '3', '11', '[0],[1],[1],[9],[10],[11],', '凌庄村委会', '凌庄村委会', '', null), ('15', '4', '11', '[0],[1],[1],[9],[10],[11],', '西子顺村委会', '西子顺村委会', '', null);
 COMMIT;
 
 -- ----------------------------
--- Table structure for dict
+--  Table structure for `dict`
 -- ----------------------------
 DROP TABLE IF EXISTS `dict`;
 CREATE TABLE `dict` (
@@ -2279,27 +2272,14 @@ CREATE TABLE `dict` (
 ) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COMMENT='字典表';
 
 -- ----------------------------
--- Records of dict
+--  Records of `dict`
 -- ----------------------------
 BEGIN;
-INSERT INTO `dict` VALUES (16, 0, 0, '状态', NULL);
-INSERT INTO `dict` VALUES (17, 1, 16, '启用', NULL);
-INSERT INTO `dict` VALUES (18, 2, 16, '禁用', NULL);
-INSERT INTO `dict` VALUES (29, 0, 0, '性别', NULL);
-INSERT INTO `dict` VALUES (30, 1, 29, '男', NULL);
-INSERT INTO `dict` VALUES (31, 2, 29, '女', NULL);
-INSERT INTO `dict` VALUES (35, 0, 0, '账号状态', NULL);
-INSERT INTO `dict` VALUES (36, 1, 35, '启用', NULL);
-INSERT INTO `dict` VALUES (37, 2, 35, '冻结', NULL);
-INSERT INTO `dict` VALUES (38, 3, 35, '已删除', NULL);
-INSERT INTO `dict` VALUES (39, 0, 0, '调用车300接口token', NULL);
-INSERT INTO `dict` VALUES (40, 300, 43, '5614a745174c4aa880ed42e907c5147c', NULL);
-INSERT INTO `dict` VALUES (41, 0, 0, '调用运营商认证接口token', NULL);
-INSERT INTO `dict` VALUES (42, 100, 47, '8c341f8c37b680dc356a0b936f33b9d7', NULL);
+INSERT INTO `dict` VALUES ('16', '0', '0', '状态', null), ('17', '1', '16', '启用', null), ('18', '2', '16', '禁用', null), ('29', '0', '0', '性别', null), ('30', '1', '29', '男', null), ('31', '2', '29', '女', null), ('35', '0', '0', '账号状态', null), ('36', '1', '35', '启用', null), ('37', '2', '35', '冻结', null), ('38', '3', '35', '已删除', null), ('39', '0', '0', '调用车300接口token', null), ('40', '300', '43', '5614a745174c4aa880ed42e907c5147c', null), ('41', '0', '0', '调用运营商认证接口token', null), ('42', '100', '47', '8c341f8c37b680dc356a0b936f33b9d7', null);
 COMMIT;
 
 -- ----------------------------
--- Table structure for login_log
+--  Table structure for `login_log`
 -- ----------------------------
 DROP TABLE IF EXISTS `login_log`;
 CREATE TABLE `login_log` (
@@ -2311,83 +2291,17 @@ CREATE TABLE `login_log` (
   `message` text COMMENT '具体消息',
   `ip` varchar(255) DEFAULT NULL COMMENT '登录ip',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12890 DEFAULT CHARSET=utf8 COMMENT='登录记录';
+) ENGINE=InnoDB AUTO_INCREMENT=12953 DEFAULT CHARSET=utf8 COMMENT='登录记录';
 
 -- ----------------------------
--- Records of login_log
+--  Records of `login_log`
 -- ----------------------------
 BEGIN;
-INSERT INTO `login_log` VALUES (12823, '登录日志', 58, '2018-09-29 21:25:03', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12824, '登录日志', 1, '2018-10-03 20:57:13', '成功', NULL, '192.168.1.3');
-INSERT INTO `login_log` VALUES (12825, '退出日志', 58, '2018-10-06 11:58:26', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12826, '登录日志', 1, '2018-10-06 11:58:32', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12827, '退出日志', 1, '2018-10-06 12:35:53', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12828, '登录日志', 1, '2018-10-06 12:35:55', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12829, '退出日志', 1, '2018-10-06 12:40:53', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12830, '登录日志', 1, '2018-10-06 12:40:54', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12831, '退出日志', 1, '2018-10-06 13:38:50', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12832, '登录日志', 1, '2018-10-06 13:48:12', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12833, '登录日志', 1, '2018-10-06 13:49:19', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12834, '退出日志', 1, '2018-10-06 13:49:32', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12835, '登录日志', 1, '2018-10-06 13:49:42', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12836, '登录日志', 1, '2018-10-06 13:50:08', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12837, '登录日志', 1, '2018-10-06 13:51:18', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12838, '退出日志', 1, '2018-10-06 14:00:48', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12839, '登录日志', 1, '2018-10-06 14:02:10', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12840, '退出日志', 1, '2018-10-06 22:12:05', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12841, '登录日志', 1, '2018-10-06 22:12:16', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12842, '退出日志', 1, '2018-10-06 22:12:32', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12843, '登录日志', 1, '2018-10-06 22:12:38', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12844, '退出日志', 1, '2018-10-07 20:41:48', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12845, '登录日志', 1, '2018-10-07 20:41:52', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12846, '登录日志', 1, '2018-10-09 15:18:18', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12847, '退出日志', 1, '2018-10-11 09:10:35', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12848, '登录日志', 1, '2018-10-11 09:10:43', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12849, '退出日志', 1, '2018-10-11 09:49:17', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12850, '登录日志', 1, '2018-10-11 09:49:25', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12851, '退出日志', 1, '2018-10-11 10:25:50', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12852, '登录日志', 1, '2018-10-11 10:25:58', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12853, '退出日志', 1, '2018-10-11 10:31:03', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12854, '登录日志', 1, '2018-10-11 10:31:10', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12855, '退出日志', 1, '2018-10-11 10:44:11', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12856, '登录日志', 1, '2018-10-11 10:44:19', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12857, '退出日志', 1, '2018-10-11 10:51:14', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12858, '登录日志', 1, '2018-10-11 10:51:21', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12859, '退出日志', 1, '2018-10-11 10:57:39', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12860, '登录日志', 1, '2018-10-11 10:57:45', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12861, '退出日志', 1, '2018-10-11 11:07:32', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12862, '登录日志', 1, '2018-10-11 11:07:39', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12863, '退出日志', 1, '2018-10-11 14:27:48', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12864, '登录日志', 1, '2018-10-11 14:27:56', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12865, '退出日志', 1, '2018-10-11 14:29:48', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12866, '登录日志', 1, '2018-10-11 14:29:56', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12867, '退出日志', 1, '2018-10-11 14:54:10', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12868, '登录日志', 1, '2018-10-11 14:54:19', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12869, '退出日志', 1, '2018-10-11 15:47:18', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12870, '登录日志', 1, '2018-10-11 15:47:26', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12871, '登录日志', 1, '2018-10-11 17:27:14', '成功', NULL, '172.16.0.90');
-INSERT INTO `login_log` VALUES (12872, '退出日志', 1, '2018-10-11 19:45:07', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12873, '登录日志', 1, '2018-10-11 19:45:13', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12874, '退出日志', 1, '2018-10-11 20:23:13', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12875, '登录日志', 1, '2018-10-11 20:23:21', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12876, '退出日志', 1, '2018-10-12 09:56:28', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12877, '登录日志', 1, '2018-10-12 09:56:36', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12878, '退出日志', 1, '2018-10-12 11:21:34', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12879, '登录日志', 1, '2018-10-12 11:21:42', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12880, '退出日志', 1, '2018-10-12 13:48:14', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12881, '登录日志', 1, '2018-10-12 13:48:25', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12882, '退出日志', 1, '2018-10-12 15:55:36', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12883, '登录日志', 1, '2018-10-12 15:55:43', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12884, '退出日志', 1, '2018-10-12 16:49:05', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12885, '登录日志', 1, '2018-10-12 16:49:14', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12886, '退出日志', 1, '2018-10-12 17:07:35', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12887, '登录日志', 1, '2018-10-12 17:07:42', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12888, '退出日志', 1, '2018-10-12 17:17:05', '成功', NULL, '0:0:0:0:0:0:0:1');
-INSERT INTO `login_log` VALUES (12889, '登录日志', 1, '2018-10-12 17:17:11', '成功', NULL, '0:0:0:0:0:0:0:1');
+INSERT INTO `login_log` VALUES ('12823', '登录日志', '58', '2018-09-29 21:25:03', '成功', null, '0:0:0:0:0:0:0:1'), ('12824', '登录日志', '1', '2018-10-03 20:57:13', '成功', null, '192.168.1.3'), ('12825', '退出日志', '58', '2018-10-06 11:58:26', '成功', null, '0:0:0:0:0:0:0:1'), ('12826', '登录日志', '1', '2018-10-06 11:58:32', '成功', null, '0:0:0:0:0:0:0:1'), ('12827', '退出日志', '1', '2018-10-06 12:35:53', '成功', null, '0:0:0:0:0:0:0:1'), ('12828', '登录日志', '1', '2018-10-06 12:35:55', '成功', null, '0:0:0:0:0:0:0:1'), ('12829', '退出日志', '1', '2018-10-06 12:40:53', '成功', null, '0:0:0:0:0:0:0:1'), ('12830', '登录日志', '1', '2018-10-06 12:40:54', '成功', null, '0:0:0:0:0:0:0:1'), ('12831', '退出日志', '1', '2018-10-06 13:38:50', '成功', null, '0:0:0:0:0:0:0:1'), ('12832', '登录日志', '1', '2018-10-06 13:48:12', '成功', null, '0:0:0:0:0:0:0:1'), ('12833', '登录日志', '1', '2018-10-06 13:49:19', '成功', null, '0:0:0:0:0:0:0:1'), ('12834', '退出日志', '1', '2018-10-06 13:49:32', '成功', null, '0:0:0:0:0:0:0:1'), ('12835', '登录日志', '1', '2018-10-06 13:49:42', '成功', null, '0:0:0:0:0:0:0:1'), ('12836', '登录日志', '1', '2018-10-06 13:50:08', '成功', null, '0:0:0:0:0:0:0:1'), ('12837', '登录日志', '1', '2018-10-06 13:51:18', '成功', null, '0:0:0:0:0:0:0:1'), ('12838', '退出日志', '1', '2018-10-06 14:00:48', '成功', null, '0:0:0:0:0:0:0:1'), ('12839', '登录日志', '1', '2018-10-06 14:02:10', '成功', null, '0:0:0:0:0:0:0:1'), ('12840', '退出日志', '1', '2018-10-06 22:12:05', '成功', null, '0:0:0:0:0:0:0:1'), ('12841', '登录日志', '1', '2018-10-06 22:12:16', '成功', null, '0:0:0:0:0:0:0:1'), ('12842', '退出日志', '1', '2018-10-06 22:12:32', '成功', null, '0:0:0:0:0:0:0:1'), ('12843', '登录日志', '1', '2018-10-06 22:12:38', '成功', null, '0:0:0:0:0:0:0:1'), ('12844', '退出日志', '1', '2018-10-07 20:41:48', '成功', null, '0:0:0:0:0:0:0:1'), ('12845', '登录日志', '1', '2018-10-07 20:41:52', '成功', null, '0:0:0:0:0:0:0:1'), ('12846', '登录日志', '1', '2018-10-09 15:18:18', '成功', null, '0:0:0:0:0:0:0:1'), ('12847', '退出日志', '1', '2018-10-11 09:10:35', '成功', null, '0:0:0:0:0:0:0:1'), ('12848', '登录日志', '1', '2018-10-11 09:10:43', '成功', null, '0:0:0:0:0:0:0:1'), ('12849', '退出日志', '1', '2018-10-11 09:49:17', '成功', null, '0:0:0:0:0:0:0:1'), ('12850', '登录日志', '1', '2018-10-11 09:49:25', '成功', null, '0:0:0:0:0:0:0:1'), ('12851', '退出日志', '1', '2018-10-11 10:25:50', '成功', null, '0:0:0:0:0:0:0:1'), ('12852', '登录日志', '1', '2018-10-11 10:25:58', '成功', null, '0:0:0:0:0:0:0:1'), ('12853', '退出日志', '1', '2018-10-11 10:31:03', '成功', null, '0:0:0:0:0:0:0:1'), ('12854', '登录日志', '1', '2018-10-11 10:31:10', '成功', null, '0:0:0:0:0:0:0:1'), ('12855', '退出日志', '1', '2018-10-11 10:44:11', '成功', null, '0:0:0:0:0:0:0:1'), ('12856', '登录日志', '1', '2018-10-11 10:44:19', '成功', null, '0:0:0:0:0:0:0:1'), ('12857', '退出日志', '1', '2018-10-11 10:51:14', '成功', null, '0:0:0:0:0:0:0:1'), ('12858', '登录日志', '1', '2018-10-11 10:51:21', '成功', null, '0:0:0:0:0:0:0:1'), ('12859', '退出日志', '1', '2018-10-11 10:57:39', '成功', null, '0:0:0:0:0:0:0:1'), ('12860', '登录日志', '1', '2018-10-11 10:57:45', '成功', null, '0:0:0:0:0:0:0:1'), ('12861', '退出日志', '1', '2018-10-11 11:07:32', '成功', null, '0:0:0:0:0:0:0:1'), ('12862', '登录日志', '1', '2018-10-11 11:07:39', '成功', null, '0:0:0:0:0:0:0:1'), ('12863', '退出日志', '1', '2018-10-11 14:27:48', '成功', null, '0:0:0:0:0:0:0:1'), ('12864', '登录日志', '1', '2018-10-11 14:27:56', '成功', null, '0:0:0:0:0:0:0:1'), ('12865', '退出日志', '1', '2018-10-11 14:29:48', '成功', null, '0:0:0:0:0:0:0:1'), ('12866', '登录日志', '1', '2018-10-11 14:29:56', '成功', null, '0:0:0:0:0:0:0:1'), ('12867', '退出日志', '1', '2018-10-11 14:54:10', '成功', null, '0:0:0:0:0:0:0:1'), ('12868', '登录日志', '1', '2018-10-11 14:54:19', '成功', null, '0:0:0:0:0:0:0:1'), ('12869', '退出日志', '1', '2018-10-11 15:47:18', '成功', null, '0:0:0:0:0:0:0:1'), ('12870', '登录日志', '1', '2018-10-11 15:47:26', '成功', null, '0:0:0:0:0:0:0:1'), ('12871', '登录日志', '1', '2018-10-11 17:27:14', '成功', null, '172.16.0.90'), ('12872', '退出日志', '1', '2018-10-11 19:45:07', '成功', null, '0:0:0:0:0:0:0:1'), ('12873', '登录日志', '1', '2018-10-11 19:45:13', '成功', null, '0:0:0:0:0:0:0:1'), ('12874', '退出日志', '1', '2018-10-11 20:23:13', '成功', null, '0:0:0:0:0:0:0:1'), ('12875', '登录日志', '1', '2018-10-11 20:23:21', '成功', null, '0:0:0:0:0:0:0:1'), ('12876', '退出日志', '1', '2018-10-12 09:56:28', '成功', null, '0:0:0:0:0:0:0:1'), ('12877', '登录日志', '1', '2018-10-12 09:56:36', '成功', null, '0:0:0:0:0:0:0:1'), ('12878', '退出日志', '1', '2018-10-12 11:21:34', '成功', null, '0:0:0:0:0:0:0:1'), ('12879', '登录日志', '1', '2018-10-12 11:21:42', '成功', null, '0:0:0:0:0:0:0:1'), ('12880', '退出日志', '1', '2018-10-12 13:48:14', '成功', null, '0:0:0:0:0:0:0:1'), ('12881', '登录日志', '1', '2018-10-12 13:48:25', '成功', null, '0:0:0:0:0:0:0:1'), ('12882', '退出日志', '1', '2018-10-12 15:55:36', '成功', null, '0:0:0:0:0:0:0:1'), ('12883', '登录日志', '1', '2018-10-12 15:55:43', '成功', null, '0:0:0:0:0:0:0:1'), ('12884', '退出日志', '1', '2018-10-12 16:49:05', '成功', null, '0:0:0:0:0:0:0:1'), ('12885', '登录日志', '1', '2018-10-12 16:49:14', '成功', null, '0:0:0:0:0:0:0:1'), ('12886', '退出日志', '1', '2018-10-12 17:07:35', '成功', null, '0:0:0:0:0:0:0:1'), ('12887', '登录日志', '1', '2018-10-12 17:07:42', '成功', null, '0:0:0:0:0:0:0:1'), ('12888', '退出日志', '1', '2018-10-12 17:17:05', '成功', null, '0:0:0:0:0:0:0:1'), ('12889', '登录日志', '1', '2018-10-12 17:17:11', '成功', null, '0:0:0:0:0:0:0:1'), ('12890', '退出日志', '1', '2018-10-12 20:41:43', '成功', null, '0:0:0:0:0:0:0:1'), ('12891', '登录日志', '1', '2018-10-12 20:41:46', '成功', null, '0:0:0:0:0:0:0:1'), ('12892', '退出日志', '1', '2018-10-12 21:47:36', '成功', null, '0:0:0:0:0:0:0:1'), ('12893', '登录日志', '1', '2018-10-12 21:47:39', '成功', null, '0:0:0:0:0:0:0:1'), ('12894', '退出日志', '1', '2018-10-12 21:56:09', '成功', null, '0:0:0:0:0:0:0:1'), ('12895', '登录日志', '1', '2018-10-12 21:56:13', '成功', null, '0:0:0:0:0:0:0:1'), ('12896', '退出日志', '1', '2018-10-12 21:59:07', '成功', null, '0:0:0:0:0:0:0:1'), ('12897', '登录日志', '1', '2018-10-12 21:59:10', '成功', null, '0:0:0:0:0:0:0:1'), ('12898', '退出日志', '1', '2018-10-12 22:10:59', '成功', null, '0:0:0:0:0:0:0:1'), ('12899', '登录日志', '1', '2018-10-12 22:11:22', '成功', null, '0:0:0:0:0:0:0:1'), ('12900', '退出日志', '1', '2018-10-12 22:24:16', '成功', null, '0:0:0:0:0:0:0:1'), ('12901', '登录日志', '1', '2018-10-12 22:24:19', '成功', null, '0:0:0:0:0:0:0:1'), ('12902', '退出日志', '1', '2018-10-12 22:50:54', '成功', null, '0:0:0:0:0:0:0:1'), ('12903', '登录日志', '1', '2018-10-12 22:50:57', '成功', null, '0:0:0:0:0:0:0:1'), ('12904', '退出日志', '1', '2018-10-12 22:54:53', '成功', null, '0:0:0:0:0:0:0:1'), ('12905', '登录日志', '1', '2018-10-12 22:54:56', '成功', null, '0:0:0:0:0:0:0:1'), ('12906', '退出日志', '1', '2018-10-13 10:18:10', '成功', null, '0:0:0:0:0:0:0:1'), ('12907', '登录日志', '1', '2018-10-13 10:18:13', '成功', null, '0:0:0:0:0:0:0:1'), ('12908', '退出日志', '1', '2018-10-13 10:31:30', '成功', null, '0:0:0:0:0:0:0:1'), ('12909', '登录日志', '1', '2018-10-13 10:31:33', '成功', null, '0:0:0:0:0:0:0:1'), ('12910', '退出日志', '1', '2018-10-13 10:48:31', '成功', null, '0:0:0:0:0:0:0:1'), ('12911', '登录日志', '1', '2018-10-13 10:48:41', '成功', null, '0:0:0:0:0:0:0:1'), ('12912', '退出日志', '1', '2018-10-13 11:01:10', '成功', null, '0:0:0:0:0:0:0:1'), ('12913', '登录日志', '1', '2018-10-13 11:01:14', '成功', null, '0:0:0:0:0:0:0:1'), ('12914', '退出日志', '1', '2018-10-13 14:37:45', '成功', null, '0:0:0:0:0:0:0:1'), ('12915', '登录日志', '1', '2018-10-13 14:37:48', '成功', null, '0:0:0:0:0:0:0:1'), ('12916', '退出日志', '1', '2018-10-13 22:38:00', '成功', null, '0:0:0:0:0:0:0:1'), ('12917', '登录日志', '1', '2018-10-13 22:38:17', '成功', null, '0:0:0:0:0:0:0:1'), ('12918', '登录日志', '1', '2018-10-13 22:47:28', '成功', null, '192.168.1.101'), ('12919', '退出日志', '1', '2018-10-14 09:00:18', '成功', null, '0:0:0:0:0:0:0:1'), ('12920', '登录日志', '1', '2018-10-14 09:00:22', '成功', null, '0:0:0:0:0:0:0:1'), ('12921', '退出日志', '1', '2018-10-14 09:21:52', '成功', null, '0:0:0:0:0:0:0:1'), ('12922', '登录日志', '1', '2018-10-14 09:21:55', '成功', null, '0:0:0:0:0:0:0:1'), ('12923', '退出日志', '1', '2018-10-14 10:05:56', '成功', null, '0:0:0:0:0:0:0:1'), ('12924', '登录日志', '1', '2018-10-14 10:05:59', '成功', null, '0:0:0:0:0:0:0:1'), ('12925', '退出日志', '1', '2018-10-14 14:12:23', '成功', null, '0:0:0:0:0:0:0:1'), ('12926', '登录日志', '1', '2018-10-14 14:12:27', '成功', null, '0:0:0:0:0:0:0:1'), ('12927', '退出日志', '1', '2018-10-14 14:19:39', '成功', null, '0:0:0:0:0:0:0:1'), ('12928', '登录日志', '1', '2018-10-14 14:19:43', '成功', null, '0:0:0:0:0:0:0:1'), ('12929', '退出日志', '1', '2018-10-14 14:33:24', '成功', null, '0:0:0:0:0:0:0:1'), ('12930', '登录日志', '1', '2018-10-14 14:33:27', '成功', null, '0:0:0:0:0:0:0:1'), ('12931', '退出日志', '1', '2018-10-14 20:33:16', '成功', null, '0:0:0:0:0:0:0:1'), ('12932', '登录日志', '1', '2018-10-14 20:33:22', '成功', null, '0:0:0:0:0:0:0:1'), ('12933', '退出日志', '1', '2018-10-18 20:33:13', '成功', null, '0:0:0:0:0:0:0:1'), ('12934', '登录日志', '1', '2018-10-18 20:33:16', '成功', null, '0:0:0:0:0:0:0:1'), ('12935', '登录日志', '1', '2018-10-18 21:04:37', '成功', null, '192.168.1.101'), ('12936', '登录日志', '1', '2018-10-18 21:07:20', '成功', null, '192.168.1.100'), ('12937', '登录日志', '1', '2018-10-20 07:59:01', '成功', null, '192.168.1.102'), ('12938', '退出日志', '1', '2018-10-20 08:57:30', '成功', null, '192.168.1.102'), ('12939', '登录日志', '1', '2018-10-20 10:45:07', '成功', null, '192.168.1.102'), ('12940', '退出日志', '1', '2018-10-20 10:56:36', '成功', null, '192.168.1.102'), ('12941', '登录失败日志', null, '2018-10-20 11:08:02', '成功', '账号:admin,账号密码错误', '192.168.1.102'), ('12942', '登录日志', '1', '2018-10-20 11:08:14', '成功', null, '192.168.1.102'), ('12943', '退出日志', '1', '2018-10-20 11:13:56', '成功', null, '192.168.1.102'), ('12944', '登录日志', '1', '2018-10-20 11:14:25', '成功', null, '192.168.1.102'), ('12945', '退出日志', '1', '2018-10-21 21:12:05', '成功', null, '0:0:0:0:0:0:0:1'), ('12946', '登录日志', '1', '2018-10-21 21:12:07', '成功', null, '0:0:0:0:0:0:0:1'), ('12947', '退出日志', '1', '2018-10-21 21:50:53', '成功', null, '0:0:0:0:0:0:0:1'), ('12948', '登录日志', '1', '2018-10-21 21:50:55', '成功', null, '0:0:0:0:0:0:0:1'), ('12949', '登录日志', '1', '2018-10-21 21:51:15', '成功', null, '0:0:0:0:0:0:0:1'), ('12950', '退出日志', '1', '2018-10-21 21:51:43', '成功', null, '0:0:0:0:0:0:0:1'), ('12951', '登录日志', '1', '2018-10-21 21:51:53', '成功', null, '0:0:0:0:0:0:0:1'), ('12952', '登录日志', '1', '2018-10-21 21:53:44', '成功', null, '0:0:0:0:0:0:0:1');
 COMMIT;
 
 -- ----------------------------
--- Table structure for menu
+--  Table structure for `menu`
 -- ----------------------------
 DROP TABLE IF EXISTS `menu`;
 CREATE TABLE `menu` (
@@ -2405,68 +2319,17 @@ CREATE TABLE `menu` (
   `status` int(65) DEFAULT NULL COMMENT '菜单状态 :  1:启用   0:不启用',
   `isopen` int(11) DEFAULT NULL COMMENT '是否打开:    1:打开   0:不打开',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=231 DEFAULT CHARSET=utf8 COMMENT='菜单表';
+) ENGINE=InnoDB AUTO_INCREMENT=229 DEFAULT CHARSET=utf8 COMMENT='菜单表';
 
 -- ----------------------------
--- Records of menu
+--  Records of `menu`
 -- ----------------------------
 BEGIN;
-INSERT INTO `menu` VALUES (1, 'system', '0', '[0],', '系统管理', 'fa-user', '', 3, 1, 1, NULL, 1, 1);
-INSERT INTO `menu` VALUES (2, 'mgr', 'system', '[0],[system],', '用户管理', '', '/mgr', 1, 2, 1, NULL, 1, 0);
-INSERT INTO `menu` VALUES (3, 'mgr_add', 'mgr', '[0],[system],[mgr],', '添加用户', NULL, '/mgr/add', 1, 3, 0, NULL, 1, 0);
-INSERT INTO `menu` VALUES (4, 'mgr_edit', 'mgr', '[0],[system],[mgr],', '修改用户', NULL, '/mgr/edit', 2, 3, 0, NULL, 1, 0);
-INSERT INTO `menu` VALUES (5, 'mgr_delete', 'mgr', '[0],[system],[mgr],', '删除用户', NULL, '/mgr/delete', 3, 3, 0, NULL, 1, 0);
-INSERT INTO `menu` VALUES (6, 'mgr_reset', 'mgr', '[0],[system],[mgr],', '重置密码', NULL, '/mgr/reset', 4, 3, 0, NULL, 1, 0);
-INSERT INTO `menu` VALUES (7, 'mgr_freeze', 'mgr', '[0],[system],[mgr],', '冻结用户', NULL, '/mgr/freeze', 5, 3, 0, NULL, 1, 0);
-INSERT INTO `menu` VALUES (8, 'mgr_unfreeze', 'mgr', '[0],[system],[mgr],', '解除冻结用户', NULL, '/mgr/unfreeze', 6, 3, 0, NULL, 1, 0);
-INSERT INTO `menu` VALUES (9, 'mgr_setRole', 'mgr', '[0],[system],[mgr],', '分配角色', NULL, '/mgr/setRole', 7, 3, 0, NULL, 1, 0);
-INSERT INTO `menu` VALUES (10, 'role', 'system', '[0],[system],', '角色管理', NULL, '/role', 2, 2, 1, NULL, 1, 0);
-INSERT INTO `menu` VALUES (11, 'role_add', 'role', '[0],[system],[role],', '添加角色', NULL, '/role/add', 1, 3, 0, NULL, 1, 0);
-INSERT INTO `menu` VALUES (12, 'role_edit', 'role', '[0],[system],[role],', '修改角色', NULL, '/role/edit', 2, 3, 0, NULL, 1, 0);
-INSERT INTO `menu` VALUES (13, 'role_remove', 'role', '[0],[system],[role],', '删除角色', NULL, '/role/remove', 3, 3, 0, NULL, 1, 0);
-INSERT INTO `menu` VALUES (14, 'role_setAuthority', 'role', '[0],[system],[role],', '配置权限', NULL, '/role/setAuthority', 4, 3, 0, NULL, 1, 0);
-INSERT INTO `menu` VALUES (15, 'menu', 'system', '[0],[system],', '菜单管理', NULL, '/menu', 4, 2, 1, NULL, 1, 0);
-INSERT INTO `menu` VALUES (16, 'menu_add', 'menu', '[0],[system],[menu],', '添加菜单', NULL, '/menu/add', 1, 3, 0, NULL, 1, 0);
-INSERT INTO `menu` VALUES (17, 'menu_edit', 'menu', '[0],[system],[menu],', '修改菜单', NULL, '/menu/edit', 2, 3, 0, NULL, 1, 0);
-INSERT INTO `menu` VALUES (18, 'menu_remove', 'menu', '[0],[system],[menu],', '删除菜单', NULL, '/menu/remove', 3, 3, 0, NULL, 1, 0);
-INSERT INTO `menu` VALUES (19, 'log', 'system', '[0],[system],', '业务日志', NULL, '/log', 6, 2, 1, NULL, 1, 0);
-INSERT INTO `menu` VALUES (20, 'druid', 'system', '[0],[system],', '监控管理', NULL, '/druid', 7, 2, 1, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (21, 'dept', 'system', '[0],[system],', '部门管理', NULL, '/dept', 3, 2, 1, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (22, 'dict', 'system', '[0],[system],', '字典管理', NULL, '/dict', 4, 2, 1, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (23, 'loginLog', 'system', '[0],[system],', '登录日志', NULL, '/loginLog', 6, 2, 1, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (24, 'log_clean', 'log', '[0],[system],[log],', '清空日志', NULL, '/log/delLog', 3, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (25, 'dept_add', 'dept', '[0],[system],[dept],', '添加部门', NULL, '/dept/add', 1, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (26, 'dept_update', 'dept', '[0],[system],[dept],', '修改部门', NULL, '/dept/update', 1, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (27, 'dept_delete', 'dept', '[0],[system],[dept],', '删除部门', NULL, '/dept/delete', 1, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (28, 'dict_add', 'dict', '[0],[system],[dict],', '添加字典', NULL, '/dict/add', 1, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (29, 'dict_update', 'dict', '[0],[system],[dict],', '修改字典', NULL, '/dict/update', 1, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (30, 'dict_delete', 'dict', '[0],[system],[dict],', '删除字典', NULL, '/dict/delete', 1, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (36, 'code', 'system', '[0],[system],', '代码生成', 'fa-user', '/code', 10, 2, 1, NULL, 0, NULL);
-INSERT INTO `menu` VALUES (37, 'api_mgr', '0', '[0],', '接口文档', 'fa-leaf', '/swagger-ui.html', 2, 1, 1, NULL, 0, NULL);
-INSERT INTO `menu` VALUES (38, 'to_menu_edit', 'menu', '[0],[system],[menu],', '菜单编辑跳转', '', '/menu/menu_edit', 4, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (39, 'menu_list', 'menu', '[0],[system],[menu],', '菜单列表', '', '/menu/list', 5, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (40, 'to_dept_update', 'dept', '[0],[system],[dept],', '修改部门跳转', '', '/dept/dept_update', 4, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (41, 'dept_list', 'dept', '[0],[system],[dept],', '部门列表', '', '/dept/list', 5, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (42, 'dept_detail', 'dept', '[0],[system],[dept],', '部门详情', '', '/dept/detail', 6, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (43, 'to_dict_edit', 'dict', '[0],[system],[dict],', '修改菜单跳转', '', '/dict/dict_edit', 4, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (44, 'dict_list', 'dict', '[0],[system],[dict],', '字典列表', '', '/dict/list', 5, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (45, 'dict_detail', 'dict', '[0],[system],[dict],', '字典详情', '', '/dict/detail', 6, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (46, 'log_list', 'log', '[0],[system],[log],', '日志列表', '', '/log/list', 2, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (47, 'log_detail', 'log', '[0],[system],[log],', '日志详情', '', '/log/detail', 3, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (48, 'del_login_log', 'loginLog', '[0],[system],[loginLog],', '清空登录日志', '', '/loginLog/delLoginLog', 1, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (49, 'login_log_list', 'loginLog', '[0],[system],[loginLog],', '登录日志列表', '', '/loginLog/list', 2, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (50, 'to_role_edit', 'role', '[0],[system],[role],', '修改角色跳转', '', '/role/role_edit', 5, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (51, 'to_role_assign', 'role', '[0],[system],[role],', '角色分配跳转', '', '/role/role_assign', 6, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (52, 'role_list', 'role', '[0],[system],[role],', '角色列表', '', '/role/list', 7, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (53, 'to_assign_role', 'mgr', '[0],[system],[mgr],', '分配角色跳转', '', '/mgr/role_assign', 8, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (54, 'to_user_edit', 'mgr', '[0],[system],[mgr],', '编辑用户跳转', '', '/mgr/user_edit', 9, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (55, 'mgr_list', 'mgr', '[0],[system],[mgr],', '用户列表', '', '/mgr/list', 10, 3, 0, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (227, 'tjManager', '0', '[0],', '数据统计', 'fa-user', '/', 1, 1, 1, NULL, 1, NULL);
-INSERT INTO `menu` VALUES (228, 'payStatisInfo', 'tjManager', '[0],[tjManager]', '日报表统计', NULL, '/payStatisInfo/index', 1, 2, 1, NULL, 1, NULL);
+INSERT INTO `menu` VALUES ('1', 'system', '0', '[0],', '系统管理', 'fa-user', '', '3', '1', '1', null, '1', '1'), ('2', 'mgr', 'system', '[0],[system],', '用户管理', '', '/mgr', '1', '2', '1', null, '1', '0'), ('3', 'mgr_add', 'mgr', '[0],[system],[mgr],', '添加用户', null, '/mgr/add', '1', '3', '0', null, '1', '0'), ('4', 'mgr_edit', 'mgr', '[0],[system],[mgr],', '修改用户', null, '/mgr/edit', '2', '3', '0', null, '1', '0'), ('5', 'mgr_delete', 'mgr', '[0],[system],[mgr],', '删除用户', null, '/mgr/delete', '3', '3', '0', null, '1', '0'), ('6', 'mgr_reset', 'mgr', '[0],[system],[mgr],', '重置密码', null, '/mgr/reset', '4', '3', '0', null, '1', '0'), ('7', 'mgr_freeze', 'mgr', '[0],[system],[mgr],', '冻结用户', null, '/mgr/freeze', '5', '3', '0', null, '1', '0'), ('8', 'mgr_unfreeze', 'mgr', '[0],[system],[mgr],', '解除冻结用户', null, '/mgr/unfreeze', '6', '3', '0', null, '1', '0'), ('9', 'mgr_setRole', 'mgr', '[0],[system],[mgr],', '分配角色', null, '/mgr/setRole', '7', '3', '0', null, '1', '0'), ('10', 'role', 'system', '[0],[system],', '角色管理', null, '/role', '2', '2', '1', null, '1', '0'), ('11', 'role_add', 'role', '[0],[system],[role],', '添加角色', null, '/role/add', '1', '3', '0', null, '1', '0'), ('12', 'role_edit', 'role', '[0],[system],[role],', '修改角色', null, '/role/edit', '2', '3', '0', null, '1', '0'), ('13', 'role_remove', 'role', '[0],[system],[role],', '删除角色', null, '/role/remove', '3', '3', '0', null, '1', '0'), ('14', 'role_setAuthority', 'role', '[0],[system],[role],', '配置权限', null, '/role/setAuthority', '4', '3', '0', null, '1', '0'), ('15', 'menu', 'system', '[0],[system],', '菜单管理', null, '/menu', '4', '2', '1', null, '1', '0'), ('16', 'menu_add', 'menu', '[0],[system],[menu],', '添加菜单', null, '/menu/add', '1', '3', '0', null, '1', '0'), ('17', 'menu_edit', 'menu', '[0],[system],[menu],', '修改菜单', null, '/menu/edit', '2', '3', '0', null, '1', '0'), ('18', 'menu_remove', 'menu', '[0],[system],[menu],', '删除菜单', null, '/menu/remove', '3', '3', '0', null, '1', '0'), ('19', 'log', 'system', '[0],[system],', '业务日志', null, '/log', '6', '2', '1', null, '1', '0'), ('20', 'druid', 'system', '[0],[system],', '监控管理', null, '/druid', '7', '2', '1', null, '1', null), ('21', 'dept', 'system', '[0],[system],', '部门管理', null, '/dept', '3', '2', '1', null, '1', null), ('22', 'dict', 'system', '[0],[system],', '字典管理', null, '/dict', '4', '2', '1', null, '1', null), ('23', 'loginLog', 'system', '[0],[system],', '登录日志', null, '/loginLog', '6', '2', '1', null, '1', null), ('24', 'log_clean', 'log', '[0],[system],[log],', '清空日志', null, '/log/delLog', '3', '3', '0', null, '1', null), ('25', 'dept_add', 'dept', '[0],[system],[dept],', '添加部门', null, '/dept/add', '1', '3', '0', null, '1', null), ('26', 'dept_update', 'dept', '[0],[system],[dept],', '修改部门', null, '/dept/update', '1', '3', '0', null, '1', null), ('27', 'dept_delete', 'dept', '[0],[system],[dept],', '删除部门', null, '/dept/delete', '1', '3', '0', null, '1', null), ('28', 'dict_add', 'dict', '[0],[system],[dict],', '添加字典', null, '/dict/add', '1', '3', '0', null, '1', null), ('29', 'dict_update', 'dict', '[0],[system],[dict],', '修改字典', null, '/dict/update', '1', '3', '0', null, '1', null), ('30', 'dict_delete', 'dict', '[0],[system],[dict],', '删除字典', null, '/dict/delete', '1', '3', '0', null, '1', null), ('36', 'code', 'system', '[0],[system],', '代码生成', 'fa-user', '/code', '10', '2', '1', null, '0', null), ('37', 'api_mgr', '0', '[0],', '接口文档', 'fa-leaf', '/swagger-ui.html', '2', '1', '1', null, '0', null), ('38', 'to_menu_edit', 'menu', '[0],[system],[menu],', '菜单编辑跳转', '', '/menu/menu_edit', '4', '3', '0', null, '1', null), ('39', 'menu_list', 'menu', '[0],[system],[menu],', '菜单列表', '', '/menu/list', '5', '3', '0', null, '1', null), ('40', 'to_dept_update', 'dept', '[0],[system],[dept],', '修改部门跳转', '', '/dept/dept_update', '4', '3', '0', null, '1', null), ('41', 'dept_list', 'dept', '[0],[system],[dept],', '部门列表', '', '/dept/list', '5', '3', '0', null, '1', null), ('42', 'dept_detail', 'dept', '[0],[system],[dept],', '部门详情', '', '/dept/detail', '6', '3', '0', null, '1', null), ('43', 'to_dict_edit', 'dict', '[0],[system],[dict],', '修改菜单跳转', '', '/dict/dict_edit', '4', '3', '0', null, '1', null), ('44', 'dict_list', 'dict', '[0],[system],[dict],', '字典列表', '', '/dict/list', '5', '3', '0', null, '1', null), ('45', 'dict_detail', 'dict', '[0],[system],[dict],', '字典详情', '', '/dict/detail', '6', '3', '0', null, '1', null), ('46', 'log_list', 'log', '[0],[system],[log],', '日志列表', '', '/log/list', '2', '3', '0', null, '1', null), ('47', 'log_detail', 'log', '[0],[system],[log],', '日志详情', '', '/log/detail', '3', '3', '0', null, '1', null), ('48', 'del_login_log', 'loginLog', '[0],[system],[loginLog],', '清空登录日志', '', '/loginLog/delLoginLog', '1', '3', '0', null, '1', null), ('49', 'login_log_list', 'loginLog', '[0],[system],[loginLog],', '登录日志列表', '', '/loginLog/list', '2', '3', '0', null, '1', null), ('50', 'to_role_edit', 'role', '[0],[system],[role],', '修改角色跳转', '', '/role/role_edit', '5', '3', '0', null, '1', null), ('51', 'to_role_assign', 'role', '[0],[system],[role],', '角色分配跳转', '', '/role/role_assign', '6', '3', '0', null, '1', null), ('52', 'role_list', 'role', '[0],[system],[role],', '角色列表', '', '/role/list', '7', '3', '0', null, '1', null), ('53', 'to_assign_role', 'mgr', '[0],[system],[mgr],', '分配角色跳转', '', '/mgr/role_assign', '8', '3', '0', null, '1', null), ('54', 'to_user_edit', 'mgr', '[0],[system],[mgr],', '编辑用户跳转', '', '/mgr/user_edit', '9', '3', '0', null, '1', null), ('55', 'mgr_list', 'mgr', '[0],[system],[mgr],', '用户列表', '', '/mgr/list', '10', '3', '0', null, '1', null), ('227', 'tjManager', '0', '[0],', '数据统计', 'fa-user', '/', '1', '1', '1', null, '1', null), ('228', 'payStatisInfo', 'tjManager', '[0],[tjManager]', '日报表统计', null, '/payStatisInfo/index', '1', '2', '1', null, '1', null);
 COMMIT;
 
 -- ----------------------------
--- Table structure for message
+--  Table structure for `message`
 -- ----------------------------
 DROP TABLE IF EXISTS `message`;
 CREATE TABLE `message` (
@@ -2486,7 +2349,7 @@ CREATE TABLE `message` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Table structure for notice
+--  Table structure for `notice`
 -- ----------------------------
 DROP TABLE IF EXISTS `notice`;
 CREATE TABLE `notice` (
@@ -2500,16 +2363,14 @@ CREATE TABLE `notice` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COMMENT='通知表';
 
 -- ----------------------------
--- Records of notice
+--  Records of `notice`
 -- ----------------------------
 BEGIN;
-INSERT INTO `notice` VALUES (6, '世界', 10, '欢迎使用CIS', '2017-01-11 08:53:20', 1);
-INSERT INTO `notice` VALUES (8, '你好', NULL, '你好', '2017-05-10 19:28:57', 1);
-INSERT INTO `notice` VALUES (9, '问问', NULL, '问问', '2018-07-05 13:59:02', 1);
+INSERT INTO `notice` VALUES ('6', '世界', '10', '欢迎使用CIS', '2017-01-11 08:53:20', '1'), ('8', '你好', null, '你好', '2017-05-10 19:28:57', '1'), ('9', '问问', null, '问问', '2018-07-05 13:59:02', '1');
 COMMIT;
 
 -- ----------------------------
--- Table structure for operation_log
+--  Table structure for `operation_log`
 -- ----------------------------
 DROP TABLE IF EXISTS `operation_log`;
 CREATE TABLE `operation_log` (
@@ -2523,51 +2384,18 @@ CREATE TABLE `operation_log` (
   `succeed` varchar(255) DEFAULT NULL COMMENT '是否成功',
   `message` text COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8 COMMENT='操作日志';
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='操作日志';
 
 -- ----------------------------
--- Records of operation_log
+--  Records of `operation_log`
 -- ----------------------------
 BEGIN;
-INSERT INTO `operation_log` VALUES (1, '业务日志', '修改部门', 1, 'com.moerlong.carloan.modular.system.controller.DeptController', 'update', '2018-10-06 11:59:32', '成功', '部门简称=山东省;;;');
-INSERT INTO `operation_log` VALUES (2, '业务日志', '删除部门', 1, 'com.moerlong.carloan.modular.system.controller.DeptController', 'delete', '2018-10-06 11:59:44', '成功', '部门名称=UAT');
-INSERT INTO `operation_log` VALUES (3, '业务日志', '添加部门', 1, 'com.moerlong.carloan.modular.system.controller.DeptController', 'add', '2018-10-06 12:00:05', '成功', '部门简称=济南市');
-INSERT INTO `operation_log` VALUES (4, '业务日志', '添加部门', 1, 'com.moerlong.carloan.modular.system.controller.DeptController', 'add', '2018-10-06 12:00:31', '成功', '部门简称=平阴县');
-INSERT INTO `operation_log` VALUES (5, '业务日志', '删除部门', 1, 'com.moerlong.carloan.modular.system.controller.DeptController', 'delete', '2018-10-06 12:00:40', '成功', '部门名称=成都分公司');
-INSERT INTO `operation_log` VALUES (6, '业务日志', '删除部门', 1, 'com.moerlong.carloan.modular.system.controller.DeptController', 'delete', '2018-10-06 12:00:46', '成功', '部门名称=北京分公司');
-INSERT INTO `operation_log` VALUES (7, '业务日志', '删除部门', 1, 'com.moerlong.carloan.modular.system.controller.DeptController', 'delete', '2018-10-06 12:00:51', '成功', '部门名称=重庆分公司');
-INSERT INTO `operation_log` VALUES (8, '业务日志', '删除部门', 1, 'com.moerlong.carloan.modular.system.controller.DeptController', 'delete', '2018-10-06 12:00:55', '成功', '部门名称=技术研发部');
-INSERT INTO `operation_log` VALUES (9, '业务日志', '删除部门', 1, 'com.moerlong.carloan.modular.system.controller.DeptController', 'delete', '2018-10-06 12:00:59', '成功', '部门名称=产品验收');
-INSERT INTO `operation_log` VALUES (10, '业务日志', '添加部门', 1, 'com.moerlong.carloan.modular.system.controller.DeptController', 'add', '2018-10-06 12:02:21', '成功', '部门简称=锦水街道乡镇');
-INSERT INTO `operation_log` VALUES (11, '业务日志', '添加部门', 1, 'com.moerlong.carloan.modular.system.controller.DeptController', 'add', '2018-10-06 12:02:56', '成功', '部门简称=前寨村委会');
-INSERT INTO `operation_log` VALUES (12, '业务日志', '添加部门', 1, 'com.moerlong.carloan.modular.system.controller.DeptController', 'add', '2018-10-06 12:03:21', '成功', '部门简称=山头村委会');
-INSERT INTO `operation_log` VALUES (13, '业务日志', '添加部门', 1, 'com.moerlong.carloan.modular.system.controller.DeptController', 'add', '2018-10-06 12:03:45', '成功', '部门简称=凌庄村委会');
-INSERT INTO `operation_log` VALUES (14, '业务日志', '添加部门', 1, 'com.moerlong.carloan.modular.system.controller.DeptController', 'add', '2018-10-06 12:04:14', '成功', '部门简称=西子顺村委会');
-INSERT INTO `operation_log` VALUES (15, '异常日志', '', 1, NULL, NULL, '2018-10-06 12:05:05', '失败', 'com.moerlong.carloan.common.exception.BussinessException: 权限异常\n	at com.moerlong.carloan.modular.system.controller.UserMgrController.assertAuth(UserMgrController.java:370)\n	at com.moerlong.carloan.modular.system.controller.UserMgrController.delete(UserMgrController.java:245)\n	at com.moerlong.carloan.modular.system.controller.UserMgrControllerTTFastClassBySpringCGLIBTTfdaaf5d2.invoke(<generated>)\n	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)\n	at org.springframework.aop.framework.CglibAopProxyTCglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:738)\n	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)\n	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:85)\n	at com.moerlong.carloan.core.aop.PermissionAop.doPermission(PermissionAop.java:52)\n	at sun.reflect.GeneratedMethodAccessor182.invoke(Unknown Source)\n	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n	at java.lang.reflect.Method.invoke(Method.java:498)\n	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:629)\n	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:618)\n	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)\n	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:168)\n	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:85)\n	at com.moerlong.carloan.core.aop.LogAop.recordSysLog(LogAop.java:46)\n	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n	at java.lang.reflect.Method.invoke(Method.java:498)\n	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:629)\n	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:618)\n	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)\n	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:168)\n	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)\n	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)\n	at org.springframework.aop.framework.CglibAopProxyTDynamicAdvisedInterceptor.intercept(CglibAopProxy.java:673)\n	at com.moerlong.carloan.modular.system.controller.UserMgrControllerTTEnhancerBySpringCGLIBTTd93cb2e4.delete(<generated>)\n	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n	at java.lang.reflect.Method.invoke(Method.java:498)\n	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)\n	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)\n	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)\n	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)\n	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)\n	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)\n	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)\n	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)\n	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)\n	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)\n	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)\n	at org.apache.shiro.web.servlet.AbstractShiroFilterT1.call(AbstractShiroFilter.java:365)\n	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)\n	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)\n	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.moerlong.carloan.core.util.xss.XssFilter.doFilter(XssFilter.java:22)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)\n	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\n	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)\n	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)\n	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)\n	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)\n	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)\n	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)\n	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\n	at org.apache.coyote.AbstractProtocolTConnectionHandler.process(AbstractProtocol.java:868)\n	at org.apache.tomcat.util.net.NioEndpointTSocketProcessor.doRun(NioEndpoint.java:1459)\n	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\n	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n	at java.util.concurrent.ThreadPoolExecutorTWorker.run(ThreadPoolExecutor.java:624)\n	at org.apache.tomcat.util.threads.TaskThreadTWrappingRunnable.run(TaskThread.java:61)\n	at java.lang.Thread.run(Thread.java:748)\n');
-INSERT INTO `operation_log` VALUES (16, '业务日志', '修改管理员', 1, 'com.moerlong.carloan.modular.system.controller.UserMgrController', 'edit', '2018-10-06 12:05:40', '成功', '账号=admin;;;');
-INSERT INTO `operation_log` VALUES (17, '业务日志', '修改管理员', 1, 'com.moerlong.carloan.modular.system.controller.UserMgrController', 'edit', '2018-10-06 12:06:10', '成功', '账号=admin;;;');
-INSERT INTO `operation_log` VALUES (18, '异常日志', '', 1, NULL, NULL, '2018-10-06 12:06:19', '失败', 'com.moerlong.carloan.common.exception.BussinessException: 权限异常\n	at com.moerlong.carloan.modular.system.controller.UserMgrController.assertAuth(UserMgrController.java:370)\n	at com.moerlong.carloan.modular.system.controller.UserMgrController.delete(UserMgrController.java:245)\n	at com.moerlong.carloan.modular.system.controller.UserMgrControllerTTFastClassBySpringCGLIBTTfdaaf5d2.invoke(<generated>)\n	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)\n	at org.springframework.aop.framework.CglibAopProxyTCglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:738)\n	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)\n	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:85)\n	at com.moerlong.carloan.core.aop.PermissionAop.doPermission(PermissionAop.java:52)\n	at sun.reflect.GeneratedMethodAccessor182.invoke(Unknown Source)\n	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n	at java.lang.reflect.Method.invoke(Method.java:498)\n	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:629)\n	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:618)\n	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)\n	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:168)\n	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:85)\n	at com.moerlong.carloan.core.aop.LogAop.recordSysLog(LogAop.java:46)\n	at sun.reflect.GeneratedMethodAccessor217.invoke(Unknown Source)\n	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n	at java.lang.reflect.Method.invoke(Method.java:498)\n	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:629)\n	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:618)\n	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)\n	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:168)\n	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)\n	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)\n	at org.springframework.aop.framework.CglibAopProxyTDynamicAdvisedInterceptor.intercept(CglibAopProxy.java:673)\n	at com.moerlong.carloan.modular.system.controller.UserMgrControllerTTEnhancerBySpringCGLIBTTd93cb2e4.delete(<generated>)\n	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n	at java.lang.reflect.Method.invoke(Method.java:498)\n	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)\n	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)\n	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)\n	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)\n	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)\n	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)\n	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)\n	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)\n	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)\n	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)\n	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)\n	at org.apache.shiro.web.servlet.AbstractShiroFilterT1.call(AbstractShiroFilter.java:365)\n	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)\n	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)\n	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.moerlong.carloan.core.util.xss.XssFilter.doFilter(XssFilter.java:22)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)\n	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\n	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)\n	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)\n	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)\n	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)\n	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)\n	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)\n	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\n	at org.apache.coyote.AbstractProtocolTConnectionHandler.process(AbstractProtocol.java:868)\n	at org.apache.tomcat.util.net.NioEndpointTSocketProcessor.doRun(NioEndpoint.java:1459)\n	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\n	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n	at java.util.concurrent.ThreadPoolExecutorTWorker.run(ThreadPoolExecutor.java:624)\n	at org.apache.tomcat.util.threads.TaskThreadTWrappingRunnable.run(TaskThread.java:61)\n	at java.lang.Thread.run(Thread.java:748)\n');
-INSERT INTO `operation_log` VALUES (19, '业务日志', '修改管理员', 1, 'com.moerlong.carloan.modular.system.controller.UserMgrController', 'edit', '2018-10-06 12:36:32', '成功', '账号=admin;;;字段名称:部门名称,旧值:总公司,新值:山东省,平阴县');
-INSERT INTO `operation_log` VALUES (20, '业务日志', '修改管理员', 1, 'com.moerlong.carloan.modular.system.controller.UserMgrController', 'edit', '2018-10-06 12:36:50', '成功', '账号=admin;;;字段名称:部门名称,旧值:山东省,平阴县,新值:山东省,济南市,平阴县');
-INSERT INTO `operation_log` VALUES (21, '业务日志', '修改管理员', 1, 'com.moerlong.carloan.modular.system.controller.UserMgrController', 'edit', '2018-10-06 12:37:12', '成功', '账号=admin;;;字段名称:性别,旧值:女,新值:男');
-INSERT INTO `operation_log` VALUES (22, '业务日志', '删除菜单', 1, 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:38:49', '成功', '菜单名称=还款管理');
-INSERT INTO `operation_log` VALUES (23, '业务日志', '删除菜单', 1, 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:39:11', '成功', '菜单名称=放款管理');
-INSERT INTO `operation_log` VALUES (24, '业务日志', '删除菜单', 1, 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:39:25', '成功', '菜单名称=车辆信息管理');
-INSERT INTO `operation_log` VALUES (25, '业务日志', '删除菜单', 1, 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:39:35', '成功', '菜单名称=提前还款申请');
-INSERT INTO `operation_log` VALUES (26, '业务日志', '删除菜单', 1, 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:39:49', '成功', '菜单名称=客户信息管理');
-INSERT INTO `operation_log` VALUES (27, '业务日志', '删除菜单', 1, 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:40:01', '成功', '菜单名称=合同管理');
-INSERT INTO `operation_log` VALUES (28, '业务日志', '删除菜单', 1, 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:40:13', '成功', '菜单名称=渠道管理');
-INSERT INTO `operation_log` VALUES (29, '业务日志', '删除菜单', 1, 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:40:28', '成功', '菜单名称=流程管理');
-INSERT INTO `operation_log` VALUES (30, '业务日志', '删除菜单', 1, 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:40:38', '成功', '菜单名称=通知');
-INSERT INTO `operation_log` VALUES (31, '业务日志', '删除菜单', 1, 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:40:51', '成功', '菜单名称=通知管理');
-INSERT INTO `operation_log` VALUES (32, '异常日志', '', 1, NULL, NULL, '2018-10-12 16:05:17', '失败', 'com.alibaba.fastjson.JSONException: syntax error, expect {, actual error, pos 0\n	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:367)\n	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseRest(JavaBeanDeserializer.java:1010)\n	at com.alibaba.fastjson.parser.deserializer.FastjsonASMDeserializer_1_SCdssCd.deserialze(Unknown Source)\n	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:208)\n	at com.alibaba.fastjson.parser.DefaultJSONParser.parseObject(DefaultJSONParser.java:642)\n	at com.alibaba.fastjson.JSON.parseObject(JSON.java:350)\n	at com.alibaba.fastjson.JSON.parseObject(JSON.java:318)\n	at com.alibaba.fastjson.JSON.parseObject(JSON.java:281)\n	at com.alibaba.fastjson.JSON.parseObject(JSON.java:381)\n	at com.alibaba.fastjson.JSON.parseObject(JSON.java:463)\n	at com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4.read(FastJsonHttpMessageConverter4.java:69)\n	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:201)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:150)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:128)\n	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)\n	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:158)\n	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:128)\n	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)\n	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)\n	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)\n	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)\n	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)\n	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)\n	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)\n	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)\n	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)\n	at org.apache.shiro.web.servlet.AbstractShiroFilterT1.call(AbstractShiroFilter.java:365)\n	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)\n	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)\n	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.moerlong.carloan.core.util.xss.XssFilter.doFilter(XssFilter.java:22)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)\n	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\n	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)\n	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)\n	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)\n	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)\n	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)\n	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)\n	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\n	at org.apache.coyote.AbstractProtocolTConnectionHandler.process(AbstractProtocol.java:868)\n	at org.apache.tomcat.util.net.NioEndpointTSocketProcessor.doRun(NioEndpoint.java:1459)\n	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\n	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n	at java.util.concurrent.ThreadPoolExecutorTWorker.run(ThreadPoolExecutor.java:624)\n	at org.apache.tomcat.util.threads.TaskThreadTWrappingRunnable.run(TaskThread.java:61)\n	at java.lang.Thread.run(Thread.java:748)\n');
-INSERT INTO `operation_log` VALUES (33, '异常日志', '', 1, NULL, NULL, '2018-10-12 17:10:20', '失败', 'org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type \'java.lang.String\' to required type \'java.lang.Integer\'; nested exception is java.lang.NumberFormatException: For input string: \"undefined\"\n	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:128)\n	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)\n	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:158)\n	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:128)\n	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)\n	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)\n	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)\n	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)\n	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)\n	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)\n	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)\n	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)\n	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)\n	at org.apache.shiro.web.servlet.AbstractShiroFilterT1.call(AbstractShiroFilter.java:365)\n	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)\n	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)\n	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.moerlong.carloan.core.util.xss.XssFilter.doFilter(XssFilter.java:22)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)\n	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\n	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)\n	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)\n	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)\n	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)\n	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)\n	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)\n	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\n	at org.apache.coyote.AbstractProtocolTConnectionHandler.process(AbstractProtocol.java:868)\n	at org.apache.tomcat.util.net.NioEndpointTSocketProcessor.doRun(NioEndpoint.java:1459)\n	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\n	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n	at java.util.concurrent.ThreadPoolExecutorTWorker.run(ThreadPoolExecutor.java:624)\n	at org.apache.tomcat.util.threads.TaskThreadTWrappingRunnable.run(TaskThread.java:61)\n	at java.lang.Thread.run(Thread.java:748)\nCaused by: java.lang.NumberFormatException: For input string: \"undefined\"\n	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)\n	at java.lang.Integer.parseInt(Integer.java:580)\n	at java.lang.Integer.valueOf(Integer.java:766)\n	at org.springframework.util.NumberUtils.parseNumber(NumberUtils.java:208)\n	at org.springframework.beans.propertyeditors.CustomNumberEditor.setAsText(CustomNumberEditor.java:113)\n	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:468)\n	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:441)\n	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:199)\n	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:108)\n	at org.springframework.beans.TypeConverterSupport.doConvert(TypeConverterSupport.java:64)\n	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:47)\n	at org.springframework.validation.DataBinder.convertIfNecessary(DataBinder.java:713)\n	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:120)\n	... 71 more\n');
-INSERT INTO `operation_log` VALUES (34, '异常日志', '', 1, NULL, NULL, '2018-10-12 17:11:46', '失败', 'org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type \'java.lang.String\' to required type \'java.lang.Integer\'; nested exception is java.lang.NumberFormatException: For input string: \"undefined\"\n	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:128)\n	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)\n	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:158)\n	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:128)\n	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)\n	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)\n	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)\n	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)\n	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)\n	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)\n	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)\n	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)\n	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)\n	at org.apache.shiro.web.servlet.AbstractShiroFilterT1.call(AbstractShiroFilter.java:365)\n	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)\n	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)\n	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.moerlong.carloan.core.util.xss.XssFilter.doFilter(XssFilter.java:22)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)\n	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\n	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)\n	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)\n	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)\n	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)\n	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)\n	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)\n	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\n	at org.apache.coyote.AbstractProtocolTConnectionHandler.process(AbstractProtocol.java:868)\n	at org.apache.tomcat.util.net.NioEndpointTSocketProcessor.doRun(NioEndpoint.java:1459)\n	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\n	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n	at java.util.concurrent.ThreadPoolExecutorTWorker.run(ThreadPoolExecutor.java:624)\n	at org.apache.tomcat.util.threads.TaskThreadTWrappingRunnable.run(TaskThread.java:61)\n	at java.lang.Thread.run(Thread.java:748)\nCaused by: java.lang.NumberFormatException: For input string: \"undefined\"\n	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)\n	at java.lang.Integer.parseInt(Integer.java:580)\n	at java.lang.Integer.valueOf(Integer.java:766)\n	at org.springframework.util.NumberUtils.parseNumber(NumberUtils.java:208)\n	at org.springframework.beans.propertyeditors.CustomNumberEditor.setAsText(CustomNumberEditor.java:113)\n	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:468)\n	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:441)\n	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:199)\n	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:108)\n	at org.springframework.beans.TypeConverterSupport.doConvert(TypeConverterSupport.java:64)\n	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:47)\n	at org.springframework.validation.DataBinder.convertIfNecessary(DataBinder.java:713)\n	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:120)\n	... 71 more\n');
-INSERT INTO `operation_log` VALUES (35, '异常日志', '', 1, NULL, NULL, '2018-10-12 17:12:44', '失败', 'org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type \'java.lang.String\' to required type \'java.lang.Integer\'; nested exception is java.lang.NumberFormatException: For input string: \"undefined\"\n	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:128)\n	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)\n	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:158)\n	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:128)\n	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)\n	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)\n	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)\n	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)\n	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)\n	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)\n	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)\n	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)\n	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)\n	at org.apache.shiro.web.servlet.AbstractShiroFilterT1.call(AbstractShiroFilter.java:365)\n	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)\n	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)\n	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.moerlong.carloan.core.util.xss.XssFilter.doFilter(XssFilter.java:22)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)\n	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\n	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)\n	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)\n	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)\n	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)\n	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)\n	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)\n	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\n	at org.apache.coyote.AbstractProtocolTConnectionHandler.process(AbstractProtocol.java:868)\n	at org.apache.tomcat.util.net.NioEndpointTSocketProcessor.doRun(NioEndpoint.java:1459)\n	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\n	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n	at java.util.concurrent.ThreadPoolExecutorTWorker.run(ThreadPoolExecutor.java:624)\n	at org.apache.tomcat.util.threads.TaskThreadTWrappingRunnable.run(TaskThread.java:61)\n	at java.lang.Thread.run(Thread.java:748)\nCaused by: java.lang.NumberFormatException: For input string: \"undefined\"\n	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)\n	at java.lang.Integer.parseInt(Integer.java:580)\n	at java.lang.Integer.valueOf(Integer.java:766)\n	at org.springframework.util.NumberUtils.parseNumber(NumberUtils.java:208)\n	at org.springframework.beans.propertyeditors.CustomNumberEditor.setAsText(CustomNumberEditor.java:113)\n	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:468)\n	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:441)\n	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:199)\n	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:108)\n	at org.springframework.beans.TypeConverterSupport.doConvert(TypeConverterSupport.java:64)\n	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:47)\n	at org.springframework.validation.DataBinder.convertIfNecessary(DataBinder.java:713)\n	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:120)\n	... 71 more\n');
+INSERT INTO `operation_log` VALUES ('1', '业务日志', '修改部门', '1', 'com.moerlong.carloan.modular.system.controller.DeptController', 'update', '2018-10-06 11:59:32', '成功', '部门简称=山东省;;;'), ('2', '业务日志', '删除部门', '1', 'com.moerlong.carloan.modular.system.controller.DeptController', 'delete', '2018-10-06 11:59:44', '成功', '部门名称=UAT'), ('3', '业务日志', '添加部门', '1', 'com.moerlong.carloan.modular.system.controller.DeptController', 'add', '2018-10-06 12:00:05', '成功', '部门简称=济南市'), ('4', '业务日志', '添加部门', '1', 'com.moerlong.carloan.modular.system.controller.DeptController', 'add', '2018-10-06 12:00:31', '成功', '部门简称=平阴县'), ('5', '业务日志', '删除部门', '1', 'com.moerlong.carloan.modular.system.controller.DeptController', 'delete', '2018-10-06 12:00:40', '成功', '部门名称=成都分公司'), ('6', '业务日志', '删除部门', '1', 'com.moerlong.carloan.modular.system.controller.DeptController', 'delete', '2018-10-06 12:00:46', '成功', '部门名称=北京分公司'), ('7', '业务日志', '删除部门', '1', 'com.moerlong.carloan.modular.system.controller.DeptController', 'delete', '2018-10-06 12:00:51', '成功', '部门名称=重庆分公司'), ('8', '业务日志', '删除部门', '1', 'com.moerlong.carloan.modular.system.controller.DeptController', 'delete', '2018-10-06 12:00:55', '成功', '部门名称=技术研发部'), ('9', '业务日志', '删除部门', '1', 'com.moerlong.carloan.modular.system.controller.DeptController', 'delete', '2018-10-06 12:00:59', '成功', '部门名称=产品验收'), ('10', '业务日志', '添加部门', '1', 'com.moerlong.carloan.modular.system.controller.DeptController', 'add', '2018-10-06 12:02:21', '成功', '部门简称=锦水街道乡镇'), ('11', '业务日志', '添加部门', '1', 'com.moerlong.carloan.modular.system.controller.DeptController', 'add', '2018-10-06 12:02:56', '成功', '部门简称=前寨村委会'), ('12', '业务日志', '添加部门', '1', 'com.moerlong.carloan.modular.system.controller.DeptController', 'add', '2018-10-06 12:03:21', '成功', '部门简称=山头村委会'), ('13', '业务日志', '添加部门', '1', 'com.moerlong.carloan.modular.system.controller.DeptController', 'add', '2018-10-06 12:03:45', '成功', '部门简称=凌庄村委会'), ('14', '业务日志', '添加部门', '1', 'com.moerlong.carloan.modular.system.controller.DeptController', 'add', '2018-10-06 12:04:14', '成功', '部门简称=西子顺村委会'), ('15', '异常日志', '', '1', null, null, '2018-10-06 12:05:05', '失败', 'com.moerlong.carloan.common.exception.BussinessException: 权限异常\n	at com.moerlong.carloan.modular.system.controller.UserMgrController.assertAuth(UserMgrController.java:370)\n	at com.moerlong.carloan.modular.system.controller.UserMgrController.delete(UserMgrController.java:245)\n	at com.moerlong.carloan.modular.system.controller.UserMgrControllerTTFastClassBySpringCGLIBTTfdaaf5d2.invoke(<generated>)\n	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)\n	at org.springframework.aop.framework.CglibAopProxyTCglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:738)\n	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)\n	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:85)\n	at com.moerlong.carloan.core.aop.PermissionAop.doPermission(PermissionAop.java:52)\n	at sun.reflect.GeneratedMethodAccessor182.invoke(Unknown Source)\n	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n	at java.lang.reflect.Method.invoke(Method.java:498)\n	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:629)\n	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:618)\n	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)\n	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:168)\n	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:85)\n	at com.moerlong.carloan.core.aop.LogAop.recordSysLog(LogAop.java:46)\n	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n	at java.lang.reflect.Method.invoke(Method.java:498)\n	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:629)\n	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:618)\n	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)\n	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:168)\n	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)\n	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)\n	at org.springframework.aop.framework.CglibAopProxyTDynamicAdvisedInterceptor.intercept(CglibAopProxy.java:673)\n	at com.moerlong.carloan.modular.system.controller.UserMgrControllerTTEnhancerBySpringCGLIBTTd93cb2e4.delete(<generated>)\n	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n	at java.lang.reflect.Method.invoke(Method.java:498)\n	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)\n	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)\n	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)\n	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)\n	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)\n	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)\n	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)\n	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)\n	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)\n	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)\n	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)\n	at org.apache.shiro.web.servlet.AbstractShiroFilterT1.call(AbstractShiroFilter.java:365)\n	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)\n	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)\n	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.moerlong.carloan.core.util.xss.XssFilter.doFilter(XssFilter.java:22)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)\n	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\n	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)\n	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)\n	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)\n	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)\n	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)\n	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)\n	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\n	at org.apache.coyote.AbstractProtocolTConnectionHandler.process(AbstractProtocol.java:868)\n	at org.apache.tomcat.util.net.NioEndpointTSocketProcessor.doRun(NioEndpoint.java:1459)\n	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\n	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n	at java.util.concurrent.ThreadPoolExecutorTWorker.run(ThreadPoolExecutor.java:624)\n	at org.apache.tomcat.util.threads.TaskThreadTWrappingRunnable.run(TaskThread.java:61)\n	at java.lang.Thread.run(Thread.java:748)\n'), ('16', '业务日志', '修改管理员', '1', 'com.moerlong.carloan.modular.system.controller.UserMgrController', 'edit', '2018-10-06 12:05:40', '成功', '账号=admin;;;'), ('17', '业务日志', '修改管理员', '1', 'com.moerlong.carloan.modular.system.controller.UserMgrController', 'edit', '2018-10-06 12:06:10', '成功', '账号=admin;;;'), ('18', '异常日志', '', '1', null, null, '2018-10-06 12:06:19', '失败', 'com.moerlong.carloan.common.exception.BussinessException: 权限异常\n	at com.moerlong.carloan.modular.system.controller.UserMgrController.assertAuth(UserMgrController.java:370)\n	at com.moerlong.carloan.modular.system.controller.UserMgrController.delete(UserMgrController.java:245)\n	at com.moerlong.carloan.modular.system.controller.UserMgrControllerTTFastClassBySpringCGLIBTTfdaaf5d2.invoke(<generated>)\n	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)\n	at org.springframework.aop.framework.CglibAopProxyTCglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:738)\n	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)\n	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:85)\n	at com.moerlong.carloan.core.aop.PermissionAop.doPermission(PermissionAop.java:52)\n	at sun.reflect.GeneratedMethodAccessor182.invoke(Unknown Source)\n	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n	at java.lang.reflect.Method.invoke(Method.java:498)\n	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:629)\n	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:618)\n	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)\n	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:168)\n	at org.springframework.aop.aspectj.MethodInvocationProceedingJoinPoint.proceed(MethodInvocationProceedingJoinPoint.java:85)\n	at com.moerlong.carloan.core.aop.LogAop.recordSysLog(LogAop.java:46)\n	at sun.reflect.GeneratedMethodAccessor217.invoke(Unknown Source)\n	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n	at java.lang.reflect.Method.invoke(Method.java:498)\n	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethodWithGivenArgs(AbstractAspectJAdvice.java:629)\n	at org.springframework.aop.aspectj.AbstractAspectJAdvice.invokeAdviceMethod(AbstractAspectJAdvice.java:618)\n	at org.springframework.aop.aspectj.AspectJAroundAdvice.invoke(AspectJAroundAdvice.java:70)\n	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:168)\n	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:92)\n	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)\n	at org.springframework.aop.framework.CglibAopProxyTDynamicAdvisedInterceptor.intercept(CglibAopProxy.java:673)\n	at com.moerlong.carloan.modular.system.controller.UserMgrControllerTTEnhancerBySpringCGLIBTTd93cb2e4.delete(<generated>)\n	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n	at java.lang.reflect.Method.invoke(Method.java:498)\n	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)\n	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:133)\n	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)\n	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)\n	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)\n	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)\n	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)\n	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)\n	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)\n	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)\n	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)\n	at org.apache.shiro.web.servlet.AbstractShiroFilterT1.call(AbstractShiroFilter.java:365)\n	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)\n	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)\n	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.moerlong.carloan.core.util.xss.XssFilter.doFilter(XssFilter.java:22)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)\n	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\n	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)\n	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)\n	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)\n	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)\n	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)\n	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)\n	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\n	at org.apache.coyote.AbstractProtocolTConnectionHandler.process(AbstractProtocol.java:868)\n	at org.apache.tomcat.util.net.NioEndpointTSocketProcessor.doRun(NioEndpoint.java:1459)\n	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\n	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n	at java.util.concurrent.ThreadPoolExecutorTWorker.run(ThreadPoolExecutor.java:624)\n	at org.apache.tomcat.util.threads.TaskThreadTWrappingRunnable.run(TaskThread.java:61)\n	at java.lang.Thread.run(Thread.java:748)\n'), ('19', '业务日志', '修改管理员', '1', 'com.moerlong.carloan.modular.system.controller.UserMgrController', 'edit', '2018-10-06 12:36:32', '成功', '账号=admin;;;字段名称:部门名称,旧值:总公司,新值:山东省,平阴县'), ('20', '业务日志', '修改管理员', '1', 'com.moerlong.carloan.modular.system.controller.UserMgrController', 'edit', '2018-10-06 12:36:50', '成功', '账号=admin;;;字段名称:部门名称,旧值:山东省,平阴县,新值:山东省,济南市,平阴县'), ('21', '业务日志', '修改管理员', '1', 'com.moerlong.carloan.modular.system.controller.UserMgrController', 'edit', '2018-10-06 12:37:12', '成功', '账号=admin;;;字段名称:性别,旧值:女,新值:男'), ('22', '业务日志', '删除菜单', '1', 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:38:49', '成功', '菜单名称=还款管理'), ('23', '业务日志', '删除菜单', '1', 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:39:11', '成功', '菜单名称=放款管理'), ('24', '业务日志', '删除菜单', '1', 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:39:25', '成功', '菜单名称=车辆信息管理'), ('25', '业务日志', '删除菜单', '1', 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:39:35', '成功', '菜单名称=提前还款申请'), ('26', '业务日志', '删除菜单', '1', 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:39:49', '成功', '菜单名称=客户信息管理'), ('27', '业务日志', '删除菜单', '1', 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:40:01', '成功', '菜单名称=合同管理'), ('28', '业务日志', '删除菜单', '1', 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:40:13', '成功', '菜单名称=渠道管理'), ('29', '业务日志', '删除菜单', '1', 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:40:28', '成功', '菜单名称=流程管理'), ('30', '业务日志', '删除菜单', '1', 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:40:38', '成功', '菜单名称=通知'), ('31', '业务日志', '删除菜单', '1', 'com.moerlong.carloan.modular.system.controller.MenuController', 'remove', '2018-10-06 12:40:51', '成功', '菜单名称=通知管理'), ('32', '异常日志', '', '1', null, null, '2018-10-12 16:05:17', '失败', 'com.alibaba.fastjson.JSONException: syntax error, expect {, actual error, pos 0\n	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:367)\n	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseRest(JavaBeanDeserializer.java:1010)\n	at com.alibaba.fastjson.parser.deserializer.FastjsonASMDeserializer_1_SCdssCd.deserialze(Unknown Source)\n	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:208)\n	at com.alibaba.fastjson.parser.DefaultJSONParser.parseObject(DefaultJSONParser.java:642)\n	at com.alibaba.fastjson.JSON.parseObject(JSON.java:350)\n	at com.alibaba.fastjson.JSON.parseObject(JSON.java:318)\n	at com.alibaba.fastjson.JSON.parseObject(JSON.java:281)\n	at com.alibaba.fastjson.JSON.parseObject(JSON.java:381)\n	at com.alibaba.fastjson.JSON.parseObject(JSON.java:463)\n	at com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4.read(FastJsonHttpMessageConverter4.java:69)\n	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:201)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:150)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:128)\n	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)\n	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:158)\n	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:128)\n	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)\n	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)\n	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)\n	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)\n	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)\n	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)\n	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)\n	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)\n	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)\n	at org.apache.shiro.web.servlet.AbstractShiroFilterT1.call(AbstractShiroFilter.java:365)\n	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)\n	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)\n	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.moerlong.carloan.core.util.xss.XssFilter.doFilter(XssFilter.java:22)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)\n	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\n	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)\n	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)\n	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)\n	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)\n	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)\n	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)\n	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\n	at org.apache.coyote.AbstractProtocolTConnectionHandler.process(AbstractProtocol.java:868)\n	at org.apache.tomcat.util.net.NioEndpointTSocketProcessor.doRun(NioEndpoint.java:1459)\n	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\n	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n	at java.util.concurrent.ThreadPoolExecutorTWorker.run(ThreadPoolExecutor.java:624)\n	at org.apache.tomcat.util.threads.TaskThreadTWrappingRunnable.run(TaskThread.java:61)\n	at java.lang.Thread.run(Thread.java:748)\n'), ('33', '异常日志', '', '1', null, null, '2018-10-12 17:10:20', '失败', 'org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type \'java.lang.String\' to required type \'java.lang.Integer\'; nested exception is java.lang.NumberFormatException: For input string: \"undefined\"\n	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:128)\n	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)\n	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:158)\n	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:128)\n	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)\n	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)\n	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)\n	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)\n	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)\n	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)\n	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)\n	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)\n	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)\n	at org.apache.shiro.web.servlet.AbstractShiroFilterT1.call(AbstractShiroFilter.java:365)\n	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)\n	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)\n	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.moerlong.carloan.core.util.xss.XssFilter.doFilter(XssFilter.java:22)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)\n	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\n	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)\n	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)\n	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)\n	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)\n	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)\n	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)\n	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\n	at org.apache.coyote.AbstractProtocolTConnectionHandler.process(AbstractProtocol.java:868)\n	at org.apache.tomcat.util.net.NioEndpointTSocketProcessor.doRun(NioEndpoint.java:1459)\n	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\n	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n	at java.util.concurrent.ThreadPoolExecutorTWorker.run(ThreadPoolExecutor.java:624)\n	at org.apache.tomcat.util.threads.TaskThreadTWrappingRunnable.run(TaskThread.java:61)\n	at java.lang.Thread.run(Thread.java:748)\nCaused by: java.lang.NumberFormatException: For input string: \"undefined\"\n	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)\n	at java.lang.Integer.parseInt(Integer.java:580)\n	at java.lang.Integer.valueOf(Integer.java:766)\n	at org.springframework.util.NumberUtils.parseNumber(NumberUtils.java:208)\n	at org.springframework.beans.propertyeditors.CustomNumberEditor.setAsText(CustomNumberEditor.java:113)\n	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:468)\n	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:441)\n	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:199)\n	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:108)\n	at org.springframework.beans.TypeConverterSupport.doConvert(TypeConverterSupport.java:64)\n	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:47)\n	at org.springframework.validation.DataBinder.convertIfNecessary(DataBinder.java:713)\n	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:120)\n	... 71 more\n'), ('34', '异常日志', '', '1', null, null, '2018-10-12 17:11:46', '失败', 'org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type \'java.lang.String\' to required type \'java.lang.Integer\'; nested exception is java.lang.NumberFormatException: For input string: \"undefined\"\n	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:128)\n	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)\n	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:158)\n	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:128)\n	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)\n	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)\n	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)\n	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)\n	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)\n	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)\n	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)\n	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)\n	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)\n	at org.apache.shiro.web.servlet.AbstractShiroFilterT1.call(AbstractShiroFilter.java:365)\n	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)\n	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)\n	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.moerlong.carloan.core.util.xss.XssFilter.doFilter(XssFilter.java:22)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)\n	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\n	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)\n	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)\n	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)\n	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)\n	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)\n	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)\n	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\n	at org.apache.coyote.AbstractProtocolTConnectionHandler.process(AbstractProtocol.java:868)\n	at org.apache.tomcat.util.net.NioEndpointTSocketProcessor.doRun(NioEndpoint.java:1459)\n	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\n	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n	at java.util.concurrent.ThreadPoolExecutorTWorker.run(ThreadPoolExecutor.java:624)\n	at org.apache.tomcat.util.threads.TaskThreadTWrappingRunnable.run(TaskThread.java:61)\n	at java.lang.Thread.run(Thread.java:748)\nCaused by: java.lang.NumberFormatException: For input string: \"undefined\"\n	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)\n	at java.lang.Integer.parseInt(Integer.java:580)\n	at java.lang.Integer.valueOf(Integer.java:766)\n	at org.springframework.util.NumberUtils.parseNumber(NumberUtils.java:208)\n	at org.springframework.beans.propertyeditors.CustomNumberEditor.setAsText(CustomNumberEditor.java:113)\n	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:468)\n	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:441)\n	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:199)\n	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:108)\n	at org.springframework.beans.TypeConverterSupport.doConvert(TypeConverterSupport.java:64)\n	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:47)\n	at org.springframework.validation.DataBinder.convertIfNecessary(DataBinder.java:713)\n	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:120)\n	... 71 more\n'), ('35', '异常日志', '', '1', null, null, '2018-10-12 17:12:44', '失败', 'org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type \'java.lang.String\' to required type \'java.lang.Integer\'; nested exception is java.lang.NumberFormatException: For input string: \"undefined\"\n	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:128)\n	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)\n	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:158)\n	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:128)\n	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)\n	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)\n	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)\n	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)\n	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)\n	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)\n	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)\n	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)\n	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)\n	at org.apache.shiro.web.servlet.AbstractShiroFilterT1.call(AbstractShiroFilter.java:365)\n	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)\n	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)\n	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.moerlong.carloan.core.util.xss.XssFilter.doFilter(XssFilter.java:22)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)\n	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\n	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)\n	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)\n	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)\n	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)\n	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)\n	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)\n	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\n	at org.apache.coyote.AbstractProtocolTConnectionHandler.process(AbstractProtocol.java:868)\n	at org.apache.tomcat.util.net.NioEndpointTSocketProcessor.doRun(NioEndpoint.java:1459)\n	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\n	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n	at java.util.concurrent.ThreadPoolExecutorTWorker.run(ThreadPoolExecutor.java:624)\n	at org.apache.tomcat.util.threads.TaskThreadTWrappingRunnable.run(TaskThread.java:61)\n	at java.lang.Thread.run(Thread.java:748)\nCaused by: java.lang.NumberFormatException: For input string: \"undefined\"\n	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65)\n	at java.lang.Integer.parseInt(Integer.java:580)\n	at java.lang.Integer.valueOf(Integer.java:766)\n	at org.springframework.util.NumberUtils.parseNumber(NumberUtils.java:208)\n	at org.springframework.beans.propertyeditors.CustomNumberEditor.setAsText(CustomNumberEditor.java:113)\n	at org.springframework.beans.TypeConverterDelegate.doConvertTextValue(TypeConverterDelegate.java:468)\n	at org.springframework.beans.TypeConverterDelegate.doConvertValue(TypeConverterDelegate.java:441)\n	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:199)\n	at org.springframework.beans.TypeConverterDelegate.convertIfNecessary(TypeConverterDelegate.java:108)\n	at org.springframework.beans.TypeConverterSupport.doConvert(TypeConverterSupport.java:64)\n	at org.springframework.beans.TypeConverterSupport.convertIfNecessary(TypeConverterSupport.java:47)\n	at org.springframework.validation.DataBinder.convertIfNecessary(DataBinder.java:713)\n	at org.springframework.web.method.annotation.AbstractNamedValueMethodArgumentResolver.resolveArgument(AbstractNamedValueMethodArgumentResolver.java:120)\n	... 71 more\n'), ('36', '业务日志', '修改管理员', '1', 'com.moerlong.carloan.modular.system.controller.UserMgrController', 'edit', '2018-10-12 21:58:36', '成功', '账号=admin;;;字段名称:部门名称,旧值:山东省,济南市,平阴县,新值:锦水街道乡镇'), ('37', '异常日志', '', '1', null, null, '2018-10-13 15:04:31', '失败', 'com.alibaba.fastjson.JSONException: syntax error, expect {, actual error, pos 0\n	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:367)\n	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.parseRest(JavaBeanDeserializer.java:1010)\n	at com.alibaba.fastjson.parser.deserializer.FastjsonASMDeserializer_1_SCdssQt.deserialze(Unknown Source)\n	at com.alibaba.fastjson.parser.deserializer.JavaBeanDeserializer.deserialze(JavaBeanDeserializer.java:208)\n	at com.alibaba.fastjson.parser.DefaultJSONParser.parseObject(DefaultJSONParser.java:642)\n	at com.alibaba.fastjson.JSON.parseObject(JSON.java:350)\n	at com.alibaba.fastjson.JSON.parseObject(JSON.java:318)\n	at com.alibaba.fastjson.JSON.parseObject(JSON.java:281)\n	at com.alibaba.fastjson.JSON.parseObject(JSON.java:381)\n	at com.alibaba.fastjson.JSON.parseObject(JSON.java:463)\n	at com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter4.read(FastJsonHttpMessageConverter4.java:69)\n	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodArgumentResolver.readWithMessageConverters(AbstractMessageConverterMethodArgumentResolver.java:201)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.readWithMessageConverters(RequestResponseBodyMethodProcessor.java:150)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor.resolveArgument(RequestResponseBodyMethodProcessor.java:128)\n	at org.springframework.web.method.support.HandlerMethodArgumentResolverComposite.resolveArgument(HandlerMethodArgumentResolverComposite.java:121)\n	at org.springframework.web.method.support.InvocableHandlerMethod.getMethodArgumentValues(InvocableHandlerMethod.java:158)\n	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:128)\n	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:97)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:827)\n	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:738)\n	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:85)\n	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:967)\n	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:901)\n	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)\n	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:872)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661)\n	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)\n	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:61)\n	at org.apache.shiro.web.servlet.AdviceFilter.executeChain(AdviceFilter.java:108)\n	at org.apache.shiro.web.servlet.AdviceFilter.doFilterInternal(AdviceFilter.java:137)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.shiro.web.servlet.ProxiedFilterChain.doFilter(ProxiedFilterChain.java:66)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.executeChain(AbstractShiroFilter.java:449)\n	at org.apache.shiro.web.servlet.AbstractShiroFilterT1.call(AbstractShiroFilter.java:365)\n	at org.apache.shiro.subject.support.SubjectCallable.doCall(SubjectCallable.java:90)\n	at org.apache.shiro.subject.support.SubjectCallable.call(SubjectCallable.java:83)\n	at org.apache.shiro.subject.support.DelegatingSubject.execute(DelegatingSubject.java:387)\n	at org.apache.shiro.web.servlet.AbstractShiroFilter.doFilterInternal(AbstractShiroFilter.java:362)\n	at org.apache.shiro.web.servlet.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:125)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.moerlong.carloan.core.util.xss.XssFilter.doFilter(XssFilter.java:22)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at com.alibaba.druid.support.http.WebStatFilter.doFilter(WebStatFilter.java:123)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:108)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:197)\n	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107)\n	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)\n	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)\n	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:199)\n	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)\n	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:478)\n	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140)\n	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81)\n	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)\n	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)\n	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803)\n	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)\n	at org.apache.coyote.AbstractProtocolTConnectionHandler.process(AbstractProtocol.java:868)\n	at org.apache.tomcat.util.net.NioEndpointTSocketProcessor.doRun(NioEndpoint.java:1459)\n	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\n	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)\n	at java.util.concurrent.ThreadPoolExecutorTWorker.run(ThreadPoolExecutor.java:624)\n	at org.apache.tomcat.util.threads.TaskThreadTWrappingRunnable.run(TaskThread.java:61)\n	at java.lang.Thread.run(Thread.java:748)\n');
+INSERT INTO `operation_log` VALUES ('38', '业务日志', '修改部门', '1', 'com.moerlong.carloan.modular.system.controller.DeptController', 'update', '2018-10-21 21:54:33', '成功', '部门简称=山东省;;;字段名称:备注,旧值:,新值:111');
 COMMIT;
 
 -- ----------------------------
--- Table structure for order_sequence
+--  Table structure for `order_sequence`
 -- ----------------------------
 DROP TABLE IF EXISTS `order_sequence`;
 CREATE TABLE `order_sequence` (
@@ -2577,158 +2405,14 @@ CREATE TABLE `order_sequence` (
 ) ENGINE=InnoDB AUTO_INCREMENT=336 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of order_sequence
+--  Records of `order_sequence`
 -- ----------------------------
 BEGIN;
-INSERT INTO `order_sequence` VALUES (1, 1);
-INSERT INTO `order_sequence` VALUES (2, 1);
-INSERT INTO `order_sequence` VALUES (3, 1);
-INSERT INTO `order_sequence` VALUES (4, 1);
-INSERT INTO `order_sequence` VALUES (5, 1);
-INSERT INTO `order_sequence` VALUES (6, 1);
-INSERT INTO `order_sequence` VALUES (7, 1);
-INSERT INTO `order_sequence` VALUES (8, 1);
-INSERT INTO `order_sequence` VALUES (9, 1);
-INSERT INTO `order_sequence` VALUES (10, 1);
-INSERT INTO `order_sequence` VALUES (11, 1);
-INSERT INTO `order_sequence` VALUES (12, 1);
-INSERT INTO `order_sequence` VALUES (13, 1);
-INSERT INTO `order_sequence` VALUES (14, 1);
-INSERT INTO `order_sequence` VALUES (15, 1);
-INSERT INTO `order_sequence` VALUES (16, 1);
-INSERT INTO `order_sequence` VALUES (17, 1);
-INSERT INTO `order_sequence` VALUES (18, 1);
-INSERT INTO `order_sequence` VALUES (19, 1);
-INSERT INTO `order_sequence` VALUES (20, 1);
-INSERT INTO `order_sequence` VALUES (21, 1);
-INSERT INTO `order_sequence` VALUES (22, 1);
-INSERT INTO `order_sequence` VALUES (23, 1);
-INSERT INTO `order_sequence` VALUES (24, 1);
-INSERT INTO `order_sequence` VALUES (25, 1);
-INSERT INTO `order_sequence` VALUES (26, 1);
-INSERT INTO `order_sequence` VALUES (27, 1);
-INSERT INTO `order_sequence` VALUES (28, 1);
-INSERT INTO `order_sequence` VALUES (29, 1);
-INSERT INTO `order_sequence` VALUES (30, 1);
-INSERT INTO `order_sequence` VALUES (31, 1);
-INSERT INTO `order_sequence` VALUES (32, 1);
-INSERT INTO `order_sequence` VALUES (33, 1);
-INSERT INTO `order_sequence` VALUES (34, 1);
-INSERT INTO `order_sequence` VALUES (35, 1);
-INSERT INTO `order_sequence` VALUES (36, 1);
-INSERT INTO `order_sequence` VALUES (37, 1);
-INSERT INTO `order_sequence` VALUES (38, 1);
-INSERT INTO `order_sequence` VALUES (39, 1);
-INSERT INTO `order_sequence` VALUES (44, 1);
-INSERT INTO `order_sequence` VALUES (68, 1);
-INSERT INTO `order_sequence` VALUES (69, 1);
-INSERT INTO `order_sequence` VALUES (70, 1);
-INSERT INTO `order_sequence` VALUES (71, 1);
-INSERT INTO `order_sequence` VALUES (72, 1);
-INSERT INTO `order_sequence` VALUES (73, 1);
-INSERT INTO `order_sequence` VALUES (74, 1);
-INSERT INTO `order_sequence` VALUES (75, 1);
-INSERT INTO `order_sequence` VALUES (76, 1);
-INSERT INTO `order_sequence` VALUES (77, 1);
-INSERT INTO `order_sequence` VALUES (78, 1);
-INSERT INTO `order_sequence` VALUES (79, 1);
-INSERT INTO `order_sequence` VALUES (80, 1);
-INSERT INTO `order_sequence` VALUES (81, 1);
-INSERT INTO `order_sequence` VALUES (82, 1);
-INSERT INTO `order_sequence` VALUES (83, 1);
-INSERT INTO `order_sequence` VALUES (84, 1);
-INSERT INTO `order_sequence` VALUES (85, 1);
-INSERT INTO `order_sequence` VALUES (86, 1);
-INSERT INTO `order_sequence` VALUES (87, 1);
-INSERT INTO `order_sequence` VALUES (88, 1);
-INSERT INTO `order_sequence` VALUES (89, 1);
-INSERT INTO `order_sequence` VALUES (90, 1);
-INSERT INTO `order_sequence` VALUES (91, 1);
-INSERT INTO `order_sequence` VALUES (92, 1);
-INSERT INTO `order_sequence` VALUES (93, 1);
-INSERT INTO `order_sequence` VALUES (94, 1);
-INSERT INTO `order_sequence` VALUES (95, 1);
-INSERT INTO `order_sequence` VALUES (96, 1);
-INSERT INTO `order_sequence` VALUES (97, 1);
-INSERT INTO `order_sequence` VALUES (98, 1);
-INSERT INTO `order_sequence` VALUES (99, 1);
-INSERT INTO `order_sequence` VALUES (100, 1);
-INSERT INTO `order_sequence` VALUES (101, 1);
-INSERT INTO `order_sequence` VALUES (102, 1);
-INSERT INTO `order_sequence` VALUES (103, 1);
-INSERT INTO `order_sequence` VALUES (104, 1);
-INSERT INTO `order_sequence` VALUES (105, 1);
-INSERT INTO `order_sequence` VALUES (106, 1);
-INSERT INTO `order_sequence` VALUES (107, 1);
-INSERT INTO `order_sequence` VALUES (108, 1);
-INSERT INTO `order_sequence` VALUES (109, 1);
-INSERT INTO `order_sequence` VALUES (110, 1);
-INSERT INTO `order_sequence` VALUES (111, 1);
-INSERT INTO `order_sequence` VALUES (112, 1);
-INSERT INTO `order_sequence` VALUES (113, 1);
-INSERT INTO `order_sequence` VALUES (114, 1);
-INSERT INTO `order_sequence` VALUES (115, 1);
-INSERT INTO `order_sequence` VALUES (116, 1);
-INSERT INTO `order_sequence` VALUES (117, 1);
-INSERT INTO `order_sequence` VALUES (118, 1);
-INSERT INTO `order_sequence` VALUES (119, 1);
-INSERT INTO `order_sequence` VALUES (120, 1);
-INSERT INTO `order_sequence` VALUES (121, 1);
-INSERT INTO `order_sequence` VALUES (122, 1);
-INSERT INTO `order_sequence` VALUES (123, 1);
-INSERT INTO `order_sequence` VALUES (124, 1);
-INSERT INTO `order_sequence` VALUES (125, 1);
-INSERT INTO `order_sequence` VALUES (126, 1);
-INSERT INTO `order_sequence` VALUES (127, 1);
-INSERT INTO `order_sequence` VALUES (128, 1);
-INSERT INTO `order_sequence` VALUES (129, 1);
-INSERT INTO `order_sequence` VALUES (130, 1);
-INSERT INTO `order_sequence` VALUES (131, 1);
-INSERT INTO `order_sequence` VALUES (132, 1);
-INSERT INTO `order_sequence` VALUES (133, 1);
-INSERT INTO `order_sequence` VALUES (134, 1);
-INSERT INTO `order_sequence` VALUES (135, 1);
-INSERT INTO `order_sequence` VALUES (136, 1);
-INSERT INTO `order_sequence` VALUES (137, 1);
-INSERT INTO `order_sequence` VALUES (138, 1);
-INSERT INTO `order_sequence` VALUES (139, 1);
-INSERT INTO `order_sequence` VALUES (140, 1);
-INSERT INTO `order_sequence` VALUES (141, 1);
-INSERT INTO `order_sequence` VALUES (142, 1);
-INSERT INTO `order_sequence` VALUES (143, 1);
-INSERT INTO `order_sequence` VALUES (144, 1);
-INSERT INTO `order_sequence` VALUES (154, 1);
-INSERT INTO `order_sequence` VALUES (155, 1);
-INSERT INTO `order_sequence` VALUES (156, 1);
-INSERT INTO `order_sequence` VALUES (157, 1);
-INSERT INTO `order_sequence` VALUES (168, 1);
-INSERT INTO `order_sequence` VALUES (169, 1);
-INSERT INTO `order_sequence` VALUES (170, 1);
-INSERT INTO `order_sequence` VALUES (171, 1);
-INSERT INTO `order_sequence` VALUES (235, 1);
-INSERT INTO `order_sequence` VALUES (236, 1);
-INSERT INTO `order_sequence` VALUES (237, 1);
-INSERT INTO `order_sequence` VALUES (238, 1);
-INSERT INTO `order_sequence` VALUES (307, 1);
-INSERT INTO `order_sequence` VALUES (308, 1);
-INSERT INTO `order_sequence` VALUES (309, 1);
-INSERT INTO `order_sequence` VALUES (310, 1);
-INSERT INTO `order_sequence` VALUES (311, 1);
-INSERT INTO `order_sequence` VALUES (312, 1);
-INSERT INTO `order_sequence` VALUES (313, 1);
-INSERT INTO `order_sequence` VALUES (314, 1);
-INSERT INTO `order_sequence` VALUES (328, 1);
-INSERT INTO `order_sequence` VALUES (329, 1);
-INSERT INTO `order_sequence` VALUES (330, 1);
-INSERT INTO `order_sequence` VALUES (331, 1);
-INSERT INTO `order_sequence` VALUES (332, 1);
-INSERT INTO `order_sequence` VALUES (333, 1);
-INSERT INTO `order_sequence` VALUES (334, 1);
-INSERT INTO `order_sequence` VALUES (335, 1);
+INSERT INTO `order_sequence` VALUES ('1', '1'), ('2', '1'), ('3', '1'), ('4', '1'), ('5', '1'), ('6', '1'), ('7', '1'), ('8', '1'), ('9', '1'), ('10', '1'), ('11', '1'), ('12', '1'), ('13', '1'), ('14', '1'), ('15', '1'), ('16', '1'), ('17', '1'), ('18', '1'), ('19', '1'), ('20', '1'), ('21', '1'), ('22', '1'), ('23', '1'), ('24', '1'), ('25', '1'), ('26', '1'), ('27', '1'), ('28', '1'), ('29', '1'), ('30', '1'), ('31', '1'), ('32', '1'), ('33', '1'), ('34', '1'), ('35', '1'), ('36', '1'), ('37', '1'), ('38', '1'), ('39', '1'), ('44', '1'), ('68', '1'), ('69', '1'), ('70', '1'), ('71', '1'), ('72', '1'), ('73', '1'), ('74', '1'), ('75', '1'), ('76', '1'), ('77', '1'), ('78', '1'), ('79', '1'), ('80', '1'), ('81', '1'), ('82', '1'), ('83', '1'), ('84', '1'), ('85', '1'), ('86', '1'), ('87', '1'), ('88', '1'), ('89', '1'), ('90', '1'), ('91', '1'), ('92', '1'), ('93', '1'), ('94', '1'), ('95', '1'), ('96', '1'), ('97', '1'), ('98', '1'), ('99', '1'), ('100', '1'), ('101', '1'), ('102', '1'), ('103', '1'), ('104', '1'), ('105', '1'), ('106', '1'), ('107', '1'), ('108', '1'), ('109', '1'), ('110', '1'), ('111', '1'), ('112', '1'), ('113', '1'), ('114', '1'), ('115', '1'), ('116', '1'), ('117', '1'), ('118', '1'), ('119', '1'), ('120', '1'), ('121', '1'), ('122', '1'), ('123', '1'), ('124', '1'), ('125', '1'), ('126', '1'), ('127', '1'), ('128', '1'), ('129', '1'), ('130', '1'), ('131', '1'), ('132', '1'), ('133', '1'), ('134', '1'), ('135', '1'), ('136', '1'), ('137', '1'), ('138', '1'), ('139', '1'), ('140', '1'), ('141', '1'), ('142', '1'), ('143', '1'), ('144', '1'), ('154', '1'), ('155', '1'), ('156', '1'), ('157', '1'), ('168', '1'), ('169', '1'), ('170', '1'), ('171', '1'), ('235', '1'), ('236', '1'), ('237', '1'), ('238', '1'), ('307', '1'), ('308', '1'), ('309', '1'), ('310', '1'), ('311', '1'), ('312', '1'), ('313', '1'), ('314', '1'), ('328', '1'), ('329', '1'), ('330', '1'), ('331', '1'), ('332', '1'), ('333', '1'), ('334', '1'), ('335', '1');
 COMMIT;
 
 -- ----------------------------
--- Table structure for relation
+--  Table structure for `relation`
 -- ----------------------------
 DROP TABLE IF EXISTS `relation`;
 CREATE TABLE `relation` (
@@ -2736,126 +2420,17 @@ CREATE TABLE `relation` (
   `menuid` int(11) DEFAULT NULL COMMENT '菜单id',
   `roleid` int(11) DEFAULT NULL COMMENT '角色id',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7443 DEFAULT CHARSET=utf8 COMMENT='角色和菜单关联表';
+) ENGINE=InnoDB AUTO_INCREMENT=7420 DEFAULT CHARSET=utf8 COMMENT='角色和菜单关联表';
 
 -- ----------------------------
--- Records of relation
+--  Records of `relation`
 -- ----------------------------
 BEGIN;
-INSERT INTO `relation` VALUES (5762, 66, 9);
-INSERT INTO `relation` VALUES (5765, 66, 10);
-INSERT INTO `relation` VALUES (5768, 64, 12);
-INSERT INTO `relation` VALUES (5770, 66, 12);
-INSERT INTO `relation` VALUES (7008, 1, 13);
-INSERT INTO `relation` VALUES (7009, 2, 13);
-INSERT INTO `relation` VALUES (7010, 3, 13);
-INSERT INTO `relation` VALUES (7011, 4, 13);
-INSERT INTO `relation` VALUES (7012, 5, 13);
-INSERT INTO `relation` VALUES (7013, 6, 13);
-INSERT INTO `relation` VALUES (7014, 7, 13);
-INSERT INTO `relation` VALUES (7015, 8, 13);
-INSERT INTO `relation` VALUES (7016, 9, 13);
-INSERT INTO `relation` VALUES (7017, 53, 13);
-INSERT INTO `relation` VALUES (7018, 54, 13);
-INSERT INTO `relation` VALUES (7019, 55, 13);
-INSERT INTO `relation` VALUES (7020, 10, 13);
-INSERT INTO `relation` VALUES (7021, 11, 13);
-INSERT INTO `relation` VALUES (7022, 12, 13);
-INSERT INTO `relation` VALUES (7023, 13, 13);
-INSERT INTO `relation` VALUES (7024, 14, 13);
-INSERT INTO `relation` VALUES (7025, 50, 13);
-INSERT INTO `relation` VALUES (7026, 51, 13);
-INSERT INTO `relation` VALUES (7027, 52, 13);
-INSERT INTO `relation` VALUES (7028, 15, 13);
-INSERT INTO `relation` VALUES (7029, 16, 13);
-INSERT INTO `relation` VALUES (7030, 17, 13);
-INSERT INTO `relation` VALUES (7031, 18, 13);
-INSERT INTO `relation` VALUES (7032, 38, 13);
-INSERT INTO `relation` VALUES (7033, 39, 13);
-INSERT INTO `relation` VALUES (7034, 19, 13);
-INSERT INTO `relation` VALUES (7035, 24, 13);
-INSERT INTO `relation` VALUES (7036, 46, 13);
-INSERT INTO `relation` VALUES (7037, 47, 13);
-INSERT INTO `relation` VALUES (7038, 20, 13);
-INSERT INTO `relation` VALUES (7039, 21, 13);
-INSERT INTO `relation` VALUES (7040, 25, 13);
-INSERT INTO `relation` VALUES (7041, 26, 13);
-INSERT INTO `relation` VALUES (7042, 27, 13);
-INSERT INTO `relation` VALUES (7043, 40, 13);
-INSERT INTO `relation` VALUES (7044, 41, 13);
-INSERT INTO `relation` VALUES (7045, 42, 13);
-INSERT INTO `relation` VALUES (7046, 22, 13);
-INSERT INTO `relation` VALUES (7047, 28, 13);
-INSERT INTO `relation` VALUES (7048, 29, 13);
-INSERT INTO `relation` VALUES (7049, 30, 13);
-INSERT INTO `relation` VALUES (7050, 43, 13);
-INSERT INTO `relation` VALUES (7051, 44, 13);
-INSERT INTO `relation` VALUES (7052, 45, 13);
-INSERT INTO `relation` VALUES (7053, 23, 13);
-INSERT INTO `relation` VALUES (7054, 48, 13);
-INSERT INTO `relation` VALUES (7055, 49, 13);
-INSERT INTO `relation` VALUES (7060, 36, 13);
-INSERT INTO `relation` VALUES (7062, 37, 13);
-INSERT INTO `relation` VALUES (7064, 64, 13);
-INSERT INTO `relation` VALUES (7073, 66, 13);
-INSERT INTO `relation` VALUES (7282, 227, 2);
-INSERT INTO `relation` VALUES (7283, 228, 2);
-INSERT INTO `relation` VALUES (7335, 1, 1);
-INSERT INTO `relation` VALUES (7336, 2, 1);
-INSERT INTO `relation` VALUES (7337, 3, 1);
-INSERT INTO `relation` VALUES (7338, 4, 1);
-INSERT INTO `relation` VALUES (7339, 5, 1);
-INSERT INTO `relation` VALUES (7340, 6, 1);
-INSERT INTO `relation` VALUES (7341, 7, 1);
-INSERT INTO `relation` VALUES (7342, 8, 1);
-INSERT INTO `relation` VALUES (7343, 9, 1);
-INSERT INTO `relation` VALUES (7344, 53, 1);
-INSERT INTO `relation` VALUES (7345, 54, 1);
-INSERT INTO `relation` VALUES (7346, 55, 1);
-INSERT INTO `relation` VALUES (7347, 10, 1);
-INSERT INTO `relation` VALUES (7348, 11, 1);
-INSERT INTO `relation` VALUES (7349, 12, 1);
-INSERT INTO `relation` VALUES (7350, 13, 1);
-INSERT INTO `relation` VALUES (7351, 14, 1);
-INSERT INTO `relation` VALUES (7352, 50, 1);
-INSERT INTO `relation` VALUES (7353, 51, 1);
-INSERT INTO `relation` VALUES (7354, 52, 1);
-INSERT INTO `relation` VALUES (7355, 15, 1);
-INSERT INTO `relation` VALUES (7356, 16, 1);
-INSERT INTO `relation` VALUES (7357, 17, 1);
-INSERT INTO `relation` VALUES (7358, 18, 1);
-INSERT INTO `relation` VALUES (7359, 38, 1);
-INSERT INTO `relation` VALUES (7360, 39, 1);
-INSERT INTO `relation` VALUES (7361, 19, 1);
-INSERT INTO `relation` VALUES (7362, 24, 1);
-INSERT INTO `relation` VALUES (7363, 46, 1);
-INSERT INTO `relation` VALUES (7364, 47, 1);
-INSERT INTO `relation` VALUES (7365, 20, 1);
-INSERT INTO `relation` VALUES (7366, 21, 1);
-INSERT INTO `relation` VALUES (7367, 25, 1);
-INSERT INTO `relation` VALUES (7368, 26, 1);
-INSERT INTO `relation` VALUES (7369, 27, 1);
-INSERT INTO `relation` VALUES (7370, 40, 1);
-INSERT INTO `relation` VALUES (7371, 41, 1);
-INSERT INTO `relation` VALUES (7372, 42, 1);
-INSERT INTO `relation` VALUES (7373, 22, 1);
-INSERT INTO `relation` VALUES (7374, 28, 1);
-INSERT INTO `relation` VALUES (7375, 29, 1);
-INSERT INTO `relation` VALUES (7376, 30, 1);
-INSERT INTO `relation` VALUES (7377, 43, 1);
-INSERT INTO `relation` VALUES (7378, 44, 1);
-INSERT INTO `relation` VALUES (7379, 45, 1);
-INSERT INTO `relation` VALUES (7380, 23, 1);
-INSERT INTO `relation` VALUES (7381, 48, 1);
-INSERT INTO `relation` VALUES (7382, 49, 1);
-INSERT INTO `relation` VALUES (7387, 36, 1);
-INSERT INTO `relation` VALUES (7390, 37, 1);
-INSERT INTO `relation` VALUES (7418, 227, 1);
-INSERT INTO `relation` VALUES (7419, 228, 1);
+INSERT INTO `relation` VALUES ('5762', '66', '9'), ('5765', '66', '10'), ('5768', '64', '12'), ('5770', '66', '12'), ('7008', '1', '13'), ('7009', '2', '13'), ('7010', '3', '13'), ('7011', '4', '13'), ('7012', '5', '13'), ('7013', '6', '13'), ('7014', '7', '13'), ('7015', '8', '13'), ('7016', '9', '13'), ('7017', '53', '13'), ('7018', '54', '13'), ('7019', '55', '13'), ('7020', '10', '13'), ('7021', '11', '13'), ('7022', '12', '13'), ('7023', '13', '13'), ('7024', '14', '13'), ('7025', '50', '13'), ('7026', '51', '13'), ('7027', '52', '13'), ('7028', '15', '13'), ('7029', '16', '13'), ('7030', '17', '13'), ('7031', '18', '13'), ('7032', '38', '13'), ('7033', '39', '13'), ('7034', '19', '13'), ('7035', '24', '13'), ('7036', '46', '13'), ('7037', '47', '13'), ('7038', '20', '13'), ('7039', '21', '13'), ('7040', '25', '13'), ('7041', '26', '13'), ('7042', '27', '13'), ('7043', '40', '13'), ('7044', '41', '13'), ('7045', '42', '13'), ('7046', '22', '13'), ('7047', '28', '13'), ('7048', '29', '13'), ('7049', '30', '13'), ('7050', '43', '13'), ('7051', '44', '13'), ('7052', '45', '13'), ('7053', '23', '13'), ('7054', '48', '13'), ('7055', '49', '13'), ('7060', '36', '13'), ('7062', '37', '13'), ('7064', '64', '13'), ('7073', '66', '13'), ('7282', '227', '2'), ('7283', '228', '2'), ('7335', '1', '1'), ('7336', '2', '1'), ('7337', '3', '1'), ('7338', '4', '1'), ('7339', '5', '1'), ('7340', '6', '1'), ('7341', '7', '1'), ('7342', '8', '1'), ('7343', '9', '1'), ('7344', '53', '1'), ('7345', '54', '1'), ('7346', '55', '1'), ('7347', '10', '1'), ('7348', '11', '1'), ('7349', '12', '1'), ('7350', '13', '1'), ('7351', '14', '1'), ('7352', '50', '1'), ('7353', '51', '1'), ('7354', '52', '1'), ('7355', '15', '1'), ('7356', '16', '1'), ('7357', '17', '1'), ('7358', '18', '1'), ('7359', '38', '1'), ('7360', '39', '1'), ('7361', '19', '1'), ('7362', '24', '1'), ('7363', '46', '1'), ('7364', '47', '1'), ('7365', '20', '1'), ('7366', '21', '1'), ('7367', '25', '1'), ('7368', '26', '1'), ('7369', '27', '1'), ('7370', '40', '1'), ('7371', '41', '1'), ('7372', '42', '1'), ('7373', '22', '1'), ('7374', '28', '1'), ('7375', '29', '1'), ('7376', '30', '1'), ('7377', '43', '1'), ('7378', '44', '1'), ('7379', '45', '1'), ('7380', '23', '1'), ('7381', '48', '1'), ('7382', '49', '1'), ('7387', '36', '1'), ('7390', '37', '1'), ('7418', '227', '1'), ('7419', '228', '1');
 COMMIT;
 
 -- ----------------------------
--- Table structure for role
+--  Table structure for `role`
 -- ----------------------------
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
@@ -2870,26 +2445,44 @@ CREATE TABLE `role` (
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='角色表';
 
 -- ----------------------------
--- Records of role
+--  Records of `role`
 -- ----------------------------
 BEGIN;
-INSERT INTO `role` VALUES (1, 1, 0, 'administrator', 1, '超级管理员', 1);
-INSERT INTO `role` VALUES (2, 2, 1, '内勤主管', 2, '内勤主管', NULL);
-INSERT INTO `role` VALUES (3, 3, 2, '内勤', 2, '内勤', NULL);
-INSERT INTO `role` VALUES (4, 4, 1, '验车师', 2, '验车师', NULL);
-INSERT INTO `role` VALUES (5, 5, 1, '面审主管', 2, '面审主管', NULL);
-INSERT INTO `role` VALUES (6, 6, 5, '面审', 2, '面审', NULL);
-INSERT INTO `role` VALUES (7, 7, 1, '终审', 2, '终审', NULL);
-INSERT INTO `role` VALUES (8, 8, 1, '抵押专员', 2, '抵押专员', NULL);
-INSERT INTO `role` VALUES (9, 9, 1, '业务经理', 2, '业务经理', NULL);
-INSERT INTO `role` VALUES (10, 10, 1, '财务经理', 2, '财务经理', NULL);
-INSERT INTO `role` VALUES (11, 11, 10, '财务', 2, '财务', NULL);
-INSERT INTO `role` VALUES (12, 12, 1, '前台财务', 1, '前台财务', NULL);
-INSERT INTO `role` VALUES (13, NULL, 0, 'admin', NULL, '管理员', NULL);
+INSERT INTO `role` VALUES ('1', '1', '0', 'administrator', '1', '超级管理员', '1'), ('2', '2', '1', '内勤主管', '2', '内勤主管', null), ('3', '3', '2', '内勤', '2', '内勤', null), ('4', '4', '1', '验车师', '2', '验车师', null), ('5', '5', '1', '面审主管', '2', '面审主管', null), ('6', '6', '5', '面审', '2', '面审', null), ('7', '7', '1', '终审', '2', '终审', null), ('8', '8', '1', '抵押专员', '2', '抵押专员', null), ('9', '9', '1', '业务经理', '2', '业务经理', null), ('10', '10', '1', '财务经理', '2', '财务经理', null), ('11', '11', '10', '财务', '2', '财务', null), ('12', '12', '1', '前台财务', '1', '前台财务', null), ('13', null, '0', 'admin', null, '管理员', null);
 COMMIT;
 
 -- ----------------------------
--- Table structure for s_cdss_cd
+--  Table structure for `s_attach`
+-- ----------------------------
+DROP TABLE IF EXISTS `s_attach`;
+CREATE TABLE `s_attach` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `type` int(2) DEFAULT NULL COMMENT '类型：1-工程概况中全景图片；2-场地类图片；3-健身路径类图片；4-其他类图片；5-场地类器材图片；6-健身路径类器材图片；7-其他类器材图片',
+  `prjid` int(11) DEFAULT NULL,
+  `prjtype` int(2) DEFAULT NULL COMMENT '项目类型；左侧菜单编号',
+  `cdsscdid` int(11) DEFAULT NULL,
+  `cdssjsljid` int(11) DEFAULT NULL,
+  `cdssqtid` int(11) DEFAULT NULL,
+  `qccdid` int(11) DEFAULT NULL,
+  `qcjsljid` int(11) DEFAULT NULL,
+  `qcqtid` int(11) DEFAULT NULL,
+  `picname` varchar(255) DEFAULT NULL COMMENT '图片名称',
+  `picurl` varchar(255) DEFAULT NULL COMMENT '图片上传路径',
+  `createtime` datetime DEFAULT NULL,
+  `updatetime` datetime DEFAULT NULL,
+  `isdelete` int(2) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+--  Records of `s_attach`
+-- ----------------------------
+BEGIN;
+INSERT INTO `s_attach` VALUES ('1', '1', '15', '1', null, null, null, null, null, null, null, '/resource/pics/2018-10-21/1c792109-3546-45b0-8427-003ba3cbf76a.jpg', '2018-10-21 11:24:44', null, '0'), ('2', '1', '15', '1', null, null, null, null, null, null, null, '/resource/pics/2018-10-21/7c1be6d9-1648-44db-81f3-cdba1e8fc005.jpg', '2018-10-21 12:35:18', null, '0'), ('3', '1', '15', '1', null, null, null, null, null, null, null, '/resource/pics/2018-10-21/bfbb7bec-bdd9-450a-bc72-147168b425a4.jpeg', '2018-10-21 12:35:42', null, '0'), ('4', '1', '15', '1', null, null, null, null, null, null, null, '/resource/pics/2018-10-21/bef06033-e4d7-4f01-8eae-a9bb05eeebcc.jpeg', '2018-10-21 12:35:50', null, '0'), ('11', '2', '11', '1', '9', null, null, null, null, null, null, '/resource/pics/2018-10-21/18bd7c4b-f180-41e6-a44a-cac8a9c37674.jpg', '2018-10-21 15:17:08', null, '0'), ('12', '2', '11', '1', '9', null, null, null, null, null, null, '/resource/pics/2018-10-21/2b5e7970-7513-470c-bb74-8782547f0574.jpg', '2018-10-21 15:21:29', null, '0'), ('13', '2', '11', '1', '9', null, null, null, null, null, null, '/resource/pics/2018-10-21/e51ca461-caa2-4d41-ac41-1491dc7e947b.jpeg', '2018-10-21 15:21:59', null, '0'), ('14', '2', '11', '1', '9', null, null, null, null, null, null, '/resource/pics/2018-10-21/c5ef2715-0605-45f0-9c6f-91b4d19ca41c.jpg', '2018-10-21 15:24:23', null, '0'), ('15', '2', '11', '1', '9', null, null, null, null, null, null, '/resource/pics/2018-10-21/c873ceeb-ca86-45a2-8cf3-c0c4f728f8a5.jpg', '2018-10-21 15:24:41', null, '0'), ('22', '2', '12', '1', '11', null, null, null, null, null, null, '/resource/pics/2018-10-21/8d9d4798-3d5d-423e-a973-6cd2a610d52c.jpeg', '2018-10-21 15:37:33', null, '0'), ('23', '2', '12', '1', '11', null, null, null, null, null, null, '/resource/pics/2018-10-21/95a68bc8-deda-4775-ba34-468fad0ab621.jpg', '2018-10-21 15:37:41', null, '0'), ('24', '3', '11', '1', null, '3', null, null, null, null, null, '/resource/pics/2018-10-21/629d1061-5576-4f72-bfba-4b81f69c9cb4.jpg', '2018-10-21 15:53:31', null, '0'), ('25', '3', '11', '1', null, '3', null, null, null, null, null, '/resource/pics/2018-10-21/7f598229-49c2-46a4-93f8-41aa978055d1.jpg', '2018-10-21 16:04:03', null, '0'), ('26', '4', '11', '1', null, null, '3', null, null, null, null, '/resource/pics/2018-10-21/ef5456c0-7651-4f14-ad0c-d2721fc0c78e.jpg', '2018-10-21 16:32:00', null, '0'), ('27', '5', '11', '1', '9', null, null, '6', null, null, null, '/resource/pics/2018-10-21/fc42a5ba-9be4-4648-a91a-8aee1c00f446.jpg', '2018-10-21 17:15:15', null, '0'), ('28', '5', '11', '1', '9', null, null, '6', null, null, null, '/resource/pics/2018-10-21/dc95ce98-d83b-44c9-b524-5ef48acd9ea1.jpg', '2018-10-21 17:18:13', null, '0'), ('29', '5', '11', '1', '9', null, null, '9', null, null, null, '/resource/pics/2018-10-21/0ae96744-22f7-4c7f-a1b0-e976be2a5f3d.jpg', '2018-10-21 17:19:53', null, '0'), ('30', '5', '11', '1', '9', null, null, '9', null, null, null, '/resource/pics/2018-10-21/e4f52ef5-75ae-48b8-9743-a9a35cdd8bef.jpg', '2018-10-21 17:19:56', null, '0'), ('31', '5', '11', '1', '9', null, null, '9', null, null, null, '/resource/pics/2018-10-21/6fad111d-7654-4223-86d7-14bb95f4693a.jpg', '2018-10-21 17:20:00', null, '0'), ('32', '6', '11', '1', null, '3', null, null, '8', null, null, '/resource/pics/2018-10-21/6f3c9aee-f2cf-496d-bccc-75e381a0b463.jpg', '2018-10-21 17:59:26', null, '0'), ('33', '6', '11', '1', null, '3', null, null, '8', null, null, '/resource/pics/2018-10-21/891d3b76-3477-4632-bd0a-e5e55ee569f7.jpg', '2018-10-21 18:01:19', null, '0'), ('34', '6', '11', '1', null, '3', null, null, '8', null, null, '/resource/pics/2018-10-21/9ee563a7-5588-44a7-a70c-8d4fa72e8960.jpeg', '2018-10-21 18:02:55', null, '0'), ('35', '6', '11', '1', null, '3', null, null, '3', null, null, '/resource/pics/2018-10-21/2578114b-68d4-4bf0-b922-19f34ed21a86.jpg', '2018-10-21 18:03:56', null, '0'), ('36', '7', '11', '3', null, null, null, null, null, '1', null, '/resource/pics/2018-10-21/d2927dec-fcbe-4276-a4e9-41900cd85505.jpg', '2018-10-21 19:41:47', null, '0'), ('37', '7', '11', '1', null, null, '3', null, null, '2', null, '/resource/pics/2018-10-21/339d8be9-52f1-4b09-936b-5bdfb831501b.jpg', '2018-10-21 19:50:49', null, '0'), ('38', '7', '11', '1', null, null, '3', null, null, '2', null, '/resource/pics/2018-10-21/50f67610-cef1-4782-a2c4-fc9652d94cde.jpg', '2018-10-21 20:05:47', null, '0'), ('39', '1', '16', '1', null, null, null, null, null, null, null, '/resource/pics/2018-10-21/aa49dbfb-3832-4cba-85c8-19fe0e864aec.jpg', '2018-10-21 20:14:25', null, '0'), ('40', '1', '18', '2', null, null, null, null, null, null, null, '/resource/pics/2018-10-21/0300be93-8cdb-4ec4-8188-add41a9b2cc1.jpg', '2018-10-21 21:22:32', null, '0');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `s_cdss_cd`
 -- ----------------------------
 DROP TABLE IF EXISTS `s_cdss_cd`;
 CREATE TABLE `s_cdss_cd` (
@@ -2900,18 +2493,25 @@ CREATE TABLE `s_cdss_cd` (
   `chang` varchar(10) CHARACTER SET utf8 DEFAULT NULL COMMENT '长',
   `kuan` varchar(10) CHARACTER SET utf8 DEFAULT NULL COMMENT '宽',
   `area` varchar(10) CHARACTER SET utf8 DEFAULT NULL COMMENT '面积',
-  `dimian` varchar(2) CHARACTER SET utf8 DEFAULT NULL COMMENT '地面',
-  `cddbqk` varchar(2) CHARACTER SET utf8 DEFAULT NULL COMMENT '场地达标情况',
+  `dimian` varchar(30) CHARACTER SET utf8 DEFAULT NULL COMMENT '地面',
+  `cddbqk` varchar(6) CHARACTER SET utf8 DEFAULT NULL COMMENT '场地达标情况',
   `beizhu` varchar(200) CHARACTER SET utf8 DEFAULT NULL COMMENT '备注',
   `pic` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '图片',
   `createtime` datetime DEFAULT NULL,
   `updatetime` datetime DEFAULT NULL,
   `isdelete` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Table structure for s_cdss_jslj
+--  Records of `s_cdss_cd`
+-- ----------------------------
+BEGIN;
+INSERT INTO `s_cdss_cd` VALUES ('9', '11', '1', '羽毛球场', '10', '10', '100', '', '是', '场地很好', '1111111', '2018-10-12 21:21:23', '2018-10-21 15:22:41', '0'), ('10', '10', '2', '橄榄球场', '10', '10', '100', '混凝土', '是', '备注', '11111111111', '2018-10-12 21:26:05', null, '0'), ('11', '12', '1', '乒乓球场1', '1', '1', '11', '1', '是1', '', '1', '2018-10-13 22:39:45', null, '0');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `s_cdss_jslj`
 -- ----------------------------
 DROP TABLE IF EXISTS `s_cdss_jslj`;
 CREATE TABLE `s_cdss_jslj` (
@@ -2923,41 +2523,122 @@ CREATE TABLE `s_cdss_jslj` (
   `kuan` varchar(10) CHARACTER SET utf8 DEFAULT NULL COMMENT '宽',
   `area` varchar(10) CHARACTER SET utf8 DEFAULT NULL COMMENT '面积',
   `dbqk` varchar(2) CHARACTER SET utf8 DEFAULT NULL COMMENT '达标情况',
-  `cllx` varchar(2) CHARACTER SET utf8 DEFAULT NULL COMMENT '材料类型',
-  `pic` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '图片',
+  `cllx` varchar(50) CHARACTER SET utf8 DEFAULT NULL COMMENT '材料类型',
+  `pic` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '图片',
   `createtime` datetime DEFAULT NULL,
   `updatetime` datetime DEFAULT NULL,
   `isdelete` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Table structure for s_cdss_qc
+--  Records of `s_cdss_jslj`
 -- ----------------------------
-DROP TABLE IF EXISTS `s_cdss_qc`;
-CREATE TABLE `s_cdss_qc` (
+BEGIN;
+INSERT INTO `s_cdss_jslj` VALUES ('1', '10', '2', '健身路径', '11', '11', '1000', '否', '合成材料', '2222', '2018-10-13 10:21:18', '2018-10-13 10:25:11', '1'), ('2', '11', '1', '健身路径', '10', '10', '100', '是', '花砖', '111', '2018-10-14 14:14:46', null, '0'), ('3', '11', '1', '健身路径测试', '10', '10', '100', '是', '花砖', null, '2018-10-21 15:53:16', null, '0');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `s_cdss_qc_cd`
+-- ----------------------------
+DROP TABLE IF EXISTS `s_cdss_qc_cd`;
+CREATE TABLE `s_cdss_qc_cd` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `prjid` int(11) DEFAULT NULL COMMENT '项目id',
-  `cdssid` int(11) DEFAULT NULL COMMENT '场地设施id',
+  `prjtype` int(11) DEFAULT NULL COMMENT '项目类型',
+  `cdid` int(11) DEFAULT NULL COMMENT '场地id',
+  `jssb` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '健身设备',
+  `bh` varchar(30) CHARACTER SET utf8 DEFAULT NULL COMMENT '编号',
+  `provider` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '供应商',
+  `azsj` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '安装时间',
+  `qcxz` varchar(50) CHARACTER SET utf8 DEFAULT NULL COMMENT '器材现状',
+  `sfbf` varchar(50) CHARACTER SET utf8 DEFAULT '否' COMMENT '是否报废',
+  `gzms` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '故障描述',
+  `hcc` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '缓冲层',
+  `mfwhqx` varchar(3) CHARACTER SET utf8 DEFAULT NULL COMMENT '免费维护期限',
+  `aqsyqx` varchar(3) CHARACTER SET utf8 DEFAULT NULL COMMENT '安全使用期限',
+  `createtime` datetime DEFAULT NULL,
+  `isdelete` int(1) DEFAULT NULL,
+  `updatetime` datetime DEFAULT NULL,
+  `xh` varchar(1) DEFAULT NULL COMMENT '该字段无用',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+--  Records of `s_cdss_qc_cd`
+-- ----------------------------
+BEGIN;
+INSERT INTO `s_cdss_qc_cd` VALUES ('6', '11', '1', '9', '1', '1', '1', '', '1', null, '1', '1', '1', '1', '2018-10-14 10:29:01', '0', null, null), ('7', '12', '1', '11', '1', '1', '1', '1111-01-01', '1', null, '1', '1', '1', '1', '2018-10-14 14:13:43', '0', null, null), ('8', '11', '1', '2', '1', '1', '1', '2018-01-01', '1', null, '1', '1', '1', '1', '2018-10-14 14:40:24', '0', null, null), ('9', '11', '1', '9', '篮球架', '001', '供应商', '2018-10-17', '正常使用', null, '是', '是', '1', '1', '2018-10-21 17:19:38', '0', null, null);
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `s_cdss_qc_jslj`
+-- ----------------------------
+DROP TABLE IF EXISTS `s_cdss_qc_jslj`;
+CREATE TABLE `s_cdss_qc_jslj` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `prjid` int(11) DEFAULT NULL COMMENT '项目id',
+  `prjtype` int(11) DEFAULT NULL COMMENT '项目类型',
+  `jsljid` int(11) DEFAULT NULL COMMENT '健身路径id',
   `xh` varchar(3) CHARACTER SET utf8 DEFAULT NULL COMMENT '序号',
   `jssb` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '健身设备',
   `bh` varchar(3) CHARACTER SET utf8 DEFAULT NULL COMMENT '编号',
   `provider` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '供应商',
   `azsj` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '安装时间',
   `qcxz` varchar(50) CHARACTER SET utf8 DEFAULT NULL COMMENT '器材现状',
-  `sfbf` varchar(50) CHARACTER SET utf8 DEFAULT NULL COMMENT '是否报废',
+  `sfbf` varchar(50) CHARACTER SET utf8 DEFAULT '否' COMMENT '是否报废',
   `gzms` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '故障描述',
   `hcc` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '缓冲层',
-  `mfwhq` varchar(3) CHARACTER SET utf8 DEFAULT NULL COMMENT '免费维护期',
-  `zqsyq` varchar(3) CHARACTER SET utf8 DEFAULT NULL COMMENT '免费使用期',
+  `mfwhqx` varchar(3) CHARACTER SET utf8 DEFAULT NULL COMMENT '免费维护期限',
+  `aqsyqx` varchar(3) CHARACTER SET utf8 DEFAULT NULL COMMENT '安全使用期限',
   `createtime` datetime DEFAULT NULL,
   `isdelete` int(1) DEFAULT NULL,
   `updatetime` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Table structure for s_cdss_qt
+--  Records of `s_cdss_qc_jslj`
+-- ----------------------------
+BEGIN;
+INSERT INTO `s_cdss_qc_jslj` VALUES ('2', '11', '1', '2', null, '1', '1', '1', '2018-01-01', '1', null, '1', '1', '1', '1', '2018-10-14 20:43:42', '0', null), ('3', '11', '1', '3', null, '健身车', '001', '供应商', '2018-10-12', '正常使用', null, '1', '是', '1', '1', '2018-10-21 17:49:02', '0', null), ('4', '11', '1', '3', null, '健身车', '001', '供应商', '2018-10-12', '正常使用', null, '1', '是', '1', '1', '2018-10-21 17:50:06', '0', null), ('5', '11', '1', '3', null, '篮球架', '001', '1', '', '正常使用', null, '', '是', '1', '', '2018-10-21 17:54:25', '0', null), ('6', '11', '1', '3', null, '篮球架', '001', '1', '', '正常使用', null, '', '是', '1', '', '2018-10-21 17:55:22', '0', null), ('7', '11', '1', '3', null, '自行车', '001', '1', '2018-10-03', '存在一般安全隐患', null, '', '是', '1', '11', '2018-10-21 17:57:25', '0', null), ('8', '11', '1', '3', null, '肋木架', '12', '', '', '', null, '', '', '', '', '2018-10-21 17:59:06', '0', null);
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `s_cdss_qc_qt`
+-- ----------------------------
+DROP TABLE IF EXISTS `s_cdss_qc_qt`;
+CREATE TABLE `s_cdss_qc_qt` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `prjid` int(11) DEFAULT NULL COMMENT '项目id',
+  `prjtype` int(11) DEFAULT NULL COMMENT '项目类型',
+  `qtid` int(11) DEFAULT NULL COMMENT '其他类id',
+  `xh` varchar(3) CHARACTER SET utf8 DEFAULT NULL COMMENT '序号',
+  `jssb` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '健身设备',
+  `bh` varchar(3) CHARACTER SET utf8 DEFAULT NULL COMMENT '编号',
+  `provider` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '供应商',
+  `azsj` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '安装时间',
+  `qcxz` varchar(50) CHARACTER SET utf8 DEFAULT NULL COMMENT '器材现状',
+  `sfbf` varchar(50) CHARACTER SET utf8 DEFAULT '否' COMMENT '是否报废',
+  `gzms` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '故障描述',
+  `hcc` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '缓冲层',
+  `mfwhqx` varchar(3) CHARACTER SET utf8 DEFAULT NULL COMMENT '免费维护期限',
+  `aqsyqx` varchar(3) CHARACTER SET utf8 DEFAULT NULL COMMENT '安全使用期限',
+  `createtime` datetime DEFAULT NULL,
+  `isdelete` int(1) DEFAULT NULL,
+  `updatetime` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+--  Records of `s_cdss_qc_qt`
+-- ----------------------------
+BEGIN;
+INSERT INTO `s_cdss_qc_qt` VALUES ('2', '11', '1', '3', null, '单杠', '001', 'q', '', '正常使用', null, '1', '是', '', '', '2018-10-21 19:50:20', '0', null);
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `s_cdss_qt`
 -- ----------------------------
 DROP TABLE IF EXISTS `s_cdss_qt`;
 CREATE TABLE `s_cdss_qt` (
@@ -2967,17 +2648,24 @@ CREATE TABLE `s_cdss_qt` (
   `jsss` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '健身设施',
   `num` varchar(10) CHARACTER SET utf8 DEFAULT NULL COMMENT '数量',
   `area` varchar(10) CHARACTER SET utf8 DEFAULT NULL COMMENT '面积',
-  `wz` varchar(3) CHARACTER SET utf8 DEFAULT NULL COMMENT '位置',
+  `wz` varchar(10) CHARACTER SET utf8 DEFAULT NULL COMMENT '位置',
   `beizhu` varchar(200) CHARACTER SET utf8 DEFAULT NULL COMMENT '备注',
-  `pic` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '图片',
+  `pic` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '图片',
   `createtime` datetime DEFAULT NULL,
   `updatetime` datetime DEFAULT NULL,
   `isdelete` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Table structure for s_prj_base
+--  Records of `s_cdss_qt`
+-- ----------------------------
+BEGIN;
+INSERT INTO `s_cdss_qt` VALUES ('1', '10', '2', '单杠', '1', '100', '东子顺村', '备注', '11111111', '2018-10-13 15:19:50', '2018-10-13 15:25:02', '0'), ('2', '10', '2', '健身设施', '1', '100', '东子顺村', '备注', '11111111', '2018-10-13 15:23:10', '2018-10-13 15:30:54', '1'), ('3', '11', '1', '健身设施', '1', '100', '室内', '', null, '2018-10-21 16:31:56', null, '0');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `s_prj_base`
 -- ----------------------------
 DROP TABLE IF EXISTS `s_prj_base`;
 CREATE TABLE `s_prj_base` (
@@ -2989,10 +2677,10 @@ CREATE TABLE `s_prj_base` (
   `area` varchar(10) CHARACTER SET utf8 DEFAULT NULL COMMENT '占地面积(平方米)',
   `begintime` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '开工时间',
   `endtime` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '完工时间',
-  `provider` varchar(3) CHARACTER SET utf8 DEFAULT NULL COMMENT '供应商',
-  `jsfa` varchar(3) CHARACTER SET utf8 DEFAULT NULL COMMENT '建设方案',
-  `dljd` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '地理经度',
-  `dlwd` varchar(20) CHARACTER SET utf8 DEFAULT NULL COMMENT '地理纬度',
+  `provider` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '供应商',
+  `jsfa` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '建设方案',
+  `dljd` varchar(200) CHARACTER SET utf8 DEFAULT NULL COMMENT '地理经度',
+  `dlwd` varchar(200) CHARACTER SET utf8 DEFAULT NULL COMMENT '地理纬度',
   `qjpic1` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '全景照片1',
   `qjpic2` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '全景照片2',
   `qjpic3` varchar(100) CHARACTER SET utf8 DEFAULT NULL COMMENT '全景照片3',
@@ -3000,25 +2688,17 @@ CREATE TABLE `s_prj_base` (
   `updatetime` datetime DEFAULT NULL,
   `isdelete` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Records of s_prj_base
+--  Records of `s_prj_base`
 -- ----------------------------
 BEGIN;
-INSERT INTO `s_prj_base` VALUES (1, '1', '11', '1', '东子顺村', '1', '2018-10-10', '2018-10-19', '1', '1', '1', '1', '1', '1', '1', '2018-10-11 09:50:20', '2018-10-11 17:20:49', 0);
-INSERT INTO `s_prj_base` VALUES (2, '1', '22', '1', '黄巢村', '1', '2018-10-10', '2018-10-19', '1', '1', '1', '1', '1', '1', '1', '2018-10-11 09:50:39', '2018-10-11 17:21:17', 0);
-INSERT INTO `s_prj_base` VALUES (3, '1', '33', '1', '蔡峪村', '1', '2018-01-01', '2018-01-01', '1', '1', '1', '1', '1', '1', '1', '2018-10-11 09:52:41', '2018-10-11 17:21:56', 0);
-INSERT INTO `s_prj_base` VALUES (4, '1', '44', '1', '南苑小区', '1', '2018-01-01', '2018-01-01', '1', '1', '1', '1', '1', '1', '1', '2018-10-11 09:55:02', '2018-10-11 17:22:22', 0);
-INSERT INTO `s_prj_base` VALUES (5, '1', '55', '1', '银丰公馆', '1', '2018-01-01', '2018-01-01', '1', '1', '1', '1', '1', '1', '1', '2018-10-11 10:37:23', '2018-10-11 17:22:52', 0);
-INSERT INTO `s_prj_base` VALUES (6, '1', '66', '2', '鲁能领秀城', '2', '2018-01-01', '2018-01-01', '2', '2', '2', '2', '2', '2', '2', '2018-10-11 10:45:27', '2018-10-11 17:23:09', 0);
-INSERT INTO `s_prj_base` VALUES (7, '2', '2', '2', '大门牙村', '2', '2018-01-01', '2018-01-01', '3', '3', '3', '3', '3', '3', '3', '2018-10-11 10:46:50', '2018-10-11 17:23:48', 0);
-INSERT INTO `s_prj_base` VALUES (8, '2', '3', '3', '小门牙村', '3', '2018-01-01', '2018-01-01', '3', '3', '3', '3', '3', '3', '3', '2018-10-11 10:52:11', '2018-10-11 17:24:10', 0);
-INSERT INTO `s_prj_base` VALUES (9, '2', '工程地区', '工程名称', '建设地点', '12345', '2018-01-01', '2018-01-01', '供应商', '1', '10.123456778', '10.12345677', '11111111111111111111111111111111', '11111111111111111111111111', '11111111111111111111111111', '2018-10-11 11:28:56', NULL, 0);
+INSERT INTO `s_prj_base` VALUES ('10', '2', '济南市平阴县', '社区体育健身工程', '东子顺村', '100', '2018-01-01', '2018-09-01', '山东省济南市永康健身器材供应商', '篮球场加乒乓球台加健身路径', '10.34567890', '11.34567890', '1111111111111111111111111', '222222222222222222', '333333333333333333', '2018-10-12 21:02:12', null, '0'), ('11', '1', '山东省济南市平阴县锦水街道村委会', '农民健身工程', '寨前村', '100', '2018-01-01', '2018-09-01', '山东省济南市永康健身器材供应商', '篮球场加健身路径加乒乓球场', '10.1231213', '10.12312312313', '1111111111111111', '12222222222222', '2223333333333', '2018-10-12 21:19:25', '2018-10-12 21:19:30', '0'), ('12', '1', '锦水街道乡镇', '11111', '1', '1', '2018-10-13', '2018-10-06', '1', '1', '1', '1', '1', '1', '1', '2018-10-13 22:39:11', null, '0'), ('13', '1', '锦水街道乡镇', '工程名称1', '黄巢村', '100', '2018-10-13', '2018-10-13', '供应商1', '建设大年哈', '10.1111114', '10.2255555', '111111111', '222222222', '3333333', '2018-10-13 22:50:48', null, '0'), ('15', '1', '锦水街道乡镇', '测试工程', '北京市', '100', '', '', '', '', '东经：116.0° 23.0& #39; 20.088000000005195', '北纬：36.0° 18.0& #39; 13.60800000001177', null, null, null, '2018-10-21 10:25:21', '2018-10-21 13:10:41', '0'), ('16', '1', '锦水街道乡镇', '农民健身工程锦水街道', '东子顺村委会', '100', '2018-10-10', '2019-03-06', '供应商', '1', '东经：116.0° 23.0& #39; 20.088000000005195\"', '北纬：36.0° 18.0& #39; 13.60800000001177\"', null, null, null, '2018-10-21 20:14:20', null, '0'), ('17', '1', '锦水街道乡镇', '123', '123', '123', '', '', '123', '123', '', '', null, null, null, '2018-10-21 20:25:10', null, '0'), ('18', '2', '锦水街道乡镇', '', '', '', '', '', '', '', '东经：116.0° 23.0& #39; 20.088000000005195\"', '北纬：36.0° 18.0& #39; 13.60800000001177\"', null, null, null, '2018-10-21 21:22:26', null, '0'), ('19', '2', '锦水街道乡镇', 'shequjianshen', '1', '1', '', '', '', '1', '', '', null, null, null, '2018-10-21 21:23:51', null, '0');
 COMMIT;
 
 -- ----------------------------
--- Table structure for s_provider
+--  Table structure for `s_provider`
 -- ----------------------------
 DROP TABLE IF EXISTS `s_provider`;
 CREATE TABLE `s_provider` (
@@ -3031,7 +2711,7 @@ CREATE TABLE `s_provider` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Table structure for user
+--  Table structure for `user`
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -3053,13 +2733,13 @@ CREATE TABLE `user` (
   `createtime` datetime DEFAULT NULL COMMENT '创建时间',
   `version` int(11) DEFAULT NULL COMMENT '保留字段',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8 COMMENT='管理员表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='管理员表';
 
 -- ----------------------------
--- Records of user
+--  Records of `user`
 -- ----------------------------
 BEGIN;
-INSERT INTO `user` VALUES (1, 'girl.gif', 'admin', 'ecfadcde9305f8891bcfe5a1e28c253e', '8pgby', '超级管理员', '2017-05-05 00:00:00', 1, 'sn93@qq.com', '18888888888', '1', '1,9,10', NULL, NULL, 1, '2016-01-29 08:49:53', 25);
+INSERT INTO `user` VALUES ('1', 'girl.gif', 'admin', 'ecfadcde9305f8891bcfe5a1e28c253e', '8pgby', '超级管理员', '2017-05-05 00:00:00', '1', 'sn93@qq.com', '18888888888', '1', '11', null, null, '1', '2016-01-29 08:49:53', '25');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -88,7 +88,6 @@ public class LoginController extends BaseController {
 
         String username = super.getPara("username").trim();
         String password = super.getPara("password").trim();
-        String loginFlag =super.getPara("loginFlag").trim();
 
         //验证验证码是否正确
         if(ToolUtil.getKaptchaOnOff()){
@@ -112,7 +111,6 @@ public class LoginController extends BaseController {
         LogManager.me().executeLog(LogTaskFactory.loginLog(shiroUser.getId(), HttpKit.getIp()));
 
         ShiroKit.getSession().setAttribute("sessionFlag",true);
-        ShiroKit.getSession().setAttribute("loginFlag",loginFlag);
 
         return REDIRECT + "/";
     }

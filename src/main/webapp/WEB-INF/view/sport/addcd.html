@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0"/>
+    <link rel="stylesheet" type="text/css" href="${ctxPath}/static/css/sport/basic.css">
     <title>器材巡检</title>
     <style>
         fieldset {
@@ -38,9 +39,12 @@
 <body>
     <fieldset>
         <legend>场地类</legend>
+        <details>
+            <summary>场地类基本信息</summary>
         <input type="hidden" name="prjtype" id="prjtype" value="${cdsscd.prjtype}">
         <input type="hidden" name="prjId" id="prjId" value="${cdsscd.prjid}">
         <input type="hidden" name="cdId" id="cdId" value="${cdsscd.id}">
+        <input type="hidden" name="idPicUrls" id="idPicUrls" value="${idPicUrls}">
 
         <label for="cdname">场地名称:</label>
         <input id="cdname" list="cdnamelist" value="${cdsscd.cdname}"/>
@@ -62,9 +66,9 @@
             <option value="气旋球">
 
         </datalist>
-        <label for="chang">长:</label>
+        <label for="chang">长(米):</label>
         <input type="text" id="chang" name="chang" placeholder="" value="${cdsscd.chang}">
-        <label for="kuan">宽:</label>
+        <label for="kuan">宽(米):</label>
         <input type="text" id="kuan" name="kuan" placeholder="" value="${cdsscd.kuan}">
         <label for="area">面积(平方米):</label>
         <input type="text" id="area" name="area" placeholder="" value="${cdsscd.area}">
@@ -86,17 +90,43 @@
         </datalist>
         <label for="beizhu">备注:</label>
         <input type="text" id="beizhu" name="beizhu" placeholder="" value="${cdsscd.beizhu}">
-        <label for="pic">照片:</label>
-        <input type="text" id="pic" name="pic" placeholder="" value="${cdsscd.pic}">
-        <input type="button" value="保存" style="width: 10%;" onclick="saveCd()">
-        <input type="button" value="删除" style="width: 10%;" onclick="logicDelete()">
-        <input type="button" value="查看工程概况信息" style="width: 10%;" onclick="showPrj()">
-        <input type="button" value="器材管理" style="width: 10%;" onclick="showQcCd()">
-        <input type="button" value="返回首页" style="width: 10%;" onclick="back()">
+        <!--<input type="text" id="pic" name="pic" placeholder="" value="${cdsscd.pic}">-->
+        <input type="button" value="保存" style="width: 20%;" onclick="saveCd()">
+        <input type="button" value="删除" style="width: 20%;" onclick="logicDelete()">
+        <input type="button" value="查看工程概况信息" style="width: 40%;" onclick="showPrjDetail()">
+        <input type="button" value="器材管理" style="width: 30%;" onclick="showQcCd()">
+        <input type="button" value="返回首页" style="width: 30%;" onclick="back()">
+        </details>
+        <details>
+            <summary>图片信息</summary>
+            <label for="fileInpBtn">上传场地照片:</label><br>
+            <input style="width: 60%;" id="fileInpBtn" type="file" accept="image/jpeg"  multiple>
+            <input type="button" value="上传" style="width: 20%;" onclick="uploadPic()"><br>
+
+            <main class="product_list_page_met_16_3 met-product animsition type-1" m-id="37">
+                <div class="container">
+                    <div class="row clearfix right">
+                        <div class="col-md-9 met-news-body">
+                            <div class="row">
+                                <ul class=" blocks-xs-2 blocks-md-2 blocks-lg-4 blocks-xxl-4  met-pager-ajax imagesize met-product-list met-grid" id="met-grid" data-scale="300x400" style="position: relative; height: 508.266px;">
+                                    <!--<li class="shown"><div class="card card-shadow"><img style="margin-top: 20px;" class="cover-image" src="http://192.168.1.100:8888/resource/pics/2018-10-21/1c792109-3546-45b0-8427-003ba3cbf76a.jpg"></div></li>-->
+                                    <!--<li class="shown"><div class="card card-shadow"><img style="margin-top: 20px;" class="cover-image" src="http://192.168.1.100:8888/resource/pics/2018-10-21/1c792109-3546-45b0-8427-003ba3cbf76a.jpg"></div></li>-->
+                                    <!--<li class="shown"><div class="card card-shadow"><img style="margin-top: 20px;" class="cover-image" src="http://192.168.1.100:8888/resource/pics/2018-10-21/1c792109-3546-45b0-8427-003ba3cbf76a.jpg"></div></li>-->
+                                </ul>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </main>
+        </details>
     </fieldset>
 
 <script src="${ctxPath}/static/js/jquery.min.js"></script>
 <script src="${ctxPath}/static/modular/sport/addcd.js"></script>
+<script src="${ctxPath}/static/js/imgLook.js"></script>
 
 </body>
 </html>

@@ -1,12 +1,5 @@
+var idPicUrls = $("#idPicUrls").val();
 function savePrj() {
-
-    var fileObj = document.getElementById("fileInpBtn").files[0];
-    var fileUrl = this.uploadFile(fileObj);
-    $("#courtPersonalPhoto").val(fileUrl);
-
-
-    return;
-
     var id = $("#prjId").val();
     var prjname = $("#prjname").val();
     var prjtype = $("#prjtype").val();
@@ -113,13 +106,49 @@ function showQt() {
     window.location.href="/sprjbase/showQtList?prjId="+prjId+"&prjType="+prjtype;
 }
 
-function showPicture(imgFile){
-    alert("url地址："+window.URL.createObjectURL(imgFile.files[0]));
-    /*获取上传文件的路径，并赋给img标签*/
-    document.getElementById("newImage").src = window.URL.createObjectURL(imgFile.files[0]);
+
+function uploadPic() {
+    var fileObj = document.getElementById("fileInpBtn").files[0];
+    if(fileObj==null||fileObj.name==null||fileObj.name==""){
+        alert("请选择图片！");
+        return;
+    }
+    var fileUrl = this.uploadFile(fileObj);
+    var prjId = $("#prjId").val();
+    if(prjId==""||prjId==null||prjId==undefined){
+        alert("请先保存工程类基本信息！");
+        return;
+    }
+    var prjtype = $("#prjtype").val();
+    $.ajax({
+        type: "POST",
+        url: '/attach/saveOrUpdate',
+        dataType: 'json',
+        data: {
+            'type':1,
+            'prjid':prjId,
+            'prjtype':prjtype,
+            'picurl':fileUrl
+        },
+        success: function(data) {
+            var status = data.status;
+            if(status=='0'){
+                alert("上传图片成功！");
+                showPics();
+            }else{
+                alert("上传图片失败！"+data.msg);
+            }
+        },
+        error: function() {
+            alert("上传图片异常！");
+
+        }
+    });
+
 }
 
 function uploadFile(file) {
+
     var formData = new FormData();
     formData.append("file", file);
     var returnUrl = "";
@@ -143,16 +172,59 @@ function uploadFile(file) {
         success: function(data) {
             var status=data.status;
             if(status=='0'){
-                returnUrl = data.data;
+                returnUrl = data.filePath;
+                var jd = data.jd;
+                var wd = data.wd;
+                $("#dljd").val(jd);
+                $("#dlwd").val(wd);
             }else{
                 returnUrl = "";
             }
         },
         error: function(data) {
-            Feng.info("保存异常！");
+            Feng.info("上传图片异常！");
             returnUrl = "";
         }
 
     });
     return returnUrl;
 }
+
+function showPics() {
+    var prjId = $("#prjId").val();
+    var prjType = $("#prjtype").val();
+    $.ajax({
+        type: "POST",
+        url: '/attach/pageQuery',
+        dataType: 'json',
+        data: {
+            'prjtype':prjType,
+            'prjid':prjId,
+            'type':1
+        },
+        success: function(data) {
+            var status = data.status;
+            $("#met-grid").html("");
+            if(status=='0'){
+                var html ="";
+                $.each(data.data.list,function(i){
+
+                    html +="<li class=\"shown\" >"
+                        +"<div class=\"card card-shadow\">"
+                        +"<img class=\"cover-image\" src=\""+idPicUrls+data.data.list[i].picurl+"\" ></li>";
+
+                });
+
+                $("#met-grid").append(html);
+
+            }
+        },
+        error: function() {
+            alert("保存数据异常！");
+
+        }
+    });
+}
+$(document).ready(function () {
+    showPics();
+});

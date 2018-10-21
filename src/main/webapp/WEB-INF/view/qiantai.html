@@ -8,7 +8,7 @@
     <title>健身器材巡检系统</title>
     <meta name="description" content="健身器材巡检系统">
     <meta name="keywords" content="健身器材巡检系统">
-    <!--<meta name="generator" content="MetInfo 6.1.1" data-variable="https://show.metinfo.cn/m/mui102/370/|cn|cn|mui102|3|5|0" data-user_name="">-->
+    <meta name="generator" content="MetInfo 6.1.1" data-variable="https://show.metinfo.cn/m/mui102/370/|cn|cn|mui102|3|5|0" data-user_name="">
     <link href="https://show.metinfo.cn/m/mui102/370/favicon.ico" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="${ctxPath}/static/css/sport/basic.css">
     <link rel="stylesheet" type="text/css" href="${ctxPath}/static/css/sport/product_cn.css">
@@ -31,55 +31,6 @@
                 <div style="float: right;">
                 欢迎您：${shiro.getUser().name} | <a href="${ctxPath}/admin/logout">退出</a>
                 </div>
-
-                <!-- <div class="v52fmbx content_add">
-                 <dl>
-                     <dd class="ftype_select-linkage">
-                         <div class="fbox" style="float:left;">
-                             <select name="class1_select" class="prov" data-required="1">
-                                 <option value="">请选择省份</option>
-                                 <option value="3-2-0">山东省</option>
-                                 <option value="4-3-0">河北省</option>
-                                 <option value="38-5-0">河南省</option>
-                                 <option value="72-4-0">山西省</option>
-                             </select>
-                             <select name="class2_select" class="city">
-                                 <option value="">请选择城市</option>
-                                 <option value="3-2-0">济南市</option>
-                                 <option value="4-3-0">潍坊市</option>
-                                 <option value="38-5-0">青岛市</option>
-                                 <option value="72-4-0">威海市</option>
-                             </select>
-                             <select name="class3_select" class="dist">
-                                 <option value="">请选择县/区</option>
-                                 <option value="3-2-0">平阴县</option>
-                                 <option value="4-3-0">历城区</option>
-                                 <option value="38-5-0">市中区</option>
-                                 <option value="72-4-0">天桥区</option>
-                             </select>
-                             <select name="class3_select" class="dist">
-                                 <option value="">请选择镇</option>
-                                 <option value="3-2-0">柳埠镇</option>
-                                 <option value="4-3-0">仲宫镇</option>
-                                 <option value="38-5-0">王舍人镇</option>
-                             </select>
-                             <select name="class3_select" class="dist">
-                                 <option value="">请选择村/小区</option>
-                                 <option value="3-2-0">大蔡峪村</option>
-                                 <option value="4-3-0">黄巢村</option>
-                                 <option value="38-5-0">长峪村</option>
-                                 <option value="38-5-0">四季花园小区</option>
-                             </select>
-
-                         </div>
-                         <input type="submit" name="submit" value="搜索" class="submit">
-
-                     </dd>
-
-                 </dl>
-
-             </div> -->
-
             </div>
         </div>
     </div>
@@ -93,7 +44,7 @@
                 <div class="row">
                     <ol class="breadcrumb m-b-0 subcolumn-crumbs">
                         <li class="breadcrumb-item">
-                            当前位置：农民体育健身工程
+                            当前位置：<span id="showPrjName">农民体育健身工程</span>
                         </li>
                         <li class="breadcrumb-item">
                             <a href="javascript:showAddPrj()" title="" class="">添加</a>
@@ -141,10 +92,10 @@
                                 <a href="https://show.metinfo.cn/m/mui102/370/product/product.php?class2=20" title="周边小镇" class="">乡镇/街道健身工程</a>
                             </li>
                             <li>
-                                <a href="javascript:showPrjByType(1)" title="周末出游" class="">农民体育健身工程</a>
+                                <a href="javascript:showPrjByType(1)">农民体育健身工程</a>
                             </li>
                             <li>
-                                <a href="javascript:showPrjByType(2)" title="城区闲逛" class="">社区体育健身工程</a>
+                                <a href="javascript:showPrjByType(2)">社区体育健身工程</a>
                             </li>
 
                             <li>
@@ -198,7 +149,6 @@
 
 <script src="${ctxPath}/static/js/sport/basic.js"></script>
 <script src="${ctxPath}/static/modular/sport/qiantai.js"></script>
-<script src="${ctxPath}/static/js/common/Feng.js"></script>
 <script>
     var metpagejs="${ctxPath}/static/js/sport/product_cn.js";
     if(typeof jQuery != "undefined"){
