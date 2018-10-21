@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,8 @@ public class ScdssQtController {
 
 	@Autowired
 	SCdssQtService service;
+	@Value("${file.identity_pic_urls}")
+	private String idPicUrls;
 
 	@ApiOperation(value = "保存或更新")
 	@ApiImplicitParam(paramType = "body", name = "entity", required = true, dataType = "TelecomRoamInfo", value = "明细")
@@ -191,6 +194,7 @@ public class ScdssQtController {
 		cdssqt.setPrjid(prjId);
 		cdssqt.setPrjtype(prjType);
 		model.addAttribute("cdssqt",cdssqt);
+		model.addAttribute("idPicUrls",idPicUrls);
 		return "/sport/addqt.html";
 	}
 
@@ -206,6 +210,7 @@ public class ScdssQtController {
 		model.addAttribute("cdssqt",cdssqt);
 //		ShiroUser shiroUser = ShiroKit.getUser();
 //		model.addAttribute("deptId",shiroUser.getDeptId());
+		model.addAttribute("idPicUrls",idPicUrls);
 		return "/sport/addqt.html";
 	}
 

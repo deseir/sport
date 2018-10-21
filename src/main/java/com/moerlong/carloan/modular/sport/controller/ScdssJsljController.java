@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,8 @@ public class ScdssJsljController {
 
 	@Autowired
 	SCdssJsljService service;
+	@Value("${file.identity_pic_urls}")
+	private String idPicUrls;
 
 	@ApiOperation(value = "保存或更新")
 	@ApiImplicitParam(paramType = "body", name = "entity", required = true, dataType = "TelecomRoamInfo", value = "明细")
@@ -186,6 +189,7 @@ public class ScdssJsljController {
 		jslj.setPrjid(prjId);
 		jslj.setPrjtype(prjType);
 		model.addAttribute("jslj",jslj);
+		model.addAttribute("idPicUrls",idPicUrls);
 		return "/sport/addjslj.html";
 	}
 
@@ -199,6 +203,7 @@ public class ScdssJsljController {
 	public String showJsljDetail(@RequestParam Integer jsljId, Model model) {
 		SCdssJslj jslj = this.service.selectById(jsljId);
 		model.addAttribute("jslj",jslj);
+		model.addAttribute("idPicUrls",idPicUrls);
 		return "/sport/addjslj.html";
 	}
 

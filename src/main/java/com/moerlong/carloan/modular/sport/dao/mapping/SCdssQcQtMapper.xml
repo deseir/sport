@@ -243,13 +243,13 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <!-- 查询所有 -->
-  <select id="listAll" resultType="com.moerlong.carloan.modular.sport.entity.SCdssCd">
+  <select id="listAll" resultType="com.moerlong.carloan.modular.sport.entity.SCdssQcQt">
     select
     <include refid="Base_Column_List" />
     from s_cdss_qc_qt
   </select>
   <!-- 查询（分页查询） -->
-  <select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.sport.entity.SCdssCd">
+  <select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.sport.entity.SCdssQcQt">
     select
     <include refid="Base_Column_List" />
     from s_cdss_qc_qt

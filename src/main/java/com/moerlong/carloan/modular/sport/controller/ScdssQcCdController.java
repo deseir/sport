@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,8 @@ public class ScdssQcCdController {
 
 	@Autowired
 	SCdssQcCdService service;
+	@Value("${file.identity_pic_urls}")
+	private String idPicUrls;
 
 	@ApiOperation(value = "保存或更新")
 	@ApiImplicitParam(paramType = "body", name = "entity", required = true, dataType = "TelecomRoamInfo", value = "明细")
@@ -187,6 +190,7 @@ public class ScdssQcCdController {
 		cdssqccd.setPrjtype(prjType);
 		cdssqccd.setCdid(cdId);
 		model.addAttribute("cdssqccd",cdssqccd);
+		model.addAttribute("idPicUrls",idPicUrls);
 		return "/sport/addqccd.html";
 	}
 
@@ -200,6 +204,7 @@ public class ScdssQcCdController {
 	public String showCdDetail(@RequestParam Integer qcCdId, Model model) {
 		SCdssQcCd cdssqccd = this.service.selectById(qcCdId);
 		model.addAttribute("cdssqccd",cdssqccd);
+		model.addAttribute("idPicUrls",idPicUrls);
 		return "/sport/addqccd.html";
 	}
 }
