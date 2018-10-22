@@ -42,6 +42,7 @@ function savePrj() {
             if(status=='0'){
                 $("#prjId").val(data.prjId);
                 alert("保存数据成功！");
+                showBtns();
             }else{
                 alert("保存数据失败！"+data.msg);
             }
@@ -113,10 +114,14 @@ function uploadPic() {
         alert("请选择图片！");
         return;
     }
-    var fileUrl = this.uploadFile(fileObj);
     var prjId = $("#prjId").val();
     if(prjId==""||prjId==null||prjId==undefined){
-        alert("请先保存工程类基本信息！");
+        alert("请先保存基本信息！");
+        return;
+    }
+    var fileUrl = this.uploadFile(fileObj);
+    if(fileUrl==""||fileUrl==null){
+        alert("上传图片失败!");
         return;
     }
     var prjtype = $("#prjtype").val();
@@ -148,13 +153,14 @@ function uploadPic() {
 }
 
 function uploadFile(file) {
-
+    var prjId = $("#prjId").val();
     var formData = new FormData();
     formData.append("file", file);
+    formData.append("prjId",prjId);
     var returnUrl = "";
     $.ajax({
         type: "POST",
-        url: "/file/upload/idCard",
+        url: "/prjfile/upload/pic",
         /**
          *必须false才会自动加上正确的Content-Type
          */
@@ -175,14 +181,19 @@ function uploadFile(file) {
                 returnUrl = data.filePath;
                 var jd = data.jd;
                 var wd = data.wd;
-                $("#dljd").val(jd);
-                $("#dlwd").val(wd);
+                if(jd!=null&&jd!=undefined&&jd!=""){
+                    $("#dljd").val(jd);
+                }
+                if(wd!=null&&wd!=undefined&&wd!=""){
+                    $("#dlwd").val(wd);
+                }
+
             }else{
                 returnUrl = "";
             }
         },
         error: function(data) {
-            Feng.info("上传图片异常！");
+            alert("上传图片异常！");
             returnUrl = "";
         }
 
@@ -227,4 +238,20 @@ function showPics() {
 }
 $(document).ready(function () {
     showPics();
+    showBtns();
 });
+
+function showBtns() {
+    var prjId = $("#prjId").val();
+    if(prjId !=null && prjId !="" && prjId !=undefined){
+        $("#delBtn").show();
+        $("#seeCdBtn").show();
+        $("#seeJsljBtn").show();
+        $("#seeQtBtn").show();
+    }else{
+        $("#delBtn").hide();
+        $("#seeCdBtn").hide();
+        $("#seeJsljBtn").hide();
+        $("#seeQtBtn").hide();
+    }
+}

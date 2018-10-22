@@ -45,14 +45,13 @@ public class QianTaiController extends BaseController {
      * @return
      */
     @RequestMapping("/showPrjDetail")
-    public String showPrjDetail(@RequestParam Integer prjId,@RequestParam String showPrjName, Model model) {
+    public String showPrjDetail(@RequestParam Integer prjId, Model model) {
         model.addAttribute("prjId",prjId);
         SPrjBase prjBase = prjBaseService.selectById(prjId);
         model.addAttribute("prjBase",prjBase);
         ShiroUser shiroUser = ShiroKit.getUser();
         model.addAttribute("deptId",shiroUser.getDeptId());
         model.addAttribute("idPicUrls",idPicUrls);
-        model.addAttribute("showPrjName",showPrjName);
         return PREFIX + "addprj.html";
     }
 

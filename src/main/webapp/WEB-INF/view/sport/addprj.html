@@ -70,10 +70,10 @@
         <label for="dlwd">地理纬度:</label>
         <input type="text" id="dlwd" name="dlwd" readonly="readonly" placeholder="" value="${prjBase.dlwd}">
         <input type="button" value="保存" style="width: 20%;" onclick="savePrj()">
-        <input type="button" value="删除" style="width: 20%;" onclick="logicDelete()">
-        <input type="button" value="查看场地类" style="width: 30%;" onclick="showCd()">
-        <input type="button" value="查看健身路径类" style="width: 40%;" onclick="showJslj()">
-        <input type="button" value="查看其他类" style="width: 30%;" onclick="showQt()">
+        <input id="delBtn" type="button" value="删除" style="width: 20%;" onclick="logicDelete()">
+        <input id="seeCdBtn" type="button" value="查看场地类" style="width: 30%;" onclick="showCd()">
+        <input id="seeJsljBtn" type="button" value="查看健身路径类" style="width: 40%;" onclick="showJslj()">
+        <input id="seeQtBtn" type="button" value="查看其他类" style="width: 30%;" onclick="showQt()">
         <input type="button" value="返回" style="width: 20%;" onclick="back()">
         </details>
 
