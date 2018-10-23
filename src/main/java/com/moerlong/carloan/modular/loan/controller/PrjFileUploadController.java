@@ -153,8 +153,8 @@ public class PrjFileUploadController {
                 }
                 map.put("jd",jd.toString());
                 map.put("wd",wd.toString());
-                prjBase.setDljd(dljd);
-                prjBase.setDlwd(dlwd);
+                prjBase.setDljd(jd.toString());
+                prjBase.setDlwd(wd.toString());
                 service.updateWithOutNull(prjBase);
             } catch (JpegProcessingException e) {
                 e.printStackTrace();

@@ -31,6 +31,7 @@ function saveJslj() {
             if(status=='0'){
                 $("#jsljId").val(data.jsljId);
                 alert("保存数据成功！");
+                showBtns();
             }else{
                 alert("保存数据失败！"+data.msg);
             }
@@ -207,5 +208,21 @@ $(document).ready(function () {
     var jsljId = $("#jsljId").val();
     if(jsljId!=null && jsljId!="" &&jsljId !=undefined){
         showPics();
+        $("#delBtn").show();
+        $("#qcGlBtn").show();
+    }else{
+        $("#delBtn").hide();
+        $("#qcGlBtn").hide();
     }
 });
+
+function showBtns() {
+    var jsljId = $("#jsljId").val();
+    if(jsljId !=null && jsljId !="" && jsljId !=undefined){
+        $("#delBtn").show();
+        $("#qcGlBtn").show();
+    }else{
+        $("#delBtn").hide();
+        $("#qcGlBtn").hide();
+    }
+}

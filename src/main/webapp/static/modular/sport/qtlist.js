@@ -9,7 +9,7 @@ $(document).ready(
 
 function  searchPage(o) {
     var prjType = $("#prjType").val();
-    var prjId = $("#priId").val();
+    var prjId = $("#prjId").val();
     var pageNum = null;
     if(prjType==null||prjType==""||prjType==undefined){
         prjType=1;

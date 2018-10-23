@@ -37,9 +37,9 @@ function saveQcJslj() {
         success: function(data) {
             var status = data.status;
             if(status=='0'){
-                alert(data.qcJsljId);
                 $("#qcJsljId").val(data.qcJsljId);
                 alert("保存数据成功！");
+                showBtns();
             }else{
                 alert("保存数据失败！"+data.msg);
             }
@@ -212,5 +212,17 @@ $(document).ready(function () {
     var qcJsljId = $("#qcJsljId").val();
     if(qcJsljId!=null && qcJsljId!="" &&qcJsljId !=undefined){
         showPics();
+        $("#delBtn").show();
+    }else{
+        $("#delBtn").hide();
     }
 });
+
+function showBtns() {
+    var qcJsljId = $("#qcJsljId").val();
+    if(qcJsljId !=null && qcJsljId !="" && qcJsljId !=undefined){
+        $("#delBtn").show();
+    }else{
+        $("#delBtn").hide();
+    }
+}

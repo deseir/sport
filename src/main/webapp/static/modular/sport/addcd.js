@@ -33,6 +33,7 @@ function saveCd() {
             if(status=='0'){
                 $("#cdId").val(data.cdId);
                 alert("保存数据成功！");
+                showBtns();
             }else{
                 alert("保存数据失败！"+data.msg);
             }
@@ -210,5 +211,21 @@ $(document).ready(function () {
     var cdId = $("#cdId").val();
     if(cdId!=null && cdId!="" &&cdId !=undefined){
         showPics();
+        $("#delBtn").show();
+        $("#qcGlBtn").show();
+    }else{
+        $("#delBtn").hide();
+        $("#qcGlBtn").hide();
     }
 });
+
+function showBtns() {
+    var cdId = $("#cdId").val();
+    if(cdId !=null && cdId !="" && cdId !=undefined){
+        $("#delBtn").show();
+        $("#qcGlBtn").show();
+    }else{
+        $("#delBtn").hide();
+        $("#qcGlBtn").hide();
+    }
+}
