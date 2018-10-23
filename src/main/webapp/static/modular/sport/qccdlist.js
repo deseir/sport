@@ -1,5 +1,13 @@
 $(document).ready(
     function () {
+        var prjType = $("#prjType").val();
+        if(prjType==1){
+            $("#showPrjName").text("农民体育健身工程");
+        }else if(prjType==2){
+            $("#showPrjName").text("社区体育健身工程");
+        }else{
+            $("#showPrjName").text("农民体育健身工程");
+        }
         searchPage(0);
     }
 );

@@ -82,7 +82,8 @@ function logicDelete() {
 }
 
 function back() {
-    window.location.href="/";
+    var prjType = $("#prjtype").val();
+    window.location.href="/qiantai/showQt?prjType="+prjType;
 }
 
 //跳转场地列表页

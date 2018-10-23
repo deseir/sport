@@ -61,12 +61,10 @@ public class QianTaiController extends BaseController {
      * @param model
      * @return
      */
-    @RequestMapping("/showIndex")
-    public String showIndex(@RequestParam Integer prjType, Model model) {
+    @RequestMapping("/showQt")
+    public String showQt(@RequestParam Integer prjType, Model model) {
         model.addAttribute("prjType",prjType);
-        return "qiantai.html";
+        return "/qiantai.html";
     }
-
-
 
 }

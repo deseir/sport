@@ -64,7 +64,7 @@ public class LoginController extends BaseController {
         User user = userMapper.selectById(id);
         String avatar = user.getAvatar();
         model.addAttribute("avatar", avatar);
-
+        model.addAttribute("prjType",1);//默认设置项目类型为 1-农民体育健身工程
         return "/qiantai.html";
     }
 

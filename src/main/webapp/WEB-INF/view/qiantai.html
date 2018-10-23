@@ -44,7 +44,7 @@
                 <div class="row">
                     <ol class="breadcrumb m-b-0 subcolumn-crumbs">
                         <li class="breadcrumb-item">
-                            当前位置：<span id="showPrjName">农民体育健身工程</span>
+                            当前位置：<span id="showPrjName" >${session.showPrjName==null?"农民体育健身工程":session.showPrjName}</span>
                         </li>
                         <li class="breadcrumb-item">
                             <a href="javascript:showAddPrj()" title="" class="">添加</a>
@@ -82,14 +82,14 @@
 
                         <ul class="sidebar-column list-icons">
                             <li>
-                                <input type="hidden" id="prjType">
-                                <a title="旅游发展" class="active " target="_blank">工程信息采集</a>
+                                <input type="hidden" id="prjType" value="${prjType}">
+                                <a  class=" " target="">工程信息采集</a>
                             </li>
                             <li>
-                                <a href="https://show.metinfo.cn/m/mui102/370/about2/" title="旅游规划" class="">全民健身中心</a>
+                                <a href=""  class="">全民健身中心</a>
                             </li>
                             <li>
-                                <a href="https://show.metinfo.cn/m/mui102/370/product/product.php?class2=20" title="周边小镇" class="">乡镇/街道健身工程</a>
+                                <a href=""  class="">乡镇/街道健身工程</a>
                             </li>
                             <li>
                                 <a href="javascript:showPrjByType(1)">农民体育健身工程</a>
@@ -99,32 +99,32 @@
                             </li>
 
                             <li>
-                                <a href="https://show.metinfo.cn/m/mui102/370/product/product.php?class2=22" title="城区闲逛" class="">户外体育健身工程</a>
+                                <a href=""  class="">户外体育健身工程</a>
                             </li>
                             <li>
-                                <a href="https://show.metinfo.cn/m/mui102/370/product/product.php?class2=22" title="城区闲逛" class="">体育广场</a>
+                                <a href=""  class="">体育广场</a>
                             </li>
                             <li>
-                                <a href="https://show.metinfo.cn/m/mui102/370/product/product.php?class2=22" title="城区闲逛" class="">社区多功能运动场</a>
+                                <a href=""  class="">社区多功能运动场</a>
                             </li>
                         </ul>
                         <div class="sidebar-news-list recommend">
                             <h3 class="font-size-16 m-0">综合统计查询</h3>
                             <ul class="list-group list-group-bordered m-t-10 m-b-0">
                                 <li class="list-group-item ">
-                                    <a href="https://show.metinfo.cn/m/mui102/370/product/showproduct.php?id=8" title="综合查询" target="_self" class="">综合查询</a>
+                                    <a href="" title="综合查询" target="_self" class="">综合查询</a>
                                 </li>
                                 <li class="list-group-item ">
-                                    <a href="https://show.metinfo.cn/m/mui102/370/product/showproduct.php?id=9" title="工程信息普查统计" target="_self" class="">工程信息普查统计</a>
+                                    <a href="" title="工程信息普查统计" target="_self" class="">工程信息普查统计</a>
                                 </li>
                             </ul>
                         </div>
                         <ul class="sidebar-column list-icons">
                             <li class="list-group-item ">
-                                <a href="https://show.metinfo.cn/m/mui102/370/product/showproduct.php?id=8" title="海底世界" target="_self" class="">报废预警</a>
+                                <a href="" title="海底世界" target="_self" class="">报废预警</a>
                             </li>
                             <li class="list-group-item ">
-                                <a href="https://show.metinfo.cn/m/mui102/370/product/showproduct.php?id=9" title="橘子洲" target="_self" class="">器材报废预警</a>
+                                <a href="" title="橘子洲" target="_self" class="">器材报废预警</a>
                             </li>
                         </ul>
                     </aside>
