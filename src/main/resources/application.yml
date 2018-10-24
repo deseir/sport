@@ -90,9 +90,9 @@ mybatis-plus:
 spring:
   profiles: dev
   datasource:
-      url: jdbc:mysql://localhost:3306/sportQc?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&multiStatementAllow=true
-      username: root
-      password: '123456'
+      url: jdbc:mysql://140.143.35.16:3306/sportQc?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&multiStatementAllow=true
+      username: sportadmin
+      password: 'sport2018-C#'
       filters: log4j,wall,mergeStat
       
 logging:
@@ -101,7 +101,7 @@ logging:
   file: carloan.log
 
 file:
-  identity_pic_path: /nodedata/node/loantest/identityPic
+  identity_pic_path: /usr/local/resources/sport/pics
   liveness_pic_path: /nodedata/node/loantest/livenessPic
   protobuf_path: /nodedata/node/loantest/protobuf
   vehicle_pic_path: /nodedata/node/carInsure/vehiclePic
@@ -120,9 +120,9 @@ file:
   car_pgs_pic_path: /nodedata/node/carInsure/gpsPhoto
 
 
-  identity_pic_url: http://10.1.2.232:8888/resource/loantest/identityPic
-  identity_pic_urls: http://10.1.2.232:8888
-  identity_pic_urlsx: /resource/loantest/identityPic
+  identity_pic_url: http://140.143.35.16:8888/resource/pics
+  identity_pic_urls: http://140.143.35.16:8888
+  identity_pic_urlsx: /resource/pics
   liveness_pic_url: http://static.h2fintech.com/loantest/livenessPic
   protobuf_url: http://static.h2fintech.com/loantest/protobuf
   vehicle_pic_url: http://static.h2fintech.com/carInsure/vehiclePic
@@ -151,207 +151,3 @@ system:
   telecomAuth:
       url: http://123.59.181.202:9990/api/v1/report/car_loan/support/carrier
 ---
-
-##########################################################
-###################  测试（开发）环境的profile  ###################
-##########################################################
-spring:
-  profiles: test
-  datasource:
-      url: jdbc:mysql://v1.mysql.server:3306/carloanfront?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&multiStatementAllow=true
-      username: car_loan_sa
-      password: '@tsingnuo2017-C#'
-      filters: log4j,wall,mergeStat
-
-logging:
-  level.root: info
-  path: logs/
-  file: carloan.log
-
-file:
-  identity_pic_path: /nodedata/node/loantest/identityPic
-  liveness_pic_path: /nodedata/node/loantest/livenessPic
-  protobuf_path: /nodedata/node/loantest/protobuf
-  vehicle_pic_path: /nodedata/node/carInsure/vehiclePic
-  register_pic_path: /nodedata/node/carInsure/registerPic
-  strong_insure_pic_path: /nodedata/node/carInsure/strongInsurePic
-  buss_insure_pic_path: /nodedata/node/carInsure/bussInsurePic
-  contact_pdf_path: /nodedata/node/loantest/contactPdf
-  #contact_pdf_path: D:/contactPdf
-  #mortgage_contract_pic_path: d:/mortgageContract #抵押合同(车管所）照片地址
-  #proxy_book_pic_path: d:/proxyBook #委托书（客户签字授权）照片地址
-  #cert_photo_pic_path: d:/certPhoto #身份证复印件照片地址(上有客户签名和手机号码)
-  #car_pgs_pic_path: d:/gpsPhoto
-  mortgage_contract_pic_path: /nodedata/node/carInsure/mortgageContract #抵押合同(车管所）照片地址
-  proxy_book_pic_path: /nodedata/node/carInsure/proxyBook #委托书（客户签字授权）照片地址
-  cert_photo_pic_path: /nodedata/node/carInsure/certPhoto #身份证复印件照片地址(上有客户签名和手机号码)
-  car_pgs_pic_path: /nodedata/node/carInsure/gpsPhoto
-
-
-  identity_pic_url: http://10.1.2.239:8888/resource/loantest/identityPic
-  identity_pic_urls: http://10.1.2.239:8888
-  identity_pic_urlsx: /resource/loantest/identityPic
-  liveness_pic_url: http://static.h2fintech.com/loantest/livenessPic
-  protobuf_url: http://static.h2fintech.com/loantest/protobuf
-  vehicle_pic_url: http://static.h2fintech.com/carInsure/vehiclePic
-  register_pic_url: http://static.h2fintech.com/carInsure/registerPic
-  strong_insure_pic_url: http://static.h2fintech.com/carInsure/strongInsurePic
-  buss_insure_pic_url: http://static.h2fintech.com/carInsure/bussInsurePic
-
-
-system:
-  paycenter:
-    channleKey: HFadface123@12#as
-    costUrl: http://v.paycenter.server:9781/paycenter/services/borrow/replaceCost/easyDeduceRequestService
-    costQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/queryCostOrder
-    payUrl: http://v.paycenter.server:9781/paycenter/services/borrow/mrlFrontPayRequestService
-    payQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/queryPayOrder
-    singleCostQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/replaceCost/borrowDeduceRequestService
-    singlePayQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/mrlBorrowPayRequestService
-    mrlcostUrl: http://v.paycenter.server:9781/paycenter/services/borrow/replaceCost/morReplaceCostRequestService
-    mrlcostQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/replaceCost/morQueryRequestService
-  sms:
-    url: http://v.ismg.server:9000/ismg/sms/
-  selectBank:
-    url: http://v.paycenter.server:9781/paycenter/services/getBankInfoRequestService
-  excel:
-    filepath: /data/fund_sys/
-  telecomAuth:
-      url: http://123.59.181.202:9990/api/v1/report/car_loan/support/carrier
----
-
-##########################################################
-###################  UAT测试环境的profile  ###################
-##########################################################
-spring:
-  profiles: uat
-  datasource:
-      url: jdbc:mysql://v1.mysql.server:3306/carloanuat?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&multiStatementAllow=true
-      username: car_loan_sa
-      password: '@tsingnuo2017-C#'
-      filters: log4j,wall,mergeStat
-
-logging:
-  level.root: info
-  path: logs/
-  file: carloan.log
-
-file:
-  identity_pic_path: /nodedata/node/loantest/identityPic
-  liveness_pic_path: /nodedata/node/loantest/livenessPic
-  protobuf_path: /nodedata/node/loantest/protobuf
-  vehicle_pic_path: /nodedata/node/carInsure/vehiclePic
-  register_pic_path: /nodedata/node/carInsure/registerPic
-  strong_insure_pic_path: /nodedata/node/carInsure/strongInsurePic
-  buss_insure_pic_path: /nodedata/node/carInsure/bussInsurePic
-  contact_pdf_path: /nodedata/node/loantest/contactPdf
-  #contact_pdf_path: D:/contactPdf
-  #mortgage_contract_pic_path: d:/mortgageContract #抵押合同(车管所）照片地址
-  #proxy_book_pic_path: d:/proxyBook #委托书（客户签字授权）照片地址
-  #cert_photo_pic_path: d:/certPhoto #身份证复印件照片地址(上有客户签名和手机号码)
-  #car_pgs_pic_path: d:/gpsPhoto
-  mortgage_contract_pic_path: /nodedata/node/carInsure/mortgageContract #抵押合同(车管所）照片地址
-  proxy_book_pic_path: /nodedata/node/carInsure/proxyBook #委托书（客户签字授权）照片地址
-  cert_photo_pic_path: /nodedata/node/carInsure/certPhoto #身份证复印件照片地址(上有客户签名和手机号码)
-  car_pgs_pic_path: /nodedata/node/carInsure/gpsPhoto
-
-
-  identity_pic_url: http://10.1.2.247:8096/identityPic
-  identity_pic_urls: http://10.1.2.247:8096
-  identity_pic_urlsx: /identityPic
-  liveness_pic_url: http://static.h2fintech.com/loantest/livenessPic
-  protobuf_url: http://static.h2fintech.com/loantest/protobuf
-  vehicle_pic_url: http://static.h2fintech.com/carInsure/vehiclePic
-  register_pic_url: http://static.h2fintech.com/carInsure/registerPic
-  strong_insure_pic_url: http://static.h2fintech.com/carInsure/strongInsurePic
-  buss_insure_pic_url: http://static.h2fintech.com/carInsure/bussInsurePic
-
-
-system:
-  paycenter:
-    channleKey: HFadface123@12#as
-    costUrl: http://v.paycenter.server:9781/paycenter/services/borrow/replaceCost/easyDeduceRequestService
-    costQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/queryCostOrder
-    payUrl: http://v.paycenter.server:9781/paycenter/services/borrow/mrlFrontPayRequestService
-    payQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/queryPayOrder
-    singleCostQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/replaceCost/borrowDeduceRequestService
-    singlePayQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/mrlBorrowPayRequestService
-    mrlcostUrl: http://v.paycenter.server:9781/paycenter/services/borrow/replaceCost/morReplaceCostRequestService
-    mrlcostQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/replaceCost/morQueryRequestService
-  sms:
-    url: http://v.ismg.server:9000/ismg/sms/
-  selectBank:
-    url: http://v.paycenter.server:9781/paycenter/services/getBankInfoRequestService
-  excel:
-    filepath: /data/fund_sys/
-  telecomAuth:
-      url: http://123.59.181.202:9990/api/v1/report/car_loan/support/carrier
----
-
-##########################################################
-###################  正式环境的profile  ###################
-##########################################################
-spring:
-  profiles: produce
-  datasource:
-      url: jdbc:mysql://v1.mysql.server:3306/carloanfront?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&multiStatementAllow=true
-      username: car_loan_sa
-      password: '@tsingnuo2017-C#'
-      filters: log4j,wall,mergeStat
-logging:
-  level.root: info
-  path: logs/
-  file: carloan.log
-file:
-  identity_pic_path: /nodedata/node/loantest/identityPic
-  liveness_pic_path: /nodedata/node/loantest/livenessPic
-  protobuf_path: /nodedata/node/loantest/protobuf
-  vehicle_pic_path: /nodedata/node/carInsure/vehiclePic
-  register_pic_path: /nodedata/node/carInsure/registerPic
-  strong_insure_pic_path: /nodedata/node/carInsure/strongInsurePic
-  buss_insure_pic_path: /nodedata/node/carInsure/bussInsurePic
-  contact_pdf_path: /nodedata/node/loantest/contactPdf
-  #contact_pdf_path: D:/contactPdf
-  #mortgage_contract_pic_path: d:/mortgageContract #抵押合同(车管所）照片地址
-  #proxy_book_pic_path: d:/proxyBook #委托书（客户签字授权）照片地址
-  #cert_photo_pic_path: d:/certPhoto #身份证复印件照片地址(上有客户签名和手机号码)
-  #car_pgs_pic_path: d:/gpsPhoto
-  mortgage_contract_pic_path: /nodedata/node/carInsure/mortgageContract #抵押合同(车管所）照片地址
-  proxy_book_pic_path: /nodedata/node/carInsure/proxyBook #委托书（客户签字授权）照片地址
-  cert_photo_pic_path: /nodedata/node/carInsure/certPhoto #身份证复印件照片地址(上有客户签名和手机号码)
-  car_pgs_pic_path: /nodedata/node/carInsure/gpsPhoto
-
-  #图片服务器地址
-  identity_pic_url: http://car.moerlong.com/loantest/identityPic
-  identity_pic_urls: http://car.moerlong.com
-  identity_pic_urlsx: /loantest/identityPic
-  liveness_pic_url: http://static.h2fintech.com/loantest/livenessPic
-  protobuf_url: http://static.h2fintech.com/loantest/protobuf
-  vehicle_pic_url: http://static.h2fintech.com/carInsure/vehiclePic
-  register_pic_url: http://static.h2fintech.com/carInsure/registerPic
-  strong_insure_pic_url: http://static.h2fintech.com/carInsure/strongInsurePic
-  buss_insure_pic_url: http://static.h2fintech.com/carInsure/bussInsurePic
-
-
-system:
-  paycenter:
-    channleKey: HFadface123@12#as
-    costUrl: http://v.paycenter.server:9781/paycenter/services/borrow/replaceCost/easyDeduceRequestService
-    costQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/queryCostOrder
-    payUrl: http://v.paycenter.server:9781/paycenter/services/borrow/mrlFrontPayRequestService
-    payQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/queryPayOrder
-    singleCostQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/replaceCost/borrowDeduceRequestService
-    singlePayQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/mrlBorrowPayRequestService
-    mrlcostUrl: http://v.paycenter.server:9781/paycenter/services/borrow/replaceCost/morReplaceCostRequestService
-    mrlcostQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/replaceCost/morQueryRequestService
-  sms:
-    url: http://v.ismg.server:9000/ismg/sms/
-  selectBank:
-    url: http://v.paycenter.server:9781/paycenter/services/getBankInfoRequestService
-  excel:
-    filepath: /data/fund_sys/
-  telecomAuth:
-      url: http://123.59.181.202:9990/api/v1/report/car_loan/support/carrier
----
-
-
