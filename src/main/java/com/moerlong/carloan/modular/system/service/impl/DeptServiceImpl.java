@@ -2,6 +2,8 @@ package com.moerlong.carloan.modular.system.service.impl;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.moerlong.carloan.common.persistence.dao.DeptMapper;
 import com.moerlong.carloan.common.persistence.dao.UserMapper;
 import com.moerlong.carloan.common.persistence.model.Dept;
@@ -16,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -74,6 +77,13 @@ public class DeptServiceImpl implements IDeptService {
     @Override
     public List<Dept> getAllSubDeptByDeptId(Integer deptId) {
         return deptDao.getAllSubDeptByDeptId(deptId);
+    }
+
+    public PageInfo<Dept> selectPage(int pageSize, int pageNum, Map<String,Object> param) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<Dept> pageList = deptDao.selectPage(param);
+        PageInfo<Dept> pageInfo = new PageInfo<Dept>(pageList);
+        return pageInfo;
     }
 
 }

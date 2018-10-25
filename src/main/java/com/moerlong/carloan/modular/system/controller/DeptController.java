@@ -18,6 +18,7 @@ import com.moerlong.carloan.core.util.ToolUtil;
 import com.moerlong.carloan.modular.system.dao.DeptDao;
 import com.moerlong.carloan.modular.system.service.IDeptService;
 import com.moerlong.carloan.modular.system.warpper.DeptWarpper;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,8 +32,6 @@ import java.util.Map;
 /**
  * 部门控制器
  *
- * @author hwl
- * @Date 2017年2月17日20:27:22
  */
 @Controller
 @RequestMapping("/dept")
@@ -208,6 +207,38 @@ public class DeptController extends BaseController {
             res.put("status", 1);
             res.put("errMsg", e.getMessage());
         }
+        return res;
+    }
+
+    @ApiOperation(value = "分页查询")
+    @ApiImplicitParam(paramType = "body", name = "queryMap", required = false, dataType = "Map", value = "查询条件")
+    @RequestMapping(value = "/selectPage", method = RequestMethod.POST)
+    @ResponseBody
+    public Object selectPage(@RequestParam Map<String,Object> queryMap) {
+        Map<String, Object> res = new HashMap<>();
+        Integer pageNum = 1; //页数从1开始
+        Integer pageSize = 10; //页面大小
+
+        try {
+            if(queryMap!=null) {
+                if(queryMap.get("pageNum")!=null&&!"".equals(queryMap.get("pageNum"))) {
+                    pageNum = Integer.parseInt((String)queryMap.get("pageNum"));
+                }
+                if(queryMap.get("pageSize")!=null) {
+                    pageSize = Integer.parseInt((String)queryMap.get("pageSize"));
+                }
+            }
+
+            Object pageInfo = this.deptService.selectPage(pageSize, pageNum, queryMap);
+
+            res.put("data", pageInfo);
+            res.put("status", 0);
+            res.put("errMsg", "操作成功");
+        } catch (Throwable e) {
+            res.put("status", 1);
+            res.put("errMsg", e.getMessage());
+        }
+
         return res;
     }
 }

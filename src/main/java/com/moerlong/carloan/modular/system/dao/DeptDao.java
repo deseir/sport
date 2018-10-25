@@ -36,4 +36,11 @@ public interface DeptDao {
     List<Dept> selectAllSubDept(@Param("deptId") Integer deptId);
 
     List<Dept> getAllSubDeptByDeptId (@Param("deptId") Integer deptId);
+
+    /**
+     * 分页查询
+     * @param param	查询参数
+     * @return
+     */
+    public List<Dept> selectPage(Map<String,Object> param);
 }

@@ -1,9 +1,11 @@
 package com.moerlong.carloan.modular.system.service;
 
+import com.github.pagehelper.PageInfo;
 import com.moerlong.carloan.common.persistence.model.Dept;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 部门服务
@@ -24,4 +26,10 @@ public interface IDeptService {
     String getAllSubDept(Integer userId);
     String selectAllDept(Integer userId);
     List<Dept> getAllSubDeptByDeptId (@Param("deptId") Integer deptId);
+    /**
+     * 分页查询
+     * @param param	查询参数
+     * @return
+     */
+    public PageInfo<Dept> selectPage(int pageSize, int pageNum, Map<String,Object> param);
 }
