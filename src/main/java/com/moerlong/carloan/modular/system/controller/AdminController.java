@@ -71,7 +71,7 @@ public class AdminController extends BaseController {
         String avatar = user.getAvatar();
         model.addAttribute("avatar", avatar);
 
-        return "/index.html";
+        return "/houtai.html";
     }
 
     /**
