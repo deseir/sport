@@ -5,6 +5,7 @@ import com.moerlong.carloan.common.controller.BaseController;
 import com.moerlong.carloan.common.exception.InvalidKaptchaException;
 import com.moerlong.carloan.common.node.MenuNode;
 import com.moerlong.carloan.common.persistence.dao.UserMapper;
+import com.moerlong.carloan.common.persistence.model.User;
 import com.moerlong.carloan.core.log.LogManager;
 import com.moerlong.carloan.core.log.factory.LogTaskFactory;
 import com.moerlong.carloan.core.shiro.ShiroKit;
@@ -12,10 +13,10 @@ import com.moerlong.carloan.core.shiro.ShiroUser;
 import com.moerlong.carloan.core.support.HttpKit;
 import com.moerlong.carloan.core.util.ToolUtil;
 import com.moerlong.carloan.modular.system.dao.MenuDao;
-import com.moerlong.carloan.common.persistence.model.User;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +40,8 @@ public class LoginController extends BaseController {
 
     @Autowired
     UserMapper userMapper;
+    @Value("${file.identity_pic_urls}")
+    private String idPicUrls;
 
     /**
      * 跳转到主页
@@ -64,8 +67,9 @@ public class LoginController extends BaseController {
         User user = userMapper.selectById(id);
         String avatar = user.getAvatar();
         model.addAttribute("avatar", avatar);
-        model.addAttribute("prjType",1);//默认设置项目类型为 1-农民体育健身工程
-        return "/qiantai.html";
+//        model.addAttribute("prjType",1);//默认设置项目类型为 1-农民体育健身工程
+        model.addAttribute("idPicUrls",idPicUrls);
+        return "/index.html";
     }
 
     /**
