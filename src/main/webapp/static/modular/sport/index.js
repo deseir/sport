@@ -47,10 +47,10 @@ function  searchPage(o) {
                     html +="<li class=\"shown\" >"
                         +"<div class=\"card card-shadow\">"
                         +"<figure class=\"card-header cover\">"
-                        +"<a href='/qiantai/showPrjDetail?prjId="+data.data.list[i].id+"' title='"+data.data.list[i].simplename+"' target=\"_self\">"
+                        +"<a href=\"javascript:showOneSubDept("+data.data.list[i].id+",'"+data.data.list[i].simplename+"')\" target=\"_self\">"
                         +"<img class=\"cover-image\" src=\""+idPicUrls+data.data.list[i].tips+"\" alt='"+data.data.list[i].simplename+"'>"
                         +"</a></figure><h4 class=\"card-title m-0 p-x-10 font-size-16 text-xs-center\">"
-                        +"<a href='/qiantai/showPrjDetail?prjId="+data.data.list[i].id+"' title='"+data.data.list[i].simplename+"' class=\"block\" target=\"_self\">"+data.data.list[i].simplename+"</a>"
+                        +"<a href='/qiantai/showQt?deptId="+data.data.list[i].id+"&prjType=1' title='"+data.data.list[i].simplename+"' class=\"block\" target=\"_self\">"+data.data.list[i].simplename+"</a>"
                         +"<p class=\"m-b-0 m-t-5 red-600\"></p></h4></div></li>";
 
                 });
@@ -69,6 +69,11 @@ function  searchPage(o) {
 
         }
     });
+}
+
+function showOneSubDept(deptSubId,deptSubName) {
+    var deptId = $("#deptId").val();
+    window.location.href="/qiantai/showQt?deptId="+deptId+"&deptSubId="+deptSubId+"&deptSubName="+deptSubName+"&prjType=1";
 }
 
 

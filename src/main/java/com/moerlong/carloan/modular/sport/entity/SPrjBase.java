@@ -39,6 +39,12 @@ public class SPrjBase {
 
     private Integer isdelete;
 
+    private String deptid;
+
+    private String deptsubid;
+
+    private String sfxj;
+
     public Integer getId() {
         return id;
     }
@@ -181,5 +187,29 @@ public class SPrjBase {
 
     public void setIsdelete(Integer isdelete) {
         this.isdelete = isdelete;
+    }
+
+    public String getDeptid() {
+        return deptid;
+    }
+
+    public void setDeptid(String deptid) {
+        this.deptid = deptid;
+    }
+
+    public String getDeptsubid() {
+        return deptsubid;
+    }
+
+    public void setDeptsubid(String deptsubid) {
+        this.deptsubid = deptsubid;
+    }
+
+    public String getSfxj() {
+        return sfxj;
+    }
+
+    public void setSfxj(String sfxj) {
+        this.sfxj = sfxj;
     }
 }

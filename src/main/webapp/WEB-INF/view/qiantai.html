@@ -42,12 +42,21 @@
         <div class="row clearfix     right">
             <div class="col-md-9 met-news-body">
                 <div class="row">
+                    <input type="hidden" id="prjType" value="${prjType}">
+                    <input type="hidden" id="deptId" value="${deptId}">
+                    <input type="hidden" id="deptSubId" value="${deptSubId}">
                     <ol class="breadcrumb m-b-0 subcolumn-crumbs">
                         <li class="breadcrumb-item">
-                            当前位置：<span id="showPrjName" >${session.showPrjName==null?"农民体育健身工程":session.showPrjName}</span>
+                            当前位置：<span id="deptSubName">${deptSubName}</span>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <span id="showPrjName" ></span>
                         </li>
                         <li class="breadcrumb-item">
                             <a href="javascript:showAddPrj()" title="" class="">添加</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="javascript:backIndex()" title="" class="">返回首页</a>
                         </li>
                     </ol>
                     <ul class=" blocks-xs-2 blocks-md-2 blocks-lg-4 blocks-xxl-4  met-pager-ajax imagesize met-product-list met-grid" id="met-grid" data-scale="300x400" style="position: relative; height: 508.266px;">
@@ -82,7 +91,6 @@
 
                         <ul class="sidebar-column list-icons">
                             <li>
-                                <input type="hidden" id="prjType" value="${prjType}">
                                 <a  class=" " target="">工程信息采集</a>
                             </li>
                             <li>

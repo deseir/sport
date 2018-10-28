@@ -141,7 +141,7 @@ public class SPrjBaseController {
 		return res;
 	}
 
-	@ApiOperation(value = "根据类型进行分页查询")
+	@ApiOperation(value = "分页查询")
 	@ApiImplicitParam(paramType = "body", name = "queryMap", required = false, dataType = "Map", value = "查询条件")
 	@RequestMapping(value = "/sprjbase/pageQuery", method = RequestMethod.POST)
 	@ResponseBody

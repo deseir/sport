@@ -17,6 +17,8 @@ $(document).ready(
 
 function  searchPage(o) {
     var prjType = $("#prjType").val();
+    var deptId = $("#deptId").val();
+    var deptSubId =$("#deptSubId").val();
     var pageNum = null;
     if(prjType==null||prjType==""||prjType==undefined){
         prjType=1;
@@ -45,6 +47,8 @@ function  searchPage(o) {
         dataType: 'json',
         data: {
             'prjtype':prjType,
+            'deptid':deptId,
+            'deptsubid':deptSubId,
             'pageNum':pageNum
         },
         success: function(data) {
@@ -53,14 +57,19 @@ function  searchPage(o) {
             if(status=='0'){
                 var html ="";
                 $.each(data.data.list,function(i){
-
                     html +="<li class=\"shown\" >"
                         +"<div class=\"card card-shadow\">"
                         +"<figure class=\"card-header cover\">"
                         +"<a href='/qiantai/showPrjDetail?prjId="+data.data.list[i].id+"' title='"+data.data.list[i].place+"' target=\"_self\">"
-                        +"<img class=\"cover-image\" src=\"/static/img/sport/1524206976.jpg\" alt='"+data.data.list[i].place+"'>"
-                        +"</a></figure><h4 class=\"card-title m-0 p-x-10 font-size-16 text-xs-center\">"
-                        +"<a href='/qiantai/showPrjDetail?prjId="+data.data.list[i].id+"' title='"+data.data.list[i].place+"' class=\"block\" target=\"_self\">"+data.data.list[i].place+"</a>"
+                        +"<img class=\"cover-image\" src=\"/static/img/sport/1524206976.jpg\" alt='"+data.data.list[i].place+"'></a></figure>"
+                        +"<h4 class=\"card-title m-0 p-x-10 font-size-16 text-xs-center\">"
+                        +"<a style='color:";
+                        if(data.data.list[i].sfxj==0){
+                            html+="red;'"
+                        }else{
+                            html+="black;'"
+                        }
+                        html+=" href='/qiantai/showPrjDetail?prjId="+data.data.list[i].id+"' title='"+data.data.list[i].place+"' class=\"block\" target=\"_self\">"+data.data.list[i].place+"</a>"
                         +"<p class=\"m-b-0 m-t-5 red-600\"></p></h4></div></li>";
 
                 });
@@ -94,11 +103,14 @@ function showPrjByType(prjType) {
 }
 //跳转添加项目页面
 function showAddPrj() {
+    var deptId = $("#deptId").val();
+    var deptSubId=$("#deptSubId").val();
     var prjType = $("#prjType").val();
-    if(prjType==null || prjType==""||prjType==undefined){
-        prjType = 1;
-    }
-    window.location.href="/qiantai/showAddPrj?prjType="+prjType;
+    var deptSubName = $("#deptSubName").text();
+    // if(prjType==null || prjType==""||prjType==undefined){
+    //     prjType = 1;
+    // }
+    window.location.href="/qiantai/showAddPrj?prjType="+prjType+"&deptId="+deptId+"&deptSubId="+deptSubId+"&deptSubName="+deptSubName;
 }
 
 function showPrjDetail(id) {
@@ -107,6 +119,10 @@ function showPrjDetail(id) {
 
 }
 
+//返回首页
+function backIndex() {
+    window.location.href="/qiantai/backIndex";
+}
 
 
 

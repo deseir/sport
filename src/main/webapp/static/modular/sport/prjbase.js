@@ -3,6 +3,8 @@ function savePrj() {
     var id = $("#prjId").val();
     var prjname = $("#prjname").val();
     var prjtype = $("#prjtype").val();
+    var deptid = $("#deptId").val();
+    var deptsubid = $("#deptSubId").val();
     var local =$("#local").val();
     var place = $("#place").val();
     var area = $("#area").val();
@@ -10,11 +12,11 @@ function savePrj() {
     var endtime = $("#endtime").val();
     var provider = $("#provider").val();
     var jsfa = $("#jsfa").val();
-    var dljd = $("#dljd").val();
-    var dlwd = $("#dlwd").val();
-    var qjpic1 = $("#qjpic1").val();
-    var qjpic2 = $("#qjpic2").val();
-    var qjpic3 = $("#qjpic3").val();
+    // var dljd = $("#dljd").val();
+    // var dlwd = $("#dlwd").val();
+    // var qjpic1 = $("#qjpic1").val();
+    // var qjpic2 = $("#qjpic2").val();
+    // var qjpic3 = $("#qjpic3").val();
 
     $.ajax({
         type: "POST",
@@ -24,18 +26,15 @@ function savePrj() {
             'id':id,
             'prjname':prjname,
             'prjtype':prjtype,
+            'deptid':deptid,
+            'deptsubid':deptsubid,
             'local':local,
             'place':place,
             'area':area,
             'begintime' :begintime,
             'endtime' :endtime,
             'provider' :provider,
-            'jsfa' :jsfa,
-            'dljd' :dljd,
-            'dlwd' :dlwd,
-            'qjpic1' :qjpic1,
-            'qjpic2' :qjpic2,
-            'qjpic3' :qjpic3
+            'jsfa' :jsfa
         },
         success: function(data) {
             var status = data.status;
@@ -81,9 +80,9 @@ function logicDelete() {
         });
 }
 
+//返回首页
 function back() {
-    var prjType = $("#prjtype").val();
-    window.location.href="/qiantai/showQt?prjType="+prjType;
+    window.location.href="/qiantai/backIndex";
 }
 
 //跳转场地列表页
@@ -240,6 +239,7 @@ function showPics() {
 $(document).ready(function () {
     showPics();
     showBtns();
+    selSubDept();
 });
 
 function showBtns() {
@@ -249,10 +249,70 @@ function showBtns() {
         $("#seeCdBtn").show();
         $("#seeJsljBtn").show();
         $("#seeQtBtn").show();
+        $("#xjBtn").show();
+
     }else{
         $("#delBtn").hide();
         $("#seeCdBtn").hide();
         $("#seeJsljBtn").hide();
         $("#seeQtBtn").hide();
+        $("#xjBtn").hide();
     }
+}
+
+//获取街道乡镇下面的子部门（村委会）
+function selSubDept() {
+    var deptsubid = $("#deptSubId").val();
+    $.ajax({
+        type: "POST",
+        url: '/dept/getAllSubDept',
+        dataType: 'json',
+        data: {
+            'deptId':deptsubid
+        },
+        success: function(data) {
+            var status = data.status;
+            var html="";
+            if(status=='0'){
+                var html ="";
+                $.each(data.data,function(i){
+                    html+="<option value='"+data.data[i].simplename+"'></option>";
+                });
+
+                $("#placelist").append(html);
+
+
+            }
+        },
+        error: function() {
+            alert("保存数据异常！");
+
+        }
+    });
+
+}
+
+function updateSfxj() {
+    var prjId = $("#prjId").val();
+    $.ajax({
+        type: "POST",
+        url: '/sprjbase/saveOrUpdate',
+        dataType: 'json',
+        data: {
+            'id':prjId,
+            'sfxj':1
+        },
+        success: function(data) {
+            var status = data.status;
+            var html="";
+            if(status=='0'){
+                alert("确认已成功！");
+
+            }
+        },
+        error: function() {
+            alert("修改数据异常！");
+
+        }
+    });
 }
