@@ -73,8 +73,7 @@ function logicDelete() {
 }
 
 function back() {
-    var prjType = $("#prjtype").val();
-    window.location.href="/qiantai/showQt?prjType="+prjType;
+    window.location.href="/qiantai/backIndex";
 }
 
 //查看工程概况

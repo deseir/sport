@@ -43,7 +43,7 @@ public class AdminController extends BaseController {
      */
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String login2() {
-        return "/login.html";
+        return "/houtailogin.html";
     }
     /**
      * 跳转到主页
@@ -52,14 +52,14 @@ public class AdminController extends BaseController {
     public String index(Model model) {
 
         if(ShiroKit.getUser() == null){
-            return "/login.html";
+            return "/houtailogin.html";
         }
         //获取菜单列表
         List<Integer> roleList = ShiroKit.getUser().getRoleList();
         if(roleList == null || roleList.size() == 0){
             ShiroKit.getSubject().logout();
             model.addAttribute("tips", "该用户没有角色，无法登陆");
-            return "/login.html";
+            return "/houtailogin.html";
         }
         List<MenuNode> menus = menuDao.getMenusByRoleIds(roleList);
         List<MenuNode> titles = MenuNode.buildTitle(menus);
@@ -82,7 +82,7 @@ public class AdminController extends BaseController {
         if (ShiroKit.isAuthenticated() || ShiroKit.getUser() != null) {
             return REDIRECT + "/admin/";
         } else {
-            return "/login.html";
+            return "/houtailogin.html";
         }
     }
 
