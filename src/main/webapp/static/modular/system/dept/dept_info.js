@@ -117,10 +117,53 @@ DeptInfoDlg.validate = function () {
     return $("#deptInfoForm").data('bootstrapValidator').isValid();
 }
 
+DeptInfoDlg.uploadFile= function (file){
+    var formData = new FormData();
+    formData.append("file", file);
+    var returnUrl = "";
+    $.ajax({
+        type: "POST",
+        url: "/file/upload/idCard",
+        /**
+         *必须false才会自动加上正确的Content-Type
+         */
+        contentType: false,
+        /**
+         * 必须false才会避开jQuery对 formdata 的默认处理
+         * XMLHttpRequest会对 formdata 进行正确的处理
+         */
+        processData: false,
+        /**
+         * 这里用同步方式
+         */
+        async:false,
+        data: formData,
+        success: function(data) {
+            var status=data.status;
+            if(status=='0'){
+                returnUrl = data.filePath;
+            }else{
+                returnUrl = "";
+            }
+        },
+        error: function(data) {
+            Feng.info("上传图片异常！");
+            returnUrl = "";
+        }
+
+    });
+    return returnUrl;
+}
+
 /**
  * 提交添加部门
  */
 DeptInfoDlg.addSubmit = function() {
+    var fileObj = document.getElementById("tips1").files[0];
+    if(null !=fileObj){
+        var fileUrl = this.uploadFile(fileObj);
+        $("#tips").val(fileUrl)
+    }
 
     this.clearData();
     this.collectData();
@@ -145,6 +188,11 @@ DeptInfoDlg.addSubmit = function() {
  * 提交修改
  */
 DeptInfoDlg.editSubmit = function() {
+    var fileObj = document.getElementById("tips1").files[0];
+    if(null !=fileObj){
+        var fileUrl = this.uploadFile(fileObj);
+        $("#tips").val(fileUrl)
+    }
 
     this.clearData();
     this.collectData();
@@ -180,3 +228,21 @@ $(function() {
     ztree.init();
     DeptInfoDlg.zTreeInstance = ztree;
 });
+
+/*缩略图*/
+function UploadImageicc(ev){
+    var  idImgurl=$(ev).parent().nextAll()[0].children[0].id;
+    var file = document.getElementById($(ev)[0].id).files[0];
+    //判断 FileReader 是否被浏览器所支持
+    if (!window.FileReader) return;
+    //var file = evv.target.files[0];
+    if(file.type.match('image/!*')){//如果是图片，则显示缩略图
+        var reader = new FileReader();  // 创建FileReader对象
+        reader.readAsDataURL(file); // 读取file对象，读取完毕后会返回result 图片base64格式的结果
+        reader.onload = function(e){
+            document.getElementById(idImgurl).src = e.target.result;
+        }
+    }
+
+}
+

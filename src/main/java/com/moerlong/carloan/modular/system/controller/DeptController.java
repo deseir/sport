@@ -1,5 +1,6 @@
 package com.moerlong.carloan.modular.system.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.moerlong.carloan.common.annotion.Permission;
 import com.moerlong.carloan.common.annotion.log.BussinessLog;
 import com.moerlong.carloan.common.constant.Dict;
@@ -13,18 +14,22 @@ import com.moerlong.carloan.common.persistence.dao.UserMapper;
 import com.moerlong.carloan.common.persistence.model.Dept;
 import com.moerlong.carloan.common.persistence.model.User;
 import com.moerlong.carloan.core.log.LogObjectHolder;
+import com.moerlong.carloan.core.support.HttpKit;
 import com.moerlong.carloan.core.util.Convert;
 import com.moerlong.carloan.core.util.ToolUtil;
 import com.moerlong.carloan.modular.system.dao.DeptDao;
 import com.moerlong.carloan.modular.system.service.IDeptService;
 import com.moerlong.carloan.modular.system.warpper.DeptWarpper;
+import com.moerlong.carloan.util.CommonUtil;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,11 +56,15 @@ public class DeptController extends BaseController {
     @Resource
     IDeptService deptService;
 
+    @Value("${file.identity_pic_urls}")
+    private String idPicUrls;
+
     /**
      * 跳转到部门管理首页
      */
     @RequestMapping("")
-    public String index() {
+    public String index(Model model) {
+        model.addAttribute("idPicUrls",idPicUrls);
         return PREFIX + "dept.html";
     }
 
@@ -63,7 +72,8 @@ public class DeptController extends BaseController {
      * 跳转到添加部门
      */
     @RequestMapping("/dept_add")
-    public String deptAdd() {
+    public String deptAdd(Model model) {
+        model.addAttribute("idPicUrls",idPicUrls);
         return PREFIX + "dept_add.html";
     }
 
@@ -77,6 +87,7 @@ public class DeptController extends BaseController {
         model.addAttribute(dept);
         model.addAttribute("pName", ConstantFactory.me().getSingleDeptName(dept.getPid()));
         LogObjectHolder.me().set(dept);
+        model.addAttribute("idPicUrls",idPicUrls);
         return PREFIX + "dept_edit.html";
     }
 
@@ -234,6 +245,31 @@ public class DeptController extends BaseController {
             res.put("data", pageInfo);
             res.put("status", 0);
             res.put("errMsg", "操作成功");
+        } catch (Throwable e) {
+            res.put("status", 1);
+            res.put("errMsg", e.getMessage());
+        }
+
+        return res;
+    }
+
+    @ApiOperation(value = "分页查询")
+    @ApiImplicitParam(paramType = "body", name = "queryMap", required = false, dataType = "Map", value = "查询条件")
+    @RequestMapping(value = "/dept/pageQuery", method = RequestMethod.POST)
+    @ResponseBody
+    public Object pageQuery(@RequestParam Map<String,Object> queryMap) {
+        HttpServletRequest request = HttpKit.getRequest();
+        int limit = Integer.valueOf(request.getParameter("limit"));
+        int offset = Integer.valueOf(request.getParameter("offset"));
+        Map<String, Object> res = new HashMap<>();
+        Integer pageNum = (offset / limit + 1); //页数从1开始
+        Integer pageSize = limit; //页面大小
+
+        try {
+            PageInfo<Dept> pageInfo = this.deptService.selectPage(pageSize, pageNum, queryMap);
+            res.put("total",pageInfo.getTotal());
+            res.put("rows",pageInfo.getList());
+            return CommonUtil.obj2json(res);
         } catch (Throwable e) {
             res.put("status", 1);
             res.put("errMsg", e.getMessage());

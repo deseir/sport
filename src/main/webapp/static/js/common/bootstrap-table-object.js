@@ -43,8 +43,8 @@
                     sortable: true,      		//是否启用排序
                     sortOrder: "desc",     		//排序方式
                     pageNumber: 1,      			//初始化加载第一页，默认第一页
-                    pageSize: 15,      			//每页的记录行数（*）
-                    pageList: [15, 50, 100],  	//可供选择的每页的行数（*）
+                    pageSize: 10,      			//每页的记录行数（*）
+                    pageList: [10, 20, 50],  	//可供选择的每页的行数（*）
                     queryParamsType: 'limit', 	//默认值为 'limit' ,在默认情况下 传给服务端的参数为：offset,limit,sort
                     queryParams: function (param) {
                         return $.extend(that.queryParam, param);
@@ -76,6 +76,7 @@
                             this.url.lastIndexOf('/contractInfo/findlist')>=0||
                             this.url.lastIndexOf('/onceEarlyRepayment/bussApproveList')>=0||
                             this.url.lastIndexOf('/carInfo/pageQuery')>=0||
+                            this.url.lastIndexOf('/dept/pageQuery')>=0||
                             this.url.lastIndexOf('/carInfo/pageCustDetailQuery')>=0||
                             /*this.url.lastIndexOf('/myWork/getTodoWorkList')>=0||*/
                             this.url.lastIndexOf('/myWork/getHandledWorkList')>=0||

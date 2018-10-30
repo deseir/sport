@@ -1,4 +1,7 @@
-/**
+
+var idPicUrls = $("#idPicUrls").val();
+
+    /**
  * 部门管理初始化
  */
 var Dept = {
@@ -14,18 +17,22 @@ var Dept = {
 Dept.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
-        {title: 'id', field: 'id', align: 'center', valign: 'middle',width:'50px'},
+        {title: 'id', field: 'id', visible: false,align: 'center', valign: 'middle',width:'50px'},
         {title: '部门简称', field: 'simplename', align: 'center', valign: 'middle', sortable: true},
         {title: '部门全称', field: 'fullname', align: 'center', valign: 'middle', sortable: true},
         {title: '排序', field: 'num', align: 'center', valign: 'middle', sortable: true},
-        {title: '图片地址', field: 'tips', align: 'center', valign: 'middle', sortable: true}];
+        {title: '图片', align: 'center', valign: 'middle',formatter:operate}];
+
+        function operate(value,row,index){
+            return ['<img style="width: 100px;height: 50px;" src="'+idPicUrls+row["tips"]+'">'].join("");
+        }
 };
 
 /**
  * 检查是否选中
  */
 Dept.check = function () {
-    var selected = $('#' + this.id).bootstrapTreeTable('getSelections');
+    var selected = $('#' + this.id).bootstrapTable('getSelections');
     if(selected.length == 0){
         Feng.info("请先选中表格中的某一记录！");
         return false;
@@ -34,6 +41,7 @@ Dept.check = function () {
         return true;
     }
 };
+
 
 /**
  * 点击添加部门
@@ -99,12 +107,7 @@ Dept.search = function () {
 
 $(function () {
     var defaultColunms = Dept.initColumn();
-    var table = new BSTreeTable(Dept.id, "/dept/list", defaultColunms);
-    table.setExpandColumn(2);
-    table.setIdField("id");
-    table.setCodeField("id");
-    table.setParentCodeField("pid");
-    table.setExpandAll(true);
-    table.init();
-    Dept.table = table;
+    var table = new BSTable(Dept.id, "/dept/dept/pageQuery", defaultColunms);
+    table.setPaginationType("server");
+    Dept.table = table.init();
 });

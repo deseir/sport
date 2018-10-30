@@ -1,10 +1,5 @@
 package com.moerlong.carloan.modular.loan.controller;
 
-import com.drew.imaging.jpeg.JpegMetadataReader;
-import com.drew.imaging.jpeg.JpegProcessingException;
-import com.drew.metadata.Directory;
-import com.drew.metadata.Metadata;
-import com.drew.metadata.Tag;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -113,45 +107,8 @@ public class FileUploadController {
            // FilePath=fileUrl+ File.separator + dateStr + File.separator + newFileName;
             FilePath=idPicUrlsx+ "/" + dateStr + "/" + newFileName;
             log.info("上传成功！！文件路径===》{}",FilePath);
-            Metadata metadata = null;
-            try {
-                metadata = JpegMetadataReader.readMetadata(new File(f, newFileName));
-                StringBuilder wd = new StringBuilder("");
-                StringBuilder jd =  new StringBuilder("");
-                for(Directory directory : metadata.getDirectories()){
-                    for(Tag tag : directory.getTags()){
-                        if("GPS Latitude Ref".equals(tag.getTagName())){//"N" 纬度
-                            if("N".equals(tag.getDescription())){
-                                wd.append("北纬：");
-                            }
-                        }
-
-                        if("GPS Latitude".equals(tag.getTagName())){//""纬度
-                            wd.append(tag.getDescription());
-                        }
-
-                        if("GPS Longitude Ref".equals(tag.getTagName())){//"E" 经度
-                            if("E".equals(tag.getDescription())){
-                                jd.append("东经：");
-                            }
-                        }
-
-                        if("GPS Longitude".equals(tag.getTagName())){//""
-                            jd.append(tag.getDescription());
-                        }
-                    }
-                }
-                map.put("jd",jd.toString());
-                map.put("wd",wd.toString());
-            } catch (JpegProcessingException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
             map.put("status","0");
             map.put("filePath",FilePath);
-            
             return map;
 
         } else {

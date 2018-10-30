@@ -48,17 +48,6 @@ fund:
 server:
   port: 8095
 
-car300:
-  get_car_brand_list_url: http://v.car300.server:9210/auth/getCarBrandList
-  get_car_series_list_url: http://v.car300.server:9210/auth/getCarSeriesList
-  get_car_model_list_url: http://v.car300.server:9210/auth/getCarModelList
-  get_city_list_url: http://v.car300.server:9210/auth/getCityList
-  get_price_url: http://v.car300.server:9210/auth/evalCarPrice
-  get_All_City_List: http://724.moerlong.com/carDataService/getAllCityList
-  get_All_Brand_List: http://724.moerlong.com/carDataService/getAllBrandList
-  get_Car_Series_List: http://724.moerlong.com/carDataService/getCarSeriesList
-  get_Car_Model_List: http://724.moerlong.com/carDataService/getCarModelList
-  get_car_price: http://724.moerlong.com/carDataService/eval/getUsedCarPriceAnalysis
 ###################  beetl配置  ###################
 beetl:
   delimiter-statement-start: \@   #开始结束标签(yaml不允许@开头)
@@ -102,52 +91,7 @@ logging:
 
 file:
   identity_pic_path: /usr/local/resources/sport/pics
-  liveness_pic_path: /nodedata/node/loantest/livenessPic
-  protobuf_path: /nodedata/node/loantest/protobuf
-  vehicle_pic_path: /nodedata/node/carInsure/vehiclePic
-  register_pic_path: /nodedata/node/carInsure/registerPic
-  strong_insure_pic_path: /nodedata/node/carInsure/strongInsurePic
-  buss_insure_pic_path: /nodedata/node/carInsure/bussInsurePic
-  contact_pdf_path: /nodedata/node/loantest/contactPdf
-  #contact_pdf_path: D:/contactPdf
-  #mortgage_contract_pic_path: d:/mortgageContract #抵押合同(车管所）照片地址
-  #proxy_book_pic_path: d:/proxyBook #委托书（客户签字授权）照片地址
-  #cert_photo_pic_path: d:/certPhoto #身份证复印件照片地址(上有客户签名和手机号码)
-  #car_pgs_pic_path: d:/gpsPhoto
-  mortgage_contract_pic_path: /nodedata/node/carInsure/mortgageContract #抵押合同(车管所）照片地址
-  proxy_book_pic_path: /nodedata/node/carInsure/proxyBook #委托书（客户签字授权）照片地址
-  cert_photo_pic_path: /nodedata/node/carInsure/certPhoto #身份证复印件照片地址(上有客户签名和手机号码)
-  car_pgs_pic_path: /nodedata/node/carInsure/gpsPhoto
-
-
   identity_pic_url: http://140.143.35.16:8888/resource/pics
   identity_pic_urls: http://140.143.35.16:8888
   identity_pic_urlsx: /resource/pics
-  liveness_pic_url: http://static.h2fintech.com/loantest/livenessPic
-  protobuf_url: http://static.h2fintech.com/loantest/protobuf
-  vehicle_pic_url: http://static.h2fintech.com/carInsure/vehiclePic
-  register_pic_url: http://static.h2fintech.com/carInsure/registerPic
-  strong_insure_pic_url: http://static.h2fintech.com/carInsure/strongInsurePic
-  buss_insure_pic_url: http://static.h2fintech.com/carInsure/bussInsurePic
-
-  
-system:
-  paycenter:
-    channleKey: HFadface123@12#as
-    costUrl: http://v.paycenter.server:9781/paycenter/services/borrow/replaceCost/easyDeduceRequestService
-    costQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/queryCostOrder
-    payUrl: http://v.paycenter.server:9781/paycenter/services/borrow/mrlFrontPayRequestService
-    payQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/queryPayOrder
-    singleCostQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/replaceCost/borrowDeduceRequestService
-    singlePayQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/mrlBorrowPayRequestService
-    mrlcostUrl: http://v.paycenter.server:9781/paycenter/services/borrow/replaceCost/morReplaceCostRequestService
-    mrlcostQueryUrl: http://v.paycenter.server:9781/paycenter/services/query/replaceCost/morQueryRequestService
-  sms:
-    url: http://v.ismg.server:9000/ismg/sms/
-  selectBank:
-    url: http://v.paycenter.server:9781/paycenter/services/getBankInfoRequestService
-  excel:
-    filepath: /data/fund_sys/
-  telecomAuth:
-      url: http://123.59.181.202:9990/api/v1/report/car_loan/support/carrier
 ---
