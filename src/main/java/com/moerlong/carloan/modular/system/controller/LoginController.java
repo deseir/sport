@@ -122,7 +122,7 @@ public class LoginController extends BaseController {
     /**
      * 退出登录
      */
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    @RequestMapping(value = "/qiantai/logout", method = RequestMethod.GET)
     public String logOut() {
         if(ShiroKit.getUser() != null){
             LogManager.me().executeLog(LogTaskFactory.exitLog(ShiroKit.getUser().getId(), getIp()));

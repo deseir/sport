@@ -124,7 +124,7 @@ public class AdminController extends BaseController {
     /**
      * 退出登录
      */
-    @RequestMapping(value = "/admin/logout", method = RequestMethod.GET)
+    @RequestMapping(value = "/houtai/logout", method = RequestMethod.GET)
     public String logOut() {
         if(ShiroKit.getUser() != null){
             LogManager.me().executeLog(LogTaskFactory.exitLog(ShiroKit.getUser().getId(), getIp()));
