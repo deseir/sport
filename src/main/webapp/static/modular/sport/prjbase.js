@@ -12,11 +12,6 @@ function savePrj() {
     var endtime = $("#endtime").val();
     var provider = $("#provider").val();
     var jsfa = $("#jsfa").val();
-    // var dljd = $("#dljd").val();
-    // var dlwd = $("#dlwd").val();
-    // var qjpic1 = $("#qjpic1").val();
-    // var qjpic2 = $("#qjpic2").val();
-    // var qjpic3 = $("#qjpic3").val();
 
     $.ajax({
         type: "POST",
@@ -43,7 +38,7 @@ function savePrj() {
                 alert("保存数据成功！");
                 showBtns();
             }else{
-                alert("保存数据失败！"+data.msg);
+                alert(data.errMsg);
             }
         },
         error: function() {
@@ -239,7 +234,7 @@ function showPics() {
 $(document).ready(function () {
     showPics();
     showBtns();
-    selSubDept();
+    // selSubDept();
 });
 
 function showBtns() {
@@ -262,24 +257,24 @@ function showBtns() {
 
 //获取街道乡镇下面的子部门（村委会）
 function selSubDept() {
-    var deptsubid = $("#deptSubId").val();
+    var deptId = $("#deptId").val();
     $.ajax({
         type: "POST",
         url: '/dept/getAllSubDept',
         dataType: 'json',
         data: {
-            'deptId':deptsubid
+            'deptId':deptId
         },
         success: function(data) {
             var status = data.status;
             var html="";
             if(status=='0'){
-                var html ="";
+                var html ="<option value=''>--请选择--</option>";
                 $.each(data.data,function(i){
-                    html+="<option value='"+data.data[i].simplename+"'></option>";
+                    html+="<option  value='"+data.data[i].simplename+"'></option>";
                 });
 
-                $("#placelist").append(html);
+                $("#deptSubId").append(html);
 
 
             }
@@ -315,4 +310,12 @@ function updateSfxj() {
 
         }
     });
+}
+
+function backPre() {
+    var deptSubName = $("#local").val();
+    var prjType = $("#prjtype").val();
+    var deptId = $("#deptId").val();
+    var deptSubId = $("#deptSubId").val();
+    window.location.href="/qiantai/showQt?deptId="+deptId+"&deptSubId="+deptSubId+"&deptSubName="+deptSubName+"&prjType="+prjType;
 }

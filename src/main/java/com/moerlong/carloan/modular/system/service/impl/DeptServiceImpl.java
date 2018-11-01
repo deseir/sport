@@ -86,4 +86,8 @@ public class DeptServiceImpl implements IDeptService {
         return pageInfo;
     }
 
+    public List<Dept> selectByDeptName(Map<String, Object> param){
+        return deptDao.selectByDeptName(param);
+    }
+
 }

@@ -226,3 +226,11 @@ function showBtns() {
         $("#delBtn").hide();
     }
 }
+
+//返回其他器材列表
+function backJsljQcList() {
+    var prjid =$("#prjId").val();
+    var prjtype = $("#prjtype").val();
+    var qtId = $("#qtId").val();
+    window.location.href="/cdssqt/showQcQtList?qtId="+qtId+"&prjId="+prjid+"&prjType="+prjtype;
+}

@@ -82,11 +82,6 @@ function back() {
     window.location.href="/qiantai/backIndex";
 }
 
-//查看工程概况
-function showPrjDetail() {
-    var prjId =$("#prjId").val();
-    window.location.href="/qiantai/showPrjDetail?prjId="+prjId;
-}
 
 function uploadPic() {
     var qccdId = $("#qccdId").val();
@@ -225,4 +220,12 @@ function showBtns() {
     }else{
         $("#delBtn").hide();
     }
+}
+
+//返回场地器材列表
+function backCdQcList() {
+    var prjid =$("#prjId").val();
+    var prjtype = $("#prjtype").val();
+    var cdId = $("#cdId").val();
+    window.location.href="/cdsscd/showQcCdList?cdId="+cdId+"&prjId="+prjid+"&prjType="+prjtype;
 }

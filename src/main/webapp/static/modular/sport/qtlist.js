@@ -93,6 +93,11 @@ function showAddQt() {
 }
 
 
+//返回工程概况
+function showPrjDetail() {
+    var prjId =$("#prjId").val();
+    window.location.href="/qiantai/showPrjDetail?prjId="+prjId;
+}
 
 
 

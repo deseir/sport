@@ -1,8 +1,10 @@
 package com.moerlong.carloan.modular.sport.controller;
 
+import com.moerlong.carloan.common.persistence.model.Dept;
 import com.moerlong.carloan.modular.cust.controller.TelecomRoamInfoController;
 import com.moerlong.carloan.modular.sport.entity.SPrjBase;
 import com.moerlong.carloan.modular.sport.service.SPrjBaseService;
+import com.moerlong.carloan.modular.system.service.IDeptService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -14,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -25,6 +28,9 @@ public class SPrjBaseController {
 	@Autowired
 	SPrjBaseService service;
 
+	@Autowired
+	IDeptService deptService;
+
 	@ApiOperation(value = "保存或更新")
 	@ApiImplicitParam(paramType = "body", name = "entity", required = true, dataType = "TelecomRoamInfo", value = "明细")
 	@RequestMapping(value = "/sprjbase/saveOrUpdate", method = RequestMethod.POST)
@@ -32,6 +38,16 @@ public class SPrjBaseController {
 	public Object saveOrUpdate(SPrjBase entity) {
 		Map<String, Object> res = new HashMap<>();
 		try {
+			res.put("deptName",entity.getPlace());
+			List<Dept> list = deptService.selectByDeptName(res);
+			if(list==null || (null != list && list.size()<=0)){
+				res.put("status", 1);
+				res.put("errMsg","请输入正确的建设地点！");
+				return res;
+			}else{
+				entity.setDeptsubid(list.get(0).getId().toString());
+			}
+
 			if(entity.getId()!=null && service.selectById(entity.getId())!=null) {
 				service.updateWithOutNull(entity);
 			}else {

@@ -32,7 +32,6 @@ public class QianTaiController extends BaseController {
         prjBase.setLocal(params.get("deptSubName").toString());
         prjBase.setPrjtype(params.get("prjType").toString());
         prjBase.setDeptid(params.get("deptId").toString());
-        prjBase.setDeptsubid(params.get("deptSubId").toString());
         model.addAttribute("prjBase",prjBase);
         model.addAttribute("idPicUrls",idPicUrls);
         return PREFIX + "addprj.html";
@@ -62,7 +61,7 @@ public class QianTaiController extends BaseController {
     @RequestMapping("/showQt")
     public String showQt(@RequestParam Map<String,Object> params, Model model) {
         model.addAttribute("deptId",params.get("deptId").toString());
-        model.addAttribute("deptSubId",params.get("deptSubId").toString());
+//        model.addAttribute("deptSubId",params.get("deptSubId").toString());
         model.addAttribute("deptSubName",params.get("deptSubName"));
         model.addAttribute("prjType",params.get("prjType").toString());
         return "/qiantai.html";

@@ -98,8 +98,11 @@ function showAddJsljQc() {
 }
 
 
-
-
+//返回场地
+function backJsljDetail() {
+    var jsljId = $("#jsljId").val();
+    window.location.href="/cdssjslj/showJsljDetail?jsljId="+jsljId;
+}
 
 
 

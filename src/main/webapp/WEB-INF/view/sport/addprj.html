@@ -51,7 +51,7 @@
         <input type="hidden" name="prjtype" id="prjtype" value="${prjBase.prjtype}">
         <input type="hidden" name="prjId" id="prjId" value="${prjBase.id}">
         <label for="local">地区:</label>
-        <input type="tel" id="local" name="local" placeholder="" readonly="readonly" value="${prjBase.local}">
+        <input type="text" id="local" name="local" placeholder="" readonly="readonly" value="${prjBase.local}">
         <label for="prjname">工程名称:</label>
         <input type="text" name="prjname" id="prjname" placeholder="" value="${prjBase.prjname}">
         <label for="place">建设地点:</label>
@@ -74,6 +74,7 @@
         <label for="dlwd">地理纬度:</label>
         <input type="text" id="dlwd" name="dlwd" readonly="readonly" placeholder="" value="${prjBase.dlwd}">
         <input type="button" value="保存" style="width: 20%;" onclick="savePrj()">
+        <input type="button" value="返回" style="width: 20%;" onclick="backPre()">
         <input id="delBtn" type="button" value="删除" style="width: 20%;" onclick="logicDelete()">
         <input id="seeCdBtn" type="button" value="场地类管理" style="width: 30%;" onclick="showCd()">
         <input id="seeJsljBtn" type="button" value="健身路径类管理" style="width: 40%;" onclick="showJslj()">

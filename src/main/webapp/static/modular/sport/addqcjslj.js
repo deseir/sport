@@ -226,3 +226,11 @@ function showBtns() {
         $("#delBtn").hide();
     }
 }
+
+//返回健身路径器材列表
+function backJsljQcList() {
+    var prjid =$("#prjId").val();
+    var prjtype = $("#prjtype").val();
+    var jsljId = $("#jsljId").val();
+    window.location.href="/cdssjslj/showQcJsljList?jsljId="+jsljId+"&prjId="+prjid+"&prjType="+prjtype;
+}

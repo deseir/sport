@@ -98,7 +98,11 @@ function showAddCdQc() {
 }
 
 
-
+//返回场地
+function backCdDetail() {
+    var cdId = $("#cdId").val();
+    window.location.href="/cdsscd/showCdDetail?cdId="+cdId;
+}
 
 
 

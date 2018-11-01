@@ -83,4 +83,9 @@
 		</if>
 	</select>
 
+	<select id="selectByDeptName" resultType="com.moerlong.carloan.common.persistence.model.Dept">
+		select * from dept
+	    where simplename =#{deptName} or fullname=#{deptName}
+	</select>
+
 </mapper>

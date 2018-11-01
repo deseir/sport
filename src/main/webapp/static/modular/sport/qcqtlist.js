@@ -97,7 +97,11 @@ function showAddQtQc() {
 
 }
 
-
+//返回其他
+function backQtDetail() {
+    var qtId = $("#qtId").val();
+    window.location.href="/cdssqt/showQtDetail?qtId="+qtId;
+}
 
 
 

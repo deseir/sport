@@ -224,3 +224,10 @@ function showBtns() {
         $("#qcGlBtn").hide();
     }
 }
+
+//返回健身路径列表
+function backQtList(){
+    var prjid =$("#prjId").val();
+    var prjtype = $("#prjtype").val();
+    window.location.href="/sprjbase/showQtList?prjId="+prjid+"&prjType="+prjtype;
+}

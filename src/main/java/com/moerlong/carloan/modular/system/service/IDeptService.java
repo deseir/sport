@@ -26,6 +26,7 @@ public interface IDeptService {
     String getAllSubDept(Integer userId);
     String selectAllDept(Integer userId);
     List<Dept> getAllSubDeptByDeptId (@Param("deptId") Integer deptId);
+    List<Dept> selectByDeptName (Map<String,Object> param);
     /**
      * 分页查询
      * @param param	查询参数
