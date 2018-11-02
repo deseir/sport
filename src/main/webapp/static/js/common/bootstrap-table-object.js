@@ -77,6 +77,7 @@
                             this.url.lastIndexOf('/onceEarlyRepayment/bussApproveList')>=0||
                             this.url.lastIndexOf('/carInfo/pageQuery')>=0||
                             this.url.lastIndexOf('/dept/pageQuery')>=0||
+                            this.url.lastIndexOf('/sdept/pageQuery')>=0||
                             this.url.lastIndexOf('/carInfo/pageCustDetailQuery')>=0||
                             /*this.url.lastIndexOf('/myWork/getTodoWorkList')>=0||*/
                             this.url.lastIndexOf('/myWork/getHandledWorkList')>=0||

@@ -50,7 +50,7 @@ public class AdminController extends BaseController {
      */
     @RequestMapping(value = "/admin/", method = RequestMethod.GET)
     public String index(Model model) {
-
+        ShiroKit.getSession().setAttribute("qhFlag","2");//设置前后台登录标志 1-前台 2-后台
         if(ShiroKit.getUser() == null){
             return "/houtailogin.html";
         }
@@ -79,6 +79,7 @@ public class AdminController extends BaseController {
      */
     @RequestMapping(value = "/admin/login", method = RequestMethod.GET)
     public String login() {
+        ShiroKit.getSession().setAttribute("qhFlag","2");//设置前后台登录标志 1-前台 2-后台
         if (ShiroKit.isAuthenticated() || ShiroKit.getUser() != null) {
             return REDIRECT + "/admin/";
         } else {
@@ -91,6 +92,7 @@ public class AdminController extends BaseController {
      */
     @RequestMapping(value = "/admin/login", method = RequestMethod.POST)
     public String loginVali() {
+        ShiroKit.getSession().setAttribute("qhFlag","2");//设置前后台登录标志 1-前台 2-后台
 
         String username = super.getPara("username").trim();
         String password = super.getPara("password").trim();

@@ -60,10 +60,7 @@ function  searchPage(o) {
 
                     html +="<li class=\"shown\" >"
                         +"<div class=\"card card-shadow\">"
-                        +"<figure class=\"card-header cover\">"
-                        +"<a href='/cdssqcqt/showQcQtDetail?qcQtId="+data.data.list[i].id+"' title='"+data.data.list[i].jssb+"' target=\"_self\">"
-                        +"<img class=\"cover-image\" src=\"/static/img/sport/1524206976.jpg\" alt='"+data.data.list[i].jssb+"'>"
-                        +"</a></figure><h4 class=\"card-title m-0 p-x-10 font-size-16 text-xs-center\">"
+                        +"<h4 class=\"card-title m-0 p-x-10 font-size-16 text-xs-center\">"
                         +"<a href='/cdssqcqt/showQcQtDetail?qcQtId=="+data.data.list[i].id+"' title='"+data.data.list[i].jssb+"' class=\"block\" target=\"_self\">"+data.data.list[i].jssb+"</a>"
                         +"<p class=\"m-b-0 m-t-5 red-600\"></p></h4></div></li>";
 

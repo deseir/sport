@@ -1,0 +1,50 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="deptInfoForm">
+
+            <input type="hidden" id="id" value="${dept.id}">
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <#input id="simplename" name="部门名称" underline="true" value="${dept.simplename}"/>
+                </div>
+                <div class="col-sm-6">
+                    <#input id="fullname" name="部门全称" underline="true" value="${dept.fullname}"/>
+                </div>
+                <div class="col-sm-6">
+                    <input type="hidden" id="num" name="排序" underline="true" value="${dept.num}"/>
+
+                    <#input id="pName" name="上级部门" readonly="readonly" hidden="pid"
+                    hiddenValue="${dept.pid}" value="${pName}"
+                    clickFun="DeptInfoDlg.showDeptSelectTree(); return false;"
+                    style="background-color: #ffffff !important;"/>
+                </div>
+                <div class="col-sm-6">
+                    <span class="btn btn-primary btn-file" style="float:left;font-size:12px">
+                        <span class="fileinput-new">选择文件</span>
+                        <input type="file" id="tips1" name="file" onchange="UploadImageicc(this);" accept="image/gif,image/jpeg,image/x-png" >
+                        <input type="hidden" id="tips">
+                    </span>
+                    <div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;left:40%">
+                        <img id="showTips" src="${idPicUrls}${dept.tips}">
+                    </div>
+                </div>
+            </div>
+            <div style="margin-left: 13%;">
+                <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="DeptInfoDlg.editSubmit()"/>
+                <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="DeptInfoDlg.close()"/>
+            </div>
+
+            <!-- 父级部门的选择框 -->
+            <div id="parentDeptMenu" class="menuContent"
+                 style="display: none; position: absolute; z-index: 200;">
+                <ul id="parentDeptMenuTree" class="ztree tree-box" style="width: 245px !important;"></ul>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/sport/sdeptinfo.js"></script>
+@}

@@ -48,6 +48,7 @@ public class LoginController extends BaseController {
      */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model) {
+        ShiroKit.getSession().setAttribute("qhFlag","1");//设置前后台登录标志 1-前台 2-后台
         if(ShiroKit.getUser() == null){
             return "/login.html";
         }
@@ -77,6 +78,7 @@ public class LoginController extends BaseController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
+        ShiroKit.getSession().setAttribute("qhFlag","1");//设置前后台登录标志 1-前台 2-后台
         if (ShiroKit.isAuthenticated() || ShiroKit.getUser() != null) {
             return REDIRECT + "/";
         } else {
@@ -89,6 +91,7 @@ public class LoginController extends BaseController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginVali() {
+        ShiroKit.getSession().setAttribute("qhFlag","1");//设置前后台登录标志 1-前台 2-后台
 
         String username = super.getPara("username").trim();
         String password = super.getPara("password").trim();
