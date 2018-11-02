@@ -1,32 +1,22 @@
 package com.moerlong.carloan.modular.payMgr.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.google.common.collect.Maps;
 import com.moerlong.carloan.common.controller.BaseController;
 import com.moerlong.carloan.common.exception.BizExceptionEnum;
 import com.moerlong.carloan.common.exception.BussinessException;
-import com.moerlong.carloan.common.persistence.model.CommonElement;
 import com.moerlong.carloan.config.properties.SystemProperties;
 import com.moerlong.carloan.core.shiro.ShiroKit;
 import com.moerlong.carloan.core.shiro.ShiroUser;
 import com.moerlong.carloan.modular.payMgr.entity.PayOrderApply;
 import com.moerlong.carloan.modular.payMgr.service.PayOrderApplyService;
 import com.moerlong.carloan.modular.paybackMgr.controller.CostController;
-import com.moerlong.carloan.modular.paybackMgr.entity.CostOrderApply;
-import com.moerlong.carloan.util.CommonUtil;
-import com.moerlong.carloan.util.HttpClientUtil;
-import com.moerlong.carloan.util.IDGenerator;
-import com.moerlong.carloan.util.MD5Utils;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -39,8 +29,8 @@ import java.util.Map;
  * @author hwl
  * @Date 2018-01-20 10:06:49
  */
-@Controller
-@RequestMapping("/pay")
+//@Controller
+//@RequestMapping("/pay")
 public class PayController extends BaseController {
 
     private final Logger log = LoggerFactory.getLogger(CostController.class);

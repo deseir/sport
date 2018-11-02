@@ -11,13 +11,11 @@ import com.moerlong.carloan.modular.cust.entity.ChannelInfo;
 import com.moerlong.carloan.modular.cust.service.ChannelInfoService;
 import com.moerlong.carloan.util.CommonUtil;
 import com.moerlong.carloan.util.RepeatRefuseUtil;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,8 +25,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class ChannelInfoController {
 
 	private final Logger log = LoggerFactory.getLogger(ChannelInfoController.class);

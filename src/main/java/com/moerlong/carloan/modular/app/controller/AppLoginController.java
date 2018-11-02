@@ -3,7 +3,6 @@ package com.moerlong.carloan.modular.app.controller;
 import com.alibaba.druid.util.StringUtils;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.github.pagehelper.PageInfo;
 import com.moerlong.carloan.common.constant.tips.SuccessTip;
 import com.moerlong.carloan.common.exception.BizExceptionEnum;
 import com.moerlong.carloan.common.exception.BussinessException;
@@ -15,21 +14,16 @@ import com.moerlong.carloan.core.shiro.ShiroKit;
 import com.moerlong.carloan.modular.app.business.AppBussiness;
 import com.moerlong.carloan.modular.app.utils.UserAuthTools;
 import com.moerlong.carloan.modular.app.utils.UserTokenInfoModel;
-import com.moerlong.carloan.modular.car.entity.*;
-import com.moerlong.carloan.modular.loan.entity.vo.LoanAppAppinfoVO;
-import io.swagger.annotations.Api;
+import com.moerlong.carloan.modular.car.entity.CarGpsDetailInfo;
+import com.moerlong.carloan.modular.car.entity.CarGpsUnInstallPhotoInfo;
+import com.moerlong.carloan.modular.car.entity.CarPhotoInfo;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -37,8 +31,8 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-@Controller
-@Api(tags = { "App相关类" })
+//@Controller
+//@Api(tags = { "App相关类" })
 public class AppLoginController {
     private static final Logger LOG = LoggerFactory.getLogger(AppLoginController.class);
     

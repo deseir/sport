@@ -45,9 +45,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@Controller
-@Api(tags = { "controller接口类" })
-@RequestMapping(value = "/repaymentInfo")
+//@Controller
+//@Api(tags = { "controller接口类" })
+//@RequestMapping(value = "/repaymentInfo")
 public class RepaymentInfoController extends BaseController {
 
 	private final Logger log = LoggerFactory.getLogger(RepaymentInfoController.class);

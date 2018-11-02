@@ -1,46 +1,40 @@
 package com.moerlong.carloan.modular.car.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 import com.moerlong.carloan.common.exception.BizExceptionEnum;
 import com.moerlong.carloan.common.exception.BussinessException;
 import com.moerlong.carloan.common.persistence.dao.DictMapper;
 import com.moerlong.carloan.common.persistence.model.Dict;
 import com.moerlong.carloan.core.support.HttpKit;
 import com.moerlong.carloan.core.util.ToolUtil;
-import com.moerlong.carloan.modular.car.entity.CarTransferInfo;
+import com.moerlong.carloan.modular.car.entity.CarInfo;
 import com.moerlong.carloan.modular.car.entity.CarVerifyInfo;
 import com.moerlong.carloan.modular.car.entity.vo.CarInfoVo;
 import com.moerlong.carloan.modular.car.entity.vo.InitCarVerifyVo;
+import com.moerlong.carloan.modular.car.service.CarInfoService;
 import com.moerlong.carloan.modular.car.service.CarVerifyInfoService;
 import com.moerlong.carloan.modular.cust.service.GetDataService;
 import com.moerlong.carloan.modular.loan.entity.ApplyInfo;
 import com.moerlong.carloan.modular.loan.service.ApplyInfoService;
 import com.moerlong.carloan.util.CommonUtil;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
-import com.moerlong.carloan.modular.car.entity.CarInfo;
-import com.moerlong.carloan.modular.car.service.CarInfoService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class CarInfoController {
 	private static String PREFIX = "/cust/";
 	private final Logger log = LoggerFactory.getLogger(CarInfoController.class);

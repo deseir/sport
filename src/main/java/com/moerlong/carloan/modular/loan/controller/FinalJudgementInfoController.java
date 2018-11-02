@@ -22,8 +22,8 @@ import io.swagger.annotations.ApiOperation;
 import com.moerlong.carloan.modular.loan.entity.FinalJudgementInfo;
 import com.moerlong.carloan.modular.loan.service.FinalJudgementInfoService;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class FinalJudgementInfoController {
 
 	private final Logger log = LoggerFactory.getLogger(FinalJudgementInfoController.class);

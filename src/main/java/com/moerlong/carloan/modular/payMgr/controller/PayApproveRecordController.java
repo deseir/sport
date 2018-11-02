@@ -1,41 +1,34 @@
 package com.moerlong.carloan.modular.payMgr.controller;
 
-import java.math.BigDecimal;
-import java.util.*;
-
-import com.alibaba.fastjson.JSON;
 import com.moerlong.carloan.common.controller.BaseController;
 import com.moerlong.carloan.common.vo.ResultVO;
 import com.moerlong.carloan.core.shiro.ShiroKit;
 import com.moerlong.carloan.core.shiro.ShiroUser;
-import com.moerlong.carloan.modular.payMgr.entity.PayDetailInfo;
-import com.moerlong.carloan.modular.payMgr.entity.PayInfo;
-import com.moerlong.carloan.modular.payMgr.entity.enums.PayApproveStatus;
+import com.moerlong.carloan.modular.payMgr.entity.PayApproveRecord;
+import com.moerlong.carloan.modular.payMgr.service.PayApproveRecordService;
 import com.moerlong.carloan.modular.payMgr.service.PayDetailInfoService;
 import com.moerlong.carloan.modular.payMgr.service.PayInfoService;
 import com.moerlong.carloan.modular.payMgr.service.SMSService;
 import com.moerlong.carloan.modular.payMgr.warpper.PayOrderWarpper;
 import com.moerlong.carloan.util.CommonUtil;
-import com.moerlong.carloan.util.ParamConstants;
 import com.moerlong.carloan.util.RepeatRefuseUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import com.moerlong.carloan.modular.payMgr.entity.PayApproveRecord;
-import com.moerlong.carloan.modular.payMgr.service.PayApproveRecordService;
-import sun.rmi.runtime.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-@Controller
-@Api(tags = { "controller接口类" })
-@RequestMapping(value = "/payApproveRecord")
+//@Controller
+//@Api(tags = { "controller接口类" })
+//@RequestMapping(value = "/payApproveRecord")
 public class PayApproveRecordController extends BaseController {
 
 	private final Logger log = LoggerFactory.getLogger(PayApproveRecordController.class);

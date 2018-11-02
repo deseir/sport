@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
-@Api(tags = { "controller接口类" })
-@RestController
-@RequestMapping("/carKontiaoConfig")
+//@Api(tags = { "controller接口类" })
+//@RestController
+//@RequestMapping("/carKontiaoConfig")
 public class CarKontiaoConfigController {
 
     private final Logger LOG = LoggerFactory.getLogger(CarKontiaoConfigController.class);

@@ -1,20 +1,15 @@
 package com.moerlong.carloan.modular.loan.controller;
 
 import com.moerlong.carloan.common.controller.BaseController;
-import com.moerlong.carloan.modular.cust.entity.CreditReport;
 import com.moerlong.carloan.modular.cust.service.CreditReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
-import java.util.Map;
-
-@Controller
-@RequestMapping("/zhongshen")
+//@Controller
+//@RequestMapping("/zhongshen")
 public class ZhongShenController extends BaseController {
 
     private static String PREFIX = "/cust/";

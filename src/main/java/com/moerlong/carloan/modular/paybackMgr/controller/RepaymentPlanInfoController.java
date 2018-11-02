@@ -1,37 +1,31 @@
 package com.moerlong.carloan.modular.paybackMgr.controller;
 
+import com.github.pagehelper.PageInfo;
+import com.moerlong.carloan.common.controller.BaseController;
+import com.moerlong.carloan.core.support.HttpKit;
+import com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPlanInfo;
+import com.moerlong.carloan.modular.paybackMgr.entity.vo.RepaymentPlanInfoVO;
+import com.moerlong.carloan.modular.paybackMgr.entity.vo.RepaymentPlanTodayInfoVO;
+import com.moerlong.carloan.modular.paybackMgr.service.RepaymentPlanInfoService;
+import com.moerlong.carloan.modular.paybackMgr.warpper.CostOrderWarpper;
+import com.moerlong.carloan.util.CommonUtil;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.alibaba.fastjson.JSON;
-import com.github.pagehelper.PageInfo;
-import com.moerlong.carloan.modular.paybackMgr.warpper.CostOrderWarpper;
-import com.moerlong.carloan.common.controller.BaseController;
-import com.moerlong.carloan.core.support.HttpKit;
-import com.moerlong.carloan.modular.paybackMgr.entity.RepaymentInfo;
-import com.moerlong.carloan.modular.paybackMgr.entity.enums.RepaymentStatus;
-import com.moerlong.carloan.modular.paybackMgr.entity.vo.RepaymentPlanInfoVO;
-import com.moerlong.carloan.modular.paybackMgr.entity.vo.RepaymentPlanTodayInfoVO;
-import com.moerlong.carloan.util.CommonUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPlanInfo;
-import com.moerlong.carloan.modular.paybackMgr.service.RepaymentPlanInfoService;
-
-import javax.servlet.http.HttpServletRequest;
-
-@Controller
-@Api(tags = { "controller接口类" })
-@RequestMapping(value = "/repaymentPlanInfo")
+//@Controller
+//@Api(tags = { "controller接口类" })
+//@RequestMapping(value = "/repaymentPlanInfo")
 public class RepaymentPlanInfoController extends BaseController {
 
 	private final Logger log = LoggerFactory.getLogger(RepaymentPlanInfoController.class);

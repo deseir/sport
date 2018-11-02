@@ -56,8 +56,8 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class ProcessController {
     private final Logger log = LoggerFactory.getLogger(ProcessController.class);
 

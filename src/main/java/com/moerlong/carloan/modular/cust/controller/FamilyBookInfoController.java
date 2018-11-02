@@ -20,8 +20,8 @@ import io.swagger.annotations.ApiOperation;
 import com.moerlong.carloan.modular.cust.entity.FamilyBookInfo;
 import com.moerlong.carloan.modular.cust.service.FamilyBookInfoService;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class FamilyBookInfoController {
 	private static String PREFIX = "/cust/";
 	private final Logger log = LoggerFactory.getLogger(FamilyBookInfoController.class);

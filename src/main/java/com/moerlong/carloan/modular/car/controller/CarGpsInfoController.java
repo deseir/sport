@@ -24,8 +24,8 @@ import io.swagger.annotations.ApiOperation;
 import com.moerlong.carloan.modular.car.entity.CarGpsInfo;
 import com.moerlong.carloan.modular.car.service.CarGpsInfoService;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class CarGpsInfoController {
 
 	private final Logger log = LoggerFactory.getLogger(CarGpsInfoController.class);

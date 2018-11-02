@@ -1,8 +1,5 @@
 package com.moerlong.carloan.modular.payMgr.controller;
 
-import java.math.BigDecimal;
-import java.util.*;
-
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Maps;
 import com.moerlong.carloan.common.controller.BaseController;
@@ -12,27 +9,27 @@ import com.moerlong.carloan.common.persistence.model.CommonElement;
 import com.moerlong.carloan.config.properties.SystemProperties;
 import com.moerlong.carloan.core.shiro.ShiroKit;
 import com.moerlong.carloan.core.shiro.ShiroUser;
+import com.moerlong.carloan.modular.payMgr.entity.PayOrderApply;
+import com.moerlong.carloan.modular.payMgr.service.PayOrderApplyService;
 import com.moerlong.carloan.modular.payMgr.warpper.PayOrderWarpper;
-import com.moerlong.carloan.modular.paybackMgr.entity.CostOrderApply;
 import com.moerlong.carloan.util.CommonUtil;
 import com.moerlong.carloan.util.HttpClientUtil;
 import com.moerlong.carloan.util.IDGenerator;
 import com.moerlong.carloan.util.MD5Utils;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import com.moerlong.carloan.modular.payMgr.entity.PayOrderApply;
-import com.moerlong.carloan.modular.payMgr.service.PayOrderApplyService;
 
-@Controller
-@Api(tags = { "controller接口类" })
+import java.math.BigDecimal;
+import java.util.*;
+
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class PayOrderApplyController extends BaseController {
 
 	private final Logger log = LoggerFactory.getLogger(PayOrderApplyController.class);

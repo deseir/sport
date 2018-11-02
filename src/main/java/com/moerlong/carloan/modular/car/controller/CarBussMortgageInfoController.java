@@ -1,43 +1,37 @@
 package com.moerlong.carloan.modular.car.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
-
 import com.moerlong.carloan.common.exception.BizExceptionEnum;
 import com.moerlong.carloan.common.exception.BussinessException;
 import com.moerlong.carloan.core.util.ToolUtil;
 import com.moerlong.carloan.modular.car.entity.CarBussMortgageInfo;
 import com.moerlong.carloan.modular.car.entity.CarInfo;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
 import com.moerlong.carloan.modular.car.service.CarBussMortgageInfoService;
 import com.moerlong.carloan.modular.car.service.CarInfoService;
 import com.moerlong.carloan.modular.cust.entity.CustomerInfo;
 import com.moerlong.carloan.modular.cust.service.CustomerInfoService;
 import com.moerlong.carloan.modular.loan.entity.ApplyInfo;
 import com.moerlong.carloan.modular.loan.service.ApplyInfoService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-@Controller
-@Api(tags = { "controller接口类" })
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class CarBussMortgageInfoController {
 
 	private final Logger log = LoggerFactory.getLogger(CarBussMortgageInfoController.class);

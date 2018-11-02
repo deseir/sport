@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-@Controller
+//@Controller
 public class MyWorkStationController {
 
     private final Logger log = LoggerFactory.getLogger(ApplyInfoController.class);

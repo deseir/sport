@@ -1,23 +1,20 @@
 package com.moerlong.carloan.modular.car.controller;
 
-import java.util.*;
-
+import com.moerlong.carloan.modular.car.entity.CarPhotoInfo;
+import com.moerlong.carloan.modular.car.service.CarPhotoInfoService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import com.moerlong.carloan.modular.car.entity.CarPhotoInfo;
-import com.moerlong.carloan.modular.car.service.CarPhotoInfoService;
 
-@Controller
-@Api(tags = { "controller接口类" })
+import java.util.*;
+
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class CarPhotoInfoController {
 
 	private final Logger log = LoggerFactory.getLogger(CarPhotoInfoController.class);

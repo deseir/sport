@@ -20,8 +20,8 @@ import io.swagger.annotations.ApiOperation;
 import com.moerlong.carloan.modular.cust.entity.CreditBussQueryRecord;
 import com.moerlong.carloan.modular.cust.service.CreditBussQueryRecordService;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class CreditBussQueryRecordController {
 
 	private final Logger log = LoggerFactory.getLogger(CreditBussQueryRecordController.class);

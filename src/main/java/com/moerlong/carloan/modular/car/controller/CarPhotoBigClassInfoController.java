@@ -3,23 +3,19 @@ package com.moerlong.carloan.modular.car.controller;
 import com.moerlong.carloan.modular.car.entity.CarPhotoBigClassInfo;
 import com.moerlong.carloan.modular.car.entity.vo.CarPhotoBigClassInfoVo;
 import com.moerlong.carloan.modular.car.service.CarPhotoBigClassInfoService;
-import com.moerlong.carloan.modular.car.service.CarPhotoBigClassInfoService;
 import com.moerlong.carloan.modular.car.service.CarPhotoInfoService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class CarPhotoBigClassInfoController {
 
 	private final Logger log = LoggerFactory.getLogger(CarPhotoBigClassInfoController.class);

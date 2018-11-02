@@ -1,31 +1,24 @@
 package com.moerlong.carloan.modular.car.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.moerlong.carloan.modular.car.entity.CarOperationConfig;
+import com.moerlong.carloan.modular.car.service.CarOperationConfigService;
+import com.moerlong.carloan.modular.loan.entity.ApplyInfo;
+import com.moerlong.carloan.modular.loan.service.ApplyInfoService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.moerlong.carloan.modular.car.entity.CarChassisSteering;
-import com.moerlong.carloan.modular.car.entity.CarOperationConfig;
-import com.moerlong.carloan.modular.car.service.CarChassisSteeringService;
-import com.moerlong.carloan.modular.car.service.CarOperationConfigService;
-import com.moerlong.carloan.modular.loan.entity.ApplyInfo;
-import com.moerlong.carloan.modular.loan.service.ApplyInfoService;
+import java.util.HashMap;
+import java.util.Map;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
-
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class CarOperationConfigController {
 	private final Logger log = LoggerFactory.getLogger(CarOperationConfigController.class);
 	@Autowired

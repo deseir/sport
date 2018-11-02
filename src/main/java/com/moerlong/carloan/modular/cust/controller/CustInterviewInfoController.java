@@ -1,19 +1,14 @@
 package com.moerlong.carloan.modular.cust.controller;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.Resource;
-
 import com.moerlong.carloan.common.exception.BizExceptionEnum;
 import com.moerlong.carloan.common.exception.BussinessException;
 import com.moerlong.carloan.core.shiro.ShiroKit;
 import com.moerlong.carloan.core.shiro.ShiroUser;
 import com.moerlong.carloan.core.util.ToolUtil;
+import com.moerlong.carloan.modular.cust.entity.CustInterviewInfo;
+import com.moerlong.carloan.modular.cust.entity.CustomerInfo;
+import com.moerlong.carloan.modular.cust.service.CustInterviewInfoService;
+import com.moerlong.carloan.modular.cust.service.CustomerInfoService;
 import com.moerlong.carloan.modular.loan.dao.ApplyOperatorDao;
 import com.moerlong.carloan.modular.loan.entity.ApplyInfo;
 import com.moerlong.carloan.modular.loan.entity.ApplyOperator;
@@ -23,22 +18,19 @@ import com.moerlong.carloan.modular.loan.service.ApplyInfoService;
 import com.moerlong.carloan.modular.loan.service.MainApproveRecordService;
 import com.moerlong.carloan.modular.payMgr.service.SMSService;
 import com.moerlong.carloan.util.ParamConstants;
-
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
-import com.moerlong.carloan.modular.cust.entity.CustInterviewInfo;
-import com.moerlong.carloan.modular.cust.entity.CustomerInfo;
-import com.moerlong.carloan.modular.cust.service.CustInterviewInfoService;
-import com.moerlong.carloan.modular.cust.service.CustomerInfoService;
 
-@Controller
-@Api(tags = { "controller接口类" })
+import javax.annotation.Resource;
+import java.math.BigDecimal;
+import java.util.*;
+
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class CustInterviewInfoController {
 
 	private final Logger log = LoggerFactory.getLogger(CustInterviewInfoController.class);

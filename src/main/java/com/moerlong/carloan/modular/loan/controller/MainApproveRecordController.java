@@ -18,8 +18,8 @@ import io.swagger.annotations.ApiOperation;
 import com.moerlong.carloan.modular.loan.entity.MainApproveRecord;
 import com.moerlong.carloan.modular.loan.service.MainApproveRecordService;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class MainApproveRecordController {
 
 	private final Logger log = LoggerFactory.getLogger(MainApproveRecordController.class);

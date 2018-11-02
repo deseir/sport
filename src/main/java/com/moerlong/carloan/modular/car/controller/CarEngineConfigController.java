@@ -19,8 +19,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class CarEngineConfigController {
 
 	private final Logger log = LoggerFactory.getLogger(CarEngineConfigController.class);

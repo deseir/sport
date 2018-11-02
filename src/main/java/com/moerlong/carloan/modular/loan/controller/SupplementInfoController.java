@@ -1,38 +1,33 @@
 package com.moerlong.carloan.modular.loan.controller;
 
-import java.io.*;
-import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.StringTokenizer;
-
 import com.moerlong.carloan.common.exception.BizExceptionEnum;
 import com.moerlong.carloan.common.exception.BussinessException;
 import com.moerlong.carloan.core.util.ToolUtil;
 import com.moerlong.carloan.modular.loan.entity.ApplyInfo;
+import com.moerlong.carloan.modular.loan.entity.SupplementInfo;
 import com.moerlong.carloan.modular.loan.service.ApplyInfoService;
+import com.moerlong.carloan.modular.loan.service.SupplementInfoService;
 import com.moerlong.carloan.util.EscapeUtil;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import com.moerlong.carloan.modular.loan.entity.SupplementInfo;
-import com.moerlong.carloan.modular.loan.service.SupplementInfoService;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.StringTokenizer;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class SupplementInfoController {
 
 	private final Logger log = LoggerFactory.getLogger(SupplementInfoController.class);

@@ -15,8 +15,8 @@ import io.swagger.annotations.ApiOperation;
 import com.moerlong.carloan.modular.cust.entity.IdAuthInfo;
 import com.moerlong.carloan.modular.cust.service.IdAuthInfoService;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class IdAuthInfoController {
 
 	private final Logger log = LoggerFactory.getLogger(IdAuthInfoController.class);

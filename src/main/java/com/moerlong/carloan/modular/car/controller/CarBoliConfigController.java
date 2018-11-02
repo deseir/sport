@@ -4,20 +4,20 @@ import com.moerlong.carloan.modular.car.entity.CarBoliConfig;
 import com.moerlong.carloan.modular.car.service.CarBoliConfigService;
 import com.moerlong.carloan.modular.loan.entity.ApplyInfo;
 import com.moerlong.carloan.modular.loan.service.ApplyInfoService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Api(tags = { "controller接口类" })
-@RestController
-@RequestMapping("/carBoliConfig")
+//@Api(tags = { "controller接口类" })
+//@RestController
+//@RequestMapping("/carBoliConfig")
 public class CarBoliConfigController {
 
     private final Logger LOG = LoggerFactory.getLogger(CarBoliConfigController.class);

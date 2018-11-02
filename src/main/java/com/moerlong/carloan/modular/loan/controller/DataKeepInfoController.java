@@ -25,8 +25,8 @@ import com.moerlong.carloan.modular.loan.entity.DataKeepInfo;
 import com.moerlong.carloan.modular.loan.service.ApplyInfoService;
 import com.moerlong.carloan.modular.loan.service.DataKeepInfoService;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class DataKeepInfoController {
 
 	private final Logger log = LoggerFactory.getLogger(DataKeepInfoController.class);

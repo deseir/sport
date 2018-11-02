@@ -1,12 +1,9 @@
 package com.moerlong.carloan.modular.car.controller;
 
-import com.moerlong.carloan.modular.car.entity.CarExteriorConfig;
 import com.moerlong.carloan.modular.car.entity.CarInteriorCollocation;
-import com.moerlong.carloan.modular.car.service.CarExteriorConfigService;
 import com.moerlong.carloan.modular.car.service.CarInteriorCollocationService;
 import com.moerlong.carloan.modular.loan.entity.ApplyInfo;
 import com.moerlong.carloan.modular.loan.service.ApplyInfoService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
@@ -15,14 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Api(tags = { "controller接口类" })
-@RestController
-@RequestMapping("/carInteriorCollocation")
+//@Api(tags = { "controller接口类" })
+//@RestController
+//@RequestMapping("/carInteriorCollocation")
 public class CarInteriorCollocationController {
 
 

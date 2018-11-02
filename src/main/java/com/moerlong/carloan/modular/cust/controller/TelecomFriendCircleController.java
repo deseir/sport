@@ -15,8 +15,8 @@ import io.swagger.annotations.ApiOperation;
 import com.moerlong.carloan.modular.cust.entity.TelecomFriendCircle;
 import com.moerlong.carloan.modular.cust.service.TelecomFriendCircleService;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class TelecomFriendCircleController {
 
 	private final Logger log = LoggerFactory.getLogger(TelecomFriendCircleController.class);

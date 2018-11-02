@@ -1,28 +1,23 @@
 package com.moerlong.carloan.modular.car.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.moerlong.carloan.modular.car.entity.CarGearBox;
+import com.moerlong.carloan.modular.car.service.CarGearBoxService;
+import com.moerlong.carloan.modular.loan.entity.ApplyInfo;
+import com.moerlong.carloan.modular.loan.service.ApplyInfoService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.moerlong.carloan.modular.car.entity.CarGearBox;
-import com.moerlong.carloan.modular.car.service.CarGearBoxService;
-import com.moerlong.carloan.modular.loan.entity.ApplyInfo;
-import com.moerlong.carloan.modular.loan.service.ApplyInfoService;
+import java.util.HashMap;
+import java.util.Map;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
-
-@Controller
-@Api(tags="Controller接口类")
+//@Controller
+//@Api(tags="Controller接口类")
 public class CarGearBoxController {
 	private final Logger log=Logger.getLogger(CarGearBoxController.class);
 	@Autowired

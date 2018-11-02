@@ -38,8 +38,8 @@ import com.moerlong.carloan.modular.payMgr.service.PayDetailInfoService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class PayDetailInfoController extends BaseController {
 
 	private final Logger log = LoggerFactory.getLogger(PayDetailInfoController.class);

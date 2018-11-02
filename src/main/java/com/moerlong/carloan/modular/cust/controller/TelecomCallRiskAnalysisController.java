@@ -1,22 +1,19 @@
 package com.moerlong.carloan.modular.cust.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.moerlong.carloan.modular.cust.entity.TelecomCallRiskAnalysis;
+import com.moerlong.carloan.modular.cust.service.TelecomCallRiskAnalysisService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import com.moerlong.carloan.modular.cust.entity.TelecomCallRiskAnalysis;
-import com.moerlong.carloan.modular.cust.service.TelecomCallRiskAnalysisService;
 
-@Controller
-@Api(tags = { "controller接口类" })
+import java.util.HashMap;
+import java.util.Map;
+
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class TelecomCallRiskAnalysisController {
 
 	private final Logger log = LoggerFactory.getLogger(TelecomCallRiskAnalysisController.class);

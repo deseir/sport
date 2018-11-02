@@ -4,18 +4,16 @@ import com.moerlong.carloan.common.controller.BaseController;
 import com.moerlong.carloan.config.properties.SystemProperties;
 import com.moerlong.carloan.modular.payMgr.warpper.PayOrderWarpper;
 import com.moerlong.carloan.modular.paybackMgr.controller.CostController;
-import com.moerlong.carloan.modular.paybackMgr.warpper.CostOrderWarpper;
 import com.moerlong.carloan.util.CommonUtil;
 import com.moerlong.carloan.util.HttpClientUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
@@ -28,8 +26,8 @@ import java.util.Map;
  * @author hwl
  * @Date 2018-01-20 10:07:08
  */
-@Controller
-@RequestMapping("/payOrder")
+//@Controller
+//@RequestMapping("/payOrder")
 public class PayOrderController extends BaseController {
 
     private final Logger log = LoggerFactory.getLogger(CostController.class);

@@ -2,9 +2,7 @@ package com.moerlong.carloan.modular.loan.controller;
 
 import com.moerlong.carloan.common.controller.BaseController;
 import com.moerlong.carloan.modular.cust.entity.ContractInfo;
-import com.moerlong.carloan.modular.cust.entity.CreditReport;
 import com.moerlong.carloan.modular.cust.entity.CustomerInfo;
-import com.moerlong.carloan.modular.cust.service.ContractInfoService;
 import com.moerlong.carloan.modular.cust.service.CreditReportService;
 import com.moerlong.carloan.modular.cust.service.CustomerInfoService;
 import com.moerlong.carloan.modular.loan.entity.ApplyInfo;
@@ -19,7 +17,6 @@ import com.moerlong.carloan.modular.paybackMgr.service.OnceEarlyRepaymentRecordS
 import com.moerlong.carloan.modular.paybackMgr.service.RepaymentInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,11 +24,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
 
-@Controller
-@RequestMapping("/processTraceLook")
+//@Controller
+//@RequestMapping("/processTraceLook")
 public class ProcessTraceLookController extends BaseController {
 
     private static String PREFIX = "/cust/";

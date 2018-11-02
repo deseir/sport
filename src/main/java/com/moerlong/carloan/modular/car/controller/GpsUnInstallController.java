@@ -21,8 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class GpsUnInstallController {
 
 	private final Logger log = LoggerFactory.getLogger(GpsUnInstallController.class);

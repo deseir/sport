@@ -1,32 +1,24 @@
 package com.moerlong.carloan.modular.cust.controller;
 
-import java.util.*;
-
-import com.github.pagehelper.PageInfo;
 import com.moerlong.carloan.common.exception.BizExceptionEnum;
 import com.moerlong.carloan.common.exception.BussinessException;
-import com.moerlong.carloan.core.support.HttpKit;
 import com.moerlong.carloan.core.util.ToolUtil;
+import com.moerlong.carloan.modular.cust.entity.CreditLoanDetail;
+import com.moerlong.carloan.modular.cust.service.CreditLoanDetailService;
 import com.moerlong.carloan.modular.loan.entity.ApplyInfo;
 import com.moerlong.carloan.modular.loan.service.ApplyInfoService;
-import com.moerlong.carloan.util.CommonUtil;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import com.moerlong.carloan.modular.cust.entity.CreditLoanDetail;
-import com.moerlong.carloan.modular.cust.service.CreditLoanDetailService;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class CreditLoanDetailController {
 
 	private final Logger log = LoggerFactory.getLogger(CreditLoanDetailController.class);

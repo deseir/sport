@@ -36,9 +36,9 @@ import com.moerlong.carloan.modular.payMgr.service.PayInfoService;
 
 import javax.servlet.http.HttpSession;
 
-@Controller
-@Api(tags = { "controller接口类" })
-@RequestMapping(value = "/payInfo")
+//@Controller
+//@Api(tags = { "controller接口类" })
+//@RequestMapping(value = "/payInfo")
 public class PayInfoController extends BaseController {
 
 	private final Logger log = LoggerFactory.getLogger(PayInfoController.class);

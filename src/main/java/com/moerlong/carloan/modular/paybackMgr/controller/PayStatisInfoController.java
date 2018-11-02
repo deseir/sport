@@ -1,35 +1,26 @@
 package com.moerlong.carloan.modular.paybackMgr.controller;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
-import com.moerlong.carloan.modular.paybackMgr.warpper.CostOrderWarpper;
 import com.moerlong.carloan.common.controller.BaseController;
 import com.moerlong.carloan.core.support.HttpKit;
-import com.moerlong.carloan.modular.paybackMgr.entity.RepaymentPayInfo;
-import com.moerlong.carloan.modular.paybackMgr.entity.vo.RepaymentPlanInfoVO;
+import com.moerlong.carloan.modular.paybackMgr.entity.PayStatisInfo;
+import com.moerlong.carloan.modular.paybackMgr.service.PayStatisInfoService;
 import com.moerlong.carloan.util.CommonUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import com.moerlong.carloan.modular.paybackMgr.entity.PayStatisInfo;
-import com.moerlong.carloan.modular.paybackMgr.service.PayStatisInfoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
-@Controller
-@Api(tags = { "controller接口类" })
-@RequestMapping(value = "/payStatisInfo")
+//@Controller
+//@Api(tags = { "controller接口类" })
+//@RequestMapping(value = "/payStatisInfo")
 public class PayStatisInfoController extends BaseController {
 
 	private final Logger log = LoggerFactory.getLogger(PayStatisInfoController.class);

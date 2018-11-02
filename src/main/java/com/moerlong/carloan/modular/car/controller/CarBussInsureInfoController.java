@@ -18,8 +18,8 @@ import io.swagger.annotations.ApiOperation;
 import com.moerlong.carloan.modular.car.entity.CarBussInsureInfo;
 import com.moerlong.carloan.modular.car.service.CarBussInsureInfoService;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class CarBussInsureInfoController {
 
 	private final Logger log = LoggerFactory.getLogger(CarBussInsureInfoController.class);

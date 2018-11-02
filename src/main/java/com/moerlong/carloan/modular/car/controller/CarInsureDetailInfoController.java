@@ -1,25 +1,22 @@
 package com.moerlong.carloan.modular.car.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
+import com.moerlong.carloan.modular.car.entity.CarInsureDetailInfo;
+import com.moerlong.carloan.modular.car.service.CarInsureDetailInfoService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-import com.moerlong.carloan.modular.car.entity.CarInsureDetailInfo;
-import com.moerlong.carloan.modular.car.service.CarInsureDetailInfoService;
 
-@Controller
-@Api(tags = { "controller接口类" })
+import java.util.HashMap;
+import java.util.Map;
+
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class CarInsureDetailInfoController {
 
 	private final Logger log = LoggerFactory.getLogger(CarInsureDetailInfoController.class);

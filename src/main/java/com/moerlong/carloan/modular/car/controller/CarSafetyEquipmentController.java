@@ -23,8 +23,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class CarSafetyEquipmentController {
 	private final Logger log = LoggerFactory.getLogger(CarSafetyEquipmentController.class);
 	@Autowired

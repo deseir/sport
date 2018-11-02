@@ -1,27 +1,5 @@
 package com.moerlong.carloan.modular.car.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.util.*;
-
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
-
 import com.moerlong.carloan.core.util.JoinMoreImage;
 import com.moerlong.carloan.modular.car.entity.CarGpsDetailInfo;
 import com.moerlong.carloan.modular.car.entity.CarInfo;
@@ -29,9 +7,24 @@ import com.moerlong.carloan.modular.car.service.CarGpsDetailInfoService;
 import com.moerlong.carloan.modular.car.service.CarInfoService;
 import com.moerlong.carloan.modular.loan.entity.ApplyInfo;
 import com.moerlong.carloan.modular.loan.service.ApplyInfoService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-@Controller
-@Api(tags = { "controller接口类" })
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.OutputStream;
+import java.util.*;
+
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class CarGpsDetailInfoController {
 
 	private final Logger log = LoggerFactory.getLogger(CarGpsDetailInfoController.class);

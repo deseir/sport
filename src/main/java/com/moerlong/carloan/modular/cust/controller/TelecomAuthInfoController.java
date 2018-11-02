@@ -27,8 +27,8 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 
 
-@Controller
-@Api(tags = { "controller接口类" })
+//@Controller
+//@Api(tags = { "controller接口类" })
 public class TelecomAuthInfoController {
 
 	private final Logger log = LoggerFactory.getLogger(TelecomAuthInfoController.class);

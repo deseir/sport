@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.*;
 
-@Controller
+//@Controller
 public class OnceEarlyRepaymentController  extends BaseController {
     private final Logger log = LoggerFactory.getLogger(OnceEarlyRepaymentController.class);
 
