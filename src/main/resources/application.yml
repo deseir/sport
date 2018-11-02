@@ -90,6 +90,29 @@ logging:
   file: carloan.log
 
 file:
+  identity_pic_path: /Users/daiyanchao/local/resources/sport/pics
+  identity_pic_url: http://localhost:8888/resource/pics
+  identity_pic_urls: http://localhost:8888
+  identity_pic_urlsx: /resource/pics
+---
+
+##########################################################
+###################  正式环境的profile  ###################
+##########################################################
+spring:
+  profiles: produce
+  datasource:
+      url: jdbc:mysql://140.143.35.16:3306/sportQc?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&multiStatementAllow=true
+      username: sportadmin
+      password: 'sport2018-C#'
+      filters: log4j,wall,mergeStat
+
+logging:
+  level.root: info
+  path: logs/
+  file: carloan.log
+
+file:
   identity_pic_path: /usr/local/resources/sport/pics
   identity_pic_url: http://140.143.35.16:8888/resource/pics
   identity_pic_urls: http://140.143.35.16:8888
