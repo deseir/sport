@@ -64,6 +64,7 @@ public class QianTaiController extends BaseController {
 //        model.addAttribute("deptSubId",params.get("deptSubId").toString());
         model.addAttribute("deptSubName",params.get("deptSubName"));
         model.addAttribute("prjType",params.get("prjType").toString());
+        model.addAttribute("idPicUrls",idPicUrls);
         return "/qiantai.html";
     }
 

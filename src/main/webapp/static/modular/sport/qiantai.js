@@ -1,3 +1,4 @@
+var idPicUrls = $("#idPicUrls").val();
 $(document).ready(
     function () {
         var prjType = $("#prjType").val();
@@ -60,7 +61,7 @@ function  searchPage(o) {
                         +"<div class=\"card card-shadow\">"
                         +"<figure class=\"card-header cover\">"
                         +"<a href='/qiantai/showPrjDetail?prjId="+data.data.list[i].id+"' title='"+data.data.list[i].place+"' target=\"_self\">"
-                        +"<img class=\"cover-image\" src='"+data.data.list[i].qjpic1+"' alt='"+data.data.list[i].place+"'></a></figure>"
+                        +"<img class=\"cover-image\" src='"+idPicUrls+data.data.list[i].qjpic1+"' alt='"+data.data.list[i].place+"'></a></figure>"
                         +"<h4 class=\"card-title m-0 p-x-10 font-size-16 text-xs-center\">"
                         +"<a style='color:";
                         if(data.data.list[i].sfxj==0){
