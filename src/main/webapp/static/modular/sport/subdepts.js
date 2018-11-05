@@ -47,10 +47,10 @@ function  searchPage(o) {
                         +"<img class=\"cover-image\" src=\""+idPicUrls+data.data.list[i].tips+"\" alt='"+data.data.list[i].simplename+"'></a></figure>"
                         +"<h4 class=\"card-title m-0 p-x-10 font-size-16 text-xs-center\">"
                         +"<a style='color:";
-                        if(data.data.list[i].version=='0'){//未巡检
-                            html+= "red;'";
+                        if(data.data.list[i].version=='1'){//已巡检
+                            html+= "black;'";
                         }else{
-                            html += "black;'";
+                            html += "red;'";
                         }
 
                         html+=" href=\"javascript:showQcs('"+data.data.list[i].id+"')\" class=\"block\" target=\"_self\">"+data.data.list[i].simplename+"</a>"
