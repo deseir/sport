@@ -13,10 +13,20 @@
                     <#input id="fullname" name="部门全称" underline="true" value="${dept.fullname}"/>
                 </div>
                 <div class="col-sm-6">
-                    <input type="hidden" id="num" name="排序" underline="true" value="${dept.num}"/>
-
+                    <#select id="num" name="是否需要巡检" underline="true">
+                        <option value="">---请选择---</option>
+                    @if(dept.num==0){
+                    <option value="0" selected="selected">否</option>
+                    <option value="1" >是</option>
+                    @}else if(dept.num==1){
+                    <option value="0" >否</option>
+                    <option value="1" selected="selected">是</option>
+                    @}
+                    </#select>
+                </div>
+                <div class="col-sm-6">
                     <#input id="pName" name="上级部门" readonly="readonly" hidden="pid"
-                    hiddenValue="${dept.pid}" value="${pName}"
+                    hiddenValue="${dept.pid}" value="${pName}" underline="true"
                     clickFun="DeptInfoDlg.showDeptSelectTree(); return false;"
                     style="background-color: #ffffff !important;"/>
                 </div>

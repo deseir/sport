@@ -180,8 +180,8 @@ function showPics() {
                 var html ="";
                 $.each(data.data.list,function(i){
 
-                    html +="<li class=\"shown\" >"
-                        +"<img class=\"cover-image\" style=\"margin-top: 20px;\" src=\""+idPicUrls+data.data.list[i].picurl+"\" ></li>";
+                    html +="<li class=\"shown\" ><input type='checkbox' name='attachChecked' value='"+data.data.list[i].id+"'>"
+                        +"<img class=\"cover-image\" src=\""+idPicUrls+data.data.list[i].picurl+"\" ></li>";
 
                 });
 
@@ -195,6 +195,37 @@ function showPics() {
         }
     });
 }
+//删除图片
+function delAttach() {
+    if($('input[name=attachChecked]:checked').length==0){
+        alert("请选择至少一张图片删除");
+        return ;
+    }
+    var ids ="";
+    $.each($('input[name=attachChecked]:checked'),function () {
+        ids+=$(this).val()+",";
+    });
+    $.ajax({
+        type: "POST",
+        url: '/sqcAttach/deleteByIds',
+        dataType: 'json',
+        data: {
+            'ids':ids
+        },
+        success: function(data) {
+            alert(data.errMsg);
+            if(data.status=='0'){
+                showPics();
+            }
+        },
+        error: function() {
+            alert("删除图片异常！");
+
+        }
+    });
+
+}
+
 $(document).ready(function () {
     var qcId = $("#qcId").val();
     if(qcId!=null && qcId!="" &&qcId !=undefined){

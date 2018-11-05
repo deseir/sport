@@ -13,6 +13,14 @@
                     <#input id="fullname" name="部门全称" underline="false"/>
                 </div>
                 <div class="col-sm-6">
+                    <#select id="num" name="是否需要巡检" underline="false">
+                        <option value="">---请选择---</option>
+                        <option value="0">否</option>
+                        <option value="1">是</option>
+                    </#select>
+                </div>
+
+                <div class="col-sm-6">
                     <input type="hidden" id="num" name="排序" underline="true" />
                     <#input id="pName" name="上级部门" readonly="readonly" hidden="pid"
                     hiddenValue="${pid}" value="${pName}"/>
