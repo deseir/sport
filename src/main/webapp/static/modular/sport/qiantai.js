@@ -65,9 +65,9 @@ function  searchPage(o) {
                         +"<h4 class=\"card-title m-0 p-x-10 font-size-16 text-xs-center\">"
                         +"<a style='color:";
                         if(data.data.list[i].sfxj==0){
-                            html+="red;'"
+                            html+="red;'";
                         }else{
-                            html+="black;'"
+                            html+="black;'";
                         }
                         html+=" href='/qiantai/showPrjDetail?prjId="+data.data.list[i].id+"' title='"+data.data.list[i].place+"' class=\"block\" target=\"_self\">"+data.data.list[i].place+"</a>"
                         +"<p class=\"m-b-0 m-t-5 red-600\"></p></h4></div></li>";

@@ -6,11 +6,8 @@ $(document).ready(
 );
 
 function  searchPage(o) {
-    var deptPid = $("#deptPid").val();
+    var deptId = $("#deptId").val();
     var pageNum = null;
-    if(deptPid==null||deptPid==""||deptPid==undefined){
-        deptPid=10;
-    }
     if(o==-1){//前一页
         pageNum = $("#prePage").val();
         if(pageNum==0){
@@ -34,7 +31,7 @@ function  searchPage(o) {
         url: '/dept/selectPage',
         dataType: 'json',
         data: {
-            'pid':deptPid,
+            'pid':deptId,
             'pageNum':pageNum
         },
         success: function(data) {
@@ -43,14 +40,20 @@ function  searchPage(o) {
             if(status=='0'){
                 var html ="";
                 $.each(data.data.list,function(i){
-
                     html +="<li class=\"shown\" >"
                         +"<div class=\"card card-shadow\">"
                         +"<figure class=\"card-header cover\">"
-                        +"<a href=\"javascript:showSubDepts("+data.data.list[i].id+")\" target=\"_self\">"
-                        +"<img class=\"cover-image\" src=\""+idPicUrls+data.data.list[i].tips+"\" alt='"+data.data.list[i].simplename+"'>"
-                        +"</a></figure><h4 class=\"card-title m-0 p-x-10 font-size-16 text-xs-center\">"
-                        +"<a href=\"javascript:showSubDepts("+data.data.list[i].id+")\" class=\"block\" target=\"_self\">"+data.data.list[i].simplename+"</a>"
+                        +"<a href=\"javascript:showQcs('"+data.data.list[i].id+"')\" target=\"_self\">"
+                        +"<img class=\"cover-image\" src=\""+idPicUrls+data.data.list[i].tips+"\" alt='"+data.data.list[i].simplename+"'></a></figure>"
+                        +"<h4 class=\"card-title m-0 p-x-10 font-size-16 text-xs-center\">"
+                        +"<a style='color:";
+                        if(data.data.list[i].version=='0'){//未巡检
+                            html+= "red;'";
+                        }else{
+                            html += "black;'";
+                        }
+
+                        html+=" href=\"javascript:showQcs('"+data.data.list[i].id+"')\" class=\"block\" target=\"_self\">"+data.data.list[i].simplename+"</a>"
                         +"<p class=\"m-b-0 m-t-5 red-600\"></p></h4></div></li>";
 
                 });
@@ -71,8 +74,15 @@ function  searchPage(o) {
     });
 }
 
-function showSubDepts(deptId) {
-    window.location.href="/sdept/showSubDepts?deptId="+deptId;
+//跳转器材列表页
+function showQcs(subId) {
+    var deptPid = $("#deptId").val();
+    window.location.href="/sqc/showQcs?deptPid="+deptPid+"&deptId="+subId;
+}
+
+//返回首页
+function backIndex() {
+    window.location.href="/qiantai/backIndex";
 }
 
 

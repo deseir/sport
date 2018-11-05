@@ -33,4 +33,6 @@ public interface IDeptService {
      * @return
      */
     public PageInfo<Dept> selectPage(int pageSize, int pageNum, Map<String,Object> param);
+
+    public int upSfxj (Map<String,Object> param);
 }

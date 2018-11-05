@@ -90,4 +90,8 @@ public class DeptServiceImpl implements IDeptService {
         return deptDao.selectByDeptName(param);
     }
 
+    public int upSfxj (Map<String,Object> param){
+        return deptDao.upSfxj(param);
+    }
+
 }

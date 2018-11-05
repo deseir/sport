@@ -108,4 +108,25 @@ public class SDeptController extends BaseController {
         return "/sport/sdeptedit.html";
     }
 
+    @RequestMapping("/sdept/showSubDepts")
+    public String showSubDepts(@RequestParam Integer deptId,Model model) {
+        model.addAttribute("deptId",deptId);
+        model.addAttribute("idPicUrls",idPicUrls);
+        return "/sport/subdepts.html";
+    }
+
+    @RequestMapping("/sdept/sfxj")
+    public Object upSfxj(@RequestParam Map<String,Object> params){
+        Map<String, Object> res = new HashMap<>();
+        int flag = deptService.upSfxj(params);
+        if(flag<1){
+            res.put("status",1);
+            res.put("msg","数据修改失败");
+        }else{
+            res.put("status",0);
+            res.put("msg","确认已成功");
+        }
+        return res;
+    }
+
 }

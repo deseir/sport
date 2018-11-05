@@ -6,11 +6,8 @@ $(document).ready(
 );
 
 function  searchPage(o) {
-    var deptPid = $("#deptPid").val();
+    var deptId = $("#deptId").val();
     var pageNum = null;
-    if(deptPid==null||deptPid==""||deptPid==undefined){
-        deptPid=10;
-    }
     if(o==-1){//前一页
         pageNum = $("#prePage").val();
         if(pageNum==0){
@@ -31,10 +28,10 @@ function  searchPage(o) {
 
     $.ajax({
         type: "POST",
-        url: '/dept/selectPage',
+        url: '/sqc/pageQuery',
         dataType: 'json',
         data: {
-            'pid':deptPid,
+            'deptid':deptId,
             'pageNum':pageNum
         },
         success: function(data) {
@@ -47,10 +44,10 @@ function  searchPage(o) {
                     html +="<li class=\"shown\" >"
                         +"<div class=\"card card-shadow\">"
                         +"<figure class=\"card-header cover\">"
-                        +"<a href=\"javascript:showSubDepts("+data.data.list[i].id+")\" target=\"_self\">"
-                        +"<img class=\"cover-image\" src=\""+idPicUrls+data.data.list[i].tips+"\" alt='"+data.data.list[i].simplename+"'>"
+                        +"<a href=\"javascript:showQcDetail("+data.data.list[i].id+")\" target=\"_self\">"
+                        +"<img class=\"cover-image\" src=\""+idPicUrls+data.data.list[i].picUrl+"\" alt='"+data.data.list[i].jssb+"'>"
                         +"</a></figure><h4 class=\"card-title m-0 p-x-10 font-size-16 text-xs-center\">"
-                        +"<a href=\"javascript:showSubDepts("+data.data.list[i].id+")\" class=\"block\" target=\"_self\">"+data.data.list[i].simplename+"</a>"
+                        +"<a href=\"javascript:showQcDetail("+data.data.list[i].id+")\" class=\"block\" target=\"_self\">"+data.data.list[i].jssb+"</a>"
                         +"<p class=\"m-b-0 m-t-5 red-600\"></p></h4></div></li>";
 
                 });
@@ -71,11 +68,24 @@ function  searchPage(o) {
     });
 }
 
-function showSubDepts(deptId) {
-    window.location.href="/sdept/showSubDepts?deptId="+deptId;
+//跳转器材添加页面
+function showAddQc() {
+    var deptId = $("#deptId").val();
+    var deptPid = $("#deptPid").val();
+    window.location.href="/sqc/showAddQc?deptId="+deptId+"&deptPid="+deptPid;
 }
 
+//跳转器材详情页
+function showQcDetail(qcId) {
+    var deptPid = $("#deptPid").val();
+    window.location.href="/sqc/showQcDetail?qcId="+qcId+"&deptPid="+deptPid;
+}
 
+//返回次级部门列表页
+function showSubDepts() {
+    var deptPid = $("#deptPid").val();
+    window.location.href="/sdept/showSubDepts?deptId="+deptPid;
+}
 
 
 

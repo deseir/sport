@@ -75,7 +75,7 @@
 	<!-- 查询（分页查询） -->
 	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.common.persistence.model.Dept">
 		select
-		id,pid,simplename,fullname,tips
+		id,pid,simplename,fullname,tips,version
 		from dept dept
 		where 1=1
         <if test="deptid !=null and deptid != '' ">
@@ -95,5 +95,9 @@
 		select * from dept
 	    where simplename =#{deptName} or fullname=#{deptName}
 	</select>
+
+	<update id="upSfxj" parameterType="java.util.Map">
+		update dept set version=#{sfxj}  where id=#{deptId}
+	</update>
 
 </mapper>
