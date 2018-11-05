@@ -116,6 +116,7 @@ public class SDeptController extends BaseController {
     }
 
     @RequestMapping("/sdept/sfxj")
+    @ResponseBody
     public Object upSfxj(@RequestParam Map<String,Object> params){
         Map<String, Object> res = new HashMap<>();
         int flag = deptService.upSfxj(params);
