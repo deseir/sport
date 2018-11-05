@@ -72,5 +72,9 @@ public class SQcAttachServiceImpl implements SQcAttachService {
 		return pageInfo;
 	}
 
+	public int deleteByIds(List list){
+		return mapper.deleteByIds(list);
+	}
+
 }
 

@@ -66,6 +66,7 @@ public interface SQcAttachService {
 	 */
 	public PageInfo<SQcAttach> selectPage(int pageSize, int pageNum, Map<String, Object> param);
 
+	public int deleteByIds(List list);
 
 }
 

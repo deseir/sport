@@ -74,6 +74,7 @@ public class SDeptController extends BaseController {
                 deptVo.setSimplename(dept.getSimplename());
                 deptVo.setTips(dept.getTips());
                 deptVo.setPname(ConstantFactory.me().getSingleDeptName(dept.getPid()));
+                deptVo.setVersion(dept.getVersion());
                 deptVos.add(deptVo);
             }
             res.put("total",pageInfo.getTotal());

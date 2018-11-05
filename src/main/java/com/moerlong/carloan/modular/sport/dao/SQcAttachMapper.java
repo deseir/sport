@@ -31,4 +31,6 @@ public interface SQcAttachMapper {
      * @return
      */
     public List<SQcAttach> selectPage(Map<String,Object> param);
+
+    public int deleteByIds(List list);
 }

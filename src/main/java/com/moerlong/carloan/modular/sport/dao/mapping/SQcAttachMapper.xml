@@ -132,4 +132,13 @@
     and isdelete=0
     order by createtime asc
   </select>
+<!--根据id 一次删除多个-->
+  <delete id="deleteByIds" parameterType="java.lang.Integer">
+    delete from s_qc_attach
+    where id in
+    <foreach collection="list" index="index" open="(" item="id" separator="," close=")">
+      #{id}
+    </foreach>
+
+  </delete>
 </mapper>

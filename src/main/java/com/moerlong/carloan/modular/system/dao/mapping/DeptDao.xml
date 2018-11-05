@@ -75,10 +75,10 @@
 	<!-- 查询（分页查询） -->
 	<select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.common.persistence.model.Dept">
 		select
-		id,pid,simplename,fullname,tips,version
+		id,pid,simplename,fullname,tips,version,num
 		from dept dept
 		where 1=1
-        <if test="deptid !=null and deptid != '' ">
+        <if test="deptid !=null and deptid != '' and deptid != 0 ">
             and id=#{deptid}
         </if>
 		<if test="pid != null" >

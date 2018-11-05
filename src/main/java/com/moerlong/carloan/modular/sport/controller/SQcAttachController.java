@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -86,6 +88,39 @@ public class SQcAttachController {
 		}
 		return res;
 	}
+
+	@ApiOperation(value = "根据id一次删除多个")
+	@ApiImplicitParam(paramType = "body", name = "param", required = false, dataType = "Map", value = "参数")
+	@RequestMapping(value = "/sqcAttach/deleteByIds", method = {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public Object deleteByIds(@RequestParam String ids) {
+		Map<String, Object> res = new HashMap<>();
+		List idList = new ArrayList();
+		String [] idsArr = ids.split(",");
+		for(int i=0;i<idsArr.length;i++){
+			idList.add(Long.parseLong(idsArr[i]));
+		}
+		try {
+			int i = service.deleteByIds(idList);
+			if(i>0){
+				res.put("status", 0);
+				res.put("errMsg", "删除成功");
+			}else{
+				res.put("status", 1);
+				res.put("errMsg", "删除失败");
+			}
+
+		} catch (Throwable e) {
+			this.log.error(e.getMessage(), e);
+			res.put("status", 1);
+			res.put("errMsg", e.getMessage());
+		}
+		return res;
+	}
+
+
+
+
 	
 	@ApiOperation(value = "逻辑删除")
 	@ApiImplicitParam(paramType = "body", name = "param", required = false, dataType = "Map", value = "参数")
