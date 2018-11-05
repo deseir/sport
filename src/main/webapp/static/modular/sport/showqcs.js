@@ -87,23 +87,24 @@ function showSubDepts() {
     window.location.href="/sdept/showSubDepts?deptId="+deptPid;
 }
 
+//确认已巡检
+function confirmXj() {
+    var deptId = $("#deptId").val();
+    $.ajax({
+        type: "POST",
+        url: '/sdept/sfxj',
+        dataType: 'json',
+        data: {
+            'deptId':deptId,
+            'sfxj':'1' // 1-已巡检
+        },
+        success: function(data) {
+            alert(data.msg);
+        },
+        error: function() {
+            alert("修改数据异常！");
 
+        }
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
