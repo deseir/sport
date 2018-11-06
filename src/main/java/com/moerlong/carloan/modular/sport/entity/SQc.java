@@ -41,6 +41,10 @@ public class SQc {
 
     private String picUrl;
 
+    private String dljd;
+
+    private String dlwd;
+
     public Integer getId() {
         return id;
     }
@@ -191,5 +195,21 @@ public class SQc {
 
     public void setPicUrl(String picUrl) {
         this.picUrl = picUrl;
+    }
+
+    public String getDljd() {
+        return dljd;
+    }
+
+    public void setDljd(String dljd) {
+        this.dljd = dljd;
+    }
+
+    public String getDlwd() {
+        return dlwd;
+    }
+
+    public void setDlwd(String dlwd) {
+        this.dlwd = dlwd;
     }
 }

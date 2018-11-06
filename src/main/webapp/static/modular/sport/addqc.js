@@ -127,12 +127,15 @@ function uploadPic() {
 }
 function uploadFile(file) {
 
+    var qcId = $("#qcId").val();
     var formData = new FormData();
     formData.append("file", file);
+    formData.append("qcId",qcId);
+
     var returnUrl = "";
     $.ajax({
         type: "POST",
-        url: "/file/upload/idCard",
+        url: "/prjfile/upload/pic",
         /**
          *必须false才会自动加上正确的Content-Type
          */
@@ -151,12 +154,20 @@ function uploadFile(file) {
             var status=data.status;
             if(status=='0'){
                 returnUrl = data.filePath;
+                var jd = data.jd;
+                var wd = data.wd;
+                if(jd!=null&&jd!=undefined&&jd!=""){
+                    $("#dljd").val(jd);
+                }
+                if(wd!=null&&wd!=undefined&&wd!=""){
+                    $("#dlwd").val(wd);
+                }
             }else{
                 returnUrl = "";
             }
         },
         error: function(data) {
-            Feng.info("上传图片异常！");
+            alert("上传图片异常！");
             returnUrl = "";
         }
 
@@ -175,17 +186,18 @@ function showPics() {
         },
         success: function(data) {
             var status = data.status;
-            $("#met-grid").html("");
+            $("#picContent").html("");
             if(status=='0'){
                 var html ="";
                 $.each(data.data.list,function(i){
 
-                    html +="<li class=\"shown\" ><input type='checkbox' name='attachChecked' value='"+data.data.list[i].id+"'>"
-                        +"<img class=\"cover-image\" src=\""+idPicUrls+data.data.list[i].picurl+"\" ></li>";
+                    html +="<div class=\"example col-xs-6 col-md-3\" >"
+                        +"<input style='width: 20px;height: 20px;' type='checkbox' name='attachChecked' value='"+data.data.list[i].id+"'>"
+                        +"<img class=\"img-rounded\" src=\""+idPicUrls+data.data.list[i].picurl+"\" ></div>";
 
                 });
 
-                $("#met-grid").append(html);
+                $("#picContent").append(html);
 
             }
         },

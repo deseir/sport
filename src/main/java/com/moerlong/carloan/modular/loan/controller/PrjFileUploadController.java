@@ -5,8 +5,8 @@ import com.drew.imaging.jpeg.JpegProcessingException;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
-import com.moerlong.carloan.modular.sport.entity.SPrjBase;
-import com.moerlong.carloan.modular.sport.service.SPrjBaseService;
+import com.moerlong.carloan.modular.sport.entity.SQc;
+import com.moerlong.carloan.modular.sport.service.SQcService;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,14 +65,14 @@ public class PrjFileUploadController {
     private String bussPicUrl;
 
     @Autowired
-    SPrjBaseService service;
+    SQcService qcService;
 
     /**
      * 保存文件
      * @param myfile
      * @return
      */
-    private Map<String,Object> saveFile(MultipartFile myfile, String fileSubPath, String fileUrl,Integer prjId){
+    private Map<String,Object> saveFile(MultipartFile myfile, String fileSubPath, String fileUrl,Integer qcId){
         Map<String,Object> map = new HashMap<>();
         String FilePath ="";
         if (myfile != null && !myfile.isEmpty()) {
@@ -118,9 +118,9 @@ public class PrjFileUploadController {
            // FilePath=fileUrl+ File.separator + dateStr + File.separator + newFileName;
             FilePath=idPicUrlsx+ "/" + dateStr + "/" + newFileName;
             log.info("上传成功！！文件路径===》{}",FilePath);
-            SPrjBase prjBase = service.selectById(prjId);
-            String dljd = prjBase.getDljd();
-            String dlwd = prjBase.getDlwd();
+            SQc sqc = qcService.selectById(qcId);
+            String dljd = sqc.getDljd();
+            String dlwd = sqc.getDlwd();
             if(null ==dljd || null ==dlwd || "".equals(dljd)|| "".equals(dlwd)){
 
             Metadata metadata = null;
@@ -153,9 +153,9 @@ public class PrjFileUploadController {
                 }
                 map.put("jd",jd.toString());
                 map.put("wd",wd.toString());
-                prjBase.setDljd(jd.toString());
-                prjBase.setDlwd(wd.toString());
-                service.updateWithOutNull(prjBase);
+                sqc.setDljd(jd.toString());
+                sqc.setDlwd(wd.toString());
+                qcService.updateWithOutNull(sqc);
             } catch (JpegProcessingException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -182,8 +182,8 @@ public class PrjFileUploadController {
      */
     @RequestMapping(method = RequestMethod.POST,value="/prjfile/upload/pic")
     @ResponseBody
-    private Object uploadIdCard(@RequestParam(name = "file", required = false) MultipartFile myfile,@RequestParam(name = "prjId",required = false) Integer prjId)  {
-        return saveFile(myfile, idPicPath, idPicUrl,prjId);
+    private Object uploadIdCard(@RequestParam(name = "file", required = false) MultipartFile myfile,@RequestParam(name = "qcId",required = false) Integer qcId)  {
+        return saveFile(myfile, idPicPath, idPicUrl,qcId);
     }
 
 }
