@@ -15,7 +15,7 @@ var MgrDept = {
  */
 MgrDept.initColumn = function () {
     var columns = [
-        {field: 'selectItem', radio: true},
+        {field: 'selectItem', radio: true,visible: false},
         {title: 'id', field: 'id', visible: false, align: 'center', valign: 'middle'},
         {title: '部门简称', field: 'simplename', align: 'center', valign: 'middle', sortable: true},
         {title: '部门全称', field: 'fullname', align: 'center', valign: 'middle', sortable: true},
@@ -32,7 +32,13 @@ MgrDept.initColumn = function () {
         }
     }
     function operate2(value,row,index){
-        return ['<a href="">巡检</a>'].join("");
+        if([row["num"]]==1&&[row["version"]]==1){
+            return ['<a>查看器材</a>'].join("");
+        }else if([row["num"]]==1&&[row["version"]]==0){
+            return ['<a>巡检</a>'].join("");
+        }else{
+            return ['--'].join("");
+        }
     }
     return columns;
 };
@@ -113,6 +119,7 @@ MgrDept.delMgrDept = function () {
 
 
 MgrDept.resetSearch = function () {
+    debugger;
     $("#deptName").val("");
     MgrDept.search();
 }
