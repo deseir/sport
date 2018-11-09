@@ -68,7 +68,7 @@ MgrDept.openChangeUser = function () {
     if (this.check()) {
         var index = layer.open({
             type: 2,
-            title: '编辑管理员',
+            title: '编辑部门',
             area: ['800px', '450px'], //宽高
             fix: false, //不固定
             maxmin: true,

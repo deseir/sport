@@ -1,0 +1,122 @@
+@layout("/common/_container.html"){
+<link rel="stylesheet" href="${ctxPath}/static/picview/css/bootstrap-grid.min.css">
+<link rel="stylesheet" href="${ctxPath}/static/picview/dist/zoomify.min.css">
+<link rel="stylesheet" href="${ctxPath}/static/picview/css/style.css">
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal" id="">
+			<div class="row">
+				<input type="hidden" id="deptId" value="${sqc.deptid}">
+				<input type="hidden" id="qcId" value="${sqc.id}">
+				<input type="hidden" id="idPicUrls" value="${idPicUrls}">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">工程名称</label>
+						<div class="col-sm-9">
+							<input class="form-control" id="prjname" name="prjname" type="text" value="健身工程" readonly="readonly">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<#input id="jssb" name="健身设备" underline="false" value="${sqc.jssb}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="器材编号" id="qcbh" placeholder="" value="${sqc.qcbh}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="供应商" id="provider" placeholder="" value="${sqc.provider}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="安装时间" id="azsj" placeholder="" value="${sqc.azsj}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="器材现状" id="qcxz" placeholder="" value="${sqc.qcxz}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="故障描述" id="gzms" placeholder="" value="${sqc.gzms}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="缓冲层" id="hcc" placeholder="" value="${sqc.hcc}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="免费维护期限" id="mfwhqx" placeholder="" value="${sqc.mfwhqx}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="安全使用期限" id="aqsyqx" placeholder="" value="${sqc.aqsyqx}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="地理经度" id="dljd" readonly="readonly" placeholder="" underline="false" value="${sqc.dljd}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="地理纬度" id="dlwd" readonly="readonly" placeholder="" underline="false" value="${sqc.dlwd}"/>
+				</div>
+				<div class="col-sm-6" style="margin-left: 30%;">
+					<#button name="保存器材信息" icon="fa fa-save" underline="true" clickFun="saveQc();"/>
+				</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="ibox-content">
+	<div class="form-horizontal">
+		<div class="row">
+			<row>
+
+				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;">
+					<img id="showImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
+				</div>
+				<span class="btn btn-primary btn-file" style="float:left;font-size:12px;margin-left:17%;height: 35px;">
+					<span class="fileinput-new">选择文件</span>
+					<input type="file" id="fileInpBtn" name="file" onchange="UploadImageicc();" accept="image/gif,image/jpeg,image/x-png" >
+					<input type="hidden" id="courtPersonalPhoto">
+				</span>&nbsp;
+				<#button name="上传" icon="fa fa-save" underline="true" clickFun="uploadPic();"/>
+				<#button name="删除图片" icon="fa fa-save" underline="true" clickFun="delAttach();"/>
+
+
+				<!--<label for="fileInpBtn">上传器材照片:</label><br>-->
+				<!--<input style="width: 60%;" id="fileInpBtn" type="file" accept="image/jpeg"  multiple>-->
+				<!--<input type="button" value="上传" style="width: 20%;" onclick="uploadPic()">-->
+				<!--<input type="button" value="删除图片" style="width: 30%;" onclick="delAttach()"><br>-->
+			</row>
+		</div>
+<hr style="margin-top: 10%;">
+		<!--显示图片-->
+		<div class="container">
+			<div class="examples">
+				<div class="row" id="picContent">
+					<!--<div class="example col-xs-4 col-md-3" >-->
+					<!--<input type="checkbox">-->
+					<!--<img src="${ctxPath}/static/picview/img/4.jpg" class="img-rounded" alt="">-->
+					<!--</div>-->
+					<!--<div class="example col-xs-4 col-md-3">-->
+					<!--<input type="checkbox">-->
+					<!--<img src="${ctxPath}/static/picview/img/5.jpg" class="img-rounded" alt="">-->
+					<!--</div>-->
+					<!--<div class="example col-xs-4 col-md-3">-->
+					<!--<input type="checkbox">-->
+					<!--<img src="${ctxPath}/static/picview/img/6.jpg" class="img-rounded" alt="">-->
+					<!--</div>-->
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+<script src="${ctxPath}/static/js/jquery.min.js"></script>
+<script src="${ctxPath}/static/picview/dist/zoomify.min.js"></script>
+<script src="${ctxPath}/static/modular/sporthoutai/addqc.js"></script>
+<script type="text/javascript">
+    $(document).delegate("img","click",function () {
+        $('.example img').zoomify();
+    });
+
+</script>
+<!--<script src="${ctxPath}/static/modular/sporthoutai/addqc.js"></script>-->
+@}

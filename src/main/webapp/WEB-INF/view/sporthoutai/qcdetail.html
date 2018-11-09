@@ -1,0 +1,86 @@
+@layout("/common/_container.html"){
+<link rel="stylesheet" href="${ctxPath}/static/picview/css/bootstrap-grid.min.css">
+<link rel="stylesheet" href="${ctxPath}/static/picview/dist/zoomify.min.css">
+<link rel="stylesheet" href="${ctxPath}/static/picview/css/style.css">
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal" id="">
+			<div class="row">
+				<input type="hidden" id="deptId" value="${sqc.deptid}">
+				<input type="hidden" id="qcId" value="${sqc.id}">
+				<input type="hidden" id="idPicUrls" value="${idPicUrls}">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label class="col-sm-3 control-label">工程名称</label>
+						<div class="col-sm-9">
+							<input class="form-control" id="prjname" name="prjname" type="text" value="健身工程" readonly="readonly">
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<#input id="jssb" name="健身设备" readonly="readonly" underline="false" value="${sqc.jssb}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="器材编号" id="qcbh" readonly="readonly" placeholder="" value="${sqc.qcbh}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="供应商" id="provider" readonly="readonly" placeholder="" value="${sqc.provider}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="安装时间" id="azsj" readonly="readonly" placeholder="" value="${sqc.azsj}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="器材现状" id="qcxz" readonly="readonly" placeholder="" value="${sqc.qcxz}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="故障描述" id="gzms" readonly="readonly" placeholder="" value="${sqc.gzms}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="缓冲层" id="hcc"  readonly="readonly" placeholder="" value="${sqc.hcc}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="免费维护期限" id="mfwhqx" readonly="readonly" placeholder="" value="${sqc.mfwhqx}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="安全使用期限" id="aqsyqx" readonly="readonly" placeholder="" value="${sqc.aqsyqx}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="地理经度" id="dljd" readonly="readonly" placeholder="" underline="false" value="${sqc.dljd}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input name="地理纬度" id="dlwd" readonly="readonly" placeholder="" underline="false" value="${sqc.dlwd}"/>
+				</div>
+
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="ibox-content">
+	<div class="form-horizontal">
+		<H5>器材图片</H5>
+		<!--显示图片-->
+		<div class="container">
+			<div class="examples">
+				<div class="row" id="picContent">
+				</div>
+			</div>
+		</div>
+		<#button name="返回" icon="fa-chevron-left" clickFun="backQcList()" space="true"/>
+
+	</div>
+</div>
+
+
+
+<script src="${ctxPath}/static/js/jquery.min.js"></script>
+<script src="${ctxPath}/static/picview/dist/zoomify.min.js"></script>
+<script src="${ctxPath}/static/modular/sporthoutai/qcdetail.js"></script>
+<script type="text/javascript">
+    $(document).delegate("img","click",function () {
+        $('.example img').zoomify();
+    });
+
+</script>
+@}

@@ -274,11 +274,14 @@
   <!-- 查询（分页查询） -->
   <select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.sport.entity.SQc">
     select
-    <include refid="Base_Column_List" />
-    from s_qc
-    where 1=1
+    q.id, deptid,d.simplename deptname  , deptpid,jssb, qcbh, provider, azsj, qcxz, sfbf,
+    gzms, hcc, mfwhqx, aqsyqx,dljd,dlwd, createtime, updatetime, isdeleted
+    from s_qc q,dept d where q.deptid=d.id
     <if test="deptid != null" >
       and deptid = #{deptid,jdbcType=INTEGER}
+    </if>
+    <if test="jssb != null" >
+      and jssb like CONCAT('%',#{jssb},'%')
     </if>
     and isdeleted=0
     order by createtime desc
