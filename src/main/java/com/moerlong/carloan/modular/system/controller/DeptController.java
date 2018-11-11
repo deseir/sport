@@ -14,6 +14,8 @@ import com.moerlong.carloan.common.persistence.dao.UserMapper;
 import com.moerlong.carloan.common.persistence.model.Dept;
 import com.moerlong.carloan.common.persistence.model.User;
 import com.moerlong.carloan.core.log.LogObjectHolder;
+import com.moerlong.carloan.core.shiro.ShiroKit;
+import com.moerlong.carloan.core.shiro.ShiroUser;
 import com.moerlong.carloan.core.support.HttpKit;
 import com.moerlong.carloan.core.util.Convert;
 import com.moerlong.carloan.core.util.ToolUtil;
@@ -97,7 +99,10 @@ public class DeptController extends BaseController {
     @RequestMapping(value = "/tree")
     @ResponseBody
     public List<ZTreeNode> tree() {
-        List<ZTreeNode> tree = this.deptDao.tree();
+        ShiroUser user = ShiroKit.getUser();
+        Map<String,Object> parms = new HashMap<>();
+        parms.put("deptId",user.getDeptId());
+        List<ZTreeNode> tree = this.deptDao.selSubTreeByPid(parms);
         //tree.add(ZTreeNode.createParent());
         return tree;
     }

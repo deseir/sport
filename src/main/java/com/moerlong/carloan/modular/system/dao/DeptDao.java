@@ -47,4 +47,6 @@ public interface DeptDao {
    public List<Dept> selectByDeptName (Map<String,Object> param);
 
     public int upSfxj (Map<String,Object> param);
+
+    public List<ZTreeNode> selSubTreeByPid (Map<String,Object> param);
 }

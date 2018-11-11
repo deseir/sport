@@ -87,7 +87,7 @@
 		<if test="deptName !=null and deptName !=''">
 			and (simplename like CONCAT('%',#{deptName},'%') or fullname like CONCAT('%',#{deptName},'%'))
 		</if>
-		order by id desc
+		order by id
 	</select>
 
 	<!--根据部门名称查询-->
@@ -99,5 +99,17 @@
 	<update id="upSfxj" parameterType="java.util.Map">
 		update dept set version=#{sfxj}  where id=#{deptId}
 	</update>
+	<select id="selSubTreeByPid" resultType="com.moerlong.carloan.common.node.ZTreeNode">
+		select id,pid as pId,simplename as name,'true' isOpen from dept where id=#{deptId}
+		UNION
+		select id,pid,simplename as name ,'true' as isOpen from (
+		select t1.*,
+		if(find_in_set(pid, @pids) > 0, @pids := concat(@pids, ',', id), 0) as ischild
+		from (
+		   select id,pid,simplename,fullname from dept t
+		  ) t1, (select @pids := #{deptId}) t2
+		) t3 where ischild != 0
+	</select>
+
 
 </mapper>

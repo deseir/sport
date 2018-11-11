@@ -27,7 +27,9 @@
 					<#input name="供应商" id="provider" placeholder="" value="${sqc.provider}"/>
 				</div>
 				<div class="col-sm-6">
-					<#input name="安装时间" id="azsj" placeholder="" value="${sqc.azsj}"/>
+					<#input id="azsj" name="安装时间" underline="true" type="date"
+					value="${sqc.azsj}"
+					clickFun="laydate({istime: false, format: 'YYYY-MM-DD'})" />
 				</div>
 				<div class="col-sm-6">
 					<#input name="器材现状" id="qcxz" placeholder="" value="${sqc.qcxz}"/>
