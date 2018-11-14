@@ -34,7 +34,7 @@ public class CarLoanApplication extends WebMvcConfigurerAdapter{
             registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");
             registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
         }
-        registry.addResourceHandler("/loantest/**").addResourceLocations("file:" + "/nodedata/node/loantest/");
+        registry.addResourceHandler("/pics/**").addResourceLocations("file:" + "/usr/local/resources/sport/pics/");
     }
 
     public static void main(String[] args) {

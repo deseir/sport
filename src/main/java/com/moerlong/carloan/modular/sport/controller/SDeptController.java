@@ -7,6 +7,8 @@ import com.moerlong.carloan.common.persistence.dao.DeptMapper;
 import com.moerlong.carloan.common.persistence.model.Dept;
 import com.moerlong.carloan.common.persistence.model.DeptVo;
 import com.moerlong.carloan.core.log.LogObjectHolder;
+import com.moerlong.carloan.core.shiro.ShiroKit;
+import com.moerlong.carloan.core.shiro.ShiroUser;
 import com.moerlong.carloan.core.support.HttpKit;
 import com.moerlong.carloan.modular.system.service.IDeptService;
 import com.moerlong.carloan.util.CommonUtil;
@@ -60,6 +62,10 @@ public class SDeptController extends BaseController {
         Map<String, Object> res = new HashMap<>();
         Integer pageNum = (offset / limit + 1); //页数从1开始
         Integer pageSize = limit; //页面大小
+        if(null==queryMap.get("deptid")||"".equals(queryMap.get("deptid"))){
+            ShiroUser user = ShiroKit.getUser();
+            queryMap.put("deptid",user.getDeptId());
+        }
 
         try {
             PageInfo<Dept> pageInfo = this.deptService.selectPage(pageSize, pageNum, queryMap);

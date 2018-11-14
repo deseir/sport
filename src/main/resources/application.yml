@@ -114,7 +114,7 @@ logging:
 
 file:
   identity_pic_path: /usr/local/resources/sport/pics
-  identity_pic_url: http://140.143.35.16:8888/resource/pics
-  identity_pic_urls: http://140.143.35.16:8888
+  identity_pic_url: http://140.143.35.16/resource/pics
+  identity_pic_urls: http://140.143.35.16
   identity_pic_urlsx: /resource/pics
 ---
