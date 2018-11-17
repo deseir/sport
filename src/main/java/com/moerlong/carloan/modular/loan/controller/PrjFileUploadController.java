@@ -5,6 +5,7 @@ import com.drew.imaging.jpeg.JpegProcessingException;
 import com.drew.metadata.Directory;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.Tag;
+import com.moerlong.carloan.common.controller.ReduceImg;
 import com.moerlong.carloan.modular.sport.entity.SQc;
 import com.moerlong.carloan.modular.sport.service.SQcService;
 import org.apache.commons.io.FilenameUtils;
@@ -116,8 +117,14 @@ public class PrjFileUploadController {
             }
 
            // FilePath=fileUrl+ File.separator + dateStr + File.separator + newFileName;
+            String reduceUrl = f+"/"+newFileName;
             FilePath=idPicUrlsx+ "/" + dateStr + "/" + newFileName;
             log.info("上传成功！！文件路径===》{}",FilePath);
+            //上传成功之后进行图片压缩
+//            log.info("压缩之前图片大小==="+new File(reduceUrl).length());
+            ReduceImg.reduceImg(reduceUrl,reduceUrl,400,300,null);
+//            log.info("压缩之后图片大小==="+new File(reduceUrl).length());
+
             SQc sqc = qcService.selectById(qcId);
             String dljd = sqc.getDljd();
             String dlwd = sqc.getDlwd();

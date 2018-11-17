@@ -1,5 +1,6 @@
 package com.moerlong.carloan.modular.loan.controller;
 
+import com.moerlong.carloan.common.controller.ReduceImg;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -104,9 +105,11 @@ public class FileUploadController {
                 map.put("errMsg","上传文件异常！");
             }
 
+            String reduceUrl = f+"/"+newFileName;
            // FilePath=fileUrl+ File.separator + dateStr + File.separator + newFileName;
             FilePath=idPicUrlsx+ "/" + dateStr + "/" + newFileName;
             log.info("上传成功！！文件路径===》{}",FilePath);
+            ReduceImg.reduceImg(reduceUrl,reduceUrl,400,300,null);
             map.put("status","0");
             map.put("filePath",FilePath);
             return map;
