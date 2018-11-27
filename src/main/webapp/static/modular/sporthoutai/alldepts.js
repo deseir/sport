@@ -16,7 +16,14 @@ var MgrDept = {
 MgrDept.initColumn = function () {
     var columns = [
         {field: 'selectItem', radio: true,visible: false},
-        {title: 'id', field: 'id', visible: true, align: 'center', valign: 'middle'},
+        {title: '序号',align: 'center',valign: 'bottom',formatter: function(value, row, index) {
+                // return index + 1;
+                var pageSize=$('#managerTable').bootstrapTable('getOptions').pageSize;//通过表的#id 可以得到每页多少条
+                var pageNumber=$('#managerTable').bootstrapTable('getOptions').pageNumber;//通过表的#id 可以得到当前第几页
+                return pageSize * (pageNumber - 1) + index + 1;    //返回每条的序号： 每页条数 * （当前页 - 1 ）+ 序号
+            }
+        },
+        {title: 'id', field: 'id', visible: false, align: 'center', valign: 'middle'},
         {title: '部门简称', field: 'simplename', align: 'center', valign: 'middle', sortable: true},
         {title: '部门全称', field: 'fullname', align: 'center', valign: 'middle', sortable: true},
         {title: '巡检状态', align: 'center', valign: 'middle',formatter:operate},

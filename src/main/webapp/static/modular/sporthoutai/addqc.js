@@ -32,8 +32,11 @@ function saveQc() {
             var status = data.status;
             if(status=='0'){
                 $("#qcId").val(data.qcId);
-                alert("保存数据成功！");
-                showBtns();
+                window.parent.MgrQc.table.refresh();
+                parent.layer.close(window.parent.MgrQc.layerIndex);
+                // parent.layer.close(window.parent.layerIndex);
+                // DeptInfoDlg.close();
+                // showBtns();
             }else{
                 alert("保存数据失败！"+data.msg);
             }
@@ -251,14 +254,14 @@ $(document).ready(function () {
     }
 });
 
-function showBtns() {
-    var qcId = $("#qcId").val();
-    if(qcId !=null && qcId !="" && qcId !=undefined){
-        $("#delBtn").show();
-    }else{
-        $("#delBtn").hide();
-    }
-}
+// function showBtns() {
+//     var qcId = $("#qcId").val();
+//     if(qcId !=null && qcId !="" && qcId !=undefined){
+//         $("#delBtn").show();
+//     }else{
+//         $("#delBtn").hide();
+//     }
+// }
 
 /*缩略图*/
 function UploadImageicc(){
