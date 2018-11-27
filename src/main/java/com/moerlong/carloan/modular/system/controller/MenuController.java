@@ -1,13 +1,10 @@
 package com.moerlong.carloan.modular.system.controller;
 
-import com.moerlong.carloan.common.constant.tips.Tip;
-import com.moerlong.carloan.modular.system.warpper.MenuWarpper;
 import com.moerlong.carloan.common.annotion.Permission;
-import com.moerlong.carloan.common.annotion.log.BussinessLog;
 import com.moerlong.carloan.common.constant.Const;
-import com.moerlong.carloan.common.constant.Dict;
 import com.moerlong.carloan.common.constant.factory.ConstantFactory;
 import com.moerlong.carloan.common.constant.state.MenuStatus;
+import com.moerlong.carloan.common.constant.tips.Tip;
 import com.moerlong.carloan.common.controller.BaseController;
 import com.moerlong.carloan.common.exception.BizExceptionEnum;
 import com.moerlong.carloan.common.exception.BussinessException;
@@ -19,6 +16,7 @@ import com.moerlong.carloan.core.support.BeanKit;
 import com.moerlong.carloan.core.util.ToolUtil;
 import com.moerlong.carloan.modular.system.dao.MenuDao;
 import com.moerlong.carloan.modular.system.service.IMenuService;
+import com.moerlong.carloan.modular.system.warpper.MenuWarpper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -105,7 +103,7 @@ public class MenuController extends BaseController {
      */
     @Permission(Const.ADMIN_NAME)
     @RequestMapping(value = "/edit")
-    @BussinessLog(value = "修改菜单", key = "name", dict = Dict.MenuDict)
+//    @BussinessLog(value = "修改菜单", key = "name", dict = Dict.MenuDict)
     @ResponseBody
     public Tip edit(@Valid Menu menu, BindingResult result) {
         if (result.hasErrors()) {
@@ -134,7 +132,7 @@ public class MenuController extends BaseController {
      */
     @Permission(Const.ADMIN_NAME)
     @RequestMapping(value = "/add")
-    @BussinessLog(value = "菜单新增", key = "name", dict = Dict.MenuDict)
+//    @BussinessLog(value = "菜单新增", key = "name", dict = Dict.MenuDict)
     @ResponseBody
     public Tip add(@Valid Menu menu, BindingResult result) {
         if (result.hasErrors()) {
@@ -160,7 +158,7 @@ public class MenuController extends BaseController {
      */
     @Permission(Const.ADMIN_NAME)
     @RequestMapping(value = "/remove")
-    @BussinessLog(value = "删除菜单", key = "menuId", dict = Dict.DeleteDict)
+//    @BussinessLog(value = "删除菜单", key = "menuId", dict = Dict.DeleteDict)
     @ResponseBody
     public Tip remove(@RequestParam Integer menuId) {
         if (ToolUtil.isEmpty(menuId)) {

@@ -1,8 +1,7 @@
 package com.moerlong.carloan.modular.system.controller;
 
-import com.moerlong.carloan.common.annotion.log.BussinessLog;
+import com.moerlong.carloan.common.annotion.Permission;
 import com.moerlong.carloan.common.constant.Const;
-import com.moerlong.carloan.common.constant.Dict;
 import com.moerlong.carloan.common.constant.cache.Cache;
 import com.moerlong.carloan.common.constant.factory.ConstantFactory;
 import com.moerlong.carloan.common.constant.tips.Tip;
@@ -13,6 +12,7 @@ import com.moerlong.carloan.common.node.ZTreeNode;
 import com.moerlong.carloan.common.persistence.dao.RoleMapper;
 import com.moerlong.carloan.common.persistence.dao.UserMapper;
 import com.moerlong.carloan.common.persistence.model.Role;
+import com.moerlong.carloan.common.persistence.model.User;
 import com.moerlong.carloan.core.cache.CacheKit;
 import com.moerlong.carloan.core.log.LogObjectHolder;
 import com.moerlong.carloan.core.util.Convert;
@@ -20,8 +20,6 @@ import com.moerlong.carloan.core.util.ToolUtil;
 import com.moerlong.carloan.modular.system.dao.RoleDao;
 import com.moerlong.carloan.modular.system.service.IRoleService;
 import com.moerlong.carloan.modular.system.warpper.RoleWarpper;
-import com.moerlong.carloan.common.annotion.Permission;
-import com.moerlong.carloan.common.persistence.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -121,7 +119,7 @@ public class RoleController extends BaseController {
      * 角色新增
      */
     @RequestMapping(value = "/add")
-    @BussinessLog(value = "添加角色", key = "name", dict = Dict.RoleDict)
+//    @BussinessLog(value = "添加角色", key = "name", dict = Dict.RoleDict)
     @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Tip add(@Valid Role role, BindingResult result) {
@@ -137,7 +135,7 @@ public class RoleController extends BaseController {
      * 角色修改
      */
     @RequestMapping(value = "/edit")
-    @BussinessLog(value = "修改角色", key = "name", dict = Dict.RoleDict)
+//    @BussinessLog(value = "修改角色", key = "name", dict = Dict.RoleDict)
     @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Tip edit(@Valid Role role, BindingResult result) {
@@ -155,7 +153,7 @@ public class RoleController extends BaseController {
      * 删除角色
      */
     @RequestMapping(value = "/remove")
-    @BussinessLog(value = "删除角色", key = "roleId", dict = Dict.DeleteDict)
+//    @BussinessLog(value = "删除角色", key = "roleId", dict = Dict.DeleteDict)
     @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Tip remove(@RequestParam Integer roleId) {
@@ -195,7 +193,7 @@ public class RoleController extends BaseController {
      * 配置权限
      */
     @RequestMapping("/setAuthority")
-    @BussinessLog(value = "配置权限", key = "roleId,ids", dict = Dict.RoleDict)
+//    @BussinessLog(value = "配置权限", key = "roleId,ids", dict = Dict.RoleDict)
     @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Tip setAuthority(@RequestParam("roleId") Integer roleId, @RequestParam("ids") String ids) {

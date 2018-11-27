@@ -2,8 +2,6 @@ package com.moerlong.carloan.modular.system.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.moerlong.carloan.common.annotion.Permission;
-import com.moerlong.carloan.common.annotion.log.BussinessLog;
-import com.moerlong.carloan.common.constant.Dict;
 import com.moerlong.carloan.common.constant.factory.ConstantFactory;
 import com.moerlong.carloan.common.controller.BaseController;
 import com.moerlong.carloan.common.exception.BizExceptionEnum;
@@ -130,7 +128,7 @@ public class DeptController extends BaseController {
     /**
      * 新增部门
      */
-    @BussinessLog(value = "添加部门", key = "simplename", dict = Dict.DeptDict)
+//    @BussinessLog(value = "添加部门", key = "simplename", dict = Dict.DeptDict)
     @RequestMapping(value = "/add")
     @Permission
     @ResponseBody
@@ -167,7 +165,7 @@ public class DeptController extends BaseController {
     /**
      * 修改部门
      */
-    @BussinessLog(value = "修改部门", key = "simplename", dict = Dict.DeptDict)
+//    @BussinessLog(value = "修改部门", key = "simplename", dict = Dict.DeptDict)
     @RequestMapping(value = "/update")
     @Permission
     @ResponseBody
@@ -183,7 +181,7 @@ public class DeptController extends BaseController {
     /**
      * 删除部门
      */
-    @BussinessLog(value = "删除部门", key = "deptId", dict = Dict.DeleteDict)
+//    @BussinessLog(value = "删除部门", key = "deptId", dict = Dict.DeleteDict)
     @RequestMapping(value = "/delete")
     @Permission
     @ResponseBody

@@ -1,20 +1,19 @@
 package com.moerlong.carloan.modular.system.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.moerlong.carloan.common.persistence.model.Dict;
-import com.moerlong.carloan.modular.system.service.IDictService;
-import com.moerlong.carloan.modular.system.warpper.DictWarpper;
 import com.moerlong.carloan.common.annotion.Permission;
-import com.moerlong.carloan.common.annotion.log.BussinessLog;
 import com.moerlong.carloan.common.constant.Const;
 import com.moerlong.carloan.common.constant.factory.ConstantFactory;
 import com.moerlong.carloan.common.controller.BaseController;
 import com.moerlong.carloan.common.exception.BizExceptionEnum;
 import com.moerlong.carloan.common.exception.BussinessException;
+import com.moerlong.carloan.common.persistence.dao.DictMapper;
+import com.moerlong.carloan.common.persistence.model.Dict;
 import com.moerlong.carloan.core.log.LogObjectHolder;
 import com.moerlong.carloan.core.util.ToolUtil;
 import com.moerlong.carloan.modular.system.dao.DictDao;
-import com.moerlong.carloan.common.persistence.dao.DictMapper;
+import com.moerlong.carloan.modular.system.service.IDictService;
+import com.moerlong.carloan.modular.system.warpper.DictWarpper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -82,7 +81,7 @@ public class DictController extends BaseController {
      *
      * @param dictValues 格式例如   "1:启用;2:禁用;3:冻结"
      */
-    @BussinessLog(value = "添加字典记录", key = "dictName,dictValues", dict = com.moerlong.carloan.common.constant.Dict.DictMap)
+//    @BussinessLog(value = "添加字典记录", key = "dictName,dictValues", dict = com.moerlong.carloan.common.constant.Dict.DictMap)
     @RequestMapping(value = "/add")
     @Permission(Const.ADMIN_NAME)
     @ResponseBody
@@ -118,7 +117,7 @@ public class DictController extends BaseController {
     /**
      * 修改字典
      */
-    @BussinessLog(value = "修改字典", key = "dictName,dictValues", dict = com.moerlong.carloan.common.constant.Dict.DictMap)
+//    @BussinessLog(value = "修改字典", key = "dictName,dictValues", dict = com.moerlong.carloan.common.constant.Dict.DictMap)
     @RequestMapping(value = "/update")
     @Permission(Const.ADMIN_NAME)
     @ResponseBody
@@ -133,7 +132,7 @@ public class DictController extends BaseController {
     /**
      * 删除字典记录
      */
-    @BussinessLog(value = "删除字典记录", key = "dictId", dict = com.moerlong.carloan.common.constant.Dict.DeleteDict)
+//    @BussinessLog(value = "删除字典记录", key = "dictId", dict = com.moerlong.carloan.common.constant.Dict.DeleteDict)
     @RequestMapping(value = "/delete")
     @Permission(Const.ADMIN_NAME)
     @ResponseBody

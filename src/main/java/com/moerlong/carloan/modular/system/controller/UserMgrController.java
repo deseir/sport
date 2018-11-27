@@ -1,19 +1,17 @@
 package com.moerlong.carloan.modular.system.controller;
 
-import com.moerlong.carloan.common.constant.tips.Tip;
-import com.moerlong.carloan.core.datascope.DataScope;
 import com.moerlong.carloan.common.annotion.Permission;
-import com.moerlong.carloan.common.annotion.log.BussinessLog;
 import com.moerlong.carloan.common.constant.Const;
-import com.moerlong.carloan.common.constant.Dict;
 import com.moerlong.carloan.common.constant.factory.ConstantFactory;
 import com.moerlong.carloan.common.constant.state.ManagerStatus;
+import com.moerlong.carloan.common.constant.tips.Tip;
 import com.moerlong.carloan.common.controller.BaseController;
 import com.moerlong.carloan.common.exception.BizExceptionEnum;
 import com.moerlong.carloan.common.exception.BussinessException;
 import com.moerlong.carloan.common.persistence.dao.UserMapper;
 import com.moerlong.carloan.common.persistence.model.User;
 import com.moerlong.carloan.config.properties.FundProperties;
+import com.moerlong.carloan.core.datascope.DataScope;
 import com.moerlong.carloan.core.db.Db;
 import com.moerlong.carloan.core.log.LogObjectHolder;
 import com.moerlong.carloan.core.shiro.ShiroKit;
@@ -176,7 +174,7 @@ public class UserMgrController extends BaseController {
      * 添加管理员
      */
     @RequestMapping("/add")
-    @BussinessLog(value = "添加管理员", key = "account", dict = Dict.UserDict)
+//    @BussinessLog(value = "添加管理员", key = "account", dict = Dict.UserDict)
     @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Tip add(@Valid UserDto user, BindingResult result) {
@@ -206,7 +204,7 @@ public class UserMgrController extends BaseController {
      * @throws NoPermissionException
      */
     @RequestMapping("/edit")
-    @BussinessLog(value = "修改管理员", key = "account", dict = Dict.UserDict)
+//    @BussinessLog(value = "修改管理员", key = "account", dict = Dict.UserDict)
     @ResponseBody
     public Tip edit(@Valid UserDto user, BindingResult result) throws NoPermissionException {
         if (result.hasErrors()) {
@@ -231,7 +229,7 @@ public class UserMgrController extends BaseController {
      * 删除管理员（逻辑删除）
      */
     @RequestMapping("/delete")
-    @BussinessLog(value = "删除管理员", key = "userId", dict = Dict.UserDict)
+//    @BussinessLog(value = "删除管理员", key = "userId", dict = Dict.UserDict)
     @Permission
     @ResponseBody
     public Tip delete(@RequestParam Integer userId) {
@@ -264,7 +262,7 @@ public class UserMgrController extends BaseController {
      * 重置管理员的密码
      */
     @RequestMapping("/reset")
-    @BussinessLog(value = "重置管理员密码", key = "userId", dict = Dict.UserDict)
+//    @BussinessLog(value = "重置管理员密码", key = "userId", dict = Dict.UserDict)
     @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Tip reset(@RequestParam Integer userId) {
@@ -283,7 +281,7 @@ public class UserMgrController extends BaseController {
      * 冻结用户
      */
     @RequestMapping("/freeze")
-    @BussinessLog(value = "冻结用户", key = "userId", dict = Dict.UserDict)
+//    @BussinessLog(value = "冻结用户", key = "userId", dict = Dict.UserDict)
     @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Tip freeze(@RequestParam Integer userId) {
@@ -303,7 +301,7 @@ public class UserMgrController extends BaseController {
      * 解除冻结用户
      */
     @RequestMapping("/unfreeze")
-    @BussinessLog(value = "解除冻结用户", key = "userId", dict = Dict.UserDict)
+//    @BussinessLog(value = "解除冻结用户", key = "userId", dict = Dict.UserDict)
     @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Tip unfreeze(@RequestParam Integer userId) {
@@ -319,7 +317,7 @@ public class UserMgrController extends BaseController {
      * 分配角色
      */
     @RequestMapping("/setRole")
-    @BussinessLog(value = "分配角色", key = "userId,roleIds", dict = Dict.UserDict)
+//    @BussinessLog(value = "分配角色", key = "userId,roleIds", dict = Dict.UserDict)
     @Permission(Const.ADMIN_NAME)
     @ResponseBody
     public Tip setRole(@RequestParam("userId") Integer userId, @RequestParam("roleIds") String roleIds) {

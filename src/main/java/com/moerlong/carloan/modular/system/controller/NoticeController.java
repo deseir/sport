@@ -1,18 +1,16 @@
 package com.moerlong.carloan.modular.system.controller;
 
-import com.moerlong.carloan.common.annotion.log.BussinessLog;
-import com.moerlong.carloan.common.constant.Dict;
 import com.moerlong.carloan.common.constant.factory.ConstantFactory;
 import com.moerlong.carloan.common.controller.BaseController;
 import com.moerlong.carloan.common.exception.BizExceptionEnum;
 import com.moerlong.carloan.common.exception.BussinessException;
+import com.moerlong.carloan.common.persistence.dao.NoticeMapper;
+import com.moerlong.carloan.common.persistence.model.Notice;
 import com.moerlong.carloan.core.log.LogObjectHolder;
 import com.moerlong.carloan.core.shiro.ShiroKit;
 import com.moerlong.carloan.core.util.ToolUtil;
 import com.moerlong.carloan.modular.system.dao.NoticeDao;
 import com.moerlong.carloan.modular.system.warpper.NoticeWrapper;
-import com.moerlong.carloan.common.persistence.dao.NoticeMapper;
-import com.moerlong.carloan.common.persistence.model.Notice;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -95,7 +93,7 @@ public class NoticeController extends BaseController {
      */
     @RequestMapping(value = "/add")
     @ResponseBody
-    @BussinessLog(value = "新增通知",key = "title",dict = Dict.NoticeMap)
+//    @BussinessLog(value = "新增通知",key = "title",dict = Dict.NoticeMap)
     public Object add(Notice notice) {
         if (ToolUtil.isOneEmpty(notice, notice.getTitle(), notice.getContent())) {
             throw new BussinessException(BizExceptionEnum.REQUEST_NULL);
@@ -111,7 +109,7 @@ public class NoticeController extends BaseController {
      */
     @RequestMapping(value = "/delete")
     @ResponseBody
-    @BussinessLog(value = "删除通知",key = "noticeId",dict = Dict.DeleteDict)
+//    @BussinessLog(value = "删除通知",key = "noticeId",dict = Dict.DeleteDict)
     public Object delete(@RequestParam Integer noticeId) {
 
         //缓存通知名称
@@ -127,7 +125,7 @@ public class NoticeController extends BaseController {
      */
     @RequestMapping(value = "/update")
     @ResponseBody
-    @BussinessLog(value = "修改通知",key = "title",dict = Dict.NoticeMap)
+//    @BussinessLog(value = "修改通知",key = "title",dict = Dict.NoticeMap)
     public Object update(Notice notice) {
         if (ToolUtil.isOneEmpty(notice, notice.getId(), notice.getTitle(), notice.getContent())) {
             throw new BussinessException(BizExceptionEnum.REQUEST_NULL);

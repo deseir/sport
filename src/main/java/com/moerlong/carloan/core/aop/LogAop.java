@@ -1,24 +1,22 @@
 package com.moerlong.carloan.core.aop;
 
-import com.moerlong.carloan.core.log.LogManager;
-import com.moerlong.carloan.core.log.factory.LogTaskFactory;
-import com.moerlong.carloan.core.shiro.ShiroKit;
 import com.moerlong.carloan.common.annotion.log.BussinessLog;
 import com.moerlong.carloan.common.constant.dictmap.base.AbstractDictMap;
 import com.moerlong.carloan.common.constant.dictmap.factory.DictMapFactory;
+import com.moerlong.carloan.core.log.LogManager;
 import com.moerlong.carloan.core.log.LogObjectHolder;
+import com.moerlong.carloan.core.log.factory.LogTaskFactory;
+import com.moerlong.carloan.core.shiro.ShiroKit;
 import com.moerlong.carloan.core.shiro.ShiroUser;
 import com.moerlong.carloan.core.support.HttpKit;
 import com.moerlong.carloan.core.util.Contrast;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 import java.util.Map;
@@ -29,8 +27,8 @@ import java.util.Map;
  * @author hwl
  * @date 2016年12月6日 下午8:48:30
  */
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class LogAop {
 
     private Logger log = LoggerFactory.getLogger(this.getClass());
