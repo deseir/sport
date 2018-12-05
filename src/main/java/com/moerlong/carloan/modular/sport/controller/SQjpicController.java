@@ -1,8 +1,8 @@
 package com.moerlong.carloan.modular.sport.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.moerlong.carloan.modular.sport.entity.SQc;
-import com.moerlong.carloan.modular.sport.service.SQcService;
+import com.moerlong.carloan.modular.sport.entity.SQjpic;
+import com.moerlong.carloan.modular.sport.service.SQjPicService;
 import com.moerlong.carloan.util.CommonUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -20,20 +20,20 @@ import java.util.Map;
 
 @Controller
 @Api(tags = { "controller接口类" })
-public class SQcController {
+public class SQjpicController {
 
-	private final Logger log = LoggerFactory.getLogger(SQcController.class);
+	private final Logger log = LoggerFactory.getLogger(SQjpicController.class);
 
 	@Autowired
-	SQcService service;
+	SQjPicService service;
 	@Value("${file.identity_pic_urls}")
 	private String idPicUrls;
 
 	@ApiOperation(value = "保存或更新")
 	@ApiImplicitParam(paramType = "body", name = "entity", required = true, dataType = "TelecomRoamInfo", value = "明细")
-	@RequestMapping(value = "/sqc/saveOrUpdate", method = RequestMethod.POST)
+	@RequestMapping(value = "/qjpic/saveOrUpdate", method = RequestMethod.POST)
 	@ResponseBody
-	public Object saveOrUpdate(SQc entity) {
+	public Object saveOrUpdate(SQjpic entity) {
 		Map<String, Object> res = new HashMap<>();
 		try {
 			if(entity.getId()!=null && service.selectById(entity.getId())!=null) {
@@ -54,9 +54,9 @@ public class SQcController {
 	
 	@ApiOperation(value = "只更新非空字段")
 	@ApiImplicitParam(paramType = "body", name = "entity", required = true, dataType = "TelecomRoamInfo", value = "明细")
-	@RequestMapping(value = "/sqc/updateWithOutNull", method = RequestMethod.POST)
+	@RequestMapping(value = "/qjpic/updateWithOutNull", method = RequestMethod.POST)
 	@ResponseBody
-	public Object updateWithOutNull(SQc entity) {
+	public Object updateWithOutNull(SQjpic entity) {
 		Map<String, Object> res = new HashMap<>();
 		try {
 			service.updateWithOutNull(entity);
@@ -72,7 +72,7 @@ public class SQcController {
 
 	@ApiOperation(value = "删除")
 	@ApiImplicitParam(paramType = "body", name = "param", required = false, dataType = "Map", value = "参数")
-	@RequestMapping(value = "/sqc/deleteById", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/qjpic/deleteById", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public Object deleteById(@RequestParam Map<String,Object> param) {
 	
@@ -92,7 +92,7 @@ public class SQcController {
 	
 	@ApiOperation(value = "逻辑删除")
 	@ApiImplicitParam(paramType = "body", name = "param", required = false, dataType = "Map", value = "参数")
-	@RequestMapping(value = "/sqc/deleteLogicById", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/qjpic/deleteLogicById", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public Object deleteLogic(@RequestBody Map<String,Object> param) {
 		Map<String, Object> res = new HashMap<>();
@@ -111,7 +111,7 @@ public class SQcController {
 
 	@ApiOperation(value = "根据ID查找")
 	@ApiImplicitParam(paramType = "body", name = "param", required = false, dataType = "Map", value = "参数")
-	@RequestMapping(value = "/sqc/findById", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/qjpic/findById", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public Object findById(@RequestParam Map<String,Object> param) {
 		Map<String, Object> res = new HashMap<>();
@@ -129,7 +129,7 @@ public class SQcController {
 	}
 	
 	@ApiOperation(value = "显示所有")
-	@RequestMapping(value = "/sqc/listAll", method = {RequestMethod.POST,RequestMethod.GET})
+	@RequestMapping(value = "/qjpic/listAll", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
 	public Object listAll() {
 		Map<String, Object> res = new HashMap<>();
@@ -147,10 +147,10 @@ public class SQcController {
 
 	@ApiOperation(value = "手机端分页查询")
 	@ApiImplicitParam(paramType = "body", name = "queryMap", required = false, dataType = "Map", value = "查询条件")
-	@RequestMapping(value = "/sqc/pageQuery", method = RequestMethod.POST)
+	@RequestMapping(value = "/qjpic/pageQuery", method = RequestMethod.POST)
 	@ResponseBody
 	public Object pageQuery(@RequestParam Map<String,Object> queryMap) {
-		this.log.info("/sqc/pageQuery param:{}",queryMap);
+		this.log.info("/qjpic/pageQuery param:{}",queryMap);
 		Map<String, Object> res = new HashMap<>();
 		Integer pageNum = 1; //页数从1开始
 		Integer pageSize = 10; //页面大小
@@ -181,10 +181,10 @@ public class SQcController {
 
 	@ApiOperation(value = "后台分页查询")
 	@ApiImplicitParam(paramType = "body", name = "queryMap", required = false, dataType = "Map", value = "查询条件")
-	@RequestMapping(value = "/sqc/houtai/pageQuery", method = RequestMethod.POST)
+	@RequestMapping(value = "/qjpic/houtai/pageQuery", method = RequestMethod.POST)
 	@ResponseBody
 	public Object htPageQuery(@RequestParam Map<String,Object> queryMap) {
-		this.log.info("/sqc/houtai/pageQuery param:{}",queryMap);
+		this.log.info("/qjpic/houtai/pageQuery param:{}",queryMap);
 		Map<String, Object> res = new HashMap<>();
 		Integer pageNum = 1; //页数从1开始
 		Integer pageSize = 10; //页面大小
@@ -219,11 +219,8 @@ public class SQcController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/sqc/showAddQc")
+	@RequestMapping("/qjpic/showAddQc")
 	public String showAddCd(@RequestParam String deptId, @RequestParam String deptPid, Model model) {
-		SQc sqc = new SQc();
-		sqc.setDeptid(deptId);
-		model.addAttribute("sqc",sqc);
 		model.addAttribute("deptPid",deptPid);
 		model.addAttribute("idPicUrls",idPicUrls);
 		return "/sport/addqc.html";
@@ -235,10 +232,10 @@ public class SQcController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/sqc/showQcDetail")
+	@RequestMapping("/qjpic/showQcDetail")
 	public String showCdDetail(@RequestParam Integer qcId,@RequestParam String deptPid, Model model) {
-		SQc sqc = this.service.selectById(qcId);
-		model.addAttribute("sqc",sqc);
+		SQjpic SQjpic = this.service.selectById(qcId);
+		model.addAttribute("SQjpic",SQjpic);
 		model.addAttribute("deptPid",deptPid);
 		model.addAttribute("idPicUrls",idPicUrls);
 		return "/sport/addqc.html";
@@ -250,7 +247,7 @@ public class SQcController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/sqc/showQcs")
+	@RequestMapping("/qjpic/showQcs")
 	public String showQcs(@RequestParam Integer deptPid,@RequestParam Integer deptId, Model model) {
 		model.addAttribute("idPicUrls",idPicUrls);
 		model.addAttribute("deptId",deptId);
@@ -266,7 +263,7 @@ public class SQcController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/sqc/showAllQc")
+	@RequestMapping("/qjpic/showAllQc")
 	public String showAllQc(@RequestParam Integer deptId, Model model) {
 		model.addAttribute("idPicUrls",idPicUrls);
 		model.addAttribute("deptId",deptId);
@@ -279,11 +276,8 @@ public class SQcController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/sqc/openAddQc")
+	@RequestMapping("/qjpic/openAddQc")
 	public String openAddQc(@RequestParam String deptId, Model model) {
-		SQc sqc = new SQc();
-		sqc.setDeptid(deptId);
-		model.addAttribute("sqc",sqc);
 		model.addAttribute("idPicUrls",idPicUrls);
 		return "/sporthoutai/addqc.html";
 	}
@@ -294,10 +288,10 @@ public class SQcController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/sqc/openQcEdit")
+	@RequestMapping("/qjpic/openQcEdit")
 	public String openQcEdit(@RequestParam Integer qcId, Model model) {
-		SQc sqc = service.selectById(qcId);
-		model.addAttribute("sqc",sqc);
+		SQjpic SQjpic = service.selectById(qcId);
+		model.addAttribute("SQjpic",SQjpic);
 		model.addAttribute("idPicUrls",idPicUrls);
 		return "/sporthoutai/addqc.html";
 	}
@@ -309,15 +303,15 @@ public class SQcController {
 	 * @param model
 	 * @return
 	 */
-	@RequestMapping("/sqc/showHoutaiQcDetail")
+	@RequestMapping("/qjpic/showHoutaiQcDetail")
 	public String showHoutaiQcDetail(@RequestParam Integer qcId, Model model) {
-		SQc sqc = service.selectById(qcId);
-		model.addAttribute("sqc",sqc);
+		SQjpic SQjpic = service.selectById(qcId);
+		model.addAttribute("SQjpic",SQjpic);
 		model.addAttribute("idPicUrls",idPicUrls);
 		return "/sporthoutai/qcdetail.html";
 	}
 
-	@RequestMapping("/sqc/houtai/showQjPic")
+	@RequestMapping("/qjpic/houtai/showQjPic")
 	public String showQjPic(@RequestParam String deptId, Model model) {
 		model.addAttribute("deptId",deptId);
 		model.addAttribute("idPicUrls",idPicUrls);

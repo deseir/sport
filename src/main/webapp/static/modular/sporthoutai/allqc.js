@@ -85,7 +85,8 @@ MgrQc.openAddQc = function () {
             title: '添加器材',
             area: ['800px', '560px'], //宽高
             fix: false, //不固定
-            maxmin: true,
+            maxmin: false,
+            closeBtn:0,
             content: Feng.ctxPath + '/sqc/openAddQc?deptId='+deptId
         });
         this.layerIndex = index;
@@ -149,11 +150,17 @@ MgrQc.confirmXj=function() {
 
 }
 
+MgrQc.seeQjPic=function(){
+    var deptId=$("#deptId").val();
+window.location.href="/sqc/houtai/showQjPic?deptId="+deptId;
+}
+
 
 $(function () {
     var defaultColunms = MgrQc.initColumn();
     var deptId=$("#deptId").val();
-    var table = new BSTable( MgrQc.id, "/sqc/houtai/pageQuery?deptid="+deptId, defaultColunms);
+    var table = new BSTable( MgrQc.id, "/sqc/houtai/pageQuery", defaultColunms);
+    table.queryParam={"deptid":deptId};
     table.setPaginationType("server");
     MgrQc.table = table.init();
 });

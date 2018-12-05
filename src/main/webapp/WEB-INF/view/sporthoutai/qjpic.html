@@ -1,66 +1,7 @@
 @layout("/common/_container.html"){
-<link rel="stylesheet" href="${ctxPath}/static/picview/css/bootstrap-grid.min.css">
+<!--<link rel="stylesheet" href="${ctxPath}/static/picview/css/bootstrap-grid.min.css">-->
 <link rel="stylesheet" href="${ctxPath}/static/picview/dist/zoomify.min.css">
 <link rel="stylesheet" href="${ctxPath}/static/picview/css/style.css">
-<div class="ibox float-e-margins">
-	<div class="ibox-content">
-		<div class="form-horizontal" id="">
-			<div class="row">
-				<input type="hidden" id="deptId" value="${sqc.deptid}">
-				<input type="hidden" id="qcId" value="${sqc.id}">
-				<input type="hidden" id="idPicUrls" value="${idPicUrls}">
-				<div class="col-sm-6">
-					<div class="form-group">
-						<label class="col-sm-3 control-label">工程名称</label>
-						<div class="col-sm-9">
-							<input class="form-control" id="prjname" name="prjname" type="text" value="健身工程" readonly="readonly">
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6">
-					<#input id="jssb" name="健身设备" underline="false" value="${sqc.jssb}"/>
-				</div>
-				<div class="col-sm-6">
-					<#input name="器材编号" id="qcbh" placeholder="" value="${sqc.qcbh}"/>
-				</div>
-				<div class="col-sm-6">
-					<#input name="供应商" id="provider" placeholder="" value="${sqc.provider}"/>
-				</div>
-				<div class="col-sm-6">
-					<#input id="azsj" name="安装时间" underline="true" type="date"
-					value="${sqc.azsj}"
-					clickFun="laydate({istime: false, format: 'YYYY-MM-DD'})" />
-				</div>
-				<div class="col-sm-6">
-					<#input name="器材现状" id="qcxz" placeholder="" value="${sqc.qcxz}"/>
-				</div>
-				<div class="col-sm-6">
-					<#input name="故障描述" id="gzms" placeholder="" value="${sqc.gzms}"/>
-				</div>
-				<div class="col-sm-6">
-					<#input name="缓冲层" id="hcc" placeholder="" value="${sqc.hcc}"/>
-				</div>
-				<div class="col-sm-6">
-					<#input name="免费维护期限" id="mfwhqx" placeholder="" value="${sqc.mfwhqx}"/>
-				</div>
-				<div class="col-sm-6">
-					<#input name="安全使用期限" id="aqsyqx" placeholder="" value="${sqc.aqsyqx}"/>
-				</div>
-				<div class="col-sm-6">
-					<#input name="地理经度" id="dljd" readonly="readonly" placeholder="" underline="false" value="${sqc.dljd}"/>
-				</div>
-				<div class="col-sm-6">
-					<#input name="地理纬度" id="dlwd" readonly="readonly" placeholder="" underline="false" value="${sqc.dlwd}"/>
-				</div>
-				<div class="col-sm-6" style="margin-left: 30%;">
-					<#button name="保存器材信息" icon="fa fa-save" underline="true" clickFun="saveQc();"/>
-				</div>
-
-</div>
-
-</div>
-</div>
-</div>
 
 <div class="ibox-content">
 	<div class="form-horizontal">
@@ -77,7 +18,7 @@
 				</span>&nbsp;
 				<#button name="上传" icon="fa fa-save" underline="true" clickFun="uploadPic();"/>
 				<#button name="删除图片" icon="fa fa-save" underline="true" clickFun="delAttach();"/>
-				<#button name="取消" icon="fa fa-save" underline="true" clickFun="cancle();"/>
+				<#button name="返回" icon="fa-chevron-left" clickFun="backQcList()" space="true"/>
 
 
 				<!--<label for="fileInpBtn">上传器材照片:</label><br>-->
@@ -86,7 +27,7 @@
 				<!--<input type="button" value="删除图片" style="width: 30%;" onclick="delAttach()"><br>-->
 			</row>
 		</div>
-<hr style="margin-top: 10%;">
+		<hr style="margin-top: 10%;">
 		<!--显示图片-->
 		<div class="container">
 			<div class="examples">
