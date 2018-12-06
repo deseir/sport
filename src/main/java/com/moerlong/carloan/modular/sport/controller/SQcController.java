@@ -186,8 +186,9 @@ public class SQcController {
 	public Object htPageQuery(@RequestParam Map<String,Object> queryMap) {
 		this.log.info("/sqc/houtai/pageQuery param:{}",queryMap);
 		Map<String, Object> res = new HashMap<>();
-		Integer pageNum = 1; //页数从1开始
-		Integer pageSize = 10; //页面大小
+		int offset = Integer.valueOf(queryMap.get("offset").toString());
+		int pageSize = Integer.valueOf(queryMap.get("limit").toString());
+		Integer pageNum = (offset / pageSize + 1); //页数从1开始
 
 		try {
 			if(queryMap!=null) {
