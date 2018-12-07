@@ -120,10 +120,6 @@ public class PrjFileUploadController {
             String reduceUrl = f+"/"+newFileName;
             FilePath=idPicUrlsx+ "/" + dateStr + "/" + newFileName;
             log.info("上传成功！！文件路径===》{}",FilePath);
-            //上传成功之后进行图片压缩
-//            log.info("压缩之前图片大小==="+new File(reduceUrl).length());
-            ReduceImg.reduceImg(reduceUrl,reduceUrl,400,300,null);
-//            log.info("压缩之后图片大小==="+new File(reduceUrl).length());
 
             SQc sqc = qcService.selectById(qcId);
             String dljd = sqc.getDljd();
@@ -163,6 +159,11 @@ public class PrjFileUploadController {
                 sqc.setDljd(jd.toString());
                 sqc.setDlwd(wd.toString());
                 qcService.updateWithOutNull(sqc);
+
+                //上传成功之后进行图片压缩
+//            log.info("压缩之前图片大小==="+new File(reduceUrl).length());
+                ReduceImg.reduceImg(reduceUrl,reduceUrl,400,300,null);
+//            log.info("压缩之后图片大小==="+new File(reduceUrl).length());
             } catch (JpegProcessingException e) {
                 e.printStackTrace();
             } catch (IOException e) {
