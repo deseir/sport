@@ -32,6 +32,7 @@ function saveQc() {
             var status = data.status;
             if(status=='0'){
                 $("#qcId").val(data.qcId);
+                alert("保存数据成功！");
                 // parent.layer.close(window.parent.layerIndex);
                 // DeptInfoDlg.close();
                 // showBtns();
@@ -47,10 +48,10 @@ function saveQc() {
 
 }
 
-function cancle() {
-    window.parent.MgrQc.table.refresh();
-    parent.layer.close(window.parent.MgrQc.layerIndex);
-}
+// function cancle() {
+//     window.parent.MgrQc.table.refresh();
+//     parent.layer.close(window.parent.MgrQc.layerIndex);
+// }
 
 function logicDelete() {
     var id = $("#qcId").val();

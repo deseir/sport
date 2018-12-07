@@ -85,9 +85,12 @@ MgrQc.openAddQc = function () {
             title: '添加器材',
             area: ['800px', '560px'], //宽高
             fix: false, //不固定
-            maxmin: false,
-            closeBtn:0,
-            content: Feng.ctxPath + '/sqc/openAddQc?deptId='+deptId
+            maxmin: true,
+            closeBtn:1,
+            content: Feng.ctxPath + '/sqc/openAddQc?deptId='+deptId,
+            cancel: function(){//关闭回调刷新列表页
+                MgrQc.table.refresh();
+            }
         });
         this.layerIndex = index;
 };
@@ -102,7 +105,11 @@ MgrQc.openQcEdit = function () {
             area: ['800px', '560px'], //宽高
             fix: false, //不固定
             maxmin: true,
-            content: Feng.ctxPath + '/sqc/openQcEdit?qcId=' + qcId
+            content: Feng.ctxPath + '/sqc/openQcEdit?qcId=' + qcId,
+            cancel: function(){//关闭回调刷新列表页
+                MgrQc.table.refresh();
+            }
+
         });
         this.layerIndex = index;
     }
