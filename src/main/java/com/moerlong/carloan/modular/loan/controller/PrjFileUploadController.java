@@ -162,7 +162,7 @@ public class PrjFileUploadController {
 
                 //上传成功之后进行图片压缩
 //            log.info("压缩之前图片大小==="+new File(reduceUrl).length());
-                ReduceImg.reduceImg(reduceUrl,reduceUrl,400,300,null);
+                ReduceImg.reduceImg(reduceUrl,reduceUrl,500,400,null);
 //            log.info("压缩之后图片大小==="+new File(reduceUrl).length());
             } catch (JpegProcessingException e) {
                 e.printStackTrace();
