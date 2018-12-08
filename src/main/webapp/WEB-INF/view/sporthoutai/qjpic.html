@@ -7,7 +7,8 @@
 	<div class="form-horizontal">
 		<div class="row">
 			<row>
-
+				<input type="hidden" value="${deptId}" id="deptId">
+				<input type="hidden" value="${idPicUrls}" id="idPicUrls">
 				<div class="fileinput-new thumbnail" style="width:120px;height:85px;position:absolute;">
 					<img id="showImg" style="width:100%;height:75px;background-color: #cccccc47" src="" alt="">
 				</div>
@@ -55,7 +56,7 @@
 
 <script src="${ctxPath}/static/js/jquery.min.js"></script>
 <script src="${ctxPath}/static/picview/dist/zoomify.min.js"></script>
-<script src="${ctxPath}/static/modular/sporthoutai/addqc.js"></script>
+<script src="${ctxPath}/static/modular/sporthoutai/qjpic.js"></script>
 <script type="text/javascript">
     $(document).delegate("img","click",function () {
         $('.example img').zoomify();

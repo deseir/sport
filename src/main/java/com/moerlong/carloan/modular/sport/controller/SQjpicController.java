@@ -15,7 +15,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -66,6 +68,35 @@ public class SQjpicController {
 			this.log.error(e.getMessage(), e);
 			res.put("status", 1);
 			res.put("errMsg", e.toString());
+		}
+		return res;
+	}
+
+	@ApiOperation(value = "根据id一次删除多个")
+	@ApiImplicitParam(paramType = "body", name = "param", required = false, dataType = "Map", value = "参数")
+	@RequestMapping(value = "/qjpic/deleteByIds", method = {RequestMethod.POST,RequestMethod.GET})
+	@ResponseBody
+	public Object deleteByIds(@RequestParam String ids) {
+		Map<String, Object> res = new HashMap<>();
+		List idList = new ArrayList();
+		String [] idsArr = ids.split(",");
+		for(int i=0;i<idsArr.length;i++){
+			idList.add(Long.parseLong(idsArr[i]));
+		}
+		try {
+			int i = service.deleteByIds(idList);
+			if(i>0){
+				res.put("status", 0);
+				res.put("errMsg", "删除成功");
+			}else{
+				res.put("status", 1);
+				res.put("errMsg", "删除失败");
+			}
+
+		} catch (Throwable e) {
+			this.log.error(e.getMessage(), e);
+			res.put("status", 1);
+			res.put("errMsg", e.getMessage());
 		}
 		return res;
 	}
@@ -131,10 +162,10 @@ public class SQjpicController {
 	@ApiOperation(value = "显示所有")
 	@RequestMapping(value = "/qjpic/listAll", method = {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
-	public Object listAll() {
+	public Object listAll(@RequestParam Map<String,Object> params) {
 		Map<String, Object> res = new HashMap<>();
 		try {
-			res.put("data", service.listAll());
+			res.put("data", service.listAll(params));
 			res.put("status", 0);
 			res.put("errMsg", "操作成功");
 		} catch (Throwable e) {

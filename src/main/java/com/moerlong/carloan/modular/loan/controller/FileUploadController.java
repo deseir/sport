@@ -109,7 +109,7 @@ public class FileUploadController {
            // FilePath=fileUrl+ File.separator + dateStr + File.separator + newFileName;
             FilePath=idPicUrlsx+ "/" + dateStr + "/" + newFileName;
             log.info("上传成功！！文件路径===》{}",FilePath);
-            ReduceImg.reduceImg(reduceUrl,reduceUrl,400,300,null);
+            ReduceImg.reduceImg(reduceUrl,reduceUrl,500,400,null);
             map.put("status","0");
             map.put("filePath",FilePath);
             return map;

@@ -62,8 +62,8 @@ public class SQjpicServiceImpl implements SQjPicService {
 		return mapper.selectByPrimaryKey(id);
 	}
 	
-	public List<SQjpic> listAll() {
-		return mapper.listAll();
+	public List<SQjpic> listAll(Map<String,Object> param) {
+		return mapper.listAll(param);
 	}
 	
 	public PageInfo<SQjpic> selectPage(int pageSize,int pageNum, Map<String,Object> param) {
@@ -72,6 +72,10 @@ public class SQjpicServiceImpl implements SQjPicService {
 		Map<String,Object> map = new HashMap<>();
 		PageInfo<SQjpic> pageInfo = new PageInfo<SQjpic>(pageList);
 		return pageInfo;
+	}
+
+	public int deleteByIds(List list){
+		return mapper.deleteByIds(list);
 	}
 
 }

@@ -87,6 +87,13 @@ function showSubDepts() {
     window.location.href="/sdept/showSubDepts?deptId="+deptPid;
 }
 
+//跳转全景照片页面
+function showQjPic() {
+    var deptId = $("#deptId").val();
+    var deptPid = $("#deptPid").val();
+    window.location.href="/sqc/qiantai/showQjPic?deptId="+deptId+"&deptPid="+deptPid;
+}
+
 //确认已巡检
 function confirmXj() {
     var deptId = $("#deptId").val();

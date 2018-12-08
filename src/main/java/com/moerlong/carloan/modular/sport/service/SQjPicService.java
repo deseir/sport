@@ -55,7 +55,7 @@ public interface SQjPicService {
 	 * 查询所有
 	 * @return
 	 */
-	public List<SQjpic> listAll();
+	public List<SQjpic> listAll(Map<String,Object> param);
 	
 	/**
 	 * 分页查询 
@@ -66,6 +66,7 @@ public interface SQjPicService {
 	 */
 	public PageInfo<SQjpic> selectPage(int pageSize, int pageNum, Map<String, Object> param);
 
+	public int deleteByIds(List list);
 
 }
 

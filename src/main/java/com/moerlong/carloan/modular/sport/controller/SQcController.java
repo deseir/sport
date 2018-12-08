@@ -318,11 +318,31 @@ public class SQcController {
 		return "/sporthoutai/qcdetail.html";
 	}
 
+	/**
+	 * 后台跳转全景照片页面
+	 * @param deptId
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/sqc/houtai/showQjPic")
 	public String showQjPic(@RequestParam String deptId, Model model) {
 		model.addAttribute("deptId",deptId);
 		model.addAttribute("idPicUrls",idPicUrls);
 		return "/sporthoutai/qjpic.html";
+	}
+
+	/**
+	 * 前台跳转全景照片页面
+	 * @param deptId
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/sqc/qiantai/showQjPic")
+	public String qtShowQjPic(@RequestParam String deptId,@RequestParam String deptPid, Model model) {
+		model.addAttribute("deptId",deptId);
+		model.addAttribute("deptPid",deptPid);
+		model.addAttribute("idPicUrls",idPicUrls);
+		return "/sport/qjpic.html";
 	}
 
 }

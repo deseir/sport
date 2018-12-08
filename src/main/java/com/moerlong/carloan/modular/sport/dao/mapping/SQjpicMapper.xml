@@ -24,10 +24,11 @@
   </delete>
   <insert id="insert" parameterType="com.moerlong.carloan.modular.sport.entity.SQjpic" >
     insert into s_qjpic (id, deptid, picurl, 
-      diccurl, remark, isdelete
+      diccurl, remark, isdelete,createtime,updatetime
       )
     values (#{id,jdbcType=INTEGER}, #{deptid,jdbcType=INTEGER}, #{picurl,jdbcType=VARCHAR}, 
-      #{diccurl,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER}
+      #{diccurl,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER},#{createtime,jdbcType=TIMESTAMP},
+      #{updatetime,jdbcType=TIMESTAMP}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.moerlong.carloan.modular.sport.entity.SQjpic" >
@@ -51,6 +52,12 @@
       <if test="isdelete != null" >
         isdelete,
       </if>
+      <if test="createtime !=null">
+        createtime,
+      </if>
+      <if test="updatetime !=null">
+        updatetime,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -71,6 +78,13 @@
       <if test="isdelete != null" >
         #{isdelete,jdbcType=INTEGER},
       </if>
+      <if test="createtime !=null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime !=null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.moerlong.carloan.modular.sport.entity.SQjpic" >
@@ -91,6 +105,12 @@
       <if test="isdelete != null" >
         isdelete = #{isdelete,jdbcType=INTEGER},
       </if>
+      <if test="createtime !=null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime !=null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -100,15 +120,18 @@
       picurl = #{picurl,jdbcType=VARCHAR},
       diccurl = #{diccurl,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
-      isdelete = #{isdelete,jdbcType=INTEGER}
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
   <!-- 查询所有 -->
-  <select id="listAll" resultType="com.moerlong.carloan.modular.sport.entity.SQjpic">
+  <select id="listAll" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.sport.entity.SQjpic">
     select
     <include refid="Base_Column_List" />
     from s_qjpic
+    where deptid=#{deptid}
   </select>
   <!-- 查询（分页查询） -->
   <select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.sport.entity.SQjpic">
@@ -117,4 +140,14 @@
     from s_qjpic
     order by createtime desc
   </select>
+
+  <!--根据id 一次删除多个-->
+  <delete id="deleteByIds" parameterType="java.lang.Integer">
+    delete from s_qjpic
+    where id in
+    <foreach collection="list" index="index" open="(" item="id" separator="," close=")">
+      #{id}
+    </foreach>
+
+  </delete>
 </mapper>

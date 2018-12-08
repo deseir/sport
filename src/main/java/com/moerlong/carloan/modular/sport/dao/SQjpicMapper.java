@@ -23,11 +23,12 @@ public interface SQjpicMapper {
      * 查询所有
      * @return
      */
-    public List<SQjpic> listAll();
+    public List<SQjpic> listAll(Map<String,Object> param);
     /**
      * 分页查询
      * @param param	查询参数
      * @return
      */
     public List<SQjpic> selectPage(Map<String,Object> param);
+    public int deleteByIds(List list);
 }

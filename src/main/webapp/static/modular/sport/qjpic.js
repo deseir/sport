@@ -100,7 +100,7 @@ function showPics() {
                 $.each(data.data,function(i){
 
                     html +="<div class=\"example col-xs-4 col-md-3\" >"
-                        +"<input style='width: 20px;height: 20px;' type='checkbox' name='attachChecked' value='"+data.data[i].id+"'>"
+                        +"<input style='width: 20px;height: 20px;' type='checkbox' name='qjpicChecked' value='"+data.data[i].id+"'>"
                         +"<img class=\"img-rounded\" src=\""+idPicUrls+data.data[i].picurl+"\" ></div>";
 
                 });
@@ -117,12 +117,12 @@ function showPics() {
 }
 //删除图片
 function delAttach() {
-    if($('input[name=attachChecked]:checked').length==0){
+    if($('input[name=qjpicChecked]:checked').length==0){
         alert("请选择至少一张图片删除");
         return ;
     }
     var ids ="";
-    $.each($('input[name=attachChecked]:checked'),function () {
+    $.each($('input[name=qjpicChecked]:checked'),function () {
         ids+=$(this).val()+",";
     });
     $.ajax({
@@ -154,22 +154,9 @@ $(document).ready(function () {
 });
 
 
-/*缩略图*/
-function UploadImageicc(){
-    var file = document.getElementById("fileInpBtn").files[0];
-    //判断 FileReader 是否被浏览器所支持
-    if (!window.FileReader) return;
-    if(file.type.match('image/!*')){//如果是图片，则显示缩略图
-        var reader = new FileReader();  // 创建FileReader对象
-        reader.readAsDataURL(file); // 读取file对象，读取完毕后会返回result 图片base64格式的结果
-        reader.onload = function(e){
-            $("#showImg").attr("src",e.target.result);
-        }
-    }
-
-}
 //返回器材列表
 function backQcList() {
     var deptId = $("#deptId").val();
-    window.location.href="/sqc/showAllQc?deptId="+deptId;
+    var deptPid =$("#deptPid").val();
+    window.location.href="/sqc/showQcs?deptId="+deptId+"&deptPid="+deptPid;
 }
