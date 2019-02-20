@@ -1,5 +1,6 @@
 package com.moerlong.carloan.modular.sport.dao;
 
+import com.moerlong.carloan.modular.sport.entity.Huizong;
 import com.moerlong.carloan.modular.sport.entity.SQc;
 
 import java.util.List;
@@ -30,4 +31,18 @@ public interface SQcMapper {
      * @return
      */
     public List<SQc> selectPage(Map<String,Object> param);
+
+    /**
+     * 查询汇总
+     * @param pids
+     * @return
+     */
+    List<Huizong> selectHuizong(List<String> pids);
+
+    /**
+     * 根据器材现状统计数量
+     * @param param
+     * @return
+     */
+    Integer selectHuizongByQcxz(Map<String,Object> param);
 }

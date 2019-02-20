@@ -1,9 +1,11 @@
 package com.moerlong.carloan.modular.sport.service.serviceimpl;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.moerlong.carloan.modular.sport.dao.SQcAttachMapper;
 import com.moerlong.carloan.modular.sport.dao.SQcMapper;
+import com.moerlong.carloan.modular.sport.entity.Huizong;
 import com.moerlong.carloan.modular.sport.entity.SQc;
 import com.moerlong.carloan.modular.sport.entity.SQcAttach;
 import com.moerlong.carloan.modular.sport.service.SQcService;
@@ -91,6 +93,37 @@ public class SQcServiceImpl implements SQcService {
 		}
 
 		PageInfo<SQc> pageInfo = new PageInfo<SQc>(pageList);
+		return pageInfo;
+	}
+
+	/**
+	 * 查询每个街道的汇总
+	 * @param pageSize
+	 * @param pageNum
+	 * @param pids
+	 * @return
+	 */
+	public PageInfo<Huizong> selectHuizong(int pageSize,int pageNum,List<String> pids){
+		PageHelper.startPage(pageNum, pageSize);
+		List<Huizong> list = mapper.selectHuizong(pids);
+		Map<String,Object> params = new HashMap<>();
+		for(Huizong huizong : list){
+			params.put("deptpid",huizong.getDeptId());
+			params.put("qcxz","正常使用");
+			Integer normal = mapper.selectHuizongByQcxz(params);
+			huizong.setNormal(normal);
+			params.put("qcxz","损坏");
+			Integer badCount = mapper.selectHuizongByQcxz(params);
+			huizong.setBadCount(badCount);
+			params.put("qcxz","维修");
+			Integer weixiu = mapper.selectHuizongByQcxz(params);
+			huizong.setWeixiu(weixiu);
+			params.put("qcxz","拆除");
+			Integer  chaichu= mapper.selectHuizongByQcxz(params);
+			huizong.setChaichu(chaichu);
+		}
+
+		PageInfo<Huizong> pageInfo = new PageInfo<>(list);
 		return pageInfo;
 	}
 

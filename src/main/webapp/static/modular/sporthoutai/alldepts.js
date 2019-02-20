@@ -24,6 +24,7 @@ MgrDept.initColumn = function () {
             }
         },
         {title: 'id', field: 'id', visible: false, align: 'center', valign: 'middle'},
+        {title: 'pid', field: 'pid', visible: false, align: 'center', valign: 'middle'},
         {title: '部门简称', field: 'simplename', align: 'center', valign: 'middle', sortable: true},
         {title: '部门全称', field: 'fullname', align: 'center', valign: 'middle', sortable: true},
         {title: '巡检状态', align: 'center', valign: 'middle',formatter:operate},
@@ -40,9 +41,9 @@ MgrDept.initColumn = function () {
     }
     function operate2(value,row,index){
         if([row["num"]]==1&&[row["version"]]==1){
-            return ['<a href="/sqc/showAllQc?deptId='+[row["id"]]+'">查看器材</a>'].join("");
+            return ['<a href="/sqc/showAllQc?deptId='+[row["id"]]+'&deptPid='+[row["pid"]]+'">查看器材</a>'].join("");
         }else if([row["num"]]==1&&[row["version"]]==0){
-            return ['<a href="/sqc/showAllQc?deptId='+[row["id"]]+'">巡检</a>'].join("");
+            return ['<a href="/sqc/showAllQc?deptId='+[row["id"]]+'&deptPid='+[row["pid"]]+'">巡检</a>'].join("");
         }else{
             return ['--'].join("");
         }

@@ -1,5 +1,6 @@
 package com.moerlong.carloan.modular.sport.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class SQc {
@@ -44,6 +45,8 @@ public class SQc {
     private String dljd;
 
     private String dlwd;
+
+    private BigDecimal amount;
 
     public Integer getId() {
         return id;
@@ -211,5 +214,13 @@ public class SQc {
 
     public void setDlwd(String dlwd) {
         this.dlwd = dlwd;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 }

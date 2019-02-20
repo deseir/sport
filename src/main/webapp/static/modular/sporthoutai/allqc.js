@@ -80,6 +80,7 @@ MgrQc.back = function () {
 //点击添加
 MgrQc.openAddQc = function () {
     var deptId =$("#deptId").val();
+    var deptPid =$("#deptPid").val();
         var index = layer.open({
             type: 2,
             title: '添加器材',
@@ -87,7 +88,7 @@ MgrQc.openAddQc = function () {
             fix: false, //不固定
             maxmin: true,
             closeBtn:1,
-            content: Feng.ctxPath + '/sqc/openAddQc?deptId='+deptId,
+            content: Feng.ctxPath + '/sqc/openAddQc?deptId='+deptId+"&deptPid="+deptPid,
             cancel: function(){//关闭回调刷新列表页
                 MgrQc.table.refresh();
             }

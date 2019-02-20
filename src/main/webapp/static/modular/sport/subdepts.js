@@ -57,7 +57,7 @@ function  searchPage(o) {
                         +"<p class=\"m-b-0 m-t-5 red-600\"></p></h4></div></li>";
 
                 });
-                // $("#total").text(data.data.total);
+                $("#total").text(data.data.total);
                 $("#pages").text(data.data.pages);
                 $("#pageNum").text(data.data.pageNum);
                 $("#prePage").val(data.data.prePage);

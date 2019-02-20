@@ -11,6 +11,7 @@ function saveQc() {
     var hcc = $("#hcc").val();
     var mfwhqx = $("#mfwhqx").val();
     var aqsyqx = $("#aqsyqx").val();
+    var deptpid = $("#deptPid").val();
     $.ajax({
         type: "POST",
         url: '/sqc/saveOrUpdate',
@@ -18,6 +19,7 @@ function saveQc() {
         data: {
             'id':id,
             'deptid':deptid,
+            'deptpid':deptpid,
             'jssb':jssb,
             'qcbh':qcbh,
             'provider' :provider,
@@ -58,11 +60,11 @@ function logicDelete() {
 
     $.ajax({
         type: "POST",
-        url: '/cdssqcqt/updateWithOutNull',
+        url: '/sqc/updateWithOutNull',
         dataType: 'json',
         data: {
             'id':id,
-            'isdelete':1
+            'isdeleted':1
         },
         success: function(data) {
             var status = data.status;

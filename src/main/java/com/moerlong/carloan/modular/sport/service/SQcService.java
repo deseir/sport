@@ -1,6 +1,7 @@
 package com.moerlong.carloan.modular.sport.service;
 
 import com.github.pagehelper.PageInfo;
+import com.moerlong.carloan.modular.sport.entity.Huizong;
 import com.moerlong.carloan.modular.sport.entity.SQc;
 
 import java.util.List;
@@ -65,6 +66,13 @@ public interface SQcService {
 	 * @return
 	 */
 	public PageInfo<SQc> selectPage(int pageSize, int pageNum, Map<String, Object> param);
+
+	/**
+	 * 查询汇总
+	 * @param pids
+	 * @return
+	 */
+	PageInfo <Huizong> selectHuizong(int pageSize, int pageNum,List<String> pids);
 
 
 }

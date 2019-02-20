@@ -11,6 +11,8 @@ function saveQc() {
     var hcc = $("#hcc").val();
     var mfwhqx = $("#mfwhqx").val();
     var aqsyqx = $("#aqsyqx").val();
+    var amount = $("#amount").val();
+    var deptpid = $("#deptPid").val();
     $.ajax({
         type: "POST",
         url: '/sqc/saveOrUpdate',
@@ -18,6 +20,7 @@ function saveQc() {
         data: {
             'id':id,
             'deptid':deptid,
+            'deptpid':deptpid,
             'jssb':jssb,
             'qcbh':qcbh,
             'provider' :provider,
@@ -26,7 +29,8 @@ function saveQc() {
             'gzms':gzms,
             'hcc':hcc,
             'mfwhqx':mfwhqx,
-            'aqsyqx':aqsyqx
+            'aqsyqx':aqsyqx,
+            'amount':amount
         },
         success: function(data) {
             var status = data.status;
@@ -34,6 +38,7 @@ function saveQc() {
                 $("#qcId").val(data.qcId);
                 alert("保存数据成功！");
                 showBtns();
+                window.location.href="/sqc/showQcs?deptPid="+deptpid+"&deptId="+deptid;
             }else{
                 alert("保存数据失败！"+data.msg);
             }
@@ -48,19 +53,22 @@ function saveQc() {
 
 function logicDelete() {
         var id = $("#qcId").val();
+        var deptId =$("#deptId").val();
+        var deptPid = $("#deptPid").val();
 
         $.ajax({
             type: "POST",
-            url: '/cdssqcqt/updateWithOutNull',
+            url: '/sqc/updateWithOutNull',
             dataType: 'json',
             data: {
                 'id':id,
-                'isdelete':1
+                'isdeleted':1
             },
             success: function(data) {
                 var status = data.status;
                 if(status=='0'){
                     alert("删除成功！");
+                    window.location.href="/sqc/showQcs?deptPid="+deptPid+"&deptId="+deptId;
                 }else{
                     alert("删除失败！"+data.msg);
                 }

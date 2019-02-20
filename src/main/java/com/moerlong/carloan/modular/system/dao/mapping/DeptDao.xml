@@ -81,7 +81,7 @@
         <if test="deptid !=null and deptid != '' and deptid != 0 ">
             and (id=#{deptid} or pid=#{deptid})
         </if>
-		<if test="pid != null" >
+		<if test="pid != null and pid!=''" >
 			and pid = #{pid}
 		</if>
 		<if test="deptName !=null and deptName !=''">

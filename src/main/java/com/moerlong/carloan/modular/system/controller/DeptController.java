@@ -280,4 +280,15 @@ public class DeptController extends BaseController {
 
         return res;
     }
+
+    /**
+     * 获取当前用户下所有的子部门
+     * @return
+     */
+    @RequestMapping(value = "/getAllSubDeptByCurUser", method = RequestMethod.POST)
+    @ResponseBody
+    public Object getAllSubDepts(){
+        ShiroUser user = ShiroKit.getUser();
+        return deptService.getAllSubDeptByDeptId(user.getDeptId());
+    }
 }

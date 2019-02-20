@@ -17,6 +17,7 @@
     <result column="hcc" property="hcc" jdbcType="VARCHAR" />
     <result column="mfwhqx" property="mfwhqx" jdbcType="VARCHAR" />
     <result column="aqsyqx" property="aqsyqx" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="BIGINT"/>
     <result column="dljd" property="dljd" jdbcType="VARCHAR" />
     <result column="dlwd" property="dlwd" jdbcType="VARCHAR" />
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
@@ -25,7 +26,7 @@
   </resultMap>
   <sql id="Base_Column_List" >
     id, deptid, deptname, deptpid, deptpname, jssb, qcbh, provider, azsj, qcxz, sfbf, 
-    gzms, hcc, mfwhqx, aqsyqx,dljd,dlwd, createtime, updatetime, isdeleted
+    gzms, hcc, mfwhqx, aqsyqx,amount,dljd,dlwd, createtime, updatetime, isdeleted
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -42,13 +43,13 @@
       deptpid, deptpname, jssb, 
       qcbh, provider, azsj, 
       qcxz, sfbf, gzms, hcc, 
-      mfwhqx, aqsyqx,dljd,dlwd, createtime,
+      mfwhqx, aqsyqx,amount,dljd,dlwd, createtime,
       updatetime, isdeleted)
     values (#{id,jdbcType=INTEGER}, #{deptid,jdbcType=VARCHAR}, #{deptname,jdbcType=VARCHAR}, 
       #{deptpid,jdbcType=VARCHAR}, #{deptpname,jdbcType=VARCHAR}, #{jssb,jdbcType=VARCHAR}, 
       #{qcbh,jdbcType=VARCHAR}, #{provider,jdbcType=VARCHAR}, #{azsj,jdbcType=VARCHAR}, 
       #{qcxz,jdbcType=VARCHAR}, #{sfbf,jdbcType=VARCHAR}, #{gzms,jdbcType=VARCHAR}, #{hcc,jdbcType=VARCHAR}, 
-      #{mfwhqx,jdbcType=VARCHAR}, #{aqsyqx,jdbcType=VARCHAR},#{dljd,jdbcType=VARCHAR},#{dlwd,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP},
+      #{mfwhqx,jdbcType=VARCHAR}, #{aqsyqx,jdbcType=VARCHAR},#{amount,jdbcType=BIGINT},#{dljd,jdbcType=VARCHAR},#{dlwd,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP},
       #{updatetime,jdbcType=TIMESTAMP}, #{isdeleted,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.moerlong.carloan.modular.sport.entity.SQc" >
@@ -98,6 +99,9 @@
       </if>
       <if test="aqsyqx != null" >
         aqsyqx,
+      </if>
+      <if test="amount !=null">
+        amount,
       </if>
       <if test="dljd != null" >
         dljd,
@@ -161,6 +165,9 @@
       <if test="aqsyqx != null" >
         #{aqsyqx,jdbcType=VARCHAR},
       </if>
+      <if test="amount !=null">
+        #{amount,jdbcType=BIGINT},
+      </if>
       <if test="dljd != null" >
         #{dljd,jdbcType=VARCHAR},
       </if>
@@ -223,6 +230,9 @@
       <if test="aqsyqx != null" >
         aqsyqx = #{aqsyqx,jdbcType=VARCHAR},
       </if>
+      <if test="amount !=null">
+        amount = #{amount,jdbcType=BIGINT},
+      </if>
       <if test="dljd != null" >
         dljd = #{dljd,jdbcType=VARCHAR},
       </if>
@@ -257,6 +267,7 @@
       hcc = #{hcc,jdbcType=VARCHAR},
       mfwhqx = #{mfwhqx,jdbcType=VARCHAR},
       aqsyqx = #{aqsyqx,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=BIGINT},
       dljd = #{dljd,jdbcType=VARCHAR},
       dlwd = #{dlwd,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=TIMESTAMP},
@@ -275,7 +286,7 @@
   <select id="selectPage" parameterType="java.util.Map" resultType="com.moerlong.carloan.modular.sport.entity.SQc">
     select
     q.id, deptid,d.simplename deptname  , deptpid,jssb, qcbh, provider, azsj, qcxz, sfbf,
-    gzms, hcc, mfwhqx, aqsyqx,dljd,dlwd, createtime, updatetime, isdeleted
+    gzms, hcc, mfwhqx, aqsyqx,amount,dljd,dlwd, createtime, updatetime, isdeleted
     from s_qc q,dept d where q.deptid=d.id
     <if test="deptid != null" >
       and deptid = #{deptid,jdbcType=INTEGER}
@@ -285,5 +296,33 @@
     </if>
     and isdeleted=0
     order by createtime desc
+  </select>
+
+
+  <!--以下数据统计模块-->
+  <!-- 查询汇总 -->
+  <select id="selectHuizong" resultType="com.moerlong.carloan.modular.sport.entity.Huizong">
+    select deptpid deptId,deptpname deptName,count(9) totalCount,0 badCount,0 normal,0 weixiu,0 chaichu,'件' danwei
+    from s_qc
+    group by deptpid,deptpname
+    having deptpid in
+    <foreach collection="list" index="index" open="(" item="deptpid" separator="," close=")">
+      #{deptpid}
+    </foreach>
+  </select>
+
+  <!--根据器材现状查询数量-->
+  <select id="selectHuizongByQcxz" resultType="java.lang.Integer">
+    select count(9)  from s_qc WHERE 1=1
+    <if test="deptid != '' and deptid !=null">
+      and deptid=#{deptid}
+    </if>
+    <if test="deptpid != '' and deptpid !=null">
+      and deptpid=#{deptpid}
+    </if>
+    <if test="qcxz != '' and qcxz !=null">
+      and qcxz=#{qcxz}
+    </if>
+
   </select>
 </mapper>

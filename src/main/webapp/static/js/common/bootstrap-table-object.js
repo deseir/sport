@@ -84,6 +84,7 @@
                             /*this.url.lastIndexOf('/myWork/getTodoWorkList')>=0||*/
                             this.url.lastIndexOf('/myWork/getHandledWorkList')>=0||
                             this.url.lastIndexOf('/cust/channelInfo/list')>=0||
+                            this.url.lastIndexOf('/huizongStatis/pageQuery')>=0||
                             this.url.lastIndexOf('/customerInfo/pageQuery')>=0){
                             var json = JSON.parse(res);
                             return {
