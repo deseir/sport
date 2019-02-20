@@ -7,6 +7,7 @@
 		<div class="form-horizontal" id="">
 			<div class="row">
 				<input type="hidden" id="deptId" value="${sqc.deptid}">
+				<input type="hidden" id="deptPid" value="${sqc.deptpid}">
 				<input type="hidden" id="qcId" value="${sqc.id}">
 				<input type="hidden" id="idPicUrls" value="${idPicUrls}">
 				<div class="col-sm-6">
@@ -19,6 +20,9 @@
 				</div>
 				<div class="col-sm-6">
 					<#input id="jssb" name="健身设备" readonly="readonly" underline="false" value="${sqc.jssb}"/>
+				</div>
+				<div class="col-sm-6">
+					<#input id="amount" name="amount" readonly="readonly" underline="false" value="${sqc.amount}"/>
 				</div>
 				<div class="col-sm-6">
 					<#input name="器材编号" id="qcbh" readonly="readonly" placeholder="" value="${sqc.qcbh}"/>

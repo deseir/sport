@@ -60,6 +60,14 @@ public class SQcController {
 			if(entity.getId()!=null && service.selectById(entity.getId())!=null) {
 				service.updateWithOutNull(entity);
 			}else {
+				Map<String,Object> queryMap = new HashMap<>();
+				queryMap.put("deptid",entity.getDeptid());
+				List<Dept> depts = deptDao.selectPage(queryMap);
+				entity.setDeptname(depts.get(0).getSimplename());
+
+				queryMap.put("deptid",entity.getDeptpid());
+				List<Dept> depts2 = deptDao.selectPage(queryMap);
+				entity.setDeptpname(depts2.get(0).getSimplename());
 				service.save(entity);
 			}
 			res.put("qcId",entity.getId());

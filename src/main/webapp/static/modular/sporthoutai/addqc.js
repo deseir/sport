@@ -12,6 +12,7 @@ function saveQc() {
     var mfwhqx = $("#mfwhqx").val();
     var aqsyqx = $("#aqsyqx").val();
     var deptpid = $("#deptPid").val();
+    var amount = $("#amount").val();
     $.ajax({
         type: "POST",
         url: '/sqc/saveOrUpdate',
@@ -20,6 +21,7 @@ function saveQc() {
             'id':id,
             'deptid':deptid,
             'deptpid':deptpid,
+            'amount':amount,
             'jssb':jssb,
             'qcbh':qcbh,
             'provider' :provider,

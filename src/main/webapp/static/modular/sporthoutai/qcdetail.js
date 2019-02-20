@@ -46,5 +46,6 @@ $(document).ready(function () {
 //返回器材列表
 function backQcList() {
     var deptId = $("#deptId").val();
-    window.location.href="/sqc/showAllQc?deptId="+deptId;
+    var deptPid = $("#deptPid").val();
+    window.location.href="/sqc/showAllQc?deptId="+deptId+"&deptPid="+deptPid;
 }

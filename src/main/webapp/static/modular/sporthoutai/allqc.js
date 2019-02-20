@@ -24,6 +24,7 @@ MgrQc.initColumn = function () {
         {title: 'id', field: 'id', visible: false, align: 'center', valign: 'middle'},
         {title: '部门名称', field: 'deptname',align: 'center', valign: 'middle'},
         {title: '健身设备', field: 'jssb', align: 'center', valign: 'middle', sortable: false},
+        {title: '金额(元)', field: 'amount', align: 'center', valign: 'middle', sortable: false},
         {title: '器材编号', field: 'qcbh', align: 'center', valign: 'middle', sortable: false},
         {title: '供应商', field:'provider',align: 'center', valign: 'middle',sortable: false},
         {title: '安装时间', field:'azsj',align: 'center', valign: 'middle',sortable: false},
