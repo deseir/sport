@@ -44,7 +44,7 @@ public class LoginController extends BaseController {
     private String idPicUrls;
 
     /**
-     * 跳转到主页
+     * 手机端登录之后跳转的页面
      */
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model) {

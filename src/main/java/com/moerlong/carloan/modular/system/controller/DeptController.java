@@ -243,6 +243,15 @@ public class DeptController extends BaseController {
                 }
             }
 
+            ShiroUser user = ShiroKit.getUser();
+            Integer deptId = user.getDeptId();
+            if(user.getRoleList().get(0)==14){//如果是管理员
+                queryMap.put("pid",deptId);
+            }else if(user.getRoleList().get(0)==15){//如果是村里管理者
+                queryMap.put("pid","");
+                queryMap.put("deptid",deptId);
+            }
+
             Object pageInfo = this.deptService.selectPage(pageSize, pageNum, queryMap);
 
             res.put("data", pageInfo);
