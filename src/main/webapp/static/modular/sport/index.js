@@ -34,7 +34,7 @@ function  searchPage(o) {
         url: '/dept/selectPage',
         dataType: 'json',
         data: {
-            // 'pid':deptPid,
+            'pid':deptPid,
             'pageNum':pageNum
         },
         success: function(data) {
