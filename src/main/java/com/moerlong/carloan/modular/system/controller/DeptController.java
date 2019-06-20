@@ -224,7 +224,7 @@ public class DeptController extends BaseController {
         return res;
     }
 
-    @ApiOperation(value = "分页查询")
+    @ApiOperation(value = "手机端首页查询部门")
     @ApiImplicitParam(paramType = "body", name = "queryMap", required = false, dataType = "Map", value = "查询条件")
     @RequestMapping(value = "/selectPage", method = RequestMethod.POST)
     @ResponseBody
@@ -244,15 +244,8 @@ public class DeptController extends BaseController {
             }
 
             ShiroUser user = ShiroKit.getUser();
-            Integer deptId = user.getDeptId();
-            if(user.getRoleList().get(0)==14){//如果是管理员
-                queryMap.put("pid",deptId);
-            }else if(user.getRoleList().get(0)==15){//如果是村里管理者
-                queryMap.put("pid","");
-                queryMap.put("deptid",deptId);
-            }
-
-            Object pageInfo = this.deptService.selectPage(pageSize, pageNum, queryMap);
+            queryMap.put("deptid",user.getDeptId());
+            Object pageInfo = this.deptService.selectPage2(pageSize, pageNum, queryMap);
 
             res.put("data", pageInfo);
             res.put("status", 0);
@@ -264,6 +257,39 @@ public class DeptController extends BaseController {
 
         return res;
     }
+
+    @ApiOperation(value = "手机端根据父级部门查询子部门")
+    @ApiImplicitParam(paramType = "body", name = "queryMap", required = false, dataType = "Map", value = "查询条件")
+    @RequestMapping(value = "/selDeptByPid", method = RequestMethod.POST)
+    @ResponseBody
+    public Object selDeptByPid(@RequestParam Map<String,Object> queryMap) {
+        Map<String, Object> res = new HashMap<>();
+        Integer pageNum = 1; //页数从1开始
+        Integer pageSize = 10; //页面大小
+
+        try {
+            if(queryMap!=null) {
+                if(queryMap.get("pageNum")!=null&&!"".equals(queryMap.get("pageNum"))) {
+                    pageNum = Integer.parseInt((String)queryMap.get("pageNum"));
+                }
+                if(queryMap.get("pageSize")!=null) {
+                    pageSize = Integer.parseInt((String)queryMap.get("pageSize"));
+                }
+            }
+
+            Object pageInfo = this.deptService.selectPage2(pageSize, pageNum, queryMap);
+
+            res.put("data", pageInfo);
+            res.put("status", 0);
+            res.put("errMsg", "操作成功");
+        } catch (Throwable e) {
+            res.put("status", 1);
+            res.put("errMsg", e.getMessage());
+        }
+
+        return res;
+    }
+
 
     @ApiOperation(value = "分页查询")
     @ApiImplicitParam(paramType = "body", name = "queryMap", required = false, dataType = "Map", value = "查询条件")

@@ -137,4 +137,40 @@ public class SDeptController extends BaseController {
         return res;
     }
 
+    @RequestMapping("/sdept/showNextPage")
+    public String showNextPage(@RequestParam Integer deptId,Model model) {
+        model.addAttribute("deptId",deptId);
+        model.addAttribute("idPicUrls",idPicUrls);
+        List<Dept> list = deptService.getAllSubDeptByDeptId(deptId);
+        if(null != list && list.size()>0){//如果有下级部门跳转部门列表
+            return "/sport/subdepts.html";
+        }else{
+            model.addAttribute("deptPid",deptId);
+            return "/sport/showqcs.html";
+        }
+
+    }
+
+    /**
+     * 部门列表的返回
+     * @param deptPid 上级部门id
+     * @param model
+     * @return
+     */
+    @RequestMapping("/sdept/backDept")
+    public String backDept(@RequestParam Integer deptPid,Model model) {
+        ShiroUser user = ShiroKit.getUser();
+        Integer shiroDept = user.getDeptId();
+        if(shiroDept == deptPid){//如果父级部门id是当前登录用户部门的id，直接返回首页
+            model.addAttribute("idPicUrls",idPicUrls);
+            return "/index.html";
+        }else{//如果和当前登录用户部门id不一样，则跳转部门列表页
+            Dept dept = deptMapper.selectById(deptPid);
+            model.addAttribute("deptId",dept.getPid());
+            model.addAttribute("idPicUrls",idPicUrls);
+            return "/sport/subdepts.html";
+        }
+
+    }
+
 }

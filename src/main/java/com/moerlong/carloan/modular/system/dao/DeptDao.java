@@ -43,6 +43,7 @@ public interface DeptDao {
      * @return
      */
     public List<Dept> selectPage(Map<String,Object> param);
+    public List<Dept> selectPage2(Map<String,Object> param);
 
    public List<Dept> selectByDeptName (Map<String,Object> param);
 

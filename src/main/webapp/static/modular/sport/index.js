@@ -34,7 +34,6 @@ function  searchPage(o) {
         url: '/dept/selectPage',
         dataType: 'json',
         data: {
-            'pid':deptPid,
             'pageNum':pageNum
         },
         success: function(data) {
@@ -47,10 +46,10 @@ function  searchPage(o) {
                     html +="<li class=\"shown\" >"
                         +"<div class=\"card card-shadow\">"
                         +"<figure class=\"card-header cover\">"
-                        +"<a href=\"javascript:showSubDepts("+data.data.list[i].id+")\" target=\"_self\">"
+                        +"<a href=\"javascript:showNextPage("+data.data.list[i].id+")\" target=\"_self\">"
                         +"<img class=\"cover-image\" src=\""+idPicUrls+data.data.list[i].tips+"\" alt='"+data.data.list[i].simplename+"'>"
                         +"</a></figure><h4 class=\"card-title m-0 p-x-10 font-size-16 text-xs-center\">"
-                        +"<a href=\"javascript:showSubDepts("+data.data.list[i].id+")\" class=\"block\" target=\"_self\">"+data.data.list[i].simplename+"</a>"
+                        +"<a href=\"javascript:showNextPage("+data.data.list[i].id+")\" class=\"block\" target=\"_self\">"+data.data.list[i].simplename+"</a>"
                         +"<p class=\"m-b-0 m-t-5 red-600\"></p></h4></div></li>";
 
                 });
@@ -71,8 +70,8 @@ function  searchPage(o) {
     });
 }
 
-function showSubDepts(deptId) {
-    window.location.href="/sdept/showSubDepts?deptId="+deptId;
+function showNextPage(deptId) {
+    window.location.href="/sdept/showNextPage?deptId="+deptId;
 }
 
 

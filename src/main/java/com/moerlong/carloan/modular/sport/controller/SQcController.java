@@ -1,6 +1,7 @@
 package com.moerlong.carloan.modular.sport.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.moerlong.carloan.common.persistence.dao.DeptMapper;
 import com.moerlong.carloan.common.persistence.model.Dept;
 import com.moerlong.carloan.common.vo.ErrorCode;
 import com.moerlong.carloan.common.vo.ResultVO;
@@ -25,6 +26,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.OutputStream;
 import java.math.BigDecimal;
@@ -47,6 +49,8 @@ public class SQcController {
 	SQcService service;
 	@Autowired
 	DeptDao deptDao;
+	@Resource
+	DeptMapper deptMapper;
 	@Value("${file.identity_pic_urls}")
 	private String idPicUrls;
 
@@ -436,6 +440,32 @@ public class SQcController {
 	public String showHuizong() {
 		return "/sporthoutai/huizong.html";
 	}
+
+
+	/**
+	 * 器材列表页面的返回
+	 * @param deptId 器材所属部门id
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/sqc/qcBack")
+	public String backDept(@RequestParam Integer deptId,Model model) {
+		ShiroUser user = ShiroKit.getUser();
+		Integer shiroDept = user.getDeptId();
+		if(shiroDept == deptId){//如果当前登录用户部门的id和器材所属部门的id一样，直接返回首页
+			model.addAttribute("idPicUrls",idPicUrls);
+			return "/index.html";
+		}else{//不一样，则跳转部门列表页
+			Dept dept = deptMapper.selectById(deptId);
+			model.addAttribute("deptId",dept.getPid());
+			model.addAttribute("idPicUrls",idPicUrls);
+			return "/sport/subdepts.html";
+		}
+
+	}
+
+
+
 
 
 	/**

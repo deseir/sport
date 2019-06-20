@@ -81,11 +81,23 @@ function showQcDetail(qcId) {
     window.location.href="/sqc/showQcDetail?qcId="+qcId+"&deptPid="+deptPid;
 }
 
+
+function qcBack() {
+    var deptId = $("#deptId").val();
+    window.location.href="/sqc/qcBack?deptId="+deptId;
+}
+
 //返回次级部门列表页
 function showSubDepts() {
     var deptPid = $("#deptPid").val();
     window.location.href="/sdept/showSubDepts?deptId="+deptPid;
 }
+
+
+
+
+
+
 
 //跳转全景照片页面
 function showQjPic() {

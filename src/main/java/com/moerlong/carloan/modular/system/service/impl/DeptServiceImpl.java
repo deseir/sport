@@ -86,6 +86,13 @@ public class DeptServiceImpl implements IDeptService {
         return pageInfo;
     }
 
+    public PageInfo<Dept> selectPage2(int pageSize, int pageNum, Map<String,Object> param) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<Dept> pageList = deptDao.selectPage2(param);
+        PageInfo<Dept> pageInfo = new PageInfo<Dept>(pageList);
+        return pageInfo;
+    }
+
     public List<Dept> selectByDeptName(Map<String, Object> param){
         return deptDao.selectByDeptName(param);
     }

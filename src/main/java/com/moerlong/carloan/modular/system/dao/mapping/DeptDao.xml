@@ -69,7 +69,7 @@
 	</select>
 
 	<select id="getAllSubDeptByDeptId" resultType="com.moerlong.carloan.common.persistence.model.Dept">
-		select * from dept where pid=#{deptId}
+		select * from dept where pid=#{deptId} and is_del=0
 	</select>
 
 	<!-- 查询（分页查询） -->
@@ -87,13 +87,32 @@
 		<if test="deptName !=null and deptName !=''">
 			and (simplename like CONCAT('%',#{deptName},'%') or fullname like CONCAT('%',#{deptName},'%'))
 		</if>
+		and is_del=0
+		order by id
+	</select>
+
+	<!-- 手机端查询（分页查询） -->
+	<select id="selectPage2" parameterType="java.util.Map" resultType="com.moerlong.carloan.common.persistence.model.Dept">
+		select
+		id,pid,simplename,fullname,tips,version,num
+		from dept dept
+		where 1=1
+		<if test="deptid !=null and deptid != ''">
+			and id=#{deptid}
+		</if>
+		<if test="pid != null and pid!=''" >
+			and pid = #{pid}
+		</if>
+		and is_del=0
 		order by id
 	</select>
 
 	<!--根据部门名称查询-->
 	<select id="selectByDeptName" resultType="com.moerlong.carloan.common.persistence.model.Dept">
 		select * from dept
-	    where simplename =#{deptName} or fullname=#{deptName}
+	    where (simplename =#{deptName} or fullname=#{deptName})
+	    and is_del=0
+
 	</select>
 
 	<update id="upSfxj" parameterType="java.util.Map">

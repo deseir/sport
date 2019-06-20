@@ -6,7 +6,7 @@ $(document).ready(
 );
 
 function  searchPage(o) {
-    var deptId = $("#deptId").val();
+    var deptPid = $("#deptPid").val();
     var pageNum = null;
     if(o==-1){//前一页
         pageNum = $("#prePage").val();
@@ -28,10 +28,10 @@ function  searchPage(o) {
 
     $.ajax({
         type: "POST",
-        url: '/dept/selectPage',
+        url: '/dept/selDeptByPid',
         dataType: 'json',
         data: {
-            'pid':deptId,
+            'pid':deptPid,
             'pageNum':pageNum
         },
         success: function(data) {
@@ -43,7 +43,7 @@ function  searchPage(o) {
                     html +="<li class=\"shown\" >"
                         +"<div class=\"card card-shadow\">"
                         +"<figure class=\"card-header cover\">"
-                        +"<a href=\"javascript:showQcs('"+data.data.list[i].id+"')\" target=\"_self\">"
+                        +"<a href=\"javascript:showNextPage('"+data.data.list[i].id+"')\" target=\"_self\">"
                         +"<img class=\"cover-image\" src=\""+idPicUrls+data.data.list[i].tips+"\" alt='"+data.data.list[i].simplename+"'></a></figure>"
                         +"<h4 class=\"card-title m-0 p-x-10 font-size-16 text-xs-center\">"
                         +"<a style='color:";
@@ -53,7 +53,7 @@ function  searchPage(o) {
                             html += "red;'";
                         }
 
-                        html+=" href=\"javascript:showQcs('"+data.data.list[i].id+"')\" class=\"block\" target=\"_self\">"+data.data.list[i].simplename+"</a>"
+                        html+=" href=\"javascript:showNextPage('"+data.data.list[i].id+"')\" class=\"block\" target=\"_self\">"+data.data.list[i].simplename+"</a>"
                         +"<p class=\"m-b-0 m-t-5 red-600\"></p></h4></div></li>";
 
                 });
@@ -74,11 +74,15 @@ function  searchPage(o) {
     });
 }
 
-//跳转器材列表页
-function showQcs(subId) {
-    var deptPid = $("#deptId").val();
-    window.location.href="/sqc/showQcs?deptPid="+deptPid+"&deptId="+subId;
+function showNextPage(deptId) {
+    window.location.href="/sdept/showNextPage?deptId="+deptId;
 }
+
+function backdept() {
+    var deptPid = $("#deptPid").val();
+    window.location.href="/sdept/backDept?deptPid="+deptPid;
+}
+
 
 //返回首页
 function backIndex() {
