@@ -36,9 +36,9 @@ function saveQc() {
             var status = data.status;
             if(status=='0'){
                 $("#qcId").val(data.qcId);
-                alert("保存数据成功！");
+                alert("保存成功，请上传照片！");
                 showBtns();
-                window.location.href="/sqc/showQcs?deptPid="+deptpid+"&deptId="+deptid;
+                // window.location.href="/sqc/showQcs?deptPid="+deptpid+"&deptId="+deptid;
             }else{
                 alert("保存数据失败！"+data.msg);
             }
