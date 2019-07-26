@@ -31,10 +31,7 @@ import javax.annotation.Resource;
 import javax.naming.NoPermissionException;
 import javax.validation.Valid;
 import java.io.File;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * 系统管理员控制器
@@ -151,6 +148,31 @@ public class UserMgrController extends BaseController {
         } else {
             throw new BussinessException(BizExceptionEnum.OLD_PWD_NOT_RIGHT);
         }
+    }
+
+    @RequestMapping("/changePwdQt")
+    @ResponseBody
+    public Object changePwdQt(@RequestParam String oldPwd, @RequestParam String newPwd, @RequestParam String rePwd) {
+        Map<String,Object> result = new HashMap<>(2);
+        if (!newPwd.equals(rePwd)) {
+            result.put("status","1");
+            result.put("msg","两次密码输入不一致");
+            return result;
+        }
+        Integer userId = ShiroKit.getUser().getId();
+        User user = userMapper.selectById(userId);
+        String oldMd5 = ShiroKit.md5(oldPwd, user.getSalt());
+        if (user.getPassword().equals(oldMd5)) {
+            String newMd5 = ShiroKit.md5(newPwd, user.getSalt());
+            user.setPassword(newMd5);
+            user.updateById();
+            result.put("status","0");
+            result.put("msg","修改成功");
+        } else {
+            result.put("status","1");
+            result.put("msg","旧密码输入错误");
+        }
+        return result;
     }
 
     /**

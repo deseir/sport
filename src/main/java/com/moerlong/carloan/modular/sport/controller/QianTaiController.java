@@ -77,4 +77,25 @@ public class QianTaiController extends BaseController {
         return "/index.html";
     }
 
+
+    /**
+     * 跳转到修改密码页面
+     */
+    @RequestMapping("/changePwdPage")
+    public String changePwdPage(Model model) {
+        model.addAttribute("idPicUrls",idPicUrls);
+        return "/sport/changepwd.html";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 }
