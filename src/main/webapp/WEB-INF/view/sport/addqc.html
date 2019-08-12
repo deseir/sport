@@ -436,7 +436,7 @@
         <label for="azsj">安装时间:</label>
         <input type="date" id="azsj" name="azsj" value="${sqc.azsj}" >
         <label for="qcxz">器材现状:</label>
-        <input id="qcxz" list="qcxzlist" value="${sqc.qcxz}"/>
+        <input id="qcxz" list="qcxzlist" value="${sqc.qcxz==null?'正常使用':sqc.qcxz}"/>
         <datalist id="qcxzlist">
             <option value="正常使用">
             <option value="锈蚀">
@@ -457,9 +457,9 @@
             <option value="否">
         </datalist>
         <label for="mfwhqx">免费维护期限:</label>
-        <input type="text" id="mfwhqx" name="mfwhqx" placeholder="" value="${sqc.mfwhqx}">
+        <input type="text" id="mfwhqx" name="mfwhqx" placeholder="" value="${sqc.mfwhqx==null?8:sqc.mfwhqx}">
         <label for="aqsyqx">安全使用期限:</label>
-        <input type="text" id="aqsyqx" name="aqsyqx" placeholder="" value="${sqc.aqsyqx}">
+        <input type="text" id="aqsyqx" name="aqsyqx" placeholder="" value="${sqc.aqsyqx==null?8:sqc.aqsyqx}">
         <label for="amount">金额(元):</label>
         <input type="text" id="amount" name="aqsyqx" placeholder="" value="${sqc.amount}">
         <label for="dljd">地理经度:</label>
