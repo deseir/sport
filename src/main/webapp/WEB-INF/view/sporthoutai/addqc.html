@@ -36,7 +36,7 @@
 					clickFun="laydate({istime: false, format: 'YYYY-MM-DD'})" />
 				</div>
 				<div class="col-sm-6">
-					<#input name="器材现状" id="qcxz" placeholder="" value="${sqc.qcxz}"/>
+					<#input name="器材现状" id="qcxz" placeholder="" value="${sqc.qcxz==null?'正常使用':sqc.qcxz}"/>
 				</div>
 				<div class="col-sm-6">
 					<#input name="故障描述" id="gzms" placeholder="" value="${sqc.gzms}"/>
@@ -45,10 +45,10 @@
 					<#input name="缓冲层" id="hcc" placeholder="" value="${sqc.hcc}"/>
 				</div>
 				<div class="col-sm-6">
-					<#input name="免费维护期限" id="mfwhqx" placeholder="" value="${sqc.mfwhqx}"/>
+					<#input name="免费维护期限" id="mfwhqx" placeholder="" value="${sqc.mfwhqx==null?8:sqc.mfwhqx}"/>
 				</div>
 				<div class="col-sm-6">
-					<#input name="安全使用期限" id="aqsyqx" placeholder="" value="${sqc.aqsyqx}"/>
+					<#input name="安全使用期限" id="aqsyqx" placeholder="" value="${sqc.aqsyqx==null?8:sqc.aqsyqx}"/>
 				</div>
 				<div class="col-sm-6">
 					<#input name="地理经度" id="dljd" readonly="readonly" placeholder="" underline="false" value="${sqc.dljd}"/>
