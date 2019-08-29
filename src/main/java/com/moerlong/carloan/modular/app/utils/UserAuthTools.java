@@ -7,7 +7,6 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -20,16 +19,16 @@ public class UserAuthTools {
 
     private static final int CONTENT_LENGTH = 128;
 
-    @Autowired
-    private StringRedisTemplate stringRedisTemplate;
-
-    private static StringRedisTemplate srt;
+//    @Autowired
+//    private StringRedisTemplate stringRedisTemplate;
+//
+//    private static StringRedisTemplate srt;
 
     @SuppressWarnings("static-access")
-	@PostConstruct
-    public void init(){
-        this.srt = stringRedisTemplate;
-    }
+//	@PostConstruct
+//    public void init(){
+//        this.srt = stringRedisTemplate;
+//    }
 
     /**
      * 根据token获取用户信息
@@ -78,10 +77,10 @@ public class UserAuthTools {
             return ResultVO.build(ErrorCode.TOKEN_TIMEOUT_ERROR);
         }
 
-        if(!srt.hasKey(TokenGenerator.REDIS_EXPIREDTOKEN_KEY + tokenModel.getId() + tokenModel.getExpiredTime())){
-            LOG.error("[>>>getUserInfo] redis not exist token={}", tokenId);
-            return ResultVO.build(ErrorCode.TOKEN_TIMEOUT_ERROR);
-        }
+//        if(!srt.hasKey(TokenGenerator.REDIS_EXPIREDTOKEN_KEY + tokenModel.getId() + tokenModel.getExpiredTime())){
+//            LOG.error("[>>>getUserInfo] redis not exist token={}", tokenId);
+//            return ResultVO.build(ErrorCode.TOKEN_TIMEOUT_ERROR);
+//        }
 
         return ResultVO.build(ErrorCode.SUCCESS, tokenModel);
 
