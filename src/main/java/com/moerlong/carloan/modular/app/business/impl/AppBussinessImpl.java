@@ -12,7 +12,6 @@ import com.moerlong.carloan.common.persistence.model.UserVO;
 import com.moerlong.carloan.common.vo.ErrorCode;
 import com.moerlong.carloan.common.vo.ResultVO;
 import com.moerlong.carloan.core.shiro.ShiroKit;
-import com.moerlong.carloan.core.shiro.ShiroUser;
 import com.moerlong.carloan.core.util.ToolUtil;
 import com.moerlong.carloan.modular.app.business.AppBussiness;
 import com.moerlong.carloan.modular.app.service.SMSService;
@@ -24,10 +23,10 @@ import com.moerlong.carloan.modular.car.entity.*;
 import com.moerlong.carloan.modular.car.entity.vo.CarDetentionInfoVo;
 import com.moerlong.carloan.modular.car.entity.vo.InitCarVerifyVo;
 import com.moerlong.carloan.modular.car.service.*;
-import com.moerlong.carloan.modular.loan.bussiness.ProcessBussiness;
 import com.moerlong.carloan.modular.cust.entity.LivenessAuthInfo;
 import com.moerlong.carloan.modular.cust.entity.vo.CustomerInfoVo;
 import com.moerlong.carloan.modular.cust.service.LivenessAuthInfoService;
+import com.moerlong.carloan.modular.loan.bussiness.ProcessBussiness;
 import com.moerlong.carloan.modular.loan.dao.ApplyInfoDao;
 import com.moerlong.carloan.modular.loan.dao.ProcessNodeDao;
 import com.moerlong.carloan.modular.loan.entity.ApplyInfo;
@@ -41,20 +40,12 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -67,8 +58,8 @@ public class AppBussinessImpl implements AppBussiness{
     private UserMgrDao userMgrDao;
     @Resource
     private UserMapper userMapper;
-    @Autowired
-    private StringRedisTemplate stringRedisTemplate;
+//    @Autowired
+//    private StringRedisTemplate stringRedisTemplate;
     @Autowired
     private SMSService smsService;
     @Autowired
@@ -127,8 +118,8 @@ public class AppBussinessImpl implements AppBussiness{
             	long tokenExpiredTime = TokenGenerator.getExpiredTokenExpiredTime();
                 String tokenId = TokenGenerator.getTokenId(userInfo.getId(), tokenExpiredTime);
 
-                stringRedisTemplate.opsForValue().set(TokenGenerator.REDIS_EXPIREDTOKEN_KEY + userInfo.getId() + tokenExpiredTime, tokenId,
-                        TokenGenerator.EXPIREDTOKEN_EXPIRED_TIMEOUT, TimeUnit.SECONDS);
+//                stringRedisTemplate.opsForValue().set(TokenGenerator.REDIS_EXPIREDTOKEN_KEY + userInfo.getId() + tokenExpiredTime, tokenId,
+//                        TokenGenerator.EXPIREDTOKEN_EXPIRED_TIMEOUT, TimeUnit.SECONDS);
                 LoginModel model = new LoginModel();
                 model.setTokenId(tokenId);
                 model.setExpiredTime(tokenExpiredTime);
@@ -158,7 +149,7 @@ public class AppBussinessImpl implements AppBussiness{
 
             UserTokenInfoModel userModel = ret.getData();
 
-            stringRedisTemplate.delete(TokenGenerator.REDIS_EXPIREDTOKEN_KEY + userModel.getId() + userModel.getExpiredTime());
+//            stringRedisTemplate.delete(TokenGenerator.REDIS_EXPIREDTOKEN_KEY + userModel.getId() + userModel.getExpiredTime());
 
             return ResultVO.build(ErrorCode.SUCCESS);
         }catch (Exception e) {
@@ -234,11 +225,11 @@ public class AppBussinessImpl implements AppBussiness{
 
             String smsId = IDGenerator.getNumUUID();
 
-            if(stringRedisTemplate.hasKey(TokenGenerator.REDIS_SMS_KEY + mobile)){
-                stringRedisTemplate.delete(TokenGenerator.REDIS_SMS_KEY + mobile);
-            }
-
-            stringRedisTemplate.opsForValue().set(TokenGenerator.REDIS_SMS_KEY + mobile, smsId+":"+code, TokenGenerator.SMS_CODE_TIMEOUT, TimeUnit.SECONDS);
+//            if(stringRedisTemplate.hasKey(TokenGenerator.REDIS_SMS_KEY + mobile)){
+//                stringRedisTemplate.delete(TokenGenerator.REDIS_SMS_KEY + mobile);
+//            }
+//
+//            stringRedisTemplate.opsForValue().set(TokenGenerator.REDIS_SMS_KEY + mobile, smsId+":"+code, TokenGenerator.SMS_CODE_TIMEOUT, TimeUnit.SECONDS);
 
             ret.put("smsId", smsId);
             System.out.println("-----------------"+smsId);
@@ -258,25 +249,25 @@ public class AppBussinessImpl implements AppBussiness{
      */
     private boolean validateSmsCode(String mobile, String smsCode, String smsId){
         try{
-            if(!stringRedisTemplate.hasKey(TokenGenerator.REDIS_SMS_KEY + mobile)){
-                LOG.error("===>[validateSmsCode] mobile={} not exist in redis", mobile);
-                return false;
-            }
+//            if(!stringRedisTemplate.hasKey(TokenGenerator.REDIS_SMS_KEY + mobile)){
+//                LOG.error("===>[validateSmsCode] mobile={} not exist in redis", mobile);
+//                return false;
+//            }
+//
+//            String redisSMSContent = stringRedisTemplate.opsForValue().get(TokenGenerator.REDIS_SMS_KEY + mobile);
+//            if(StringUtils.isEmpty(redisSMSContent)){
+//                LOG.error("===>[validateSmsCode] mobile={} content is null", mobile);
+//                return false;
+//            }
 
-            String redisSMSContent = stringRedisTemplate.opsForValue().get(TokenGenerator.REDIS_SMS_KEY + mobile);
-            if(StringUtils.isEmpty(redisSMSContent)){
-                LOG.error("===>[validateSmsCode] mobile={} content is null", mobile);
-                return false;
-            }
+//            String redisCode = redisSMSContent.substring(redisSMSContent.indexOf(":")+1);
+//            String redisSmsId = redisSMSContent.substring(0, redisSMSContent.indexOf(":"));
 
-            String redisCode = redisSMSContent.substring(redisSMSContent.indexOf(":")+1);
-            String redisSmsId = redisSMSContent.substring(0, redisSMSContent.indexOf(":"));
+//            stringRedisTemplate.delete(TokenGenerator.REDIS_SMS_KEY + mobile);
 
-            stringRedisTemplate.delete(TokenGenerator.REDIS_SMS_KEY + mobile);
-
-            if(!(redisCode.equals(smsCode) && redisSmsId.equals(redisSmsId))){
-                return false;
-            }
+//            if(!(redisCode.equals(smsCode) && redisSmsId.equals(redisSmsId))){
+//                return false;
+//            }
 
             return true;
         }catch(Exception e){
@@ -314,8 +305,8 @@ public class AppBussinessImpl implements AppBussiness{
             long tokenExpiredTime = TokenGenerator.getExpiredTokenExpiredTime();
             String tokenId = TokenGenerator.getTokenId(temp.getId(), tokenExpiredTime);
 
-            stringRedisTemplate.opsForValue().set(TokenGenerator.REDIS_EXPIREDTOKEN_KEY + temp.getId() + tokenExpiredTime, tokenId,
-                    TokenGenerator.EXPIREDTOKEN_EXPIRED_TIMEOUT, TimeUnit.SECONDS);
+//            stringRedisTemplate.opsForValue().set(TokenGenerator.REDIS_EXPIREDTOKEN_KEY + temp.getId() + tokenExpiredTime, tokenId,
+//                    TokenGenerator.EXPIREDTOKEN_EXPIRED_TIMEOUT, TimeUnit.SECONDS);
 
             LoginModel model = new LoginModel();
             model.setTokenId(tokenId);
