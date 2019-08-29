@@ -1,7 +1,7 @@
 ###################  spring配置  ###################
 spring:
   profiles:
-    active: dev
+    active: produce
   mvc:
     static-path-pattern: /static/**
     view:
@@ -17,17 +17,17 @@ spring:
       enabled: true #是否开启开发者工具（true/false）
       additional-paths: src/main/java
       exclude: static/**,WEB-INF/view/**
-  redis:
-      database: 0
-      host: v.redis1.server
-      port: 6379
-      timeout: 10000
-      password: HuAxIad0e37EE6054667bd9745d5400ecabc
-      pool:
-        max-active: 10
-        max-wait: -1
-        max-idle: 10000
-        min-idle: 100
+#  redis:
+#      database: 0
+#      host: v.redis1.server
+#      port: 6379
+#      timeout: 10000
+#      password: HuAxIad0e37EE6054667bd9745d5400ecabc
+#      pool:
+#        max-active: 10
+#        max-wait: -1
+#        max-idle: 10000
+#        min-idle: 100
 
 ##########################################################
 ##################  所有profile共有的配置  #################
@@ -91,8 +91,8 @@ logging:
 
 file:
   identity_pic_path: /Users/daiyanchao/local/resources/sport/pics
-  identity_pic_url: http://localhost:8888/resource/pics
-  identity_pic_urls: http://localhost:8888
+  identity_pic_url: http://192.168.1.16:8888/resource/pics
+  identity_pic_urls: http://192.168.1.16:8888
   identity_pic_urlsx: /resource/pics
 ---
 
