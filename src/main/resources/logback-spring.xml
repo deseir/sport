@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration scan="true" scanPeriod="30 seconds">
     <!--日志路径 -->
-    <property name="LOG_PATH" value="/Users/daiyanchao/carloan" />
+    <property name="LOG_PATH" value="sport" />
     <!--日志文件名 -->
-    <property name="LOG_FILE" value="carloan" />
+    <property name="LOG_FILE" value="sport" />
     <!--消息输出格式 -->
     <property name="MSG_PATTERN"
               value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} -> %msg %n" />
